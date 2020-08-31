@@ -1,0 +1,131 @@
+{
+    "FIDOCTAP": {
+        "authors": [
+            ""
+        ],
+        "date": "",
+        "publisher": "FIDO Alliance",
+        "status": "",
+        "title": "FIDO 2.0: Client To Authenticator Protocol",
+        "href": "https://fidoalliance.org/specs/fido-v2.0-rd-20170927/fido-client-to-authenticator-protocol-v2.0-rd-20170927.html"
+    },
+    "WebAuthn": {
+        "authors": [
+            "Dirk Balfanz",
+            "Alexei Czeskis",
+            "Jeff Hodges",
+            "J.C. Jones",
+            "Michael B. Jones",
+            "Akshay Kumar",
+            "Angelo Liao",
+            "Rolf Lindemann",
+            "Emil Lundberg"
+        ],
+        "date": "March 2018",
+        "publisher": "W3C",
+        "status": "CR",
+        "title": "Web Authentication: An API for accessing Public Key Credentials Level 1",
+        "href": "https://www.w3.org/TR/webauthn/"
+    },
+    "CommonCriteria": {
+        "authors": [
+            "CCRA Members"
+        ],
+        "date": "",
+        "publisher": "",
+        "status": "Work in Progress",
+        "title": "Common Criteria Publications",
+        "href": "http://www.commoncriteriaportal.org/cc/"
+    },
+    "IANA-COSE-ALGS-REG": {
+        "authors": [
+            "Jim Schaad",
+            "Göran Selander",
+            "Derek Atkins",
+            "Sean Turner"
+        ],
+        "publisher": "Internet Assigned Numbers Authority",
+        "title": "IANA CBOR Object Signing and Encryption (COSE) Algorithms Registry",
+        "href": "https://www.iana.org/assignments/cose/cose.xhtml#algorithms"
+    },
+    "ISOBiometrics": {
+        "authors": [
+            ""
+        ],
+        "date": "2017",
+        "publisher": "",
+        "status": "",
+        "title": "ISO/IEC 2382-37 Harmonized Biometric Vocabulary",
+        "href": "https://www.iso.org/obp/ui/#iso:std:iso-iec:2382:-37:ed-2:v1:en"
+    },
+    "JSON": {
+        "authors": [
+            ""
+        ],
+        "date": "October 2013",
+        "publisher": "ecma International",
+        "status": "",
+        "title": "ECMA-404 The JSON Data Interchange Format",
+        "href": "https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf"
+    },
+    "JWS": {
+        "authors": [
+            "M. Jones",
+            "J. Bradley",
+            "N. Sakimura"
+        ],
+        "date": "May 2015",
+        "publisher": "IETF",
+        "status": "RFC",
+        "id": "RFC7515",
+        "title": "JSON Web Signature (JWS)",
+        "href": "https://tools.ietf.org/html/rfc7515"
+    },
+    "JWE": {
+        "authors": [
+            "M. Jones",
+            "J. Hildebrand"
+        ],
+        "date": "May 2015",
+        "publisher": "IETF",
+        "status": "RFC",
+        "id": "RFC7516",
+        "title": "JSON Web Encryption (JWE)",
+        "href": "https://tools.ietf.org/html/rfc7516"
+    },
+    "JWK": {
+        "authors": [
+            "M. Jones"
+        ],
+        "date": "May 2015",
+        "publisher": "IETF",
+        "status": "RFC",
+        "id": "RFC7517",
+        "title": "JSON Web Key (JWK)",
+        "href": "https://tools.ietf.org/html/rfc7517"
+    },
+    "JWA": {
+        "authors": [
+            "M. Jones"
+        ],
+        "date": "May 2015",
+        "publisher": "IETF",
+        "status": "RFC",
+        "id": "RFC7518",
+        "title": "JSON Web Algorithms (JWA)",
+        "href": "https://tools.ietf.org/html/rfc7518"
+    },
+    "JWT": {
+        "authors": [
+            "M. Jones",
+            "J. Bradley",
+            "N. Sakimura"
+        ],
+        "date": "May 2015",
+        "publisher": "IETF",
+        "status": "RFC",
+        "id": "RFC7519",
+        "title": "JSON Web Token (JWT)",
+        "href": "https://tools.ietf.org/html/rfc7519"
+    }
+}
