@@ -54,12 +54,11 @@ Here is where the GADI terminology goes.
 
 ## Ecosystem Overview ## {#sctn-ecosystem-overview}
 
-
 ## Roles in GADI ecosystem ## {#sctn-gadi-roles}
 
 ## Trust Model ## {#sctn-trust-model}
 
-# Core Data Model # {#sctn-core-data-model}
+# Types of Identifiers # {#sctn-identifier-types}
 
 ## Identifiers in GADI ## {#sctn-gadi-identifiers}
 
@@ -72,6 +71,8 @@ Here is where the GADI terminology goes.
 ## Conformance with other Identifiers ## {#sctn-conformance}
 
 # Trust Anchor # {#sctn-trust-anchor}
+
+## Identifiers in GADI {#sctn-trust-anchor-identifiers-in-gadi}
 
 ## Assumptions ## {#sctn-trust-anchor-assumptions}
 
@@ -145,11 +146,27 @@ Here is where the GADI terminology goes.
 
 ## Cryptographic Suites ## {#sctn-cryptography}
 
-# Internationalization # {#sctn-internationalization}
+# Interoperability # {#sctn-interoperability}
 
-## Regulatory Considerations ## {#sctn-regulations}
+## Internationalization ## {#sctn-internationalization}
 
-## Geographical constraints ## {#sctn-geography}
+# Certification / Compliance (TBD) {#sctn-certification-and-compliance}
+
+## Based on Interoperability ## {#sctn-based-on-interoperability}
+
+## Data Model ## {#sctn-data-model}
+
+## Issuer Certification ## {#sctn-issuer-certification}
+
+### Onboarding requirements for the user ### {#sctn-onboarding-requirements-user}
+
+### Identity vetting of users ### {#sctn-identity-vetting-user}
+
+## DAP Certification ## {#sctn-DAP-certification}
+
+### Requirements to comply with GADI ### {#sctn-gadi-compliance-requirements}
+
+## Product Certification ## {#sctn-product-certification}
 
 # Appendices {#sctn-appendices}
 
