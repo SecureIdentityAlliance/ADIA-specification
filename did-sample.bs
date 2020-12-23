@@ -12,9 +12,10 @@ Abstract: DID Alliance Sample Specification
 Issue Tracking: GitHub https://github.com/didalliance/specs
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
 Text Macro: NORMATIVE <em>This section is normative.</em>
-Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Boilerplate: header yes, logo yes, copyright yes
 Markup Shorthands: css off, markdown on
 </pre>
+<!-- Boilerplate: omit conformance, omit feedback-header, omit abstract-header -->
 
 <pre class="link-defaults">
 spec:html; type:dfn; for:environment settings object; text:global object

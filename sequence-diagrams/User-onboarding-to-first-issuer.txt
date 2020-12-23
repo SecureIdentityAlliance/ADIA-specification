@@ -1,0 +1,38 @@
+Title: User onboarding to first issuer
+Participant User
+Participant DAA
+Participant Issuer
+Participant Cloud Agent
+Participant DAP
+Participant GADI
+User -> Issuer: I want to get Digital Address (provide authentication + accept T&C)\n Issuer has ID-proofed user before
+Issuer -> Issuer: lookup ID-Attribs for that user
+Issuer -> Issuer: compute HIDA = hash(ID-Attribs)
+Issuer -> DAP: securely send HIDA
+DAP -> GADI: lookup TA_USER_ISSUER for HIDA
+GADI -> GADI: lookup TA for HIDA
+GADI -> GADI: if TA not found: generate TA = random
+GADI -> GADI: store HIDA, HomeDAP-ID=DAP-ID, TA (in DLT)
+GADI --> DAP: No conflict with TA. \nReturn TA_USER_ISSUER = hash(TA, ISSUER_ID)
+DAP -> DAP: Create DA and DAP_USER_ID 
+DAP -> DAP: Remember (TA_USER_ISSUER, DAP_USER_ID) in DLT
+DAP -> GADI: Send HIDA, TA_USER_ISSUER, DA to notify about DA
+GADI -> GADI: Remember DA exists for HIDA\n(don t store DA!)
+GADI --> DAP: Success
+DAP --> Issuer: Return TA_USER_ISSUER, DAP_USER_ID, DA
+Issuer -> Issuer: Remember DA for user in userDB
+Issuer -> Issuer: Creates QR code (DA, Issuer-URL?)
+Issuer -> User: presents or sends the QR code in Web interface/Issuer PC
+User -> DAA: Scans the QR code and extracts DA+IssuerURL
+DAA -> DAP: ID proofing starts on the device and extracts the user info 
+DAP --> DAA: Success
+DAA -> Issuer: Send Verified User Attributes + DA to IssuerURL
+Issuer -> Issuer: Verifies User Attributes against userDB identified by DA
+Issuer -> Issuer: create VC(TA_USER_ISSUER, Validation Succeeded)
+Issuer -> DAA: validation succeeded for DA+VC(TA_USER_ISSUER, Validation Succeeded)
+DAA -> DAA: Remember TA_USER_ISSUER, HIDA
+DAA -> Cloud Agent: request to generate DAP_USER_ID_PK/SK (TODO: Where do we have to send it??)
+DAA -> Issuer: Accept DA
+Issuer --> DAA: OK
+DAA -> DAP: Register FIDO Authenticator for this DA to the DAP+send VC (implicitly: User accepted DA)
+DAP -> DAP: Remember USER_FIDO_PK for TA_USER_ISSUER
