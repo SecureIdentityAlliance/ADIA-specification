@@ -34,76 +34,76 @@ This specification provides a overview of the GADI system.
 # Entities # {#sctn-entities}
 
 <dl>
-    : [=Cloud Agent=]
+    : <dfn>Cloud Agent</dfn>
     :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
          eIDAS Trust Service Providers (https://ec.europa.eu/digital-single-market/en/trust-services).
 
-    : [=DA=]
-    :: Human readabe Digital Address of the [=User=] (e.g. john.doe@issuer.dap.gadi.org).
+    : <dfn>DA</dfn>
+    :: Human readabe Digital Address of the <a>User</a> (e.g. john.doe@issuer.dap.gadi.org).
 
-    : [=DAP_USER_ID=]
-    :: The DAP specific Decentralized Identifier (DID) related to the [=DA=], e.g. did:example:123456789abcdefghi
+    : <dfn>DAP_USER_ID</dfn>
+    :: The DAP specific Decentralized Identifier (DID) related to the <a>DA</a>, e.g. did:example:123456789abcdefghi
 
-    :  [=DAP_USER_ID_PK=], [=DAP_USER_ID_SK=]
-    :: Public Key (PK) and Private Key (SK) related to the [=DAP_USER_ID=].
+    :  <dfn>DAP_USER_ID_PK</dfn>, <dfn>DAP_USER_ID_SK</dfn>
+    :: Public Key (PK) and Private Key (SK) related to the <a>DAP_USER_ID</a>.
 
-    :  [=DAA=]
-    :: Digital Address Application, e.g. Android App or iOS App that knows how to talk to the DAP on behalf of the [=User=].
+    :  <dfn>DAA</dfn>
+    :: Digital Address Application, e.g. Android App or iOS App that knows how to talk to the DAP on behalf of the <a>User</a>.
 
-    :  [=DAP=]
+    :  <dfn>DAP</dfn>
     :: Digital Address Provider.
 
-    :  [=DAP_ID=]
-    :: DAP IDentity, i.e. the W3C DID style identifier for the [=DAP=].
+    :  <dfn>DAP_ID</dfn>
+    :: DAP IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
 
-    :  [=DAP_ID_PK=], [=DAP_IS_SK=]
-    :: Public Key (PK) and Private Key (SK) related to the [=DAP_ID=].
+    :  <dfn>DAP_ID_PK</dfn>, <dfn>DAP_IS_SK</dfn>
+    :: Public Key (PK) and Private Key (SK) related to the <a>DAP_ID</a>.
 
-    :  [=HIDA=]
-    :: Cryptographic hash computed over the [=ID Attributes=]
+    :  <dfn>HIDA</dfn>
+    :: Cryptographic hash computed over the <a>ID Attributes</a>
 
-    :  [=HomeDAP_ID=]
+    :  <dfn>HomeDAP_ID</dfn>
     :: DAP_ID of the DAP that user primarliy belongs to.
 
-    :  [=ID Attributes=]
+    :  <dfn>ID Attributes</dfn>
     :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
 
-    :  [=Issuer=]
-    :: Issuer of [=VC=]s to users.  GADI supports multiple Issuers per [=User=].
+    :  <dfn>Issuer</dfn>
+    :: Issuer of <a>VC</a>s to users.  GADI supports multiple Issuers per <a>User</a>.
 
-    :  [=ISSUER_ID=]
-    :: Issuer IDentity, i.e. the W3C DID style identifier for the [=Issuer=].
+    :  <dfn>ISSUER_ID</dfn>
+    :: Issuer IDentity, i.e. the W3C DID style identifier for the <a>Issuer</a>.
 
-    :  [=ISSUER_ID_PK=], [=ISSUER_IS_SK=]
-    :: Public Key (PK) and Private Key (SK) related to the [=ISSUER_ID=].
+    :  <dfn>ISSUER_ID_PK</dfn>, <dfn>ISSUER_IS_SK</dfn>
+    :: Public Key (PK) and Private Key (SK) related to the <a>ISSUER_ID</a>.
 
-    :  [=SP=]
-    :: Service Provider that verifies [=VC=]s.
+    :  <dfn>SP</dfn>
+    :: Service Provider that verifies <a>VC</a>s.
 
-    :  [=SP_ID=]
-    :: Service Provider IDentity, i.e. the W3C DID style identifier for the [=SP=].
+    :  <dfn>SP_ID</dfn>
+    :: Service Provider IDentity, i.e. the W3C DID style identifier for the <a>SP</a>.
 
-    :  [=SP_ID_PK=], [=SP_IS_SK=]
-    :: Public Key (PK) and Private Key (SK) related to the [=SP_ID=].
+    :  <dfn>SP_ID_PK</dfn>, <dfn>SP_IS_SK</dfn>
+    :: Public Key (PK) and Private Key (SK) related to the <a>SP_ID</a>.
 
-    : [=TA=]
+    : <dfn>TA</dfn>
     :: Trust Anchor, i.e. a randomly generated number related to a User. E.g. 3456893265abf...849287c.
 
 
 Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagram so far.
 
 
-    :  [=TA_USER_ISSUER=]
-    :: The Issuer specific [=TA=], i.e. hash([=TA=], [=ISSUER_ID=]).
+    :  <dfn>TA_USER_ISSUER</dfn>
+    :: The Issuer specific <a>TA</a>, i.e. hash(<a>TA</a>, <a>ISSUER_ID</a>).
 
-    :  [=User=]
-    :: The User and owner of the [=DA=] and holder of the [=VC=]s.
+    :  <dfn>User</dfn>
+    :: The User and owner of the <a>DA</a> and holder of the <a>VC</a>s.
 
-    :  [=VC=]
+    :  <dfn>VC</dfn>
     :: Verifiable Credential, see W3C Verifiable Credential specification.
 
-    :  [=VC_METADATA=]
-    :: Metadata of a [=VC=], i.e. DID, VC Schema Name, VC Schema Friendly Name
+    :  <dfn>VC_METADATA</dfn>
+    :: Metadata of a <a>VC</a>, i.e. DID, VC Schema Name, VC Schema Friendly Name
 
 </dl>
 
@@ -142,14 +142,28 @@ Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i
 
 ## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
 
+Goal of this operation is to provide some identity attributes related to the user with the Service Provider (SP).
+  These attributes are include in the verifiable credential (VC) and have been verified by the Issuer.
+
+We distinguish 2 different types of verifiable credentials:
+1. Credentials that include sufficient personal identifiable information to uniquely identify the user and
+2. Credentials that don't. For example just stating that the user is older than 21.
+
+In both cases, a public key is typically included in the verifiable credential.
+  It is used as a proxy for the user, meaning anyone that can proof access of the related private key is assumed to be the user.
+  Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
+  temporary use key, that is included in order to allow the SP to detect which subject the attributes relate to.
+  
 <figure id="fig-vc-presentation-and-verification-option-1">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
 
-Issue: Retrieve VC and prepare VC presentation to SP will likely require some user rleated public key to be included. Add specific name here.
+Issue: Retrieve VC and prepare VC presentation to SP will likely require some user related public key to be included. Add specific name here.
 
 Issue: Having the DAA authenticate with FIDO to Cloud Agent either requires second FIDO credential (tied to Cloud Agent) or it requires the Cloud Agent to allow use of the DAP related FIDO credential
+
+Issue: Describe, how the SP can verify whether an ISSUER_ID_PK is trustworthy or not (introduced through the DAP).  And in the next step how to verify whether DAP_ID_PK is trustworthy or not.
 
 
 ## User Onboarding Attempt to 2nd Issuer ## {#sctn-onboarding-2nd-issuer}
