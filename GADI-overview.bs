@@ -137,6 +137,8 @@ Issue: Looking up DAP_USER_ID by DA, requires DAP to have remembered DA and rela
   But DA isn't remembered yet. DA is PII and likely even PI.
   Issuers have access to HIDA and hence could ask GADI via DAP to lookup TA_USER_ISSUER by HIDA.
 
+Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc.
+
 
 ## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
 
