@@ -87,7 +87,11 @@ This specification provides a overview of the GADI system.
     :: Public Key (PK) and Private Key (SK) related to the [=SP_ID=].
 
     : [=TA=]
-    :: Trust Anchor, i.e. a randomly generated number related to a User. E.g. 3456893265abf...849287c
+    :: Trust Anchor, i.e. a randomly generated number related to a User. E.g. 3456893265abf...849287c.
+
+
+Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagram so far.
+
 
     :  [=TA_USER_ISSUER=]
     :: The Issuer specific [=TA=], i.e. hash([=TA=], [=ISSUER_ID=]).
@@ -104,7 +108,9 @@ This specification provides a overview of the GADI system.
 </dl>
 
 
+
 # GADI Operations # {#sctn-ops}
+
 
 ## User Onboarding to First Issuer ## {#sctn-onboarding-1st-issuer}
 
@@ -113,16 +119,70 @@ This specification provides a overview of the GADI system.
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
-## Verifiable Credential Issuance ## {#sctn-vc-issuance}
+Note: HIDA is PII and might need to be erased on account deletion (see User DAP Account Deletion)
+
+Issue: The Issuer remembers the DA. Wouldn't the issuer want to remember DAP_USER_ID as well?  It is needed when issuing a VC.
+
+Issue: Check DAP_USER_ID_PK/SK generation. Would we store the PK in Home-DAP or GADI??  When will that key be created and by Whom?
+
+
+## Verifiable Credential Issuance ## {#sctn-vc-issuance-1}
 
 <figure id="fig-vc-issuance-option-1">
     <img src="sequence-diagrams/VC-Issuance-Option-1.svg"/>
     <figcaption>Verifiable Credential Issuance (Option 1)</figcaption>
 </figure>
 
-## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification}
+Issue: Looking up DAP_USER_ID by DA, requires DAP to have remembered DA and related DAP_USER_ID.
+  But DA isn't remembered yet. DA is PII and likely even PI.
+  Issuers have access to HIDA and hence could ask GADI via DAP to lookup TA_USER_ISSUER by HIDA.
+
+
+## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
 
 <figure id="fig-vc-presentation-and-verification-option-1">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
+
+Issue: Retrieve VC and prepare VC presentation to SP will likely require some user rleated public key to be included. Add specific name here.
+
+Issue: Having the DAA authenticate with FIDO to Cloud Agent either requires second FIDO credential (tied to Cloud Agent) or it requires the Cloud Agent to allow use of the DAP related FIDO credential
+
+
+## User Onboarding Attempt to 2nd Issuer ## {#sctn-onboarding-2nd-issuer}
+
+<figure id="fig-onboarding-2nd-issuer">
+    <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg"/>
+    <figcaption>User Onboarding to Second Issuer</figcaption>
+</figure>
+
+
+## User DAP Account Deletion ## {#sctn-user-dap-account-deletion}
+
+<figure id="fig-user-dap-account-deletion">
+    <img src="sequence-diagrams/User-DAP-Account-Deletion.svg"/>
+    <figcaption>User DAP Account Deletion</figcaption>
+</figure>
+
+Issue: Cloud Agent needs to be added - it maintains cryptographic keys on behalf on the user
+
+Issue: Is it expected that Issuer relations are not deleted?  Maybe DAP Account deletion should be just a part of Issuer account deletion?
+
+Issue: Do we need an issuer-triggered account deletion function as well?
+
+Issue: Is it expected that VCs are not deleted?
+
+Issue: How could a user without a working DAA instance trigger account deletion?
+
+
+## User Bootstraps New DAA Instance "Lost Phone" ## {#sctn-user-bootstraps-new-daa-instance-1}
+
+<figure id="fig-user-bootstraps-new-daa-instance">
+    <img src="sequence-diagrams/User-bootstrap-new-DAA-instance.svg"/>
+    <figcaption>User Bootstraps New DAA Instance "Lost Phone"</figcaption>
+</figure>
+
+Issue: requiring ID Proofing looks expensive here. Are there methods without that (that provide a similar security level)?
+
+Issue: Do we want DAP to perform the ID proofing - not the Issuer?

@@ -1,0 +1,31 @@
+Title: User Bootstraps New DAA Instance
+Participant User
+Participant DAA
+Participant Issuer
+Participant DAP
+Participant GADI
+User -> Issuer: I want to recover my Digital Address because lost device
+Issuer -> Issuer: lookup ID-Attribs for that user
+Issuer -> Issuer: compute HIDA = hash(ID-Attribs)
+Issuer -> DAP: securely send HIDA
+DAP -> DAP: lookup TA_USER_ISSUER for HIDA
+DAP -> GADI: if TA_USER_ISSUER not found: lookup TA_USER_ISSUER for HIDA
+GADI -> GADI: lookup TA for HIDA (found)
+GADI --> DAP: Return found on Home_DAP_ID
+DAP --> Issuer: User exists in other DAP (Home_DAP_ID,Home DAP Name)
+Issuer --> User: Your DA exists in Home DAP Name.  Use your existing DAA.
+User -> Issuer: Want to to bootstrap new phone
+Issuer -> Issuer: Lookup DA for HIDA
+Issuer -> Issuer: Create QR code (DA, Issuer-URL?)
+Issuer -> User: presents or sends the QR code in Web interface/Issuer PC
+User -> DAA: Scans the QR code and extracts DA+IssuerURL
+DAA -> DAP: ID proofing starts on the device and extracts the user info 
+DAP --> DAA: Success
+DAA -> Issuer: Send Verified User Attributes + DA to IssuerURL
+Issuer -> Issuer: Verifies User Attributes against userDB identified by DA
+Issuer -> Issuer: check whether VC(TA_USER_ISSUER, Validation Succeeded) exists (it should)
+Issuer -> DAA: validation succeeded for DA+VC(TA_USER_ISSUER, Validation Succeeded)
+DAA -> Issuer: Accept DA
+Issuer --> DAA: OK
+DAA -> DAP: Register FIDO Authenticator for this DA to the DAP+send VC (implicitly: User accepted DA)
+DAP -> DAP: Saves the FIDO public key against TA_USER_ISSUER - replacing old FIDO public key (for lost device
