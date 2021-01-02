@@ -40,7 +40,7 @@ This specification provides a overview of the GADI system.
          eIDAS Trust Service Providers (https://ec.europa.eu/digital-single-market/en/trust-services).
 
     : <dfn>DA</dfn>
-    :: Human readabe Digital Address of the <a>User</a> (e.g. john.doe@issuer.dap.gadi.org).
+    :: Human readabe <dfn>Digital Address</dfn> of the <a>User</a> (e.g. john.doe@issuer.dap.gadi.org).
 
     : <dfn>DAP_USER_ID</dfn>
     :: The DAP specific Decentralized Identifier (DID) related to the <a>DA</a>, e.g. did:example:123456789abcdefghi
@@ -49,13 +49,13 @@ This specification provides a overview of the GADI system.
     :: Public Key (PK) and Private Key (SK) related to the <a>DAP_USER_ID</a>.
 
     :  <dfn>DAA</dfn>
-    :: Digital Address Application, e.g. Android App or iOS App that knows how to talk to the DAP on behalf of the <a>User</a>.
+    :: Digital Address Application, e.g. Android App or iOS App that knows how to talk to the <a>DAP</a> on behalf of the <a>User</a>.
 
     :  <dfn>DAP</dfn>
     :: Digital Address Provider.
 
     :  <dfn>DAP_ID</dfn>
-    :: DAP IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
+    :: <a>DAP</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
 
     :  <dfn>DAP_ID_PK</dfn>, <dfn>DAP_IS_SK</dfn>
     :: Public Key (PK) and Private Key (SK) related to the <a>DAP_ID</a>.
@@ -67,7 +67,7 @@ This specification provides a overview of the GADI system.
     :: Cryptographic hash computed over the <a>ID Attributes</a>
 
     :  <dfn>HomeDAP_ID</dfn>
-    :: DAP_ID of the DAP that user primarliy belongs to.
+    :: DAP_ID of the <a>DAP</a> that user primarliy belongs to (i.e. <dfn>HomeDAP</dfn>).
 
     :  <dfn>ID Attributes</dfn>
     :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
@@ -122,7 +122,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
         <tr>
             <td>1</td>
             <td>
-		The GADI Framework respects national laws and allows the DAPs to operate according to their local regulations.
+		The GADI Framework respects national laws and allows the <a>DAP</a>s to operate according to their local regulations.
  		This includes compliance to CCPA and GDPR.
 	    </td>		
             <td>
@@ -133,7 +133,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
             <td>2</td>
             <td>
 	      Users must have control on user credentials, i.e. no credentials are created or shared without the user's consent.
-	      This means, DAP asks for user consent and strongly authenticates the user.
+	      This means, <a>DAP</a> asks for user consent and strongly authenticates the user.
 	    </td>		
             <td>
 	      Data Privacy regulation & expectation
@@ -155,7 +155,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
 	      If two SPs both received a credential that John Doe was born on date X in Y,
 	      then the two SPs could learn it is the very likely same user. But this has nothing to do with GADI.
 
-	      As a consequence, the Digital Address / TrustAnchor are NOT part of the credential.
+	      As a consequence, the <a>Digital Address</a> / <a>Trust Anchor</a> are NOT part of the credential.
 	      Credentials are in the W3C VC format [[!vc-data-model]] and are tied to a <a>DID</a>.  
 	    </td>		
             <td>
@@ -194,7 +194,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
             <td>8</td>
             <td>
 	      <a>Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
-	      who got their TrustAnchor from a different Digital Address Provider (DAP) than the one this issuer is primarily using.
+	      who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAP</a>) than the one this issuer is primarily using.
 	    </td>		
             <td>
             </td>
@@ -231,7 +231,7 @@ Issue: Although I agree with this goal, so much of our system depends on <a>Issu
         <tr>
             <td>12</td>
             <td>
-	      Each DAP provides one Single Digital Address App for the user to be able to access and control the
+	      Each <a>DAP</a> provides one Single Digital Address App for the user to be able to access and control the
 	      Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
 	      user credentials on demand with user consent.
 	    </td>		
@@ -241,7 +241,7 @@ Issue: Although I agree with this goal, so much of our system depends on <a>Issu
         <tr>
             <td>13</td>
             <td>
-	      Digital Address (<a>DA</a>) is a Human readable string that is easy to use, that is associated with the Users Trust Anchor.
+	      <a>Digital Address</a> (<a>DA</a>) is a Human readable string that is easy to use, that is associated with the Users <a>Trust Anchor</a>.
 	      This becomes that identifier that the user can provide to issuers to get the credentials issued.  
 	    </td>		
             <td>
@@ -262,7 +262,7 @@ Issue: Although I agree with this goal, so much of our system depends on <a>Issu
         <tr>
             <td>15</td>
             <td>
-	      The GADI ledger is accessible to DAPs only.
+	      The GADI ledger is accessible to <a>DAP</a>s only.
 	    </td>		
             <td>
             </td>
@@ -270,12 +270,12 @@ Issue: Although I agree with this goal, so much of our system depends on <a>Issu
         <tr>
             <td>16</td>
             <td>
-	      Trust Anchors are generated randomly by the Home-DAP, such that collisions do not practically occur.
-	      See Trust Anchor Discussion below.
+	      <a>Trust Anchor</a>s are generated randomly by the <a>HomeDAP</a>, such that collisions do not practically occur.
+	      See <a>Trust Anchor</a> Discussion below.
 	      (not clear, see 20)
 	    </td>		
             <td>
-	      So that we only need to delete the relation between the Trust Anchor and any other PII when the user
+	      So that we only need to delete the relation between the <a>Trust Anchor</a> and any other PII when the user
 	      asks for account deletion (removal from GADI).
             </td>
         </tr>
@@ -294,7 +294,7 @@ Note: sometimes there are existing business processes which will convey PI/PII o
         <tr>
             <td>18</td>
             <td>
-	      GADI and DAPs do NOT persistently store personal information (PI).
+	      GADI and <a>DAP</a>s do NOT persistently store personal information (PI).
 	      And even pass-through of PI should be avoided.
 
 Note: they will likely need to store PII, i.e. information related to users
@@ -307,18 +307,18 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
         <tr>
             <td>19</td>
             <td>
-	      GADI will store the Home-DAP Identifier (preferably the DAP-ID) along with the user's TrustAnchor.
-	      So each DAP could ask GADI for the Home-DAP of a given user and would then directly talk to the user's Home-DAP.
+	      GADI will store the <a>HomeDAP</a> Identifier (i.e. <a>HomeDAP_ID</a>) along with the user's <a>Trust Anchor</a>.
+	      So each <a>DAP</a> could ask GADI for the <a>HomeDAP</a> of a given user and would then directly talk to the user's <a>HomeDAP</a>.
 	    </td>		
             <td>
-	      We need that for cross-DAP communications
+	      We need that for cross-<a>DAP</a> communications
             </td>
         </tr>
         <tr>
             <td>20</td>
             <td>
 	      We compute a Hash(firstname, last name, date of birth, country+city of birth) as either use this as
-	      TrustAnchor or as an attribute stored along with the TrustAnchor in GADI.
+	      <a>Trust Anchor</a> or as an attribute stored along with the <a>Trust Anchor</a> in GADI.
 	    </td>		
             <td>
             </td>
@@ -326,7 +326,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
         <tr>
             <td>21</td>
             <td>
-	      It shall  be possible to change the Home-DAP of a user (e.g. from DAP1 to DAP2).
+	      It shall  be possible to change the <a>HomeDAP</a> of a user (e.g. from <a>DAP</a>1 to <a>DAP</a>2).
 	    </td>		
             <td>
             </td>
@@ -372,11 +372,11 @@ Issue: Need to specify what functionality/certification is needed to call an app
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
-Note: HIDA is PII and might need to be erased on account deletion (see User DAP Account Deletion)
+Note: HIDA is PII and might need to be erased on account deletion (see User <a>DAP</a> Account Deletion)
 
 Issue: The <a>Issuer</a> remembers the DA. Wouldn't the issuer want to remember DAP_USER_ID as well?  It is needed when issuing a VC.
 
-Issue: Check DAP_USER_ID_PK/SK generation. Would we store the PK in Home-DAP or GADI??  When will that key be created and by Whom?
+Issue: Check DAP_USER_ID_PK/SK generation. Would we store the PK in <a>HomeDAP</a> or GADI??  When will that key be created and by Whom?
 
 
 ## Verifiable Credential Issuance ## {#sctn-vc-issuance-1}
@@ -386,9 +386,9 @@ Issue: Check DAP_USER_ID_PK/SK generation. Would we store the PK in Home-DAP or 
     <figcaption>Verifiable Credential Issuance (Option 1)</figcaption>
 </figure>
 
-Issue: Looking up DAP_USER_ID by DA, requires DAP to have remembered DA and related DAP_USER_ID.
+Issue: Looking up DAP_USER_ID by DA, requires <a>DAP</a> to have remembered DA and related DAP_USER_ID.
   But DA isn't remembered yet. DA is PII and likely even PI.
-  <a>Issuer</a>s have access to HIDA and hence could ask GADI via DAP to lookup TA_USER_ISSUER by HIDA.
+  <a>Issuer</a>s have access to HIDA and hence could ask GADI via <a>DAP</a> to lookup TA_USER_ISSUER by HIDA.
 
 Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
 
@@ -413,11 +413,11 @@ In both cases, a public key is typically included in the <a>verifiable credentia
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
 
-Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the DAP/GADI system.
+Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP</a>/GADI system.
 
-Issue: Having the <a>DAA</a> authenticate with FIDO to <a>Cloud Agent</a> either requires second FIDO credential (tied to <a>Cloud Agent</a>) or it requires the <a>Cloud Agent</a> to allow use of the DAP related FIDO credential
+Issue: Having the <a>DAA</a> authenticate with FIDO to <a>Cloud Agent</a> either requires second FIDO credential (tied to <a>Cloud Agent</a>) or it requires the <a>Cloud Agent</a> to allow use of the <a>DAP</a> related FIDO credential
 
-Issue: Describe, how the SP can verify whether an ISSUER_ID_PK is trustworthy or not (introduced through the DAP).  And in the next step how to verify whether DAP_ID_PK is trustworthy or not.
+Issue: Describe, how the SP can verify whether an ISSUER_ID_PK is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether DAP_ID_PK is trustworthy or not.
 
 
 ## User Onboarding Attempt to 2nd Issuer ## {#sctn-onboarding-2nd-issuer}
@@ -437,7 +437,7 @@ Issue: Describe, how the SP can verify whether an ISSUER_ID_PK is trustworthy or
 
 Issue: <a>Cloud Agent</a> needs to be added - it maintains cryptographic keys on behalf on the user
 
-Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe DAP Account deletion should be just a part of <a>Issuer</a> account deletion?
+Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
 
 Issue: Do we need an issuer-triggered account deletion function as well?
 
@@ -455,7 +455,7 @@ Issue: How could a user without a working <a>DAA</a> instance trigger account de
 
 Issue: requiring ID Proofing looks expensive here. Are there methods without that (that provide a similar security level)?
 
-Issue: Do we want DAP to perform the ID proofing - not the <a>Issuer</a>?
+Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 
 
 
