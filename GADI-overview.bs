@@ -91,20 +91,20 @@ This specification provides a overview of the GADI system.
     :: Public Key (PK) and Private Key (SK) related to the <a>SP_ID</a>.
 
     : <dfn>TA</dfn>
-    :: Trust Anchor, i.e. a randomly generated number related to a User. E.g. 3456893265abf...849287c.
+    :: <dfn>Trust Anchor</dfn>, i.e. a randomly generated number related to a User. E.g. 3456893265abf...849287c.
 
 
 Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagram so far.
 
 
     :  <dfn>TA_USER_ISSUER</dfn>
-    :: The Issuer specific <a>TA</a>, i.e. hash(<a>TA</a>, <a>ISSUER_ID</a>).
+    :: The <a>Issuer</a> specific <a>TA</a>, i.e. hash(<a>TA</a>, <a>ISSUER_ID</a>).
 
     :  <dfn>User</dfn>
     :: The User and owner of the <a>DA</a> and holder of the <a>VC</a>s.
 
     :  <dfn>VC</dfn>
-    :: Verifiable Credential, see W3C Verifiable Credential specification.
+    :: <dfn>Verifiable Credential</dfn>, see [[!vc-data-model]].
 
     :  <dfn>VC_METADATA</dfn>
     :: Metadata of a <a>VC</a>, i.e. <a>DID</a>, VC Schema Name, VC Schema Friendly Name
@@ -174,7 +174,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
         <tr>
             <td>6</td>
             <td>
-	      Issuers must be in the value chain.  This means that users cannot share credentials issued by
+	      <a>Issuer</a>s must be in the value chain.  This means that users cannot share credentials issued by
 	      an issuer without allowing financial compensation for the issuer.
 	    </td>		
             <td>
@@ -193,7 +193,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
         <tr>
             <td>8</td>
             <td>
-	      Issuers should be able to issue the credentials to users who are not part of the same network, i.e.
+	      <a>Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
 	      who got their TrustAnchor from a different Digital Address Provider (DAP) than the one this issuer is primarily using.
 	    </td>		
             <td>
@@ -211,7 +211,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
         <tr>
             <td>10</td>
             <td>
-	      Onboard the user with a trusted Identity that is approved by an Issuer after proper Identity vetting 
+	      Onboard the user with a trusted Identity that is approved by an <a>Issuer</a> after proper Identity vetting 
 	    </td>		
             <td>
             </td>
@@ -221,7 +221,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
             <td>
  	      It is possible for users to start their participation based on a low level identity assertion and increase that level over time.
 
-Issue: Although I agree with this goal, so much of our system depends on Issuers and the GADI registry to prevent duplicates. The GADI registry is permissioned, and only valid issuers can access. I'm not sure how this will work without an issuer -- possible risk of adversary obtaining information by trying to create identities and seeing if a digital address already exists for certain PII data. Let's discuss
+Issue: Although I agree with this goal, so much of our system depends on <a>Issuer</a>s and the GADI registry to prevent duplicates. The GADI registry is permissioned, and only valid issuers can access. I'm not sure how this will work without an issuer -- possible risk of adversary obtaining information by trying to create identities and seeing if a digital address already exists for certain PII data. Let's discuss
 	    </td>		
             <td>
 	      Many users don't have connections to a SP which has performed strong ID proofing today.
@@ -252,7 +252,7 @@ Issue: Although I agree with this goal, so much of our system depends on Issuers
             <td>
 	      Users in this scenario will have a single Digital Address Application from one Digital Address Provider
 	      and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
-	      push the credentials for the user.   This is just between users and Issuers.  We however can also provide
+	      push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
 	      different handles (Different Digital Addresses) that can be orchestrated between the user Device and <a>DAP</a> to
 	      present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.  
 	    </td>		
@@ -299,7 +299,7 @@ Note: sometimes there are existing business processes which will convey PI/PII o
 
 Note: they will likely need to store PII, i.e. information related to users
 
-Note: Issuers will have to store PI (in order to be able to issue credentials)
+Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credentials)
 	    </td>		
             <td>
             </td>
@@ -334,7 +334,7 @@ Note: Issuers will have to store PI (in order to be able to issue credentials)
         <tr>
             <td>22</td>
             <td>
-	      Issuers shouldn't learn the SP that verifies a credential.
+	      <a>Issuer</a>s shouldn't learn the SP that verifies a credential.
 	    </td>		
             <td>
 	      Privacy
@@ -344,7 +344,7 @@ Note: Issuers will have to store PI (in order to be able to issue credentials)
             <td>23</td>
             <td>
 
-Issue: It might not be possible to avoid SPs from learning who the Issuer was that issued a credential!
+Issue: It might not be possible to avoid SPs from learning who the <a>Issuer</a> was that issued a credential!
 	    </td>		
             <td>
             </td>
@@ -374,7 +374,7 @@ Issue: Need to specify what functionality/certification is needed to call an app
 
 Note: HIDA is PII and might need to be erased on account deletion (see User DAP Account Deletion)
 
-Issue: The Issuer remembers the DA. Wouldn't the issuer want to remember DAP_USER_ID as well?  It is needed when issuing a VC.
+Issue: The <a>Issuer</a> remembers the DA. Wouldn't the issuer want to remember DAP_USER_ID as well?  It is needed when issuing a VC.
 
 Issue: Check DAP_USER_ID_PK/SK generation. Would we store the PK in Home-DAP or GADI??  When will that key be created and by Whom?
 
@@ -388,7 +388,7 @@ Issue: Check DAP_USER_ID_PK/SK generation. Would we store the PK in Home-DAP or 
 
 Issue: Looking up DAP_USER_ID by DA, requires DAP to have remembered DA and related DAP_USER_ID.
   But DA isn't remembered yet. DA is PII and likely even PI.
-  Issuers have access to HIDA and hence could ask GADI via DAP to lookup TA_USER_ISSUER by HIDA.
+  <a>Issuer</a>s have access to HIDA and hence could ask GADI via DAP to lookup TA_USER_ISSUER by HIDA.
 
 Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
 
@@ -396,14 +396,14 @@ Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i
 ## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
 
 Goal of this operation is to provide some identity attributes related to the user with the Service Provider (SP).
-  These attributes are include in the verifiable credential (VC) and have been verified by the Issuer.
+  These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
   We always use <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
 
-We distinguish 2 different types of verifiable credentials:
+We distinguish 2 different types of <a>verifiable credential</a>s:
 1. Credentials that include sufficient personal identifiable information to uniquely identify the user and
 2. Credentials that don't. For example just stating that the user is older than 21.
 
-In both cases, a public key is typically included in the verifiable credential.
+In both cases, a public key is typically included in the <a>verifiable credential</a>.
   It is used as a proxy for the user, meaning anyone that can proof access of the related private key is assumed to be the user.
   Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
   temporary use key, that is included in order to allow the SP to detect which subject the attributes relate to.
@@ -413,9 +413,9 @@ In both cases, a public key is typically included in the verifiable credential.
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
 
-Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the DAA and/or Cloud Agent and the DAP/GADI system.
+Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the DAP/GADI system.
 
-Issue: Having the DAA authenticate with FIDO to Cloud Agent either requires second FIDO credential (tied to Cloud Agent) or it requires the Cloud Agent to allow use of the DAP related FIDO credential
+Issue: Having the <a>DAA</a> authenticate with FIDO to <a>Cloud Agent</a> either requires second FIDO credential (tied to <a>Cloud Agent</a>) or it requires the <a>Cloud Agent</a> to allow use of the DAP related FIDO credential
 
 Issue: Describe, how the SP can verify whether an ISSUER_ID_PK is trustworthy or not (introduced through the DAP).  And in the next step how to verify whether DAP_ID_PK is trustworthy or not.
 
@@ -435,15 +435,15 @@ Issue: Describe, how the SP can verify whether an ISSUER_ID_PK is trustworthy or
     <figcaption>User DAP Account Deletion</figcaption>
 </figure>
 
-Issue: Cloud Agent needs to be added - it maintains cryptographic keys on behalf on the user
+Issue: <a>Cloud Agent</a> needs to be added - it maintains cryptographic keys on behalf on the user
 
-Issue: Is it expected that Issuer relations are not deleted?  Maybe DAP Account deletion should be just a part of Issuer account deletion?
+Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe DAP Account deletion should be just a part of <a>Issuer</a> account deletion?
 
 Issue: Do we need an issuer-triggered account deletion function as well?
 
 Issue: Is it expected that VCs are not deleted?
 
-Issue: How could a user without a working DAA instance trigger account deletion?
+Issue: How could a user without a working <a>DAA</a> instance trigger account deletion?
 
 
 ## User Bootstraps New DAA Instance "Lost Phone" ## {#sctn-user-bootstraps-new-daa-instance-1}
@@ -455,7 +455,7 @@ Issue: How could a user without a working DAA instance trigger account deletion?
 
 Issue: requiring ID Proofing looks expensive here. Are there methods without that (that provide a similar security level)?
 
-Issue: Do we want DAP to perform the ID proofing - not the Issuer?
+Issue: Do we want DAP to perform the ID proofing - not the <a>Issuer</a>?
 
 
 
