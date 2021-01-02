@@ -31,6 +31,7 @@ spec:webidl; type:interface; text:Promise
 # Introduction # {#sctn-intro}
 This specification provides a overview of the GADI system.
 
+
 # Entities # {#sctn-entities}
 
 <dl>
@@ -107,6 +108,253 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
 
 </dl>
 
+# GADI Requirements # {#sctn-reqs}
+<figure id="table-security-privacy-goals" class="table">
+    <table class="complex data">
+        <tr>
+            <th>No</th>
+            <th>Goal</th>
+            <th>Rationale</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>
+		The GADI Framework respects national laws and allows the DAPs to operate according to their local regulations.
+ 		This includes compliance to CCPA and GDPR.
+	    </td>		
+            <td>
+	        Local law is the basis for any business.
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>
+	      Users must have control on user credentials, i.e. no credentials are created or shared without the user's consent.
+	      This means, DAP asks for user consent and strongly authenticates the user.
+	    </td>		
+            <td>
+	      Data Privacy regulation & expectation
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>
+	      Users have the ability to select a set of attributes verified by a specific issuer to be included in a specific credential.
+	    </td>		
+            <td>
+	      Data Privacy regulation & expectation.  If the user only wants to share a subset of the data that should be ok to the issuer.
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>
+	      GADI doesn't make user tracking or collusion between Service Providers easier. 
+	      If two SPs both received a credential that John Doe was born on date X in Y,
+	      then the two SPs could learn it is the very likely same user. But this has nothing to do with GADI.
+
+	      As a consequence, the Digital Address / TrustAnchor are NOT part of the credential.
+	      Credentials are in the W3C VC format and are tied to a DID which uses normal DID formats as defined by DIF.  
+	    </td>		
+            <td>
+	      GADI doesn't share correlation handles with SPs for privacy reasons.
+            </td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>
+	      People who are not smartphone users must be part of the new Digital Identity ecosystem.
+	    </td>		
+            <td>
+	      A substantial part of the world's population belongs to this category.  This part is key for future growth opportunities
+            </td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>
+	      Issuers must be in the value chain.  This means that users cannot share credentials issued by
+	      an issuer without allowing financial compensation for the issuer.
+	    </td>		
+            <td>
+	      This is one of the main GADI benefits compared to other approaches.
+            </td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>
+	      GADI enables a push model from the issuers where when there is change in credential status,
+	      latest credential information is what would be presented.
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>
+	      Issuers should be able to issue the credentials to users who are not part of the same network, i.e.
+	      who got their TrustAnchor from a different Digital Address Provider (DAP) than the one this issuer is primarily using.
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>
+	      There should be cross ledger value settlements for the issuers and may be
+	      some reward points for the issuers as Users assert their credentials and provide data.
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>
+	      Onboard the user with a trusted Identity that is approved by an Issuer after proper Identity vetting 
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>
+ 	      It is possible for users to start their participation based on a low level identity assertion and increase that level over time.
+	    </td>		
+            <td>
+	      Many users don't have connections to a SP which has performed strong ID proofing today.
+ 	      But that might change over time.  We need to support such users.
+            </td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>
+	      Each DAP provides one Single Digital Address App for the user to be able to access and control the
+	      Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
+	      user credentials on demand with user consent.
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>
+	      Digital Address (DA) is a Human readable string that is easy to use, that is associated with the Users Trust Anchor.
+	      This becomes that identifier that the user can provide to issuers to get the credentials issued.  
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>
+	      Users in this scenario will have a single Digital Address Application from one Digital Address Provider
+	      and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
+	      push the credentials for the user.   This is just between users and Issuers.  We however can also provide
+	      different handles (Different Digital Addresses) that can be orchestrated between the user Device and DAP to
+	      present to different issuers if we need to also make DA one time as the issued credential is a DID.  
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>
+	      The GADI ledger is accessible to DAPs only.
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>
+	      Trust Anchors are generated randomly by the Home-DAP, such that collisions do not practically occur.
+	      See Trust Anchor Discussion below.
+	      (not clear, see 20)
+	    </td>		
+            <td>
+	      So that we only need to delete the relation between the Trust Anchor and any other PII when the user
+	      asks for account deletion (removal from GADI).
+            </td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>
+	      Credentials that do not include PII shall be supported.  For example "the holder of the credential is at least 21 years old"
+	      or "the holder of this credential got vaccinated against X".
+
+Note: sometimes there are existing business processes which will convey PI/PII outside of GADI.
+ 	    </td>		
+            <td>
+	      In the physical world we have those and for privacy reasons we should carry them over to the digital world.
+            </td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>
+	      GADI and DAPs do NOT persistently store personal information (PI).
+	      And even pass-through of PI should be avoided.
+
+Note: they will likely need to store PII, i.e. information related to users
+
+Note: Issuers will have to store PI (in order to be able to issue credentials)
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>
+	      GADI will store the Home-DAP Identifier (preferably the DAP-ID) along with the user's TrustAnchor.
+	      So each DAP could ask GADI for the Home-DAP of a given user and would then directly talk to the user's Home-DAP.
+	    </td>		
+            <td>
+	      We need that for cross-DAP communications
+            </td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>
+	      We compute a Hash(firstname, last name, date of birth, country+city of birth) as either use this as
+	      TrustAnchor or as an attribute stored along with the TrustAnchor in GADI.
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>
+	      It shall  be possible to change the Home-DAP of a user (e.g. from DAP1 to DAP2).
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>22</td>
+            <td>
+	      Issuers shouldn't learn the SP that verifies a credential.
+	    </td>		
+            <td>
+	      Privacy
+            </td>
+        </tr>
+        <tr>
+            <td>23</td>
+            <td>
+
+Issue: It might not be possible to avoid SPs from learning who the Issuer was that issued a credential!
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>
+
+Issue: Need to specify what functionality/certification is needed to call an application a GADI "Digital Address Application".
+	    </td>		
+            <td>
+            </td>
+        </tr>
+    </table>
+</figure>
 
 
 # GADI Operations # {#sctn-ops}
@@ -144,6 +392,7 @@ Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i
 
 Goal of this operation is to provide some identity attributes related to the user with the Service Provider (SP).
   These attributes are include in the verifiable credential (VC) and have been verified by the Issuer.
+  We always use <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
 
 We distinguish 2 different types of verifiable credentials:
 1. Credentials that include sufficient personal identifiable information to uniquely identify the user and
@@ -159,7 +408,7 @@ In both cases, a public key is typically included in the verifiable credential.
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
 
-Issue: Retrieve VC and prepare VC presentation to SP will likely require some user related public key to be included. Add specific name here.
+Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the DAA and/or Cloud Agent and the DAP/GADI system.
 
 Issue: Having the DAA authenticate with FIDO to Cloud Agent either requires second FIDO credential (tied to Cloud Agent) or it requires the Cloud Agent to allow use of the DAP related FIDO credential
 
@@ -202,3 +451,17 @@ Issue: How could a user without a working DAA instance trigger account deletion?
 Issue: requiring ID Proofing looks expensive here. Are there methods without that (that provide a similar security level)?
 
 Issue: Do we want DAP to perform the ID proofing - not the Issuer?
+
+
+
+# Security and Privacy Considerations # {#sctn-security-privacy-considerations}
+
+## GADI Security and Privacy Goals ## {#sctn-security-privacy-goals}
+
+
+
+
+
+
+
+
