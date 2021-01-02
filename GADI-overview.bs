@@ -60,6 +60,9 @@ This specification provides a overview of the GADI system.
     :  <dfn>DAP_ID_PK</dfn>, <dfn>DAP_IS_SK</dfn>
     :: Public Key (PK) and Private Key (SK) related to the <a>DAP_ID</a>.
 
+    : <dfn>DID</dfn>
+    :: Decentralized Identifier according to [[!did-core]]
+
     :  <dfn>HIDA</dfn>
     :: Cryptographic hash computed over the <a>ID Attributes</a>
 
@@ -73,7 +76,7 @@ This specification provides a overview of the GADI system.
     :: Issuer of <a>VC</a>s to users.  GADI supports multiple Issuers per <a>User</a>.
 
     :  <dfn>ISSUER_ID</dfn>
-    :: Issuer IDentity, i.e. the W3C DID style identifier for the <a>Issuer</a>.
+    :: Issuer IDentity, i.e. the <a>DID</a> style identifier for the <a>Issuer</a>.
 
     :  <dfn>ISSUER_ID_PK</dfn>, <dfn>ISSUER_IS_SK</dfn>
     :: Public Key (PK) and Private Key (SK) related to the <a>ISSUER_ID</a>.
@@ -82,7 +85,7 @@ This specification provides a overview of the GADI system.
     :: Service Provider that verifies <a>VC</a>s.
 
     :  <dfn>SP_ID</dfn>
-    :: Service Provider IDentity, i.e. the W3C DID style identifier for the <a>SP</a>.
+    :: Service Provider IDentity, i.e. the <a>DID</a> style identifier for the <a>SP</a>.
 
     :  <dfn>SP_ID_PK</dfn>, <dfn>SP_IS_SK</dfn>
     :: Public Key (PK) and Private Key (SK) related to the <a>SP_ID</a>.
@@ -104,7 +107,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
     :: Verifiable Credential, see W3C Verifiable Credential specification.
 
     :  <dfn>VC_METADATA</dfn>
-    :: Metadata of a <a>VC</a>, i.e. DID, VC Schema Name, VC Schema Friendly Name
+    :: Metadata of a <a>VC</a>, i.e. <a>DID</a>, VC Schema Name, VC Schema Friendly Name
 
 </dl>
 
@@ -153,7 +156,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
 	      then the two SPs could learn it is the very likely same user. But this has nothing to do with GADI.
 
 	      As a consequence, the Digital Address / TrustAnchor are NOT part of the credential.
-	      Credentials are in the W3C VC format and are tied to a DID which uses normal DID formats as defined by DIF.  
+	      Credentials are in the W3C VC format [[!vc-data-model]] and are tied to a <a>DID</a>.  
 	    </td>		
             <td>
 	      GADI doesn't share correlation handles with SPs for privacy reasons.
@@ -238,7 +241,7 @@ Issue: Although I agree with this goal, so much of our system depends on Issuers
         <tr>
             <td>13</td>
             <td>
-	      Digital Address (DA) is a Human readable string that is easy to use, that is associated with the Users Trust Anchor.
+	      Digital Address (<a>DA</a>) is a Human readable string that is easy to use, that is associated with the Users Trust Anchor.
 	      This becomes that identifier that the user can provide to issuers to get the credentials issued.  
 	    </td>		
             <td>
@@ -250,8 +253,8 @@ Issue: Although I agree with this goal, so much of our system depends on Issuers
 	      Users in this scenario will have a single Digital Address Application from one Digital Address Provider
 	      and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
 	      push the credentials for the user.   This is just between users and Issuers.  We however can also provide
-	      different handles (Different Digital Addresses) that can be orchestrated between the user Device and DAP to
-	      present to different issuers if we need to also make DA one time as the issued credential is a DID.  
+	      different handles (Different Digital Addresses) that can be orchestrated between the user Device and <a>DAP</a> to
+	      present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.  
 	    </td>		
             <td>
             </td>
@@ -387,7 +390,7 @@ Issue: Looking up DAP_USER_ID by DA, requires DAP to have remembered DA and rela
   But DA isn't remembered yet. DA is PII and likely even PI.
   Issuers have access to HIDA and hence could ask GADI via DAP to lookup TA_USER_ISSUER by HIDA.
 
-Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc.
+Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
 
 
 ## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
@@ -458,7 +461,6 @@ Issue: Do we want DAP to perform the ID proofing - not the Issuer?
 
 # Security and Privacy Considerations # {#sctn-security-privacy-considerations}
 
-## GADI Security and Privacy Goals ## {#sctn-security-privacy-goals}
 
 
 
