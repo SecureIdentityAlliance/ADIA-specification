@@ -152,14 +152,14 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
             <td>4</td>
             <td>
 	      GADI doesn't make user tracking or collusion between Service Providers easier. 
-	      If two SPs both received a credential that John Doe was born on date X in Y,
-	      then the two SPs could learn it is the very likely same user. But this has nothing to do with GADI.
+	      If two <a>SP</a>s both received a credential that John Doe was born on date X in Y,
+	      then the two <a>SP</a>s could learn it is the very likely same user. But this has nothing to do with GADI.
 
 	      As a consequence, the <a>Digital Address</a> / <a>Trust Anchor</a> are NOT part of the credential.
 	      Credentials are in the W3C VC format [[!vc-data-model]] and are tied to a <a>DID</a>.  
 	    </td>		
             <td>
-	      GADI doesn't share correlation handles with SPs for privacy reasons.
+	      GADI doesn't share correlation handles with <a>SP</a>s for privacy reasons.
             </td>
         </tr>
         <tr>
@@ -224,7 +224,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
 Issue: Although I agree with this goal, so much of our system depends on <a>Issuer</a>s and the GADI registry to prevent duplicates. The GADI registry is permissioned, and only valid issuers can access. I'm not sure how this will work without an issuer -- possible risk of adversary obtaining information by trying to create identities and seeing if a digital address already exists for certain PII data. Let's discuss
 	    </td>		
             <td>
-	      Many users don't have connections to a SP which has performed strong ID proofing today.
+	      Many users don't have connections to a <a>SP</a> which has performed strong ID proofing today.
  	      But that might change over time.  We need to support such users.
             </td>
         </tr>
@@ -334,7 +334,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
         <tr>
             <td>22</td>
             <td>
-	      <a>Issuer</a>s shouldn't learn the SP that verifies a credential.
+	      <a>Issuer</a>s shouldn't learn the <a>SP</a> that verifies a credential.
 	    </td>		
             <td>
 	      Privacy
@@ -344,7 +344,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
             <td>23</td>
             <td>
 
-Issue: It might not be possible to avoid SPs from learning who the <a>Issuer</a> was that issued a credential!
+Issue: It might not be possible to avoid <a>SP</a>s from learning who the <a>Issuer</a> was that issued a credential!
 	    </td>		
             <td>
             </td>
@@ -374,9 +374,9 @@ Issue: Need to specify what functionality/certification is needed to call an app
 
 Note: HIDA is PII and might need to be erased on account deletion (see User <a>DAP</a> Account Deletion)
 
-Issue: The <a>Issuer</a> remembers the DA. Wouldn't the issuer want to remember DAP_USER_ID as well?  It is needed when issuing a VC.
+Issue: The <a>Issuer</a> remembers the DA. Wouldn't the issuer want to remember <a>DAP_USER_ID</a> as well?  It is needed when issuing a VC.
 
-Issue: Check DAP_USER_ID_PK/SK generation. Would we store the PK in <a>HomeDAP</a> or GADI??  When will that key be created and by Whom?
+Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we store the PK in <a>HomeDAP</a> or GADI??  When will that key be created and by Whom?
 
 
 ## Verifiable Credential Issuance ## {#sctn-vc-issuance-1}
@@ -386,16 +386,16 @@ Issue: Check DAP_USER_ID_PK/SK generation. Would we store the PK in <a>HomeDAP</
     <figcaption>Verifiable Credential Issuance (Option 1)</figcaption>
 </figure>
 
-Issue: Looking up DAP_USER_ID by DA, requires <a>DAP</a> to have remembered DA and related DAP_USER_ID.
-  But DA isn't remembered yet. DA is PII and likely even PI.
-  <a>Issuer</a>s have access to HIDA and hence could ask GADI via <a>DAP</a> to lookup TA_USER_ISSUER by HIDA.
+Issue: Looking up <a>DAP_USER_ID</a> by DA, requires <a>DAP</a> to have remembered DA and related <a>DAP_USER_ID</a>.
+  But <a>DA</a> isn't remembered yet. <a>DA</a> is PII and likely even PI.
+  <a>Issuer</a>s have access to HIDA and hence could ask GADI via <a>DAP</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
 
 Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
 
 
 ## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
 
-Goal of this operation is to provide some identity attributes related to the user with the Service Provider (SP).
+Goal of this operation is to provide some identity attributes related to the user with the Service Provider (<a>SP</a>).
   These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
   We always use <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
 
@@ -406,7 +406,7 @@ We distinguish 2 different types of <a>verifiable credential</a>s:
 In both cases, a public key is typically included in the <a>verifiable credential</a>.
   It is used as a proxy for the user, meaning anyone that can proof access of the related private key is assumed to be the user.
   Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
-  temporary use key, that is included in order to allow the SP to detect which subject the attributes relate to.
+  temporary use key, that is included in order to allow the <a>SP</a> to detect which subject the attributes relate to.
   
 <figure id="fig-vc-presentation-and-verification-option-1">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
@@ -417,7 +417,7 @@ Issue: For an anonymous verifiable presentation, we need to run some "join" prot
 
 Issue: Having the <a>DAA</a> authenticate with FIDO to <a>Cloud Agent</a> either requires second FIDO credential (tied to <a>Cloud Agent</a>) or it requires the <a>Cloud Agent</a> to allow use of the <a>DAP</a> related FIDO credential
 
-Issue: Describe, how the SP can verify whether an ISSUER_ID_PK is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether DAP_ID_PK is trustworthy or not.
+Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
 
 
 ## User Onboarding Attempt to 2nd Issuer ## {#sctn-onboarding-2nd-issuer}
