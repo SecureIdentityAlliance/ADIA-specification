@@ -372,7 +372,7 @@ Issue: Need to specify what functionality/certification is needed to call an app
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
-Note: HIDA is PII and might need to be erased on account deletion (see User <a>DAP</a> Account Deletion)
+Note: <a>HIDA</a> is PII and might need to be erased on account deletion (see User <a>DAP</a> Account Deletion)
 
 Issue: The <a>Issuer</a> remembers the DA. Wouldn't the issuer want to remember <a>DAP_USER_ID</a> as well?  It is needed when issuing a VC.
 
@@ -388,7 +388,7 @@ Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we st
 
 Issue: Looking up <a>DAP_USER_ID</a> by DA, requires <a>DAP</a> to have remembered DA and related <a>DAP_USER_ID</a>.
   But <a>DA</a> isn't remembered yet. <a>DA</a> is PII and likely even PI.
-  <a>Issuer</a>s have access to HIDA and hence could ask GADI via <a>DAP</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
+  <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask GADI via <a>DAP</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
 
 Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
 
@@ -403,11 +403,13 @@ We distinguish 2 different types of <a>verifiable credential</a>s:
 1. Credentials that include sufficient personal identifiable information to uniquely identify the user and
 2. Credentials that don't. For example just stating that the user is older than 21.
 
-In both cases, a public key is typically included in the <a>verifiable credential</a>.
+In both cases, a public key is typically linked to the <a>verifiable credential</a> via the subject's DID document (see example 2 in [[did-core]]).
   It is used as a proxy for the user, meaning anyone that can proof access of the related private key is assumed to be the user.
   Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
   temporary use key, that is included in order to allow the <a>SP</a> to detect which subject the attributes relate to.
-  
+
+Issue: This is true for case 1, but how does it work in case 2?
+
 <figure id="fig-vc-presentation-and-verification-option-1">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
