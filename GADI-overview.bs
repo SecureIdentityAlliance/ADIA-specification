@@ -343,8 +343,11 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
         <tr>
             <td>23</td>
             <td>
-
-Issue: It might not be possible to avoid <a>SP</a>s from learning who the <a>Issuer</a> was that issued a credential!
+             <a>SP</a>s want to verify the <a>VC</a> and hence will
+ 	      need to decide whether they want to trust a specific
+	      <a>Issuer</a>.
+	      As a consequence, the <a>SP</a> will learn who the
+	      <a>Issuer</a> of that <a>VC</a> is.
 	    </td>		
             <td>
             </td>
@@ -374,8 +377,6 @@ Issue: Need to specify what functionality/certification is needed to call an app
 
 Note: <a>HIDA</a> is PII and might need to be erased on account deletion (see User <a>DAP</a> Account Deletion)
 
-Issue: The <a>Issuer</a> remembers the DA. Wouldn't the issuer want to remember <a>DAP_USER_ID</a> as well?  It is needed when issuing a VC.
-
 Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we store the PK in <a>HomeDAP</a> or GADI??  When will that key be created and by Whom?
 
 
@@ -386,8 +387,6 @@ Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we st
     <figcaption>Verifiable Credential Issuance (Option 1)</figcaption>
 </figure>
 
-Issue: Looking up <a>DAP_USER_ID</a> by DA, requires <a>DAP</a> to have remembered DA and related <a>DAP_USER_ID</a>.
-  But <a>DA</a> isn't remembered yet. <a>DA</a> is PII and likely even PI.
   <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask GADI via <a>DAP</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
 
 Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
