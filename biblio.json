@@ -9,6 +9,16 @@
         "title": "DIDComm Messaging",
         "href": "https://identity.foundation/didcomm-messaging/spec/"
     },
+    "GADI-Overview": {
+        "authors": [
+            ""
+        ],
+        "date": "5 January 2021",
+        "publisher": "DID Alliance",
+        "status": "Editor's Draft",
+        "title": "GADI Overview",
+        "href": "https://www.didalliance.org/spec/GADI-overview.html"
+    },
     "FIDOCTAP": {
         "authors": [
             ""

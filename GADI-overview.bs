@@ -4,7 +4,7 @@ Title: DID Alliance GADI Overview
 Shortname: gadi-overview
 Prepare for TR: true
 Level: 1
-Status: RD
+Status: ED
 Group: fido
 URL: 
 Editor: Rolf Lindemann, rolf@noknok.com
