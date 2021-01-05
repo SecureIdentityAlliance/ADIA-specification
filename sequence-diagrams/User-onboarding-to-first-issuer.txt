@@ -17,10 +17,10 @@ GADI --> DAP: No conflict with TA. \nReturn TA_USER_ISSUER = hash(TA, ISSUER_ID)
 DAP -> DAP: Create DA and DAP_USER_ID 
 DAP -> DAP: Remember (TA_USER_ISSUER, DAP_USER_ID) in DLT
 DAP -> GADI: Send HIDA, TA_USER_ISSUER, DA to notify about DA
-GADI -> GADI: Remember DA exists for HIDA\n(don t store DA!)
+GADI -> GADI: Remember DA exists for HIDA\n(don't store DA!)
 GADI --> DAP: Success
 DAP --> Issuer: Return TA_USER_ISSUER, DAP_USER_ID, DA
-Issuer -> Issuer: Remember DA for user in userDB
+Issuer -> Issuer: Remember DA and DAP_USER_ID for user in userDB
 Issuer -> Issuer: Creates QR code (DA, Issuer-URL?)
 Issuer -> User: presents or sends the QR code in Web interface/Issuer PC
 User -> DAA: Scans the QR code and extracts DA+IssuerURL
