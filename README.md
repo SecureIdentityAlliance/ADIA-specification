@@ -8,7 +8,7 @@ The clone the repository locally:
 
 
 To compile the .bs files to .html, please
-1. install bikeshed and
+1. install bikeshed (install from https://tabatkins.github.io/bikeshed/) and
 2. then run "python.exe ../bikeshed/bikeshed.py spec  did-sample.bs"
 
 
