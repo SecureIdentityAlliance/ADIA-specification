@@ -222,9 +222,13 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
         <tr>
             <td>11</td>
             <td>
- 	      It is possible for users to start their participation based on a low level identity assertion and increase that level over time.
+ 	      It is possible for users to start their participation
+	      based on a low level identity assertion and increase
+	      that level over time.
 
-Issue: Although I agree with this goal, so much of our system depends on <a>Issuer</a>s and the GADI registry to prevent duplicates. The GADI registry is permissioned, and only valid issuers can access. I'm not sure how this will work without an issuer -- possible risk of adversary obtaining information by trying to create identities and seeing if a digital address already exists for certain PII data. Let's discuss
+	      However, there is a minmum identity assertion specified
+	      by the GADI Governance Group.
+
 	    </td>		
             <td>
 	      Many users don't have connections to a <a>SP</a> which has performed strong ID proofing today.
