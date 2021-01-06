@@ -7,9 +7,9 @@ The clone the repository locally:
 3. change to the newly created folder "DID-specification"
 
 
-To compile the .bs files to .html, please
-1. install bikeshed (install from https://tabatkins.github.io/bikeshed/) and
-2. then run "python.exe ../bikeshed/bikeshed.py spec  did-sample.bs"
+To compile the .bs files to .html, please:
+1. Install bikeshed (install from https://tabatkins.github.io/bikeshed/)
+2. Run "python.exe ../bikeshed/bikeshed.py spec  did-sample.bs"
 
 NOTES:
 - Bikeshed requires Python 3.7 (download here: https://www.python.org/downloads/release/python-379/) DO NOT USE 3.8 or higher.
