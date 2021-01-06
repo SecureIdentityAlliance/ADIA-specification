@@ -19,6 +19,7 @@ to the Issue.
 Important:
 - For any pull request, please assign two (2) reviewers.
 - Do not merge any pull request without review or discussion within TWG.
+- Never commit any changes directly to the 'master' branch. Always create an issue, a different branch and a pull request first!
 
 
 GitHub Desktop:
