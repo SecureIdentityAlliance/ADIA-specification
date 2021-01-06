@@ -225,9 +225,9 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
  	      It is possible for users to start their participation
 	      based on a low level identity assertion and increase
 	      that level over time.
-
+	      
 	      However, there is a minmum identity assertion specified
-	      by the GADI Governance Group.
+	      by the GADI Governance Group. We need this to prevent a attack.
 
 	    </td>		
             <td>
