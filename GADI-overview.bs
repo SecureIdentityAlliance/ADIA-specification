@@ -4,7 +4,7 @@ Title: DID Alliance GADI Overview
 Shortname: gadi-overview
 Prepare for TR: true
 Level: 1
-Status: RD
+Status: ED
 Group: fido
 URL: 
 Editor: Rolf Lindemann, rolf@noknok.com
@@ -52,7 +52,7 @@ This specification provides a overview of the GADI system.
     :: Digital Address Application, e.g. Android App or iOS App that knows how to talk to the <a>DAP</a> on behalf of the <a>User</a>.
 
     :  <dfn>DAP</dfn>
-    :: Digital Address Provider.
+    :: Digital Address Provider.  See [[DAP-API]] for the DAP API.
 
     :  <dfn>DAP_ID</dfn>
     :: <a>DAP</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
@@ -62,6 +62,9 @@ This specification provides a overview of the GADI system.
 
     : <dfn>DID</dfn>
     :: Decentralized Identifier according to [[!did-core]]
+
+    : <dfn>GADI</dfn>
+    :: Global Architecture for Digital IDentity. See [[GADI-API]] for the DAP API.
 
     :  <dfn>HIDA</dfn>
     :: Cryptographic hash computed over the <a>ID Attributes</a>

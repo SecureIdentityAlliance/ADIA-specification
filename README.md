@@ -8,10 +8,14 @@ The clone the repository locally:
 
 
 To compile the .bs files to .html, please
-1. install bikeshed and
+1. install bikeshed (install from https://tabatkins.github.io/bikeshed/) and
 2. then run "python.exe ../bikeshed/bikeshed.py spec  did-sample.bs"
 
 
 Please create "Issues" in github to report any errors or room for improvements in the existing draft.
 Then create a new branch fixing the "Issue" and create a "Pull Request" that will tie that proposed change
 to the Issue.
+
+Important:
+- For any pull request, please assign two (2) reviewers.
+- Do not merge any pull request without review or discussion within TWG.

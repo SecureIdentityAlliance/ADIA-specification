@@ -9,6 +9,36 @@
         "title": "DIDComm Messaging",
         "href": "https://identity.foundation/didcomm-messaging/spec/"
     },
+    "DAP-API": {
+        "authors": [
+            ""
+        ],
+        "date": "5 January 2021",
+        "publisher": "DID Alliance",
+        "status": "Editor's Draft",
+        "title": "Digital Address Provider (DAP) API",
+        "href": "https://www.didalliance.org/spec/DAP-API.html"
+    },
+    "GADI-API": {
+        "authors": [
+            ""
+        ],
+        "date": "5 January 2021",
+        "publisher": "DID Alliance",
+        "status": "Editor's Draft",
+        "title": "Global Architecture for Digital IDentity (GADI) API",
+        "href": "https://www.didalliance.org/spec/GADI-API.html"
+    },
+    "GADI-Overview": {
+        "authors": [
+            ""
+        ],
+        "date": "5 January 2021",
+        "publisher": "DID Alliance",
+        "status": "Editor's Draft",
+        "title": "GADI Overview",
+        "href": "https://www.didalliance.org/spec/GADI-overview.html"
+    },
     "FIDOCTAP": {
         "authors": [
             ""
