@@ -227,7 +227,8 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
 	      that level over time.
 	      
 	      However, there is a minmum identity assertion specified
-	      by the GADI Governance Group. We need this to prevent a attack.
+	      by the GADI Governance Group. We need this to prevent
+	      user impersonation attacks through weak ID proofing methods.
 
 	    </td>		
             <td>
