@@ -463,7 +463,13 @@ Issue: requiring ID Proofing looks expensive here. Are there methods without tha
 
 Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 
+# Communication Details # {#sctn-communication-details}
 
+In general, DIDcomm [[!didcomm-messaging]] is used for securing the communication
+between the entities.
+
+The communication between <a>Issuer</a>s, <a>DAP</a>s, and <a>GADI</a>
+itself uses "Sender Authenticated Encryption".
 
 # Security and Privacy Considerations # {#sctn-security-privacy-considerations}
 
