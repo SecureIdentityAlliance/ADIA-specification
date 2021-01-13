@@ -1,6 +1,7 @@
 Title: User Asks for DAP Account Deletion
 Participant User
 Participant DAA
+Participant Cloud Agent
 Participant DAP
 Participant GADI
 
@@ -12,3 +13,5 @@ GADI -> GADI: Erase HIDA from ledger for (keep TA etc.)
 GADI --> DAP: done
 DAP -> DAP: Delete FIDO Key from DB
 DAP --> DAA: Done. All Issuer relations and VCs still exist!
+DAA -> Cloud Agent: Delete all credentials and other data
+Cloud Agent --> DAA: Success
