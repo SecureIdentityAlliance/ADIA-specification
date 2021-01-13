@@ -57,7 +57,7 @@ This specification provides a overview of the GADI system.
     :  <dfn>DAP_ID</dfn>
     :: <a>DAP</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
 
-    :  <dfn>DAP_ID_PK</dfn>, <dfn>DAP_IS_SK</dfn>
+    :  <dfn>DAP_ID_PK</dfn>, <dfn>DAP_ID_SK</dfn>
     :: Public Key (PK) and Private Key (SK) related to the <a>DAP_ID</a>.
 
     : <dfn>DID</dfn>
@@ -65,6 +65,12 @@ This specification provides a overview of the GADI system.
 
     : <dfn>GADI</dfn>
     :: Global Architecture for Digital IDentity. See [[GADI-API]] for the DAP API.
+
+    : <dfn>GADI_ID</dfn>
+    :: The <a>GADI</a> IDentity, i.e. the the W3C DID style identifier for the <a>GADI</a>.
+
+    :  <dfn>GADI_ID_PK</dfn>, <dfn>GADI_ID_SK</dfn>
+    :: Public Key (PK) and Private Key (SK) related to the <a>GADI_ID</a>.
 
     :  <dfn>HIDA</dfn>
     :: Cryptographic hash computed over the <a>ID Attributes</a>
@@ -81,7 +87,7 @@ This specification provides a overview of the GADI system.
     :  <dfn>ISSUER_ID</dfn>
     :: Issuer IDentity, i.e. the <a>DID</a> style identifier for the <a>Issuer</a>.
 
-    :  <dfn>ISSUER_ID_PK</dfn>, <dfn>ISSUER_IS_SK</dfn>
+    :  <dfn>ISSUER_ID_PK</dfn>, <dfn>ISSUER_ID_SK</dfn>
     :: Public Key (PK) and Private Key (SK) related to the <a>ISSUER_ID</a>.
 
     :  <dfn>SP</dfn>
@@ -90,7 +96,7 @@ This specification provides a overview of the GADI system.
     :  <dfn>SP_ID</dfn>
     :: Service Provider IDentity, i.e. the <a>DID</a> style identifier for the <a>SP</a>.
 
-    :  <dfn>SP_ID_PK</dfn>, <dfn>SP_IS_SK</dfn>
+    :  <dfn>SP_ID_PK</dfn>, <dfn>SP_ID_SK</dfn>
     :: Public Key (PK) and Private Key (SK) related to the <a>SP_ID</a>.
 
     : <dfn>TA</dfn>
@@ -468,8 +474,10 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 In general, DIDcomm [[!didcomm-messaging]] is used for securing the communication
 between the entities.
 
-The communication between <a>Issuer</a>s, <a>DAP</a>s, and <a>GADI</a>
+The communication between <a>SP</a>s, <a>Issuer</a>s, <a>DAP</a>s, and <a>GADI</a>
 itself uses "Sender Authenticated Encryption".
+The SP_ID_PK, SP_ID_SK, ISSUER_ID_PK, ISSUER_ID_SK, DAP_ID_PK,
+DAP_ID_SK and GADI_ID_PK and GADI_ID_SK are being used for that.
 
 # Security and Privacy Considerations # {#sctn-security-privacy-considerations}
 
