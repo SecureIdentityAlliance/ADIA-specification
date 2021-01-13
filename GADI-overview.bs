@@ -351,8 +351,11 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
         <tr>
             <td>23</td>
             <td>
-
-Issue: It might not be possible to avoid <a>SP</a>s from learning who the <a>Issuer</a> was that issued a credential!
+             <a>SP</a>s want to verify the <a>VC</a> and hence will
+ 	      need to decide whether they want to trust a specific
+	      <a>Issuer</a>.
+	      As a consequence, the <a>SP</a> will learn who the
+	      <a>Issuer</a> of that <a>VC</a> is.
 	    </td>		
             <td>
             </td>
