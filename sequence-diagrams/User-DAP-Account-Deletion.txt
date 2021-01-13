@@ -11,7 +11,7 @@ DAP -> DAP: Lookup TA_USER_ISSUER in DB lookup by FIDO Key
 DAP -> GADI: Please delete user account (TA_USER_ISSUER, HIDA)
 GADI -> GADI: Erase HIDA from ledger for (keep TA etc.)
 GADI --> DAP: done
+DAP -> Cloud Agent: Delete all credentials and other data
+Cloud Agent --> DAP: Success
 DAP -> DAP: Delete FIDO Key from DB
 DAP --> DAA: Done. All Issuer relations and VCs still exist!
-DAA -> Cloud Agent: Delete all credentials and other data
-Cloud Agent --> DAA: Success
