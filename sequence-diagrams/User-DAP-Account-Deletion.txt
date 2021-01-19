@@ -5,10 +5,10 @@ Participant DAP
 Participant GADI
 
 User -> DAA: Trigger DAP account deletion
-DAA -> DAP: Please delete my DAP/GADI account (FIDO Auth, HIDA)
+DAA -> DAP: Please delete my DAP/GADI account (USER_FIDO_PK, HIDA) (FIDO authenticated)
 DAP -> DAP: Lookup TA_USER_ISSUER in DB lookup by FIDO Key
 DAP -> GADI: Please delete user account (TA_USER_ISSUER, HIDA)
 GADI -> GADI: Erase HIDA from ledger for (keep TA etc.)
 GADI --> DAP: done
-DAP -> DAP: Delete FIDO Key from DB
+DAP -> DAP: Delete USER_FIDO_PK from DB
 DAP --> DAA: Done. All Issuer relations and VCs still exist!

@@ -26,7 +26,7 @@ Issuer -> User: presents or sends the QR code in Web interface/Issuer PC
 User -> DAA: Scans the QR code and extracts DA+IssuerURL
 DAA -> User: Do you accept DA?
 User -> DAA: DA accepted
-DAA -> DAP: Register FIDO Authenticator for this user and DA to the DAP
+DAA -> DAP: Register FIDO Authenticator for this DA to the DAP (FIDO_USER_PK)
 DAP -> DAP: Remember create and store VC(USER_FIDO_PK, DAP_USER_ID)
 DAP --> DAA: acknowledge successful FIDO registration
 DAA -> DAP: ID proofing starts on the device and extracts the user info
