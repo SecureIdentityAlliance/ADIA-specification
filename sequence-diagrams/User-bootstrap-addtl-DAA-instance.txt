@@ -1,0 +1,11 @@
+Title: User Bootstraps Additional DAA Instance
+Participant User
+Participant DAA
+Participant New DAA
+Participant Cloud Agent
+Participant DAP
+User -> DAA: I want to use my Digital Address on an additional device
+DAA -> New DAA: Send DA
+New DAA -> User: Approve DA
+User --> New DAA: Approved
+New DAA -> DAP: Register FIDO Authenticator for this DA to the DAP (FIDO_USER_PK)
