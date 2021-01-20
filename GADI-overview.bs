@@ -106,6 +106,10 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
     :  <dfn>User</dfn>
     :: The User and owner of the <a>DA</a> and holder of the <a>VC</a>s.
 
+    : <dfn>USER_FIDO_PK</dfn>, <dfn>USER_FIDO_SK</dfn>
+    :: The FIDO credential owned by the user's authenticator and used
+        to authenticator to <a>DAP</a> and <a>Cloud Agent</a>.
+
     :  <dfn>VC</dfn>
     :: <dfn>Verifiable Credential</dfn>, see [[!vc-data-model]].
 
