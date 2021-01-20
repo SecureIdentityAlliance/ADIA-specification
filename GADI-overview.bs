@@ -40,7 +40,14 @@ This specification provides a overview of the GADI system.
          eIDAS Trust Service Providers (https://ec.europa.eu/digital-single-market/en/trust-services).
 
     : <dfn>DA</dfn>
-    :: Human readabe <dfn>Digital Address</dfn> of the <a>User</a> (e.g. john.doe@issuer.dap.gadi.org).
+    :: Human readabe <dfn>Digital Address</dfn> of the <a>User</a>
+         (e.g. john.doe@issuer.dap.gadi.org).
+
+         Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
+         name - "fun" names are allowed,
+         e.g. blackbirdjohn.doe@issuer.dap.gadi.org.  However, real
+         names are still allowed.
+	 
 
     : <dfn>DAP_USER_ID</dfn>
     :: The DAP specific Decentralized Identifier (DID) related to the <a>DA</a>, e.g. did:example:123456789abcdefghi
