@@ -1,6 +1,7 @@
 Title: User Asks for DAP Account Deletion
 Participant User
 Participant DAA
+Participant Issuer
 Participant Cloud Agent
 Participant DAP
 Participant GADI
@@ -15,3 +16,4 @@ DAP -> Cloud Agent: Delete all credentials and other data
 Cloud Agent --> DAP: Success
 DAP -> DAP: Delete FIDO Key from DB
 DAP --> DAA: Done. All Issuer relations and VCs still exist!
+DAP -> Issuer: User identified by TA_USER_ISSUER\n asked to be forgotten on DAP+GADI\n Sent to all Issuers that have issued VCs to the User
