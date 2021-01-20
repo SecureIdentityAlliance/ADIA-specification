@@ -387,6 +387,7 @@ Note: <a>HIDA</a> is PII and might need to be erased on account deletion (see Us
 
 Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we store the PK in <a>HomeDAP</a> or GADI??  When will that key be created and by Whom?
 
+SUNGHOON: DAP_USER_ID, DAP_USER_ID_PK is used for fido public key. It will be created before fido registration time and its created by USER and stored at User wallet (here Cloud Wallet)
 
 ## Verifiable Credential Issuance ## {#sctn-vc-issuance-1}
 

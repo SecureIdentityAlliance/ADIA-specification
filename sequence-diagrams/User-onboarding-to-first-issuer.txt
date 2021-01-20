@@ -5,7 +5,7 @@ Participant Issuer
 Participant Cloud Agent
 Participant DAP
 Participant GADI
-User -> Issuer: I want to get Digital Address (provide authentication + accept T&C)\n Issuer has ID-proofed user before
+User -> Issuer: I want to get Digital Address (provide authentication + accept T&C)\n Issuer has ID-proofed user before\
 Issuer -> Issuer: lookup ID-Attribs for that user
 Issuer -> Issuer: compute HIDA = hash(ID-Attribs)
 Issuer -> DAP: securely send HIDA
@@ -29,10 +29,11 @@ DAP --> DAA: Success
 DAA -> Issuer: Send Verified User Attributes + DA to IssuerURL
 Issuer -> Issuer: Verifies User Attributes against userDB identified by DA
 Issuer -> Issuer: create VC(TA_USER_ISSUER, Validation Succeeded)
-Issuer -> DAA: validation succeeded for DA+VC(TA_USER_ISSUER, Validation Succeeded)
-DAA -> DAA: Remember TA_USER_ISSUER, HIDA
+Issuer -> DAA: validation succeeded for DA+VC(TA_USER_ISSUER, Validation Succeeded) + !(USER_DAP_ID)
+DAA -> DAA: Remember TA_USER_ISSUER, HIDA, !USER_DAP_ID
 DAA -> Cloud Agent: request to generate DAP_USER_ID_PK/SK (TODO: Where do we have to send it??)
+Cloud Agent -> DAA: !DAP_USER_ID_PK
 DAA -> Issuer: Accept DA
 Issuer --> DAA: OK
-DAA -> DAP: Register FIDO Authenticator for this DA to the DAP+send VC (implicitly: User accepted DA)
-DAP -> DAP: Remember USER_FIDO_PK for TA_USER_ISSUER
+DAA -> DAP: Register FIDO Authenticator for this DA to the DAP+send VC (implicitly: User accepted DA)\n fido userid: USER_DAP_ID, fido publickey: USER_DAP_ID_PK
+DAP -> DAP: Remember USER_FIDO_PK for TA_USER_ISSUER !(USER_FIDO_PK = DAP_USER_ID)
