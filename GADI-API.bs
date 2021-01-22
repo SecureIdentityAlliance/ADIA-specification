@@ -6,9 +6,9 @@ Prepare for TR: true
 Level: 1
 Status: ED
 Group: fido
-URL: 
+URL:
 Editor: Rolf Lindemann, rolf@noknok.com
-Abstract: The API surface of a Global Architecture for Digital IDentity (GADI) 
+Abstract: The API surface of a Global Architecture for Digital IDentity (GADI)
 Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
 Text Macro: NORMATIVE <em>This section is normative.</em>
@@ -32,3 +32,9 @@ spec:webidl; type:interface; text:Promise
 This specification described the API surface of a Global Architecture for Digital IDentity (GADI).
 
 For an overview of the GADI system, see [[!GADI-Overview]].
+
+# API Documentation
+
+<pre class=include-raw>
+path: gadi-openapi.html
+</pre>
