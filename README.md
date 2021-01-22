@@ -4,7 +4,7 @@ Main specification repository
 The clone the repository locally:
 1. Click on "Code" and copy the HTTPS-URL -or- choose "Open with GitHub Desktop" (see note below)
 2. run "git" in a terminal window in a folder for git repositories (download git: https://git-scm.com/downloads)
-3. change to the newly created folder "DID-specification"
+3. change to the newly created folder "DID-specification" 
 
 
 To compile the .bs files to .html, please:
