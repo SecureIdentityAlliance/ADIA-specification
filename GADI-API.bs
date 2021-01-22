@@ -36,5 +36,5 @@ For an overview of the GADI system, see [[!GADI-Overview]].
 # API Documentation
 
 <pre class=include-raw>
-path: gadi-openapi.html
+path: gadi-openapi.include
 </pre>
