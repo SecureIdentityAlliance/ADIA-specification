@@ -193,10 +193,17 @@
 
   <h2><a id="#DirectoryResource">Directory API</a></h2>
 
+
+  <!-- Start: Create Digital address -->
+
   <h3><a id="createDigitalAddress">Create Digital Address</a></h3>
   <h4 class="field-label">Request</h4>
   <table>
     <tbody>
+    <tr>
+    <th>Path</th>
+    <td>/api/directory/digital-address</td>
+    </tr>
       <tr>
         <th>Method</th>
         <td>POST</td>
@@ -213,7 +220,7 @@
       <tr>
         <th>Request body</th>
         <td>
-          <div class="param">body <a href="">DigitalAddress</a> (required)</div>
+          <div class="param">body <a href="#DigitalAddress">DigitalAddres</a> (required)</div>
           <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Directory Service </div>
         </td>
       </tr>
@@ -228,27 +235,47 @@
       </tr>
     </tbody>
   </table>
- 
+
 
 
   <h4 class="field-label">Example data</h4>
   <div class="example-data-content-type">Content-Type: application/json</div>
-  <pre class="example"><code>{
-  "entityRole" : "Issuer",
-  "createdDate" : "2000-01-23T04:56:07.000+00:00",
-  "primaryHash" : "primaryHash",
-  "createdBy" : "createdBy",
-  "entityDID" : "entityDID",
-  "entityDigitalAddress" : "entityDigitalAddress",
-  "secondaryHash" : "secondaryHash",
-  "status" : "Active"
-  }</code></pre>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+        <code>{
+        "entityDID" : "did:dtx:1111111111",
+        "entityDigitalAddress" : "abc@dtx",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }
+        </td>
+        <td>
+        <code>{
+        "entityDID" : "did:dtx:1111111111",
+        "entityDigitalAddress" : "abc@dtx",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
   <h4 class="field-label">Produces</h4>
   This API call produces the following media types according to the <span class="header">Accept</span> request header;
   the media type will be conveyed by the <span class="header">Content-Type</span> response header.
   <ul>
-    <li><code>*</code></li>
+    <li><pre><code>*/*</code></pre></li>
   </ul>
 
   <h4 class="field-label">Responses</h4>
@@ -281,6 +308,135 @@
     </tbody>
   </table>
 </div>
+<!-- End: Create Digital address -->
+
+
+<!-- Start: Lookup Digital address -->
+
+
+  <h3><a id="lookupDigitalAddress">Search Digital Address Using a Criteria</a></h3>
+  <h4 class="field-label">Request</h4>
+  <table>
+    <tbody>
+      <tr>
+      <th>Path</th>
+      <td>/api/directorydigital-address/search</td>
+      </tr>
+      <tr>
+        <th>Method</th>
+        <td>POST</td>
+      </tr>
+      <tr>
+        <th>Consumes</th>
+        <td>
+          This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+          <ul>
+            <li><code>application/json</code></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Request body</th>
+        <td>
+          <div class="param">body <a href="#DigitalAddressCriteria">DigitalAddressCriteria</a> (required)</div>
+          <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; A criteria based search consisting of one or more attributes. Returns matching Digital Address records from the Directory Service. </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Return type</th>
+        <td>
+          <div class="return-type">
+            <a href="#DigitalAddress">DigitalAddress</a>
+
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <h4 class="field-label">Example data</h4>
+  <div class="example-data-content-type">Content-Type: application/json</div>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+      <code>{
+      "createdBy" : "did:dtx:888888888888",
+      "status" : "Active"
+      }
+      </td>
+      <td>
+        <code>[ {
+        "entityDigitalAddress" : "abc@dtx",
+        "entityDID" : "did:dtx:1111111111",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }, {
+        "entityDigitalAddress" : "xyz@dtx",
+        "entityDID" : "did:dtx:2222222222",
+        "entityRole" : "ServiceProvider",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        } ]
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 class="field-label">Produces</h4>
+  This API call produces the following media types according to the <span class="header">Accept</span> request header;
+  the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+  <ul>
+    <li><pre><code>*/*</code></pre></li>
+  </ul>
+
+  <h4 class="field-label">Responses</h4>
+  <table>
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td><span>OK</span> Returns <a href="#DigitalAddress">DigitalAddress</a> </td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- End: Lookup Digital Address -->
+
+
+
+
+
+
+
+
+
 
 
 <h2><a id="__Models">Models</a></h2>
