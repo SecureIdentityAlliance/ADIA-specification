@@ -191,7 +191,7 @@
   </style>
 
 
-  <h2><a id="#DirectoryResource">Directory API</a></h2>
+  <h2><a id="#DirectoryResource">Directory Resource</a></h2>
 
 
   <!-- Start: Create Digital address -->
@@ -255,7 +255,7 @@
         "createdBy" : "did:dtx:888888888888",
         "createdDate" : "2000-01-23T04:56:07.000+00:00",
         "status" : "Active"
-        }
+        }</code>
         </td>
         <td>
         <code>{
@@ -265,7 +265,7 @@
         "createdBy" : "did:dtx:888888888888",
         "createdDate" : "2000-01-23T04:56:07.000+00:00",
         "status" : "Active"
-        }
+        }</code>
         </td>
       </tr>
     </tbody>
@@ -369,7 +369,7 @@
       <code>{
       "createdBy" : "did:dtx:888888888888",
       "status" : "Active"
-      }
+      }</code>
       </td>
       <td>
         <code>[ {
@@ -386,7 +386,7 @@
         "createdBy" : "did:dtx:888888888888",
         "createdDate" : "2000-01-23T04:56:07.000+00:00",
         "status" : "Active"
-        } ]
+        } ]</code>
         </td>
       </tr>
     </tbody>
@@ -498,7 +498,7 @@
     "createdBy" : "did:dtx:888888888888",
     "createdDate" : "2000-01-23T04:56:07.000+00:00",
     "status" : "Active"
-    }
+    }</code>
     </td>
   </tr>
   </tbody>
@@ -589,7 +589,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <td>
   <code>
       curl -X GET  <host>/api/directory/daps
-
+      </code>
   </td>
   <td>
   <code>[ {
@@ -606,7 +606,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   "createdBy" : "did:dtx:888888888888",
   "createdDate" : "2000-01-23T04:56:07.000+00:00",
   "status" : "Active"
-  } ]
+  } ]</code>
     </td>
   </tr>
   </tbody>
@@ -701,7 +701,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <td>
   <code>
       curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/issuers
-
+      </code>
   </td>
   <td>
   <code>[ {
@@ -719,7 +719,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   "createdBy" : "did:dtx:888888888888",
   "createdDate" : "2000-01-23T04:56:07.000+00:00",
   "status" : "Active"
-  } ]
+  } ]</code>
     </td>
   </tr>
   </tbody>
@@ -814,7 +814,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <td>
   <code>
       curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/service_providers
-
+</code>
   </td>
   <td>
   <code>[ {
@@ -832,7 +832,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   "createdBy" : "did:dtx:888888888888",
   "createdDate" : "2000-01-23T04:56:07.000+00:00",
   "status" : "Active"
-  } ]
+  } ]</code>
     </td>
   </tr>
   </tbody>
@@ -868,6 +868,359 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 </table>
 </div>
 <!-- End: Get Service Providers for a DAP -->
+
+
+
+<!-- Start: Create a DAP -->
+
+<h3><a id="createDAP">Create a DAP</a></h3>
+<h4 class="field-label">Request</h4>
+<table>
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+        <ul>
+          <li><code>application/json</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Request body</th>
+      <td>
+        <div class="param">body <a href="#DigitalAddress">DigitalAddres</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for a DAP and persisted to the GADI Directory Service </div>
+      </td>
+    </tr>
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a href="#DigitalAddress">DigitalAddress</a>
+
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h4 class="field-label">Example data</h4>
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:AAAAAAAAAA",
+      "entityDigitalAddress" : "mmnnmm@dtx",
+      "entityRole" : "DAP",
+      "createdBy" : "did:dtx:888888888888",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:AAAAAAAAAA",
+      "entityDigitalAddress" : "mmnnmm@dtx",
+      "entityRole" : "DAP",
+      "createdBy" : "did:dtx:888888888888",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 class="field-label">Produces</h4>
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+<ul>
+  <li><pre><code>*/*</code></pre></li>
+</ul>
+
+<h4 class="field-label">Responses</h4>
+<table>
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>200</th>
+      <td><span>OK</span> Returns <a href="#DigitalAddress">DigitalAddress</a> </td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>DAP saved successfully</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Ressource Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Create A DAP -->
+
+
+<!-- Start: Create an Issuer -->
+
+<h3><a id="createIssuerForDap">Create an Issuer for a DAP</a></h3>
+<h4 class="field-label">Request</h4>
+<table>
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps/{dapId}/issuers</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+        <ul>
+          <li><code>application/json</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Request body</th>
+      <td>
+        <div class="param">body <a href="#DigitalAddress">DigitalAddres</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for an Issuer and persisted to the GADI Directory Service </div>
+      </td>
+    </tr>
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a href="#DigitalAddress">DigitalAddress</a>
+
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h4 class="field-label">Example data</h4>
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:11111111",
+      "entityDigitalAddress" : "abc@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:11111111",
+      "entityDigitalAddress" : "abc@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 class="field-label">Produces</h4>
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+<ul>
+  <li><pre><code>*/*</code></pre></li>
+</ul>
+
+<h4 class="field-label">Responses</h4>
+<table>
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>200</th>
+      <td><span>OK</span> Returns <a href="#DigitalAddress">DigitalAddress</a> </td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>Issuer saved successfully</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Ressource Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Create an Issuer -->
+
+
+<!-- Start: Create a Service Provider -->
+
+<h3><a id="createServiceProviderForDap">Create an Service Provider for a DAP</a></h3>
+<h4 class="field-label">Request</h4>
+<table>
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps/{dapId}/service_providers</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+        <ul>
+          <li><code>application/json</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Request body</th>
+      <td>
+        <div class="param">body <a href="#DigitalAddress">DigitalAddres</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for a Service Provider and persisted to the GADI Directory Service </div>
+      </td>
+    </tr>
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a href="#DigitalAddress">DigitalAddress</a>
+
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h4 class="field-label">Example data</h4>
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:2222222222",
+      "entityDigitalAddress" : "xyz@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:2222222222",
+      "entityDigitalAddress" : "xyz@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 class="field-label">Produces</h4>
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+<ul>
+  <li><pre><code>*/*</code></pre></li>
+</ul>
+
+<h4 class="field-label">Responses</h4>
+<table>
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>200</th>
+      <td><span>OK</span> Returns <a href="#DigitalAddress">DigitalAddress</a> </td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>Service Provider saved successfully</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Ressource Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Create an Service Provider -->
+
 
 
 
