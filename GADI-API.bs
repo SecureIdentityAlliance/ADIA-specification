@@ -33,8 +33,117 @@ This specification described the API surface of a Global Architecture for Digita
 
 For an overview of the GADI system, see [[!GADI-Overview]].
 
-# API Documentation
+# Directory Resource # {#sctn-directory-resource}
 
-<pre class=include-raw>
-path: gadi-openapi.include
-</pre>
+  <!-- Start: Create Digital address -->
+## Create Digital Address ## {#sctn-create-da}
+
+### Request ### {#sctn-create-da-req}
+
+<table class="complex data longlastcol">
+ <tr>
+   <th>Path</th>
+   <td>/api/directory/digital-address</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>POST</td>
+ </tr>
+ <tr>
+  <th>Consumes</th>
+    <td>
+      This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+      * <code>application/json</code>
+
+    </td>
+   </tr>
+   <tr>
+    <th>Request body</th>
+     <td>
+      <div class="param">body DigitalAddres (required)</div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Directory Service </div>
+     </td>
+   </tr>
+ <tr>
+  <th>Return type</th>
+  <td>
+   <div class="return-type">
+     DigitalAddress
+   </div>
+  </td>
+ </tr>
+</table>
+
+<aside class="example">
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+        <code>{
+        "entityDID" : "did:dtx:1111111111",
+        "entityDigitalAddress" : "abc@dtx",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }</code>
+        </td>
+        <td>
+        <code>{
+        "entityDID" : "did:dtx:1111111111",
+        "entityDigitalAddress" : "abc@dtx",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>
+
+### Produces ### {#sctn-create-da-prod}
+
+  This API call produces the following media types according to the Accept request header;
+  the media type will be conveyed by the Content-Type response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-create-da-resp}
+
+<table class="complex data longlastcol">
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td>OK Returns DigitalAddress </td>
+      </tr>
+      <tr>
+        <th>201</th>
+        <td>Digital Address saved successfully</td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+
+<!-- End: Create Digital address -->
