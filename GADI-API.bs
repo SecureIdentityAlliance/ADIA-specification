@@ -61,7 +61,7 @@ For an overview of the GADI system, see [[!GADI-Overview]].
    <tr>
     <th>Request body</th>
      <td>
-      <div class="param">body DigitalAddres (required)</div>
+      <div class="param">body DigitalAddress (required)</div>
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Directory Service </div>
      </td>
    </tr>
@@ -76,6 +76,7 @@ For an overview of the GADI system, see [[!GADI-Overview]].
 </table>
 
 <aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
   <table>
     <thead>
       <th>Request</th>
@@ -185,6 +186,7 @@ For an overview of the GADI system, see [[!GADI-Overview]].
 </table>
 
 <aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
   <table>
     <thead>
       <th>Request</th>
@@ -255,3 +257,101 @@ For an overview of the GADI system, see [[!GADI-Overview]].
 
 
 <!-- End: Lookup Digital Address -->
+
+
+
+<!-- Start: Get Digital address -->
+## Get Digital Address ## {#sctn-get-da}
+
+### Request ### {#sctn-get-da-req}
+
+<table class="complex data longlastcol">
+ <tr>
+  <th>Path</th>
+  <td>/api/directory/digital-address/{digitalAddress}</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>GET</td>
+ </tr>
+ <tr>
+  <th>Path Parameters</th>
+  <td><div class="param">digitalAddress (required)</div>
+    <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The Digital Address </div></td>
+ </tr>
+ <tr>
+  <th>Consumes</th>
+  <td>
+   This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+    * <code>application/json</code>
+  </td>
+ </tr>
+ <tr>
+  <th>Return type</th>
+  <td>
+    <div class="return-type">DigitalAddress</div>
+  </td>
+ </tr>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+  <tr>
+  <td>
+   <code>
+      curl -X GET  <host>/api/directory/digital-address/abc@dtx
+   </code>
+  </td>
+  <td>
+    <code>{
+    "entityDigitalAddress" : "abc@dtx",
+    "entityDID" : "did:dtx:1111111111",
+    "entityRole" : "Issuer",
+    "createdBy" : "did:dtx:888888888888",
+    "createdDate" : "2000-01-23T04:56:07.000+00:00",
+    "status" : "Active"
+    }</code>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-get-da-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-get-da-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Digital Address  Not Found</td>
+    </tr>
+  </tbody>
+</table>
+<!-- End: Get Digital address -->
+
+
