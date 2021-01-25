@@ -61,7 +61,7 @@ For an overview of the GADI system, see [[!GADI-Overview]].
    <tr>
     <th>Request body</th>
      <td>
-      <div class="param">body DigitalAddress (required)</div>
+      <div class="param">body <a>DigitalAddress</a> (required)</div>
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Directory Service </div>
      </td>
    </tr>
@@ -69,7 +69,7 @@ For an overview of the GADI system, see [[!GADI-Overview]].
   <th>Return type</th>
   <td>
    <div class="return-type">
-     DigitalAddress
+     <a>DigitalAddress</a>
    </div>
   </td>
  </tr>
@@ -126,7 +126,7 @@ For an overview of the GADI system, see [[!GADI-Overview]].
     <tbody>
       <tr>
         <th>200</th>
-        <td>OK Returns DigitalAddress </td>
+        <td>OK Returns <a>DigitalAddress</a> </td>
       </tr>
       <tr>
         <th>201</th>
@@ -173,14 +173,14 @@ For an overview of the GADI system, see [[!GADI-Overview]].
  <tr>
   <th>Request body</th>
   <td>
-   <div class="param">body DigitalAddressCriteria (required)</div>
+   <div class="param">body <a>DigitalAddressCriteria</a> (required)</div>
    <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; A criteria based search consisting of one or more attributes Returns matching Digital Address records from the Directory Service. </div>
   </td>
  </tr>
  <tr>
   <th>Return type</th>
    <td>
-     <div class="return-type">DigitalAddress</div>
+     <div class="return-type"><a>DigitalAddress</a></div>
    </td>
  </tr>
 </table>
@@ -238,7 +238,7 @@ For an overview of the GADI system, see [[!GADI-Overview]].
     <tbody>
       <tr>
         <th>200</th>
-        <td><span>OK</span> Returns DigitalAddress </td>
+        <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
       </tr>
       <tr>
         <th>401</th>
@@ -290,7 +290,7 @@ For an overview of the GADI system, see [[!GADI-Overview]].
  <tr>
   <th>Return type</th>
   <td>
-    <div class="return-type">DigitalAddress</div>
+    <div class="return-type"><a>DigitalAddress</a></div>
   </td>
  </tr>
 </table>
@@ -385,7 +385,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       <th>Return type</th>
       <td>
         <div class="return-type">
-          DigitalAddress
+          <a>DigitalAddress</a>
         </div>
       </td>
     </tr>
@@ -495,7 +495,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       <th>Return type</th>
       <td>
         <div class="return-type">
-          DigitalAddress
+          <a>DigitalAddress</a>
         </div>
       </td>
     </tr>
@@ -607,7 +607,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       <th>Return type</th>
       <td>
         <div class="return-type">
-          DigitalAddress
+          <a>DigitalAddress</a>
         </div>
       </td>
     </tr>
@@ -710,7 +710,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
     <tr>
       <th>Request body</th>
       <td>
-        <div class="param">body DigitalAddress (required)</div>
+        <div class="param">body <a>DigitalAddress</a> (required)</div>
         <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for a DAP and persisted to the GADI Directory Service </div>
       </td>
     </tr>
@@ -718,7 +718,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       <th>Return type</th>
       <td>
         <div class="return-type">
-          DigitalAddress
+          <a>DigitalAddress</a>
         </div>
       </td>
     </tr>
@@ -775,7 +775,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
     <tr>
       <th>200</th>
-      <td><span>OK</span> Returns DigitalAddress </td>
+      <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
     </tr>
     <tr>
       <th>201</th>
@@ -826,7 +826,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
     <tr>
       <th>Request body</th>
       <td>
-        <div class="param">body DigitalAddress (required)</div>
+        <div class="param">body <a>DigitalAddress</a> (required)</div>
         <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for an Issuer and persisted to the GADI Directory Service </div>
       </td>
     </tr>
@@ -834,7 +834,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       <th>Return type</th>
       <td>
         <div class="return-type">
-          DigitalAddress
+          <a>DigitalAddress</a>
         </div>
       </td>
     </tr>
@@ -891,7 +891,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
     <tr>
       <th>200</th>
-      <td><span>OK</span> Returns DigitalAddress </td>
+      <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
     </tr>
     <tr>
       <th>201</th>
@@ -942,7 +942,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
     <tr>
       <th>Request body</th>
       <td>
-        <div class="param">body DigitalAddress (required)</div>
+        <div class="param">body <a>DigitalAddress</a> (required)</div>
         <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for a Service Provider and persisted to the GADI Directory Service </div>
       </td>
     </tr>
@@ -950,7 +950,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       <th>Return type</th>
       <td>
         <div class="return-type">
-          DigitalAddress
+          <a>DigitalAddress</a>
         </div>
       </td>
     </tr>
@@ -989,6 +989,8 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
     </tr>
   </tbody>
 </table>
+</aside>
+
 
 ### Produces ### {#sctn-create-sp-prod}
 This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1006,7 +1008,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
     <tr>
       <th>200</th>
-      <td><span>OK</span> Returns DigitalAddress </td>
+      <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
     </tr>
     <tr>
       <th>201</th>
@@ -1028,5 +1030,129 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 </table>
 </div>
 <!-- End: Create an Service Provider -->
+
+
+# Models # {#sctn-models}
+
+## <dfn>DigitalAddress</dfn> ## {#sctn-model-da}
+  <table class="complex data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>entityDID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>entityDigitalAddress</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>entityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>ServiceProvider</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>primaryHash</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>secondaryHash</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>status</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Active</li>
+            <li>Pending </li>
+            <li>Inactive</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>createdBy</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>createdDate</td>
+        <td>DateTime format: date-time</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+## <dfn>DigitalAddressCriteria</dfn> ## {#sctn-model-dac}
+  <table class="complex data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>entityDID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>entityDigitalAddress</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>entityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>ServiceProvider</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>status</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Active</li>
+            <li>Pending </li>
+            <li>Inactive</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>createdBy</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>fromDate</td>
+        <td>DateTime format: date-time</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>toDate</td>
+        <td>DateTime format: date-time</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 
