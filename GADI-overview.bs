@@ -41,12 +41,12 @@ This specification provides a overview of the GADI system.
 
     : <dfn>DA</dfn>
     :: Human readabe <dfn>Digital Address</dfn> of the <a>User</a>
-         (e.g. john.doe@issuer.dap.gadi.org).
+         (e.g. blackbird@issuer.dap.gadi.org).
 
          Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
-         name - "fun" names are allowed,
-         e.g. blackbirdjohn.doe@issuer.dap.gadi.org.  However, real
-         names are still allowed.
+         name - "fun" names are allowed and recommended. However, real
+         names are still allowed and the GADI system doesn't check
+         whether users use them.
 	 
 
     : <dfn>DAP_USER_ID</dfn>
