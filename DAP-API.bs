@@ -6,8 +6,10 @@ Prepare for TR: true
 Level: 1
 Status: ED
 Group: fido
-URL: 
+URL:
 Editor: Rolf Lindemann, rolf@noknok.com
+Editor: Kiran Addepalli, kiran@digitaltrust.net
+
 Abstract: The API surface of a Digital Address Provider (DAP) in the GADI ecosystem
 Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
@@ -33,4 +35,3005 @@ This specification described the API surface of a Digital Address Provider (DAP)
 
 For an overview of the GADI system, see [[!GADI-Overview]].
 
+# Directory Resource # {#sctn-directory-resource}
 
+  <!-- Start: Create Digital address -->
+## Create Digital Address ## {#sctn-create-da}
+
+### Request ### {#sctn-create-da-req}
+
+<table class="complex data longlastcol">
+ <tr>
+   <th>Path</th>
+   <td>/api/directory/digital-address</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>POST</td>
+ </tr>
+ <tr>
+  <th>Consumes</th>
+    <td>
+      This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+      * <code>application/json</code>
+
+    </td>
+   </tr>
+   <tr>
+    <th>Request body</th>
+     <td>
+      <div class="param">body <a>DigitalAddress</a> (required)</div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the DAP Directory Service </div>
+     </td>
+   </tr>
+ <tr>
+  <th>Return type</th>
+  <td>
+   <div class="return-type">
+     <a>DigitalAddress</a>
+   </div>
+  </td>
+ </tr>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+        <code>{
+        "entityDID" : "did:dtx:1111111111",
+        "entityDigitalAddress" : "abc@dtx",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }</code>
+        </td>
+        <td>
+        <code>{
+        "entityDID" : "did:dtx:1111111111",
+        "entityDigitalAddress" : "abc@dtx",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>
+
+### Produces ### {#sctn-create-da-prod}
+
+  This API call produces the following media types according to the Accept request header;
+  the media type will be conveyed by the Content-Type response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-create-da-resp}
+
+<table class="complex data longlastcol">
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td>OK Returns <a>DigitalAddress</a> </td>
+      </tr>
+      <tr>
+        <th>201</th>
+        <td>Digital Address saved successfully</td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+
+<!-- End: Create Digital address -->
+
+<!-- Start: Lookup Digital address -->
+## Search Digital Address Using a Criteria ## {#sctn-lookup-da}
+
+### Request ### {#sctn-lookup-da-req}
+
+<table class="complex data longlastcol">
+ <tr>
+   <th>Path</th>
+   <td>/api/directory/digital-address/search</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>POST</td>
+ </tr>
+ <tr>
+  <th>Consumes</th>
+  <td>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+     * <code>application/json</code>
+  </td>
+ </tr>
+ <tr>
+  <th>Request body</th>
+  <td>
+   <div class="param">body <a>DigitalAddressCriteria</a> (required)</div>
+   <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; A criteria based search consisting of one or more attributes Returns matching Digital Address records from the Directory Service. </div>
+  </td>
+ </tr>
+ <tr>
+  <th>Return type</th>
+   <td>
+     <div class="return-type"><a>DigitalAddress</a></div>
+   </td>
+ </tr>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+      <code>{
+      "createdBy" : "did:dtx:888888888888",
+      "status" : "Active"
+      }</code>
+      </td>
+      <td>
+        <code>[ {
+        "entityDigitalAddress" : "abc@dtx",
+        "entityDID" : "did:dtx:1111111111",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }, {
+        "entityDigitalAddress" : "xyz@dtx",
+        "entityDID" : "did:dtx:2222222222",
+        "entityRole" : "ServiceProvider",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        } ]</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>
+
+### Produces ### {#sctn-lookup-da-prod}
+  This API call produces the following media types according to the <span class="header">Accept</span> request header;
+  the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+  * <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-lookup-da-resp}
+
+<table class="complex data longlastcol">
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<!-- End: Lookup Digital Address -->
+
+
+
+<!-- Start: Get Digital address -->
+## Get Digital Address ## {#sctn-get-da}
+
+### Request ### {#sctn-get-da-req}
+
+<table class="complex data longlastcol">
+ <tr>
+  <th>Path</th>
+  <td>/api/directory/digital-address/{digitalAddress}</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>GET</td>
+ </tr>
+ <tr>
+  <th>Path Parameters</th>
+  <td><div class="param">digitalAddress (required)</div>
+    <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The Digital Address </div></td>
+ </tr>
+
+ <tr>
+  <th>Return type</th>
+  <td>
+    <div class="return-type"><a>DigitalAddress</a></div>
+  </td>
+ </tr>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+  <tr>
+  <td>
+   <code>
+      curl -X GET  <host>/api/directory/digital-address/abc@dtx
+   </code>
+  </td>
+  <td>
+    <code>{
+    "entityDigitalAddress" : "abc@dtx",
+    "entityDID" : "did:dtx:1111111111",
+    "entityRole" : "Issuer",
+    "createdBy" : "did:dtx:888888888888",
+    "createdDate" : "2000-01-23T04:56:07.000+00:00",
+    "status" : "Active"
+    }</code>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-get-da-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-get-da-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Digital Address  Not Found</td>
+    </tr>
+  </tbody>
+</table>
+<!-- End: Get Digital address -->
+
+
+
+<!-- Start: Get Issuers for a DAP -->
+## Get Issuers for a DAP ## {#sctn-get-issuers-for-dap}
+
+### Request ### {#sctn-get-issuers-for-dap-req}
+
+<table class="complex data longlastcol">
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps/{dapId}/issuers</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>GET</td>
+    </tr>
+    <tr>
+    <th>Path Parameters</th>
+    <td><div class="param">dapId (required)</div>
+
+    <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The identifier for the DAP </div></td>
+    </tr>
+
+
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a>DigitalAddress</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+  <tr>
+  <td>
+  <code>
+      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/issuers
+      </code>
+  </td>
+  <td>
+  <code>[ {
+  "entityDigitalAddress" : "abc@dtx",
+  "entityDID" : "did:dtx:1111111111",
+  "entityRole" : "Issuer",
+  "createdBy" : "did:dtx:888888888888",
+  "createdDate" : "2000-01-23T04:56:07.000+00:00",
+  "status" : "Active"
+  },
+  {
+  "entityDigitalAddress" : "abc@dtx",
+  "entityDID" : "did:dtx:3333333333",
+  "entityRole" : "Issuer",
+  "createdBy" : "did:dtx:888888888888",
+  "createdDate" : "2000-01-23T04:56:07.000+00:00",
+  "status" : "Active"
+  } ]</code>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-get-issuers-for-dap-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-get-issuers-for-dap-resp}
+
+<table class="complex data longlastcol">
+<table>
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Resource  Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Get Issuers for a DAP-->
+
+<!-- Start: Get Service Providers for a DAP -->
+## Get Service Providers for a DAP ## {#sctn-get-sps-for-dap}
+
+### Request ### {#sctn-get-sps-for-dap-req}
+
+<table class="complex data longlastcol">
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps/{dapId}/service_providers</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>GET</td>
+    </tr>
+    <tr>
+    <th>Path Parameters</th>
+    <td><div class="param">dapId (required)</div>
+
+    <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The identifier for the DAP </div></td>
+    </tr>
+
+
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a>DigitalAddress</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+  <tr>
+  <td>
+  <code>
+      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/service_providers
+</code>
+  </td>
+  <td>
+  <code>[ {
+  "entityDigitalAddress" : "abc@dtx",
+  "entityDID" : "did:dtx:2222222222",
+  "entityRole" : "Issuer",
+  "createdBy" : "did:dtx:888888888888",
+  "createdDate" : "2000-01-23T04:56:07.000+00:00",
+  "status" : "Active"
+  },
+  {
+  "entityDigitalAddress" : "abc@dtx",
+  "entityDID" : "did:dtx:4444444444",
+  "entityRole" : "Issuer",
+  "createdBy" : "did:dtx:888888888888",
+  "createdDate" : "2000-01-23T04:56:07.000+00:00",
+  "status" : "Active"
+  } ]</code>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-get-sps-for-dap-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-get-sps-for-dap-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Resource  Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Get Service Providers for a DAP -->
+
+
+<!-- Start: Create an Issuer -->
+## Create an Issuer ## {#sctn-create-issuer}
+
+### Request ### {#sctn-create-issuer-req}
+
+<table class="complex data longlastcol">
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps/{dapId}/issuers</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+        <ul>
+          <li><code>application/json</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Request body</th>
+      <td>
+        <div class="param">body <a>DigitalAddress</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for an Issuer and persisted to the DAP Directory Service </div>
+      </td>
+    </tr>
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a>DigitalAddress</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:11111111",
+      "entityDigitalAddress" : "abc@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:11111111",
+      "entityDigitalAddress" : "abc@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-create-issuer-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-create-issuer-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>200</th>
+      <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>Issuer saved successfully</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Ressource Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Create an Issuer -->
+
+
+<!-- Start: Create a Service Provider -->
+## Create a Service Provider ## {#sctn-create-sp}
+
+### Request ### {#sctn-create-sp-req}
+
+<table class="complex data longlastcol">
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps/{dapId}/service_providers</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+        <ul>
+          <li><code>application/json</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Request body</th>
+      <td>
+        <div class="param">body <a>DigitalAddress</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for a Service Provider and persisted to the DAP Directory Service </div>
+      </td>
+    </tr>
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a>DigitalAddress</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:2222222222",
+      "entityDigitalAddress" : "xyz@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:2222222222",
+      "entityDigitalAddress" : "xyz@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+### Produces ### {#sctn-create-sp-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-create-sp-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>200</th>
+      <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>Service Provider saved successfully</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Ressource Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Create an Service Provider -->
+
+
+# Credential Resource # {#sctn-credential-resource}
+
+## Create Credential Schema ## {#sctn-create-credential-schema}
+
+### Request ### {#sctn-create-credential-schema-req}
+
+<table class="complex data longlastcol">
+ <tr>
+   <th>Path</th>
+   <td>/api/credentials/credential-schema</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>POST</td>
+ </tr>
+ <tr>
+  <th>Consumes</th>
+    <td>
+      This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+      * <code>application/json</code>
+
+    </td>
+   </tr>
+   <tr>
+    <th>Request body</th>
+     <td>
+      <div class="param">body <a>CredentialSchema</a> (required)</div>
+      <div class="param-desc"><span class="param-type">Save a credential schema with attributes. Verifiable Credentials are issued against a credential schema published by the Issuer.</div>
+     </td>
+   </tr>
+ <tr>
+  <th>Return type</th>
+  <td>
+   <div class="return-type">
+     <a>CredentialSchema</a>
+   </div>
+  </td>
+ </tr>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+      <code>{
+        "credentialSchemaId": "string",
+        "name": "string",
+        "version": "string",
+        "description": "string",
+        "published": true,
+        "publishedDate": "2021-01-28T00:52:26.450Z",
+        "publishingEntityDID": "string",
+        "publishingEntityType": "Issuer",
+        "revoked": true,
+        "revokedDate": "2021-01-28T00:52:26.450Z",
+        "revokingEntityDID": "string",
+        "revokingEntityRole": "Issuer",
+        "createdBy": "string",
+        "createdDate": "2021-01-28T00:52:26.450Z"
+      }</code>
+      </td>
+      <td>
+        <code>{
+        "credentialSchemaId": "string",
+        "name": "string",
+        "version": "string",
+        "description": "string",
+        "published": true,
+        "publishedDate": "2021-01-28T00:52:26.478Z",
+        "publishingEntityDID": "string",
+        "publishingEntityType": "Issuer",
+        "revoked": true,
+        "revokedDate": "2021-01-28T00:52:26.478Z",
+        "revokingEntityDID": "string",
+        "revokingEntityRole": "Issuer",
+        "createdBy": "string",
+        "createdDate": "2021-01-28T00:52:26.478Z"
+      }   </code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>
+
+
+
+### Produces ### {#sctn-create-credential-schema-prod}
+This API call produces the following media types according to the Accept request header;
+the media type will be conveyed by the Content-Type response header.
+
+* <pre><code>*/*</code></pre>
+
+
+### Responses ### {#sctn-create-credential-schema-resp}
+<table class="complex data longlastcol">
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td>OK Returns <a>CredentialSchema</a> </td>
+      </tr>
+      <tr>
+        <th>201</th>
+        <td>Credential Schema saved successfully</td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+## Search Credential Schema ## {#sctn-search-credential-schema}
+
+### Request ### {#sctn-search-credential-schema-req}
+<table class="complex data longlastcol">
+ <tr>
+   <th>Path</th>
+   <td>/api/credentials/credential-schema/search</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>POST</td>
+ </tr>
+ <tr>
+  <th>Consumes</th>
+    <td>
+      This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+      * <code>application/json</code>
+
+    </td>
+   </tr>
+   <tr>
+    <th>Request body</th>
+     <td>
+      <div class="param">body <a>CredentialCriteria</a> (required)</div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span>A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAP Ledger.</td>
+   </tr>
+ <tr>
+  <th>Return type</th>
+  <td>
+   <div class="return-type">
+     <a>CredentialSchema</a>
+   </div>
+  </td>
+ </tr>
+</table>
+
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+      <code>{
+        "issuingEntityDID": "string",
+        "issuingEntityRole": "Issuer",
+        "userDID": "string",
+        "verifierDID": "string",
+        "credentialSchemaId": "string",
+        "credentialId": "string",
+        "active": true,
+        "createdBy": "string",
+        "createdDate": "2021-01-28",
+        "fromDate": "2021-01-28",
+        "toDate": "2021-01-28"
+      }</code>
+      </td>
+      <td>
+        <code>
+                [
+          {
+            "credentialSchemaId": "string",
+            "name": "string",
+            "version": "string",
+            "description": "string",
+            "published": true,
+            "publishedDate": "2021-01-28T00:56:32.221Z",
+            "publishingEntityDID": "string",
+            "publishingEntityType": "Issuer",
+            "revoked": true,
+            "revokedDate": "2021-01-28T00:56:32.221Z",
+            "revokingEntityDID": "string",
+            "revokingEntityRole": "Issuer",
+            "createdBy": "string",
+            "createdDate": "2021-01-28T00:56:32.221Z"
+          }
+        ]
+        </code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>
+
+
+
+### Produces ### {#sctn-search-credential-schema-prod}
+This API call produces the following media types according to the Accept request header;
+the media type will be conveyed by the Content-Type response header.
+
+* <pre><code>*/*</code></pre>
+
+
+### Responses ### {#sctn-search-credential-schema-resp}
+<table class="complex data longlastcol">
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td>OK Returns <a>CredentialSchema</a> </td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+## Get a Credential Schema ## {#sctn-get-credential-schema}
+
+### Request ### {#sctn-get-credential-schema-req}
+<table class="complex data longlastcol">
+ <tr>
+   <th>Path</th>
+   <td>/api/credentials/credential-schema/{credentialSchemaId}</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>GET</td>
+ </tr>
+ <tr>
+  <th>Path Parameters</th>
+  <td><div class="param">credentialSchemaId (required)</div>
+    <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The Id of the Credential Schema</div></td>
+ </tr>
+
+ <tr>
+  <th>Return type</th>
+  <td>
+   <div class="return-type">
+     <a>CredentialSchema</a>
+   </div>
+  </td>
+ </tr>
+</table>
+
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+      <code>curl -X GET  <host>/api/credentials/credential-schema/aaxddgfhjhgggddd</code>
+      </td>
+      <td>
+        <code>
+        {
+          "credentialSchemaId": "string",
+          "name": "string",
+          "version": "string",
+          "description": "string",
+          "published": true,
+          "publishedDate": "2021-01-28T01:02:10.689Z",
+          "publishingEntityDID": "string",
+          "publishingEntityType": "Issuer",
+          "revoked": true,
+          "revokedDate": "2021-01-28T01:02:10.689Z",
+          "revokingEntityDID": "string",
+          "revokingEntityRole": "Issuer",
+          "createdBy": "string",
+          "createdDate": "2021-01-28T01:02:10.689Z"
+        }
+        </code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>
+
+
+
+### Produces ### {#sctn-get-credential-schema-prod}
+This API call produces the following media types according to the Accept request header;
+the media type will be conveyed by the Content-Type response header.
+
+* <pre><code>*/*</code></pre>
+
+
+### Responses ### {#sctn-get-credential-schema-resp}
+<table class="complex data longlastcol">
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td>OK Returns <a>CredentialSchema</a> </td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  ## Create Credential Metadata ## {#sctn-create-credential-metadata}
+
+  ### Request ### {#sctn-create-credential-metadata-req}
+
+  <table class="complex data longlastcol">
+   <tr>
+     <th>Path</th>
+     <td>/api/credentials/credential-metadata</td>
+   </tr>
+   <tr>
+    <th>Method</th>
+    <td>POST</td>
+   </tr>
+   <tr>
+    <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+        * <code>application/json</code>
+
+      </td>
+     </tr>
+     <tr>
+      <th>Request body</th>
+       <td>
+        <div class="param">body <a>CredentialMetadata</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Save a credential metadata with attributes. Verifiable Credentials are issued against a credential metadata published by the Issuer.</div>
+       </td>
+     </tr>
+   <tr>
+    <th>Return type</th>
+    <td>
+     <div class="return-type">
+       <a>CredentialMetadata</a>
+     </div>
+    </td>
+   </tr>
+  </table>
+
+  <aside class="example">
+  <div class="example-data-content-type">Content-Type: application/json</div>
+    <table>
+      <thead>
+        <th>Request</th>
+        <th>Response</th>
+      </thead>
+      <tbody>
+        <tr>
+        <td>
+        <code>{
+            "credentialId": "string",
+            "credentialSchemaId": "string",
+            "CredentialSchemaVersion": "string",
+            "credentialType": "string",
+            "issuedToEntityDID": "string",
+            "issuedToEntityDA": "string",
+            "issuedEntityRole": "Issuer - DAP",
+            "active": true,
+            "issuedDate": "2021-01-28T01:13:19.550Z",
+            "issuingEntityDID": "string",
+            "issuingEntityDA": "string",
+            "issuingEntityRole": "Issuer",
+            "revoked": true,
+            "revokedDate": "2021-01-28T01:13:19.550Z",
+            "revokingEntityDID": "string",
+            "revokingEntityDA": "string",
+            "revokingEntityRole": "Issuer",
+            "dapDID": "string",
+            "dapDA": "string",
+            "createdBy": "string",
+            "createdDate": "2021-01-28T01:13:19.550Z"
+          }</code>
+        </td>
+        <td>
+          <code>{
+          "credentialId": "string",
+          "credentialSchemaId": "string",
+          "CredentialSchemaVersion": "string",
+          "credentialType": "string",
+          "issuedToEntityDID": "string",
+          "issuedToEntityDA": "string",
+          "issuedEntityRole": "Issuer - DAP",
+          "active": true,
+          "issuedDate": "2021-01-28T01:13:19.558Z",
+          "issuingEntityDID": "string",
+          "issuingEntityDA": "string",
+          "issuingEntityRole": "Issuer",
+          "revoked": true,
+          "revokedDate": "2021-01-28T01:13:19.558Z",
+          "revokingEntityDID": "string",
+          "revokingEntityDA": "string",
+          "revokingEntityRole": "Issuer",
+          "dapDID": "string",
+          "dapDA": "string",
+          "createdBy": "string",
+          "createdDate": "2021-01-28T01:13:19.558Z"
+        }</code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </aside>
+
+
+
+  ### Produces ### {#sctn-create-credential-metadata-prod}
+  This API call produces the following media types according to the Accept request header;
+  the media type will be conveyed by the Content-Type response header.
+
+  * <pre><code>*/*</code></pre>
+
+
+  ### Responses ### {#sctn-create-credential-metadata-resp}
+  <table class="complex data longlastcol">
+      <thead>
+        <th>Status</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>200</th>
+          <td>OK Returns <a>CredentialMetadata</a> </td>
+        </tr>
+        <tr>
+          <th>201</th>
+          <td>Credential Metadata saved successfully</td>
+        </tr>
+        <tr>
+          <th>401</th>
+          <td>Unauthorized Access</td>
+        </tr>
+        <tr>
+          <th>403</th>
+          <td>Forbidden Access</td>
+        </tr>
+        <tr>
+          <th>404</th>
+          <td>Resource Not Found</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  ## Search Credential Metadata ## {#sctn-search-credential-metadata}
+
+  ### Request ### {#sctn-search-credential-metadata-req}
+  <table class="complex data longlastcol">
+   <tr>
+     <th>Path</th>
+     <td>/api/credentials/credential-metadata/search</td>
+   </tr>
+   <tr>
+    <th>Method</th>
+    <td>GET</td>
+   </tr>
+     <tr>
+      <th>Request body</th>
+       <td>
+        <div class="param">body <a>CredentialCriteria</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Body Parameter</span>A criteria based search consisting of one or more attributes. Returns matching credential metadata records from the DAP Ledger.</td>
+     </tr>
+   <tr>
+    <th>Return type</th>
+    <td>
+     <div class="return-type">
+       <a>CredentialMetadata</a>
+     </div>
+    </td>
+   </tr>
+  </table>
+
+
+  <aside class="example">
+  <div class="example-data-content-type">Content-Type: application/json</div>
+    <table>
+      <thead>
+        <th>Request</th>
+        <th>Response</th>
+      </thead>
+      <tbody>
+        <tr>
+        <td>
+        <code>{
+          "issuingEntityDID": "string",
+          "issuingEntityRole": "Issuer",
+          "userDID": "string",
+          "verifierDID": "string",
+          "credentialSchemaId": "string",
+          "credentialId": "string",
+          "active": true,
+          "createdBy": "string",
+          "createdDate": "2021-01-28",
+          "fromDate": "2021-01-28",
+          "toDate": "2021-01-28"
+        }</code>
+        </td>
+        <td>
+          <code>[
+          {
+            "credentialId": "string",
+            "credentialSchemaId": "string",
+            "CredentialSchemaVersion": "string",
+            "credentialType": "string",
+            "issuedToEntityDID": "string",
+            "issuedToEntityDA": "string",
+            "issuedEntityRole": "Issuer - DAP",
+            "active": true,
+            "issuedDate": "2021-01-28T01:14:06.817Z",
+            "issuingEntityDID": "string",
+            "issuingEntityDA": "string",
+            "issuingEntityRole": "Issuer",
+            "revoked": true,
+            "revokedDate": "2021-01-28T01:14:06.817Z",
+            "revokingEntityDID": "string",
+            "revokingEntityDA": "string",
+            "revokingEntityRole": "Issuer",
+            "dapDID": "string",
+            "dapDA": "string",
+            "createdBy": "string",
+            "createdDate": "2021-01-28T01:14:06.817Z"
+          }
+        ]
+          </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </aside>
+
+
+
+  ### Produces ### {#sctn-search-credential-metadata-prod}
+  This API call produces the following media types according to the Accept request header;
+  the media type will be conveyed by the Content-Type response header.
+
+  * <pre><code>*/*</code></pre>
+
+
+  ### Responses ### {#sctn-search-credential-metadata-resp}
+  <table class="complex data longlastcol">
+      <thead>
+        <th>Status</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>200</th>
+          <td>OK Returns <a>CredentialMetadata</a> </td>
+        </tr>
+        <tr>
+          <th>401</th>
+          <td>Unauthorized Access</td>
+        </tr>
+        <tr>
+          <th>403</th>
+          <td>Forbidden Access</td>
+        </tr>
+        <tr>
+          <th>404</th>
+          <td>Resource Not Found</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  ## Get Credential Metadata ## {#sctn-get-credential-metadata}
+
+  ### Request ### {#sctn-get-credential-metadata-req}
+  <table class="complex data longlastcol">
+   <tr>
+     <th>Path</th>
+     <td>/api/credentials/credential-metadata/{credentialMetadataId}</td>
+   </tr>
+   <tr>
+    <th>Method</th>
+    <td>GET</td>
+   </tr>
+   <tr>
+    <th>Path Parameters</th>
+    <td><div class="param">credentialMetadataId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The Id of the Credential Metadata</div></td>
+   </tr>
+
+   <tr>
+    <th>Return type</th>
+    <td>
+     <div class="return-type">
+       <a>CredentialMetadata</a>
+     </div>
+    </td>
+   </tr>
+  </table>
+
+
+  <aside class="example">
+  <div class="example-data-content-type">Content-Type: application/json</div>
+    <table>
+      <thead>
+        <th>Request</th>
+        <th>Response</th>
+      </thead>
+      <tbody>
+        <tr>
+        <td>
+        <code>curl -X GET  <host>/api/credentials/credential-metadata/aaxddgfhjhgggddd</code>
+        </td>
+        <td>
+          <code>
+                      {
+              "credentialId": "string",
+              "credentialSchemaId": "string",
+              "CredentialSchemaVersion": "string",
+              "credentialType": "string",
+              "issuedToEntityDID": "string",
+              "issuedToEntityDA": "string",
+              "issuedEntityRole": "Issuer - DAP",
+              "active": true,
+              "issuedDate": "2021-01-28T01:14:54.546Z",
+              "issuingEntityDID": "string",
+              "issuingEntityDA": "string",
+              "issuingEntityRole": "Issuer",
+              "revoked": true,
+              "revokedDate": "2021-01-28T01:14:54.546Z",
+              "revokingEntityDID": "string",
+              "revokingEntityDA": "string",
+              "revokingEntityRole": "Issuer",
+              "dapDID": "string",
+              "dapDA": "string",
+              "createdBy": "string",
+              "createdDate": "2021-01-28T01:14:54.546Z"
+            }
+          </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </aside>
+
+
+
+  ### Produces ### {#sctn-get-credential-metadata-prod}
+  This API call produces the following media types according to the Accept request header;
+  the media type will be conveyed by the Content-Type response header.
+
+  * <pre><code>*/*</code></pre>
+
+
+  ### Responses ### {#sctn-get-credential-metadata-resp}
+  <table class="complex data longlastcol">
+      <thead>
+        <th>Status</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>200</th>
+          <td>OK Returns <a>CredentialMetadata</a> </td>
+        </tr>
+        <tr>
+          <th>401</th>
+          <td>Unauthorized Access</td>
+        </tr>
+        <tr>
+          <th>403</th>
+          <td>Forbidden Access</td>
+        </tr>
+        <tr>
+          <th>404</th>
+          <td>Resource Not Found</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+## Revoke Credential Metadata ## {#sctn-revoke-credential-metadata}
+
+### Request ### {#sctn-revoke-credential-metadata-req}
+<table class="complex data longlastcol">
+ <tr>
+   <th>Path</th>
+   <td>/api/credentials/credential-metadata/{credentialMetadataId}/revoke</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>GET</td>
+ </tr>
+ <tr>
+  <th>Path Parameters</th>
+  <td><div class="param">credentialMetadataId (required)</div>
+    <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The Id of the Credential Metadata</div></td>
+ </tr>
+
+
+ <tr>
+  <th>Return type</th>
+  <td>
+   <div class="return-type">
+     <a>CredentialMetadata</a>
+   </div>
+  </td>
+ </tr>
+</table>
+
+
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+      <code>curl -X GET  <host>/api/credentials/credential-metadata/aaxddgfhjhgggddd/revoke</code></code>
+      </td>
+      <td>
+        <code>
+        {
+          "credentialId": "string",
+          "credentialSchemaId": "string",
+          "CredentialSchemaVersion": "string",
+          "credentialType": "string",
+          "issuedToEntityDID": "string",
+          "issuedToEntityDA": "string",
+          "issuedEntityRole": "Issuer - DAP",
+          "active": true,
+          "issuedDate": "2021-01-28T01:16:49.279Z",
+          "issuingEntityDID": "string",
+          "issuingEntityDA": "string",
+          "issuingEntityRole": "Issuer",
+          "revoked": true,
+          "revokedDate": "2021-01-28T01:16:49.279Z",
+          "revokingEntityDID": "string",
+          "revokingEntityDA": "string",
+          "revokingEntityRole": "Issuer",
+          "dapDID": "string",
+          "dapDA": "string",
+          "createdBy": "string",
+          "createdDate": "2021-01-28T01:16:49.279Z"
+        }
+        </code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>
+
+
+
+### Produces ### {#sctn-revoke-credential-metadata-prod}
+This API call produces the following media types according to the Accept request header;
+the media type will be conveyed by the Content-Type response header.
+
+* <pre><code>*/*</code></pre>
+
+
+### Responses ### {#sctn-revoke-credential-metadata-resp}
+
+<table class="complex data longlastcol">
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td>OK Returns <a>CredentialMetadata</a> </td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+# User Resource # {#sctn-user-resource}
+
+## Initialize Authenticator ## {#sctn-fido-initialize}
+
+### Request ### {#sctn-fido-initialize-req}
+<table class="complex data longlastcol">
+ <tr>
+   <th>Path</th>
+   <td>/api/user/fido/init-authenticator</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>POST</td>
+ </tr>
+ <tr>
+  <th>Consumes</th>
+    <td>
+      This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+      * <code>application/json</code>
+
+    </td>
+   </tr>
+
+   <tr>
+    <th>Request body</th>
+     <td>
+      <div class="param">body <a>FidoCommandRequest</a> (required)</div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> - FIDO request parameters</td>
+   </tr>
+ <tr>
+  <th>Return type</th>
+  <td>
+   <div class="return-type">
+     <a>FidoCommandResponse</a>
+   </div>
+  </td>
+ </tr>
+</table>
+
+
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+      <code>
+            {
+        "appId": "string",
+        "deviceId": "string",
+        "loginId": "string",
+        "packageName": "string"
+      }
+      </code>
+      </td>
+      <td>
+        <code>
+              {
+        "deviceId": "string",
+        "expireTime": "string",
+        "isRegistered": true,
+        "loginId": "string",
+        "opURL": "string",
+        "protocol": "string",
+        "resultCode": "string",
+        "resultMsg": "string",
+        "siteId": "string",
+        "svcId": "string",
+        "svcTrId": "string",
+        "trId": "string",
+        "trStatus": "string",
+        "trStatusMsg": "string"
+      }
+        </code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>
+
+
+
+### Produces ### {#sctn-fido-initialize-prod}
+This API call produces the following media types according to the Accept request header;
+the media type will be conveyed by the Content-Type response header.
+
+* <pre><code>*/*</code></pre>
+
+
+### Responses ### {#sctn-fido-initialize-resp}
+
+<table class="complex data longlastcol">
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td>OK Returns <a>FidoCommandResponse</a> </td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+
+  ## Register Account ## {#sctn-fido-register}
+
+  ### Request ### {#sctn-fido-register-req}
+  <table class="complex data longlastcol">
+   <tr>
+     <th>Path</th>
+     <td>/api/user/fido/register</td>
+   </tr>
+   <tr>
+    <th>Method</th>
+    <td>POST</td>
+   </tr>
+   <tr>
+    <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+        * <code>application/json</code>
+
+      </td>
+     </tr>
+
+     <tr>
+      <th>Request body</th>
+       <td>
+        <div class="param">body <a>FidoCommandRequest</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Body Parameter</span> - FIDO request parameters</td>
+     </tr>
+   <tr>
+    <th>Return type</th>
+    <td>
+     <div class="return-type">
+       <a>FidoCommandResponse</a>
+     </div>
+    </td>
+   </tr>
+  </table>
+
+
+
+  <aside class="example">
+  <div class="example-data-content-type">Content-Type: application/json</div>
+    <table>
+      <thead>
+        <th>Request</th>
+        <th>Response</th>
+      </thead>
+      <tbody>
+        <tr>
+        <td>
+        <code>
+              {
+        "appId": "string",
+        "deviceId": "string",
+        "loginId": "string",
+        "packageName": "string"
+        }
+        </code>
+        </td>
+        <td>
+          <code>{
+          "deviceId": "string",
+          "expireTime": "string",
+          "isRegistered": true,
+          "loginId": "string",
+          "opURL": "string",
+          "protocol": "string",
+          "resultCode": "string",
+          "resultMsg": "string",
+          "siteId": "string",
+          "svcId": "string",
+          "svcTrId": "string",
+          "trId": "string",
+          "trStatus": "string",
+          "trStatusMsg": "string"
+        }
+          </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </aside>
+
+
+
+  ### Produces ### {#sctn-fido-register-prod}
+  This API call produces the following media types according to the Accept request header;
+  the media type will be conveyed by the Content-Type response header.
+
+  * <pre><code>*/*</code></pre>
+
+
+  ### Responses ### {#sctn-fido-register-resp}
+
+  <table class="complex data longlastcol">
+      <thead>
+        <th>Status</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>200</th>
+          <td>OK Returns <a>FidoCommandResponse</a> </td>
+        </tr>
+        <tr>
+          <th>401</th>
+          <td>Unauthorized Access</td>
+        </tr>
+        <tr>
+          <th>403</th>
+          <td>Forbidden Access</td>
+        </tr>
+        <tr>
+          <th>404</th>
+          <td>Resource Not Found</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    ## DeRegister Account ## {#sctn-fido-deregister}
+
+    ### Request ### {#sctn-fido-deregister-req}
+    <table class="complex data longlastcol">
+     <tr>
+       <th>Path</th>
+       <td>/api/user/fido/deregister</td>
+     </tr>
+     <tr>
+      <th>Method</th>
+      <td>POST</td>
+     </tr>
+     <tr>
+      <th>Consumes</th>
+        <td>
+          This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+          * <code>application/json</code>
+
+        </td>
+       </tr>
+
+       <tr>
+        <th>Request body</th>
+         <td>
+          <div class="param">body <a>FidoCommandRequest</a> (required)</div>
+          <div class="param-desc"><span class="param-type">Body Parameter</span> - FIDO request parameters</td>
+       </tr>
+     <tr>
+      <th>Return type</th>
+      <td>
+       <div class="return-type">
+         <a>FidoCommandResponse</a>
+       </div>
+      </td>
+     </tr>
+    </table>
+
+
+
+    <aside class="example">
+    <div class="example-data-content-type">Content-Type: application/json</div>
+      <table>
+        <thead>
+          <th>Request</th>
+          <th>Response</th>
+        </thead>
+        <tbody>
+          <tr>
+          <td>
+          <code>
+                {
+          "appId": "string",
+          "deviceId": "string",
+          "loginId": "string",
+          "packageName": "string"
+          }
+          </code>
+          </td>
+          <td>
+            <code>{
+            "deviceId": "string",
+            "expireTime": "string",
+            "isDeRegistered": true,
+            "loginId": "string",
+            "opURL": "string",
+            "protocol": "string",
+            "resultCode": "string",
+            "resultMsg": "string",
+            "siteId": "string",
+            "svcId": "string",
+            "svcTrId": "string",
+            "trId": "string",
+            "trStatus": "string",
+            "trStatusMsg": "string"
+          }
+            </code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </aside>
+
+
+
+    ### Produces ### {#sctn-fido-deregister-prod}
+    This API call produces the following media types according to the Accept request header;
+    the media type will be conveyed by the Content-Type response header.
+
+    * <pre><code>*/*</code></pre>
+
+
+    ### Responses ### {#sctn-fido-deregister-resp}
+
+    <table class="complex data longlastcol">
+        <thead>
+          <th>Status</th>
+          <th>Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <th>200</th>
+            <td>OK Returns <a>FidoCommandResponse</a> </td>
+          </tr>
+          <tr>
+            <th>401</th>
+            <td>Unauthorized Access</td>
+          </tr>
+          <tr>
+            <th>403</th>
+            <td>Forbidden Access</td>
+          </tr>
+          <tr>
+            <th>404</th>
+            <td>Resource Not Found</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      ## Authenticate Account ## {#sctn-fido-authenticate}
+
+      ### Request ### {#sctn-fido-authenticate-req}
+      <table class="complex data longlastcol">
+       <tr>
+         <th>Path</th>
+         <td>/api/user/fido/authenticate</td>
+       </tr>
+       <tr>
+        <th>Method</th>
+        <td>POST</td>
+       </tr>
+       <tr>
+        <th>Consumes</th>
+          <td>
+            This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+            * <code>application/json</code>
+
+          </td>
+         </tr>
+
+         <tr>
+          <th>Request body</th>
+           <td>
+            <div class="param">body <a>FidoCommandRequest</a> (required)</div>
+            <div class="param-desc"><span class="param-type">Body Parameter</span> - FIDO request parameters</td>
+         </tr>
+       <tr>
+        <th>Return type</th>
+        <td>
+         <div class="return-type">
+           <a>FidoCommandResponse</a>
+         </div>
+        </td>
+       </tr>
+      </table>
+
+
+
+      <aside class="example">
+      <div class="example-data-content-type">Content-Type: application/json</div>
+        <table>
+          <thead>
+            <th>Request</th>
+            <th>Response</th>
+          </thead>
+          <tbody>
+            <tr>
+            <td>
+            <code>
+                  {
+            "appId": "string",
+            "deviceId": "string",
+            "loginId": "string",
+            "packageName": "string"
+            }
+            </code>
+            </td>
+            <td>
+              <code>{
+              "deviceId": "string",
+              "expireTime": "string",
+              "isAuthenticateed": true,
+              "loginId": "string",
+              "opURL": "string",
+              "protocol": "string",
+              "resultCode": "string",
+              "resultMsg": "string",
+              "siteId": "string",
+              "svcId": "string",
+              "svcTrId": "string",
+              "trId": "string",
+              "trStatus": "string",
+              "trStatusMsg": "string"
+            }
+              </code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </aside>
+
+
+
+      ### Produces ### {#sctn-fido-authenticate-prod}
+      This API call produces the following media types according to the Accept request header;
+      the media type will be conveyed by the Content-Type response header.
+
+      * <pre><code>*/*</code></pre>
+
+
+      ### Responses ### {#sctn-fido-authenticate-resp}
+
+      <table class="complex data longlastcol">
+          <thead>
+            <th>Status</th>
+            <th>Description</th>
+          </thead>
+          <tbody>
+            <tr>
+              <th>200</th>
+              <td>OK Returns <a>FidoCommandResponse</a> </td>
+            </tr>
+            <tr>
+              <th>401</th>
+              <td>Unauthorized Access</td>
+            </tr>
+            <tr>
+              <th>403</th>
+              <td>Forbidden Access</td>
+            </tr>
+            <tr>
+              <th>404</th>
+              <td>Resource Not Found</td>
+            </tr>
+          </tbody>
+        </table>
+
+        ## Registration Status ## {#sctn-fido-registered-status}
+
+        ### Request ### {#sctn-fido-registered-status-req}
+        <table class="complex data longlastcol">
+         <tr>
+           <th>Path</th>
+           <td>/api/user/fido/registered-status</td>
+         </tr>
+         <tr>
+          <th>Method</th>
+          <td>POST</td>
+         </tr>
+         <tr>
+          <th>Consumes</th>
+            <td>
+              This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+              * <code>application/json</code>
+
+            </td>
+           </tr>
+
+           <tr>
+            <th>Request body</th>
+             <td>
+              <div class="param">body <a>FidoCommandRequest</a> (required)</div>
+              <div class="param-desc"><span class="param-type">Body Parameter</span> - FIDO request parameters</td>
+           </tr>
+         <tr>
+          <th>Return type</th>
+          <td>
+           <div class="return-type">
+             <a>FidoCommandResponse</a>
+           </div>
+          </td>
+         </tr>
+        </table>
+
+
+
+        <aside class="example">
+        <div class="example-data-content-type">Content-Type: application/json</div>
+          <table>
+            <thead>
+              <th>Request</th>
+              <th>Response</th>
+            </thead>
+            <tbody>
+              <tr>
+              <td>
+              <code>
+                    {
+              "appId": "string",
+              "deviceId": "string",
+              "loginId": "string",
+              "packageName": "string"
+              }
+              </code>
+              </td>
+              <td>
+                <code>{
+                "deviceId": "string",
+                "expireTime": "string",
+                "isAuthenticateed": true,
+                "loginId": "string",
+                "opURL": "string",
+                "protocol": "string",
+                "resultCode": "string",
+                "resultMsg": "string",
+                "siteId": "string",
+                "svcId": "string",
+                "svcTrId": "string",
+                "trId": "string",
+                "trStatus": "string",
+                "trStatusMsg": "string"
+              }
+                </code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </aside>
+
+
+
+        ### Produces ### {#sctn-fido-registered-status-prod}
+        This API call produces the following media types according to the Accept request header;
+        the media type will be conveyed by the Content-Type response header.
+
+        * <pre><code>*/*</code></pre>
+
+
+        ### Responses ### {#sctn-fido-registered-status-resp}
+
+        <table class="complex data longlastcol">
+            <thead>
+              <th>Status</th>
+              <th>Description</th>
+            </thead>
+            <tbody>
+              <tr>
+                <th>200</th>
+                <td>OK Returns <a>FidoCommandResponse</a> </td>
+              </tr>
+              <tr>
+                <th>401</th>
+                <td>Unauthorized Access</td>
+              </tr>
+              <tr>
+                <th>403</th>
+                <td>Forbidden Access</td>
+              </tr>
+              <tr>
+                <th>404</th>
+                <td>Resource Not Found</td>
+              </tr>
+            </tbody>
+          </table>
+
+          ## Get Transaction Result ## {#sctn-get-transaction-result}
+
+          ### Request ### {#sctn-get-transaction-result-req}
+          <table class="complex data longlastcol">
+           <tr>
+             <th>Path</th>
+             <td>/api/user/fido/transaction-result/{svcTrId}</td>
+           </tr>
+           <tr>
+            <th>Method</th>
+            <td>GET</td>
+           </tr>
+           <tr>
+            <th>Path Parameters</th>
+            <td><div class="param">svcTrId (required)</div>
+              <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The Id of the Transaction</div></td>
+           </tr>
+
+           <tr>
+            <th>Return type</th>
+            <td>
+             <div class="return-type">
+               <a>FidoCommandResponse</a>
+             </div>
+            </td>
+           </tr>
+          </table>
+
+
+          <aside class="example">
+          <div class="example-data-content-type">Content-Type: application/json</div>
+            <table>
+              <thead>
+                <th>Request</th>
+                <th>Response</th>
+              </thead>
+              <tbody>
+                <tr>
+                <td>
+                <code>curl -X GET  <host>/api/user/fido/transaction-result/aaxddgfhjhgggddd</code>
+                </td>
+                <td>
+                  <code>
+                              {
+                      "credentialId": "string",
+                      "credentialSchemaId": "string",
+                      "CredentialSchemaVersion": "string",
+                      "credentialType": "string",
+                      "issuedToEntityDID": "string",
+                      "issuedToEntityDA": "string",
+                      "issuedEntityRole": "Issuer - DAP",
+                      "active": true,
+                      "issuedDate": "2021-01-28T01:14:54.546Z",
+                      "issuingEntityDID": "string",
+                      "issuingEntityDA": "string",
+                      "issuingEntityRole": "Issuer",
+                      "revoked": true,
+                      "revokedDate": "2021-01-28T01:14:54.546Z",
+                      "revokingEntityDID": "string",
+                      "revokingEntityDA": "string",
+                      "revokingEntityRole": "Issuer",
+                      "dapDID": "string",
+                      "dapDA": "string",
+                      "createdBy": "string",
+                      "createdDate": "2021-01-28T01:14:54.546Z"
+                    }
+                    </code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </aside>
+
+
+
+          ### Produces ### {#sctn-get-transaction-result-prod}
+          This API call produces the following media types according to the Accept request header;
+          the media type will be conveyed by the Content-Type response header.
+
+          * <pre><code>*/*</code></pre>
+
+
+          ### Responses ### {#sctn-get-transaction-result-resp}
+          <table class="complex data longlastcol">
+              <thead>
+                <th>Status</th>
+                <th>Description</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>200</th>
+                  <td>OK Returns <a>FidoCommandResponse</a> </td>
+                </tr>
+                <tr>
+                  <th>401</th>
+                  <td>Unauthorized Access</td>
+                </tr>
+                <tr>
+                  <th>403</th>
+                  <td>Forbidden Access</td>
+                </tr>
+                <tr>
+                  <th>404</th>
+                  <td>Resource Not Found</td>
+                </tr>
+              </tbody>
+            </table>
+
+            ## Get Transaction Status ## {#sctn-get-transaction-status}
+
+            ### Request ### {#sctn-get-transaction-status-req}
+            <table class="complex data longlastcol">
+             <tr>
+               <th>Path</th>
+               <td>/api/user/fido/transaction-status/{svcTrId}</td>
+             </tr>
+             <tr>
+              <th>Method</th>
+              <td>GET</td>
+             </tr>
+             <tr>
+              <th>Path Parameters</th>
+              <td><div class="param">svcTrId (required)</div>
+                <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The Id of the Transaction</div></td>
+             </tr>
+
+             <tr>
+              <th>Return type</th>
+              <td>
+               <div class="return-type">
+                 <a>FidoCommandResponse</a>
+               </div>
+              </td>
+             </tr>
+            </table>
+
+
+            <aside class="example">
+            <div class="example-data-content-type">Content-Type: application/json</div>
+              <table>
+                <thead>
+                  <th>Request</th>
+                  <th>Response</th>
+                </thead>
+                <tbody>
+                  <tr>
+                  <td>
+                  <code>curl -X GET  <host>/api/user/fido/transaction-status/aaxddgfhjhgggddd</code>
+                  </td>
+                  <td>
+                    <code>
+                                {
+                        "credentialId": "string",
+                        "credentialSchemaId": "string",
+                        "CredentialSchemaVersion": "string",
+                        "credentialType": "string",
+                        "issuedToEntityDID": "string",
+                        "issuedToEntityDA": "string",
+                        "issuedEntityRole": "Issuer - DAP",
+                        "active": true,
+                        "issuedDate": "2021-01-28T01:14:54.546Z",
+                        "issuingEntityDID": "string",
+                        "issuingEntityDA": "string",
+                        "issuingEntityRole": "Issuer",
+                        "revoked": true,
+                        "revokedDate": "2021-01-28T01:14:54.546Z",
+                        "revokingEntityDID": "string",
+                        "revokingEntityDA": "string",
+                        "revokingEntityRole": "Issuer",
+                        "dapDID": "string",
+                        "dapDA": "string",
+                        "createdBy": "string",
+                        "createdDate": "2021-01-28T01:14:54.546Z"
+                      }
+                      </code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </aside>
+
+
+
+            ### Produces ### {#sctn-get-transaction-status-prod}
+            This API call produces the following media types according to the Accept request header;
+            the media type will be conveyed by the Content-Type response header.
+
+            * <pre><code>*/*</code></pre>
+
+
+            ### Responses ### {#sctn-get-transaction-status-resp}
+            <table class="complex data longlastcol">
+                <thead>
+                  <th>Status</th>
+                  <th>Description</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>200</th>
+                    <td>OK Returns <a>FidoCommandResponse</a> </td>
+                  </tr>
+                  <tr>
+                    <th>401</th>
+                    <td>Unauthorized Access</td>
+                  </tr>
+                  <tr>
+                    <th>403</th>
+                    <td>Forbidden Access</td>
+                  </tr>
+                  <tr>
+                    <th>404</th>
+                    <td>Resource Not Found</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+
+  # Models # {#sctn-models}
+
+  ## <dfn>DigitalAddress</dfn> ## {#sctn-model-da}
+    <table class="complex data longlastcol">
+      <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>entityDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>entityDigitalAddress</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>entityRole</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Issuer</li>
+              <li>ServiceProvider</li>
+              <li>DAP</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>primaryHash</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>secondaryHash</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Active</li>
+              <li>Pending </li>
+              <li>Inactive</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>createdBy</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>createdDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+  ## <dfn>DigitalAddressCriteria</dfn> ## {#sctn-model-dac}
+    <table class="complex data longlastcol">
+      <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>entityDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>entityDigitalAddress</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>entityRole</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Issuer</li>
+              <li>ServiceProvider</li>
+              <li>DAP</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Active</li>
+              <li>Pending </li>
+              <li>Inactive</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>createdBy</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>fromDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>toDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    ## <dfn>CredentialSchema</dfn> ## {#sctn-model-credential-schema}
+    <table class="complex data longlastcol">
+      <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>credentialSchemaId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>version</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>description</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>published</td>
+          <td>Boolean</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>publishedDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>publishingEntityDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>publishingEntityRole</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Issuer</li>
+              <li>DAP</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>revoked</td>
+          <td>Boolean</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>revokedDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>revokingEntityDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>revokingEntityRole</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Issuer</li>
+              <li>DAP</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>createdBy</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>createdDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    ## <dfn>CredentialCriteria</dfn> ## {#sctn-model-credential-criteria}
+    <table class="complex data longlastcol">
+      <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>credentialSchemaId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>credentialId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>userDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>verifierDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>issuingEntityRole</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Issuer</li>
+              <li>DAP</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>active</td>
+          <td>Boolean</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>fromDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>toDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>createdBy</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    ## <dfn>CredentialMetadata</dfn> ## {#sctn-model-credential-metadata}
+    <table class="complex data longlastcol">
+      <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>credentialId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>credentialSchemaId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>credentialSchemaVersion</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>issuedEntityDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>issuedEntityDA</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>issuedEntityRole</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Issuer</li>
+              <li>DAP</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>issuedDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>issuingEntityDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>issuingEntityDA</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>issuingEntityRole</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Issuer</li>
+              <li>DAP</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>active</td>
+          <td>Boolean</td>
+          <td></td>
+        </tr>
+
+
+        <tr>
+          <td>revoked</td>
+          <td>Boolean</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>revokedDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>revokingEntityDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>revokingEntityDA</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>revokingEntityRole</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Issuer</li>
+              <li>DAP</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>dapDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>dapDA</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>createdBy</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>createdDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    ## <dfn>CredentialMetadataCriteria</dfn> ## {#sctn-model-credential-metadata-criteria}
+    <table class="complex data longlastcol">
+      <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>issuingEntityDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>issuingEntityRole</td>
+          <td>Enum</td>
+          <td>
+            <ul>
+              <li>Issuer</li>
+              <li>DAP</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>verifierDID</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>credentialId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>credentialSchemaId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>active</td>
+          <td>Boolean</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>createdBy</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>fromDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>toDate</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    ## <dfn>FidoCommandRequest</dfn> ## {#sctn-model-fido-command-request}
+    <table class="complex data longlastcol">
+      <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>appId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>deviceId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>loginId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>packageName</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    ## <dfn>FidoCommandResponse</dfn> ## {#sctn-model-fido-command-response}
+    <table class="complex data longlastcol">
+      <thead>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>deviceId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>expireTime</td>
+          <td>DateTime format: date-time</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>isRegistered</td>
+          <td>Boolean</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>loginId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>opURL</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>protocol</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>resultCode</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>resultMsg</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>siteId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>svcId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>svcTrId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>trId</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>trStatus</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>trStatusMsg</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+
+        </tbody>
+      </table>

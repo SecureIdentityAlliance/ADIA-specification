@@ -8,6 +8,8 @@ Status: ED
 Group: fido
 URL:
 Editor: Rolf Lindemann, rolf@noknok.com
+Editor: Kiran Addepalli, kiran@digitaltrust.net
+
 Abstract: The API surface of a Global Architecture for Digital IDentity (GADI)
 Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
@@ -157,7 +159,7 @@ For an overview of the GADI system, see [[!GADI-Overview]].
 <table class="complex data longlastcol">
  <tr>
    <th>Path</th>
-   <td>/api/directorydigital-address/search</td>
+   <td>/api/directory/digital-address/search</td>
  </tr>
  <tr>
   <th>Method</th>
@@ -1154,5 +1156,3 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       </tr>
     </tbody>
   </table>
-
-

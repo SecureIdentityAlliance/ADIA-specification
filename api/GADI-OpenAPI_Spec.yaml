@@ -1,0 +1,361 @@
+openapi: 3.0.1
+info:
+  title: GADI API
+  description: GADI API documentation
+  version: 1.0.0
+servers:
+- url: gadi-service.stage.digitaltrust.net/
+tags:
+- name: directory-resource
+  description: Digital Address Resource
+paths:
+  /api/directory/digital-address:
+    post:
+      tags:
+      - directory-resource
+      summary: Save Digital Address
+      operationId: save-digital-address
+      requestBody:
+        description: Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Directory Service
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigitalAddress'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DigitalAddress'
+        201:
+          description: Digital Address saved successfully
+          content: {}
+        401:
+          description: Unauthorized Access
+          content: {}
+        403:
+          description: Forbidden Access
+          content: {}
+        404:
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/directory/digital-address/search:
+    post:
+      tags:
+      - directory-resource
+      summary: Lookup if a Digital Address exists in the Directory
+      operationId: lookup-digital-address
+      requestBody:
+        description: A criteria based search consisting of one or more attributes. Returns matching Digital Address records from the Directory Service.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigitalAddressCriteria'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DigitalAddress'
+        401:
+          description: Unauthorized Access
+          content: {}
+        403:
+          description: Forbidden Access
+          content: {}
+        404:
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/directory/digital-address/{digitalAddress}:
+    get:
+      tags:
+      - directory-resource
+      summary: Get By DigitalAddress
+      operationId: get-digital-address
+      parameters:
+      - name: digitalAddress
+        in: path
+        description: The Digital Address
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DigitalAddress'
+        401:
+          description: Unauthorized Access
+          content: {}
+        403:
+          description: Forbidden Access
+          content: {}
+        404:
+          description: Digital Address Not Found
+          content: {}
+      deprecated: false
+  /api/directory/daps:
+    get:
+      tags:
+      - directory-resource
+      summary: Get all registered DAPs
+      operationId: get-all-daps
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DigitalAddress'
+        401:
+          description: Unauthorized Access
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+    post:
+      tags:
+      - directory-resource
+      summary: Create DAP
+      operationId: create-dap
+      requestBody:
+        description: dap
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigitalAddress'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DigitalAddress'
+        201:
+          description: DAP Created
+          content: {}
+        401:
+          description: Unauthorized Access
+          content: {}
+        403:
+          description: Forbidden Access
+          content: {}
+        404:
+          description: DAP Not Found
+          content: {}
+      deprecated: false
+      x-codegen-request-body-name: dap
+  /api/directory/daps/{dapId}/issuers:
+    get:
+      tags:
+      - directory-resource
+      summary: Get all registered Issuers for a DAP
+      operationId: get-issues-for-dap
+      parameters:
+      - name: dapId
+        in: path
+        description: The identifier for the DAP
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DigitalAddress'
+        401:
+          description: Unauthorized Access
+          content: {}
+        403:
+          description: Forbidden Access
+          content: {}
+        404:
+          description: DAP Not Found
+          content: {}
+      deprecated: false
+    post:
+      tags:
+      - directory-resource
+      summary: Create an Issuer for a DAP
+      operationId: create-issuer-for-dap
+      parameters:
+      - name: dapId
+        in: path
+        description: The identifier for the DAP
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: dap
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigitalAddress'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DigitalAddress'
+        201:
+          description: Issuer Created
+          content: {}
+        401:
+          description: Unauthorized Access
+          content: {}
+        403:
+          description: Forbidden Access
+          content: {}
+        404:
+          description: DAP Not Found
+          content: {}
+      deprecated: false
+  /api/directory/daps/{dapId}/service_providers:
+    get:
+      tags:
+      - directory-resource
+      summary: Get all registered Service Providers for a DAP
+      operationId: get-serviceproviders-for-dap
+      parameters:
+      - name: dapId
+        in: path
+        description: The identifier for the DAP
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DigitalAddress'
+        401:
+          description: Unauthorized Access
+          content: {}
+        403:
+          description: Forbidden Access
+          content: {}
+        404:
+          description: DAP Not Found Access
+          content: {}
+      deprecated: false
+    post:
+      tags:
+      - directory-resource
+      summary: Create a ServiceProvider for a DAP
+      operationId: create-serviceprovider-for-dap
+      parameters:
+      - name: dapId
+        in: path
+        description: The identifier for the DAP
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: dap
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigitalAddress'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DigitalAddress'
+        201:
+          description: Service Provider Created
+          content: {}
+        401:
+          description: Unauthorized Access
+          content: {}
+        403:
+          description: Forbidden Access
+          content: {}
+        404:
+          description: DAP Not Found
+          content: {}
+      deprecated: false
+components:
+  schemas:
+    DigitalAddress:
+      title: DigitalAddress
+      type: object
+      properties:
+        entityDID:
+          type: string
+        entityDigitalAddress:
+          type: string
+        entityRole:
+          type: string
+          enum:
+          - Issuer
+          - ServiceProvider
+          - DAP
+        primaryHash:
+          type: string
+        secondaryHash:
+          type: string
+        status:
+          type: string
+          enum:
+            - Active
+            - Pending
+            - InActive
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+    DigitalAddressCriteria:
+      title: DigitalAddressCriteria
+      type: object
+      properties:
+        entityDID:
+          type: string
+        entityDigitalAddress:
+          type: string
+        entityRole:
+          type: string
+          enum:
+          - Issuer
+          - ServiceProvider
+          - DAP
+        active:
+          type: boolean
+        createdBy:
+          type: string
+        fromDate:
+          type: string
+          format: date
+        toDate:
+          type: string
+          format: date
