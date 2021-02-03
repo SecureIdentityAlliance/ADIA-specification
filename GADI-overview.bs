@@ -85,7 +85,8 @@ This specification provides a overview of the GADI system.
     :: Public Key (PK) and Private Key (SK) related to the <a>ISSUER_ID</a>.
 
     :  <dfn>SP</dfn>
-    :: Service Provider that verifies <a>VC</a>s.
+    :: Service Provider that verifies <a>VC</a>s.  In the
+        Decentralized Identity community it is typically called Verifier.
 
     :  <dfn>SP_ID</dfn>
     :: Service Provider IDentity, i.e. the <a>DID</a> style identifier for the <a>SP</a>.
@@ -369,6 +370,37 @@ Issue: Need to specify what functionality/certification is needed to call an app
             <td>
             </td>
         </tr>
+        <tr>
+            <td>25</td>
+            <td>
+	      Organizational participants, including issuers, verifiers, and service providers require a publicly
+	         resolvable DID
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>
+	    Regional directory services include the User related information,
+	    the global directory only includes information on issuers,
+	    service providers abd interchanges.
+	    So compliance can be managed on a regional level.
+	    </td>		
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>27</td>
+            <td>
+	    Logically, the DAA is provided by The Agency - not the Issuer.
+	    However, the Issuer could still provide the DAA on behalf
+	    of The Agency.
+	    </td>		
+            <td>
+            </td>
+        </tr>
+	
     </table>
 </figure>
 
