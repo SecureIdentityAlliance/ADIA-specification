@@ -28,11 +28,19 @@ spec:webidl; type:interface; text:Promise
 <!-- only put content here if you want a custom status of document not
   the specification-maturity-appropriate boilerplate -->
 
-# Introduction # {#sctn-intro}
-This specification provides a overview of the GADI system.
+# Global Architecture for Digital Identity # {#sctn-gadi}
+The Global Architecture for Digital Identity (GADI) allows users to
+share credentials that have been asserted by an issuer with service
+providers in a verifiable manner.
 
+## Ecosystem Overview ## {#sctn-ecosystem-overview}
 
-# Entities # {#sctn-entities}
+<figure id="fig-gadi-overview">
+    <img src="images/GADI-overview.png"/>
+    <figcaption>GADI Overview</figcaption>
+</figure>
+
+## Entities ## {#sctn-entities}
 
 <dl>
     : <dfn>Cloud Agent</dfn>
@@ -53,6 +61,7 @@ This specification provides a overview of the GADI system.
 
     :  <dfn>DAP</dfn>
     :: Digital Address Provider.  See [[DAP-API]] for the DAP API.
+Issue: To be renamed to The Agency.    
 
     :  <dfn>DAP_ID</dfn>
     :: <a>DAP</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
@@ -114,6 +123,110 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
     :: Metadata of a <a>VC</a>, i.e. <a>DID</a>, VC Schema Name, VC Schema Friendly Name
 
 </dl>
+
+# Inter-domain Communication # {#sctn-interd-comm}
+
+# Security Considerations # {#sctn-security-considerations}
+
+
+# Operations # {#sctn-ops}
+
+## User Onboarding to First Issuer ## {#sctn-onboarding-1st-issuer}
+
+<figure id="fig-onboarding-1st-issuer">
+    <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg"/>
+    <figcaption>User Onboarding to First Issuer</figcaption>
+</figure>
+
+Note: <a>HIDA</a> is PII and might need to be erased on account deletion (see User <a>DAP</a> Account Deletion)
+
+Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we store the PK in <a>HomeDAP</a> or GADI??  When will that key be created and by Whom?
+
+
+## Verifiable Credential Issuance ## {#sctn-vc-issuance-1}
+
+<figure id="fig-vc-issuance-option-1">
+    <img src="sequence-diagrams/VC-Issuance-Option-1.svg"/>
+    <figcaption>Verifiable Credential Issuance (Option 1)</figcaption>
+</figure>
+
+  <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask GADI via <a>DAP</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
+
+Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
+
+
+## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
+
+Goal of this operation is to provide some identity attributes related to the user with the Service Provider (<a>SP</a>).
+  These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
+  We always use <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
+
+We distinguish 2 different types of <a>verifiable credential</a>s:
+1. Credentials that include sufficient personal identifiable information to uniquely identify the user and
+2. Credentials that don't. For example just stating that the user is older than 21.
+
+In both cases, a public key is typically linked to the <a>verifiable credential</a> via the subject's DID document (see example 2 in [[did-core]]).
+  It is used as a proxy for the user, meaning anyone that can proof access of the related private key is assumed to be the user.
+  Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
+  temporary use key, that is included in order to allow the <a>SP</a> to detect which subject the attributes relate to.
+
+Issue: This is true for case 1, but how does it work in case 2?
+
+<figure id="fig-vc-presentation-and-verification-option-1">
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
+    <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
+</figure>
+
+Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP</a>/GADI system.
+
+Issue: Having the <a>DAA</a> authenticate with FIDO to <a>Cloud Agent</a> either requires second FIDO credential (tied to <a>Cloud Agent</a>) or it requires the <a>Cloud Agent</a> to allow use of the <a>DAP</a> related FIDO credential
+
+Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
+
+
+## User Onboarding Attempt to 2nd Issuer ## {#sctn-onboarding-2nd-issuer}
+
+<figure id="fig-onboarding-2nd-issuer">
+    <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg"/>
+    <figcaption>User Onboarding to Second Issuer</figcaption>
+</figure>
+
+
+## User DAP Account Deletion ## {#sctn-user-dap-account-deletion}
+
+<figure id="fig-user-dap-account-deletion">
+    <img src="sequence-diagrams/User-DAP-Account-Deletion.svg"/>
+    <figcaption>User DAP Account Deletion</figcaption>
+</figure>
+
+Issue: <a>Cloud Agent</a> needs to be added - it maintains cryptographic keys on behalf on the user
+
+Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
+
+Issue: Do we need an issuer-triggered account deletion function as well?
+
+Issue: Is it expected that VCs are not deleted?
+
+Issue: How could a user without a working <a>DAA</a> instance trigger account deletion?
+
+
+## User Bootstraps New DAA Instance "Lost Phone" ## {#sctn-user-bootstraps-new-daa-instance-1}
+
+<figure id="fig-user-bootstraps-new-daa-instance">
+    <img src="sequence-diagrams/User-bootstrap-new-DAA-instance.svg"/>
+    <figcaption>User Bootstraps New DAA Instance "Lost Phone"</figcaption>
+</figure>
+
+Issue: requiring ID Proofing looks expensive here. Are there methods without that (that provide a similar security level)?
+
+Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
+
+
+# Data Schema # {#sctn-data-schema}
+
+# APIs # {#sctn-apis}
+
+
 
 # GADI Requirements # {#sctn-reqs}
 <figure id="table-security-privacy-goals" class="table">
@@ -403,104 +516,6 @@ Issue: Need to specify what functionality/certification is needed to call an app
 	
     </table>
 </figure>
-
-
-# GADI Operations # {#sctn-ops}
-
-
-## User Onboarding to First Issuer ## {#sctn-onboarding-1st-issuer}
-
-<figure id="fig-onboarding-1st-issuer">
-    <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg"/>
-    <figcaption>User Onboarding to First Issuer</figcaption>
-</figure>
-
-Note: <a>HIDA</a> is PII and might need to be erased on account deletion (see User <a>DAP</a> Account Deletion)
-
-Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we store the PK in <a>HomeDAP</a> or GADI??  When will that key be created and by Whom?
-
-
-## Verifiable Credential Issuance ## {#sctn-vc-issuance-1}
-
-<figure id="fig-vc-issuance-option-1">
-    <img src="sequence-diagrams/VC-Issuance-Option-1.svg"/>
-    <figcaption>Verifiable Credential Issuance (Option 1)</figcaption>
-</figure>
-
-  <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask GADI via <a>DAP</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
-
-Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
-
-
-## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
-
-Goal of this operation is to provide some identity attributes related to the user with the Service Provider (<a>SP</a>).
-  These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
-  We always use <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
-
-We distinguish 2 different types of <a>verifiable credential</a>s:
-1. Credentials that include sufficient personal identifiable information to uniquely identify the user and
-2. Credentials that don't. For example just stating that the user is older than 21.
-
-In both cases, a public key is typically linked to the <a>verifiable credential</a> via the subject's DID document (see example 2 in [[did-core]]).
-  It is used as a proxy for the user, meaning anyone that can proof access of the related private key is assumed to be the user.
-  Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
-  temporary use key, that is included in order to allow the <a>SP</a> to detect which subject the attributes relate to.
-
-Issue: This is true for case 1, but how does it work in case 2?
-
-<figure id="fig-vc-presentation-and-verification-option-1">
-    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
-    <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
-</figure>
-
-Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP</a>/GADI system.
-
-Issue: Having the <a>DAA</a> authenticate with FIDO to <a>Cloud Agent</a> either requires second FIDO credential (tied to <a>Cloud Agent</a>) or it requires the <a>Cloud Agent</a> to allow use of the <a>DAP</a> related FIDO credential
-
-Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
-
-
-## User Onboarding Attempt to 2nd Issuer ## {#sctn-onboarding-2nd-issuer}
-
-<figure id="fig-onboarding-2nd-issuer">
-    <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg"/>
-    <figcaption>User Onboarding to Second Issuer</figcaption>
-</figure>
-
-
-## User DAP Account Deletion ## {#sctn-user-dap-account-deletion}
-
-<figure id="fig-user-dap-account-deletion">
-    <img src="sequence-diagrams/User-DAP-Account-Deletion.svg"/>
-    <figcaption>User DAP Account Deletion</figcaption>
-</figure>
-
-Issue: <a>Cloud Agent</a> needs to be added - it maintains cryptographic keys on behalf on the user
-
-Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
-
-Issue: Do we need an issuer-triggered account deletion function as well?
-
-Issue: Is it expected that VCs are not deleted?
-
-Issue: How could a user without a working <a>DAA</a> instance trigger account deletion?
-
-
-## User Bootstraps New DAA Instance "Lost Phone" ## {#sctn-user-bootstraps-new-daa-instance-1}
-
-<figure id="fig-user-bootstraps-new-daa-instance">
-    <img src="sequence-diagrams/User-bootstrap-new-DAA-instance.svg"/>
-    <figcaption>User Bootstraps New DAA Instance "Lost Phone"</figcaption>
-</figure>
-
-Issue: requiring ID Proofing looks expensive here. Are there methods without that (that provide a similar security level)?
-
-Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
-
-
-
-# Security and Privacy Considerations # {#sctn-security-privacy-considerations}
 
 
 
