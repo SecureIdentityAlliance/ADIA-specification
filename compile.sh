@@ -12,11 +12,11 @@ for i in *.bs; do
 done
 
 # Create a fresh directory 'out'
-rm -Rf out
-mkdir -p out
+rm -Rf dist
+mkdir -p dist
 
 # Move all the generated HTML files to the output directory
 
-if [ -d out ]; then
-    mv *.html out
+if [ -d dist ]; then
+    mv *.html dist
 fi
