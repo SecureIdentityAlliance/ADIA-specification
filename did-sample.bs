@@ -57,4 +57,3 @@ bikeshed/bikeshed/config/setup.py.
 
 An <a href="https://github.com/tabatkins/bikeshed/pull/1131">issue</a> can be filed in bikeshed github to get the respective values
 for the DID Alliance added.
-
