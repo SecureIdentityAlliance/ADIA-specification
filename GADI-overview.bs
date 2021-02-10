@@ -140,6 +140,10 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
 
 ## Trust Model ## {#sctn-trust-model}
 
+Issue: Describe what is verified by whom, what kind of objects
+   ("credentials") are being created and what kind of identifiers they
+   bind together (e.g. public keys and digital addresses, ...).
+
 
 # Inter-domain Communication # {#sctn-interd-comm}
 
