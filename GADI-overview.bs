@@ -138,6 +138,9 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
 
 </dl>
 
+## Trust Model ## {#sctn-trust-model}
+
+
 # Inter-domain Communication # {#sctn-interd-comm}
 
 # Security Considerations # {#sctn-security-considerations}
