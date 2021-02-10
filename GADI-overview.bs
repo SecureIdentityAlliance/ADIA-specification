@@ -235,6 +235,8 @@ Issue: requiring ID Proofing looks expensive here. Are there methods without tha
 
 Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 
+## User Changes Home-DAP ## {#sctn-user-changes-home-dap}
+
 
 # Data Schema # {#sctn-data-schema}
 
