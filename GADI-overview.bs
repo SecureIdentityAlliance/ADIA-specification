@@ -240,6 +240,8 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 
 # APIs # {#sctn-apis}
 
+# Certification # {#sctn-certification}
+
 
 
 # GADI Requirements # {#sctn-reqs}
