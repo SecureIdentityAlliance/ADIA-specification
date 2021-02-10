@@ -47,6 +47,11 @@ providers in a verifiable manner.
     :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
          eIDAS Trust Service Providers (https://ec.europa.eu/digital-single-market/en/trust-services).
 
+    : <dfn>Credential Broker</dfn>
+    ::
+
+Issue: TODO    
+
     : <dfn>DA</dfn>
     :: Human readabe <dfn>Digital Address</dfn> of the <a>User</a> (e.g. john.doe@issuer.dap.gadi.org).
 
@@ -59,9 +64,9 @@ providers in a verifiable manner.
     :  <dfn>DAA</dfn>
     :: Digital Address Application, e.g. Android App or iOS App that knows how to talk to the <a>DAP</a> on behalf of the <a>User</a>.
 
-    :  <dfn>DAP</dfn>
-    :: Digital Address Provider.  See [[DAP-API]] for the DAP API.
-Issue: To be renamed to The Agency.    
+    :  <dfn>DAP Agency</dfn> (formerly DAP)
+    :: Digital Address Provider Agency.  See [[DAP-API]] for the DAP
+        Agency API.  Multiple DAP Agencies can exist in the GADI "universe".
 
     :  <dfn>DAP_ID</dfn>
     :: <a>DAP</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
@@ -84,8 +89,15 @@ Issue: To be renamed to The Agency.
     :  <dfn>ID Attributes</dfn>
     :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
 
+    :  <dfn>Identity Escrow</dfn>
+    :: 
+
+Issue: TODO    
+
     :  <dfn>Issuer</dfn>
-    :: Issuer of <a>VC</a>s to users.  GADI supports multiple Issuers per <a>User</a>.
+    :: Issuer of <a>VC</a>s to users.  GADI supports multiple Issuers
+        per <a>User</a>.  Issuers use an <dfn>Issuer Agent</dfn> to
+        connect to the <a>DAP Agency</a>.
 
     :  <dfn>ISSUER_ID</dfn>
     :: Issuer IDentity, i.e. the <a>DID</a> style identifier for the <a>Issuer</a>.
@@ -94,8 +106,10 @@ Issue: To be renamed to The Agency.
     :: Public Key (PK) and Private Key (SK) related to the <a>ISSUER_ID</a>.
 
     :  <dfn>SP</dfn>
-    :: Service Provider that verifies <a>VC</a>s.  In the
-        Decentralized Identity community it is typically called Verifier.
+    :: <dfn>Service Provider</dfn> that verifies <a>VC</a>s.  In the
+         Decentralized Identity community it is typically called
+         Verifier. <a>Service Providers</a> use a <dfn>Service Provider Agent</dfn> to
+         connect to the <a>DAP Agency</a>, the <a>Credential Broker</a> and the <a>Identity Escrow</a>.
 
     :  <dfn>SP_ID</dfn>
     :: Service Provider IDentity, i.e. the <a>DID</a> style identifier for the <a>SP</a>.
