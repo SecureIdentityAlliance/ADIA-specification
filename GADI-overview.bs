@@ -6,8 +6,9 @@ Prepare for TR: true
 Level: 1
 Status: ED
 Group: fido
-URL: 
+URL:
 Editor: Rolf Lindemann, rolf@noknok.com
+Editor: Kiran Addepalli, kiran@digitaltrust.net
 Abstract: DID Alliance GADI Overview
 Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
@@ -266,7 +267,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
             <td>
 		The GADI Framework respects national laws and allows the <a>DAP</a>s to operate according to their local regulations.
  		This includes compliance to CCPA and GDPR.
-	    </td>		
+	    </td>
             <td>
 	        Local law is the basis for any business.
             </td>
@@ -276,7 +277,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
             <td>
 	      Users must have control on user credentials, i.e. no credentials are created or shared without the user's consent.
 	      This means, <a>DAP</a> asks for user consent and strongly authenticates the user.
-	    </td>		
+	    </td>
             <td>
 	      Data Privacy regulation & expectation
             </td>
@@ -285,7 +286,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
             <td>3</td>
             <td>
 	      Users have the ability to select a set of attributes verified by a specific issuer to be included in a specific credential.
-	    </td>		
+	    </td>
             <td>
 	      Data Privacy regulation & expectation.  If the user only wants to share a subset of the data that should be ok to the issuer.
             </td>
@@ -293,13 +294,13 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
         <tr>
             <td>4</td>
             <td>
-	      GADI doesn't make user tracking or collusion between Service Providers easier. 
+	      GADI doesn't make user tracking or collusion between Service Providers easier.
 	      If two <a>SP</a>s both received a credential that John Doe was born on date X in Y,
 	      then the two <a>SP</a>s could learn it is the very likely same user. But this has nothing to do with GADI.
 
 	      As a consequence, the <a>Digital Address</a> / <a>Trust Anchor</a> are NOT part of the credential.
-	      Credentials are in the W3C VC format [[!vc-data-model]] and are tied to a <a>DID</a>.  
-	    </td>		
+	      Credentials are in the W3C VC format [[!vc-data-model]] and are tied to a <a>DID</a>.
+	    </td>
             <td>
 	      GADI doesn't share correlation handles with <a>SP</a>s for privacy reasons.
             </td>
@@ -308,7 +309,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
             <td>5</td>
             <td>
 	      People who are not smartphone users must be part of the new Digital Identity ecosystem.
-	    </td>		
+	    </td>
             <td>
 	      A substantial part of the world's population belongs to this category.  This part is key for future growth opportunities
             </td>
@@ -318,7 +319,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
             <td>
 	      <a>Issuer</a>s must be in the value chain.  This means that users cannot share credentials issued by
 	      an issuer without allowing financial compensation for the issuer.
-	    </td>		
+	    </td>
             <td>
 	      This is one of the main GADI benefits compared to other approaches.
             </td>
@@ -328,7 +329,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
             <td>
 	      GADI enables a push model from the issuers where when there is change in credential status,
 	      latest credential information is what would be presented.
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -337,7 +338,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
             <td>
 	      <a>Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
 	      who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAP</a>) than the one this issuer is primarily using.
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -346,15 +347,15 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
             <td>
 	      There should be cross ledger value settlements for the issuers and may be
 	      some reward points for the issuers as Users assert their credentials and provide data.
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>10</td>
             <td>
-	      Onboard the user with a trusted Identity that is approved by an <a>Issuer</a> after proper Identity vetting 
-	    </td>		
+	      Onboard the user with a trusted Identity that is approved by an <a>Issuer</a> after proper Identity vetting
+	    </td>
             <td>
             </td>
         </tr>
@@ -364,12 +365,12 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
  	      It is possible for users to start their participation
 	      based on a low level identity assertion and increase
 	      that level over time.
-	      
+
 	      However, there is a minmum identity assertion specified
 	      by the GADI Governance Group. We need this to prevent
 	      user impersonation attacks through weak ID proofing methods.
 
-	    </td>		
+	    </td>
             <td>
 	      Many users don't have connections to a <a>SP</a> which has performed strong ID proofing today.
  	      But that might change over time.  We need to support such users.
@@ -381,7 +382,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 	      Each <a>DAP</a> provides one Single Digital Address App for the user to be able to access and control the
 	      Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
 	      user credentials on demand with user consent.
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -389,8 +390,8 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
             <td>13</td>
             <td>
 	      <a>Digital Address</a> (<a>DA</a>) is a Human readable string that is easy to use, that is associated with the Users <a>Trust Anchor</a>.
-	      This becomes that identifier that the user can provide to issuers to get the credentials issued.  
-	    </td>		
+	      This becomes that identifier that the user can provide to issuers to get the credentials issued.
+	    </td>
             <td>
             </td>
         </tr>
@@ -401,8 +402,8 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 	      and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
 	      push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
 	      different handles (Different Digital Addresses) that can be orchestrated between the user Device and <a>DAP</a> to
-	      present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.  
-	    </td>		
+	      present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.
+	    </td>
             <td>
             </td>
         </tr>
@@ -410,7 +411,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
             <td>15</td>
             <td>
 	      The GADI ledger is accessible to <a>DAP</a>s only.
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -420,7 +421,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 	      <a>Trust Anchor</a>s are generated randomly by the <a>HomeDAP</a>, such that collisions do not practically occur.
 	      See <a>Trust Anchor</a> Discussion below.
 	      (not clear, see 20)
-	    </td>		
+	    </td>
             <td>
 	      So that we only need to delete the relation between the <a>Trust Anchor</a> and any other PII when the user
 	      asks for account deletion (removal from GADI).
@@ -433,7 +434,7 @@ Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 	      or "the holder of this credential got vaccinated against X".
 
 Note: sometimes there are existing business processes which will convey PI/PII outside of GADI.
- 	    </td>		
+ 	    </td>
             <td>
 	      In the physical world we have those and for privacy reasons we should carry them over to the digital world.
             </td>
@@ -447,7 +448,7 @@ Note: sometimes there are existing business processes which will convey PI/PII o
 Note: they will likely need to store PII, i.e. information related to users
 
 Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credentials)
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -456,7 +457,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
             <td>
 	      GADI will store the <a>HomeDAP</a> Identifier (i.e. <a>HomeDAP_ID</a>) along with the user's <a>Trust Anchor</a>.
 	      So each <a>DAP</a> could ask GADI for the <a>HomeDAP</a> of a given user and would then directly talk to the user's <a>HomeDAP</a>.
-	    </td>		
+	    </td>
             <td>
 	      We need that for cross-<a>DAP</a> communications
             </td>
@@ -466,7 +467,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
             <td>
 	      We compute a Hash(firstname, last name, date of birth, country+city of birth) as either use this as
 	      <a>Trust Anchor</a> or as an attribute stored along with the <a>Trust Anchor</a> in GADI.
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -474,7 +475,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
             <td>21</td>
             <td>
 	      It shall  be possible to change the <a>HomeDAP</a> of a user (e.g. from <a>DAP</a>1 to <a>DAP</a>2).
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -482,7 +483,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
             <td>22</td>
             <td>
 	      <a>Issuer</a>s shouldn't learn the <a>SP</a> that verifies a credential.
-	    </td>		
+	    </td>
             <td>
 	      Privacy
             </td>
@@ -495,7 +496,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
 	      <a>Issuer</a>.
 	      As a consequence, the <a>SP</a> will learn who the
 	      <a>Issuer</a> of that <a>VC</a> is.
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -504,7 +505,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
             <td>
 
 Issue: Need to specify what functionality/certification is needed to call an application a GADI "Digital Address Application".
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -541,12 +542,5 @@ Issue: Need to specify what functionality/certification is needed to call an app
 	
     </table>
 </figure>
-
-
-
-
-
-
-
 
 

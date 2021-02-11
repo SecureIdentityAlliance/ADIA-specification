@@ -2,5 +2,6 @@
 # Matching patterns will be excluded Git commits
 ######################
 **/*.html
+out/**
 *.lock
 *.log
