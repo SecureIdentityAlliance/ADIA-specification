@@ -839,9 +839,9 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
 ## Directory Resource ## {#sctn-directory-resource}
 
   <!-- Start: Create Digital address -->
-### Create Digital Address ### {#sctn-create-da}
+### Create Digital Address ### {#sctn-gadi-create-da}
 
-#### Request #### {#sctn-create-da-req}
+#### Request #### {#sctn-gadi-create-da-req}
 
 <table class="complex data longlastcol">
  <tr>
@@ -912,14 +912,14 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
   </table>
 </aside>
 
-#### Produces #### {#sctn-create-da-prod}
+#### Produces #### {#sctn-gadi-create-da-prod}
 
   This API call produces the following media types according to the Accept request header;
   the media type will be conveyed by the Content-Type response header.
 
 * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-create-da-resp}
+#### Responses #### {#sctn-gadi-create-da-resp}
 
 <table class="complex data longlastcol">
     <thead>
@@ -953,9 +953,9 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
 <!-- End: Create Digital address -->
 
 <!-- Start: Lookup Digital address -->
-### Search Digital Address Using a Criteria ### {#sctn-lookup-da}
+### Search Digital Address Using a Criteria ### {#sctn-gadi-lookup-da}
 
-#### Request #### {#sctn-lookup-da-req}
+#### Request #### {#sctn-gadi-lookup-da-req}
 
 <table class="complex data longlastcol">
  <tr>
@@ -1025,13 +1025,13 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
   </table>
 </aside>
 
-#### Produces #### {#sctn-lookup-da-prod}
+#### Produces #### {#sctn-gadi-lookup-da-prod}
   This API call produces the following media types according to the <span class="header">Accept</span> request header;
   the media type will be conveyed by the <span class="header">Content-Type</span> response header.
 
   * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-lookup-da-resp}
+#### Responses #### {#sctn-gadi-lookup-da-resp}
 
 <table class="complex data longlastcol">
     <thead>
@@ -1064,9 +1064,9 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
 
 
 <!-- Start: Get Digital address -->
-### Get Digital Address ### {#sctn-get-da}
+### Get Digital Address ### {#sctn-gadi-get-da}
 
-#### Request #### {#sctn-get-da-req}
+#### Request #### {#sctn-gadi-get-da-req}
 
 <table class="complex data longlastcol">
  <tr>
@@ -1127,13 +1127,13 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
 </table>
 </aside>
 
-#### Produces #### {#sctn-get-da-prod}
+#### Produces #### {#sctn-gadi-get-da-prod}
 This API call produces the following media types according to the <span class="header">Accept</span> request header;
 the media type will be conveyed by the <span class="header">Content-Type</span> response header.
 
 * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-get-da-resp}
+#### Responses #### {#sctn-gadi-get-da-resp}
 
 <table class="complex data longlastcol">
   <thead>
@@ -1160,9 +1160,9 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 <!-- Start: Get All DAPs  -->
 
-### Get All DAPs ### {#sctn-get-all-daps}
+### Get All DAPs ### {#sctn-gadi-get-all-daps}
 
-#### Request #### {#sctn-get-all-daps-req}
+#### Request #### {#sctn-gadi-get-all-daps-req}
 
 <table class="complex data longlastcol">
   <tbody>
@@ -1231,13 +1231,13 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 </table>
 </aside>
 
-#### Produces #### {#sctn-get-all-daps-prod}
+#### Produces #### {#sctn-gadi-get-all-daps-prod}
 This API call produces the following media types according to the <span class="header">Accept</span> request header;
 the media type will be conveyed by the <span class="header">Content-Type</span> response header.
 
  * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-get-all-daps-resp}
+#### Responses #### {#sctn-gadi-get-all-daps-resp}
 
 <table class="complex data longlastcol">
   <thead>
@@ -1263,9 +1263,9 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 <!-- End: Get All DAPs -->
 
 <!-- Start: Get Issuers for a DAP -->
-### Get Issuers for a DAP ### {#sctn-get-issuers-for-dap}
+### Get Issuers for a DAP ### {#sctn-gadi-get-issuers-for-dap}
 
-#### Request #### {#sctn-get-issuers-for-dap-req}
+#### Request #### {#sctn-gadi-get-issuers-for-dap-req}
 
 <table class="complex data longlastcol">
   <tbody>
@@ -1342,13 +1342,13 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 </table>
 </aside>
 
-#### Produces #### {#sctn-get-issuers-for-dap-prod}
+#### Produces #### {#sctn-gadi-get-issuers-for-dap-prod}
 This API call produces the following media types according to the <span class="header">Accept</span> request header;
 the media type will be conveyed by the <span class="header">Content-Type</span> response header.
 
 * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-get-issuers-for-dap-resp}
+#### Responses #### {#sctn-gadi-get-issuers-for-dap-resp}
 
 <table class="complex data longlastcol">
 <table>
@@ -1375,9 +1375,9 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 <!-- End: Get Issuers for a DAP-->
 
 <!-- Start: Get Service Providers for a DAP -->
-### Get Service Providers for a DAP ### {#sctn-get-sps-for-dap}
+### Get Service Providers for a DAP ### {#sctn-gadi-get-sps-for-dap}
 
-#### Request #### {#sctn-get-sps-for-dap-req}
+#### Request #### {#sctn-gadi-get-sps-for-dap-req}
 
 <table class="complex data longlastcol">
   <tbody>
@@ -1454,13 +1454,13 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 </table>
 </aside>
 
-#### Produces #### {#sctn-get-sps-for-dap-prod}
+#### Produces #### {#sctn-gadi-get-sps-for-dap-prod}
 This API call produces the following media types according to the <span class="header">Accept</span> request header;
 the media type will be conveyed by the <span class="header">Content-Type</span> response header.
 
 * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-get-sps-for-dap-resp}
+#### Responses #### {#sctn-gadi-get-sps-for-dap-resp}
 
 <table class="complex data longlastcol">
   <thead>
@@ -1487,9 +1487,9 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 
 <!-- Start: Create a DAP -->
-### Create a DAP ### {#sctn-create-dap}
+### Create a DAP ### {#sctn-gadi-create-dap}
 
-#### Request #### {#sctn-create-dap-req}
+#### Request #### {#sctn-gadi-create-dap-req}
 
 <table class="complex data longlastcol">
   <tbody>
@@ -1562,13 +1562,13 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 </table>
 </aside>
 
-#### Produces #### {#sctn-create-dap-prod}
+#### Produces #### {#sctn-gadi-create-dap-prod}
 This API call produces the following media types according to the <span class="header">Accept</span> request header;
 the media type will be conveyed by the <span class="header">Content-Type</span> response header.
 
 * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-create-dap-resp}
+#### Responses #### {#sctn-gadi-create-dap-resp}
 
 <table class="complex data longlastcol">
   <thead>
@@ -1603,9 +1603,9 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 
 <!-- Start: Create an Issuer -->
-### Create an Issuer ### {#sctn-create-issuer}
+### Create an Issuer ### {#sctn-gadi-create-issuer}
 
-#### Request #### {#sctn-create-issuer-req}
+#### Request #### {#sctn-gadi-create-issuer-req}
 
 <table class="complex data longlastcol">
   <tbody>
@@ -1678,13 +1678,13 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 </table>
 </aside>
 
-#### Produces #### {#sctn-create-issuer-prod}
+#### Produces #### {#sctn-gadi-create-issuer-prod}
 This API call produces the following media types according to the <span class="header">Accept</span> request header;
 the media type will be conveyed by the <span class="header">Content-Type</span> response header.
 
 * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-create-issuer-resp}
+#### Responses #### {#sctn-gadi-create-issuer-resp}
 
 <table class="complex data longlastcol">
   <thead>
@@ -1719,9 +1719,9 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 
 <!-- Start: Create a Service Provider -->
-### Create a Service Provider ### {#sctn-create-sp}
+### Create a Service Provider ### {#sctn-gadi-create-sp}
 
-#### Request #### {#sctn-create-sp-req}
+#### Request #### {#sctn-gadi-create-sp-req}
 
 <table class="complex data longlastcol">
   <tbody>
@@ -1795,13 +1795,13 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 </aside>
 
 
-#### Produces #### {#sctn-create-sp-prod}
+#### Produces #### {#sctn-gadi-create-sp-prod}
 This API call produces the following media types according to the <span class="header">Accept</span> request header;
 the media type will be conveyed by the <span class="header">Content-Type</span> response header.
 
 * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-create-sp-resp}
+#### Responses #### {#sctn-gadi-create-sp-resp}
 
 <table class="complex data longlastcol">
   <thead>
@@ -4262,6 +4262,10 @@ the media type will be conveyed by the Content-Type response header.
 
 
 # GADI Requirements # {#sctn-reqs}
+
+Issue: We will likely remove this section later.  But for now let's
+   keep it as a reference for the requirements th specs needs to meet.
+
 <figure id="table-security-privacy-goals" class="table">
     <table class="complex data">
         <tr>
