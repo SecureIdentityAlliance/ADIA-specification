@@ -10,7 +10,7 @@ set -e
 # Execute without installing Bikeshed!!
 for i in *.bs; do
     # bikeshed --print=plain spec -f "$i"
-    curl https://api.csswg.org/bikeshed/ -F file=@"$i" -F force=1 > "$i".html
+    curl https://api.csswg.org/bikeshed/ -F file=@"$i" -F force=1 > "${i%.*}".html
 done
 
 # Create a fresh directory 'out'
@@ -21,4 +21,5 @@ mkdir -p dist
 
 if [ -d dist ]; then
     mv *.html dist
+    cp resources/index.html dist
 fi
