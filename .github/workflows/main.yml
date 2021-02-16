@@ -7,11 +7,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Install bikeshed
-        run: sudo apt-get update -y & sudo apt-get -y install python3-pip & pip3 install bikeshed && bikeshed update
+        run: sudo apt-get update -y && sudo apt-get -y install python3-pip && pip3 install bikeshed && bikeshed update
 
       - uses: actions/checkout@v2
 
