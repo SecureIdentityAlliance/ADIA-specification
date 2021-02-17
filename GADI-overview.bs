@@ -177,6 +177,9 @@ Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we st
 
 Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
 
+Issue: Distinguish two different cases: (1) DA Issuer and VC Issuer are part of same DAP Agency.
+       (2) DA Issuer and VC Issuer are part of different DAP
+       Agencies.  See github issue 53.
 
 ## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
 
