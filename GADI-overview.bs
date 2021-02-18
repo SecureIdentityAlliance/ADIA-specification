@@ -51,7 +51,7 @@ providers in a verifiable manner.
     : <dfn>Credential Broker</dfn>
     ::
 
-Issue: TODO    
+Issue: TODO
 
     : <dfn>DA</dfn>
     :: Human readabe <dfn>Digital Address</dfn> of the <a>User</a> (e.g. john.doe@issuer.dap.gadi.org).
@@ -92,9 +92,9 @@ Issue: TODO
     :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
 
     :  <dfn>Identity Escrow</dfn>
-    :: 
+    ::
 
-Issue: TODO    
+Issue: TODO
 
     :  <dfn>Issuer</dfn>
     :: Issuer of <a>VC</a>s to users.  GADI supports multiple Issuers
@@ -247,8 +247,36 @@ Issue: requiring ID Proofing looks expensive here. Are there methods without tha
 
 Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issuer</a>?
 
-## User Changes Home-DAP ## {#sctn-user-changes-home-dap}
+## User Home DAP Agency ## {#sctn-user-home-dap-agency}
 
+Home DAP Agency is the entity that serves as the primary repository of credential metadata for a given user. Each DAP Agency has a unique Identifier (A DID and a Digital Address) in the GADI ecosystem.
+
+When a Trusted Issuer creates a Digital Address for a User, the Digital Address is suffixed with the DAP Agency Identifier. Any entity in the ecosystem can use a Digital Address resolver to identify the Home DAP Agency for a given User. Credential requests, issuance or verifications, are routed to the Home DAP for further processing.
+
+There are two possible scenarios to depict the role of a Home DAP Agency as below:
+
+### Scenario 1: Issuers in the same DAP Agency ### {#sctn-user-home-dap-agency-scenario1}
+There are two issuers in this scenario, both as part of the same DAP Agency. Digital Addresses created are published to the DAP Agency and credential metadata and lookups are maintained by the DAP Agency.
+<figure id="fig-user-home-dap-agency-scenario1">
+    <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-same-DAP-Agency.png"/>
+    <figcaption>Home DAP Agency - Issuers in the same DAP Agency</figcaption>
+</figure>
+
+
+### Scenario 2: Issuers in separate DAP Agencies ### {#sctn-user-home-dap-agency-scenario2}
+In this scenario, the Digital Addresses created are published to the DAP Agency and it is designated as the Home DAP Agency for the user. Credential metadata and look ups are  routed to the Home DAP Agency from Issuers in other Interchanges.
+
+<figure id="fig-user-home-dap-agency-scenario2">
+    <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-Different-DAP-Agency.png"/>
+    <figcaption>Home DAP Agency - Issuers in separate DAP Agencies</figcaption>
+</figure>
+
+## User Changes Home-DAP ## {#sctn-user-changes-home-dap}
+Users may choose to transfer their credential metadata to a different DAP Agency. This is initiated with a submission of a transfer request. The transferee DAP Agency initiates the transfer of Digital Address metadata and Credential metadata with the consent of the user. Subsequent requests for credential operations, are routed to the transferred DAP Agency.
+<figure id="fig-user-changes-home-dap">
+    <img src="sequence-diagrams/DAP-Transfer-by-User.png"/>
+    <figcaption>Transfer DAP Agency</figcaption>
+</figure>
 
 # Data Schema # {#sctn-data-schema}
 
@@ -4528,7 +4556,7 @@ Issue: Need to specify what functionality/certification is needed to call an app
             <td>
 	      Organizational participants, including issuers, verifiers, and service providers require a publicly
 	         resolvable DID
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -4539,7 +4567,7 @@ Issue: Need to specify what functionality/certification is needed to call an app
 	    the global directory only includes information on issuers,
 	    service providers abd interchanges.
 	    So compliance can be managed on a regional level.
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
@@ -4549,12 +4577,10 @@ Issue: Need to specify what functionality/certification is needed to call an app
 	    Logically, the DAA is provided by The Agency - not the Issuer.
 	    However, the Issuer could still provide the DAA on behalf
 	    of The Agency.
-	    </td>		
+	    </td>
             <td>
             </td>
         </tr>
-	
+
     </table>
 </figure>
-
-
