@@ -7,7 +7,7 @@ orbs:
 jobs:
   build_publish:
     docker:
-      - image: $AWS_BASE_IMAGE_URI
+      - image: 047892936253.dkr.ecr.us-west-2.amazonaws.com/gadi-build:latest
         aws_auth:
           aws_access_key_id: $AWS_ACCESS_KEY_ID
           aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
@@ -32,7 +32,7 @@ jobs:
 
 deploy:
     docker:
-      - image: $AWS_BASE_IMAGE_URI
+      - image: 047892936253.dkr.ecr.us-west-2.amazonaws.com/gadi-build:latest
         aws_auth:
           aws_access_key_id: $AWS_ACCESS_KEY_ID
           aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
