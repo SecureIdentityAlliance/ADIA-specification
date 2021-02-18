@@ -1,0 +1,1157 @@
+<!-- -*- mode: Text; eval: (auto-fill-mode 1); -*- -->
+<pre class='metadata'>
+Title: DID Alliance GADI API
+Shortname: gadi-api
+Prepare for TR: true
+Level: 1
+Status: ED
+Group: fido
+URL:
+Editor: Rolf Lindemann, rolf@noknok.com
+Editor: Kiran Addepalli, kiran@digitaltrust.net
+Abstract: The API surface of a Global Architecture for Digital IDentity (GADI)
+Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
+Text Macro: INFORMATIVE <em>This section is not normative.</em>
+Text Macro: NORMATIVE <em>This section is normative.</em>
+Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Markup Shorthands: css off, markdown on
+</pre>
+
+<pre class="link-defaults">
+spec:html; type:dfn; for:environment settings object; text:global object
+spec:infra; type:dfn; text:list
+spec:url; type:dfn; text:domain
+spec:url; type:dfn; text:valid domain;
+spec:webappsec-credential-management-1; type:dictionary; for:/; text:CredentialRequestOptions
+spec:webidl; type:interface; text:Promise
+</pre>
+
+<!-- only put content here if you want a custom status of document not
+  the specification-maturity-appropriate boilerplate -->
+
+# Introduction # {#sctn-intro}
+This specification described the API surface of a Global Architecture for Digital IDentity (GADI).
+
+For an overview of the GADI system, see [[!GADI-Overview]].
+
+# Directory Resource # {#sctn-directory-resource}
+
+  <!-- Start: Create Digital address -->
+## Create Digital Address ## {#sctn-create-da}
+
+### Request ### {#sctn-create-da-req}
+
+<table class="complex data longlastcol">
+ <tr>
+   <th>Path</th>
+   <td>/api/directory/digital-address</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>POST</td>
+ </tr>
+ <tr>
+  <th>Consumes</th>
+    <td>
+      This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+      * <code>application/json</code>
+
+    </td>
+   </tr>
+   <tr>
+    <th>Request body</th>
+     <td>
+      <div class="param">body <a>DigitalAddress</a> (required)</div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Directory Service </div>
+     </td>
+   </tr>
+ <tr>
+  <th>Return type</th>
+  <td>
+   <div class="return-type">
+     <a>DigitalAddress</a>
+   </div>
+  </td>
+ </tr>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+        <code>{
+        "entityDID" : "did:dtx:1111111111",
+        "entityDigitalAddress" : "abc@dtx",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }</code>
+        </td>
+        <td>
+        <code>{
+        "entityDID" : "did:dtx:1111111111",
+        "entityDigitalAddress" : "abc@dtx",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>
+
+### Produces ### {#sctn-create-da-prod}
+
+  This API call produces the following media types according to the Accept request header;
+  the media type will be conveyed by the Content-Type response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-create-da-resp}
+
+<table class="complex data longlastcol">
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td>OK Returns <a>DigitalAddress</a> </td>
+      </tr>
+      <tr>
+        <th>201</th>
+        <td>Digital Address saved successfully</td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+
+<!-- End: Create Digital address -->
+
+<!-- Start: Lookup Digital address -->
+## Search Digital Address Using a Criteria ## {#sctn-lookup-da}
+
+### Request ### {#sctn-lookup-da-req}
+
+<table class="complex data longlastcol">
+ <tr>
+   <th>Path</th>
+   <td>/api/directorydigital-address/search</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>POST</td>
+ </tr>
+ <tr>
+  <th>Consumes</th>
+  <td>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+     * <code>application/json</code>
+  </td>
+ </tr>
+ <tr>
+  <th>Request body</th>
+  <td>
+   <div class="param">body <a>DigitalAddressCriteria</a> (required)</div>
+   <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; A criteria based search consisting of one or more attributes Returns matching Digital Address records from the Directory Service. </div>
+  </td>
+ </tr>
+ <tr>
+  <th>Return type</th>
+   <td>
+     <div class="return-type"><a>DigitalAddress</a></div>
+   </td>
+ </tr>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+  <table>
+    <thead>
+      <th>Request</th>
+      <th>Response</th>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+      <code>{
+      "createdBy" : "did:dtx:888888888888",
+      "status" : "Active"
+      }</code>
+      </td>
+      <td>
+        <code>[ {
+        "entityDigitalAddress" : "abc@dtx",
+        "entityDID" : "did:dtx:1111111111",
+        "entityRole" : "Issuer",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }, {
+        "entityDigitalAddress" : "xyz@dtx",
+        "entityDID" : "did:dtx:2222222222",
+        "entityRole" : "ServiceProvider",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        } ]</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</aside>
+
+### Produces ### {#sctn-lookup-da-prod}
+  This API call produces the following media types according to the <span class="header">Accept</span> request header;
+  the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+  * <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-lookup-da-resp}
+
+<table class="complex data longlastcol">
+    <thead>
+      <th>Status</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>200</th>
+        <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
+      </tr>
+      <tr>
+        <th>401</th>
+        <td>Unauthorized Access</td>
+      </tr>
+      <tr>
+        <th>403</th>
+        <td>Forbidden Access</td>
+      </tr>
+      <tr>
+        <th>404</th>
+        <td>Resource Not Found</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<!-- End: Lookup Digital Address -->
+
+
+
+<!-- Start: Get Digital address -->
+## Get Digital Address ## {#sctn-get-da}
+
+### Request ### {#sctn-get-da-req}
+
+<table class="complex data longlastcol">
+ <tr>
+  <th>Path</th>
+  <td>/api/directory/digital-address/{digitalAddress}</td>
+ </tr>
+ <tr>
+  <th>Method</th>
+  <td>GET</td>
+ </tr>
+ <tr>
+  <th>Path Parameters</th>
+  <td><div class="param">digitalAddress (required)</div>
+    <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The Digital Address </div></td>
+ </tr>
+ <tr>
+  <th>Consumes</th>
+  <td>
+   This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+    * <code>application/json</code>
+  </td>
+ </tr>
+ <tr>
+  <th>Return type</th>
+  <td>
+    <div class="return-type"><a>DigitalAddress</a></div>
+  </td>
+ </tr>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+  <tr>
+  <td>
+   <code>
+      curl -X GET  <host>/api/directory/digital-address/abc@dtx
+   </code>
+  </td>
+  <td>
+    <code>{
+    "entityDigitalAddress" : "abc@dtx",
+    "entityDID" : "did:dtx:1111111111",
+    "entityRole" : "Issuer",
+    "createdBy" : "did:dtx:888888888888",
+    "createdDate" : "2000-01-23T04:56:07.000+00:00",
+    "status" : "Active"
+    }</code>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-get-da-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-get-da-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Digital Address  Not Found</td>
+    </tr>
+  </tbody>
+</table>
+<!-- End: Get Digital address -->
+
+
+<!-- Start: Get All DAPs  -->
+
+## Get All DAPs ## {#sctn-get-all-daps}
+
+### Request ### {#sctn-get-all-daps-req}
+
+<table class="complex data longlastcol">
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>GET</td>
+    </tr>
+
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+
+         * <code>application/json</code>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a>DigitalAddress</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+  <tr>
+  <td>
+  <code>
+      curl -X GET  <host>/api/directory/daps
+  </code>
+  </td>
+  <td>
+  <code>[ {
+  "entityDigitalAddress" : "A123@dtx",
+  "entityDID" : "did:dtx:AAAAAAAAAAA",
+  "entityRole" : "DAP",
+  "createdBy" : "did:dtx:888888888888",
+  "createdDate" : "2000-01-23T04:56:07.000+00:00",
+  "status" : "Active"
+  }, {
+  "entityDigitalAddress" : "B123@dtx",
+  "entityDID" : "did:dtx:BBBBBBBBBBB",
+  "entityRole" : "DAP",
+  "createdBy" : "did:dtx:888888888888",
+  "createdDate" : "2000-01-23T04:56:07.000+00:00",
+  "status" : "Active"
+  } ]</code>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-get-all-daps-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+ * <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-get-all-daps-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Resource Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Get All DAPs -->
+
+<!-- Start: Get Issuers for a DAP -->
+## Get Issuers for a DAP ## {#sctn-get-issuers-for-dap}
+
+### Request ### {#sctn-get-issuers-for-dap-req}
+
+<table class="complex data longlastcol">
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps/{dapId}/issuers</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>GET</td>
+    </tr>
+    <tr>
+    <th>Path Parameters</th>
+    <td><div class="param">dapId (required)</div>
+
+    <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The identifier for the DAP </div></td>
+    </tr>
+
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+        <ul>
+          <li><code>application/json</code></li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a>DigitalAddress</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+  <tr>
+  <td>
+  <code>
+      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/issuers
+      </code>
+  </td>
+  <td>
+  <code>[ {
+  "entityDigitalAddress" : "abc@dtx",
+  "entityDID" : "did:dtx:1111111111",
+  "entityRole" : "Issuer",
+  "createdBy" : "did:dtx:888888888888",
+  "createdDate" : "2000-01-23T04:56:07.000+00:00",
+  "status" : "Active"
+  },
+  {
+  "entityDigitalAddress" : "abc@dtx",
+  "entityDID" : "did:dtx:3333333333",
+  "entityRole" : "Issuer",
+  "createdBy" : "did:dtx:888888888888",
+  "createdDate" : "2000-01-23T04:56:07.000+00:00",
+  "status" : "Active"
+  } ]</code>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-get-issuers-for-dap-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-get-issuers-for-dap-resp}
+
+<table class="complex data longlastcol">
+<table>
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Resource  Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Get Issuers for a DAP-->
+
+<!-- Start: Get Service Providers for a DAP -->
+## Get Service Providers for a DAP ## {#sctn-get-sps-for-dap}
+
+### Request ### {#sctn-get-sps-for-dap-req}
+
+<table class="complex data longlastcol">
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps/{dapId}/service_providers</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>GET</td>
+    </tr>
+    <tr>
+    <th>Path Parameters</th>
+    <td><div class="param">dapId (required)</div>
+
+    <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The identifier for the DAP </div></td>
+    </tr>
+
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+        <ul>
+          <li><code>application/json</code></li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a>DigitalAddress</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+  <tr>
+  <td>
+  <code>
+      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/service_providers
+</code>
+  </td>
+  <td>
+  <code>[ {
+  "entityDigitalAddress" : "abc@dtx",
+  "entityDID" : "did:dtx:2222222222",
+  "entityRole" : "Issuer",
+  "createdBy" : "did:dtx:888888888888",
+  "createdDate" : "2000-01-23T04:56:07.000+00:00",
+  "status" : "Active"
+  },
+  {
+  "entityDigitalAddress" : "abc@dtx",
+  "entityDID" : "did:dtx:4444444444",
+  "entityRole" : "Issuer",
+  "createdBy" : "did:dtx:888888888888",
+  "createdDate" : "2000-01-23T04:56:07.000+00:00",
+  "status" : "Active"
+  } ]</code>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-get-sps-for-dap-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-get-sps-for-dap-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Resource  Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Get Service Providers for a DAP -->
+
+
+<!-- Start: Create a DAP -->
+## Create a DAP ## {#sctn-create-dap}
+
+### Request ### {#sctn-create-dap-req}
+
+<table class="complex data longlastcol">
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+        <ul>
+          <li><code>application/json</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Request body</th>
+      <td>
+        <div class="param">body <a>DigitalAddress</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for a DAP and persisted to the GADI Directory Service </div>
+      </td>
+    </tr>
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a>DigitalAddress</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:AAAAAAAAAA",
+      "entityDigitalAddress" : "mmnnmm@dtx",
+      "entityRole" : "DAP",
+      "createdBy" : "did:dtx:888888888888",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:AAAAAAAAAA",
+      "entityDigitalAddress" : "mmnnmm@dtx",
+      "entityRole" : "DAP",
+      "createdBy" : "did:dtx:888888888888",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-create-dap-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-create-dap-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>200</th>
+      <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>DAP saved successfully</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Ressource Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Create A DAP -->
+
+
+<!-- Start: Create an Issuer -->
+## Create an Issuer ## {#sctn-create-issuer}
+
+### Request ### {#sctn-create-issuer-req}
+
+<table class="complex data longlastcol">
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps/{dapId}/issuers</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+        <ul>
+          <li><code>application/json</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Request body</th>
+      <td>
+        <div class="param">body <a>DigitalAddress</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for an Issuer and persisted to the GADI Directory Service </div>
+      </td>
+    </tr>
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a>DigitalAddress</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:11111111",
+      "entityDigitalAddress" : "abc@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:11111111",
+      "entityDigitalAddress" : "abc@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+### Produces ### {#sctn-create-issuer-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-create-issuer-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>200</th>
+      <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>Issuer saved successfully</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Ressource Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Create an Issuer -->
+
+
+<!-- Start: Create a Service Provider -->
+## Create a Service Provider ## {#sctn-create-sp}
+
+### Request ### {#sctn-create-sp-req}
+
+<table class="complex data longlastcol">
+  <tbody>
+  <tr>
+  <th>Path</th>
+  <td>/api/directory/daps/{dapId}/service_providers</td>
+  </tr>
+    <tr>
+      <th>Method</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Consumes</th>
+      <td>
+        This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+        <ul>
+          <li><code>application/json</code></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Request body</th>
+      <td>
+        <div class="param">body <a>DigitalAddress</a> (required)</div>
+        <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Payload contains the DID and DigitalAddres for a Service Provider and persisted to the GADI Directory Service </div>
+      </td>
+    </tr>
+    <tr>
+      <th>Return type</th>
+      <td>
+        <div class="return-type">
+          <a>DigitalAddress</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+<table>
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:2222222222",
+      "entityDigitalAddress" : "xyz@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+      <td>
+      <code>{
+      "entityDID" : "did:dtx:2222222222",
+      "entityDigitalAddress" : "xyz@dtx",
+      "entityRole" : "Issuer",
+      "createdBy" : "did:dtx:AAAAAAAAAA",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active"
+      }</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+### Produces ### {#sctn-create-sp-prod}
+This API call produces the following media types according to the <span class="header">Accept</span> request header;
+the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+
+* <pre><code>*/*</code></pre>
+
+### Responses ### {#sctn-create-sp-resp}
+
+<table class="complex data longlastcol">
+  <thead>
+    <th>Status</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>200</th>
+      <td><span>OK</span> Returns <a>DigitalAddress</a> </td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>Service Provider saved successfully</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Unauthorized Access</td>
+    </tr>
+    <tr>
+      <th>403</th>
+      <td>Forbidden Access</td>
+    </tr>
+    <tr>
+      <th>404</th>
+      <td>Ressource Not Found</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End: Create an Service Provider -->
+
+
+# Models # {#sctn-models}
+
+## <dfn>DigitalAddress</dfn> ## {#sctn-model-da}
+  <table class="complex data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>entityDID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>entityDigitalAddress</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>entityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>ServiceProvider</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>primaryHash</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>secondaryHash</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>status</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Active</li>
+            <li>Pending </li>
+            <li>Inactive</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>createdBy</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>createdDate</td>
+        <td>DateTime format: date-time</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+## <dfn>DigitalAddressCriteria</dfn> ## {#sctn-model-dac}
+  <table class="complex data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>entityDID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>entityDigitalAddress</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>entityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>ServiceProvider</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>status</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Active</li>
+            <li>Pending </li>
+            <li>Inactive</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>createdBy</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>fromDate</td>
+        <td>DateTime format: date-time</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>toDate</td>
+        <td>DateTime format: date-time</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>

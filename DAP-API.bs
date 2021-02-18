@@ -9,7 +9,6 @@ Group: fido
 URL:
 Editor: Rolf Lindemann, rolf@noknok.com
 Editor: Kiran Addepalli, kiran@digitaltrust.net
-
 Abstract: The API surface of a Digital Address Provider (DAP) in the GADI ecosystem
 Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
