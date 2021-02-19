@@ -146,7 +146,7 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
 A directory serves to identify participants with an ecosystem. This can make it easier for users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
 
 #### Directory Scope
-Each directory serves a particular scope. Scopes can be geopolitical, like a country, or organizational, such as a multi-national medical organization or a university. Each directory serves to uniquely identify each participant via digital address or a collection of attributes. 
+Each directory serves a particular scope. Scopes can be geopolitical, like a country, or organizational, such as a multi-national medical organization or a university. Each directory serves to uniquely identify each participant via digital address or a collection of attributes.
 
 Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by GADI to seed the ecosystem. Other entities may operate directories in conformance with the governance structure and APIs.
 
@@ -166,14 +166,14 @@ Directories (MAY/MUST TBD) store only hashed attributes and accept hashed attrib
 Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the GADI regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
 
 #### Digital address
-Digital Addresses function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user. 
+Digital Addresses function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user.
 
 Digital Addresses MAY contain PII, but the user MUST be warned if they choose one containing PII and MUST be allowed to choose a digital address that does not contain PII.
 
-A single user MAY have multiple digital addresses that all link to the same user in the directory. Any of the linked digital addresses can be used to identify the user. Digital addresses do not function as a mechanism of uniqueness. 
+A single user MAY have multiple digital addresses that all link to the same user in the directory. Any of the linked digital addresses can be used to identify the user. Digital addresses do not function as a mechanism of uniqueness.
 
 #### Listing Modifications
-Users are listed in a directory by creating a DIDComm connection with the directory, then presenting credentials containing attributes issued by an acceptable issuer as determined by the governance framework. 
+Users are listed in a directory by creating a DIDComm connection with the directory, then presenting credentials containing attributes issued by an acceptable issuer as determined by the governance framework.
 
 The user lists a digital address by communicating that intent over the DIDComm connection with the directory.
 
@@ -921,16 +921,154 @@ Users may choose to transfer their credential metadata to a different DAP Agency
         </tbody>
       </table>
 
+
+
+
 # GADI API # {#sctn-gadi-api}
 
-## Directory Resource ## {#sctn-directory-resource}
-
-  <!-- Start: Create Digital address -->
-### Create Digital Address ### {#sctn-gadi-create-da}
-
-#### Request #### {#sctn-gadi-create-da-req}
+## Get Regional Directories ## {#sctn-gadi-get-regional-directories}
+Gets a list of Regional Directories in GADI.
 
 <table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/regional-directories</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of DigitalAddress</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns DigitalAddress</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <pre class="highlight">
+      <code>
+        [{
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Interchange",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            },
+            {
+                "entityID" : "did:gadi:I2222222222",
+                "entityDigitalAddress" : "abc@OCN",
+                "entityRole" : "Interchange",
+                "createdBy" : "did:DTX:U2222222222",
+                "createdDate" : "2000-01-23T04:56:07.000+00:00",
+                "status" : "Active"
+                }]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+## Get Interchanges ## {#sctn-gadi-get-interchanges}
+Gets a list of interchanges in in any of the GADI Regions.
+
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/directory/digital-address</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of DigitalAddress</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns DigitalAddress</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <pre class="highlight">
+      <code>
+        [{
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Interchange",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            },
+            {
+                "entityID" : "did:gadi:I2222222222",
+                "entityDigitalAddress" : "abc@OCN",
+                "entityRole" : "Interchange",
+                "createdBy" : "did:DTX:U2222222222",
+                "createdDate" : "2000-01-23T04:56:07.000+00:00",
+                "status" : "Active"
+                }]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+
+## Directory Resource ## {#sctn-gadi-regional-ds}
+
+  <!-- Start: Create Digital address -->
+### Create Digital Address ### {#sctn-gadi-regional-create-da}
+
+#### Request #### {#sctn-gadi-regional-create-da-req}
+
+<table class="data">
  <tr>
    <th>Path</th>
    <td>/api/directory/digital-address</td>
@@ -1003,14 +1141,14 @@ Users may choose to transfer their credential metadata to a different DAP Agency
   </table>
 </aside>
 
-#### Produces #### {#sctn-gadi-create-da-prod}
+#### Produces #### {#sctn-gadi-regional-reate-da-prod}
 
   This API call produces the following media types according to the Accept request header;
   the media type will be conveyed by the Content-Type response header.
 
 * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-gadi-create-da-resp}
+#### Responses #### {#sctn-gadi-regional-create-da-resp}
 
 <table class="elementdef longlastcol">
     <thead>
@@ -1047,6 +1185,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
 ### Search Digital Address Using a Criteria ### {#sctn-gadi-lookup-da}
 
 #### Request #### {#sctn-gadi-lookup-da-req}
+
 
 <table class="data longlastcol">
  <tr>
@@ -2088,7 +2227,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-lookup-da-criteria-req}
 
-<table class="elementdef longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/directory/digital-address/search</td>
