@@ -1,6 +1,6 @@
 set -e
 
-cd $CIRCLE_WORKING_DIRECTORY/project
+cd $CIRCLE_WORKING_DIRECTORY
 PROJECT_COMMON_PATH='did-spec/did-alliance-spec'
 
 if [[ "$CIRCLE_BRANCH" == "circleci-project-setup" ]]; then
