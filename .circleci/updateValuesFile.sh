@@ -1,18 +1,9 @@
 set -e
 
-cd ~/project
+cd $CIRCLE_WORKING_DIRECTORY/project
 PROJECT_COMMON_PATH='did-spec/did-alliance-spec'
 
-
-if [[ "$CIRCLE_TAG" =~ ^release-.*$ ]]; then
-  echo "Found release tag. Deploying to prod."
-  VALUES_FILE_PATH="infrastructure-live/dev/us-west-2/prod/$PROJECT_COMMON_PATH/env/dev"
-  RAFAY_PROJECT='prod'
-elif [[ "$CIRCLE_TAG" =~ ^dtx-* ]]; then
-  echo "On develop branch with tag $CIRCLE_TAG. Deploying to stage."
-  VALUES_FILE_PATH="infrastructure-live/dev/us-west-2/stage/$PROJECT_COMMON_PATH/env/dev"
-  RAFAY_PROJECT='stage'
-elif [[ "$CIRCLE_BRANCH" == "circleci-project-setup" ]]; then
+if [[ "$CIRCLE_BRANCH" == "circleci-project-setup" ]]; then
   echo "On develop branch. Deploying to dev."
   VALUES_FILE_PATH="infrastructure-live/dev/us-west-2/dev/$PROJECT_COMMON_PATH/env/dev"
   RAFAY_PROJECT='dev'
@@ -37,16 +28,16 @@ git diff-index --quiet HEAD || (git commit -m "CircleCI Bot: Updated image tag o
 
 
 printf "\n<=============== Create Helm Chart Zip file ===============>\n"
-cd ~/project/$INFRA_MODULES_DIR
+cd $CIRCLE_WORKING_DIRECTORY/project/$INFRA_MODULES_DIR
 tar -cvzf dtx-helm-chart.tgz dtx-common-helm-chart
 
 
 printf "\n<=============== Setting properties in workload spec file ===============>\n"
 EKS_CLUSTER_NAME='rafay-dev-eks-cluster'
-EKS_NAMESPACE=$(yq eval '.namespace'  ~/project/$VALUES_FILE_PATH/values.yaml)
-#RAFAY_WORKLOAD_NAME=$(yq eval '.name'  ~/project/$VALUES_FILE_PATH/values.yaml)
-HELM_CHART_FILEPATH=~/project/$INFRA_MODULES_DIR/dtx-helm-chart.tgz
-HELM_VALUES_FILEPATH=~/project/$VALUES_FILE_PATH/values.yaml
+EKS_NAMESPACE=$(yq eval '.namespace'  $CIRCLE_WORKING_DIRECTORY/project/$VALUES_FILE_PATH/values.yaml)
+#RAFAY_WORKLOAD_NAME=$(yq eval '.name'  $CIRCLE_WORKING_DIRECTORY/project/$VALUES_FILE_PATH/values.yaml)
+HELM_CHART_FILEPATH=$CIRCLE_WORKING_DIRECTORY/project/$INFRA_MODULES_DIR/dtx-helm-chart.tgz
+HELM_VALUES_FILEPATH=$CIRCLE_WORKING_DIRECTORY/project/$VALUES_FILE_PATH/values.yaml
 
 
 clusters=$EKS_CLUSTER_NAME yq eval -i '.clusters= env(clusters) ' rafay-workload-spec-template.yaml
