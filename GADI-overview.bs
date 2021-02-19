@@ -141,6 +141,61 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
 
 </dl>
 
+### GADI Regional Directory
+
+A directory serves to identify participants with an ecosystem. This can make it easier for users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
+
+#### Directory Scope
+Each directory serves a particular scope. Scopes can be geopolitical, like a country, or organizational, such as a multi-national medical organization or a university. Each directory serves to uniquely identify each participant via digital address or a collection of attributes. 
+
+Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by GADI to seed the ecosystem. Other entities may operate directories in conformance with the governance structure and APIs.
+
+#### Attribute selection and management
+Each directory has a set of attributes used to list users in the directory. These attributes are received via credentials from issuers authorized by the appropriate governance framework. When necessary for uniqueness (described in the next section), the directory may request additional attributes from a user, also supplied via credentials.
+
+Directories may use any datastore sufficient to the requirements of storing attributes. Datastores MUST be able to remove listed records at the request of the user.
+
+#### Uniqueness properties
+GADI Directories ensure uniqueness of the listed users. This is done by ensuring a unique set of attributes for each user. If a new user matches an existing user, additional attributes MUST be requested for use in distinguishing between the matching users.
+
+Each directory MUST have a process to follow when users cannot be uniquely identified either during addition of a user to the directory or during lookup of a user within the directory.
+
+#### Hashed Attributes
+Directories (MAY/MUST TBD) store only hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
+
+Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the GADI regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
+
+#### Digital address
+Digital Addresses function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user. 
+
+Digital Addresses MAY contain PII, but the user MUST be warned if they choose one containing PII and MUST be allowed to choose a digital address that does not contain PII.
+
+A single user MAY have multiple digital addresses that all link to the same user in the directory. Any of the linked digital addresses can be used to identify the user. Digital addresses do not function as a mechanism of uniqueness. 
+
+#### Listing Modifications
+Users are listed in a directory by creating a DIDComm connection with the directory, then presenting credentials containing attributes issued by an acceptable issuer as determined by the governance framework. 
+
+The user lists a digital address by communicating that intent over the DIDComm connection with the directory.
+
+When the user desires to be removed from the directory, they indicate that over the existing DIDComm connection.
+
+These interactions are all detailed in the associated protocols summarized and linked below.
+
+#### Directory Querying
+A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the user identified. The DID provided is created by the user’s agent, and provided to the directory for the purpose of returning to the party querying the directory. The user’s agent is notified of which party identified them in the directory.
+
+The protocols for querying users are summarized and linked below.
+
+#### Logging requirements
+Directories MUST log all listing modifications and queries.
+
+#### Protocols for interaction
+Existing
+
+New
+
+
+
 ## Trust Model ## {#sctn-trust-model}
 
 Issue: Describe what is verified by whom, what kind of objects
