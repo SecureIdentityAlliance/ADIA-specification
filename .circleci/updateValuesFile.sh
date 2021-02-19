@@ -29,7 +29,9 @@ git diff-index --quiet HEAD || (git commit -m "CircleCI Bot: Updated image tag o
 
 
 printf "\n<=============== Create Helm Chart Zip file ===============>\n"
+echo $INFRA_MODULES_DIR
 cd /root/project/$INFRA_MODULES_DIR
+pwd
 tar -cvzf dtx-helm-chart.tgz dtx-common-helm-chart
 
 

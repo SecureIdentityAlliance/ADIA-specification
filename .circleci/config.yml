@@ -44,7 +44,7 @@ jobs:
         - checkout
         - run:
             name: Checkout Infrastructure Live and Infrastructure Modules repos
-            command: git clone -b develop git@bitbucket.org:digitaltrustnetworks/infrastructure-live.git && git clone -b develop git@bitbucket.org:digitaltrustnetworks/infrastructure-modules.git && pwd
+            command: git clone -b develop git@bitbucket.org:digitaltrustnetworks/infrastructure-live.git && git clone -b develop git@bitbucket.org:digitaltrustnetworks/infrastructure-modules.git
 
         - run:
             name: Export the Infrastructure Modules Path
