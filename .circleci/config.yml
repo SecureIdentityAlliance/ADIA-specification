@@ -47,17 +47,13 @@ jobs:
             command: git clone -b develop git@bitbucket.org:digitaltrustnetworks/infrastructure-live.git && git clone -b develop git@bitbucket.org:digitaltrustnetworks/infrastructure-modules.git
 
         - run:
-            name: Export the Infrastructure Modules Path
-            command: echo export INFRA_MODULES_DIR='infrastructure-modules/services/dtx-helm-charts'  >> $BASH_ENV
-
-        - run:
             name: Update Appropriate values file
             command: .circleci/updateValuesFile.sh
 
         - rafay/init
 
         - rafay/update_workload:
-            yaml_file: $INFRA_MODULES_DIR/rafay-workload-spec-template.yaml
+            yaml_file: infrastructure-modules/services/dtx-helm-charts/rafay-workload-spec-template.yaml
 
         - rafay/publish_workload:
             workload: $RAFAY_WORLOAD_NAME

@@ -1,6 +1,9 @@
 set -e
 
-cd /root/project
+INFRA_MODULES_DIR='infrastructure-modules/services/dtx-helm-charts'
+ROOT_DIR=/root/project
+
+cd $ROOT_DIR
 
 PROJECT_COMMON_PATH='did-spec/did-alliance-spec'
 
@@ -30,17 +33,17 @@ git diff-index --quiet HEAD || (git commit -m "CircleCI Bot: Updated image tag o
 
 printf "\n<=============== Create Helm Chart Zip file ===============>\n"
 echo $INFRA_MODULES_DIR
-cd /root/project/$INFRA_MODULES_DIR
+cd $ROOT_DIR/$INFRA_MODULES_DIR
 pwd
 tar -cvzf dtx-helm-chart.tgz dtx-common-helm-chart
 
 
 printf "\n<=============== Setting properties in workload spec file ===============>\n"
 EKS_CLUSTER_NAME='rafay-dev-eks-cluster'
-EKS_NAMESPACE=$(yq eval '.namespace'  /root/project/$VALUES_FILE_PATH/values.yaml)
-#RAFAY_WORKLOAD_NAME=$(yq eval '.name'  /root/project/$VALUES_FILE_PATH/values.yaml)
-HELM_CHART_FILEPATH=/root/project/$INFRA_MODULES_DIR/dtx-helm-chart.tgz
-HELM_VALUES_FILEPATH=/root/project/$VALUES_FILE_PATH/values.yaml
+EKS_NAMESPACE=$(yq eval '.namespace'  $ROOT_DIR/$VALUES_FILE_PATH/values.yaml)
+#RAFAY_WORKLOAD_NAME=$(yq eval '.name'  $ROOT_DIR/$VALUES_FILE_PATH/values.yaml)
+HELM_CHART_FILEPATH=$ROOT_DIR/$INFRA_MODULES_DIR/dtx-helm-chart.tgz
+HELM_VALUES_FILEPATH=$ROOT_DIR/$VALUES_FILE_PATH/values.yaml
 
 
 clusters=$EKS_CLUSTER_NAME yq eval -i '.clusters= env(clusters) ' rafay-workload-spec-template.yaml
