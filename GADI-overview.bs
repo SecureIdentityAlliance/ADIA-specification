@@ -162,6 +162,8 @@ Each directory MUST have a process to follow when users cannot be uniquely ident
 #### Hashed Attributes
 Directories (MAY/MUST TBD) store only hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
 
+Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the GADI regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
+
 #### Digital address
 Digital Addresses function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user. 
 
