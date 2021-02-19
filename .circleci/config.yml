@@ -1,21 +1,20 @@
 version: 2.1
 
 orbs:
-  aws-cli: circleci/aws-cli@1.4.0
   rafay: rafaysystems/rafay@1.0.5
 
 
 jobs:
   build_publish:
     docker:
-      - image: netwerkdigitaalerfgoed/bikeshed:1.7.0
-        
+      - image: $AWS_BASE_IMAGE_URI
+        aws_auth:
+          aws_access_key_id: $AWS_ACCESS_KEY_ID
+          aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
+
     steps:
       - checkout
       - setup_remote_docker
-
-      - aws-cli/setup:
-          profile-name: circleci-machineuser
 
       - run: 
           name: Install Python version 3.7.9 to install bikeshed dependencies
