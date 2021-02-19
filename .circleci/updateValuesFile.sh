@@ -7,7 +7,7 @@ cd $ROOT_DIR
 
 PROJECT_COMMON_PATH='did-spec/did-alliance-spec'
 
-if [[ "$CIRCLE_BRANCH" == "circleci-project-setup" ]]; then
+if [[ "$CIRCLE_BRANCH" == "master" ]]; then
   echo "On develop branch. Deploying to dev."
   VALUES_FILE_PATH="infrastructure-live/dev/us-west-2/dev/$PROJECT_COMMON_PATH/env/dev"
   RAFAY_PROJECT='dev'
