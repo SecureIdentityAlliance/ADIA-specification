@@ -15,11 +15,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-
-      - run: 
-          name: Install Python version 3.7.9 to install bikeshed dependencies
-          command: pyenv install 3.7.9 && pyenv global 3.7.9 && pip3 install bikeshed && bikeshed update
-
+      
       - run: 
           name: Compile and build bikeshed files 
           command: sh compile.sh
