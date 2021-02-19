@@ -14,6 +14,7 @@ Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
 Text Macro: NORMATIVE <em>This section is normative.</em>
 Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Local Boilerplate: header yes, footer yes, logo yes, copyright yes
 Markup Shorthands: css off, markdown on
 </pre>
 
@@ -284,7 +285,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
   ## DAP Agency Data Schemas ## {#sctn-dap-agency-data-schemas}
 
   ### <dfn>DigitalAddress</dfn> ### {#sctn-model-da}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -347,7 +348,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
     </table>
 
   ### <dfn>DigitalAddressCriteria</dfn> ### {#sctn-model-dac}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -406,7 +407,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
 
 
     ### <dfn>CredentialSchema</dfn> ### {#sctn-model-credential-schema}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -497,7 +498,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
     </table>
 
     ### <dfn>CredentialCriteria</dfn> ### {#sctn-model-credential-criteria}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -558,7 +559,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
     </table>
 
     ### <dfn>CredentialMetadata</dfn> ### {#sctn-model-credential-metadata}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -691,7 +692,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
     </table>
 
     ### <dfn>CredentialMetadataCriteria</dfn> ### {#sctn-model-credential-metadata-criteria}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -752,7 +753,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
     </table>
 
     ### <dfn>FidoCommandRequest</dfn> ### {#sctn-model-fido-command-request}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -784,7 +785,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
     </table>
 
     ### <dfn>FidoCommandResponse</dfn> ### {#sctn-model-fido-command-response}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -874,7 +875,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
 
 #### Request #### {#sctn-gadi-create-da-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/directory/digital-address</td>
@@ -952,7 +953,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
 
 #### Responses #### {#sctn-gadi-create-da-resp}
 
-<table class="complex data longlastcol">
+<table class="elementdef longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -988,7 +989,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
 
 #### Request #### {#sctn-gadi-lookup-da-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/directorydigital-address/search</td>
@@ -1064,7 +1065,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
 
 #### Responses #### {#sctn-gadi-lookup-da-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -1099,7 +1100,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
 
 #### Request #### {#sctn-gadi-get-da-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
   <th>Path</th>
   <td>/api/directory/digital-address/{digitalAddress}</td>
@@ -1166,7 +1167,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-get-da-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1195,7 +1196,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-get-all-daps-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1270,7 +1271,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-get-all-daps-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1298,7 +1299,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-get-issuers-for-dap-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1381,7 +1382,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-get-issuers-for-dap-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
 <table>
   <thead>
     <th>Status</th>
@@ -1410,7 +1411,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-get-sps-for-dap-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1493,7 +1494,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-get-sps-for-dap-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1522,7 +1523,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-create-dap-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1601,7 +1602,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-create-dap-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1638,7 +1639,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-create-issuer-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1717,7 +1718,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-create-issuer-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1754,7 +1755,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-create-sp-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1834,7 +1835,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-create-sp-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1876,7 +1877,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-create-da-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/directory/digital-address</td>
@@ -1954,7 +1955,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-create-da-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -1986,11 +1987,11 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 <!-- End: Create Digital address -->
 
 <!-- Start: Lookup Digital address -->
-### Search Digital Address Using a Criteria ### {#sctn-lookup-da}
+### Search Digital Address Using a Criteria ### {#sctn-lookup-da-criteria}
 
-#### Request #### {#sctn-lookup-da-req}
+#### Request #### {#sctn-lookup-da-criteria-req}
 
-<table class="complex data longlastcol">
+<table class="elementdef longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/directory/digital-address/search</td>
@@ -2058,15 +2059,15 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   </table>
 </aside>
 
-#### Produces #### {#sctn-lookup-da-prod}
+#### Produces #### {#sctn-lookup-da-criteria-prod}
   This API call produces the following media types according to the <span class="header">Accept</span> request header;
   the media type will be conveyed by the <span class="header">Content-Type</span> response header.
 
   * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-lookup-da-resp}
+#### Responses #### {#sctn-lookup-da-criteria-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -2101,7 +2102,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-get-da-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
   <th>Path</th>
   <td>/api/directory/digital-address/{digitalAddress}</td>
@@ -2161,7 +2162,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-get-da-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -2190,7 +2191,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-get-issuers-for-dap-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -2264,7 +2265,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-get-issuers-for-dap-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
 <table>
   <thead>
     <th>Status</th>
@@ -2293,7 +2294,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-get-sps-for-dap-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -2367,7 +2368,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-get-sps-for-dap-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -2396,7 +2397,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-create-issuer-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -2475,7 +2476,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-create-issuer-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -2512,7 +2513,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-create-sp-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -2592,7 +2593,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-create-sp-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -2630,7 +2631,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-create-credential-schema-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/credentials/credential-schema</td>
@@ -2725,7 +2726,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
 #### Responses #### {#sctn-create-credential-schema-resp}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -2758,7 +2759,7 @@ the media type will be conveyed by the Content-Type response header.
 ### Search Credential Schema ### {#sctn-search-credential-schema}
 
 #### Request #### {#sctn-search-credential-schema-req}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/credentials/credential-schema/search</td>
@@ -2854,7 +2855,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
 #### Responses #### {#sctn-search-credential-schema-resp}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -2883,7 +2884,7 @@ the media type will be conveyed by the Content-Type response header.
 ### Get a Credential Schema ### {#sctn-get-credential-schema}
 
 #### Request #### {#sctn-get-credential-schema-req}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/credentials/credential-schema/{credentialSchemaId}</td>
@@ -2956,7 +2957,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
 #### Responses #### {#sctn-get-credential-schema-resp}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -2986,7 +2987,7 @@ the media type will be conveyed by the Content-Type response header.
 
   #### Request #### {#sctn-create-credential-metadata-req}
 
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
    <tr>
      <th>Path</th>
      <td>/api/credentials/credential-metadata</td>
@@ -3095,7 +3096,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
   #### Responses #### {#sctn-create-credential-metadata-resp}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
       <thead>
         <th>Status</th>
         <th>Description</th>
@@ -3128,7 +3129,7 @@ the media type will be conveyed by the Content-Type response header.
   ### Search Credential Metadata ### {#sctn-search-credential-metadata}
 
   #### Request #### {#sctn-search-credential-metadata-req}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
    <tr>
      <th>Path</th>
      <td>/api/credentials/credential-metadata/search</td>
@@ -3221,7 +3222,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
   #### Responses #### {#sctn-search-credential-metadata-resp}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
       <thead>
         <th>Status</th>
         <th>Description</th>
@@ -3250,7 +3251,7 @@ the media type will be conveyed by the Content-Type response header.
   ### Get Credential Metadata ### {#sctn-get-credential-metadata}
 
   #### Request #### {#sctn-get-credential-metadata-req}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
    <tr>
      <th>Path</th>
      <td>/api/credentials/credential-metadata/{credentialMetadataId}</td>
@@ -3330,7 +3331,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
   #### Responses #### {#sctn-get-credential-metadata-resp}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
       <thead>
         <th>Status</th>
         <th>Description</th>
@@ -3361,7 +3362,7 @@ the media type will be conveyed by the Content-Type response header.
 ### Revoke Credential Metadata ### {#sctn-revoke-credential-metadata}
 
 #### Request #### {#sctn-revoke-credential-metadata-req}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/credentials/credential-metadata/{credentialMetadataId}/revoke</td>
@@ -3444,7 +3445,7 @@ the media type will be conveyed by the Content-Type response header.
 
 #### Responses #### {#sctn-revoke-credential-metadata-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -3475,7 +3476,7 @@ the media type will be conveyed by the Content-Type response header.
 ### Initialize Authenticator ### {#sctn-fido-initialize}
 
 #### Request #### {#sctn-fido-initialize-req}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/user/fido/init-authenticator</td>
@@ -3567,7 +3568,7 @@ the media type will be conveyed by the Content-Type response header.
 
 #### Responses #### {#sctn-fido-initialize-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -3595,7 +3596,7 @@ the media type will be conveyed by the Content-Type response header.
   ### Register Account ### {#sctn-fido-register}
 
   #### Request #### {#sctn-fido-register-req}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
    <tr>
      <th>Path</th>
      <td>/api/user/fido/register</td>
@@ -3686,7 +3687,7 @@ the media type will be conveyed by the Content-Type response header.
 
   #### Responses #### {#sctn-fido-register-resp}
 
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
       <thead>
         <th>Status</th>
         <th>Description</th>
@@ -3715,7 +3716,7 @@ the media type will be conveyed by the Content-Type response header.
     ### DeRegister Account ### {#sctn-fido-deregister}
 
     #### Request #### {#sctn-fido-deregister-req}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
      <tr>
        <th>Path</th>
        <td>/api/user/fido/deregister</td>
@@ -3806,7 +3807,7 @@ the media type will be conveyed by the Content-Type response header.
 
     #### Responses #### {#sctn-fido-deregister-resp}
 
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
         <thead>
           <th>Status</th>
           <th>Description</th>
@@ -3835,7 +3836,7 @@ the media type will be conveyed by the Content-Type response header.
       ### Authenticate Account ### {#sctn-fido-authenticate}
 
       #### Request #### {#sctn-fido-authenticate-req}
-      <table class="complex data longlastcol">
+      <table class="data longlastcol">
        <tr>
          <th>Path</th>
          <td>/api/user/fido/authenticate</td>
@@ -3926,7 +3927,7 @@ the media type will be conveyed by the Content-Type response header.
 
       #### Responses #### {#sctn-fido-authenticate-resp}
 
-      <table class="complex data longlastcol">
+      <table class="data longlastcol">
           <thead>
             <th>Status</th>
             <th>Description</th>
@@ -3954,7 +3955,7 @@ the media type will be conveyed by the Content-Type response header.
         ### Registration Status ### {#sctn-fido-registered-status}
 
         #### Request #### {#sctn-fido-registered-status-req}
-        <table class="complex data longlastcol">
+        <table class="data longlastcol">
          <tr>
            <th>Path</th>
            <td>/api/user/fido/registered-status</td>
@@ -4045,7 +4046,7 @@ the media type will be conveyed by the Content-Type response header.
 
         #### Responses #### {#sctn-fido-registered-status-resp}
 
-        <table class="complex data longlastcol">
+        <table class="data longlastcol">
             <thead>
               <th>Status</th>
               <th>Description</th>
@@ -4073,7 +4074,7 @@ the media type will be conveyed by the Content-Type response header.
           ### Get Transaction Result ### {#sctn-get-transaction-result}
 
           #### Request #### {#sctn-get-transaction-result-req}
-          <table class="complex data longlastcol">
+          <table class="data longlastcol">
            <tr>
              <th>Path</th>
              <td>/api/user/fido/transaction-result/{svcTrId}</td>
@@ -4153,7 +4154,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
           #### Responses #### {#sctn-get-transaction-result-resp}
-          <table class="complex data longlastcol">
+          <table class="data longlastcol">
               <thead>
                 <th>Status</th>
                 <th>Description</th>
@@ -4181,7 +4182,7 @@ the media type will be conveyed by the Content-Type response header.
             ### Get Transaction Status ### {#sctn-get-transaction-status}
 
             #### Request #### {#sctn-get-transaction-status-req}
-            <table class="complex data longlastcol">
+            <table class="data longlastcol">
              <tr>
                <th>Path</th>
                <td>/api/user/fido/transaction-status/{svcTrId}</td>
@@ -4261,7 +4262,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
             #### Responses #### {#sctn-get-transaction-status-resp}
-            <table class="complex data longlastcol">
+            <table class="data longlastcol">
                 <thead>
                   <th>Status</th>
                   <th>Description</th>
