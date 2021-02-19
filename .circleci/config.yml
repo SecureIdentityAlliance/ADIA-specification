@@ -58,8 +58,8 @@ jobs:
         - rafay/publish_workload:
             workload: $RAFAY_WORLOAD_NAME
 
-        - rafay/check_workload_status:
-            workload: $RAFAY_WORLOAD_NAME
+        # - rafay/check_workload_status:
+        #     workload: $RAFAY_WORLOAD_NAME
 
 
 workflows:
