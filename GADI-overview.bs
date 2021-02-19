@@ -14,6 +14,7 @@ Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
 Text Macro: NORMATIVE <em>This section is normative.</em>
 Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Local Boilerplate: header yes, footer yes, logo yes, copyright yes
 Markup Shorthands: css off, markdown on
 </pre>
 
@@ -51,7 +52,7 @@ providers in a verifiable manner.
     : <dfn>Credential Broker</dfn>
     ::
 
-Issue: TODO    
+Issue: TODO
 
     : <dfn>DA</dfn>
     :: Human readabe <dfn>Digital Address</dfn> of the <a>User</a> (e.g. john.doe@issuer.dap.gadi.org).
@@ -92,9 +93,9 @@ Issue: TODO
     :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
 
     :  <dfn>Identity Escrow</dfn>
-    :: 
+    ::
 
-Issue: TODO    
+Issue: TODO
 
     :  <dfn>Issuer</dfn>
     :: Issuer of <a>VC</a>s to users.  GADI supports multiple Issuers
@@ -302,8 +303,36 @@ Issue: requiring ID Proofing looks expensive here. Are there methods without tha
 
 Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issuer</a>?
 
-## User Changes Home-DAP ## {#sctn-user-changes-home-dap}
+## User Home DAP Agency ## {#sctn-user-home-dap-agency}
 
+Home DAP Agency is the entity that serves as the primary repository of credential metadata for a given user. Each DAP Agency has a unique Identifier (A DID and a Digital Address) in the GADI ecosystem.
+
+When a Trusted Issuer creates a Digital Address for a User, the Digital Address is suffixed with the DAP Agency Identifier. Any entity in the ecosystem can use a Digital Address resolver to identify the Home DAP Agency for a given User. Credential requests, issuance or verifications, are routed to the Home DAP for further processing.
+
+There are two possible scenarios to depict the role of a Home DAP Agency as below:
+
+### Scenario 1: Issuers in the same DAP Agency ### {#sctn-user-home-dap-agency-scenario1}
+There are two issuers in this scenario, both as part of the same DAP Agency. Digital Addresses created are published to the DAP Agency and credential metadata and lookups are maintained by the DAP Agency.
+<figure id="fig-user-home-dap-agency-scenario1">
+    <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-same-DAP-Agency.png"/>
+    <figcaption>Home DAP Agency - Issuers in the same DAP Agency</figcaption>
+</figure>
+
+
+### Scenario 2: Issuers in separate DAP Agencies ### {#sctn-user-home-dap-agency-scenario2}
+In this scenario, the Digital Addresses created are published to the DAP Agency and it is designated as the Home DAP Agency for the user. Credential metadata and look ups are  routed to the Home DAP Agency from Issuers in other Interchanges.
+
+<figure id="fig-user-home-dap-agency-scenario2">
+    <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-Different-DAP-Agency.png"/>
+    <figcaption>Home DAP Agency - Issuers in separate DAP Agencies</figcaption>
+</figure>
+
+## User Changes Home-DAP ## {#sctn-user-changes-home-dap}
+Users may choose to transfer their credential metadata to a different DAP Agency. This is initiated with a submission of a transfer request. The transferee DAP Agency initiates the transfer of Digital Address metadata and Credential metadata with the consent of the user. Subsequent requests for credential operations, are routed to the transferred DAP Agency.
+<figure id="fig-user-changes-home-dap">
+    <img src="sequence-diagrams/DAP-Transfer-by-User.png"/>
+    <figcaption>Transfer DAP Agency</figcaption>
+</figure>
 
 # Data Schema # {#sctn-data-schema}
 
@@ -311,7 +340,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
   ## DAP Agency Data Schemas ## {#sctn-dap-agency-data-schemas}
 
   ### <dfn>DigitalAddress</dfn> ### {#sctn-model-da}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -374,7 +403,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
     </table>
 
   ### <dfn>DigitalAddressCriteria</dfn> ### {#sctn-model-dac}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -433,7 +462,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
 
 
     ### <dfn>CredentialSchema</dfn> ### {#sctn-model-credential-schema}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -524,7 +553,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
     </table>
 
     ### <dfn>CredentialCriteria</dfn> ### {#sctn-model-credential-criteria}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -585,7 +614,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
     </table>
 
     ### <dfn>CredentialMetadata</dfn> ### {#sctn-model-credential-metadata}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -718,7 +747,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
     </table>
 
     ### <dfn>CredentialMetadataCriteria</dfn> ### {#sctn-model-credential-metadata-criteria}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -779,7 +808,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
     </table>
 
     ### <dfn>FidoCommandRequest</dfn> ### {#sctn-model-fido-command-request}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -811,7 +840,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
     </table>
 
     ### <dfn>FidoCommandResponse</dfn> ### {#sctn-model-fido-command-response}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
       <thead>
         <th>Name</th>
         <th>Type</th>
@@ -901,7 +930,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
 
 #### Request #### {#sctn-gadi-create-da-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/directory/digital-address</td>
@@ -946,7 +975,8 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
     <tbody>
       <tr>
         <td>
-        <code>{
+<pre class="highlight">
+<code>{
         "entityDID" : "did:dtx:1111111111",
         "entityDigitalAddress" : "abc@dtx",
         "entityRole" : "Issuer",
@@ -954,9 +984,11 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
         "createdDate" : "2000-01-23T04:56:07.000+00:00",
         "status" : "Active"
         }</code>
+        </pre>
         </td>
         <td>
-        <code>{
+<pre class="highlight">
+<code>{
         "entityDID" : "did:dtx:1111111111",
         "entityDigitalAddress" : "abc@dtx",
         "entityRole" : "Issuer",
@@ -964,6 +996,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
         "createdDate" : "2000-01-23T04:56:07.000+00:00",
         "status" : "Active"
         }</code>
+        </pre>
         </td>
       </tr>
     </tbody>
@@ -979,7 +1012,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
 
 #### Responses #### {#sctn-gadi-create-da-resp}
 
-<table class="complex data longlastcol">
+<table class="elementdef longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -1015,7 +1048,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
 
 #### Request #### {#sctn-gadi-lookup-da-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/directorydigital-address/search</td>
@@ -1056,13 +1089,16 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
     <tbody>
       <tr>
       <td>
-      <code>{
+      <pre class="highlight">
+<code>{
       "createdBy" : "did:dtx:888888888888",
       "status" : "Active"
       }</code>
+      </pre>
       </td>
       <td>
-        <code>[ {
+      <pre class="highlight">
+<code>[ {
         "entityDigitalAddress" : "abc@dtx",
         "entityDID" : "did:dtx:1111111111",
         "entityRole" : "Issuer",
@@ -1077,6 +1113,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
         "createdDate" : "2000-01-23T04:56:07.000+00:00",
         "status" : "Active"
         } ]</code>
+        </pre>
         </td>
       </tr>
     </tbody>
@@ -1091,7 +1128,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
 
 #### Responses #### {#sctn-gadi-lookup-da-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -1126,7 +1163,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
 
 #### Request #### {#sctn-gadi-get-da-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
   <th>Path</th>
   <td>/api/directory/digital-address/{digitalAddress}</td>
@@ -1166,12 +1203,15 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
   <tbody>
   <tr>
   <td>
-   <code>
+<pre class="highlight">
+<code>
       curl -X GET  <host>/api/directory/digital-address/abc@dtx
    </code>
+   </pre>
   </td>
   <td>
-    <code>{
+<pre class="highlight">
+<code>{
     "entityDigitalAddress" : "abc@dtx",
     "entityDID" : "did:dtx:1111111111",
     "entityRole" : "Issuer",
@@ -1179,6 +1219,7 @@ Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issu
     "createdDate" : "2000-01-23T04:56:07.000+00:00",
     "status" : "Active"
     }</code>
+    </pre>
     </td>
   </tr>
   </tbody>
@@ -1193,7 +1234,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-get-da-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1222,7 +1263,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-get-all-daps-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1263,12 +1304,15 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
   <tr>
   <td>
-  <code>
+<pre class="highlight">
+<code>
       curl -X GET  <host>/api/directory/daps
   </code>
+  </pre>
   </td>
   <td>
-  <code>[ {
+<pre class="highlight">
+<code>[ {
   "entityDigitalAddress" : "A123@dtx",
   "entityDID" : "did:dtx:AAAAAAAAAAA",
   "entityRole" : "DAP",
@@ -1283,6 +1327,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   "createdDate" : "2000-01-23T04:56:07.000+00:00",
   "status" : "Active"
   } ]</code>
+  </pre>
     </td>
   </tr>
   </tbody>
@@ -1297,7 +1342,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-get-all-daps-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1325,7 +1370,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-get-issuers-for-dap-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1373,12 +1418,15 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
   <tr>
   <td>
-  <code>
-      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/issuers
+  <pre class="highlight">
+<code>      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/issuers
       </code>
+      </pre>
   </td>
   <td>
-  <code>[ {
+
+<pre class="highlight">
+<code>[ {
   "entityDigitalAddress" : "abc@dtx",
   "entityDID" : "did:dtx:1111111111",
   "entityRole" : "Issuer",
@@ -1394,6 +1442,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   "createdDate" : "2000-01-23T04:56:07.000+00:00",
   "status" : "Active"
   } ]</code>
+  </pre>
     </td>
   </tr>
   </tbody>
@@ -1408,7 +1457,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-get-issuers-for-dap-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
 <table>
   <thead>
     <th>Status</th>
@@ -1437,7 +1486,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-get-sps-for-dap-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1485,12 +1534,14 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
   <tr>
   <td>
-  <code>
-      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/service_providers
+  <pre class="highlight">
+<code>      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/service_providers
 </code>
+</pre>
   </td>
   <td>
-  <code>[ {
+<pre class="highlight">
+<code>[ {
   "entityDigitalAddress" : "abc@dtx",
   "entityDID" : "did:dtx:2222222222",
   "entityRole" : "Issuer",
@@ -1506,6 +1557,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   "createdDate" : "2000-01-23T04:56:07.000+00:00",
   "status" : "Active"
   } ]</code>
+  </pre>
     </td>
   </tr>
   </tbody>
@@ -1520,7 +1572,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-get-sps-for-dap-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1549,7 +1601,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-create-dap-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1596,7 +1648,8 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
     <tr>
       <td>
-      <code>{
+<pre class="highlight">
+<code>{
       "entityDID" : "did:dtx:AAAAAAAAAA",
       "entityDigitalAddress" : "mmnnmm@dtx",
       "entityRole" : "DAP",
@@ -1604,9 +1657,12 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       "createdDate" : "2000-01-23T04:56:07.000+00:00",
       "status" : "Active"
       }</code>
+      </pre>
       </td>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
       "entityDID" : "did:dtx:AAAAAAAAAA",
       "entityDigitalAddress" : "mmnnmm@dtx",
       "entityRole" : "DAP",
@@ -1614,6 +1670,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       "createdDate" : "2000-01-23T04:56:07.000+00:00",
       "status" : "Active"
       }</code>
+      </pre>
       </td>
     </tr>
   </tbody>
@@ -1628,7 +1685,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-create-dap-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1665,7 +1722,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-create-issuer-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1712,7 +1769,9 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
     <tr>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
       "entityDID" : "did:dtx:11111111",
       "entityDigitalAddress" : "abc@dtx",
       "entityRole" : "Issuer",
@@ -1720,9 +1779,11 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       "createdDate" : "2000-01-23T04:56:07.000+00:00",
       "status" : "Active"
       }</code>
+      </pre>
       </td>
       <td>
-      <code>{
+<pre class="highlight">
+<code>{
       "entityDID" : "did:dtx:11111111",
       "entityDigitalAddress" : "abc@dtx",
       "entityRole" : "Issuer",
@@ -1730,6 +1791,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       "createdDate" : "2000-01-23T04:56:07.000+00:00",
       "status" : "Active"
       }</code>
+      </pre>
       </td>
     </tr>
   </tbody>
@@ -1744,7 +1806,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-create-issuer-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1781,7 +1843,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-gadi-create-sp-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -1828,7 +1890,9 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
     <tr>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
       "entityDID" : "did:dtx:2222222222",
       "entityDigitalAddress" : "xyz@dtx",
       "entityRole" : "Issuer",
@@ -1836,16 +1900,19 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       "createdDate" : "2000-01-23T04:56:07.000+00:00",
       "status" : "Active"
       }</code>
+      </pre>
       </td>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
       "entityDID" : "did:dtx:2222222222",
       "entityDigitalAddress" : "xyz@dtx",
       "entityRole" : "Issuer",
       "createdBy" : "did:dtx:AAAAAAAAAA",
       "createdDate" : "2000-01-23T04:56:07.000+00:00",
       "status" : "Active"
-      }</code>
+      }</code></pre>
       </td>
     </tr>
   </tbody>
@@ -1861,7 +1928,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-gadi-create-sp-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -1903,7 +1970,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-create-da-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/directory/digital-address</td>
@@ -1948,24 +2015,28 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
     <tbody>
       <tr>
         <td>
-        <code>{
+
+<pre class="highlight">
+<code>{
         "entityDID" : "did:dtx:1111111111",
         "entityDigitalAddress" : "abc@dtx",
         "entityRole" : "Issuer",
         "createdBy" : "did:dtx:888888888888",
         "createdDate" : "2000-01-23T04:56:07.000+00:00",
         "status" : "Active"
-        }</code>
+        }</code></pre>
         </td>
         <td>
-        <code>{
+
+<pre class="highlight">
+<code>{
         "entityDID" : "did:dtx:1111111111",
         "entityDigitalAddress" : "abc@dtx",
         "entityRole" : "Issuer",
         "createdBy" : "did:dtx:888888888888",
         "createdDate" : "2000-01-23T04:56:07.000+00:00",
         "status" : "Active"
-        }</code>
+        }</code></pre>
         </td>
       </tr>
     </tbody>
@@ -1981,7 +2052,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-create-da-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -2013,11 +2084,11 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 <!-- End: Create Digital address -->
 
 <!-- Start: Lookup Digital address -->
-### Search Digital Address Using a Criteria ### {#sctn-lookup-da}
+### Search Digital Address Using a Criteria ### {#sctn-lookup-da-criteria}
 
-#### Request #### {#sctn-lookup-da-req}
+#### Request #### {#sctn-lookup-da-criteria-req}
 
-<table class="complex data longlastcol">
+<table class="elementdef longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/directory/digital-address/search</td>
@@ -2058,13 +2129,17 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
     <tbody>
       <tr>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
       "createdBy" : "did:dtx:888888888888",
       "status" : "Active"
-      }</code>
+      }</code></pre>
       </td>
       <td>
-        <code>[ {
+
+<pre class="highlight">
+<code>[ {
         "entityDigitalAddress" : "abc@dtx",
         "entityDID" : "did:dtx:1111111111",
         "entityRole" : "Issuer",
@@ -2078,22 +2153,22 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
         "createdBy" : "did:dtx:888888888888",
         "createdDate" : "2000-01-23T04:56:07.000+00:00",
         "status" : "Active"
-        } ]</code>
+        } ]</code></pre>
         </td>
       </tr>
     </tbody>
   </table>
 </aside>
 
-#### Produces #### {#sctn-lookup-da-prod}
+#### Produces #### {#sctn-lookup-da-criteria-prod}
   This API call produces the following media types according to the <span class="header">Accept</span> request header;
   the media type will be conveyed by the <span class="header">Content-Type</span> response header.
 
   * <pre><code>*/*</code></pre>
 
-#### Responses #### {#sctn-lookup-da-resp}
+#### Responses #### {#sctn-lookup-da-criteria-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -2128,7 +2203,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-get-da-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
   <th>Path</th>
   <td>/api/directory/digital-address/{digitalAddress}</td>
@@ -2161,19 +2236,22 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
   <tr>
   <td>
-   <code>
-      curl -X GET  <host>/api/directory/digital-address/abc@dtx
+   <pre class="highlight">
+<code>      curl -X GET  <host>/api/directory/digital-address/abc@dtx
    </code>
+   </pre>
   </td>
   <td>
-    <code>{
+
+<pre class="highlight">
+<code>{
     "entityDigitalAddress" : "abc@dtx",
     "entityDID" : "did:dtx:1111111111",
     "entityRole" : "Issuer",
     "createdBy" : "did:dtx:888888888888",
     "createdDate" : "2000-01-23T04:56:07.000+00:00",
     "status" : "Active"
-    }</code>
+    }</code></pre>
     </td>
   </tr>
   </tbody>
@@ -2188,7 +2266,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-get-da-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -2217,7 +2295,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-get-issuers-for-dap-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -2256,12 +2334,14 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
   <tr>
   <td>
-  <code>
-      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/issuers
-      </code>
+  <pre class="highlight">
+<code>      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/issuers
+      </code></pre>
   </td>
   <td>
-  <code>[ {
+
+<pre class="highlight">
+<code>[ {
   "entityDigitalAddress" : "abc@dtx",
   "entityDID" : "did:dtx:1111111111",
   "entityRole" : "Issuer",
@@ -2276,7 +2356,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   "createdBy" : "did:dtx:888888888888",
   "createdDate" : "2000-01-23T04:56:07.000+00:00",
   "status" : "Active"
-  } ]</code>
+  } ]</code></pre>
     </td>
   </tr>
   </tbody>
@@ -2291,7 +2371,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-get-issuers-for-dap-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
 <table>
   <thead>
     <th>Status</th>
@@ -2320,7 +2400,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-get-sps-for-dap-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -2359,12 +2439,14 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
   <tr>
   <td>
-  <code>
-      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/service_providers
-</code>
+  <pre class="highlight">
+<code>      curl -X GET  <host>/api/directory/daps/did:dtx:AAAAAAAAAA/service_providers
+</code></pre>
   </td>
   <td>
-  <code>[ {
+
+<pre class="highlight">
+<code>[ {
   "entityDigitalAddress" : "abc@dtx",
   "entityDID" : "did:dtx:2222222222",
   "entityRole" : "Issuer",
@@ -2379,7 +2461,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   "createdBy" : "did:dtx:888888888888",
   "createdDate" : "2000-01-23T04:56:07.000+00:00",
   "status" : "Active"
-  } ]</code>
+  } ]</code></pre>
     </td>
   </tr>
   </tbody>
@@ -2394,7 +2476,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-get-sps-for-dap-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -2423,7 +2505,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-create-issuer-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -2438,7 +2520,8 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
       <td>
         This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
         <ul>
-          <li><code>application/json</code></li>
+          <li>
+<code>application/json</code></li>
         </ul>
       </td>
     </tr>
@@ -2470,24 +2553,28 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
     <tr>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
       "entityDID" : "did:dtx:11111111",
       "entityDigitalAddress" : "abc@dtx",
       "entityRole" : "Issuer",
       "createdBy" : "did:dtx:AAAAAAAAAA",
       "createdDate" : "2000-01-23T04:56:07.000+00:00",
       "status" : "Active"
-      }</code>
+      }</code></pre>
       </td>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
       "entityDID" : "did:dtx:11111111",
       "entityDigitalAddress" : "abc@dtx",
       "entityRole" : "Issuer",
       "createdBy" : "did:dtx:AAAAAAAAAA",
       "createdDate" : "2000-01-23T04:56:07.000+00:00",
       "status" : "Active"
-      }</code>
+      }</code></pre>
       </td>
     </tr>
   </tbody>
@@ -2502,7 +2589,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-create-issuer-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -2539,7 +2626,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-create-sp-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <tbody>
   <tr>
   <th>Path</th>
@@ -2586,24 +2673,28 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
   <tbody>
     <tr>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
       "entityDID" : "did:dtx:2222222222",
       "entityDigitalAddress" : "xyz@dtx",
       "entityRole" : "Issuer",
       "createdBy" : "did:dtx:AAAAAAAAAA",
       "createdDate" : "2000-01-23T04:56:07.000+00:00",
       "status" : "Active"
-      }</code>
+      }</code></pre>
       </td>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
       "entityDID" : "did:dtx:2222222222",
       "entityDigitalAddress" : "xyz@dtx",
       "entityRole" : "Issuer",
       "createdBy" : "did:dtx:AAAAAAAAAA",
       "createdDate" : "2000-01-23T04:56:07.000+00:00",
       "status" : "Active"
-      }</code>
+      }</code></pre>
       </td>
     </tr>
   </tbody>
@@ -2619,7 +2710,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Responses #### {#sctn-create-sp-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
   <thead>
     <th>Status</th>
     <th>Description</th>
@@ -2657,7 +2748,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
 
 #### Request #### {#sctn-create-credential-schema-req}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/credentials/credential-schema</td>
@@ -2702,7 +2793,9 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
     <tbody>
       <tr>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
         "credentialSchemaId": "string",
         "name": "string",
         "version": "string",
@@ -2717,10 +2810,12 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
         "revokingEntityRole": "Issuer",
         "createdBy": "string",
         "createdDate": "2021-01-28T00:52:26.450Z"
-      }</code>
+      }</code></pre>
       </td>
       <td>
-        <code>{
+
+<pre class="highlight">
+<code>{
         "credentialSchemaId": "string",
         "name": "string",
         "version": "string",
@@ -2735,7 +2830,7 @@ the media type will be conveyed by the <span class="header">Content-Type</span> 
         "revokingEntityRole": "Issuer",
         "createdBy": "string",
         "createdDate": "2021-01-28T00:52:26.478Z"
-      }   </code>
+      }   </code></pre>
         </td>
       </tr>
     </tbody>
@@ -2752,7 +2847,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
 #### Responses #### {#sctn-create-credential-schema-resp}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -2785,7 +2880,7 @@ the media type will be conveyed by the Content-Type response header.
 ### Search Credential Schema ### {#sctn-search-credential-schema}
 
 #### Request #### {#sctn-search-credential-schema-req}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/credentials/credential-schema/search</td>
@@ -2830,7 +2925,9 @@ the media type will be conveyed by the Content-Type response header.
     <tbody>
       <tr>
       <td>
-      <code>{
+
+<pre class="highlight">
+<code>{
         "issuingEntityDID": "string",
         "issuingEntityRole": "Issuer",
         "userDID": "string",
@@ -2842,11 +2939,11 @@ the media type will be conveyed by the Content-Type response header.
         "createdDate": "2021-01-28",
         "fromDate": "2021-01-28",
         "toDate": "2021-01-28"
-      }</code>
+      }</code></pre>
       </td>
       <td>
-        <code>
-                [
+        <pre class="highlight">
+<code>                [
           {
             "credentialSchemaId": "string",
             "name": "string",
@@ -2864,7 +2961,7 @@ the media type will be conveyed by the Content-Type response header.
             "createdDate": "2021-01-28T00:56:32.221Z"
           }
         ]
-        </code>
+        </code></pre>
         </td>
       </tr>
     </tbody>
@@ -2881,7 +2978,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
 #### Responses #### {#sctn-search-credential-schema-resp}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -2910,7 +3007,7 @@ the media type will be conveyed by the Content-Type response header.
 ### Get a Credential Schema ### {#sctn-get-credential-schema}
 
 #### Request #### {#sctn-get-credential-schema-req}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/credentials/credential-schema/{credentialSchemaId}</td>
@@ -2946,11 +3043,13 @@ the media type will be conveyed by the Content-Type response header.
     <tbody>
       <tr>
       <td>
-      <code>curl -X GET  <host>/api/credentials/credential-schema/aaxddgfhjhgggddd</code>
+
+<pre class="highlight">
+<code>curl -X GET  <host>/api/credentials/credential-schema/aaxddgfhjhgggddd</code></pre>
       </td>
       <td>
-        <code>
-        {
+        <pre class="highlight">
+<code>        {
           "credentialSchemaId": "string",
           "name": "string",
           "version": "string",
@@ -2966,7 +3065,7 @@ the media type will be conveyed by the Content-Type response header.
           "createdBy": "string",
           "createdDate": "2021-01-28T01:02:10.689Z"
         }
-        </code>
+        </code></pre>
         </td>
       </tr>
     </tbody>
@@ -2983,7 +3082,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
 #### Responses #### {#sctn-get-credential-schema-resp}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -3013,7 +3112,7 @@ the media type will be conveyed by the Content-Type response header.
 
   #### Request #### {#sctn-create-credential-metadata-req}
 
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
    <tr>
      <th>Path</th>
      <td>/api/credentials/credential-metadata</td>
@@ -3058,7 +3157,9 @@ the media type will be conveyed by the Content-Type response header.
       <tbody>
         <tr>
         <td>
-        <code>{
+
+<pre class="highlight">
+<code>{
             "credentialId": "string",
             "credentialSchemaId": "string",
             "CredentialSchemaVersion": "string",
@@ -3080,10 +3181,12 @@ the media type will be conveyed by the Content-Type response header.
             "dapDA": "string",
             "createdBy": "string",
             "createdDate": "2021-01-28T01:13:19.550Z"
-          }</code>
+          }</code></pre>
         </td>
         <td>
-          <code>{
+
+<pre class="highlight">
+<code>{
           "credentialId": "string",
           "credentialSchemaId": "string",
           "CredentialSchemaVersion": "string",
@@ -3105,7 +3208,7 @@ the media type will be conveyed by the Content-Type response header.
           "dapDA": "string",
           "createdBy": "string",
           "createdDate": "2021-01-28T01:13:19.558Z"
-        }</code>
+        }</code></pre>
           </td>
         </tr>
       </tbody>
@@ -3122,7 +3225,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
   #### Responses #### {#sctn-create-credential-metadata-resp}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
       <thead>
         <th>Status</th>
         <th>Description</th>
@@ -3155,7 +3258,7 @@ the media type will be conveyed by the Content-Type response header.
   ### Search Credential Metadata ### {#sctn-search-credential-metadata}
 
   #### Request #### {#sctn-search-credential-metadata-req}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
    <tr>
      <th>Path</th>
      <td>/api/credentials/credential-metadata/search</td>
@@ -3191,7 +3294,9 @@ the media type will be conveyed by the Content-Type response header.
       <tbody>
         <tr>
         <td>
-        <code>{
+
+<pre class="highlight">
+<code>{
           "issuingEntityDID": "string",
           "issuingEntityRole": "Issuer",
           "userDID": "string",
@@ -3203,10 +3308,12 @@ the media type will be conveyed by the Content-Type response header.
           "createdDate": "2021-01-28",
           "fromDate": "2021-01-28",
           "toDate": "2021-01-28"
-        }</code>
+        }</code></pre>
         </td>
         <td>
-          <code>[
+
+<pre class="highlight">
+<code>[
           {
             "credentialId": "string",
             "credentialSchemaId": "string",
@@ -3231,7 +3338,7 @@ the media type will be conveyed by the Content-Type response header.
             "createdDate": "2021-01-28T01:14:06.817Z"
           }
         ]
-          </code>
+          </code></pre>
           </td>
         </tr>
       </tbody>
@@ -3248,7 +3355,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
   #### Responses #### {#sctn-search-credential-metadata-resp}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
       <thead>
         <th>Status</th>
         <th>Description</th>
@@ -3277,7 +3384,7 @@ the media type will be conveyed by the Content-Type response header.
   ### Get Credential Metadata ### {#sctn-get-credential-metadata}
 
   #### Request #### {#sctn-get-credential-metadata-req}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
    <tr>
      <th>Path</th>
      <td>/api/credentials/credential-metadata/{credentialMetadataId}</td>
@@ -3313,11 +3420,13 @@ the media type will be conveyed by the Content-Type response header.
       <tbody>
         <tr>
         <td>
-        <code>curl -X GET  <host>/api/credentials/credential-metadata/aaxddgfhjhgggddd</code>
+
+<pre class="highlight">
+<code>curl -X GET  <host>/api/credentials/credential-metadata/aaxddgfhjhgggddd</code></pre>
         </td>
         <td>
-          <code>
-                      {
+          <pre class="highlight">
+<code>                      {
               "credentialId": "string",
               "credentialSchemaId": "string",
               "CredentialSchemaVersion": "string",
@@ -3340,7 +3449,7 @@ the media type will be conveyed by the Content-Type response header.
               "createdBy": "string",
               "createdDate": "2021-01-28T01:14:54.546Z"
             }
-          </code>
+          </code></pre>
           </td>
         </tr>
       </tbody>
@@ -3357,7 +3466,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
   #### Responses #### {#sctn-get-credential-metadata-resp}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
       <thead>
         <th>Status</th>
         <th>Description</th>
@@ -3388,7 +3497,7 @@ the media type will be conveyed by the Content-Type response header.
 ### Revoke Credential Metadata ### {#sctn-revoke-credential-metadata}
 
 #### Request #### {#sctn-revoke-credential-metadata-req}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/credentials/credential-metadata/{credentialMetadataId}/revoke</td>
@@ -3426,11 +3535,13 @@ the media type will be conveyed by the Content-Type response header.
     <tbody>
       <tr>
       <td>
-      <code>curl -X GET  <host>/api/credentials/credential-metadata/aaxddgfhjhgggddd/revoke</code></code>
+
+<pre class="highlight">
+<code>curl -X GET  <host>/api/credentials/credential-metadata/aaxddgfhjhgggddd/revoke</code></code></pre>
       </td>
       <td>
-        <code>
-        {
+        <pre class="highlight">
+<code>        {
           "credentialId": "string",
           "credentialSchemaId": "string",
           "CredentialSchemaVersion": "string",
@@ -3453,7 +3564,7 @@ the media type will be conveyed by the Content-Type response header.
           "createdBy": "string",
           "createdDate": "2021-01-28T01:16:49.279Z"
         }
-        </code>
+        </code></pre>
         </td>
       </tr>
     </tbody>
@@ -3471,7 +3582,7 @@ the media type will be conveyed by the Content-Type response header.
 
 #### Responses #### {#sctn-revoke-credential-metadata-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -3502,7 +3613,7 @@ the media type will be conveyed by the Content-Type response header.
 ### Initialize Authenticator ### {#sctn-fido-initialize}
 
 #### Request #### {#sctn-fido-initialize-req}
-<table class="complex data longlastcol">
+<table class="data longlastcol">
  <tr>
    <th>Path</th>
    <td>/api/user/fido/init-authenticator</td>
@@ -3549,18 +3660,18 @@ the media type will be conveyed by the Content-Type response header.
     <tbody>
       <tr>
       <td>
-      <code>
-            {
+      <pre class="highlight">
+<code>            {
         "appId": "string",
         "deviceId": "string",
         "loginId": "string",
         "packageName": "string"
       }
-      </code>
+      </code></pre>
       </td>
       <td>
-        <code>
-              {
+        <pre class="highlight">
+<code>              {
         "deviceId": "string",
         "expireTime": "string",
         "isRegistered": true,
@@ -3576,7 +3687,7 @@ the media type will be conveyed by the Content-Type response header.
         "trStatus": "string",
         "trStatusMsg": "string"
       }
-        </code>
+        </code></pre>
         </td>
       </tr>
     </tbody>
@@ -3594,7 +3705,7 @@ the media type will be conveyed by the Content-Type response header.
 
 #### Responses #### {#sctn-fido-initialize-resp}
 
-<table class="complex data longlastcol">
+<table class="data longlastcol">
     <thead>
       <th>Status</th>
       <th>Description</th>
@@ -3622,7 +3733,7 @@ the media type will be conveyed by the Content-Type response header.
   ### Register Account ### {#sctn-fido-register}
 
   #### Request #### {#sctn-fido-register-req}
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
    <tr>
      <th>Path</th>
      <td>/api/user/fido/register</td>
@@ -3669,17 +3780,19 @@ the media type will be conveyed by the Content-Type response header.
       <tbody>
         <tr>
         <td>
-        <code>
-              {
+        <pre class="highlight">
+<code>              {
         "appId": "string",
         "deviceId": "string",
         "loginId": "string",
         "packageName": "string"
         }
-        </code>
+        </code></pre>
         </td>
         <td>
-          <code>{
+
+<pre class="highlight">
+<code>{
           "deviceId": "string",
           "expireTime": "string",
           "isRegistered": true,
@@ -3695,7 +3808,7 @@ the media type will be conveyed by the Content-Type response header.
           "trStatus": "string",
           "trStatusMsg": "string"
         }
-          </code>
+          </code></pre>
           </td>
         </tr>
       </tbody>
@@ -3713,7 +3826,7 @@ the media type will be conveyed by the Content-Type response header.
 
   #### Responses #### {#sctn-fido-register-resp}
 
-  <table class="complex data longlastcol">
+  <table class="data longlastcol">
       <thead>
         <th>Status</th>
         <th>Description</th>
@@ -3742,7 +3855,7 @@ the media type will be conveyed by the Content-Type response header.
     ### DeRegister Account ### {#sctn-fido-deregister}
 
     #### Request #### {#sctn-fido-deregister-req}
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
      <tr>
        <th>Path</th>
        <td>/api/user/fido/deregister</td>
@@ -3789,17 +3902,19 @@ the media type will be conveyed by the Content-Type response header.
         <tbody>
           <tr>
           <td>
-          <code>
-                {
+          <pre class="highlight">
+<code>                {
           "appId": "string",
           "deviceId": "string",
           "loginId": "string",
           "packageName": "string"
           }
-          </code>
+          </code></pre>
           </td>
           <td>
-            <code>{
+
+<pre class="highlight">
+<code>{
             "deviceId": "string",
             "expireTime": "string",
             "isDeRegistered": true,
@@ -3815,7 +3930,7 @@ the media type will be conveyed by the Content-Type response header.
             "trStatus": "string",
             "trStatusMsg": "string"
           }
-            </code>
+            </code></pre>
             </td>
           </tr>
         </tbody>
@@ -3833,7 +3948,7 @@ the media type will be conveyed by the Content-Type response header.
 
     #### Responses #### {#sctn-fido-deregister-resp}
 
-    <table class="complex data longlastcol">
+    <table class="data longlastcol">
         <thead>
           <th>Status</th>
           <th>Description</th>
@@ -3862,7 +3977,7 @@ the media type will be conveyed by the Content-Type response header.
       ### Authenticate Account ### {#sctn-fido-authenticate}
 
       #### Request #### {#sctn-fido-authenticate-req}
-      <table class="complex data longlastcol">
+      <table class="data longlastcol">
        <tr>
          <th>Path</th>
          <td>/api/user/fido/authenticate</td>
@@ -3909,17 +4024,19 @@ the media type will be conveyed by the Content-Type response header.
           <tbody>
             <tr>
             <td>
-            <code>
-                  {
+            <pre class="highlight">
+<code>                  {
             "appId": "string",
             "deviceId": "string",
             "loginId": "string",
             "packageName": "string"
             }
-            </code>
+            </code></pre>
             </td>
             <td>
-              <code>{
+
+<pre class="highlight">
+<code>{
               "deviceId": "string",
               "expireTime": "string",
               "isAuthenticateed": true,
@@ -3935,7 +4052,7 @@ the media type will be conveyed by the Content-Type response header.
               "trStatus": "string",
               "trStatusMsg": "string"
             }
-              </code>
+              </code></pre>
               </td>
             </tr>
           </tbody>
@@ -3953,7 +4070,7 @@ the media type will be conveyed by the Content-Type response header.
 
       #### Responses #### {#sctn-fido-authenticate-resp}
 
-      <table class="complex data longlastcol">
+      <table class="data longlastcol">
           <thead>
             <th>Status</th>
             <th>Description</th>
@@ -3981,7 +4098,7 @@ the media type will be conveyed by the Content-Type response header.
         ### Registration Status ### {#sctn-fido-registered-status}
 
         #### Request #### {#sctn-fido-registered-status-req}
-        <table class="complex data longlastcol">
+        <table class="data longlastcol">
          <tr>
            <th>Path</th>
            <td>/api/user/fido/registered-status</td>
@@ -4028,17 +4145,19 @@ the media type will be conveyed by the Content-Type response header.
             <tbody>
               <tr>
               <td>
-              <code>
-                    {
+              <pre class="highlight">
+<code>                    {
               "appId": "string",
               "deviceId": "string",
               "loginId": "string",
               "packageName": "string"
               }
-              </code>
+              </code></pre>
               </td>
               <td>
-                <code>{
+
+<pre class="highlight">
+<code>{
                 "deviceId": "string",
                 "expireTime": "string",
                 "isAuthenticateed": true,
@@ -4054,7 +4173,7 @@ the media type will be conveyed by the Content-Type response header.
                 "trStatus": "string",
                 "trStatusMsg": "string"
               }
-                </code>
+                </code></pre>
                 </td>
               </tr>
             </tbody>
@@ -4072,7 +4191,7 @@ the media type will be conveyed by the Content-Type response header.
 
         #### Responses #### {#sctn-fido-registered-status-resp}
 
-        <table class="complex data longlastcol">
+        <table class="data longlastcol">
             <thead>
               <th>Status</th>
               <th>Description</th>
@@ -4100,7 +4219,7 @@ the media type will be conveyed by the Content-Type response header.
           ### Get Transaction Result ### {#sctn-get-transaction-result}
 
           #### Request #### {#sctn-get-transaction-result-req}
-          <table class="complex data longlastcol">
+          <table class="data longlastcol">
            <tr>
              <th>Path</th>
              <td>/api/user/fido/transaction-result/{svcTrId}</td>
@@ -4136,11 +4255,13 @@ the media type will be conveyed by the Content-Type response header.
               <tbody>
                 <tr>
                 <td>
-                <code>curl -X GET  <host>/api/user/fido/transaction-result/aaxddgfhjhgggddd</code>
+
+<pre class="highlight">
+<code>curl -X GET  <host>/api/user/fido/transaction-result/aaxddgfhjhgggddd</code></pre>
                 </td>
                 <td>
-                  <code>
-                              {
+                  <pre class="highlight">
+<code>                              {
                       "credentialId": "string",
                       "credentialSchemaId": "string",
                       "CredentialSchemaVersion": "string",
@@ -4163,7 +4284,7 @@ the media type will be conveyed by the Content-Type response header.
                       "createdBy": "string",
                       "createdDate": "2021-01-28T01:14:54.546Z"
                     }
-                    </code>
+                    </code></pre>
                   </td>
                 </tr>
               </tbody>
@@ -4180,7 +4301,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
           #### Responses #### {#sctn-get-transaction-result-resp}
-          <table class="complex data longlastcol">
+          <table class="data longlastcol">
               <thead>
                 <th>Status</th>
                 <th>Description</th>
@@ -4208,7 +4329,7 @@ the media type will be conveyed by the Content-Type response header.
             ### Get Transaction Status ### {#sctn-get-transaction-status}
 
             #### Request #### {#sctn-get-transaction-status-req}
-            <table class="complex data longlastcol">
+            <table class="data longlastcol">
              <tr>
                <th>Path</th>
                <td>/api/user/fido/transaction-status/{svcTrId}</td>
@@ -4244,11 +4365,13 @@ the media type will be conveyed by the Content-Type response header.
                 <tbody>
                   <tr>
                   <td>
-                  <code>curl -X GET  <host>/api/user/fido/transaction-status/aaxddgfhjhgggddd</code>
+
+<pre class="highlight">
+<code>curl -X GET  <host>/api/user/fido/transaction-status/aaxddgfhjhgggddd</code></pre>
                   </td>
                   <td>
-                    <code>
-                                {
+                    <pre class="highlight">
+<code>                                {
                         "credentialId": "string",
                         "credentialSchemaId": "string",
                         "CredentialSchemaVersion": "string",
@@ -4271,7 +4394,7 @@ the media type will be conveyed by the Content-Type response header.
                         "createdBy": "string",
                         "createdDate": "2021-01-28T01:14:54.546Z"
                       }
-                      </code>
+                      </code></pre>
                     </td>
                   </tr>
                 </tbody>
@@ -4288,7 +4411,7 @@ the media type will be conveyed by the Content-Type response header.
 
 
             #### Responses #### {#sctn-get-transaction-status-resp}
-            <table class="complex data longlastcol">
+            <table class="data longlastcol">
                 <thead>
                   <th>Status</th>
                   <th>Description</th>
@@ -4325,7 +4448,7 @@ Issue: We will likely remove this section later.  But for now let's
    keep it as a reference for the requirements th specs needs to meet.
 
 <figure id="table-security-privacy-goals" class="table">
-    <table class="complex data">
+    <table class="data longlastcol">
         <tr>
             <th>No</th>
             <th>Goal</th>
@@ -4334,238 +4457,238 @@ Issue: We will likely remove this section later.  But for now let's
         <tr>
             <td>1</td>
             <td>
-		The GADI Framework respects national laws and allows the <a>DAP Agency</a>s to operate according to their local regulations.
- 		This includes compliance to CCPA and GDPR.
-	    </td>
+    The GADI Framework respects national laws and allows the <a>DAP Agency</a>s to operate according to their local regulations.
+     This includes compliance to CCPA and GDPR.
+      </td>
             <td>
-	        Local law is the basis for any business.
+          Local law is the basis for any business.
             </td>
         </tr>
         <tr>
             <td>2</td>
             <td>
-	      Users must have control on user credentials, i.e. no credentials are created or shared without the user's consent.
-	      This means, <a>DAP Agency</a> asks for user consent and strongly authenticates the user.
-	    </td>
+        Users must have control on user credentials, i.e. no credentials are created or shared without the user's consent.
+        This means, <a>DAP Agency</a> asks for user consent and strongly authenticates the user.
+      </td>
             <td>
-	      Data Privacy regulation & expectation
+        Data Privacy regulation & expectation
             </td>
         </tr>
         <tr>
             <td>3</td>
             <td>
-	      Users have the ability to select a set of attributes verified by a specific issuer to be included in a specific credential.
-	    </td>
+        Users have the ability to select a set of attributes verified by a specific issuer to be included in a specific credential.
+      </td>
             <td>
-	      Data Privacy regulation & expectation.  If the user only wants to share a subset of the data that should be ok to the issuer.
+        Data Privacy regulation & expectation.  If the user only wants to share a subset of the data that should be ok to the issuer.
             </td>
         </tr>
         <tr>
             <td>4</td>
             <td>
-	      GADI doesn't make user tracking or collusion between Service Providers easier.
-	      If two <a>SP</a>s both received a credential that John Doe was born on date X in Y,
-	      then the two <a>SP</a>s could learn it is the very likely same user. But this has nothing to do with GADI.
+        GADI doesn't make user tracking or collusion between Service Providers easier.
+        If two <a>SP</a>s both received a credential that John Doe was born on date X in Y,
+        then the two <a>SP</a>s could learn it is the very likely same user. But this has nothing to do with GADI.
 
-	      As a consequence, the <a>Digital Address</a> / <a>Trust Anchor</a> are NOT part of the credential.
-	      Credentials are in the W3C VC format [[!vc-data-model]] and are tied to a <a>DID</a>.
-	    </td>
+        As a consequence, the <a>Digital Address</a> / <a>Trust Anchor</a> are NOT part of the credential.
+        Credentials are in the W3C VC format [[!vc-data-model]] and are tied to a <a>DID</a>.
+      </td>
             <td>
-	      GADI doesn't share correlation handles with <a>SP</a>s for privacy reasons.
+        GADI doesn't share correlation handles with <a>SP</a>s for privacy reasons.
             </td>
         </tr>
         <tr>
             <td>5</td>
             <td>
-	      People who are not smartphone users must be part of the new Digital Identity ecosystem.
-	    </td>
+        People who are not smartphone users must be part of the new Digital Identity ecosystem.
+      </td>
             <td>
-	      A substantial part of the world's population belongs to this category.  This part is key for future growth opportunities
+        A substantial part of the world's population belongs to this category.  This part is key for future growth opportunities
             </td>
         </tr>
         <tr>
             <td>6</td>
             <td>
-	      <a>Issuer</a>s must be in the value chain.  This means that users cannot share credentials issued by
-	      an issuer without allowing financial compensation for the issuer.
-	    </td>
+        <a>Issuer</a>s must be in the value chain.  This means that users cannot share credentials issued by
+        an issuer without allowing financial compensation for the issuer.
+      </td>
             <td>
-	      This is one of the main GADI benefits compared to other approaches.
+        This is one of the main GADI benefits compared to other approaches.
             </td>
         </tr>
         <tr>
             <td>7</td>
             <td>
-	      GADI enables a push model from the issuers where when there is change in credential status,
-	      latest credential information is what would be presented.
-	    </td>
+        GADI enables a push model from the issuers where when there is change in credential status,
+        latest credential information is what would be presented.
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>8</td>
             <td>
-	      <a>Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
-	      who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAP Agency</a>) than the one this issuer is primarily using.
-	    </td>
+        <a>Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
+        who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAP Agency</a>) than the one this issuer is primarily using.
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>9</td>
             <td>
-	      There should be cross ledger value settlements for the issuers and may be
-	      some reward points for the issuers as Users assert their credentials and provide data.
-	    </td>
+        There should be cross ledger value settlements for the issuers and may be
+        some reward points for the issuers as Users assert their credentials and provide data.
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>10</td>
             <td>
-	      Onboard the user with a trusted Identity that is approved by an <a>Issuer</a> after proper Identity vetting
-	    </td>
+        Onboard the user with a trusted Identity that is approved by an <a>Issuer</a> after proper Identity vetting
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>11</td>
             <td>
- 	      It is possible for users to start their participation
-	      based on a low level identity assertion and increase
-	      that level over time.
+         It is possible for users to start their participation
+        based on a low level identity assertion and increase
+        that level over time.
 
-	      However, there is a minmum identity assertion specified
-	      by the GADI Governance Group. We need this to prevent
-	      user impersonation attacks through weak ID proofing methods.
+        However, there is a minmum identity assertion specified
+        by the GADI Governance Group. We need this to prevent
+        user impersonation attacks through weak ID proofing methods.
 
-	    </td>
+      </td>
             <td>
-	      Many users don't have connections to a <a>SP</a> which has performed strong ID proofing today.
- 	      But that might change over time.  We need to support such users.
+        Many users don't have connections to a <a>SP</a> which has performed strong ID proofing today.
+         But that might change over time.  We need to support such users.
             </td>
         </tr>
         <tr>
             <td>12</td>
             <td>
-	      Each <a>DAP Agency</a> provides one Single Digital Address App for the user to be able to access and control the
-	      Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
-	      user credentials on demand with user consent.
-	    </td>
+        Each <a>DAP Agency</a> provides one Single Digital Address App for the user to be able to access and control the
+        Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
+        user credentials on demand with user consent.
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>13</td>
             <td>
-	      <a>Digital Address</a> (<a>DA</a>) is a Human readable string that is easy to use, that is associated with the Users <a>Trust Anchor</a>.
-	      This becomes that identifier that the user can provide to issuers to get the credentials issued.
-	    </td>
+        <a>Digital Address</a> (<a>DA</a>) is a Human readable string that is easy to use, that is associated with the Users <a>Trust Anchor</a>.
+        This becomes that identifier that the user can provide to issuers to get the credentials issued.
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>14</td>
             <td>
-	      Users in this scenario will have a single Digital Address Application from one Digital Address Provider
-	      and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
-	      push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
-	      different handles (Different Digital Addresses) that can be orchestrated between the user Device and <a>DAP Agency</a> to
-	      present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.
-	    </td>
+        Users in this scenario will have a single Digital Address Application from one Digital Address Provider
+        and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
+        push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
+        different handles (Different Digital Addresses) that can be orchestrated between the user Device and <a>DAP Agency</a> to
+        present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>15</td>
             <td>
-	      The GADI ledger is accessible to <a>DAP Agency</a>s only.
-	    </td>
+        The GADI ledger is accessible to <a>DAP Agency</a>s only.
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>16</td>
             <td>
-	      <a>Trust Anchor</a>s are generated randomly by the <a>HomeDAP</a>, such that collisions do not practically occur.
-	      See <a>Trust Anchor</a> Discussion below.
-	      (not clear, see 20)
-	    </td>
+        <a>Trust Anchor</a>s are generated randomly by the <a>HomeDAP</a>, such that collisions do not practically occur.
+        See <a>Trust Anchor</a> Discussion below.
+        (not clear, see 20)
+      </td>
             <td>
-	      So that we only need to delete the relation between the <a>Trust Anchor</a> and any other PII when the user
-	      asks for account deletion (removal from GADI).
+        So that we only need to delete the relation between the <a>Trust Anchor</a> and any other PII when the user
+        asks for account deletion (removal from GADI).
             </td>
         </tr>
         <tr>
             <td>17</td>
             <td>
-	      Credentials that do not include PII shall be supported.  For example "the holder of the credential is at least 21 years old"
-	      or "the holder of this credential got vaccinated against X".
+        Credentials that do not include PII shall be supported.  For example "the holder of the credential is at least 21 years old"
+        or "the holder of this credential got vaccinated against X".
 
 Note: sometimes there are existing business processes which will convey PI/PII outside of GADI.
- 	    </td>
+       </td>
             <td>
-	      In the physical world we have those and for privacy reasons we should carry them over to the digital world.
+        In the physical world we have those and for privacy reasons we should carry them over to the digital world.
             </td>
         </tr>
         <tr>
             <td>18</td>
             <td>
-	      GADI and <a>DAP Agency</a>s do NOT persistently store personal information (PI).
-	      And even pass-through of PI should be avoided.
+        GADI and <a>DAP Agency</a>s do NOT persistently store personal information (PI).
+        And even pass-through of PI should be avoided.
 
 Note: they will likely need to store PII, i.e. information related to users
 
 Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credentials)
-	    </td>
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>19</td>
             <td>
-	      GADI will store the <a>HomeDAP</a> Identifier (i.e. <a>HomeDAP_ID</a>) along with the user's <a>Trust Anchor</a>.
-	      So each <a>DAP Agency</a> could ask GADI for the <a>HomeDAP</a> of a given user and would then directly talk to the user's <a>HomeDAP</a>.
-	    </td>
+        GADI will store the <a>HomeDAP</a> Identifier (i.e. <a>HomeDAP_ID</a>) along with the user's <a>Trust Anchor</a>.
+        So each <a>DAP Agency</a> could ask GADI for the <a>HomeDAP</a> of a given user and would then directly talk to the user's <a>HomeDAP</a>.
+      </td>
             <td>
-	      We need that for cross-<a>DAP Agency</a> communications
+        We need that for cross-<a>DAP Agency</a> communications
             </td>
         </tr>
         <tr>
             <td>20</td>
             <td>
-	      We compute a Hash(firstname, last name, date of birth, country+city of birth) as either use this as
-	      <a>Trust Anchor</a> or as an attribute stored along with the <a>Trust Anchor</a> in GADI.
-	    </td>
+        We compute a Hash(firstname, last name, date of birth, country+city of birth) as either use this as
+        <a>Trust Anchor</a> or as an attribute stored along with the <a>Trust Anchor</a> in GADI.
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>21</td>
             <td>
-	      It shall  be possible to change the <a>HomeDAP</a> of a user (e.g. from <a>DAP Agency</a>1 to <a>DAP Agency</a>2).
-	    </td>
+        It shall  be possible to change the <a>HomeDAP</a> of a user (e.g. from <a>DAP Agency</a>1 to <a>DAP Agency</a>2).
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>22</td>
             <td>
-	      <a>Issuer</a>s shouldn't learn the <a>SP</a> that verifies a credential.
-	    </td>
+        <a>Issuer</a>s shouldn't learn the <a>SP</a> that verifies a credential.
+      </td>
             <td>
-	      Privacy
+        Privacy
             </td>
         </tr>
         <tr>
             <td>23</td>
             <td>
              <a>SP</a>s want to verify the <a>VC</a> and hence will
- 	      need to decide whether they want to trust a specific
-	      <a>Issuer</a>.
-	      As a consequence, the <a>SP</a> will learn who the
-	      <a>Issuer</a> of that <a>VC</a> is.
-	    </td>
+         need to decide whether they want to trust a specific
+        <a>Issuer</a>.
+        As a consequence, the <a>SP</a> will learn who the
+        <a>Issuer</a> of that <a>VC</a> is.
+      </td>
             <td>
             </td>
         </tr>
@@ -4574,41 +4697,40 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
             <td>
 
 Issue: Need to specify what functionality/certification is needed to call an application a GADI "Digital Address Application".
-	    </td>
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>25</td>
             <td>
-	      Organizational participants, including issuers, verifiers, and service providers require a publicly
-	         resolvable DID
-	    </td>		
+        Organizational participants, including issuers, verifiers, and service providers require a publicly
+           resolvable DID
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>26</td>
             <td>
-	    Regional directory services include the User related information,
-	    the global directory only includes information on issuers,
-	    service providers abd interchanges.
-	    So compliance can be managed on a regional level.
-	    </td>		
+      Regional directory services include the User related information,
+      the global directory only includes information on issuers,
+      service providers abd interchanges.
+      So compliance can be managed on a regional level.
+      </td>
             <td>
             </td>
         </tr>
         <tr>
             <td>27</td>
             <td>
-	    Logically, the DAA is provided by The Agency - not the Issuer.
-	    However, the Issuer could still provide the DAA on behalf
-	    of The Agency.
-	    </td>		
+      Logically, the DAA is provided by The Agency - not the Issuer.
+      However, the Issuer could still provide the DAA on behalf
+      of The Agency.
+      </td>
             <td>
             </td>
         </tr>
-	
+
     </table>
 </figure>
-
