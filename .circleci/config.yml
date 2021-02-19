@@ -26,11 +26,11 @@ jobs:
 
       - run:
           name: Tag the docker image
-          command: docker tag did-spec:latest 047892936253.dkr.ecr.us-west-2.amazonaws.com/did-spec:$CIRCLE_SHA1
+          command: docker tag did-spec:latest $AWS_REPO_ECR_URI:$CIRCLE_SHA1
 
       - run:
           name: Push the DID Alliance Specification docker image to ECR
-          command: docker push 047892936253.dkr.ecr.us-west-2.amazonaws.com/did-spec
+          command: docker push $AWS_REPO_ECR_URI:$CIRCLE_SHA1
 
 
   deploy:
