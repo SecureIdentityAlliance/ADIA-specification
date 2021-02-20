@@ -1,0 +1,271 @@
+## GADI Regional Directory API ## {#sctn-gadi-regional-api}
+
+### Save Digital Address ### {#sctn-gadi-save-da}
+Save A Digital Address with its corresponding Hashed anchor attributes
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/digital-address</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>DigitalAddress (required)<br/>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Regional Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>DigitalAddress Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns DigitalAddress</li>
+          <li><strong>201</strong>: DigitalAddress Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "dapUserId" : "did:dtx:I1111111111",
+        "digitalAddress" : "abc@DTX",
+        "primaryHash" : "sdhgjgfgdfdsdfdsfsdf",
+        "secondaryHash": "lkdkjh44kjdjfhlskad"
+        "issuerId": "did:dtx:I1111111111"
+        }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+          "dapUserId" : "did:dtx:I1111111111",
+          "digitalAddress" : "abc@DTX",
+          "status" : "Active"
+          }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+### Search Digital Addresses ### {#sctn-gadi-regional-get-da}
+Returns a list of Digital Addresses matching a criteria from the GADI Regional Directory
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/digital-address/search</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>EntityCriteria (required)<br/>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of DigitalAddress Objects</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns DigitalAddress</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+      {
+          "issuerId" : "did:dtx:I1111111111",
+          "digialAddress":"kiran"
+          "status" : "Active"
+        }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        [
+        {
+            "dapUserId" : "did:dtx:I2222222",
+            "digitalAddress" : "kiran.handsome@DTX",
+            "issuerId": "did:dtx:I1111111111"
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        },
+        {
+            "dapUserId" : "did:dtx:I3333333",
+            "digitalAddress" : "kiran.majestic@DTX",
+            "issuerId": "did:dtx:I1111111111"
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        }
+        ]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+### Get a Digital Address by an Identifier ### {#sctn-gadi-regional-get-byId}
+Get an entity with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/digital-address/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the entity</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>DigitalAddress Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns DigitalAddress</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: DigitalAddress Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/digital-address/did:dtx:I2222222
+curl -X GET  /api/digital-address/kiran.handsome@DTX
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+          "dapUserId" : "did:dtx:I2222222",
+          "digitalAddress" : "kiran.handsome@DTX",
+          "issuerId": "did:dtx:I1111111111"
+          "createdBy" : "did:dtx:888888888888",
+          "createdDate" : "2000-01-23T04:56:07.000+00:00",
+          "status" : "Active"
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
