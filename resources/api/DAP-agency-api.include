@@ -1,0 +1,1937 @@
+## DAP Agency API ## {#sctn-dap-agency-api}
+
+### Directory Service ### {#sctn-gadi-directory-service}
+
+#### Search Entities #### {#sctn-dap-agency-get-entities}
+Returns a list of Entities matching a criteria from the GADI Directory
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/entities/search</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>EntityCriteria (required)<br/>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of Entity Objects</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+      {
+          "entityRole" : "Issuer",
+          "status" : "Active"
+          }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        [{
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Issuer",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            },
+          {
+            "entityID" : "did:gadi:I2222222222",
+            "entityDigitalAddress" : "abc@OCN",
+            "entityRole" : "Issuer",
+            "createdBy" : "did:DTX:U2222222222",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            }
+        ]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get an Entity by Identifier #### {#sctn-dap-agency-get-entities}
+Get an entity with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/entities/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the entity</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: Entity Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/entities/abc@dtx
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Issuer",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+#### Get issuers #### {#sctn-dap-agency-get-issuers}
+Gets a list of issuers in in any of the GADI Regions.
+
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/issuers</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of Entity</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <pre class="highlight">
+      <code>
+        [{
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Issuer",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            },
+            {
+                "entityID" : "did:gadi:I2222222222",
+                "entityDigitalAddress" : "abc@OCN",
+                "entityRole" : "Issuer",
+                "createdBy" : "did:DTX:U2222222222",
+                "createdDate" : "2000-01-23T04:56:07.000+00:00",
+                "status" : "Active"
+                }]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get a Issuer by Identifier #### {#sctn-dap-agency-get-one-issuer}
+Get a Issuer with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/issuers/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the Issuer</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Issuer</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: Issuer Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/issuers/did:gadi:I1111111111
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Issuer",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+#### Save Issuer #### {#sctn-dap-agency-save-issuer}
+Save an Issuer with the DAP Agency
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/issuers</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>Entity (required)<br/>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>201</strong>: Entity Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "entityID" : "did:gadi:I1111111111",
+        "entityDigitalAddress" : "abc@DTX",
+        "entityRole" : "Issuer"
+        }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Issuer",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+
+
+#### Get Service Providers #### {#sctn-dap-agency-get-service-providers}
+Gets a list of service-providers in in any of the GADI Regions.
+
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/service-providers</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of Entity</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <pre class="highlight">
+      <code>
+        [{
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "ServiceProvider",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            },
+            {
+                "entityID" : "did:gadi:I2222222222",
+                "entityDigitalAddress" : "abc@OCN",
+                "entityRole" : "ServiceProvider",
+                "createdBy" : "did:DTX:U2222222222",
+                "createdDate" : "2000-01-23T04:56:07.000+00:00",
+                "status" : "Active"
+                }]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get a Service Provider by Identifier #### {#sctn-dap-agency-get-one-service-provider}
+Get a Service Provider with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/service-providers/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the Service Provider</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Service Provider</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: Service Provider Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/interchanges/did:gadi:I1111111111
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "ServiceProvider",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Save Service Provider #### {#sctn-dap-agency-save-serviceprovider}
+Save a Service Provider with the DAP Agency
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/service-providers</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>Entity (required)<br/>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>201</strong>: Entity Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "entityID" : "did:gadi:I1111111111",
+        "entityDigitalAddress" : "abc@DTX",
+        "entityRole" : "ServiceProvider"
+        }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "ServiceProvider",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+
+### Credential Service ### {#sctn-gadi-credential-service}
+
+#### Search Credential Schema #### {#sctn-dap-agency-get-credential-schema}
+Search A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credential-schema/search</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>CredentialCriteria (required)<br/>
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAP Ledger.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of CredentialSchema Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns CredentialSchema</li>
+          <li><strong>201</strong>: CredentialSchema Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+      "name": "VerifiedPerson",
+      "status": "Active"
+      }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        [
+        {
+        "credentialSchemaId":"AAA343234"
+        "name": "VerifiedPerson",
+        "version": "1.0",
+        "description": "A Verified Person Schema",
+        "publishingentityID": "did:dtx:111111111",
+        "publishingEntityType": "Issuer",
+        "publishedBy" : "did:dtx:888888888888",
+        "publishedDate" : "2000-01-23T04:56:07.000+00:00",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        },
+        {
+        "credentialSchemaId":"BBB244444"
+        "name": "VerifiedPerson",
+        "version": "12.0",
+        "description": "A Verified Person Schema",
+        "publishingentityID": "did:dtx:22222222",
+        "publishingEntityType": "Issuer",
+        "publishedBy" : "did:dtx:888888888888",
+        "publishedDate" : "2000-01-23T04:56:07.000+00:00",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }
+        ]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Save Credential Schema #### {#sctn-dap-agency-save-credential-schema}
+A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credential-schema</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>CredentialSchema (required)<br/>
+      Body Parameter — Save a credential schema with attributes. Verifiable Credentials are issued against a credential schema published by the Issuer.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>CredentialSchema Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns CredentialSchema</li>
+          <li><strong>201</strong>: CredentialSchema Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+      "name": "VerifiedPerson",
+      "version": "1.0",
+      "description": "A Verified Person Schema",
+      "publishingentityID": "did:dtx:111111111",
+      "publishingEntityType": "Issuer",
+      "attributes": [
+        {
+          "name": "firstName",
+          "displayName": "First Name",
+          "dataType": "Text",
+          "order":1
+        },
+        {
+          "name": "lastName",
+          "displayName": "Last Name",
+          "dataType": "Text",
+          "order":2
+        },
+        {
+          "name": "dateOfBirth",
+          "displayName": "Birth Date",
+          "dataType": "DateTime",
+          "order":3
+        }]
+      }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+        "credentialSchemaId":"AAA343234"
+        "name": "VerifiedPerson",
+        "version": "1.0",
+        "description": "A Verified Person Schema",
+        "publishingentityID": "did:dtx:111111111",
+        "publishingEntityType": "Issuer",
+        "publishedBy" : "did:dtx:888888888888",
+        "publishedDate" : "2000-01-23T04:56:07.000+00:00",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+#### Get a Credential Schema by Identifier #### {#sctn-dap-agency-get-one-credential-schema}
+Get a Service Provider with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credential-schema/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the Service Provider</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>CredentialSchema Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns CredentialSchema</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: CredentialSchema Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/credential-schema/AAA343234
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+      "credentialSchemaId":"AAA343234"
+      "name": "VerifiedPerson",
+      "version": "1.0",
+      "description": "A Verified Person Schema",
+      "publishingentityID": "did:dtx:111111111",
+      "publishingEntityType": "Issuer",
+      "publishedBy" : "did:dtx:888888888888",
+      "publishedDate" : "2000-01-23T04:56:07.000+00:00",
+      "createdBy" : "did:dtx:888888888888",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active",
+      "attributes": [
+        {
+          "name": "firstName",
+          "displayName": "First Name",
+          "dataType": "Text",
+          "order":1
+        },
+        {
+          "name": "lastName",
+          "displayName": "Last Name",
+          "dataType": "Text",
+          "order":2
+        },
+        {
+          "name": "dateOfBirth",
+          "displayName": "Birth Date",
+          "dataType": "DateTime",
+          "order":3
+        }]
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+#### Search Credential Metadata #### {#sctn-dap-agency-get-credential-metadata}
+Search A Scheme against which Verifiable Credentials are issued. A Metadata is published by an Issuer
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credential-metadata/search</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>CredentialCriteria (required)<br/>
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential metadata records from the DAP Ledger.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of CredentialMetadata Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns CredentialMetadata</li>
+          <li><strong>201</strong>: CredentialMetadata Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+      "issuingentityID": "did:dtx:111111111",
+      "issuingEntityRole": "Issuer",
+      "dapUserId": "did:dtx:6666666"
+      "status": "Active"
+      }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+      [
+        {
+          "credentialType": "VerifiedPerson",
+          "credentialId": "324242424234",
+          "issuedToentityID":"did:dtx:6666666",
+          "issuedToEntityDA":"kiran.handsome@DTX",
+          "issuedEntityRole": "Issuer",
+          "issuedDate": "2021-01-28T01:14:06.817Z",
+          "issuingentityID": "did:dtx:111111111",
+          "issuingEntityDA": "abc@DTX",
+          "issuingEntityRole": "Issuer",
+          "credentialSchemaId": "AAA343234",
+          "credentialSchemaVersion": "1.0",
+          "revoked": false,
+          "revokedDate": null,
+          "revokingentityID": null,
+          "revokingEntityDA": null,
+          "revokingEntityRole": null,
+          "dapDID": "did:dtx:3424234324",
+          "dapDA": "dtx@GADI",
+          "active": true,
+          "createdBy": "did:dtx:111111111",
+          "createdDate": "2021-01-28T01:14:06.817Z"
+        },
+        {
+          "credentialType": "VerifiedPerson",
+          "credentialId": "434343434343",
+          "issuedToentityID":"did:dtx:77777777",
+          "issuedToEntityDA":"kiran.brave@DTX",
+          "issuedEntityRole": "Issuer",
+          "issuedDate": "2021-01-28T01:14:06.817Z",
+          "issuingentityID": "did:dtx:22222222",
+          "issuingEntityDA": "xyz@DTX",
+          "issuingEntityRole": "Issuer",
+          "credentialSchemaId": "BBB343234",
+          "credentialSchemaVersion": "1.0",
+          "revoked": false,
+          "revokedDate": null,
+          "revokingentityID": null,
+          "revokingEntityDA": null,
+          "revokingEntityRole": null,
+          "dapDID": "did:dtx:3424234324",
+          "dapDA": "dtx@GADI",
+          "active": true,
+          "createdBy": "did:dtx:111111111",
+          "createdDate": "2021-01-28T01:14:06.817Z"
+        }
+      ]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Save Credential Metadata #### {#sctn-dap-agency-save-credential-metadata}
+Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information.
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credential-metadata</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>CredentialMetadata (required)<br/>
+      Body Parameter — Save a credential metadata of the issued credential
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>CredentialMetadata Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns CredentialMetadata</li>
+          <li><strong>201</strong>: CredentialMetadata Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+      "credentialType": "VerifiedPerson",
+      "issuedToentityID":"did:dtx:77777777",
+      "issuedToEntityDA":"kiran.brave@DTX",
+      "issuedEntityRole": "Issuer",
+      "issuedDate": "2021-01-28T01:14:06.817Z",
+      "issuingentityID": "did:dtx:22222222",
+      "issuingEntityDA": "xyz@DTX",
+      "issuingEntityRole": "Issuer",
+      "credentialSchemaId": "BBB343234",
+      "credentialSchemaVersion": "1.0"
+    }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+        "credentialId": "434343434343",
+        "credentialType": "VerifiedPerson",
+        "issuedToentityID":"did:dtx:77777777",
+        "issuedToEntityDA":"kiran.brave@DTX",
+        "issuedEntityRole": "Issuer",
+        "issuedDate": "2021-01-28T01:14:06.817Z",
+        "issuingentityID": "did:dtx:22222222",
+        "issuingEntityDA": "xyz@DTX",
+        "issuingEntityRole": "Issuer",
+        "credentialSchemaId": "BBB343234",
+        "credentialSchemaVersion": "1.0",
+        "revoked": false,
+        "revokedDate": null,
+        "revokingentityID": null,
+        "revokingEntityDA": null,
+        "revokingEntityRole": null,
+        "dapDID": "did:dtx:3424234324",
+        "dapDA": "dtx@GADI",
+        "active": true,
+        "createdBy": "did:dtx:111111111",
+        "createdDate": "2021-01-28T01:14:06.817Z"
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+#### Get a Credential Metadata by Identifier #### {#sctn-dap-agency-get-one-credential-metadata}
+Get a Service Provider with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credential-metadata/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the Service Provider</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>CredentialMetadata Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns CredentialMetadata</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: CredentialMetadata Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/credential-metadata/434343434343
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+        "credentialId": "434343434343",
+        "credentialType": "VerifiedPerson",
+        "issuedToentityID":"did:dtx:77777777",
+        "issuedToEntityDA":"kiran.brave@DTX",
+        "issuedEntityRole": "Issuer",
+        "issuedDate": "2021-01-28T01:14:06.817Z",
+        "issuingentityID": "did:dtx:22222222",
+        "issuingEntityDA": "xyz@DTX",
+        "issuingEntityRole": "Issuer",
+        "credentialSchemaId": "BBB343234",
+        "credentialSchemaVersion": "1.0",
+        "revoked": false,
+        "revokedDate": null,
+        "revokingentityID": null,
+        "revokingEntityDA": null,
+        "revokingEntityRole": null,
+        "dapDID": "did:dtx:3424234324",
+        "dapDA": "dtx@GADI",
+        "active": true,
+        "createdBy": "did:dtx:111111111",
+        "createdDate": "2021-01-28T01:14:06.817Z"
+      }
+
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+### User Service ### {#sctn-dap-agency-user-service}
+
+#### Initialize Authenticator #### {#sctn-dap-agency-initialize-authenticator}
+Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information.
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/user/init-authenticator</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>FidoCommandRequest (required)<br/>
+      Body Parameter — FIDO Request parameters
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>FidoCommandResponse Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns FidoCommandResponse</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "appId": "string",
+        "deviceId": "string",
+        "loginId": "string",
+        "packageName": "string"
+      }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+        "deviceId": "string",
+        "expireTime": "string",
+        "isRegistered": true,
+        "loginId": "string",
+        "opURL": "string",
+        "protocol": "string",
+        "resultCode": "string",
+        "resultMsg": "string",
+        "siteId": "string",
+        "svcId": "string",
+        "svcTrId": "string",
+        "trId": "string",
+        "trStatus": "string",
+        "trStatusMsg": "string"
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+#### Register Account #### {#sctn-dap-agency-register-account}
+Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information.
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/user/register</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>FidoCommandRequest (required)<br/>
+      Body Parameter — FIDO Request parameters
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>FidoCommandResponse Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns FidoCommandResponse</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "appId": "string",
+        "deviceId": "string",
+        "loginId": "string",
+        "packageName": "string"
+      }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+        "deviceId": "string",
+        "expireTime": "string",
+        "isRegistered": true,
+        "loginId": "string",
+        "opURL": "string",
+        "protocol": "string",
+        "resultCode": "string",
+        "resultMsg": "string",
+        "siteId": "string",
+        "svcId": "string",
+        "svcTrId": "string",
+        "trId": "string",
+        "trStatus": "string",
+        "trStatusMsg": "string"
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### De-Register Account #### {#sctn-dap-agency-deregister-account}
+Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information.
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/user/deregister</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>FidoCommandRequest (required)<br/>
+      Body Parameter — FIDO Request parameters
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>FidoCommandResponse Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns FidoCommandResponse</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "appId": "string",
+        "deviceId": "string",
+        "loginId": "string",
+        "packageName": "string"
+      }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+        "deviceId": "string",
+        "expireTime": "string",
+        "isRegistered": true,
+        "loginId": "string",
+        "opURL": "string",
+        "protocol": "string",
+        "resultCode": "string",
+        "resultMsg": "string",
+        "siteId": "string",
+        "svcId": "string",
+        "svcTrId": "string",
+        "trId": "string",
+        "trStatus": "string",
+        "trStatusMsg": "string"
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Authenticate Account #### {#sctn-dap-agency-authenticate-account}
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/user/authenticate</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>FidoCommandRequest (required)<br/>
+      Body Parameter — FIDO Request parameters
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>FidoCommandResponse Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns FidoCommandResponse</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "appId": "string",
+        "deviceId": "string",
+        "loginId": "string",
+        "packageName": "string"
+      }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+        "deviceId": "string",
+        "expireTime": "string",
+        "isRegistered": true,
+        "loginId": "string",
+        "opURL": "string",
+        "protocol": "string",
+        "resultCode": "string",
+        "resultMsg": "string",
+        "siteId": "string",
+        "svcId": "string",
+        "svcTrId": "string",
+        "trId": "string",
+        "trStatus": "string",
+        "trStatusMsg": "string"
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+#### Get Transaction Result #### {#sctn-dap-agency-transaction-result}
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/user/transaction-result/{svcTrId}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>svcTrId</i> (required) - ID of the Transaction</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>FidoCommandRequest (required)<br/>
+      Body Parameter — FIDO Request parameters
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>FidoCommandResponse Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns FidoCommandResponse</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/user/fido/transaction-result/aaxddgfhjhgggddd
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+        "deviceId": "string",
+        "expireTime": "string",
+        "isRegistered": true,
+        "loginId": "string",
+        "opURL": "string",
+        "protocol": "string",
+        "resultCode": "string",
+        "resultMsg": "string",
+        "siteId": "string",
+        "svcId": "string",
+        "svcTrId": "string",
+        "trId": "string",
+        "trStatus": "string",
+        "trStatusMsg": "string"
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get Transaction Status #### {#sctn-dap-agency-transaction-status}
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/user/transaction-status/{svcTrId}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>svcTrId</i> (required) - ID of the Transaction</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>FidoCommandRequest (required)<br/>
+      Body Parameter — FIDO Request parameters
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>FidoCommandResponse Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns FidoCommandResponse</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+        "deviceId": "string",
+        "expireTime": "string",
+        "isRegistered": true,
+        "loginId": "string",
+        "opURL": "string",
+        "protocol": "string",
+        "resultCode": "string",
+        "resultMsg": "string",
+        "siteId": "string",
+        "svcId": "string",
+        "svcTrId": "string",
+        "trId": "string",
+        "trStatus": "string",
+        "trStatusMsg": "string"
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
