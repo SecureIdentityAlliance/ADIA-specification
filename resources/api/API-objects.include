@@ -1,0 +1,702 @@
+## API Objects ## {#sctn-gadi-api-objects}
+
+### <dfn>Entity</dfn> ### {#sctn-api-object-entity}
+<table class="data longlastcol">
+<thead>
+  <th>Name</th>
+  <th>Type</th>
+  <th>Description</th>
+</thead>
+<tbody>
+  <tr>
+    <td>entityID</td>
+    <td>String</td>
+    <td>DID of the entity</td>
+  </tr>
+  <tr>
+    <td>entityDigitalAddress</td>
+    <td>String</td>
+    <td>Digital Address aka the user friendly mnemonic</td>
+  </tr>
+  <tr>
+    <td>entityRole</td>
+    <td>Enum</td>
+    <td>
+      <ul>
+        <li>RegionalDirectory</li>
+        <li>Interchange</li>
+        <li>DAPAgency</li>
+        <li>Issuer</li>
+        <li>ServiceProvider</li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>status</td>
+    <td>Enum</td>
+    <td>
+      <ul>
+        <li>Active</li>
+        <li>Pending </li>
+        <li>Inactive</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>createdBy</td>
+    <td>String</td>
+    <td>DID of the creator - person or entity</td>
+  </tr>
+  <tr>
+    <td>createdDate</td>
+    <td>DateTime</td>
+    <td>ISO 8601 format</td>
+  </tr>
+</tbody>
+</table>
+
+### <dfn>EntityCriteria</dfn> ### {#sctn-api-object-entitycriteria}
+  <table class="data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+    <tr>
+      <td>entityID</td>
+      <td>String</td>
+      <td>DID of the entity</td>
+    </tr>
+    <tr>
+      <td>entityDigitalAddress</td>
+      <td>String</td>
+      <td>Digital Address aka the user friendly mnemonic</td>
+    </tr>
+      <tr>
+        <td>entityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>ServiceProvider</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>status</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Active</li>
+            <li>Pending </li>
+            <li>Inactive</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>createdBy</td>
+        <td>String</td>
+        <td>DID of the creator - person or entity</td>
+      </tr>
+      <tr>
+        <td>fromDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+      <tr>
+        <td>toDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+### <dfn>DigitalAddress</dfn> ### {#sctn-api-object-digitaladdress}
+<table class="data longlastcol">
+  <thead>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>entityID</td>
+    <td>String</td>
+    <td>DID of the entity</td>
+  </tr>
+  <tr>
+    <td>entityDigitalAddress</td>
+    <td>String</td>
+    <td>Digital Address aka the user friendly mnemonic</td>
+  </tr>
+    <tr>
+      <td>entityRole</td>
+      <td>Enum</td>
+      <td>
+        <ul>
+          <li>Issuer</li>
+          <li>ServiceProvider</li>
+          <li>DAP</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>primaryHash</td>
+      <td>String</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>secondaryHash</td>
+      <td>String</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>Enum</td>
+      <td>
+        <ul>
+          <li>Active</li>
+          <li>Pending </li>
+          <li>Inactive</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>createdBy</td>
+      <td>String</td>
+      <td>DID of the creator - person or entity</td>
+    </tr>
+    <tr>
+      <td>createdDate</td>
+      <td>DateTime</td>
+      <td>ISO 8601 format</td>
+    </tr>
+  </tbody>
+</table>
+### <dfn>DigitalAddressCriteria</dfn> ### {#sctn-api-object-dac}
+  <table class="data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+    <tr>
+      <td>entityID</td>
+      <td>String</td>
+      <td>DID of the entity</td>
+    </tr>
+    <tr>
+      <td>entityDigitalAddress</td>
+      <td>String</td>
+      <td>Digital Address aka the user friendly mnemonic</td>
+    </tr>
+      </tr>
+      <tr>
+        <td>entityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>ServiceProvider</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>status</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Active</li>
+            <li>Pending </li>
+            <li>Inactive</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>createdBy</td>
+        <td>String</td>
+        <td>DID of the creator - person or entity</td>
+      </tr>
+      <tr>
+        <td>fromDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+      <tr>
+        <td>toDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  ### <dfn>CredentialSchema</dfn> ### {#sctn-api-object-credential-schema}
+  <table class="data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>credentialSchemaId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>name</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>version</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>description</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>published</td>
+        <td>Boolean</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>publishedDate</td>
+        <td>DateTime format: date-time</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>publishingentityID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>publishingEntityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>revoked</td>
+        <td>Boolean</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>revokedDate</td>
+        <td>DateTime format: date-time</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>revokingentityID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>revokingEntityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>createdBy</td>
+        <td>String</td>
+        <td>DID of the creator - person or entity</td>
+      </tr>
+      <tr>
+        <td>createdDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  ### <dfn>CredentialCriteria</dfn> ### {#sctn-api-object-credential-criteria}
+  <table class="data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>credentialSchemaId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>credentialId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>userDID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>verifierDID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>issuingEntityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>active</td>
+        <td>Boolean</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>fromDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+      <tr>
+        <td>toDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+      <tr>
+        <td>createdBy</td>
+        <td>String</td>
+        <td>DID of the creator - person or entity</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  ### <dfn>CredentialMetadata</dfn> ### {#sctn-api-object-credential-metadata}
+  <table class="data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>credentialId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>name</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>credentialSchemaId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>credentialSchemaVersion</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>issuedentityID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>issuedEntityDA</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>issuedEntityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>issuedDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+      <tr>
+        <td>issuingentityID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>issuingEntityDA</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>issuingEntityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>active</td>
+        <td>Boolean</td>
+        <td></td>
+      </tr>
+
+
+      <tr>
+        <td>revoked</td>
+        <td>Boolean</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>revokedDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+      <tr>
+        <td>revokingentityID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>revokingEntityDA</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>revokingEntityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>dapDID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>dapDA</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>createdBy</td>
+        <td>String</td>
+        <td>DID of the creator - person or entity</td>
+      </tr>
+      <tr>
+        <td>createdDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  ### <dfn>CredentialMetadataCriteria</dfn> ### {#sctn-api-object-credential-metadata-criteria}
+  <table class="data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>issuingentityID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>issuingEntityRole</td>
+        <td>Enum</td>
+        <td>
+          <ul>
+            <li>Issuer</li>
+            <li>DAP</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>verifierDID</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>credentialId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>credentialSchemaId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>active</td>
+        <td>Boolean</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>createdBy</td>
+        <td>String</td>
+        <td>DID of the creator - person or entity</td>
+      </tr>
+      <tr>
+        <td>fromDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+      <tr>
+        <td>toDate</td>
+        <td>DateTime</td>
+        <td>ISO 8601 format</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  ### <dfn>FidoCommandRequest</dfn> ### {#sctn-api-object-fido-command-request}
+  <table class="data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>appId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>deviceId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>loginId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>packageName</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  ### <dfn>FidoCommandResponse</dfn> ### {#sctn-api-object-fido-command-response}
+  <table class="data longlastcol">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>deviceId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>expireTime</td>
+        <td>DateTime format: date-time</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>isRegistered</td>
+        <td>Boolean</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>loginId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>opURL</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>protocol</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>resultCode</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>resultMsg</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>siteId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>svcId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>svcTrId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>trId</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>trStatus</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>trStatusMsg</td>
+        <td>String</td>
+        <td></td>
+      </tr>
+
+      </tbody>
+    </table>
