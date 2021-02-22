@@ -298,8 +298,6 @@ Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is 
     <figcaption>User DAP Account Deletion</figcaption>
 </figure>
 
-Issue: <a>Cloud Agent</a> needs to be added - it maintains cryptographic keys on behalf on the user
-
 Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP Agency</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
 
 Issue: Do we need an issuer-triggered account deletion function as well?
