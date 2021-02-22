@@ -1,0 +1,899 @@
+## GADI Global API ## {#sctn-gadi-global-api}
+
+### Directory Service ### {#sctn-gadi-directory-service}
+
+#### Search Entities #### {#sctn-gadi-get-entities}
+Returns a list of Entities matching a criteria from the GADI Directory
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/entities/search</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>EntityCriteria (required)<br/>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of Entity Objects</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+      {
+          "entityRole" : "Interchange",
+          "status" : "Active"
+          }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        [{
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Interchange",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            },
+          {
+            "entityID" : "did:gadi:I2222222222",
+            "entityDigitalAddress" : "abc@OCN",
+            "entityRole" : "Interchange",
+            "createdBy" : "did:DTX:U2222222222",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            }
+        ]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get an Entity by Identifier #### {#sctn-gadi-get-entities}
+Get an entity with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/entities/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the entity</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: Entity Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/entities/abc@dtx
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Interchange",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get Regional Directories #### {#sctn-gadi-global-get-regional-directories}
+Gets a list of Regional Directories in GADI.
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/regional-directories</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of Entities</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <pre class="highlight">
+      <code>
+        [{
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "RegionalDirectory",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            },
+            {
+                "entityID" : "did:gadi:I2222222222",
+                "entityDigitalAddress" : "abc@OCN",
+                "entityRole" : "RegionalDirectory",
+                "createdBy" : "did:DTX:U2222222222",
+                "createdDate" : "2000-01-23T04:56:07.000+00:00",
+                "status" : "Active"
+                }]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get a Regional Directory by Identifier #### {#sctn-gadi-get-one-regional-ds}
+Get a Regional Directory with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/regional-directories/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the Regional Directory</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Regional Directory</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: Regional Directory Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/regional-directories/abc@DTX
+</code>
+</pre>
+
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "RegionalDirectory",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Save Regional Directories #### {#sctn-gadi-save-regional-ds}
+Save GADI Regional Directory
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/regional-directories</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>Entity (required)<br/>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>201</strong>: Entity Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "entityID" : "did:gadi:I1111111111",
+        "entityDigitalAddress" : "abc@DTX",
+        "entityRole" : "RegionalDirectory"
+        }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "RegionalDirectory",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+
+#### Get DAP Agencies #### {#sctn-gadi-get-dap-agencies}
+Gets a list of dap-agencies in any of the GADI Regions.
+
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/dap-agencies</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of Entity</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <pre class="highlight">
+      <code>
+        [{
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "DAPAgency",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            },
+            {
+                "entityID" : "did:gadi:I2222222222",
+                "entityDigitalAddress" : "abc@OCN",
+                "entityRole" : "DAPAgency",
+                "createdBy" : "did:DTX:U2222222222",
+                "createdDate" : "2000-01-23T04:56:07.000+00:00",
+                "status" : "Active"
+                }]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get a DAP Agency by Identifier #### {#sctn-gadi-get-one-dap-agency}
+Get a DAP Agency with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/dap-agencies/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the DAP Agency</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns DAP Agency</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: DAP Agency Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/dap-agencies/did:gadi:I1111111111
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "DAPAgency",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get issuers #### {#sctn-gadi-get-issuers}
+Gets a list of issuers in in any of the GADI Regions.
+
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/issuers</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of Entity</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <pre class="highlight">
+      <code>
+        [{
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Issuer",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            },
+            {
+                "entityID" : "did:gadi:I2222222222",
+                "entityDigitalAddress" : "abc@OCN",
+                "entityRole" : "Issuer",
+                "createdBy" : "did:DTX:U2222222222",
+                "createdDate" : "2000-01-23T04:56:07.000+00:00",
+                "status" : "Active"
+                }]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get a Issuer by Identifier #### {#sctn-gadi-get-one-issuer}
+Get a Issuer with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/issuers/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the Issuer</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Issuer</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: Issuer Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/issuers/did:gadi:I1111111111
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "Issuer",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get Service Providers #### {#sctn-gadi-get-service-providers}
+Gets a list of service-providers in in any of the GADI Regions.
+
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/service-providers</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of Entity</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Entity</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <pre class="highlight">
+      <code>
+        [{
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "ServiceProvider",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+            },
+            {
+                "entityID" : "did:gadi:I2222222222",
+                "entityDigitalAddress" : "abc@OCN",
+                "entityRole" : "ServiceProvider",
+                "createdBy" : "did:DTX:U2222222222",
+                "createdDate" : "2000-01-23T04:56:07.000+00:00",
+                "status" : "Active"
+                }]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get a Service Provider by Identifier #### {#sctn-gadi-get-one-service-provider}
+Get a Service Provider with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/service-providers/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the Service Provider</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>Entity Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns Service Provider</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: Service Provider Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/interchanges/did:gadi:I1111111111
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+            "entityID" : "did:gadi:I1111111111",
+            "entityDigitalAddress" : "abc@DTX",
+            "entityRole" : "ServiceProvider",
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>

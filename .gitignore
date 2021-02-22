@@ -1,0 +1,6 @@
+######################
+# Matching patterns will be excluded Git commits
+######################
+dist/**
+*.lock
+*.log

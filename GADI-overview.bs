@@ -6,13 +6,15 @@ Prepare for TR: true
 Level: 1
 Status: ED
 Group: fido
-URL: 
+URL:
 Editor: Rolf Lindemann, rolf@noknok.com
+Editor: Kiran Addepalli, kiran@digitaltrust.net
 Abstract: DID Alliance GADI Overview
 Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
 Text Macro: NORMATIVE <em>This section is normative.</em>
 Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Local Boilerplate: header yes, footer yes, logo yes, copyright yes
 Markup Shorthands: css off, markdown on
 </pre>
 
@@ -28,16 +30,29 @@ spec:webidl; type:interface; text:Promise
 <!-- only put content here if you want a custom status of document not
   the specification-maturity-appropriate boilerplate -->
 
-# Introduction # {#sctn-intro}
-This specification provides a overview of the GADI system.
+# Global Architecture for Digital Identity # {#sctn-gadi}
+The Global Architecture for Digital Identity (GADI) allows users to
+share credentials that have been asserted by an issuer with service
+providers in a verifiable manner.
 
+## Ecosystem Overview ## {#sctn-ecosystem-overview}
 
-# Entities # {#sctn-entities}
+<figure id="fig-gadi-overview">
+    <img src="images/GADI-overview.png"/>
+    <figcaption>GADI Overview</figcaption>
+</figure>
+
+## Entities ## {#sctn-entities}
 
 <dl>
     : <dfn>Cloud Agent</dfn>
     :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
          eIDAS Trust Service Providers (https://ec.europa.eu/digital-single-market/en/trust-services).
+
+    : <dfn>Credential Broker</dfn>
+    ::
+
+Issue: TODO
 
     : <dfn>DA</dfn>
     :: Human readabe <dfn>Digital Address</dfn> of the <a>User</a>
@@ -56,15 +71,17 @@ This specification provides a overview of the GADI system.
     :: Public Key (PK) and Private Key (SK) related to the <a>DAP_USER_ID</a>.
 
     :  <dfn>DAA</dfn>
-    :: Digital Address Application, e.g. Android App or iOS App that knows how to talk to the <a>DAP</a> on behalf of the <a>User</a>.
+    :: Digital Address Application, e.g. Android App or iOS App that
+        knows how to talk to the <a>DAP Agency</a> on behalf of the <a>User</a>.
 
-    :  <dfn>DAP</dfn>
-    :: Digital Address Provider.  See [[DAP-API]] for the DAP API.
+    :  <dfn>DAP Agency</dfn> (formerly DAP)
+    :: Digital Address Provider Agency.  See [[DAP-API]] for the DAP
+        Agency API.  Multiple DAP Agencies can exist in the GADI "universe".
 
     :  <dfn>DAP_ID</dfn>
-    :: <a>DAP</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
+    :: <a>DAP Agency</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP Agency</a>.
 
-    :  <dfn>DAP_ID_PK</dfn>, <dfn>DAP_IS_SK</dfn>
+    :  <dfn>DAP_ID_PK</dfn>, <dfn>DAP_ID_SK</dfn>
     :: Public Key (PK) and Private Key (SK) related to the <a>DAP_ID</a>.
 
     : <dfn>DID</dfn>
@@ -73,31 +90,47 @@ This specification provides a overview of the GADI system.
     : <dfn>GADI</dfn>
     :: Global Architecture for Digital IDentity. See [[GADI-API]] for the DAP API.
 
+    : <dfn>GADI_ID</dfn>
+    :: The <a>GADI</a> IDentity, i.e. the the W3C DID style identifier for the <a>GADI</a>.
+
+    :  <dfn>GADI_ID_PK</dfn>, <dfn>GADI_ID_SK</dfn>
+    :: Public Key (PK) and Private Key (SK) related to the <a>GADI_ID</a>.
+
     :  <dfn>HIDA</dfn>
     :: Cryptographic hash computed over the <a>ID Attributes</a>
 
     :  <dfn>HomeDAP_ID</dfn>
-    :: DAP_ID of the <a>DAP</a> that user primarliy belongs to (i.e. <dfn>HomeDAP</dfn>).
+    :: DAP_ID of the <a>DAP Agency</a> that user primarliy belongs to (i.e. <dfn>HomeDAP</dfn>).
 
     :  <dfn>ID Attributes</dfn>
     :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
 
+    :  <dfn>Identity Escrow</dfn>
+    ::
+
+Issue: TODO
+
     :  <dfn>Issuer</dfn>
-    :: Issuer of <a>VC</a>s to users.  GADI supports multiple Issuers per <a>User</a>.
+    :: Issuer of <a>VC</a>s to users.  GADI supports multiple Issuers
+        per <a>User</a>.  Issuers use an <dfn>Issuer Agent</dfn> to
+        connect to the <a>DAP Agency</a>.
 
     :  <dfn>ISSUER_ID</dfn>
     :: Issuer IDentity, i.e. the <a>DID</a> style identifier for the <a>Issuer</a>.
 
-    :  <dfn>ISSUER_ID_PK</dfn>, <dfn>ISSUER_IS_SK</dfn>
+    :  <dfn>ISSUER_ID_PK</dfn>, <dfn>ISSUER_ID_SK</dfn>
     :: Public Key (PK) and Private Key (SK) related to the <a>ISSUER_ID</a>.
 
     :  <dfn>SP</dfn>
-    :: Service Provider that verifies <a>VC</a>s.
+    :: <dfn>Service Provider</dfn> that verifies <a>VC</a>s.  In the
+         Decentralized Identity community it is typically called
+         Verifier. <a>Service Providers</a> use a <dfn>Service Provider Agent</dfn> to
+         connect to the <a>DAP Agency</a>, the <a>Credential Broker</a> and the <a>Identity Escrow</a>.
 
     :  <dfn>SP_ID</dfn>
     :: Service Provider IDentity, i.e. the <a>DID</a> style identifier for the <a>SP</a>.
 
-    :  <dfn>SP_ID_PK</dfn>, <dfn>SP_IS_SK</dfn>
+    :  <dfn>SP_ID_PK</dfn>, <dfn>SP_ID_SK</dfn>
     :: Public Key (PK) and Private Key (SK) related to the <a>SP_ID</a>.
 
     : <dfn>TA</dfn>
@@ -121,267 +154,85 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
 
 </dl>
 
-# GADI Requirements # {#sctn-reqs}
-<figure id="table-security-privacy-goals" class="table">
-    <table class="complex data">
-        <tr>
-            <th>No</th>
-            <th>Goal</th>
-            <th>Rationale</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>
-		The GADI Framework respects national laws and allows the <a>DAP</a>s to operate according to their local regulations.
- 		This includes compliance to CCPA and GDPR.
-	    </td>		
-            <td>
-	        Local law is the basis for any business.
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>
-	      Users must have control on user credentials, i.e. no credentials are created or shared without the user's consent.
-	      This means, <a>DAP</a> asks for user consent and strongly authenticates the user.
-	    </td>		
-            <td>
-	      Data Privacy regulation & expectation
-            </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>
-	      Users have the ability to select a set of attributes verified by a specific issuer to be included in a specific credential.
-	    </td>		
-            <td>
-	      Data Privacy regulation & expectation.  If the user only wants to share a subset of the data that should be ok to the issuer.
-            </td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>
-	      GADI doesn't make user tracking or collusion between Service Providers easier. 
-	      If two <a>SP</a>s both received a credential that John Doe was born on date X in Y,
-	      then the two <a>SP</a>s could learn it is the very likely same user. But this has nothing to do with GADI.
+### GADI Regional Directory
 
-	      As a consequence, the <a>Digital Address</a> / <a>Trust Anchor</a> are NOT part of the credential.
-	      Credentials are in the W3C VC format [[!vc-data-model]] and are tied to a <a>DID</a>.  
-	    </td>		
-            <td>
-	      GADI doesn't share correlation handles with <a>SP</a>s for privacy reasons.
-            </td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>
-	      People who are not smartphone users must be part of the new Digital Identity ecosystem.
-	    </td>		
-            <td>
-	      A substantial part of the world's population belongs to this category.  This part is key for future growth opportunities
-            </td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>
-	      <a>Issuer</a>s must be in the value chain.  This means that users cannot share credentials issued by
-	      an issuer without allowing financial compensation for the issuer.
-	    </td>		
-            <td>
-	      This is one of the main GADI benefits compared to other approaches.
-            </td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>
-	      GADI enables a push model from the issuers where when there is change in credential status,
-	      latest credential information is what would be presented.
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>
-	      <a>Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
-	      who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAP</a>) than the one this issuer is primarily using.
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>
-	      There should be cross ledger value settlements for the issuers and may be
-	      some reward points for the issuers as Users assert their credentials and provide data.
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>
-	      Onboard the user with a trusted Identity that is approved by an <a>Issuer</a> after proper Identity vetting 
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>
- 	      It is possible for users to start their participation
-	      based on a low level identity assertion and increase
-	      that level over time.
-	      
-	      However, there is a minmum identity assertion specified
-	      by the GADI Governance Group. We need this to prevent
-	      user impersonation attacks through weak ID proofing methods.
+A directory serves to identify participants with an ecosystem. This can make it easier for users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
 
-	    </td>		
-            <td>
-	      Many users don't have connections to a <a>SP</a> which has performed strong ID proofing today.
- 	      But that might change over time.  We need to support such users.
-            </td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>
-	      Each <a>DAP</a> provides one Single Digital Address App for the user to be able to access and control the
-	      Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
-	      user credentials on demand with user consent.
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>13</td>
-            <td>
-	      <a>Digital Address</a> (<a>DA</a>) is a Human readable string that is easy to use, that is associated with the Users <a>Trust Anchor</a>.
-	      This becomes that identifier that the user can provide to issuers to get the credentials issued.  
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>14</td>
-            <td>
-	      Users in this scenario will have a single Digital Address Application from one Digital Address Provider
-	      and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
-	      push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
-	      different handles (Different Digital Addresses) that can be orchestrated between the user Device and <a>DAP</a> to
-	      present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.  
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>
-	      The GADI ledger is accessible to <a>DAP</a>s only.
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>16</td>
-            <td>
-	      <a>Trust Anchor</a>s are generated randomly by the <a>HomeDAP</a>, such that collisions do not practically occur.
-	      See <a>Trust Anchor</a> Discussion below.
-	      (not clear, see 20)
-	    </td>		
-            <td>
-	      So that we only need to delete the relation between the <a>Trust Anchor</a> and any other PII when the user
-	      asks for account deletion (removal from GADI).
-            </td>
-        </tr>
-        <tr>
-            <td>17</td>
-            <td>
-	      Credentials that do not include PII shall be supported.  For example "the holder of the credential is at least 21 years old"
-	      or "the holder of this credential got vaccinated against X".
+#### Directory Scope
+Each directory serves a particular scope. Scopes can be geopolitical, like a country, or organizational, such as a multi-national medical organization or a university. Each directory serves to uniquely identify each participant via digital address or a collection of attributes.
 
-Note: sometimes there are existing business processes which will convey PI/PII outside of GADI.
- 	    </td>		
-            <td>
-	      In the physical world we have those and for privacy reasons we should carry them over to the digital world.
-            </td>
-        </tr>
-        <tr>
-            <td>18</td>
-            <td>
-	      GADI and <a>DAP</a>s do NOT persistently store personal information (PI).
-	      And even pass-through of PI should be avoided.
+Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by GADI to seed the ecosystem. Other entities may operate directories in conformance with the governance structure and APIs.
 
-Note: they will likely need to store PII, i.e. information related to users
+#### Attribute selection and management
+Each directory has a set of attributes used to list users in the directory. These attributes are received via credentials from issuers authorized by the appropriate governance framework. When necessary for uniqueness (described in the next section), the directory may request additional attributes from a user, also supplied via credentials.
 
-Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credentials)
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>19</td>
-            <td>
-	      GADI will store the <a>HomeDAP</a> Identifier (i.e. <a>HomeDAP_ID</a>) along with the user's <a>Trust Anchor</a>.
-	      So each <a>DAP</a> could ask GADI for the <a>HomeDAP</a> of a given user and would then directly talk to the user's <a>HomeDAP</a>.
-	    </td>		
-            <td>
-	      We need that for cross-<a>DAP</a> communications
-            </td>
-        </tr>
-        <tr>
-            <td>20</td>
-            <td>
-	      We compute a Hash(firstname, last name, date of birth, country+city of birth) as either use this as
-	      <a>Trust Anchor</a> or as an attribute stored along with the <a>Trust Anchor</a> in GADI.
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>21</td>
-            <td>
-	      It shall  be possible to change the <a>HomeDAP</a> of a user (e.g. from <a>DAP</a>1 to <a>DAP</a>2).
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>22</td>
-            <td>
-	      <a>Issuer</a>s shouldn't learn the <a>SP</a> that verifies a credential.
-	    </td>		
-            <td>
-	      Privacy
-            </td>
-        </tr>
-        <tr>
-            <td>23</td>
-            <td>
-             <a>SP</a>s want to verify the <a>VC</a> and hence will
- 	      need to decide whether they want to trust a specific
-	      <a>Issuer</a>.
-	      As a consequence, the <a>SP</a> will learn who the
-	      <a>Issuer</a> of that <a>VC</a> is.
-	    </td>		
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>24</td>
-            <td>
+Directories may use any datastore sufficient to the requirements of storing attributes. Datastores MUST be able to remove listed records at the request of the user.
 
-Issue: Need to specify what functionality/certification is needed to call an application a GADI "Digital Address Application".
-	    </td>		
-            <td>
-            </td>
-        </tr>
-    </table>
-</figure>
+#### Uniqueness properties
+GADI Directories ensure uniqueness of the listed users. This is done by ensuring a unique set of attributes for each user. If a new user matches an existing user, additional attributes MUST be requested for use in distinguishing between the matching users.
+
+Each directory MUST have a process to follow when users cannot be uniquely identified either during addition of a user to the directory or during lookup of a user within the directory.
+
+#### Hashed Attributes
+Directories (MAY/MUST TBD) store only hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
+
+Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the GADI regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
+
+#### Digital address
+Digital Addresses function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user.
+
+Digital Addresses MAY contain PII, but the user MUST be warned if they choose one containing PII and MUST be allowed to choose a digital address that does not contain PII.
+
+A single user MAY have multiple digital addresses that all link to the same user in the directory. Any of the linked digital addresses can be used to identify the user. Digital addresses do not function as a mechanism of uniqueness.
+
+#### Listing Modifications
+Users are listed in a directory by creating a DIDComm connection with the directory, then presenting credentials containing attributes issued by an acceptable issuer as determined by the governance framework.
+
+The user lists a digital address by communicating that intent over the DIDComm connection with the directory.
+
+When the user desires to be removed from the directory, they indicate that over the existing DIDComm connection.
+
+These interactions are all detailed in the associated protocols summarized and linked below.
+
+#### Directory Querying
+A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the user identified. The DID provided is created by the user’s agent, and provided to the directory for the purpose of returning to the party querying the directory. The user’s agent is notified of which party identified them in the directory.
+
+The protocols for querying users are summarized and linked below.
+
+#### Logging requirements
+Directories MUST log all listing modifications and queries.
+
+#### Protocols for interaction
+Existing
+
+New
 
 
-# GADI Operations # {#sctn-ops}
 
+## Trust Model ## {#sctn-trust-model}
+
+Issue: Describe what is verified by whom, what kind of objects
+   ("credentials") are being created and what kind of identifiers they
+   bind together (e.g. public keys and digital addresses, ...).
+
+### Communication Protocol ### {#sctn-communication-protocol}
+
+In general, DIDcomm [[!didcomm-messaging]] is used for securing the communication
+between the entities.
+
+The communication between <a>SP</a>s, <a>Issuer</a>s, <a>DAP</a>s, and <a>GADI</a>
+itself uses "Sender Authenticated Encryption".
+The <a>SP_ID_PK</a>, <a>SP_ID_SK</a>, <a>ISSUER_ID_PK</a>, <a>ISSUER_ID_SK</a>, <a>DAP_ID_PK</a>,
+<a>DAP_ID_SK</a> and <a>GADI_ID_PK</a> and <a>GADI_ID_SK</a> are being used for that.
+
+
+
+# Inter-domain Communication # {#sctn-interd-comm}
+
+# Security Considerations # {#sctn-security-considerations}
+
+
+# Operations # {#sctn-ops}
 
 ## User Onboarding to First Issuer ## {#sctn-onboarding-1st-issuer}
 
@@ -390,7 +241,7 @@ Issue: Need to specify what functionality/certification is needed to call an app
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
-Note: <a>HIDA</a> is PII and might need to be erased on account deletion (see User <a>DAP</a> Account Deletion)
+Note: <a>HIDA</a> is PII and might need to be erased on account deletion (see User <a>DAP Agency</a> Account Deletion)
 
 Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we store the PK in <a>HomeDAP</a> or GADI??  When will that key be created and by Whom?
 
@@ -402,10 +253,13 @@ Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we st
     <figcaption>Verifiable Credential Issuance (Option 1)</figcaption>
 </figure>
 
-  <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask GADI via <a>DAP</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
+  <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask GADI via <a>DAP Agency</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
 
 Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
 
+Issue: Distinguish two different cases: (1) DA Issuer and VC Issuer are part of same DAP Agency.
+       (2) DA Issuer and VC Issuer are part of different DAP
+       Agencies.  See github issue 53.
 
 ## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
 
@@ -429,11 +283,11 @@ Issue: This is true for case 1, but how does it work in case 2?
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
 
-Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP</a>/GADI system.
+Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP Agency</a>/GADI system.
 
-Issue: Having the <a>DAA</a> authenticate with FIDO to <a>Cloud Agent</a> either requires second FIDO credential (tied to <a>Cloud Agent</a>) or it requires the <a>Cloud Agent</a> to allow use of the <a>DAP</a> related FIDO credential
+Issue: Having the <a>DAA</a> authenticate with FIDO to <a>Cloud Agent</a> either requires second FIDO credential (tied to <a>Cloud Agent</a>) or it requires the <a>Cloud Agent</a> to allow use of the <a>DAP Agency</a> related FIDO credential
 
-Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
+Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP Agency</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
 
 
 ## User Onboarding Attempt to 2nd Issuer ## {#sctn-onboarding-2nd-issuer}
@@ -451,9 +305,7 @@ Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is 
     <figcaption>User DAP Account Deletion</figcaption>
 </figure>
 
-Issue: <a>Cloud Agent</a> needs to be added - it maintains cryptographic keys on behalf on the user
-
-Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
+Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP Agency</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
 
 Issue: Do we need an issuer-triggered account deletion function as well?
 
@@ -471,17 +323,356 @@ Issue: How could a user without a working <a>DAA</a> instance trigger account de
 
 Issue: requiring ID Proofing looks expensive here. Are there methods without that (that provide a similar security level)?
 
-Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
+Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issuer</a>?
+
+## User Home DAP Agency ## {#sctn-user-home-dap-agency}
+
+Home DAP Agency is the entity that serves as the primary repository of credential metadata for a given user. Each DAP Agency has a unique Identifier (A DID and a Digital Address) in the GADI ecosystem.
+
+When a Trusted Issuer creates a Digital Address for a User, the Digital Address is suffixed with the DAP Agency Identifier. Any entity in the ecosystem can use a Digital Address resolver to identify the Home DAP Agency for a given User. Credential requests, issuance or verifications, are routed to the Home DAP for further processing.
+
+There are two possible scenarios to depict the role of a Home DAP Agency as below:
+
+### Scenario 1: Issuers in the same DAP Agency ### {#sctn-user-home-dap-agency-scenario1}
+There are two issuers in this scenario, both as part of the same DAP Agency. Digital Addresses created are published to the DAP Agency and credential metadata and lookups are maintained by the DAP Agency.
+<figure id="fig-user-home-dap-agency-scenario1">
+    <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-same-DAP-Agency.png"/>
+    <figcaption>Home DAP Agency - Issuers in the same DAP Agency</figcaption>
+</figure>
+
+
+### Scenario 2: Issuers in separate DAP Agencies ### {#sctn-user-home-dap-agency-scenario2}
+In this scenario, the Digital Addresses created are published to the DAP Agency and it is designated as the Home DAP Agency for the user. Credential metadata and look ups are  routed to the Home DAP Agency from Issuers in other Interchanges.
+
+<figure id="fig-user-home-dap-agency-scenario2">
+    <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-Different-DAP-Agency.png"/>
+    <figcaption>Home DAP Agency - Issuers in separate DAP Agencies</figcaption>
+</figure>
+
+## User Changes Home-DAP ## {#sctn-user-changes-home-dap}
+Users may choose to transfer their credential metadata to a different DAP Agency. This is initiated with a submission of a transfer request. The transferee DAP Agency initiates the transfer of Digital Address metadata and Credential metadata with the consent of the user. Subsequent requests for credential operations, are routed to the transferred DAP Agency.
+<figure id="fig-user-changes-home-dap">
+    <img src="sequence-diagrams/DAP-Transfer-by-User.png"/>
+    <figcaption>Transfer DAP Agency</figcaption>
+</figure>
+
+
+# Data Schema # {#sctn-data-schema}
 
 
 
-# Security and Privacy Considerations # {#sctn-security-privacy-considerations}
+# API # {#sctn-gadi-api}
+
+  <pre class=include>
+  path: resources/api/GADI-global-api.include
+  </pre>
+
+  <pre class=include>
+  path: resources/api/GADI-regional-api.include
+  </pre>
+
+  <pre class=include>
+  path: resources/api/DAP-agency-api.include
+  </pre>
+
+  <pre class=include>
+  path: resources/api/API-objects.include
+  </pre>
 
 
+# Certification # {#sctn-certification}
 
 
+# GADI Requirements # {#sctn-reqs}
 
+Issue: We will likely remove this section later.  But for now let's
+   keep it as a reference for the requirements th specs needs to meet.
 
+<figure id="table-security-privacy-goals" class="table">
+    <table class="data longlastcol">
+        <tr>
+            <th>No</th>
+            <th>Goal</th>
+            <th>Rationale</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>
+    The GADI Framework respects national laws and allows the <a>DAP Agency</a>s to operate according to their local regulations.
+     This includes compliance to CCPA and GDPR.
+      </td>
+            <td>
+          Local law is the basis for any business.
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>
+        Users must have control on user credentials, i.e. no credentials are created or shared without the user's consent.
+        This means, <a>DAP Agency</a> asks for user consent and strongly authenticates the user.
+      </td>
+            <td>
+        Data Privacy regulation & expectation
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>
+        Users have the ability to select a set of attributes verified by a specific issuer to be included in a specific credential.
+      </td>
+            <td>
+        Data Privacy regulation & expectation.  If the user only wants to share a subset of the data that should be ok to the issuer.
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>
+        GADI doesn't make user tracking or collusion between Service Providers easier.
+        If two <a>SP</a>s both received a credential that John Doe was born on date X in Y,
+        then the two <a>SP</a>s could learn it is the very likely same user. But this has nothing to do with GADI.
 
+        As a consequence, the <a>Digital Address</a> / <a>Trust Anchor</a> are NOT part of the credential.
+        Credentials are in the W3C VC format [[!vc-data-model]] and are tied to a <a>DID</a>.
+      </td>
+            <td>
+        GADI doesn't share correlation handles with <a>SP</a>s for privacy reasons.
+            </td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>
+        People who are not smartphone users must be part of the new Digital Identity ecosystem.
+      </td>
+            <td>
+        A substantial part of the world's population belongs to this category.  This part is key for future growth opportunities
+            </td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>
+        <a>Issuer</a>s must be in the value chain.  This means that users cannot share credentials issued by
+        an issuer without allowing financial compensation for the issuer.
+      </td>
+            <td>
+        This is one of the main GADI benefits compared to other approaches.
+            </td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>
+        GADI enables a push model from the issuers where when there is change in credential status,
+        latest credential information is what would be presented.
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>
+        <a>Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
+        who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAP Agency</a>) than the one this issuer is primarily using.
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>
+        There should be cross ledger value settlements for the issuers and may be
+        some reward points for the issuers as Users assert their credentials and provide data.
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>
+        Onboard the user with a trusted Identity that is approved by an <a>Issuer</a> after proper Identity vetting
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>
+         It is possible for users to start their participation
+        based on a low level identity assertion and increase
+        that level over time.
 
+        However, there is a minmum identity assertion specified
+        by the GADI Governance Group. We need this to prevent
+        user impersonation attacks through weak ID proofing methods.
+
+      </td>
+            <td>
+        Many users don't have connections to a <a>SP</a> which has performed strong ID proofing today.
+         But that might change over time.  We need to support such users.
+            </td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>
+        Each <a>DAP Agency</a> provides one Single Digital Address App for the user to be able to access and control the
+        Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
+        user credentials on demand with user consent.
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>
+        <a>Digital Address</a> (<a>DA</a>) is a Human readable string that is easy to use, that is associated with the Users <a>Trust Anchor</a>.
+        This becomes that identifier that the user can provide to issuers to get the credentials issued.
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>
+        Users in this scenario will have a single Digital Address Application from one Digital Address Provider
+        and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
+        push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
+        different handles (Different Digital Addresses) that can be orchestrated between the user Device and <a>DAP Agency</a> to
+        present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>
+        The GADI ledger is accessible to <a>DAP Agency</a>s only.
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>
+        <a>Trust Anchor</a>s are generated randomly by the <a>HomeDAP</a>, such that collisions do not practically occur.
+        See <a>Trust Anchor</a> Discussion below.
+        (not clear, see 20)
+      </td>
+            <td>
+        So that we only need to delete the relation between the <a>Trust Anchor</a> and any other PII when the user
+        asks for account deletion (removal from GADI).
+            </td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>
+        Credentials that do not include PII shall be supported.  For example "the holder of the credential is at least 21 years old"
+        or "the holder of this credential got vaccinated against X".
+
+Note: sometimes there are existing business processes which will convey PI/PII outside of GADI.
+       </td>
+            <td>
+        In the physical world we have those and for privacy reasons we should carry them over to the digital world.
+            </td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>
+        GADI and <a>DAP Agency</a>s do NOT persistently store personal information (PI).
+        And even pass-through of PI should be avoided.
+
+Note: they will likely need to store PII, i.e. information related to users
+
+Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credentials)
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>
+        GADI will store the <a>HomeDAP</a> Identifier (i.e. <a>HomeDAP_ID</a>) along with the user's <a>Trust Anchor</a>.
+        So each <a>DAP Agency</a> could ask GADI for the <a>HomeDAP</a> of a given user and would then directly talk to the user's <a>HomeDAP</a>.
+      </td>
+            <td>
+        We need that for cross-<a>DAP Agency</a> communications
+            </td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>
+        We compute a Hash(firstname, last name, date of birth, country+city of birth) as either use this as
+        <a>Trust Anchor</a> or as an attribute stored along with the <a>Trust Anchor</a> in GADI.
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>21</td>
+            <td>
+        It shall  be possible to change the <a>HomeDAP</a> of a user (e.g. from <a>DAP Agency</a>1 to <a>DAP Agency</a>2).
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>22</td>
+            <td>
+        <a>Issuer</a>s shouldn't learn the <a>SP</a> that verifies a credential.
+      </td>
+            <td>
+        Privacy
+            </td>
+        </tr>
+        <tr>
+            <td>23</td>
+            <td>
+             <a>SP</a>s want to verify the <a>VC</a> and hence will
+         need to decide whether they want to trust a specific
+        <a>Issuer</a>.
+        As a consequence, the <a>SP</a> will learn who the
+        <a>Issuer</a> of that <a>VC</a> is.
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>
+
+Issue: Need to specify what functionality/certification is needed to call an application a GADI "Digital Address Application".
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>25</td>
+            <td>
+        Organizational participants, including issuers, verifiers, and service providers require a publicly
+           resolvable DID
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>26</td>
+            <td>
+      Regional directory services include the User related information,
+      the global directory only includes information on issuers,
+      service providers abd interchanges.
+      So compliance can be managed on a regional level.
+      </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>27</td>
+            <td>
+      Logically, the DAA is provided by The Agency - not the Issuer.
+      However, the Issuer could still provide the DAA on behalf
+      of The Agency.
+      </td>
+            <td>
+            </td>
+        </tr>
+
+    </table>
+</figure>
 
