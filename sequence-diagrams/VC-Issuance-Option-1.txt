@@ -1,9 +1,9 @@
 Title: VC Issuance - Option 1
 Participant Issuer
 Participant Cloud Agent
-Participant Issuer
+Participant DAP Agency
 Issuer -> Issuer: Lookup DAP_USER_ID for user's DA
 Issuer -> Issuer: Prepare the VC, sign it with Issuer private key ISSUER_ID_SK
 Issuer -> Cloud Agent: Invite the Cloud Agent for DIDcomm conn
 Issuer -> Cloud Agent: DIDComm connection established and transfer VC
-Cloud Agent -> DAP: Store VC
+Cloud Agent -> DAP Agency: Store VC

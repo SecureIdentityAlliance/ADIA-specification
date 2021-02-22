@@ -1,0 +1,1015 @@
+openapi: 3.0.1
+info:
+  title: DAP API
+  description: DAP API documentation
+  version: 1.0.0
+servers:
+- url: dap-service.stage.digitaltrust.net/
+tags:
+- name: directory-resource
+  description: Digital Address Resource
+- name: credential-resource
+  description: Credential Resource
+- name: user-resource
+  description: User Resource
+paths:
+  /api/directory/digital-address:
+    post:
+      tags:
+      - directory-resource
+      summary: Save Digital Address
+      operationId: save-digital-address
+      requestBody:
+        description: Payload contains the primary and secondary hashes created from
+          the core attributes provided by the user and persisted to the GADI Directory
+          Service
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigitalAddress'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DigitalAddress'
+        "201":
+          description: Digital Address saved successfully
+          content: {}
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/directory/digital-address/search:
+    post:
+      tags:
+      - directory-resource
+      summary: Lookup if a Digital Address exists in the Directory
+      operationId: lookup-digital-address
+      requestBody:
+        description: A criteria based search consisting of one or more attributes.
+          Returns matching Digital Address records from the Directory Service.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigitalAddressCriteria'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DigitalAddress'
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/directory/digital-address/{digitalAddress}:
+    get:
+      tags:
+      - directory-resource
+      summary: Get By DigitalAddress
+      operationId: get-digital-address
+      parameters:
+      - name: digitalAddress
+        in: path
+        description: The Digital Address
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DigitalAddress'
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Digital Address Not Found
+          content: {}
+      deprecated: false
+  /api/directory/daps/{dapId}/issuers:
+    get:
+      tags:
+      - directory-resource
+      summary: Get all registered Issuers for a DAP
+      operationId: get-issues-for-dap
+      parameters:
+      - name: dapId
+        in: path
+        description: The identifier for the DAP
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DigitalAddress'
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: DAP Not Found
+          content: {}
+      deprecated: false
+    post:
+      tags:
+      - directory-resource
+      summary: Create an Issuer for a DAP
+      operationId: create-issuer-for-dap
+      parameters:
+      - name: dapId
+        in: path
+        description: The identifier for the DAP
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: dap
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigitalAddress'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DigitalAddress'
+        "201":
+          description: Issuer Created
+          content: {}
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: DAP Not Found
+          content: {}
+      deprecated: false
+  /api/directory/daps/{dapId}/service_providers:
+    get:
+      tags:
+      - directory-resource
+      summary: Get all registered Service Providers for a DAP
+      operationId: get-serviceproviders-for-dap
+      parameters:
+      - name: dapId
+        in: path
+        description: The identifier for the DAP
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DigitalAddress'
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: DAP Not Found Access
+          content: {}
+      deprecated: false
+    post:
+      tags:
+      - directory-resource
+      summary: Create a ServiceProvider for a DAP
+      operationId: create-serviceprovider-for-dap
+      parameters:
+      - name: dapId
+        in: path
+        description: The identifier for the DAP
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: dap
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigitalAddress'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DigitalAddress'
+        "201":
+          description: Service Provider Created
+          content: {}
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: DAP Not Found
+          content: {}
+      deprecated: false
+  /api/credentials/credential-schema:
+    post:
+      tags:
+      - credential-resource
+      summary: Save a Credential Schema
+      operationId: save-credential-schema
+      requestBody:
+        description: Save a credential schema with attributes. Verifiable Credentials
+          are issued against a credential schema published by the Issuer.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialSchema'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CredentialSchema'
+        "201":
+          description: Credential Schema saved successfully
+          content: {}
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/credentials/credential-schema/search:
+    post:
+      tags:
+      - credential-resource
+      summary: Lookup if a Credential Schema exists on the DAP Ledger
+      operationId: lookup-credential-schema
+      requestBody:
+        description: A criteria based search consisting of one or more attributes.
+          Returns matching credential schema records from the DAP Ledger.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialCriteria'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CredentialSchema'
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/credentials/credential-schema/{credentialSchemaId}:
+    get:
+      tags:
+      - credential-resource
+      summary: Get a Schema by its Identifier
+      operationId: get-credential-schema
+      parameters:
+      - name: credentialSchemaId
+        in: path
+        description: Id of the Credential Schema
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CredentialSchema'
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Credential Schema Not Found
+          content: {}
+      deprecated: false
+  /api/credentials/credential-metadata:
+    post:
+      tags:
+      - credential-resource
+      summary: Save Credential Metadata
+      operationId: save-credential-metadata
+      requestBody:
+        description: Save a credential metadata.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialMetadata'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CredentialMetadata'
+        "201":
+          description: Credential Metadata saved successfully
+          content: {}
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/credentials/credential-metadata/search:
+    post:
+      tags:
+      - credential-resource
+      summary: Lookup if a Credential Metadata exists on the DAP Ledger
+      operationId: lookup-credential-metadata
+      requestBody:
+        description: A criteria based search consisting of one or more attributes.
+          Returns matching credential metadata records from the DAP Ledger.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialMetadataCriteria'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CredentialMetadata'
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/credentials/credential-metadata/{credentialMetadataId}:
+    get:
+      tags:
+      - credential-resource
+      summary: Get Credential metadata by its Identifier
+      operationId: get-credential-metadata
+      parameters:
+      - name: credentialMetadataId
+        in: path
+        description: Id of the Credential Metadata
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CredentialMetadata'
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Credential Schema Not Found
+          content: {}
+      deprecated: false
+  /api/credentials/credential-metadata/{credentialMetadataId}/revoke:
+    get:
+      tags:
+      - credential-resource
+      summary: Revoke a Credential metadata by its Identifier
+      operationId: revoke-credential-metadata
+      parameters:
+      - name: credentialMetadataId
+        in: path
+        description: Id of the Credential Metadata
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CredentialMetadata'
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Credential Metadata Not Found
+          content: {}
+      deprecated: false
+  /api/user/fido/authenticate:
+    post:
+      tags:
+      - user-resource
+      summary: Authenticate
+      operationId: fido-authenticate
+      requestBody:
+        description: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FidoCommandRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FidoCommandResponse'
+        "201":
+          description: Created
+          content: {}
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/user/fido/register:
+    post:
+      tags:
+      - user-resource
+      summary: Register a FIDO resource
+      operationId: fido-register
+      requestBody:
+        description: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FidoCommandRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FidoCommandResponse'
+        "201":
+          description: Created
+          content: {}
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/user/fido/deregister:
+    post:
+      tags:
+      - user-resource
+      summary: Deregister FIDO Resource
+      operationId: fido-deregister
+      requestBody:
+        description: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FidoCommandRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FidoCommandResponse'
+        "201":
+          description: Created
+          content: {}
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/user/fido/init-authenticator:
+    post:
+      tags:
+      - user-resource
+      summary: Initialize Authenticator
+      operationId: fido-initialize-authenticator
+      requestBody:
+        description: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FidoCommandRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FidoCommandResponse'
+        "201":
+          description: Created
+          content: {}
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/user/fido/registered-status:
+    post:
+      tags:
+      - user-resource
+      summary: Check Registration Status
+      operationId: fido-registrated-status
+      requestBody:
+        description: request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FidoCommandRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FidoCommandResponse'
+        "201":
+          description: Created
+          content: {}
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/user/fido/result/{svcTrId}:
+    get:
+      tags:
+      - user-resource
+      summary: Get the Transation Result
+      operationId: fido-result
+      parameters:
+      - name: svcTrId
+        in: path
+        description: svcTrId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FidoCommandResponse'
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+  /api/user/fido/status/{svcTrId}:
+    get:
+      tags:
+      - user-resource
+      summary: Get Transaction Status
+      operationId: fido-transaction-status
+      parameters:
+      - name: svcTrId
+        in: path
+        description: svcTrId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FidoCommandResponse'
+        "401":
+          description: Unauthorized
+          content: {}
+        "403":
+          description: Forbidden
+          content: {}
+        "404":
+          description: Not Found
+          content: {}
+      deprecated: false
+  /api/user/fido/configuration:
+    get:
+      tags:
+      - user-resource
+      summary: Get the configuration from the FIDO server
+      operationId: get-fido-configuration
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+        "401":
+          description: Unauthorized Access
+          content: {}
+        "403":
+          description: Forbidden Access
+          content: {}
+        "404":
+          description: Resource Not Found
+          content: {}
+      deprecated: false
+components:
+  schemas:
+    DigitalAddress:
+      title: DigitalAddress
+      type: object
+      properties:
+        entityDID:
+          type: string
+        entityDigitalAddress:
+          type: string
+        entityRole:
+          type: string
+          enum:
+          - Issuer
+          - ServiceProvider
+          - DAP
+        primaryHash:
+          type: string
+        secondaryHash:
+          type: string
+        status:
+          type: string
+          enum:
+          - Active
+          - Pending
+          - InActive
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+    DigitalAddressCriteria:
+      title: DigitalAddressCriteria
+      type: object
+      properties:
+        entityDID:
+          type: string
+        entityDigitalAddress:
+          type: string
+        entityRole:
+          type: string
+          enum:
+          - Issuer
+          - ServiceProvider
+          - DAP
+        active:
+          type: boolean
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date
+        fromDate:
+          type: string
+          format: date
+        toDate:
+          type: string
+          format: date
+    CredentialSchema:
+      title: CredentialSchema
+      type: object
+      properties:
+        credentialSchemaId:
+          type: string
+        name:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        published:
+          type: boolean
+        publishedDate:
+          type: string
+          format: date-time
+        publishingEntityDID:
+          type: string
+        publishingEntityType:
+          type: string
+          enum:
+          - Issuer
+          - DAP
+        revoked:
+          type: boolean
+        revokedDate:
+          type: string
+          format: date-time
+        revokingEntityDID:
+          type: string
+        revokingEntityRole:
+          type: string
+          enum:
+          - Issuer
+          - DAP
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+    CredentialCriteria:
+      title: CredentialCriteria
+      type: object
+      properties:
+        issuingEntityDID:
+          type: string
+        issuingEntityRole:
+          type: string
+          enum:
+          - Issuer
+          - ServiceProvider
+          - DAP
+        userDID:
+          type: string
+        verifierDID:
+          type: string
+        credentialSchemaId:
+          type: string
+        credentialId:
+          type: string
+        active:
+          type: boolean
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date
+        fromDate:
+          type: string
+          format: date
+        toDate:
+          type: string
+          format: date
+    CredentialMetadata:
+      title: CredentialMetadata
+      type: object
+      properties:
+        credentialId:
+          type: string
+        name:
+          type: string
+        credentialSchemaId:
+          type: string
+        CredentialSchemaVersion:
+          type: string
+        credentialType:
+          type: string
+        issuedEntityDID:
+          type: string
+        issuedEntityDA:
+          type: string
+        issuedEntityRole:
+          type: string
+          enum:
+          - Issuer
+          - DAP
+        issuedDate:
+          type: string
+          format: date-time
+        issuingEntityDID:
+          type: string
+        issuingEntityDA:
+          type: string
+        issuingEntityRole:
+          type: string
+          enum:
+          - Issuer
+          - ServiceProvider
+          - DAP
+          - User
+        revoked:
+          type: boolean
+        revokedDate:
+          type: string
+          format: date-time
+        revokingEntityDID:
+          type: string
+        revokingEntityDA:
+          type: string
+        revokingEntityRole:
+          type: string
+          enum:
+          - Issuer
+          - DAP
+        dapDID:
+          type: string
+        dapDA:
+          type: string
+        active:
+          type: boolean
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+
+    CredentialMetadataCriteria:
+      title: CredentialMetadataCriteria
+      type: object
+      properties:
+        issuingEntityDID:
+          type: string
+        issuingEntityRole:
+          type: string
+          enum:
+          - Issuer
+          - ServiceProvider
+          - DAP
+        userDID:
+          type: string
+        verifierDID:
+          type: string
+        credentialSchemaId:
+          type: string
+        credentialId:
+          type: string
+        active:
+          type: boolean
+        createdBy:
+          type: string
+        fromDate:
+          type: string
+          format: date
+        toDate:
+          type: string
+          format: date
+    FidoCommandRequest:
+      title: FidoCommandRequest
+      type: object
+      properties:
+        appId:
+          type: string
+        deviceId:
+          type: string
+        loginId:
+          type: string
+        packageName:
+          type: string
+    FidoCommandResponse:
+      title: FidoCommandResponse
+      type: object
+      properties:
+        deviceId:
+          type: string
+        expireTime:
+          type: string
+        isRegistered:
+          type: boolean
+        loginId:
+          type: string
+        opURL:
+          type: string
+        protocol:
+          type: string
+        resultCode:
+          type: string
+        resultMsg:
+          type: string
+        siteId:
+          type: string
+        svcId:
+          type: string
+        svcTrId:
+          type: string
+        trId:
+          type: string
+        trStatus:
+          type: string
+        trStatusMsg:
+          type: string
