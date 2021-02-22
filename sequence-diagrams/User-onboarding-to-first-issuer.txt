@@ -24,7 +24,11 @@ Issuer -> Issuer: Remember DA and DAP Agency_USER_ID for user in userDB
 Issuer -> Issuer: Creates QR code (DA, Issuer-URL?)
 Issuer -> User: presents or sends the QR code in Web interface/Issuer PC
 User -> DAA: Scans the QR code and extracts DA+IssuerURL
+DAA -> DAP Agency: Register FIDO Authenticator for this DA to the DAP (USER_FIDO_PK)
+DAP Agency-> DAP Agency: Remember create and store VC(USER_FIDO_PK, DAP_USER_ID)
+DAP Agency --> DAA: acknowledge successful FIDO registration
 DAA -> DAP Agency: ID proofing starts on the device and extracts the user info 
+DAP Agency -> DAP Agency: If successful: Mark ID proofing as complete for this DAP_USER_ID
 DAP Agency --> DAA: Success
 DAA -> Issuer: Send Verified User Attributes + DA to IssuerURL
 Issuer -> Issuer: Verifies User Attributes against userDB identified by DA

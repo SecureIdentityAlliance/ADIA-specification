@@ -146,6 +146,10 @@ Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagra
     :  <dfn>User</dfn>
     :: The User and owner of the <a>DA</a> and holder of the <a>VC</a>s.
 
+    : <dfn>USER_FIDO_PK</dfn>, <dfn>USER_FIDO_SK</dfn>
+    :: The FIDO credential owned by the user's authenticator and used
+        to authenticator to <a>DAP</a> and <a>Cloud Agent</a>.
+
     :  <dfn>VC</dfn>
     :: <dfn>Verifiable Credential</dfn>, see [[!vc-data-model]].
 
@@ -284,8 +288,6 @@ Issue: This is true for case 1, but how does it work in case 2?
 </figure>
 
 Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP Agency</a>/GADI system.
-
-Issue: Having the <a>DAA</a> authenticate with FIDO to <a>Cloud Agent</a> either requires second FIDO credential (tied to <a>Cloud Agent</a>) or it requires the <a>Cloud Agent</a> to allow use of the <a>DAP Agency</a> related FIDO credential
 
 Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP Agency</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
 
