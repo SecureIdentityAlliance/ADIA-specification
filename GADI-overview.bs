@@ -58,7 +58,7 @@ Issue: We will likely remove this section later.  But for now let's
         <tr>
             <td>1</td>
             <td>
-    The GADI Framework respects national laws and allows the <a>DAP Agency</a>s to operate according to their local regulations.
+    The GADI Framework respects national laws and allows the <a>DAP </a>s to operate according to their local regulations.
      This includes compliance to CCPA and GDPR.
       </td>
             <td>
@@ -69,7 +69,7 @@ Issue: We will likely remove this section later.  But for now let's
             <td>2</td>
             <td>
         Users must have control on user credentials, i.e. no credentials are created or shared without the user's consent.
-        This means, <a>DAP Agency</a> asks for user consent and strongly authenticates the user.
+        This means, <a>DAP</a> asks for user consent and strongly authenticates the user.
       </td>
             <td>
         Data Privacy regulation & expectation
@@ -130,7 +130,7 @@ Issue: We will likely remove this section later.  But for now let's
             <td>8</td>
             <td>
         <a>Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
-        who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAP Agency</a>) than the one this issuer is primarily using.
+        who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAP</a>) than the one this issuer is primarily using.
       </td>
             <td>
             </td>
@@ -172,7 +172,7 @@ Issue: We will likely remove this section later.  But for now let's
         <tr>
             <td>12</td>
             <td>
-        Each <a>DAP Agency</a> provides one Single Digital Address App for the user to be able to access and control the
+        Each <a>DAP</a> provides one Single Digital Address App for the user to be able to access and control the
         Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
         user credentials on demand with user consent.
       </td>
@@ -194,7 +194,7 @@ Issue: We will likely remove this section later.  But for now let's
         Users in this scenario will have a single Digital Address Application from one Digital Address Provider
         and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
         push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
-        different handles (Different Digital Addresses) that can be orchestrated between the user Device and <a>DAP Agency</a> to
+        different handles (Different Digital Addresses) that can be orchestrated between the user Device and <a>DAP</a> to
         present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.
       </td>
             <td>
@@ -203,7 +203,7 @@ Issue: We will likely remove this section later.  But for now let's
         <tr>
             <td>15</td>
             <td>
-        The GADI ledger is accessible to <a>DAP Agency</a>s only.
+        The GADI ledger is accessible to <a>DAP</a>s only.
       </td>
             <td>
             </td>
@@ -235,7 +235,7 @@ Note: sometimes there are existing business processes which will convey PI/PII o
         <tr>
             <td>18</td>
             <td>
-        GADI and <a>DAP Agency</a>s do NOT persistently store personal information (PI).
+        GADI and <a>DAP</a>s do NOT persistently store personal information (PI).
         And even pass-through of PI should be avoided.
 
 Note: they will likely need to store PII, i.e. information related to users
@@ -249,10 +249,10 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
             <td>19</td>
             <td>
         GADI will store the <a>HomeDAP</a> Identifier (i.e. <a>HomeDAP_ID</a>) along with the user's <a>Trust Anchor</a>.
-        So each <a>DAP Agency</a> could ask GADI for the <a>HomeDAP</a> of a given user and would then directly talk to the user's <a>HomeDAP</a>.
+        So each <a>DAP</a> could ask GADI for the <a>HomeDAP</a> of a given user and would then directly talk to the user's <a>HomeDAP</a>.
       </td>
             <td>
-        We need that for cross-<a>DAP Agency</a> communications
+        We need that for cross-<a>DAP</a> communications
             </td>
         </tr>
         <tr>
@@ -267,7 +267,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
         <tr>
             <td>21</td>
             <td>
-        It shall  be possible to change the <a>HomeDAP</a> of a user (e.g. from <a>DAP Agency</a>1 to <a>DAP Agency</a>2).
+        It shall  be possible to change the <a>HomeDAP</a> of a user (e.g. from <a>DAP</a>1 to <a>DAP</a>2).
       </td>
             <td>
             </td>
@@ -409,9 +409,9 @@ New
 Issue: Add details for Interchange
 
 
-#### DAP Agency #### {#sctn-gadi-role-dap-agency}
+#### DAP #### {#sctn-gadi-role-dap-agency}
 
-Issue: Add details for DAP Agency
+Issue: Add details for DAP
 
 
 
@@ -480,7 +480,7 @@ Issue: Describe what is verified by whom, what kind of objects
 
 Issue: Please check - Trust Anchor, Digital Address,
 DAP Identifier, Home DAP Identifier, Issuer Identifier, Service Provider Identifier,
-DAP Agency Identifier, GADI Regional Directory Identifier
+DAP Identifier, GADI Regional Directory Identifier
 
 
    <dl>
@@ -511,14 +511,14 @@ DAP Agency Identifier, GADI Regional Directory Identifier
 
        :  <dfn>DAA</dfn>
        :: Digital Address Application, e.g. Android App or iOS App that
-           knows how to talk to the <a>DAP Agency</a> on behalf of the <a>User</a>.
+           knows how to talk to the <a>DAP</a> on behalf of the <a>User</a>.
 
-       :  <dfn>DAP Agency</dfn> (formerly DAP)
+       :  <dfn>DAP</dfn> (formerly DAP)
        :: Digital Address Provider Agency.  See [[DAP-API]] for the DAP
            Agency API.  Multiple DAP Agencies can exist in the GADI "universe".
 
        :  <dfn>DAP_ID</dfn>
-       :: <a>DAP Agency</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP Agency</a>.
+       :: <a>DAP</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
 
        :  <dfn>DAP_ID_PK</dfn>, <dfn>DAP_ID_SK</dfn>
        :: Public Key (PK) and Private Key (SK) related to the <a>DAP_ID</a>.
@@ -539,7 +539,7 @@ DAP Agency Identifier, GADI Regional Directory Identifier
        :: Cryptographic hash computed over the <a>ID Attributes</a>
 
        :  <dfn>HomeDAP_ID</dfn>
-       :: DAP_ID of the <a>DAP Agency</a> that user primarliy belongs to (i.e. <dfn>HomeDAP</dfn>).
+       :: DAP_ID of the <a>DAP</a> that user primarliy belongs to (i.e. <dfn>HomeDAP</dfn>).
 
        :  <dfn>ID Attributes</dfn>
        :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
@@ -552,7 +552,7 @@ DAP Agency Identifier, GADI Regional Directory Identifier
        :  <dfn>Issuer</dfn>
        :: Issuer of <a>VC</a>s to users.  GADI supports multiple Issuers
            per <a>User</a>.  Issuers use an <dfn>Issuer Agent</dfn> to
-           connect to the <a>DAP Agency</a>.
+           connect to the <a>DAP</a>.
 
        :  <dfn>ISSUER_ID</dfn>
        :: Issuer IDentity, i.e. the <a>DID</a> style identifier for the <a>Issuer</a>.
@@ -564,7 +564,7 @@ DAP Agency Identifier, GADI Regional Directory Identifier
        :: <dfn>Service Provider</dfn> that verifies <a>VC</a>s.  In the
             Decentralized Identity community it is typically called
             Verifier. <a>Service Providers</a> use a <dfn>Service Provider Agent</dfn> to
-            connect to the <a>DAP Agency</a>, the <a>Credential Broker</a> and the <a>Identity Escrow</a>.
+            connect to the <a>DAP</a>, the <a>Credential Broker</a> and the <a>Identity Escrow</a>.
 
        :  <dfn>SP_ID</dfn>
        :: Service Provider IDentity, i.e. the <a>DID</a> style identifier for the <a>SP</a>.
@@ -615,15 +615,15 @@ itself uses "Sender Authenticated Encryption".
 The <a>SP_ID_PK</a>, <a>SP_ID_SK</a>, <a>ISSUER_ID_PK</a>, <a>ISSUER_ID_SK</a>, <a>DAP_ID_PK</a>,
 <a>DAP_ID_SK</a> and <a>GADI_ID_PK</a> and <a>GADI_ID_SK</a> are being used for that.
 
-## Issuer to DAP Agency ## {#sctn-interd-comm-issuer-to-dap}
+## Issuer to DAP ## {#sctn-interd-comm-issuer-to-dap}
 
 Issue: Add details for Issuer to DAP communications
 
-## DAP to DAP Agency (Future) ## {#sctn-interd-comm-dap-to-dap}
+## DAP to DAP (Future) ## {#sctn-interd-comm-dap-to-dap}
 
 Issue: Add details for DAP to DAP communications
 
-## DAP Agency to GADI Regional Directory ## {#sctn-interd-comm-dap-to-gadi-regional}
+## DAP to GADI Regional Directory ## {#sctn-interd-comm-dap-to-gadi-regional}
 
 Issue: Add details for DAP to GADI Regional Directory
 
@@ -689,7 +689,7 @@ Issue: Details for Cryptographic Suites
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
-Note: <a>HIDA</a> is PII and might need to be erased on account deletion (see User <a>DAP Agency</a> Account Deletion)
+Note: <a>HIDA</a> is PII and might need to be erased on account deletion (see User <a>DAP</a> Account Deletion)
 
 Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we store the PK in <a>HomeDAP</a> or GADI??  When will that key be created and by Whom?
 
@@ -702,35 +702,35 @@ Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we st
 
 
 
-## User Home DAP Agency ## {#sctn-user-home-dap-agency}
+## User Home DAP ## {#sctn-user-home-dap-agency}
 
-Home DAP Agency is the entity that serves as the primary repository of credential metadata for a given user. Each DAP Agency has a unique Identifier (A DID and a Digital Address) in the GADI ecosystem.
+Home DAP is the entity that serves as the primary repository of credential metadata for a given user. Each DAP has a unique Identifier (A DID and a Digital Address) in the GADI ecosystem.
 
-When a Trusted Issuer creates a Digital Address for a User, the Digital Address is suffixed with the DAP Agency Identifier. Any entity in the ecosystem can use a Digital Address resolver to identify the Home DAP Agency for a given User. Credential requests, issuance or verifications, are routed to the Home DAP for further processing.
+When a Trusted Issuer creates a Digital Address for a User, the Digital Address is suffixed with the DAP Identifier. Any entity in the ecosystem can use a Digital Address resolver to identify the Home DAP for a given User. Credential requests, issuance or verifications, are routed to the Home DAP for further processing.
 
-There are two possible scenarios to depict the role of a Home DAP Agency as below:
+There are two possible scenarios to depict the role of a Home DAP as below:
 
-### Issuers in the same DAP Agency ### {#sctn-user-home-dap-agency-scenario1}
-There are two issuers in this scenario, both as part of the same DAP Agency. Digital Addresses created are published to the DAP Agency and credential metadata and lookups are maintained by the DAP Agency.
+### Issuers in the same DAP ### {#sctn-user-home-dap-agency-scenario1}
+There are two issuers in this scenario, both as part of the same DAP. Digital Addresses created are published to the DAP and credential metadata and lookups are maintained by the DAP.
 <figure id="fig-user-home-dap-agency-scenario1">
     <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-same-DAP-Agency.png"/>
-    <figcaption>Home DAP Agency - Issuers in the same DAP Agency</figcaption>
+    <figcaption>Home DAP - Issuers in the same DAP</figcaption>
 </figure>
 
 
 ### Issuers in separate DAP Agencies ### {#sctn-user-home-dap-agency-scenario2}
-In this scenario, the Digital Addresses created are published to the DAP Agency and it is designated as the Home DAP Agency for the user. Credential metadata and look ups are  routed to the Home DAP Agency from Issuers in other Interchanges.
+In this scenario, the Digital Addresses created are published to the DAP and it is designated as the Home DAP for the user. Credential metadata and look ups are  routed to the Home DAP from Issuers in other Interchanges.
 
 <figure id="fig-user-home-dap-agency-scenario2">
     <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-Different-DAP-Agency.png"/>
-    <figcaption>Home DAP Agency - Issuers in separate DAP Agencies</figcaption>
+    <figcaption>Home DAP - Issuers in separate DAP Agencies</figcaption>
 </figure>
 
 ### User Changes Home-DAP ### {#sctn-user-changes-home-dap}
-Users may choose to transfer their credential metadata to a different DAP Agency. This is initiated with a submission of a transfer request. The transferee DAP Agency initiates the transfer of Digital Address metadata and Credential metadata with the consent of the user. Subsequent requests for credential operations, are routed to the transferred DAP Agency.
+Users may choose to transfer their credential metadata to a different DAP. This is initiated with a submission of a transfer request. The transferee DAP initiates the transfer of Digital Address metadata and Credential metadata with the consent of the user. Subsequent requests for credential operations, are routed to the transferred DAP.
 <figure id="fig-user-changes-home-dap">
     <img src="sequence-diagrams/DAP-Transfer-by-User.png"/>
-    <figcaption>Transfer DAP Agency</figcaption>
+    <figcaption>Transfer DAP</figcaption>
 </figure>
 
 ## User DAP Account Deletion ## {#sctn-user-dap-account-deletion}
@@ -740,7 +740,7 @@ Users may choose to transfer their credential metadata to a different DAP Agency
     <figcaption>User DAP Account Deletion</figcaption>
 </figure>
 
-Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP Agency</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
+Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
 
 Issue: Do we need an issuer-triggered account deletion function as well?
 
@@ -758,11 +758,11 @@ Issue: How could a user without a working <a>DAA</a> instance trigger account de
     <figcaption>Verifiable Credential Issuance (Option 1)</figcaption>
 </figure>
 
-  <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask GADI via <a>DAP Agency</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
+  <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask GADI via <a>DAP</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
 
 Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
 
-Issue: Distinguish two different cases: (1) DA Issuer and VC Issuer are part of same DAP Agency.
+Issue: Distinguish two different cases: (1) DA Issuer and VC Issuer are part of same DAP.
        (2) DA Issuer and VC Issuer are part of different DAP
        Agencies.  See github issue 53.
 
@@ -794,9 +794,9 @@ Issue: This is true for case 1, but how does it work in case 2?
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
 
-Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP Agency</a>/GADI system.
+Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP</a>/GADI system.
 
-Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP Agency</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
+Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
 
 
 ## User Consents ## {#sctn-user-consents}
@@ -828,7 +828,7 @@ Issue: Description of delegated recovery of a Digital Address
 
 Issue: requiring ID Proofing looks expensive here. Are there methods without that (that provide a similar security level)?
 
-Issue: Do we want <a>DAP Agency</a> to perform the ID proofing - not the <a>Issuer</a>?
+Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 
 
 ### Self-Asserted Digital Address ### {#sctn-user-bootstraps-self-asserted-da}
@@ -927,6 +927,10 @@ Issue: Description/ sequence diagram for Payment Broker Certification
 
   <pre class=include>
   path: resources/api/DAP-agency-api.include
+  </pre>
+
+  <pre class=include>
+  path: resources/api/Issuer-api.include
   </pre>
 
   <pre class=include>
