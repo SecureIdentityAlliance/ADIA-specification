@@ -1,14 +1,21 @@
 Title: User Asks for DAP Account Deletion
 Participant User
 Participant DAA
-Participant DAP
-Participant GADI
+Participant Cloud Agent
+Participant DAP Agency
+Participant Regional GADI Directory
+Participant Global GADI Directory
 
 User -> DAA: Trigger DAP account deletion
-DAA -> DAP: Please delete my DAP/GADI account (FIDO Auth, HIDA)
-DAP -> DAP: Lookup TA_USER_ISSUER in DB lookup by FIDO Key
-DAP -> GADI: Please delete user account (TA_USER_ISSUER, HIDA)
-GADI -> GADI: Erase HIDA from ledger for (keep TA etc.)
-GADI --> DAP: done
-DAP -> DAP: Delete FIDO Key from DB
-DAP --> DAA: Done. All Issuer relations and VCs still exist!
+DAA -> DAP Agency: Please delete my DAP/GADI account (USER_FIDO_PK, HIDA) (FIDO authenticated)
+DAP Agency -> DAP Agency: Lookup TA_USER_ISSUER in DB lookup by FIDO Key
+DAP Agency -> Regional GADI Directory: Please delete user account (TA_USER_ISSUER, HIDA)
+Regional GADI Directory -> Regional GADI Directory: Erase HIDA from ledger for (keep TA etc.)
+Regional GADI Directory -> Global GADI Directory: Please delete user account (TA_USER_ISSUER, HIDA)
+Global GADI Directory -> Global GADI Directory: Erase HIDA from ledger for (keep TA etc.)
+Global GADI Directory --> Regional GADI Directory: Done
+Regional GADI Directory --> DAP Agency: Done
+DAP Agency -> Cloud Agent: Delete all credentials and other data
+Cloud Agent --> DAP Agency: Success
+DAP Agency -> DAP Agency: Delete USER_FIDO_PK from DB
+DAP Agency --> DAA: Done. All Issuer relations and VCs still exist!

@@ -1,0 +1,30 @@
+title Home DAP Agency - Issuers in the Different DAP Agency
+
+participant User
+participant DA Issuer
+participant DAP-1
+participant DLT-1
+participant DAP-2
+participant DLT-2
+participant Credential Issuer
+participant VC Store
+
+User->DA Issuer: Flow 1:Request a DA
+DA Issuer->DAP-1: TA,DA Collision checks
+DAP-1->DA Issuer: Success - Create DA + @DAP_ID suffix
+DAP-1-->DLT-1: Save DA Metadata (DA,USER_DAP_ID,ISSUER_ID, DAP_AGENCY_ID)
+DAP-1-->DAP-1: User Home DAP Established (DAP-1)
+DAP-1->DA Issuer: DA Success
+DA Issuer->User: Send DA (QR, Email, etc)
+User->Credential Issuer: Flow 2: Request VC
+Credential Issuer-> User: TA Collision + Link DA
+Credential Issuer->DAP-2: Resolve HOME_DAP_ID from DA
+DAP-2->DLT-2: Lookup DAP Suffix in DA
+DLT-2->DAP-2: Resolved DAP_AGENCY_ID, DAP_DA
+DAP-2->Credential Issuer: Resolved HOME_DAP_ID, DAP_DA
+Credential Issuer->VC Store: Issue Credential
+Credential Issuer-->DAP-2: Save Credential Metadata (DA, USER_DAP_ID, ISSUER_ID)
+DAP-2-->DAP-1: Forward VC Metadata to Home DAP
+DAP-1--> DLT-1: Save VC Metadata (DA,USER_DAP_ID, ISSUER_ID, DAP_AGENCY_ID)
+DAP-1-->DAP-2: VC Save Success
+DAP-2->User: VC Notification
