@@ -1,0 +1,15 @@
+Title SP Onboarded to DAP
+participant SP Admin
+participant DAP
+participant DAP Shared Agent
+participant DAP Service
+
+SP Admin -> DAP: Signup Primary contact and Org details
+DAP->DAP: Save Request. Generate Request ID
+DAP-> SP Admin: Request Reference\n (RequestID, status=NEW)
+DAP -> DAP: Automated Approval\n(RequestID,status=APPROVED)
+DAP -> DAP Shared Agent: Create DID for SP
+DAP Shared Agent --> DAP: Returns DID\n(ISSUER_ID)
+DAP -> DAP Service: Create Digital Address
+DAP Service --> DAP: Return Digital Address\n(ISSUER_DA)
+DAP -> SP Admin: Request Approved\n(ISSUER_ID, ISSUER_DA, status=APPROVED)

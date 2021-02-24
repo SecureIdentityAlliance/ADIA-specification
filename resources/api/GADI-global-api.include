@@ -427,7 +427,7 @@ Save GADI Regional Directory
 
 
 
-#### Get DAP Agencies #### {#sctn-gadi-get-dap-agencies}
+#### Get DAPs #### {#sctn-gadi-get-dap-agencies}
 Gets a list of dap-agencies in any of the GADI Regions.
 
 
@@ -481,7 +481,7 @@ Gets a list of dap-agencies in any of the GADI Regions.
         [{
             "entityID" : "did:gadi:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
-            "entityRole" : "DAPAgency",
+            "entityRole" : "DAP",
             "createdBy" : "did:dtx:888888888888",
             "createdDate" : "2000-01-23T04:56:07.000+00:00",
             "status" : "Active"
@@ -489,7 +489,7 @@ Gets a list of dap-agencies in any of the GADI Regions.
             {
                 "entityID" : "did:gadi:I2222222222",
                 "entityDigitalAddress" : "abc@OCN",
-                "entityRole" : "DAPAgency",
+                "entityRole" : "DAP",
                 "createdBy" : "did:DTX:U2222222222",
                 "createdDate" : "2000-01-23T04:56:07.000+00:00",
                 "status" : "Active"
@@ -502,8 +502,8 @@ Gets a list of dap-agencies in any of the GADI Regions.
 </table>
 </aside>
 
-#### Get a DAP Agency by Identifier #### {#sctn-gadi-get-one-dap-agency}
-Get a DAP Agency with its DID or Digital DigitalAddress
+#### Get a DAP by Identifier #### {#sctn-gadi-get-one-dap-agency}
+Get a DAP with its DID or Digital DigitalAddress
 
 <table class="data longlastcol">
   <tbody>
@@ -527,7 +527,7 @@ Get a DAP Agency with its DID or Digital DigitalAddress
       <td><strong>Parameters</strong></td>
       <td>
        <ul>
-        <li><i>identifier</i> (required) - DID or Digital Address of the DAP Agency</li>
+        <li><i>identifier</i> (required) - DID or Digital Address of the DAP</li>
       </ul>
       </td>
     </tr>
@@ -539,10 +539,10 @@ Get a DAP Agency with its DID or Digital DigitalAddress
       <td><strong>HTTP Status</strong></td>
       <td>
         <ul>
-          <li><strong>200</strong>: OK Returns DAP Agency</li>
+          <li><strong>200</strong>: OK Returns DAP</li>
           <li><strong>401</strong>: Unauthorized Access</li>
           <li><strong>403</strong>: Forbidden Access</li>
-          <li><strong>404</strong>: DAP Agency Not Found</li>
+          <li><strong>404</strong>: DAP Not Found</li>
         </ul>
       </td>
     </tr>

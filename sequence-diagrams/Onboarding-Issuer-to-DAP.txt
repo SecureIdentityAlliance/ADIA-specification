@@ -1,0 +1,16 @@
+title Issuer Onboarded to DAP
+participant Issuer Admin
+participant DAP
+participant DAP Shared Agent
+participant DAP Service
+participant DAP Admin
+
+Issuer Admin -> DAP: Primary contact and Org details
+DAP->DAP: Save Request. Generate Request ID
+DAP-> Issuer Admin: Request Reference\n (RequestID, status=NEW)
+DAP Admin -> DAP: View and Approve Request\n(RequestID,status=APPROVED)
+DAP -> DAP Shared Agent: Create DID for Issuer
+DAP Shared Agent --> DAP: Returns DID\n(ISSUER_ID)
+DAP -> DAP Service: Create Digital Address
+DAP Service --> DAP: Return Digital Address\n(ISSUER_DA)
+DAP -> Issuer Admin: Request Approved\n(ISSUER_ID, ISSUER_DA, status=APPROVED)
