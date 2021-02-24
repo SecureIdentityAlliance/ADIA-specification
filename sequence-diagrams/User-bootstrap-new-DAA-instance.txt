@@ -2,14 +2,9 @@ Title: User Bootstraps New DAA Instance
 Participant User
 Participant DAA
 Participant Issuer
-<<<<<<< HEAD
 Participant Cloud Agent
-Participant DAP
-Participant GADI
-=======
 Participant DAP Agency
 Participant Regional GADI Directory
->>>>>>> master
 User -> Issuer: I want to recover my Digital Address because lost device
 Issuer -> Issuer: lookup ID-Attribs for that user
 Issuer -> Issuer: compute HIDA = hash(ID-Attribs)
@@ -35,11 +30,6 @@ Issuer -> Issuer: check whether VC(TA_USER_ISSUER, Validation Succeeded) exists 
 Issuer -> DAA: validation succeeded for DA+VC(TA_USER_ISSUER, Validation Succeeded)
 DAA -> Issuer: Accept DA
 Issuer --> DAA: OK
-<<<<<<< HEAD
-DAA -> DAP: Register FIDO Authenticator for this DA to the DAP (USER_FIDO_PK)
-DAP -> DAP: Remember create and store VC(USER_FIDO_PK, DAP_USER_ID)\n replacing old USER_FIDO_PK (from lost device)
-DAP --> DAA: acknowledge successful FIDO registration
-=======
-DAA -> DAP Agency: Register FIDO Authenticator for this DA to the DAP+send VC (implicitly: User accepted DA)
-DAP Agency -> DAP Agency: Saves the FIDO public key against TA_USER_ISSUER - replacing old FIDO public key (for lost device)
->>>>>>> master
+DAA -> DAP Agency: Register FIDO Authenticator for this DA to the DAP (USER_FIDO_PK)
+DAP Agency -> DAP Agency: Saves the FIDO public key against TA_USER_ISSUER - replacing old USER_FIDO_PK (from lost device)
+DAP Agency --> DAA: acknowledge successful FIDO registration

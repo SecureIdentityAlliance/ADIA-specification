@@ -804,10 +804,22 @@ Issue: Description of self recovery of a Digital Address
 
 Issue: Description of delegated recovery of a Digital Address
 
-
 ## User Device Management ## {#sctn-device-management}
 
+### User Bootstraps Additional DAA Instance "New Phone" ### {#sctn-user-bootstraps-addtl-daa-instance-1}
+The user got a new smartphone with the working <a>DAA</a>
+instance.  This is about bootstrapping the new <a>DAA</a> on the additional
+smartphone - <i>while still</i> having access to the old <a>DAA</a> instance.
+
+<figure id="fig-user-bootstraps-addtl-daa-instance">
+    <img src="sequence-diagrams/User-bootstrap-addtl-DAA-instance.svg"/>
+    <figcaption>User Bootstraps Additional DAA Instance "New Phone"</figcaption>
+</figure>
+
 ### User Bootstraps New DAA Instance "Lost Phone" ### {#sctn-user-bootstraps-new-daa-instance-1}
+The user has lost his smartphone with the working <a>DAA</a>
+instance.  This is about bootstrapping the new <a>DAA</a> on the new
+smartphone - <i>without</i> having access to the old <a>DAA</a> instance.
 
 <figure id="fig-user-bootstraps-new-daa-instance">
     <img src="sequence-diagrams/User-bootstrap-new-DAA-instance.svg"/>
