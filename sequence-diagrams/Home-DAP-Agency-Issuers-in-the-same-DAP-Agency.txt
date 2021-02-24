@@ -1,4 +1,4 @@
-title Home DAP Agency - Issuers in the same DAP Agency
+title: Home DAP Agency - Issuers in the same DAP Agency
 
 participant User
 participant DA Issuer

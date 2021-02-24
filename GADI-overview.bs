@@ -701,7 +701,7 @@ There are two possible scenarios to depict the role of a Home DAP Agency as belo
 ### Issuers in the same DAP Agency ### {#sctn-user-home-dap-agency-scenario1}
 There are two issuers in this scenario, both as part of the same DAP Agency. Digital Addresses created are published to the DAP Agency and credential metadata and lookups are maintained by the DAP Agency.
 <figure id="fig-user-home-dap-agency-scenario1">
-    <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-same-DAP-Agency.png"/>
+    <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-same-DAP-Agency.svg"/>
     <figcaption>Home DAP Agency - Issuers in the same DAP Agency</figcaption>
 </figure>
 
@@ -710,7 +710,7 @@ There are two issuers in this scenario, both as part of the same DAP Agency. Dig
 In this scenario, the Digital Addresses created are published to the DAP Agency and it is designated as the Home DAP Agency for the user. Credential metadata and look ups are  routed to the Home DAP Agency from Issuers in other Interchanges.
 
 <figure id="fig-user-home-dap-agency-scenario2">
-    <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-Different-DAP-Agency.png"/>
+    <img src="sequence-diagrams/Home-DAP-Agency-Issuers-in-the-Different-DAP Agency.svg"/>
     <figcaption>Home DAP Agency - Issuers in separate DAP Agencies</figcaption>
 </figure>
 
