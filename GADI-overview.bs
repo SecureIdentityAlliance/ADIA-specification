@@ -394,6 +394,8 @@ These interactions are all detailed in the associated protocols summarized and l
 #### Directory Querying
 A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the user identified. The DID provided is created by the user’s agent, and provided to the directory for the purpose of returning to the party querying the directory. The user’s agent is notified of which party identified them in the directory.
 
+Issue: Need to specify what qualified party is and to add a reference to such definition here
+
 The protocols for querying users are summarized and linked below.
 
 #### Logging requirements
