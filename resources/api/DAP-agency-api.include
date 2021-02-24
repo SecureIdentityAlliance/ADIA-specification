@@ -905,7 +905,7 @@ A Scheme against which Verifiable Credentials are issued. A Schema is published 
 
 
 #### Get a Credential Schema by Identifier #### {#sctn-dap-agency-get-one-credential-schema}
-Get a Service Provider with its DID or Digital DigitalAddress
+Get a Credential Schema with its identifier
 
 <table class="data longlastcol">
   <tbody>

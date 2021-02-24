@@ -1,0 +1,972 @@
+## Issuer API ## {#sctn-issuer-api}
+
+### Directory Service ### {#sctn-issuer-service}
+
+#### Create Digital Address #### {#sctn-issuer-create-da}
+Create A Digital Address with its corresponding Hashed anchor attributes
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/digital-address</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>DigitalAddress (required)<br/>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Regional Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>DigitalAddress Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns DigitalAddress</li>
+          <li><strong>201</strong>: DigitalAddress Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "dapUserId" : "did:dtx:I1111111111",
+        "digitalAddress" : "abc@DTX",
+        "primaryHash" : "sdhgjgfgdfdsdfdsfsdf",
+        "secondaryHash": "lkdkjh44kjdjfhlskad"
+        "issuerId": "did:dtx:I1111111111"
+        }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+          "dapUserId" : "did:dtx:I1111111111",
+          "digitalAddress" : "abc@DTX",
+          "status" : "Active"
+          }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Search Digital Addresses #### {#sctn-issuer-get-da}
+Returns a list of Digital Addresses matching a criteria from the GADI Regional Directory
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/digital-address/search</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>EntityCriteria (required)<br/>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of DigitalAddress Objects</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns DigitalAddress</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+      {
+          "digialAddress":"kiran"
+          "status" : "Active"
+        }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        [
+        {
+            "dapUserId" : "did:dtx:I2222222",
+            "digitalAddress" : "kiran.handsome@DTX",
+            "issuerId": "did:dtx:I1111111111"
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        },
+        {
+            "dapUserId" : "did:dtx:I3333333",
+            "digitalAddress" : "kiran.majestic@DTX",
+            "issuerId": "did:dtx:I1111111111"
+            "createdBy" : "did:dtx:888888888888",
+            "createdDate" : "2000-01-23T04:56:07.000+00:00",
+            "status" : "Active"
+        }
+        ]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+#### Get a Digital Address by an Identifier #### {#sctn-issuer-get-byId}
+Get an entity with its DID or Digital DigitalAddress
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/digital-address/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the entity</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>DigitalAddress Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns DigitalAddress</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: DigitalAddress Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/digital-address/did:dtx:I2222222
+curl -X GET  /api/digital-address/kiran.handsome@DTX
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+          "dapUserId" : "did:dtx:I2222222",
+          "digitalAddress" : "kiran.handsome@DTX",
+          "issuerId": "did:dtx:I1111111111"
+          "createdBy" : "did:dtx:888888888888",
+          "createdDate" : "2000-01-23T04:56:07.000+00:00",
+          "status" : "Active"
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+
+### Credential Service ### {#sctn-issuer-credential-service}
+
+#### Search Credential Schema #### {#sctn-issuer-get-credential-schema}
+Search A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credential-schema/search</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>CredentialCriteria (required)<br/>
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAP Ledger.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>List of CredentialSchema Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns CredentialSchema</li>
+          <li><strong>201</strong>: CredentialSchema Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+      "name": "VerifiedPerson",
+      "status": "Active"
+      }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        [
+        {
+        "credentialSchemaId":"AAA343234"
+        "name": "VerifiedPerson",
+        "version": "1.0",
+        "description": "A Verified Person Schema",
+        "publishingentityID": "did:dtx:111111111",
+        "publishingEntityType": "Issuer",
+        "publishedBy" : "did:dtx:888888888888",
+        "publishedDate" : "2000-01-23T04:56:07.000+00:00",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        },
+        {
+        "credentialSchemaId":"BBB244444"
+        "name": "VerifiedPerson",
+        "version": "12.0",
+        "description": "A Verified Person Schema",
+        "publishingentityID": "did:dtx:22222222",
+        "publishingEntityType": "Issuer",
+        "publishedBy" : "did:dtx:888888888888",
+        "publishedDate" : "2000-01-23T04:56:07.000+00:00",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }
+        ]
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Publish Credential Schema #### {#sctn-issuer-publish-credential-schema}
+A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credential-schema</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>CredentialSchema (required)<br/>
+      Body Parameter — Save a credential schema with attributes. Verifiable Credentials are issued against a credential schema published by the Issuer.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>CredentialSchema Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns CredentialSchema</li>
+          <li><strong>201</strong>: CredentialSchema Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+      "name": "VerifiedPerson",
+      "version": "1.0",
+      "description": "A Verified Person Schema",
+      "publishingentityID": "did:dtx:111111111",
+      "publishingEntityType": "Issuer",
+      "attributes": [
+        {
+          "name": "firstName",
+          "displayName": "First Name",
+          "dataType": "Text",
+          "order":1
+        },
+        {
+          "name": "lastName",
+          "displayName": "Last Name",
+          "dataType": "Text",
+          "order":2
+        },
+        {
+          "name": "dateOfBirth",
+          "displayName": "Birth Date",
+          "dataType": "DateTime",
+          "order":3
+        }]
+      }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+        "credentialSchemaId":"AAA343234"
+        "name": "VerifiedPerson",
+        "version": "1.0",
+        "description": "A Verified Person Schema",
+        "publishingentityID": "did:dtx:111111111",
+        "publishingEntityType": "Issuer",
+        "publishedBy" : "did:dtx:888888888888",
+        "publishedDate" : "2000-01-23T04:56:07.000+00:00",
+        "createdBy" : "did:dtx:888888888888",
+        "createdDate" : "2000-01-23T04:56:07.000+00:00",
+        "status" : "Active"
+        }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+#### Get a Credential Schema by Identifier #### {#sctn-issuer-get-one-credential-schema}
+Get a Credential Schema with its identifier
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credential-schema/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - DID or Digital Address of the Service Provider</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>CredentialSchema Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns CredentialSchema</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: CredentialSchema Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/credential-schema/AAA343234
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+      "credentialSchemaId":"AAA343234"
+      "name": "VerifiedPerson",
+      "version": "1.0",
+      "description": "A Verified Person Schema",
+      "publishingentityID": "did:dtx:111111111",
+      "publishingEntityType": "Issuer",
+      "publishedBy" : "did:dtx:888888888888",
+      "publishedDate" : "2000-01-23T04:56:07.000+00:00",
+      "createdBy" : "did:dtx:888888888888",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active",
+      "attributes": [
+        {
+          "name": "firstName",
+          "displayName": "First Name",
+          "dataType": "Text",
+          "order":1
+        },
+        {
+          "name": "lastName",
+          "displayName": "Last Name",
+          "dataType": "Text",
+          "order":2
+        },
+        {
+          "name": "dateOfBirth",
+          "displayName": "Birth Date",
+          "dataType": "DateTime",
+          "order":3
+        }]
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+
+#### Issue a Verifiable Credential #### {#sctn-issuer-issue-credential}
+Issue a Verifiable Credentials against a published schema
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credentials/issue</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>VerifiableCredential (required)<br/>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Regional Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>VerifiableCredential Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns VerifiableCredential</li>
+          <li><strong>201</strong>: VerifiableCredential Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "dapUserId" : "did:dtx:I1111111111",
+        "digitalAddress" : "abc@DTX",
+        "schemaName" : "VerifiedPerson",
+        "schemaVersion": "1.0"
+        "issuerId": "did:dtx:I1111111111",
+        "attributes":[
+          {
+          "name": "firstName",
+          "value": "Kiran"
+          },
+          "name":"dateOfBirth",
+          "value":"ISO 8601 Date"
+        ]
+        }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+          "status" : "Issued",
+          "credentialExchangeId": "b71bdb7a-5beb-40cc-8e38-40dd270b73d5"
+          }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Revoke a Verifiable Credential #### {#sctn-issuer-revoke-credential}
+Revoke an issued Verifiable Credential
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credentials/revoke</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>VerifiableCredential (required)<br/>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Regional Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>VerifiableCredential Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns VerifiableCredential</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "credentialExchangeId":"b71bdb7a-5beb-40cc-8e38-40dd270b73d5"
+        "issuerId" : "did:dtx:I1111111111"
+        }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+          "status" : "Revoked"
+          }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+
+#### Expire a Verifiable Credential #### {#sctn-issuer-expire-credential}
+Expire/Void/Retire an issued Verifiable Credential
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credentials/expire</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>VerifiableCredential (required)<br/>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Regional Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>VerifiableCredential Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns VerifiableCredential</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Request</th>
+    <th>Response</th>
+  </thead>
+  <tbody>
+    <tr valign="top">
+    <td>
+    <pre class="highlight">
+    <code>
+    {
+        "credentialExchangeId":"b71bdb7a-5beb-40cc-8e38-40dd270b73d5"
+        "issuerId" : "did:dtx:I1111111111",
+        "status": "Expire"
+        }
+      </code>
+      </pre>
+    </td>
+      <td>
+      <pre class="highlight">
+      <code>
+        {
+          "status" : "Expired"
+          }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
+
+#### Get a Credential by Identifier #### {#sctn-issuer-get-one-credential-schema}
+Get an issued credential with its identifier from the VC Store
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/credentials/{identifier}</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Parameters</strong></td>
+      <td>
+       <ul>
+        <li><i>identifier</i> (required) - ID of the issued Verifiable Credential</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>VerifiableCredential Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns VerifiableCredential</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+          <li><strong>404</strong>: VerifiableCredential Not Found</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="example">
+<div class="example-data-content-type">Content-Type: application/json</div>
+
+</br>
+<div><strong>Request</strong></div>
+<pre class="highlight">
+<code>
+curl -X GET  /api/credential/b71bdb7a-5beb-40cc-8e38-40dd270b73d5
+</code>
+</pre>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Response</th>
+  </thead>
+  <tbody>
+      <td>
+      <pre class="highlight">
+      <code>
+      {
+      "credentialExchangeId":"b71bdb7a-5beb-40cc-8e38-40dd270b73d5",
+      "credentialSchemaId":"345sdfwe-5beb-40cc-8e38-40dd270b73d5",
+      "name": "VerifiedPerson",
+      "version": "1.0",
+      "description": "A Verified Person Schema",
+      "publishingentityID": "did:dtx:111111111",
+      "publishingEntityType": "Issuer",
+      "publishedBy" : "did:dtx:888888888888",
+      "publishedDate" : "2000-01-23T04:56:07.000+00:00",
+      "createdBy" : "did:dtx:888888888888",
+      "createdDate" : "2000-01-23T04:56:07.000+00:00",
+      "status" : "Active",
+      "attributes": [
+        {
+          "name": "firstName",
+          "displayName": "First Name",
+          "value": "Kiran",
+          "dataType": "Text",
+          "order":1
+        },
+        {
+          "name": "dateOfBirth",
+          "displayName": "Birth Date",
+          "value": "1900-01-23T04:56:07.000+00:00",
+          "dataType": "DateTime",
+          "order":2
+        }]
+      }
+        </code>
+        </pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</aside>
