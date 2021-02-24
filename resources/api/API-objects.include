@@ -1,6 +1,6 @@
 ## API Objects ## {#sctn-gadi-api-objects}
 
-### <dfn>Entity</dfn> ### {#sctn-api-object-entity}
+### Entity ### {#sctn-api-object-entity}
 <table class="data longlastcol">
 <thead>
   <th>Name</th>
@@ -55,7 +55,7 @@
 </tbody>
 </table>
 
-### <dfn>EntityCriteria</dfn> ### {#sctn-api-object-entitycriteria}
+### EntityCriteria ### {#sctn-api-object-entitycriteria}
   <table class="data longlastcol">
     <thead>
       <th>Name</th>
@@ -114,7 +114,7 @@
   </table>
 
 
-### <dfn>DigitalAddress</dfn> ### {#sctn-api-object-digitaladdress}
+### DigitalAddress ### {#sctn-api-object-digitaladdress}
 <table class="data longlastcol">
   <thead>
     <th>Name</th>
@@ -176,7 +176,8 @@
     </tr>
   </tbody>
 </table>
-### <dfn>DigitalAddressCriteria</dfn> ### {#sctn-api-object-dac}
+
+### DigitalAddressCriteria ### {#sctn-api-object-dac}
   <table class="data longlastcol">
     <thead>
       <th>Name</th>
@@ -236,7 +237,7 @@
   </table>
 
 
-  ### <dfn>CredentialSchema</dfn> ### {#sctn-api-object-credential-schema}
+  ### CredentialSchema ### {#sctn-api-object-credential-schema}
   <table class="data longlastcol">
     <thead>
       <th>Name</th>
@@ -328,7 +329,7 @@
   </table>
 
 
-  ### <dfn>CredentialCriteria</dfn> ### {#sctn-api-object-credential-criteria}
+  ### CredentialCriteria ### {#sctn-api-object-credential-criteria}
   <table class="data longlastcol">
     <thead>
       <th>Name</th>
@@ -391,7 +392,7 @@
 
 
 
-  ### <dfn>CredentialMetadata</dfn> ### {#sctn-api-object-credential-metadata}
+  ### CredentialMetadata ### {#sctn-api-object-credential-metadata}
   <table class="data longlastcol">
     <thead>
       <th>Name</th>
@@ -525,7 +526,7 @@
   </table>
 
 
-  ### <dfn>CredentialMetadataCriteria</dfn> ### {#sctn-api-object-credential-metadata-criteria}
+  ### CredentialMetadataCriteria ### {#sctn-api-object-credential-metadata-criteria}
   <table class="data longlastcol">
     <thead>
       <th>Name</th>
@@ -587,7 +588,7 @@
   </table>
 
 
-  ### <dfn>FidoCommandRequest</dfn> ### {#sctn-api-object-fido-command-request}
+  ### FidoCommandRequest ### {#sctn-api-object-fido-command-request}
   <table class="data longlastcol">
     <thead>
       <th>Name</th>
@@ -619,7 +620,7 @@
     </tbody>
   </table>
 
-  ### <dfn>FidoCommandResponse</dfn> ### {#sctn-api-object-fido-command-response}
+  ### FidoCommandResponse ### {#sctn-api-object-fido-command-response}
   <table class="data longlastcol">
     <thead>
       <th>Name</th>
