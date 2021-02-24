@@ -1,16 +1,20 @@
-title Issuer Onboarded to DAP
+Title Issuer Onboarded to DAP
 participant Issuer Admin
 participant DAP
-participant DAP Shared Agent
-participant DAP Service
+participant DAP Agent
 participant DAP Admin
+participant GADI Regional Directory
+participant GADI Global Directory
 
 Issuer Admin -> DAP: Primary contact and Org details
 DAP->DAP: Save Request. Generate Request ID
 DAP-> Issuer Admin: Request Reference\n (RequestID, status=NEW)
 DAP Admin -> DAP: View and Approve Request\n(RequestID,status=APPROVED)
-DAP -> DAP Shared Agent: Create DID for Issuer
-DAP Shared Agent --> DAP: Returns DID\n(ISSUER_ID)
-DAP -> DAP Service: Create Digital Address
-DAP Service --> DAP: Return Digital Address\n(ISSUER_DA)
-DAP -> Issuer Admin: Request Approved\n(ISSUER_ID, ISSUER_DA, status=APPROVED)
+DAP -> DAP Agent: Create DID and Digital Address for Issuer
+DAP Agent --> DAP: Return DID and DA\n(ISSUER_ID, ISSUER_DA)
+DAP Agent ->GADI Regional Directory: Issuer Metadata \n(ISSUER_ID, ISSUER_DA,DAP_ID)
+GADI Regional Directory->GADI Global Directory: Proxy Request \n(ISSUER_ID, ISSUER_DA,DAP_ID)
+GADI Global Directory->GADI Global Directory: Save Metadata
+GADI Global Directory-->GADI Regional Directory: Issuer Metadata saved\nto Global Directory
+GADI Regional Directory-->DAP: Issuer Metadata Save Successful
+DAP -> Issuer Admin: Onboarding Complete\n(ISSUER_ID, ISSUER_DA, status=APPROVED)
