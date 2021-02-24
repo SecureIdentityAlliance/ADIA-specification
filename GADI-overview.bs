@@ -401,8 +401,65 @@ Directories MUST log all listing modifications and queries.
 
 #### Protocols for interaction
 Existing
+##### DID Exchange
 
 New
+##### Credential Listing
+    <dl>
+        : CredentialListingUpdate //do we just add, or can we remove old listed things?
+        :: Credential // how does this interface with credential exchange?
+
+        : CredentialListingUpdateError
+        :: Invalid Credential
+        :: Duplicate detected
+    
+        : CredentialListingRemove
+    </dl>
+
+##### Directory Query
+// should this be a ‘one match only’ query protocol? As opposed to a directory that will return multiple matches?
+    <dl>
+        : DirectorySingleQuery directory
+        :: Attributes
+        : DirectorySingleResult
+        :: DID
+        : DirectorySingleEmpty // or is this a case of Result?
+        : DirectorySingleConflict
+        :: Attributes needed to resolve multiple answers
+    </dl>
+
+##### Digital Address
+Digital address as username? Keep this protocol separate?
+
+    <dl>
+        : DigitalAddressRegister
+        :: Digital address
+        : DigitalAddressResolve
+        :: Digital address
+        : DigitalAddressResult
+        :: DID
+        : DigitalAddressUnknown
+        :: null
+
+        : DigitalAddressRemove
+        :: Digital address
+    </dl>
+
+##### DID
+    <dl>
+        : DirectoryDIDRequest // get DID to later disclose
+        :: Who gets it (optional, for cache if omitted)
+        : DirectoryDIDAllocate //grant?
+        :: DID
+        : DirectoryDIDReceipt //already happened
+        :: Who got it.  (DID? Attributes)
+        :: Which DID.
+        :: Which Digital Address  / attribute set
+
+        :: //discovery? Is there a way to discover a directory schema prior to listing or querying?
+        :: //did or invitation? Kind of same thing? Rotation expected?
+    </dl>
+
 
 ### Interchange ### {#sctn-gadi-role-interchange}
 
