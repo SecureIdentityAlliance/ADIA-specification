@@ -1,0 +1,16 @@
+title DAP Onboarded to Regional GADI
+participant DAP Admin
+participant Regional GADI
+participant Regional GADI Shared Agent
+participant Regional GADI Service
+participant Regional GADI Admin
+
+DAP Admin -> Regional GADI: Primary contact and Org details
+Regional GADI->Regional GADI: Save Request. Generate Request ID
+Regional GADI-> DAP Admin: Request Reference\n (RequestID, status=NEW)
+Regional GADI Admin -> Regional GADI: View and Approve Request\n(RequestID,status=APPROVED)
+Regional GADI -> Regional GADI Shared Agent: Create DID for DAP
+Regional GADI Shared Agent --> Regional GADI: Return DID\n(DAP_ID)
+Regional GADI -> Regional GADI Service: Create Digital Address
+Regional GADI Service --> Regional GADI: returns Digital Address\n(DAP_DA)
+Regional GADI -> DAP Admin: Request Approved\n(DAP_ID, DAP_DA, status=APPROVED)
