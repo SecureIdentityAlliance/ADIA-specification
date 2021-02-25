@@ -1,0 +1,32 @@
+title User created DA
+
+participant User
+participant DAA
+participant Issuer
+participant DAP
+participant GADI Regional Directory
+
+User->Issuer: Request a New DA \nwith ID-Attributes (Remote)
+Issuer->Issuer: Compute HIDA
+Issuer->DAP: Send HIDA
+DAP->GADI Regional Directory: Lookup TA_USER_ISSUER for HIDA
+GADI Regional Directory->GADI Regional Directory: Generate TA\n(if not present)
+GADI Regional Directory->GADI Regional Directory: Save (HIDA, TA, HOMEDAP_ID)
+GADI Regional Directory->DAP: Return TA_USER_ISSUER
+DAP->DAP: Create and save DA, DAP_USER_ID
+DAP->DAP: Set User Assurance Level (U-AL1)
+DAP->Issuer: Send (DA, DAP_USER_ID)
+Issuer->User: Present QR Code \n(DA, DAP_USER_ID, ISSUER_ID)
+User->DAA: Scan QR Code and extract \n(DA, DAP_USER_ID, ISSUER_ID)
+DAA->DAP: Initiate ID Proofing to claim DA \n(Extract attributes from ID Document)
+DAP->DAP: Lookup Issuer (ISSUER_ID)
+DAP->Issuer:Verify User \n(DA, DAP_USER_ID, Identity Attributes)
+Issuer->DAP: Success/ Failure
+DAP-->DAA: Terminate process \n(Verifiation=FAILED)
+DAA->User: Notify failure\n(Verifiation=FAILED)
+DAP-->DAA: Authenticate User
+DAA->DAP:  Initiate Biometric Enrollment (DA, DAP_USER_ID)
+DAP->DAP: Save USER_FIDO_PK for DAP_USER_ID
+DAP->DAP: Update User Assurance Level (U-AL2)
+DAP->DAA: Biometric Enrollment complete
+DAA->User: Claim DA Successful

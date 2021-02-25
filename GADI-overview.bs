@@ -421,7 +421,7 @@ New
         : CredentialListingUpdateError
         :: Invalid Credential
         :: Duplicate detected
-    
+
         : CredentialListingRemove
     </dl>
 
@@ -911,10 +911,12 @@ Issue: requiring ID Proofing looks expensive here. Are there methods without tha
 Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 
 
-### Self-Asserted Digital Address ### {#sctn-user-bootstraps-self-asserted-da}
+### User Initiated Digital Address ### {#sctn-user-bootstraps-self-asserted-da}
 
-Issue: Description/ sequence diagram for Self-Asserted Digital Address
-
+<figure id="fig-user-initiated-da">
+    <img src="sequence-diagrams/User-initiated-da.png"/>
+    <figcaption>User Initiated Digital Address</figcaption>
+</figure>
 
 
 ## Minimum ID Proofing Level ## {#sctn-user-bootstraps-min-id-proofing-level}
