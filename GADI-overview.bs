@@ -911,11 +911,36 @@ Issue: requiring ID Proofing looks expensive here. Are there methods without tha
 Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 
 
-### User Initiated Digital Address ### {#sctn-user-bootstraps-self-asserted-da}
+### User Initiated Digital Address (Remote) ### {#sctn-user-initiated-da-remote}
+
+A user may initiate the creation of a Digital Address remotely, via an online service
+provided by a Trusted Digital Address Issuer. The Issuer's service MUST follow procedures similar to the
+in-person creation by request the Identity attributes from the User, generating the hashed attributes and verifying against
+the GADI Regional Directory.
+
+The online service of the Issuer MUST present the user with a QR code either online on its website or offline via an email or alternate service,
+such that the User is capable of scanning the QR code containing their Digital Address information and initiating an Authenticating Binding processes
+with the HomeDAP.
+
+A successful authentication and binding to the HomeDAP's services should allow the user to use the Digital Address at the level of Assurance determined by the onboarding process.
+
 
 <figure id="fig-user-initiated-da">
     <img src="sequence-diagrams/User-initiated-da.png"/>
     <figcaption>User Initiated Digital Address</figcaption>
+</figure>
+
+### In-person verification of User Initiated Digital Addresses ### {#sctn-verify-user-initiated-da-remote}
+
+The user may choose to visit a Verification Center in person to upgrade the Assurance Level
+initially assigned by the system. An in-person verification may include a manual review/ verification
+of the identity documents by a certified operator before indicating to the DAP about the genuineness of the subject.
+
+The DAP may independently request the user to authenticate before upgrading the User's Assurance Level.
+
+<figure id="fig-verify-user-initiated-da">
+    <img src="sequence-diagrams/Verify-user-initiated-da.png"/>
+    <figcaption>Verify user Initiated Digital Address</figcaption>
 </figure>
 
 

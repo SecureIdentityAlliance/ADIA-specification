@@ -1,0 +1,23 @@
+title Verify user initiated DA
+
+participant User
+participant DAA
+participant Verification Center
+participant DAP
+
+User->Verification Center: Verify DA
+Verification Center->User: Request acceptable documents
+User->Verification Center:ID Documents
+Verification Center->Verification Center: Manual Review
+Verification Center->DAP: Verified-In-Person Indicator (DA)
+DAP->GADI Regional Directory: Lookup DA
+GADI Regional Directory->DAP: Return TA_USER_ISSUER
+DAP->DAP: Save \n(DA, DAP_USER_ID, Verified-In-Person=true)
+DAP->Verification Center: Verified User
+DAP->DAP: Retrieve Device Id
+DAP->DAA: Notify Assurance Level upgrade
+User->DAA: Biometric Authentication
+DAA->DAP: Authentication Success
+DAP->DAP: Upgrade User Assurance Level (U-AL3)
+DAP->DAA: Updated Assurance Level (U-AL3)
+DAA->User: In-person Verification Complete
