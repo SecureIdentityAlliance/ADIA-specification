@@ -1,16 +1,14 @@
-Title Regional GADI Onboarded to GADI
-participant Regional GADI Admin
+Title GADI Regional Directory Onboarded to GADI
+participant GADI Regional Directory Admin
 participant GADI
-participant GADI Shared Agent
-participant GADI Service
+participant GADI Agent
 participant GADI Admin
 
-Regional GADI Admin -> GADI: Primary contact and Org details
+GADI Regional Directory Admin -> GADI: Primary contact and Org details
 GADI->GADI: Save Request. Generate Request ID
-GADI-> Regional GADI Admin: Request Reference\n (RequestID, status=NEW)
+GADI-> GADI Regional Directory Admin: Request Reference\n (RequestID, status=NEW)
 GADI Admin -> GADI: View and Approve Request\n(RequestID,status=APPROVED)
-GADI -> GADI Shared Agent: Create DID for Regional GADI
-GADI Shared Agent --> GADI: Returns DID\n(GADI_REGIONAL_ID)
-GADI -> GADI Service: Create Digital Address
-GADI Service --> GADI: Return Digital Address\n(GADI_REGIONAL_DA)
-GADI -> Regional GADI Admin: Request Approved\n(GADI_REGIONAL_ID, GADI_REGIONAL_DA, status=APPROVED)
+GADI -> GADI Agent: Create DID and DA for GADI Regional Directory
+GADI Agent --> GADI: Return DID and DA\n(GADI_REGIONAL_DS_ID, GADI_REGIONAL_DS_DA)
+GADI->GADI: Save Metadata
+GADI -> GADI Regional Directory Admin: Request Complete\n(GADI_REGIONAL_DS_ID, GADI_REGIONAL_DS_DA, status=APPROVED)

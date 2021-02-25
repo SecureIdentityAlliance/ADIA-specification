@@ -7,8 +7,17 @@ Level: 1
 Status: ED
 Group: fido
 URL:
+Editor: Ramesh Kesanupalli, ramesh@digitaltrust.net
 Editor: Rolf Lindemann, rolf@noknok.com
+Editor: Suresh Batchu, suresh@digitaltrust.net
 Editor: Kiran Addepalli, kiran@digitaltrust.net
+Editor: Jason Burnett, jason@digitaltrust.net
+Editor: Alan Bachmann, AABachmann@aetna.com
+Editor: Ken Ebert, ken@indicio.tech
+Editor: Sam Curren, sam@indicio.tech
+
+
+
 Abstract: DID Alliance GADI Overview
 Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
@@ -729,7 +738,7 @@ In this scenario, the Digital Addresses created are published to the DAP and it 
 ### User Changes Home-DAP ### {#sctn-user-changes-home-dap}
 Users may choose to transfer their credential metadata to a different DAP. This is initiated with a submission of a transfer request. The transferee DAP initiates the transfer of Digital Address metadata and Credential metadata with the consent of the user. Subsequent requests for credential operations, are routed to the transferred DAP.
 <figure id="fig-user-changes-home-dap">
-    <img src="sequence-diagrams/DAP-Transfer-by-User.png"/>
+    <img src="sequence-diagrams/DAP-Transfer-By-User.svg"/>
     <figcaption>Transfer DAP</figcaption>
 </figure>
 
@@ -877,13 +886,214 @@ Issue: Description/ sequence diagram for  Backup and Recovery
 
 # Data Schema # {#sctn-data-schema}
 
-## Digital Address Metadata ## {#sctn-da-metadata}
+## Entity Model ## {#sctn-data-schema-entitymodel}
 
-Issue: Description/ sequence diagram for  Digital Address Metadata
+The following diagram depicts a logical view of an entity in GADI.
+
+* An Entity are Organization, Person or a Device.
+* Entities are associated with other parties through relationships and a role.
+* Digital Address is associated with one Entity.
+* A Digital Address is associated with one and only one Trust Anchor
+
+
+<figure id="fig-data-schema-partymodel">
+    <img src="resources/data_model/entity-data-model.png"/>
+    <figcaption>Entity Model</figcaption>
+</figure>
+
+## Data Residency ## {#sctn-data-schema-dataresidency}
+
+<figure id="fig-data-schema-dataresidency">
+    <img src="resources/data_model/data-residency.png"/>
+    <figcaption>Metadata Residency</figcaption>
+</figure>
+
+
+
+## <dfn>DigitalAddress</dfn> ## {#sctn-data-schema-digitaladdress}
+<table class="data longlastcol">
+  <thead>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>ENTITY_ID</td>
+    <td>String</td>
+    <td>DID of the entity</td>
+  </tr>
+  <tr>
+    <td>ENTITY_DIGITAL_ADDRESS</td>
+    <td>String</td>
+    <td>Digital Address aka the user friendly mnemonic</td>
+  </tr>
+    <tr>
+      <td>ENTITY_ROLE</td>
+      <td>Enum</td>
+      <td>
+        <ul>
+          <li>Issuer</li>
+          <li>ServiceProvider</li>
+          <li>DAP</li>
+          <li>RegionalDirectory</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>PRIMARY_HASH</td>
+      <td>String</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>SECONDARY_HASH</td>
+      <td>String</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ISSUER_ID</td>
+      <td>String</td>
+      <td>DID of the Issuing entity</td>
+    </tr>
+    <tr>
+      <td>ISSUER_DA</td>
+      <td>String</td>
+      <td>Digital Address of the Issuing entity</td>
+    </tr>
+    <tr>
+      <td>CONSENT_IND</td>
+      <td>Boolean</td>
+      <td>Indicator whether the Digital Address creation was consented</td>
+    </tr>
+    <tr>
+      <td>CONSENTED_BY</td>
+      <td>String</td>
+      <td>DID of the consenting entity</td>
+    </tr>
+    <tr>
+      <td>CONSENTED_DATE</td>
+      <td>String</td>
+      <td>ISO 8601 format</td>
+    </tr>
+    <tr>
+      <td>ASSURANCE_LEVEL</td>
+      <td>Enum</td>
+      <td>
+        <ul>
+          <li>U-AL1</li>
+          <li>U-AL2</li>
+          <li>U-AL3</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>STATUS</td>
+      <td>Enum</td>
+      <td>
+        <ul>
+          <li>Active</li>
+          <li>Pending </li>
+          <li>Inactive</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>CREATED_BY</td>
+      <td>String</td>
+      <td>DID of the creator - person or entity</td>
+    </tr>
+    <tr>
+      <td>CREATE_DATE</td>
+      <td>DateTime</td>
+      <td>ISO 8601 format</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Credential Metadata ## {#sctn-credential-metadata}
 
-Issue: Description/ sequence diagram for  Credential Metadata
+<table class="data longlastcol">
+  <thead>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>ENTITY_ID</td>
+    <td>String</td>
+    <td>DID of the entity</td>
+  </tr>
+  <tr>
+    <td>ENTITY_DIGITAL_ADDRESS</td>
+    <td>String</td>
+    <td>Digital Address aka the user friendly mnemonic</td>
+  </tr>
+    <tr>
+      <td>ISSUER_ID</td>
+      <td>String</td>
+      <td>DID of the Issuing entity</td>
+    </tr>
+    <tr>
+      <td>ISSUER_DA</td>
+      <td>String</td>
+      <td>Digital Address of the Issuing entity</td>
+    </tr>
+    <tr>
+      <td>CREDENTIAL_SCHEMA_ID</td>
+      <td>String</td>
+      <td>Identifier of the Credential Schema against which the VC was issued</td>
+    </tr>
+    <tr>
+      <td>CREDENTIAL_SCHEMA_VERSION</td>
+      <td>String</td>
+      <td>Version of the Credential Schema against which the VC was issued</td>
+    </tr>
+    <tr>
+      <td>CREDENTIAL_TYPE</td>
+      <td>String</td>
+      <td>
+        <ul>
+          <li>Identity Credential</li>
+          <li>Data Credential</li>
+          <li>...</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>ASSURANCE_LEVEL</td>
+      <td>Enum</td>
+      <td>
+        <ul>
+          <li>VC-AL1</li>
+          <li>VC-AL2</li>
+          <li>VC-AL3</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>STATUS</td>
+      <td>Enum</td>
+      <td>
+        <ul>
+          <li>Active</li>
+          <li>Pending </li>
+          <li>Inactive</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>CREATED_BY</td>
+      <td>String</td>
+      <td>DID of the creator - person or entity</td>
+    </tr>
+    <tr>
+      <td>CREATE_DATE</td>
+      <td>DateTime</td>
+      <td>ISO 8601 format</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Verifiable Credential Schema ## {#sctn-vc-schema}
 
@@ -972,6 +1182,6 @@ Issue: TODO Major Contributors
 
 Issue: TODO Reviewers
 
-### Other Contributors ### {#sctn-acknowledgments-other contributors}
+### Other Contributors ### {#sctn-acknowledgments-other-contributors}
 
 Issue: TODO Other Contributors
