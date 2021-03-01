@@ -72,7 +72,7 @@ The ecosystem consists of several entities that are involved in the Trust framew
 * <strong>Service Provider</strong>: One or more service providers acting as relying parties. E.g. E-commerce site, Retailer, etc
 * <strong>User</strong>: Holder and usually Subject of the Digital Address - One per human identity.
 
-These entities and their role in the GADI ecosystem are described in [[#sctn-roles-in-gadi]]. 
+These entities and their role in the GADI ecosystem are described in [[#sctn-roles-in-gadi]].
 
 
 ## GADI Requirements ## {#sctn-reqs}
@@ -382,7 +382,26 @@ Issue: Add details for Digital Address
 
 ### GADI Global Directory ### {#sctn-gadi-role-global-directory}
 
-Issue: Add details for GADI Global Directory
+The GADI Global Directory serves as a Root of Trust to all entities in the ecosystem except the Users. The Directory ensures interoperability between multiple Regional Directories and Interchanges.
+Uniqueness of the entities is defined by the relationship of identifiers -  the Entity's Digital Address, the DID and the Trust Anchors and binding them to
+organizational entities at a global level.
+
+The GADI Governance Framework, described in a separate document, defines onboarding policies and procedures for organizational entities and establishing the relationships
+between the Digital Address, the DID and Trust Anchor. The entities governed by the Global Directory are:
+  * GADI Regional Directories
+  * DAP Agencies
+  * Issuers
+  * Service Providers
+  * Identity Escrow (Future)
+  * Credential Broker (Future)
+  * Payment Broker (Future)
+
+The Global Directory may provide Discovery and Routing services between one or more Regional Directories to facilitate identity verifications across one or more geographical regions.
+
+Issue: Link the Governance Policies and procedures
+
+
+
 
 ### GADI Regional Directory ### {#sctn-gadi-role-regional-directory}
 
