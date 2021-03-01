@@ -386,6 +386,8 @@ The GADI Global Directory serves as a Root of Trust to all entities in the ecosy
 Uniqueness of the entities is defined by the relationship of identifiers -  the Entity's Digital Address, the DID and the Trust Anchors and binding them to
 organizational entities at a global level.
 
+#### Directory Scope #### {#sctn-gadi-global-directory-scope}
+
 The GADI Governance Framework, described in a separate document, defines onboarding policies and procedures for organizational entities and establishing the relationships
 between the Digital Address, the DID and Trust Anchor. The entities governed by the Global Directory are:
   * GADI Regional Directories
@@ -400,7 +402,29 @@ The Global Directory may provide Discovery and Routing services between one or m
 
 Issue: Link the Governance Policies and procedures
 
+#### Uniqueness properties #### {#sctn-gadi-global-uniqueness}
 
+GADI Global Directory ensure uniqueness of the listed organizational entities. This is done by ensuring a unique set of attributes for each organization.
+
+Issue: uniqueness properties are required for Business entities just like users
+
+#### Directory Querying #### {#sctn-gadi-global-ds-query}
+
+A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the entity identified.
+The Global Directory has several components that enable saving Trust Anchors and relationships:
+
+* <strong>GADI Ledger</strong>: Distributed Ledger (DLT) to maintain immutable entity relationships between Digital Addresses and Trust Anchors. Ledger APIs abstract details of the underlying storage and interaction with the ledger.
+* <strong>GADI Console</strong>: An administrative interface to view and manage metadata of the entities.
+* <strong>GADI Agent</strong>: A communications agent to integrate identity transactions between an the Global Directory and Regional Directories.
+* <strong>API Services</strong>: REST endpoints to provide lookup and discover services.
+
+#### Roles #### {#sctn-gadi-global-ds-roles}
+
+The types of actors that interact with GADI are described below:
+
+* <strong>Admin</strong>: Role to configure the GADI with system level information.
+* <strong>Approver</strong>: Role to approve or reject onboarding of a DAP or Interchange Services.
+* <strong>GADI Regional Directory Admin</strong>: Requests onboarding to GADI via the GADI Console. Requests changes to Assurance Levels and policy changes.
 
 
 ### GADI Regional Directory ### {#sctn-gadi-role-regional-directory}
