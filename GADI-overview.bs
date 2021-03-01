@@ -11,10 +11,6 @@ Editor: Ramesh Kesanupalli, ramesh@digitaltrust.net
 Editor: Rolf Lindemann, rolf@noknok.com
 Editor: Suresh Batchu, suresh@digitaltrust.net
 Editor: Kiran Addepalli, kiran@digitaltrust.net
-Editor: Jason Burnett, jason@digitaltrust.net
-Editor: Alan Bachmann, AABachmann@aetna.com
-Editor: Ken Ebert, ken@indicio.tech
-Editor: Sam Curren, sam@indicio.tech
 
 
 
@@ -1251,21 +1247,22 @@ Issue: Description/ sequence diagram for Payment Broker Certification
 
 # Appendix
 
-## Copyright and License ## {#sctn-copyright}
-
-Issue: Copyright and license details
-
 ## Acknowledgments ## {#sctn-acknowledgments}
+
+The DID Alliance (DIDA) is an open industry association created to drive the development of a standardized, interoperable framework for decentralized identity services to ensure the authenticity of and establish trust in digital identities.
 
 ### Major Contributors ### {#sctn-acknowledgments-contributors}
 
-Issue: TODO Major Contributors
+* Abbie Barbir, BarbirA@cvshealth.com
+* Jason Burnett, jason@digitaltrust.net
+* Ken Ebert, ken@indicio.tech
+* Sam Curren, sam@indicio.tech
 
 
-### Reviewers ### {#sctn-acknowledgments-Reviewers}
+### Other Contributors and Reviewers ### {#sctn-acknowledgments-Reviewers}
 
-Issue: TODO Reviewers
+* Alan Bachmann, AABachmann@aetna.com
+* Tina Srivastava, tinaps@badgeinc.com
+* Raju Nadakuduty, perraju.nadakuduty@capitalone.com
 
-### Other Contributors ### {#sctn-acknowledgments-other-contributors}
-
-Issue: TODO Other Contributors
+If a credit is missing from the credit list below, please log a ticket at GitHub to be recognized in future updates.
