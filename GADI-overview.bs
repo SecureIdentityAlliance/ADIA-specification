@@ -641,18 +641,15 @@ All interactions through the agent are logged and available for inspection by th
 
 ##### Scope ##### {#sctn-dap-scope}
 
-A Trusted Issuer MUST:
+A DAP MUST:
 
-* Use an approved method or process to create a unique Trust Anchor based on Identity attributes for a new or existing user in a scope.
-* Detect the presence of a Trust Anchor in the GADI ecosystem.
-* Use an approved method or process to Create and Lookup a unique Digital Address for the User.
-* Provide mechanism to link a Digital Address for existing users.
-* Certify the KYC process for the entity and determine Assurance Levels for issued credential using an approved method or process.
-* Onboard users to issuer systems using a Digital Address with the holder’s consent.
-* Issue/reissue or revoke one or more Verifiable Credentials to the holder of a Digital Address
-* Persist Verifiable credential in a secure storage (VC Storage)
-* Publish credential metadata to the Digital Address Provider and user of the Digital Address.
-* Verify proof requests from Service Providers or other entities for credentials of the holder with a Digital Address.
+* Onboard trusted Issuers and Service Providers to the system.
+* Assign trusted identifiers to participating entities in the closed-ecosystem.
+* Enable storage and retrieval of credential metadata to trusted issuers.
+* Provide a mechanism to create and publish a Digital Address.
+* Provide authentication services to users with their Digital Addresses.
+* Provide discovery services to identify and connect issuers, service providers and users securely.
+* Meeting regulatory and compliance requirements in various geography and jurisdiction.
 
 
 ##### Components ##### {#sctn-dap-components}
@@ -727,25 +724,115 @@ Issue: Add details for User Agents/Cloud agents supporting DIDComm
 
 ### Issuer ### {#sctn-gadi-role-issuer}
 
-Issue: Add details for an Issuer
+GADI Architecture trust between entities is brokered by the DAP. Issuers of a Verified Credential are separated from
+the Service Providers (verifiers of a credentials) with a level of trust. Issuers are also custodians of an issued credentials but owned by the user it is issued to.
+
+#### Scope #### {#sctn-issuer-scope}
+
+A Trusted Issuer MUST:
+* Use an approved method or process to create a unique Trust Anchor based on Identity attributes for a new or existing user in a scope.
+* Detect the presence of a Trust Anchor in the GADI ecosystem.
+* Use an approved method or process to Create and Lookup a unique Digital Address for the User.
+* Provide mechanism to link a Digital Address for existing users.
+* Certify the KYC process for the entity and determine Assurance Levels for issued credential using an approved method or process.
+* Onboard users to issuer systems using a Digital Address with the holder’s consent.
+* Issue/reissue or revoke one or more Verifiable Credentials to the holder of a Digital Address
+* Persist Verifiable credential in a secure storage (VC Storage)
+* Publish credential metadata to the Digital Address Provider and user of the Digital Address.
+* Verify proof requests from Service Providers or other entities for credentials of the holder with a Digital Address.
+
+#### Components #### {#sctn-issuer-components}
+
+The core components of an Issuer are:
+* **Issuer Console**: An administrative interface to view Users, Identity information and Credential information. Administrators issue Verifiable Credential from the console to holders.
+* **Issuer Agent**: A communications agent to integrate identity transactions between an Issuer network and the DAP
+* **VC Store**: A secure storage area for issuers to persist issued Verifiable Credentials.
+* **API Services**: REST endpoints to abstract interactions with the communication and transformation agents.
+* **Connectors**: Adapters that connect to Identity and Credential datastores, perform scheduled transfers, transform content for the Issuers to view and issue Credentials to users.
+
+#### Roles #### {#sctn-issuer-components}
+
+* *Issuer Admin*: Requests onboarding to the DAP via the DAP Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAP.
+* *DAP Admin*: Role to approve or reject onboarding of a trusted issuers in the system. This may be an automated process or a service agent acting on behalf of a DAP.
+* *User*: A subject or holder requesting a credential to be issued. The credential may be requested in person or online. Users must have a Digital Address before receiving a credential issued to them.
 
 
 ### Service Provider ### {#sctn-gadi-role-serviceprovider}
 
-Issue: Add details for Service Provider
+Service Providers are relying parties in the ecosystem. Credential verification are requested from the user to identity the user reliably before providing services. The proof requests are
+defined by Service Providers from one or more Credential Schema published by Trusted Issuers in the GADI ecosystem. The verification rulesets may be defined based on a combination of criteria:
+* Claim information in the credential
+* Assurance Level of a credential type
+* Assurance Level of the Issuers in the system
+* Whitelisted set of Issuers that the Service Provider trusts
+* and so on...
+
+Service Providers take a risk-based approach based on their enterprise needs and risk management policies before accepting the Verifiable Presentations made by the User.
+
+
+#### Scope #### {#sctn-serviceprovider-scope}
+
+A Service Provider MUST:
+
+* Accept and verify a Digital Address for a user in multiple forms - QR code, a user friendly moniker or a smart card.
+* Request for proofs on one or more user claims using a credential schema.
+* Accept responses to proof requests from one or more trusted Issuers in the ecosystem.
+* Determine acceptable Assurance Levels for credentials and define policies based on risk tolerance of the organization.
+* Grant or deny services to a user based on risk-based policies.
+
+#### Core Components #### {#sctn-serviceprovider-components}
+
+The core components of a Service Provider are:
+* **Service Provider Console**: An administrative interface to create rule definitions for a certain service.
+* **Service Provider Agent**: A communications agent to integrate identity transactions between an Service Provider network and the DAP
+* **API Services**: REST endpoints to abstract interactions with the communication and transformation agents.
+
+
+#### Roles #### {#sctn-serviceprovider-roles}
+* *Service Provider Admin*: Requests onboarding to the DAP via the DAP Console and define new rulesets
+* *DAP Admin*: Role to approve or reject onboarding of a trusted Service Providers in the system. This may be an automated process or a service agent acting on behalf of a DAP.
+* *User*: A subject or holder verifying a credential. Users must have a Digital Address and consented before verifying a credential issued to them.
+
 
 
 ### User ### {#sctn-gadi-role-user}
 
-Issue: Add details for a User in GADI
+A User is a holder of a unique Digital Address and receives it from a Trust Issuer after the KYC Process is completed.
+The user can then use their Digital Address for various purposes like, for example, receiving Verifiable Credentials such as an Identity Credential, or credentials that prove Educational qualifications, Health records, Employment, etc.
+
+#### Scope #### {#sctn-user-scope}
+
+* Obtain a Digital Address from a Trusted Issuer in the GADI ecosystem.
+* Receive one or more Identity Credentials by complying to KYC processes from Trusted Identity Issuers.
+* Receive one or more User Credentials such as Employment Credential, Medical Record etc  from one or more Credential Issuers.
+* Present issued credentials as proof to Service Providers.
+* Grant consent for verification requests from Service Providers.
 
 
 ### Digital Address App (DAA) ### {#sctn-gadi-role-daa}
 
-Issue: Add details for Digital Address App (DAA)
+For users to be part of the GADI ecosystem, they must be in control of a Digital Address. The Digital Address may be acquired in many forms, primarily a QR code over various channels such as an Authenticator App,
+Email, SmartCard or directly from a trusted Issuer.
 
 
+DAA is an Authenticator App that lets users scan a Digital Address, bind Digital Address with the DAP and consent for verification requests.
 
+#### Core Components #### {#sctn-daa-components}
+
+The core components of a Digital Address App are:
+
+* **DTX SDK**: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAP services.
+* **FIDO Client**: OnePass Client SDK to provide register and authenticate with a Digital Address.
+* **Identity Verification SDK**: An Identity Verification client SDK to ID proof a government-issued identification document such as Driver’s License or Passport
+* **Credential Metadata**: On-device store of the credential metadata issued to the digital address. Interacts with the DAP services to lookup and retrieve actual credentials from the issuer.
+* **Push Notification Service**: External service to push notifications to the user for events such as credential issuance, revocation, proof requests, and consent
+
+#### Roles #### {#sctn-daa-roles}
+
+The types of actors that interact with the Mobile App are described below:
+* *User*: A subject or holder of the credential. Authenticates to the DAP with the Digital Address.
+* *Issuer Admin*: Issues a Digital Address, Issues and revokes credentials issued to the user.
+* *Service Provider Admin*: Configures rules to evaluate one or more credentials based on the available credential schema. Requests proofs and verifies the credentials.
 
 
 
