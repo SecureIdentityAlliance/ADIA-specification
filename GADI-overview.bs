@@ -14,7 +14,8 @@ Editor: Kiran Addepalli, kiran@digitaltrust.net
 
 
 
-Abstract: DID Alliance GADI Overview
+Abstract: The GADI Specification establishes the foundational technology components to establish a Trustable Identity Framework by providing a unique Digital Address to Human Identities to empower them to distribute Identity information and reinforce Trust and Accountability the in the Digital World.
+
 Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
 Text Macro: NORMATIVE <em>This section is normative.</em>
@@ -36,16 +37,43 @@ spec:webidl; type:interface; text:Promise
   the specification-maturity-appropriate boilerplate -->
 
 # Global Architecture for Digital Identity # {#sctn-gadi}
+
+One of the greatest challenges in any digital identity system is connecting, or binding, a physical identity with a logical identity. The question of how to bind an individual to a digital representation of that individual has proven to be a challenging one
+
+Identity verification or proofing is one method in which a combination of trusted, normally government-issued, documents (passports, driving licenses and national ID cards), biometric data, nominally face, and other identity information can be linked to verifiable digital identity credentials to form effective binding between physical and digital identity. A major problem with the current approach is that there is no one source for a verified digital identity, a unique digital address that acts a trust anchor. Users have to repeat similar processes each time they are required to prove their identities. This is inefficient, adds friction for users and is costly for service providers.
+
 The Global Architecture for Digital Identity (GADI) allows users to
 share credentials that have been asserted by an issuer with service
 providers in a verifiable manner.
 
 ## Ecosystem Overview ## {#sctn-ecosystem-overview}
 
+Global Architecture for Digital Identity (GADI) is a decentralized network of networks integrating Regional Directories, Interchanges, Issuers, Service Provider and Users with
+unique Trust Anchors. All entities within the architecture are represented by DIDs.
+Each DID is resolvable to a DID Document which contains cryptographic keys and service endpoints as specified in the DID Core Specification.
+
+Three main concerns addressed by the ecosystem are to:
+* provide a Look up at the time of initial onboarding to make sure there no duplications
+* provide the Trust Framework and a source of truth should there be any fraud to facilitate the accountability.
+* facilitate the value settlements across different Identity System
+
 <figure id="fig-gadi-overview">
     <img src="images/GADI-overview.png"/>
     <figcaption>GADI Overview</figcaption>
 </figure>
+
+The ecosystem consists of several entities that are involved in the Trust framework. These are:
+
+* <strong>GADI Global Directory</strong>: One primary Root of Trust system with one or more distributed or delegated shared instances.
+* <strong>GADI Regional Directory</strong>: One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
+* <strong>Interchange</strong>: A loose composition of services providing foundational services such as Agency, Identity Brokering, Credential Brokering and Payment Brokering functionality for the entities in the ecosystem.
+* <strong>Digital Address Provider (DAP)</strong>: An agency providing services to entities within its domain. All interactions between entities is facilitated through agents and services provided by the Agency.
+* <strong>Issuer</strong>: One or more Issuers representing both Identity (e.g. DMV, Passport Office, etc) or Non-Identity Credential Issuers (e.g. University, Enterprise, Healthcare Provider, etc).
+* <strong>Service Provider</strong>: One or more service providers acting as relying parties. E.g. E-commerce site, Retailer, etc
+* <strong>User</strong>: Holder and usually Subject of the Digital Address - One per human identity.
+
+These entities and their role in the GADI ecosystem are described in [[#sctn-roles-in-gadi]]. 
+
 
 ## GADI Requirements ## {#sctn-reqs}
 
