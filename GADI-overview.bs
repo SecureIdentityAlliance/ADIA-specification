@@ -64,13 +64,13 @@ Three main concerns addressed by the ecosystem are to:
 
 The ecosystem consists of several entities that are involved in the Trust framework. These are:
 
-* <strong>GADI Global Directory</strong>: One primary Root of Trust system with one or more distributed or delegated shared instances.
-* <strong>GADI Regional Directory</strong>: One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
-* <strong>Interchange</strong>: A loose composition of services providing foundational services such as Agency, Identity Brokering, Credential Brokering and Payment Brokering functionality for the entities in the ecosystem.
-* <strong>Digital Address Provider (DAP)</strong>: An agency providing services to entities within its domain. All interactions between entities is facilitated through agents and services provided by the Agency.
-* <strong>Issuer</strong>: One or more Issuers representing both Identity (e.g. DMV, Passport Office, etc) or Non-Identity Credential Issuers (e.g. University, Enterprise, Healthcare Provider, etc).
-* <strong>Service Provider</strong>: One or more service providers acting as relying parties. E.g. E-commerce site, Retailer, etc
-* <strong>User</strong>: Holder and usually Subject of the Digital Address - One per human identity.
+* **GADI Global Directory**: One primary Root of Trust system with one or more distributed or delegated shared instances.
+* **GADI Regional Directory**: One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
+* **Interchange**: A loose composition of services providing foundational services such as Agency, Identity Brokering, Credential Brokering and Payment Brokering functionality for the entities in the ecosystem.
+* **Digital Address Provider (DAP)**: An agency providing services to entities within its domain. All interactions between entities is facilitated through agents and services provided by the Agency.
+* **Issuer**: One or more Issuers representing both Identity (e.g. DMV, Passport Office, etc) or Non-Identity Credential Issuers (e.g. University, Enterprise, Healthcare Provider, etc).
+* **Service Provider**: One or more service providers acting as relying parties. E.g. E-commerce site, Retailer, etc
+* **User**: Holder and usually Subject of the Digital Address - One per human identity.
 
 These entities and their role in the GADI ecosystem are described in [[#sctn-roles-in-gadi]].
 
@@ -372,11 +372,78 @@ Issue: Need to specify what functionality/certification is needed to call an app
 
 ## Trust Anchor ## {#sctn-trust-anchor}
 
-Issue: Add details for Trust Anchor
+Trust Anchor is a Unique Key for a given entity in the GADI ecosystem. It provides a binding with a Human Identity without storing any personal information.
+A Trust Anchor uniquely maps a User's Digital Address and a DAP assigned DID.
+
+
+The GADI Directories, for regulatory purposes and user privacy, do not store any personal information about a user or an entity.
+Directories support the ability to of a user’s right to be forgotten in many jurisdiction. GADI Regional and GADI Global Directories MUST support
+on-chain and off-ledger storages:
+* A privacy preserving distributed database that holds the HIDA, a hased key for the user's Digitial Addresses
+* A DLT holding the Trust Anchor and any metadata relating to the Digital Addresses
+
+### Trust Anchor Format ### {#sctn-ta-format}
+
+A Trust Anchor is an opaque string with no logic embedded. It is a technical identifier to the Digital Address metadata. The format is specified as follows:
+
+<code>
+  234345456AABCCC23456456456DSDS
+</code>
+
+A Trust Anchor has the following constraints:
+
+* MUST contain a minimum of 36 alpha-numeric characters.
+* MUST be unique to a DAP.
+* MAY NOT contain certain special characters
+
+
 
 ## Digital Address ## {#sctn-digital-address}
 
-Issue: Add details for Digital Address
+At the heart of GADI is the Digital Address; the Digital Address is a special GADI identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed.
+The creation of a Digital Address is a vitally important step in ensuring there is both trust and accountability within the GADI ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises; organizations that are central to the trust economy.
+
+### Digital Address Creation ### {#sctn-da-creation}
+
+A GADI Digital Address is created by hashing the identity-related traits for a user by an Issuer Agent . This specification defines the following attributes for all human identities to create a HIDA, a cryptographic hash using the identity attributes:
+
+1. First name
+2. Last name
+3. Date of Birth
+4. Gender
+5. and One of the following:
+    * Country of Birth
+    * Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc if such exists
+
+The HIDA is used to query the GADI Regional Directory to determine uniqueness of the user based on the identity attributes provided.
+The process of binding the Digital Address with the Trust Anchor notifying the user is described in [[#sctn-onboarding-1st-issuer]]
+
+
+### Digital Address Format ### {#sctn-da-format}
+
+Digital Address is an user friendly mnemonic that maps to a tecnical identifier, the DID for the user. The format is specified as follows:
+
+<code>
+  Alphanumeric@HomeDAPIdentifier
+</code>
+
+Digital Address prefix has the following constraints:
+
+* MUST contain a minimum of 8 alpha-numeric characters.
+* MUST be no longer than 16 characters.
+* MUST be unique to a DAP.
+* MAY contain certain special characters (will this be allowed? what would the set be?)
+* SHOULD be human-readable and memorable.
+* The Separator MUST be an @ sign.
+
+The Digital Address postfix:
+* MUST contain the HomeDAP identifier.
+
+Example:
+<code>
+  steve.rodgers@MRVL
+</code>
+
 
 ## Roles in GADI ## {#sctn-roles-in-gadi}
 
@@ -390,13 +457,13 @@ organizational entities at a global level.
 
 The GADI Governance Framework, described in a separate document, defines onboarding policies and procedures for organizational entities and establishing the relationships
 between the Digital Address, the DID and Trust Anchor. The entities governed by the Global Directory are:
-  * GADI Regional Directories
-  * DAP Agencies
-  * Issuers
-  * Service Providers
-  * Identity Escrow (Future)
-  * Credential Broker (Future)
-  * Payment Broker (Future)
+  * *GADI Regional Directories*
+  * *DAP Agencies*
+  * *Issuers*
+  * *Service Providers*
+  * *Identity Escrow (Future)*
+  * *Credential Broker (Future)*
+  * *Payment Broker (Future)*
 
 The Global Directory may provide Discovery and Routing services between one or more Regional Directories to facilitate identity verifications across one or more geographical regions.
 
@@ -413,18 +480,18 @@ Issue: uniqueness properties are required for Business entities just like users
 A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the entity identified.
 The Global Directory has several components that enable saving Trust Anchors and relationships:
 
-* <strong>GADI Ledger</strong>: Distributed Ledger (DLT) to maintain immutable entity relationships between Digital Addresses and Trust Anchors. Ledger APIs abstract details of the underlying storage and interaction with the ledger.
-* <strong>GADI Console</strong>: An administrative interface to view and manage metadata of the entities.
-* <strong>GADI Agent</strong>: A communications agent to integrate identity transactions between an the Global Directory and Regional Directories.
-* <strong>API Services</strong>: REST endpoints to provide lookup and discover services.
+* **GADI Ledger**: Distributed Ledger (DLT) to maintain immutable entity relationships between Digital Addresses and Trust Anchors. Ledger APIs abstract details of the underlying storage and interaction with the ledger.
+* **GADI Console**: An administrative interface to view and manage metadata of the entities.
+* **GADI Agent**: A communications agent to integrate identity transactions between an the Global Directory and Regional Directories.
+* **API Services**: REST endpoints to provide lookup and discover services.
 
 #### Roles #### {#sctn-gadi-global-ds-roles}
 
 The types of actors that interact with GADI are described below:
 
-* <strong>Admin</strong>: Role to configure the GADI with system level information.
-* <strong>Approver</strong>: Role to approve or reject onboarding of a DAP or Interchange Services.
-* <strong>GADI Regional Directory Admin</strong>: Requests onboarding to GADI via the GADI Console. Requests changes to Assurance Levels and policy changes.
+* *Admin*: Role to configure the GADI with system level information.
+* *Approver*: Role to approve or reject onboarding of a DAP or Interchange Services.
+* *GADI Regional Directory Admin*: Requests onboarding to GADI via the GADI Console. Requests changes to Assurance Levels and policy changes.
 
 
 ### GADI Regional Directory ### {#sctn-gadi-role-regional-directory}
