@@ -3,18 +3,18 @@ Participant User
 Participant DAA
 Participant Issuer
 Participant DAP Agency
-Participant Regional GADI Directory
-Participant Global GADI Directory
+Participant GADI Regional Directory
+Participant GADI Global Directory
 User -> Issuer: I want to get a DA
 Issuer -> Issuer: lookup ID-Attribs for that user
 Issuer -> Issuer: compute HIDA = hash(ID-Attribs)
 Issuer -> DAP Agency: securely send HIDA
-DAP Agency -> Regional GADI Directory: Lookup TA_USER_ISSUER for HIDA
-Regional GADI Directory -> Regional GADI Directory: lookup TA for HIDA (not found)
-Regional GADI Directory -> Global GADI Directory: Lookup TA_USER_ISSUER for HIDA
-Global GADI Directory -> Global GADI Directory: lookup TA for HIDA (found)
-Global GADI Directory --> Regional GADI Directory: Return TA_USER_ISSUER found on Home_DAP_ID
-Regional GADI Directory --> DAP Agency: Return TA_USER_ISSUER found on Home_DAP_ID
+DAP Agency -> GADI Regional Directory: Lookup TA_USER_ISSUER for HIDA
+GADI Regional Directory -> GADI Regional Directory: lookup TA for HIDA (not found)
+GADI Regional Directory -> GADI Global Directory: Lookup TA_USER_ISSUER for HIDA
+GADI Global Directory -> GADI Global Directory: lookup TA for HIDA (found)
+GADI Global Directory --> GADI Regional Directory: Return TA_USER_ISSUER found on Home_DAP_ID
+GADI Regional Directory --> DAP Agency: Return TA_USER_ISSUER found on Home_DAP_ID
 DAP Agency -> DAP Agency: If Home_DAP_ID = self: check TA_USER_ISSUER exists locally
 DAP Agency --> Issuer: User exists in (Home_DAP_ID,Home DAP Name)
 Issuer --> User: Your DA exists in Home DAP Name.  Use your existing DAA.
