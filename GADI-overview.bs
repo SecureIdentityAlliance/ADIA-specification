@@ -1289,7 +1289,7 @@ A successful authentication and binding to the HomeDAP's services should allow t
 
 
 <figure id="fig-user-initiated-da">
-    <img src="sequence-diagrams/User-initiated-da.png"/>
+    <img src="sequence-diagrams/User-initiated-DA.png"/>
     <figcaption>User Initiated Digital Address</figcaption>
 </figure>
 
@@ -1302,7 +1302,7 @@ of the identity documents by a certified operator before indicating to the DAP a
 The DAP may independently request the user to authenticate before upgrading the User's Assurance Level.
 
 <figure id="fig-verify-user-initiated-da">
-    <img src="sequence-diagrams/Verify-user-initiated-da.png"/>
+    <img src="sequence-diagrams/Verify-user-initiated-DA.png"/>
     <figcaption>Verify user Initiated Digital Address</figcaption>
 </figure>
 
