@@ -1248,7 +1248,7 @@ or the GADI ecosystem entirely. The cases below describe process to initiate the
 ### User Initiated Account Deletion ### {#sctn-user-account-deletion-user-initiated}
 
 <figure id="fig-user-initiated-account-deletion">
-    <img src="sequence-diagrams/User-DAP-Account-Deletion.png"/>
+    <img src="sequence-diagrams/User-Initiated-Account-Deletion.png"/>
     <figcaption>User Initiated Account Deletion</figcaption>
 </figure>
 
@@ -1267,10 +1267,22 @@ Issue: Is it expected that VCs are not deleted?
 Note: Must be defined by Governance and Issuer retention policies
 
 
+
+### User Initiated Account Deletion without DAA ### {#sctn-user-account-deletion-user-initiated-no-daa}
+
+The use of DAA is not mandatory to initiate the deletion of Digital Address. There are alternate methods to initiate the process using,for example,
+* an online portal hosted by the DAP
+* a Kiosk managed by a DAP or a Trusted Issuer on behalf of the DAP for SmartCard holders
+* an assisted Customer Service method from a Certified GADI Verification Center
+
+<figure id="fig-user-initiated-account-deletion-no-daa">
+    <img src="sequence-diagrams/User-Initiated-Account-Deletion-No-DAA.png"/>
+    <figcaption>User Initiated Account Deletion without DAA</figcaption>
+</figure>
+
+
 Issue: How could a user without a working <a>DAA</a> instance trigger account deletion?
-
-
-
+Need to elaborate on each of these services either here or in a separate document.
 
 
 ### Issuer Initiated Account Deletion ### {#sctn-user-account-deletion-issuer-initiated}

@@ -20,4 +20,4 @@ DAP -> GADI Regional Directory: Delete user account (TA_USER_ISSUER)
 GADI Regional Directory -> GADI Regional Directory: Add Delete entry to DLT\n(HIDA, TA_USER_ISSUER)
 GADI Regional Directory -> GADI Regional Directory: Erase HIDA from off-Ledger DB
 GADI Regional Directory --> DAP: Digital Address Deleted (DA, DAP_USER_ID)
-DAP-->Issuer: Deletion Success \n(Credential Metadata present)
+DAP-->Issuer: Deletion Success
