@@ -1,0 +1,23 @@
+title Issuer Initiated Account Deletion
+participant Issuer
+participant User
+Participant DAP
+Participant GADI Regional Directory
+
+Issuer->User: Issue a Digital Address
+User->Issuer: Reject
+Issuer-> DAP: Delete Unclaimed DA \n(DA, DAP_USER_ID,ISSUER_INITIATED=Yes)
+DAP -> DAP: Lookup TA_USER_ISSUER in DB lookup (DAP_USER_ID)
+
+alt Credential Metadata Check
+DAP->DAP: Check If Credential Metadata \n(DA,DAP_USER_ID)
+DAP-->Issuer: Deletion Failed \n(Credential Metadata present)
+else User FIDO Key Check
+DAP->DAP: Check If User FIDO Key present
+DAP-->Issuer: Deletion Failed \n(Credential Metadata present)
+end
+DAP -> GADI Regional Directory: Delete user account (TA_USER_ISSUER)
+GADI Regional Directory -> GADI Regional Directory: Add Delete entry to DLT\n(HIDA, TA_USER_ISSUER)
+GADI Regional Directory -> GADI Regional Directory: Erase HIDA from off-Ledger DB
+GADI Regional Directory --> DAP: Digital Address Deleted (DA, DAP_USER_ID)
+DAP-->Issuer: Deletion Success

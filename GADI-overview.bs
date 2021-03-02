@@ -386,9 +386,11 @@ on-chain and off-ledger storages:
 
 A Trust Anchor is an opaque string with no logic embedded. It is a technical identifier to the Digital Address metadata. The format is specified as follows:
 
-<code>
-  234345456AABCCC23456456456DSDS
-</code>
+<pre class="highlight">
+  <code>
+    234345456AABCCC23456456456DSDS
+  </code>
+</pre>
 
 A Trust Anchor has the following constraints:
 
@@ -432,9 +434,11 @@ The process of binding the Digital Address with the Trust Anchor notifying the u
 
 Digital Address is an user friendly mnemonic that maps to a tecnical identifier, the DID for the user. The format is specified as follows:
 
-<code>
-  Alphanumeric@HomeDAPIdentifier
-</code>
+<pre class="highlight">
+  <code>
+    Alphanumeric@HomeDAPIdentifier
+  </code>
+</pre>
 
 Digital Address prefix has the following constraints:
 
@@ -1099,20 +1103,6 @@ Users may choose to transfer their credential metadata to a different DAP. This 
     <figcaption>Transfer DAP</figcaption>
 </figure>
 
-## User DAP Account Deletion ## {#sctn-user-dap-account-deletion}
-
-<figure id="fig-user-dap-account-deletion">
-    <img src="sequence-diagrams/User-DAP-Account-Deletion.svg"/>
-    <figcaption>User DAP Account Deletion</figcaption>
-</figure>
-
-Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
-
-Issue: Do we need an issuer-triggered account deletion function as well?
-
-Issue: Is it expected that VCs are not deleted?
-
-Issue: How could a user without a working <a>DAA</a> instance trigger account deletion?
 
 
 ## Verifiable Credential Issuance ## {#sctn-vc-issuance-1}
@@ -1250,16 +1240,72 @@ Issue: Description/ sequence diagram for  Minimum ID Proofing Level
 
 ## User Account Deletion ## {#sctn-user-account-deletion}
 
-Issue: Description/ sequence diagram for  User Account Deletion
-
-### Issuer Initiated Account Deletion ### {#sctn-user-account-deletion-issuer-initiated}
-
-Issue: Description/ sequence diagram for  Issuer Initiated Account Deletion
+The User acquires the Digital Address and Verifiable Credentials through their lifetime in the GADI ecosystem. Relationships of the User with other entities, such as
+Issuers and Service Providers are maintained by the DAP. In some cases however, the User may choose to terminate their relationship with a DAP
+or the GADI ecosystem entirely. The cases below describe process to initiate the dissociation of a User with their DAPs.
 
 
 ### User Initiated Account Deletion ### {#sctn-user-account-deletion-user-initiated}
 
-Issue: Description/ sequence diagram for  User Initiated Account Deletion
+<figure id="fig-user-initiated-account-deletion">
+    <img src="sequence-diagrams/User-Initiated-Account-Deletion.png"/>
+    <figcaption>User Initiated Account Deletion</figcaption>
+</figure>
+
+Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
+
+Note: I have added this as an optional step in the sequence diagram. My personal opinion is that all issuers that have issued non-expired VCs MUST be notified. Whether they act or not in
+deleting the VC from their local storage is defined by Governance and retentional policies defined by the Issuers themselves
+
+Issue: Do we need an issuer-triggered account deletion function as well?
+
+Note: Yes - Added it
+
+
+Issue: Is it expected that VCs are not deleted?
+
+Note: Must be defined by Governance and Issuer retention policies
+
+
+
+### User Initiated Account Deletion without DAA ### {#sctn-user-account-deletion-user-initiated-no-daa}
+
+The use of DAA is not mandatory to initiate the deletion of Digital Address. There are alternate methods to initiate the process using,for example,
+* an online portal hosted by the DAP
+* a Kiosk managed by a DAP or a Trusted Issuer on behalf of the DAP for SmartCard holders
+* an assisted Customer Service method from a Certified GADI Verification Center
+
+<figure id="fig-user-initiated-account-deletion-no-daa">
+    <img src="sequence-diagrams/User-Initiated-Account-Deletion-No-DAA.png"/>
+    <figcaption>User Initiated Account Deletion without DAA</figcaption>
+</figure>
+
+
+Issue: How could a user without a working <a>DAA</a> instance trigger account deletion?
+Need to elaborate on each of these services either here or in a separate document.
+
+
+### Issuer Initiated Account Deletion ### {#sctn-user-account-deletion-issuer-initiated}
+
+The Issuer may initiate a Digital Address that is not completely claimed by the User. This would be in case of an error by the Issuer or the User's desire not to
+be part of the GADI ecosystem.
+
+In such cases, an Issuer may initiate deletion of the Digital Address only if:
+* The Issuer is the Digital Address Issuer
+* There is no binding of the user to the Digital Address i.e No FIDO keys associated with the Digital Address on the DAP.
+* There are no Verifiable Credentials issued to the Digital Address
+* There is no Credential Metadata on the DAP
+
+<figure id="fig-issuer-initiated-account-deletion">
+    <img src="sequence-diagrams/Issuer-Initiated-Account-Deletion.png"/>
+    <figcaption>Issuer Initiated Account Deletion</figcaption>
+</figure>
+
+
+
+Issue: Description/ sequence diagram for  Issuer Initiated Account Deletion
+
+
 
 
 ## Backup and Recovery ## {#sctn-user-backup-and-recovery}

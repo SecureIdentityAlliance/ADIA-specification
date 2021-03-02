@@ -1,14 +1,23 @@
-title User Initiated Account Deletion
+title User Initiated Account Deletion without DAA
 actor User
-Participant DAA
+participant User Portal
+participant Kiosk
+Participant DAP
 Participant Cloud Agent
 Participant DAP
 participant Issuer Agent
 participant VC Store
 Participant GADI Regional Directory
 
-User -> DAA: Delete Digital Address
-DAA -> DAP: Delete Digital Address \n(USER_FIDO_PK, HIDA) (FIDO authenticated)
+alt Self-Service Portal
+User -> User Portal: Delete Digital Address
+User Portal-> User: Authenticate using Digital Address \n(USER_FIDO_PK, HIDA)
+User Portal->DAP: Delete Digital Address
+else Kiosk
+User -> Kiosk: Delete Digital Address
+Kiosk-> User: Authenticate using Smart Card
+User Portal->DAP: Delete Digital Address
+end
 DAP -> DAP: Lookup TA_USER_ISSUER in DB lookup by FIDO Key
 DAP -> GADI Regional Directory: Delete user account (TA_USER_ISSUER, HIDA)
 GADI Regional Directory -> GADI Regional Directory: Add Delete entry to DLT\n(HIDA, TA_USER_ISSUER)
@@ -23,4 +32,10 @@ end
 DAP -> Cloud Agent: Delete all credential metadata
 Cloud Agent --> DAP: Deletion Success
 DAP -> DAP: Delete USER_FIDO_PK from DB
-DAP --> DAA: Deletion Success
+alt Self-Service Portal
+DAP --> User Portal: Deletion Complete
+User Portal--> User: Account Deletion
+else Kiosk
+DAP-->Kiosk: Deletion Complete
+Kiosk--> User: Deletion Success
+end
