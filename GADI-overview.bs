@@ -712,13 +712,14 @@ Issue: Content copied as-is from Indicio's recommendations. Add details for Paym
 
 ### Agent ### {#sctn-gadi-role-agent}
 
-Issue: Add details for Agent roles in GADI
+All interactions between entities is facilitated through agents and services provided by the DAP. Each entity’s Agent holds cryptographic keys and digital credentials on behalf of the entity.
+Agents also manages the participant’s connections with services in the ecosystem. The agents for Issuers and Service Providers implement protocols for establishing connection and perform exchanging DIDs, Credentials and Proofs requests.
 
+Inbound and outbound communication are based on DIDComm Messaging Specification.
 
 #### Issuer/Service Provider Agent #### {#sctn-gadi-role-issuer-sp-agent}
 
 Issue: Add details for Issuer and Service Provider agents supporting DIDComm
-
 
 #### Cloud Agent #### {#sctn-gadi-role-cloud-agent}
 
@@ -784,7 +785,7 @@ A Service Provider MUST:
 * Determine acceptable Assurance Levels for credentials and define policies based on risk tolerance of the organization.
 * Grant or deny services to a user based on risk-based policies.
 
-#### Core Components #### {#sctn-serviceprovider-components}
+#### Components #### {#sctn-serviceprovider-components}
 
 The core components of a Service Provider are:
 * **Service Provider Console**: An administrative interface to create rule definitions for a certain service.
@@ -821,11 +822,11 @@ Email, SmartCard or directly from a trusted Issuer.
 
 DAA is an Authenticator App that lets users scan a Digital Address, bind Digital Address with the DAP and consent for verification requests.
 
-#### Core Components #### {#sctn-daa-components}
+#### Components #### {#sctn-daa-components}
 
 The core components of a Digital Address App are:
 
-* **DTX SDK**: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAP services.
+* **DAP Mobile SDK**: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAP services.
 * **FIDO Client**: OnePass Client SDK to provide register and authenticate with a Digital Address.
 * **Identity Verification SDK**: An Identity Verification client SDK to ID proof a government-issued identification document such as Driver’s License or Passport
 * **Credential Metadata**: On-device store of the credential metadata issued to the digital address. Interacts with the DAP services to lookup and retrieve actual credentials from the issuer.
@@ -1021,28 +1022,30 @@ Issue: Details for Cryptographic Suites
 
 # Operations # {#sctn-ops}
 
-## Onboarding as an Issuer ## {#sctn-onboarding-as-Issuer}
+## Onboarding Entities ## {#sctn-opts-onboarding}
+
+### Onboarding as an Issuer ### {#sctn-onboarding-as-Issuer}
 
 <figure id="fig-onboarding-issuer-to-dap">
     <img src="sequence-diagrams/Onboarding-Issuer-to-DAP.png"/>
     <figcaption>Onboarding Issuer to a DAP</figcaption>
 </figure>
 
-## Onboarding as a Service Provider ## {#sctn-onboarding-as-serviceprovider}
+### Onboarding as a Service Provider ### {#sctn-onboarding-as-serviceprovider}
 
 <figure id="fig-onboarding-sp-to-dap">
     <img src="sequence-diagrams/Onboarding-SP-to-DAP.png"/>
     <figcaption>Onboarding SP to DAP</figcaption>
 </figure>
 
-## Onboarding as a DAP ## {#sctn-onboarding-as-DAP}
+### Onboarding as a DAP ### {#sctn-onboarding-as-DAP}
 
 <figure id="fig-onboarding-dap-to-regional-gadi">
     <img src="sequence-diagrams/Onboarding-DAP-to-Regional-GADI.png"/>
     <figcaption>Onboarding DAP to Regional GADI</figcaption>
 </figure>
 
-## Onboarding as GADI Regional Directory ## {#sctn-onboarding-as-GADI-regional}
+### Onboarding as GADI Regional Directory ### {#sctn-onboarding-as-GADI-regional}
 
 <figure id="fig-onboarding-regional-gadi-to-gadi">
     <img src="sequence-diagrams/Onboarding-GADI-Regional-to-GADI.png"/>
@@ -1050,12 +1053,18 @@ Issue: Details for Cryptographic Suites
 </figure>
 
 
-## Issuer Onboarded Digital Address ## {#sctn-onboarding-1st-issuer}
+## Digital Address Issuance ## {#sctn-digital-address-issuance}
 
-### User Onboarding to First Issuer ### {##sctn-onboarding-1st-issuer}
+Users may approach Trusted Issuers to create a Digital Address or issuers may initiate the process of creating a Digital Address for a user prior to issuing a Verifiable Credential.
+A Digital Address creation starts with the collection of identity attributes from the User, creation of a unique trust anchor and ensuring that the Digital Address is unique
+to in the given scope.
+
+Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details.
+
+### User Onboarding to First Issuer ### {#sctn-onboarding-1st-issuer}
 
 <figure id="fig-onboarding-1st-issuer">
-    <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg"/>
+    <img src="sequence-diagrams/User-onboarding-to-first-issuer.png"/>
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
@@ -1066,9 +1075,13 @@ Issue: Check <a>DAP_USER_ID_PK</a>/<a>DAP_USER_ID_SK</a> generation. Would we st
 ### User Onboarding Attempt to 2nd Issuer ### {#sctn-onboarding-2nd-issuer}
 
 <figure id="fig-onboarding-2nd-issuer">
-    <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg"/>
+    <img src="sequence-diagrams/User-onboarding-to-second-issuer.png"/>
     <figcaption>User Onboarding to Second Issuer</figcaption>
 </figure>
+
+Issue: This representation is not correct. There is no TA_USER_ISSUER in the GADI Global Directory. This information is at the GADI Regional Directory only.
+
+Issue: This opens the possibility to create multiple Digital Addresses for the same user in multiple regions.
 
 
 
@@ -1163,14 +1176,74 @@ Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is 
 
 ## Digital Address Recovery ## {#sctn-digital-address-recovery}
 
+Users have the ability to recover a forgotten Digital Address in several ways such as, recovering from a backup device or a delegated recovery using other trusted third parties.
+
 ### Self-Recovery ### {#sctn-da-self-recovery}
 
-Issue: Description of self recovery of a Digital Address
+One of the most common ways to recover a Digital Address is similar to the process of bootstrapping a new device. The User may either use an Issuer's online service
+to provide Identity Attributes originally provided to generate the HIDA. The ID Proofing MUST be performed to validate the User's identity.
+
+Please see [[#sctn-user-bootstraps-new-daa-instance-1]]
+
+### Email based Recovery ### {#sctn-da-self-recovery-email}
+
+Original Text - Abbie
+
+1. DAP has acquired information at registration time to enable the user to recover the DA from the original issuer at DAP enrolment time. So the assumption here is that the DAP does have an email or sms for the user to help in the recovery.
+2. user will do to dap and input email or number
+3. dap will validate email on record (yes i have seen this email of number with the user
+4. dap send a deep link email with user that will do the following
+5. user click on email, it is send back to the
+6. dap perform redirect to issuer
+7. issuer re-validate user (either  thru re-enrolment of other means such as Voice matching, other app access, MNO validation, DL matching, Login witha trusted partner etcc)
+8. Issuer direct back to DAP
+9. Dap and issuer use DIDcom to confirm the transaction
+10. DAP re-enrol user with FIDO
+
+this way the DAP has the option of skipping the DL scanning etc since the issuer is the identity vetter
+
+
+if use does not remember email other options can be used
+
+1. do the DL flow as provided now
+2. remind teh user of a list of possible issuer that may help it (aka see a drop list and see if any of the following issuers can help)
+3. Issuers should implement a DAP recovery flow, basically re-enrol the user to the DAP (yes a DA exits but the flow will help the DAP to fido enable the user)
+
+
+Issue: This seems to be a method to avoid ID Proofing with DAP.
 
 
 ### Delegated Recovery ### {#sctn-da-delegated-recovery}
 
-Issue: Description of delegated recovery of a Digital Address
+Users can recover access to their prior credentials by either enabling a back up device or using one or more trusted delegatees
+who also have a Digital Address.
+
+#### Delegated Recovery with a Trusted Peer #### {#sctn-da-delegated-recovery-peer}
+
+If the delegatee is a trusted person, such as a family member or a nominated friend, recovery of the Digital Address and credential metadata is possible
+using a peer mode by directly scanning a QR code from the delegatee's device.
+
+
+<figure id="fig-delegated-recovery-peer-mode">
+    <img src="sequence-diagrams/Delegated-Recovery-Peer-Mode.png"/>
+    <figcaption>Delegated Recovery Peer Mode</figcaption>
+</figure>
+
+Issue: Need more detail on the restored Assurance Level for the User and issued VCs. Does the user go back to the same Assurance Level as before?
+
+
+#### Delegated Recovery with multiple delegatees #### {#sctn-da-delegated-recovery-multiple-peers}
+
+The User may choose to nominate several delegatees. This is enabled with a recovery code generated by the DAP for the given transaction.
+DAPs may enforce constraints to validate the acceptance criteria before granting access to the User's recovered metadata
+
+
+<figure id="fig-delegated-recovery-multiple-Delegatees">
+    <img src="sequence-diagrams/Delegated-Recovery-Multiple-Delegatees.png"/>
+    <figcaption>Delegated Recovery Multiple Delegatees</figcaption>
+</figure>
+
+Issue: Need more detail on the restored Assurance Level for the User and issued VCs. Does the user go back to the same Assurance Level as before?
 
 
 ## User Device Management ## {#sctn-device-management}

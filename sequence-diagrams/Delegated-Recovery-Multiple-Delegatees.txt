@@ -1,0 +1,46 @@
+title Delegated Recovery-Multiple Delegatees
+Participant User
+participant User DAA
+participant User HomeDAP
+Participant Delegated User
+participant Delegatee DAA
+participant Delegatee HomeDAP
+Participant Cloud Agent
+Participant DAP Agency
+Participant GADI Regional Directory
+
+
+opt User sets up Delegatee List
+User->User DAA: Set up Delegatees List
+User->User HomeDAP: Notify the Delegatees of nomination
+User HomeDAP->User HomeDAP: Resolve HomeDAP from DA
+User HomeDAP->GADI Regional Directory: Lookup HomeDAP for each Delegatee
+GADI Regional Directory-->Delegatee HomeDAP: Route to each HomeDAP
+Delegatee HomeDAP->Delegatee HomeDAP: Lookup DAP_USER_ID and Device Information
+Delegatee HomeDAP->Delegatee DAA: Push Notification to Device
+Delegated User->Delegatee DAA: View and Accept/Reject
+Delegatee DAA->Delegatee HomeDAP: Accept/Reject status
+Delegatee HomeDAP->User HomeDAP: Accept/Reject Status of each Delegatee
+end
+
+opt Delegated DA Recovery (Multiple Users)
+User->User DAA: I need to recover my access
+User DAA->User HomeDAP: Initiate Recovery Process
+User HomeDAP->User HomeDAP: Generate a recovery code, TRANSACTION_ID
+User HomeDAP->User DAA: Send Recovery Code
+User->Delegated User: Provide Recovery Code (Manual)
+Delegated User->Delegatee DAA: Select User DA + Enter Recovery Code
+Delegatee DAA->Delegatee HomeDAP: Send User DA + Recovery Code
+
+opt User in Different DAP
+Delegatee HomeDAP->Delegatee HomeDAP: Resolve User HomeDAP from DA
+Delegatee HomeDAP-->GADI Regional Directory: Route to User HomeDAP
+GADI Regional Directory->User HomeDAP: Route Respose
+end
+User HomeDAP->User HomeDAP: Lookup Recovery Code, TRANSACTION_ID
+User HomeDAP->User HomeDAP: Minimum criteria met (Delegatee Count>3)
+User HomeDAP->User HomeDAP: Recovery Success/Failure
+User HomeDAP->User DAA: Push Notification with Success/Failure
+User HomeDAP->User DAA: Sync Credential Metadata
+User DAA->User: Recovery Complete
+end
