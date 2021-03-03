@@ -1289,15 +1289,15 @@ The online service of the Issuer MUST present the user with a QR code either onl
 such that the User is capable of scanning the QR code containing their Digital Address information and initiating an Authenticating Binding processes
 with the HomeDAP.
 
-A successful authentication and binding to the HomeDAP's services should allow the user to use the Digital Address at the level of Assurance determined by the onboarding process.
+A successful authentication and binding to the HomeDAP's services should allow the user to use the <a>Digital Address</a> at the level of Assurance determined by the onboarding process.
 
 
 <figure id="fig-user-initiated-da">
     <img src="sequence-diagrams/User-initiated-DA.png"/>
-    <figcaption>User Initiated Digital Address</figcaption>
+    <figcaption>User Initiated Digital Address Creation</figcaption>
 </figure>
 
-### User Initiated In-person verification of Digital Address ### {#sctn-verify-user-initiated-da-remote}
+### User Initiated In-person Verification of Digital Address ### {#sctn-verify-user-initiated-da-remote}
 
 The user may choose to visit a Verification Center in person to upgrade the Assurance Level
 initially assigned by the system. An in-person verification may include a manual review/ verification
@@ -1307,7 +1307,7 @@ The DAP may independently request the user to authenticate before upgrading the 
 
 <figure id="fig-verify-user-initiated-da">
     <img src="sequence-diagrams/Verify-user-initiated-DA.png"/>
-    <figcaption>Verify user Initiated Digital Address</figcaption>
+    <figcaption>User Initiated Digital Address Verification</figcaption>
 </figure>
 
 
@@ -1317,7 +1317,7 @@ Issue: Description/ sequence diagram for  Minimum ID Proofing Level
 
 ## User Account Deletion ## {#sctn-user-account-deletion}
 
-The User acquires the Digital Address and Verifiable Credentials through their lifetime in the GADI ecosystem. Relationships of the User with other entities, such as
+The User acquires the <a>Digital Address</a> and Verifiable Credentials through their lifetime in the GADI ecosystem. Relationships of the User with other entities, such as
 Issuers and Service Providers are maintained by the DAP. In some cases however, the User may choose to terminate their relationship with a DAP
 or the GADI ecosystem entirely. The cases below describe process to initiate the dissociation of a User with their DAPs.
 
@@ -1347,7 +1347,7 @@ Note: Must be defined by Governance and Issuer retention policies
 
 ### User Initiated Account Deletion without DAA ### {#sctn-user-account-deletion-user-initiated-no-daa}
 
-The use of DAA is not mandatory to initiate the deletion of Digital Address. There are alternate methods to initiate the process using,for example,
+The use of DAA is not mandatory to initiate the deletion of <a>Digital Address</a>. There are alternate methods to initiate the process using,for example,
 * an online portal hosted by the DAP
 * a Kiosk managed by a DAP or a Trusted Issuer on behalf of the DAP for SmartCard holders
 * an assisted Customer Service method from a Certified GADI Verification Center
@@ -1364,13 +1364,13 @@ Need to elaborate on each of these services either here or in a separate documen
 
 ### Issuer Initiated Account Deletion ### {#sctn-user-account-deletion-issuer-initiated}
 
-The Issuer may initiate a Digital Address that is not completely claimed by the User. This would be in case of an error by the Issuer or the User's desire not to
+The Issuer may initiate a <a>Digital Address</a> that is not completely claimed by the User. This would be in case of an error by the Issuer or the User's desire not to
 be part of the GADI ecosystem.
 
-In such cases, an Issuer may initiate deletion of the Digital Address only if:
+In such cases, an Issuer may initiate deletion of the <a>Digital Address</a> only if:
 * The Issuer is the Digital Address Issuer
-* There is no binding of the user to the Digital Address i.e No FIDO keys associated with the Digital Address on the DAP.
-* There are no Verifiable Credentials issued to the Digital Address
+* There is no binding of the user to the <a>Digital Address</a> i.e No FIDO keys associated with the <a>Digital Address</a> on the DAP.
+* There are no Verifiable Credentials issued to the <a>Digital Address</a>
 * There is no Credential Metadata on the DAP
 
 <figure id="fig-issuer-initiated-account-deletion">
@@ -1399,8 +1399,8 @@ The following diagram depicts a logical view of an entity in GADI.
 
 * An Entity are Organization, Person or a Device.
 * Entities are associated with other parties through relationships and a role.
-* Digital Address is associated with one Entity.
-* A Digital Address is associated with one and only one Trust Anchor
+* <a>Digital Address</a> is associated with one Entity.
+* A <a>Digital Address</a> is associated with one and only one Trust Anchor
 
 
 <figure id="fig-data-schema-partymodel">
@@ -1534,7 +1534,7 @@ The following diagram depicts a logical view of an entity in GADI.
   <tr>
     <td>ENTITY_DIGITAL_ADDRESS</td>
     <td>String</td>
-    <td>Digital Address aka the user friendly mnemonic</td>
+    <td><a>Digital Address</a> aka the user friendly mnemonic</td>
   </tr>
     <tr>
       <td>ISSUER_ID</td>
@@ -1544,7 +1544,7 @@ The following diagram depicts a logical view of an entity in GADI.
     <tr>
       <td>ISSUER_DA</td>
       <td>String</td>
-      <td>Digital Address of the Issuing entity</td>
+      <td><a>Digital Address</a> of the Issuing entity</td>
     </tr>
     <tr>
       <td>CREDENTIAL_SCHEMA_ID</td>
