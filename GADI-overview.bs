@@ -884,7 +884,7 @@ DAP Identifier, GADI Regional Directory Identifier
        :: Public Key (PK) and Private Key (SK) related to the <a>DAP_USER_ID</a>.
 
        :  <dfn>DAA</dfn>
-       :: Digital Address Application, e.g. Android App or iOS App that
+       :: <dfn>Digital Address Application</dfn>, e.g. Android App or iOS App that
            knows how to talk to the <a>DAP</a> on behalf of the <a>User</a>.
 
        :  <dfn>DAP</dfn> (formerly DAP)
@@ -1174,6 +1174,10 @@ Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is 
 
 
 ## User Consents ## {#sctn-user-consents}
+
+User consent for actions needs to be provided.  The consent is
+collected via the <a>Digital Address Application</a>.  Authentication
+is performed using FIDO.
 
 
 ## Revoking a Verifiable Credential ## {#sctn-revoking-credential}
