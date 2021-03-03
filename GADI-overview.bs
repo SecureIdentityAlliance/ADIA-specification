@@ -205,7 +205,7 @@ Issue: We will likely remove this section later.  But for now let's
         <tr>
             <td>12</td>
             <td>
-        Each <a>DAP</a> provides one Single Digital Address App for the user to be able to access and control the
+        Each <a>DAP</a> provides one Single <a>Digital Address Application</a> for the user to be able to access and control the
         Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
         user credentials on demand with user consent.
       </td>
@@ -224,7 +224,7 @@ Issue: We will likely remove this section later.  But for now let's
         <tr>
             <td>14</td>
             <td>
-        Users in this scenario will have a single Digital Address Application from one Digital Address Provider
+        Users in this scenario will have a single <a>Digital Address Application</a> from one Digital Address Provider
         and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
         push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
         different handles (Different <a>Digital Address</a>es) that can be orchestrated between the user Device and <a>DAP</a> to
@@ -330,7 +330,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
             <td>24</td>
             <td>
 
-Issue: Need to specify what functionality/certification is needed to call an application a GADI "Digital Address Application".
+Issue: Need to specify what functionality/certification is needed to call an application a GADI "<a>Digital Address Application</a>".
       </td>
             <td>
             </td>
@@ -817,17 +817,17 @@ The user can then use their <a>Digital Address</a> for various purposes like, fo
 * Grant consent for verification requests from Service Providers.
 
 
-### Digital Address App (DAA) ### {#sctn-gadi-role-daa}
+### Digital Address Application (DAA) ### {#sctn-gadi-role-daa}
 
 For users to be part of the GADI ecosystem, they must be in control of a <a>Digital Address</a>. The <a>Digital Address</a> may be acquired in many forms, primarily a QR code over various channels such as an Authenticator App,
 Email, SmartCard or directly from a trusted Issuer.
 
 
-DAA is an Authenticator App that lets users scan a <a>Digital Address</a>, bind <a>Digital Address</a> with the DAP and consent for verification requests.
+The <dfn>Digital Address Application</dfn> (<dfn>DAA</dfn) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind <a>Digital Address</a> with the DAP and consent for verification requests.
 
 #### Components #### {#sctn-daa-components}
 
-The core components of a Digital Address App are:
+The core components of a <a>Digital Address Application</a> are:
 
 * **DAP Mobile SDK**: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAP services.
 * **FIDO Client**: OnePass Client SDK to provide register and authenticate with a <a>Digital Address</a>.
@@ -884,7 +884,7 @@ DAP Identifier, GADI Regional Directory Identifier
        :: Public Key (PK) and Private Key (SK) related to the <a>DAP_USER_ID</a>.
 
        :  <dfn>DAA</dfn>
-       :: <dfn>Digital Address Application</dfn>, e.g. Android App or iOS App that
+       :: Digital Address Application, e.g. Android App or iOS App that
            knows how to talk to the <a>DAP</a> on behalf of the <a>User</a>.
 
        :  <dfn>DAP</dfn> (formerly DAP)
