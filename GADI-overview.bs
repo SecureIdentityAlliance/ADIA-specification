@@ -1066,6 +1066,8 @@ Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] section
 
 ### User Onboarding to First Issuer ### {#sctn-onboarding-1st-issuer}
 
+The <a>DAP</a> related to the first <a>Digital Address</a> Issuer is called <a>HomeDAP</a>.
+
 <figure id="fig-onboarding-1st-issuer">
     <img src="sequence-diagrams/User-onboarding-to-first-issuer.png"/>
     <figcaption>User Onboarding to First Issuer</figcaption>
@@ -1090,7 +1092,10 @@ Issue: This opens the possibility to create multiple Digital Addresses for the s
 
 ## User Home DAP ## {#sctn-user-home-dap-agency}
 
-Issue: What is the action here?  Request VC from Issuer in same DAP/different DAP?
+Issue: What is the action here?  Request VC from Issuer in same
+    DAP/different DAP than the DA Issuer?  Conclusion: (a) Merge this
+    section with section 4.4 Verifiable Credential Issuance and (b)
+    remove DA issuance form seq diagram.
 
 Home DAP is the entity that serves as the primary repository of credential metadata for a given user. Each DAP has a unique Identifier (A DID and a Digital Address) in the GADI ecosystem.
 

@@ -9,18 +9,14 @@ participant Issuer Agent
 participant VC Store
 Participant GADI Regional Directory
 
-alt Self-Service Portal
-User -> User Portal: Delete Digital Address
-User Portal-> User: Authenticate using Digital Address \n(USER_FIDO_PK, HIDA)
-User Portal->DAP: Delete Digital Address
-else Kiosk
+alt Kiosk
 User -> Kiosk: Delete Digital Address
 Kiosk-> User: Authenticate using Smart Card
 User Portal->DAP: Delete Digital Address
 end
 DAP -> DAP: Lookup TA_USER_ISSUER in DB lookup by FIDO Key
 DAP -> GADI Regional Directory: Delete user account (TA_USER_ISSUER, HIDA)
-GADI Regional Directory -> GADI Regional Directory: Add Delete entry to DLT\n(HIDA, TA_USER_ISSUER)
+GADI Regional Directory -> GADI Regional Directory: Add Delete entry to DLT\n(TA_USER_ISSUER)
 GADI Regional Directory -> GADI Regional Directory: Erase HIDA from off-Ledger DB
 GADI Regional Directory --> DAP: Digital Address Deleted (DA, DAP_USER_ID)
 DAP-->DAP: Search Credential Metadata \n(DA,DAP_USER_ID)
@@ -32,10 +28,7 @@ end
 DAP -> Cloud Agent: Delete all credential metadata
 Cloud Agent --> DAP: Deletion Success
 DAP -> DAP: Delete USER_FIDO_PK from DB
-alt Self-Service Portal
-DAP --> User Portal: Deletion Complete
-User Portal--> User: Account Deletion
-else Kiosk
+alt Kiosk
 DAP-->Kiosk: Deletion Complete
 Kiosk--> User: Deletion Success
 end
