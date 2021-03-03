@@ -1090,6 +1090,8 @@ Issue: This opens the possibility to create multiple Digital Addresses for the s
 
 ## User Home DAP ## {#sctn-user-home-dap-agency}
 
+Issue: What is the action here?  Request VC from Issuer in same DAP/different DAP?
+
 Home DAP is the entity that serves as the primary repository of credential metadata for a given user. Each DAP has a unique Identifier (A DID and a Digital Address) in the GADI ecosystem.
 
 When a Trusted Issuer creates a Digital Address for a User, the Digital Address is suffixed with the DAP Identifier. Any entity in the ecosystem can use a Digital Address resolver to identify the Home DAP for a given User. Credential requests, issuance or verifications, are routed to the Home DAP for further processing.
