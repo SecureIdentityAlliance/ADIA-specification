@@ -11,7 +11,7 @@ User -> DAA: Delete Digital Address
 DAA -> DAP: Delete Digital Address \n(USER_FIDO_PK, HIDA) (FIDO authenticated)
 DAP -> DAP: Lookup TA_USER_ISSUER in DB lookup by FIDO Key
 DAP -> GADI Regional Directory: Delete user account (TA_USER_ISSUER, HIDA)
-GADI Regional Directory -> GADI Regional Directory: Add Delete entry to DLT\n(HIDA, TA_USER_ISSUER)
+GADI Regional Directory -> GADI Regional Directory: Add Delete entry to DLT\n(TA_USER_ISSUER)
 GADI Regional Directory -> GADI Regional Directory: Erase HIDA from off-Ledger DB
 GADI Regional Directory --> DAP: Digital Address Deleted (DA, DAP_USER_ID)
 DAP-->DAP: Search Credential Metadata \n(DA,DAP_USER_ID)
