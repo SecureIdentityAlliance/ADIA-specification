@@ -227,7 +227,7 @@ Issue: We will likely remove this section later.  But for now let's
         Users in this scenario will have a single Digital Address Application from one Digital Address Provider
         and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
         push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
-        different handles (Different Digital Addresses) that can be orchestrated between the user Device and <a>DAP</a> to
+        different handles (Different <a>Digital Address</a>es) that can be orchestrated between the user Device and <a>DAP</a> to
         present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.
       </td>
             <td>
@@ -539,7 +539,7 @@ GADI Directories ensure uniqueness of the listed users. This is done by ensuring
 Each directory MUST have a process to follow when users cannot be uniquely identified either during addition of a user to the directory or during lookup of a user within the directory.
 
 #### Hashed Attributes
-Directories (MAY/MUST TBD) store only hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
+Directories (MAY/MUST TBD) only store hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
 
 Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the GADI regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
 
@@ -597,7 +597,7 @@ New
     </dl>
 
 ##### Digital Address ##### {#sctn-gadi-global-da-message}
-Digital address as username? Keep this protocol separate?
+Digital Address as username? Keep this protocol separate?
 
     <dl>
         : DigitalAddressRegister
@@ -1329,15 +1329,12 @@ or the GADI ecosystem entirely. The cases below describe process to initiate the
     <figcaption>User Initiated Account Deletion</figcaption>
 </figure>
 
+Issue: What do you mean with Add Delete Entry to DLT?  The *existing* Entry needs to be deleted.
+
 Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
 
 Note: I have added this as an optional step in the sequence diagram. My personal opinion is that all issuers that have issued non-expired VCs MUST be notified. Whether they act or not in
 deleting the VC from their local storage is defined by Governance and retentional policies defined by the Issuers themselves
-
-Issue: Do we need an issuer-triggered account deletion function as well?
-
-Note: Yes - Added it
-
 
 Issue: Is it expected that VCs are not deleted?
 
@@ -1357,6 +1354,10 @@ The use of DAA is not mandatory to initiate the deletion of <a>Digital Address</
     <figcaption>User Initiated Account Deletion without DAA</figcaption>
 </figure>
 
+Issue: What do you mean with Add Delete Entry to DLT?  The *existing* Entry needs to be deleted.
+
+Issue: Authentication with DA is NOT considered authentication. Even
+   providing HIDA wouldn't we strong enough to delete an entry. Real KYC would be required - same level as was used for creating that user.
 
 Issue: How could a user without a working <a>DAA</a> instance trigger account deletion?
 Need to elaborate on each of these services either here or in a separate document.
