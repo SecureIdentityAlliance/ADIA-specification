@@ -850,6 +850,22 @@ Issue: Describe what is verified by whom, what kind of objects
    ("credentials") are being created and what kind of identifiers they
    bind together (e.g. public keys and digital addresses, ...).
 
+When verifying a verifiable presentation of a verifiable credential:
+1. Presentation Object, i.e. an object containing a
+    <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
+    or Derived Data (in the case of ZKP) (<a
+    href="(e.g. https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
+    and a signature by the subjects's XXX key.
+
+2. <a>Verifiable Credential</a>, i.e. an object containing a
+    <dfn>CredentialSubject</dfn>, an issuer and a signature by the
+    issuer YYY key.
+
+3. Issuer YYY key TODO
+
+4. Subject XXX key TODO
+
+
 ## Identifiers ## {#sctn-gadi-identifiers}
 
 Issue: Please check - Trust Anchor, <a>Digital Address</a>,
