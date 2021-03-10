@@ -855,15 +855,17 @@ When verifying a verifiable presentation of a verifiable credential:
     <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
     or Derived Data (in the case of ZKP) (<a
     href="(e.g. https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
-    and a signature by the subjects's XXX key.
+    and a signature by the subjects's DAP_USER_ID_PK/SK key.
 
 2. <a>Verifiable Credential</a>, i.e. an object containing a
     <dfn>CredentialSubject</dfn>, an issuer and a signature by the
-    issuer YYY key.
+    issuer ISSUER_ID_PK/SK key.
 
-3. Issuer YYY key TODO
+3. Issuer ISSUER_ID_PK/SK key TODO.  This key is linked to the issuer
+    via 
 
-4. Subject XXX key TODO
+4. Subject DAP_USER_ID_PK/SK key TODO
+
 
 
 ## Identifiers ## {#sctn-gadi-identifiers}
