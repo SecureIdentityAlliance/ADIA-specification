@@ -850,6 +850,23 @@ Issue: Describe what is verified by whom, what kind of objects
    ("credentials") are being created and what kind of identifiers they
    bind together (e.g. public keys and digital addresses, ...).
 
+<figure id="fig-gadi-trust-model">
+    <img src="images/gadi-trust-model.svg"/>
+    <figcaption>GADI Trust Model</figcaption>
+</figure>
+
+Issue: We need a name for the object class that contain `???`now
+    (similar to Verifiable Credential or Verifiable Presentation).  It
+    cannot be DID, as the DID is the identifier for a specific
+    instance of such an object class.
+
+Issue: Will have to specify the assurance level to which the claims
+    have been verified by the issuer.  Similarly for the other
+    entities (e.g. DAP, Issuer, ...).
+
+Issue: Need a similar diagram for anonymous claims (e.g. older than
+    21, ...).  In such case there won't be an Id included in the claim.
+
 When verifying a verifiable presentation of a verifiable credential:
 1. Presentation Object, i.e. an object containing a
     <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
@@ -865,7 +882,6 @@ When verifying a verifiable presentation of a verifiable credential:
     via TODO: not yet specified!
 
 4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via 
-
 
 <figure id="fig-key-material">
  <table class="data longlastcol">
