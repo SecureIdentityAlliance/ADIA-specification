@@ -877,7 +877,7 @@ When verifying a verifiable presentation of a verifiable credential:
    </thead>
    <tbody>
      <tr>
-       <td>GADI_ID_PK/SK</td>
+       <td><dfn>GADI_ID_PK</dfn> / <dfn>GADI_ID_SK</dfn></td>
        <td><a>GADI</a></td>
        <td>
 Issue: Need to clarify whether we expect GADI to do that or whether
@@ -990,7 +990,7 @@ DAP Identifier, GADI Regional Directory Identifier
    <dl>
        : <dfn>Cloud Agent</dfn>
        :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
-            eIDAS Trust Service Providers (https://ec.europa.eu/digital-single-market/en/trust-services).
+            <a href="https://ec.europa.eu/digital-single-market/en/trust-services">eIDAS Trust Service Providers</a>.
 
        : <dfn>Credential Broker</dfn>
        ::
@@ -1036,8 +1036,10 @@ DAP Identifier, GADI Regional Directory Identifier
        : <dfn>GADI_ID</dfn>
        :: The <a>GADI</a> IDentity, i.e. the the W3C DID style identifier for the <a>GADI</a>.
 
-       :  <dfn>GADI_ID_PK</dfn>, <dfn>GADI_ID_SK</dfn>
-       :: Public Key (PK) and Private Key (SK) related to the <a>GADI_ID</a>.
+       :  <a>GADI_ID_PK</a>, <a>GADI_ID_SK</a>
+       :: Public Key (PK) and Private Key (SK) related to the
+           <a>GADI_ID</a>. See <a href="#fig-key-material">Cryptographic Key Material</a> for
+           more details.
 
        :  <dfn>HIDA</dfn>
        :: Cryptographic hash computed over the <a>ID Attributes</a>
