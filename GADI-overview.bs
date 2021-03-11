@@ -866,6 +866,7 @@ When verifying a verifiable presentation of a verifiable credential:
 
 4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via 
 
+
 <figure id="fig-key-material">
  <table class="data longlastcol">
    <thead>
@@ -895,7 +896,7 @@ Issue: Need to clarify whether there is any signed object tying the
      </tr>
 
      <tr>
-       <td>DAP_ID_PK/SK</td>
+       <td><dfn>DAP_ID_PK</dfn> / <dfn>DAP_ID_SK</dfn></td>
        <td><a>DAP</a></td>
        <td>
 Issue: Need to clarify whether we expect DAPs to do that or whether
@@ -916,7 +917,7 @@ Issue: Need to clarify whether there is any signed object tying the
      </tr>
 
      <tr>
-       <td>ISSUER_ID_PK/SK</td>
+       <td><dfn>ISSUER_ID_PK<dfn> / <dfn>ISSUER_ID_SK</dfn></td>
        <td><a>Issuer</a></td>
        <td>
 Issue: Need to clarify whether we expect issuers to do that or whether
@@ -938,11 +939,13 @@ Issue: Need to clarify whether there is any signed object tying the
      </tr>
 
      <tr>
-       <td>SP_ID_PK/SK</td>
+       <td><dfn>SP_ID_PK</dfn> / <dfn>SP_ID_SK</dfn></td>
        <td><a>Service Provider</a></td>
        <td>
+
 Issue: Need to clarify whether we expect SPs to do that or whether
  there is a <a>Cloud Agent</a> for SPs as well.
+
        </td>
        <td><a href="#sctn-onboarding-as-serviceprovider">Onboarding as
             Service Provider</a>
@@ -1024,8 +1027,10 @@ DAP Identifier, GADI Regional Directory Identifier
        :  <dfn>DAP_ID</dfn>
        :: <a>DAP</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
 
-       :  <dfn>DAP_ID_PK</dfn>, <dfn>DAP_ID_SK</dfn>
-       :: Public Key (PK) and Private Key (SK) related to the <a>DAP_ID</a>.
+       :  <a>DAP_ID_PK</a>, <a>DAP_ID_SK</a>
+       :: Public Key (PK) and Private Key (SK) related to the
+           <a>DAP_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           more details.
 
        : <dfn>DID</dfn>
        :: Decentralized Identifier according to [[!did-core]]
@@ -1038,7 +1043,7 @@ DAP Identifier, GADI Regional Directory Identifier
 
        :  <a>GADI_ID_PK</a>, <a>GADI_ID_SK</a>
        :: Public Key (PK) and Private Key (SK) related to the
-           <a>GADI_ID</a>. See <a href="#fig-key-material">Cryptographic Key Material</a> for
+           <a>GADI_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
            more details.
 
        :  <dfn>HIDA</dfn>
@@ -1063,8 +1068,10 @@ DAP Identifier, GADI Regional Directory Identifier
        :  <dfn>ISSUER_ID</dfn>
        :: Issuer IDentity, i.e. the <a>DID</a> style identifier for the <a>Issuer</a>.
 
-       :  <dfn>ISSUER_ID_PK</dfn>, <dfn>ISSUER_ID_SK</dfn>
-       :: Public Key (PK) and Private Key (SK) related to the <a>ISSUER_ID</a>.
+       :  <a>ISSUER_ID_PK</a>, <a>ISSUER_ID_SK</a>
+       :: Public Key (PK) and Private Key (SK) related to the
+           <a>ISSUER_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           more details.
 
        :  <dfn>SP</dfn>
        :: <dfn>Service Provider</dfn> that verifies <a>VC</a>s.  In the
@@ -1075,8 +1082,10 @@ DAP Identifier, GADI Regional Directory Identifier
        :  <dfn>SP_ID</dfn>
        :: Service Provider IDentity, i.e. the <a>DID</a> style identifier for the <a>SP</a>.
 
-       :  <dfn>SP_ID_PK</dfn>, <dfn>SP_ID_SK</dfn>
-       :: Public Key (PK) and Private Key (SK) related to the <a>SP_ID</a>.
+       :  <a>SP_ID_PK</a>, <a>SP_ID_SK</a>
+       :: Public Key (PK) and Private Key (SK) related to the
+           <a>SP_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           more details.
 
        : <dfn>TA</dfn>
        :: <dfn>Trust Anchor</dfn>, i.e. a randomly generated number related to a User. E.g. 3456893265abf...849287c.
