@@ -861,11 +861,123 @@ When verifying a verifiable presentation of a verifiable credential:
     <dfn>CredentialSubject</dfn>, an issuer and a signature by the
     issuer ISSUER_ID_PK/SK key.
 
-3. Issuer ISSUER_ID_PK/SK key TODO.  This key is linked to the issuer
-    via 
+3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
+    via TODO: not yet specified!
 
-4. Subject DAP_USER_ID_PK/SK key TODO
+4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via 
 
+<figure id="fig-key-material">
+ <table class="data longlastcol">
+   <thead>
+     <th>Key Name</th>
+     <th>Key Owner</th>
+     <th>Key Holder</th>
+     <th>When Generated</th>
+     <th>How is key tied to Key Owner?</th>
+   </thead>
+   <tbody>
+     <tr>
+       <td>GADI_ID_PK/SK</td>
+       <td><a>GADI</a></td>
+       <td>
+Issue: Need to clarify whether we expect GADI to do that or whether
+ there is a <a>Cloud Agent</a> for GADI as well.
+       </td>
+       <td>
+	 GADI setup.
+	</td>
+       <td>
+ 
+Issue: Need to clarify whether there is any signed object tying the
+    GADI_ID_PK to the <a>GADI_DA</a>.
+
+       </td>  	  
+     </tr>
+
+     <tr>
+       <td>DAP_ID_PK/SK</td>
+       <td><a>DAP</a></td>
+       <td>
+Issue: Need to clarify whether we expect DAPs to do that or whether
+ there is a <a>Cloud Agent</a> for DAPs as well.
+       </td>
+       <td><a href="#sctn-onboarding-as-dap">Onboarding as DAP</a>
+
+Issue: Need to specify in the sequence diagram when exactly the key is
+   generated and by whom.
+
+	</td>
+       <td>
+ 
+Issue: Need to clarify whether there is any signed object tying the
+    DAP_ID_PK to the <a>DAP_DA</a>.
+
+       </td>  	  
+     </tr>
+
+     <tr>
+       <td>ISSUER_ID_PK/SK</td>
+       <td><a>Issuer</a></td>
+       <td>
+Issue: Need to clarify whether we expect issuers to do that or whether
+ there is a <a>Cloud Agent</a> for Issuers as well.
+       </td>
+       <td><a href="#sctn-onboarding-as-issuer">Onboarding as an
+            Issuer</a>
+
+Issue: Need to specify in the sequence diagram when exactly the key is
+   generated and by whom.
+
+	</td>
+       <td>
+ 
+Issue: Need to clarify whether there is any signed object tying the
+    ISSUER_ID_PK to the <a>ISSUER_DA</a>.
+
+       </td>  	  
+     </tr>
+
+     <tr>
+       <td>SP_ID_PK/SK</td>
+       <td><a>Service Provider</a></td>
+       <td>
+Issue: Need to clarify whether we expect SPs to do that or whether
+ there is a <a>Cloud Agent</a> for SPs as well.
+       </td>
+       <td><a href="#sctn-onboarding-as-serviceprovider">Onboarding as
+            Service Provider</a>
+
+Issue: Need to specify in the sequence diagram when exactly the key is
+   generated and by whom.
+
+	</td>
+       <td>
+ 
+Issue: Need to clarify whether there is any signed object tying the
+    SP_ID_PK to the <a>SP_DA</a>.
+
+       </td>  	  
+     </tr>
+
+     <tr>
+       <td>DAP_USER_ID_PK/SK</td>
+       <td><a>User</a></td>
+       <td>Typically the Cloud Agent (potentially the DAA once we specify
+         the device migration)
+       </td>
+       <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
+           First Issuer</a></td>
+       <td>
+ 
+Issue: Need to clarify whether there is any signed object tying the
+    DAP_USER_ID_PK to the user's DA.
+
+       </td>  	  
+     </tr>
+   </tbody>
+ </table>
+ <figcaption>Cryptographic Key Material</figcaption>
+</figure>
 
 
 ## Identifiers ## {#sctn-gadi-identifiers}
@@ -1045,7 +1157,7 @@ Issue: Details for Cryptographic Suites
 
 ## Onboarding Entities ## {#sctn-opts-onboarding}
 
-### Onboarding as an Issuer ### {#sctn-onboarding-as-Issuer}
+### Onboarding as an Issuer ### {#sctn-onboarding-as-issuer}
 
 <figure id="fig-onboarding-issuer-to-dap">
     <img src="sequence-diagrams/Onboarding-Issuer-to-DAP.png"/>
@@ -1059,7 +1171,7 @@ Issue: Details for Cryptographic Suites
     <figcaption>Onboarding SP to DAP</figcaption>
 </figure>
 
-### Onboarding as a DAP ### {#sctn-onboarding-as-DAP}
+### Onboarding as a DAP ### {#sctn-onboarding-as-dap}
 
 <figure id="fig-onboarding-dap-to-regional-gadi">
     <img src="sequence-diagrams/Onboarding-DAP-to-Regional-GADI.png"/>
