@@ -873,6 +873,9 @@ Digital Address as username? Keep this protocol separate?
     </dl>
 
 ## DID ## {#sctn-gadi-global-did-message}
+
+Issue: Should improve the section title!
+
     <dl>
         : DirectoryDIDRequest // get DID to later disclose
         :: Who gets it (optional, for cache if omitted)
