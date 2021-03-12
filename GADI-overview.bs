@@ -1505,7 +1505,7 @@ Issue: Details for Cryptographic Suites
 ### Onboarding as GADI Regional Directory ### {#sctn-onboarding-as-GADI-regional}
 
 <figure id="fig-onboarding-regional-gadi-to-gadi">
-    <img src="sequence-diagrams/Onboarding-GADI-Regional-to-GADI.png"/>
+    <img src="sequence-diagrams/Onboarding-GADI-Regional-to-GADI.svg"/>
     <figcaption>Onboarding Regional GADI to GADI</figcaption>
 </figure>
 
