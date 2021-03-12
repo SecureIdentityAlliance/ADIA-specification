@@ -1210,10 +1210,6 @@ Issue: Need to clarify how the security characteristics of the
        </td>
        <td><a href="#sctn-onboarding-as-issuer">Onboarding as an
             Issuer</a>
-
-Issue: Need to specify in the sequence diagram when exactly the key is
-   generated and by whom.
-
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.
