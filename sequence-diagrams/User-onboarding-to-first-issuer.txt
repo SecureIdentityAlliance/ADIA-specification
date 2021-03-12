@@ -36,6 +36,7 @@ Issuer -> Issuer: create VC(TA_USER_ISSUER, Validation Succeeded)
 Issuer -> DAA: validation succeeded for DA+VC(TA_USER_ISSUER, Validation Succeeded)
 DAA -> DAA: Remember TA_USER_ISSUER, HIDA
 DAA -> Cloud Agent: request to generate DAP_USER_ID_PK/SK (TODO: Where do we have to send it??)
+Cloud Agent --> Cloud Agent: Geenrate keypair and store in vault.
 DAA -> Issuer: Accept DA
 Issuer --> DAA: OK
 DAA -> DAP: Register FIDO Authenticator for this DA to the DAP+send VC (implicitly: User accepted DA)

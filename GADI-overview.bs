@@ -1154,23 +1154,15 @@ When verifying a verifiable presentation of a verifiable credential:
      <th>When Generated</th>
      <th>How is key tied to Key Owner?</th>
      <th>How is security level of device maintaining the key attested?</th>
-</thead>
+   </thead>
    <tbody>
      <tr>
        <td><dfn>GADI_ID_PK</dfn> / <dfn>GADI_ID_SK</dfn></td>
        <td><a>GADI</a></td>
-       <td>
-Issue: Need to clarify whether we expect GADI to do that or whether
- there is a <a>Cloud Agent</a> for GADI as well.
-       </td>
-       <td>
-	 GADI setup.
-	</td>
-       <td>
- 
-Issue: Need to clarify whether there is any signed object tying the
-    GADI_ID_PK to the <a>GADI_DA</a>.
-
+       <td><a>GADI</a></td>
+       <td>GADI setup.</td>
+       <td> 
+         via a DIDDoc kept in the GADI Global Directory.
        </td>
        <td>
 
@@ -1184,8 +1176,7 @@ Issue: Need to clarify how the security characteristics of the
        <td><dfn>DAP_ID_PK</dfn> / <dfn>DAP_ID_SK</dfn></td>
        <td><a>DAP</a></td>
        <td>
-Issue: Need to clarify whether we expect DAPs to do that or whether
- there is a <a>Cloud Agent</a> for DAPs as well.
+         DAP Agent
        </td>
        <td><a href="#sctn-onboarding-as-dap">Onboarding as DAP</a>
 
@@ -1194,10 +1185,7 @@ Issue: Need to specify in the sequence diagram when exactly the key is
 
 	</td>
        <td>
- 
-Issue: Need to clarify whether there is any signed object tying the
-    DAP_ID_PK to the <a>DAP_DA</a>.
-
+         via a DIDDoc kept in the GADI Global Directory.
        </td>  	  
        <td>
 
@@ -1211,8 +1199,7 @@ Issue: Need to clarify how the security characteristics of the
        <td><dfn>ISSUER_ID_PK<dfn> / <dfn>ISSUER_ID_SK</dfn></td>
        <td><a>Issuer</a></td>
        <td>
-Issue: Need to clarify whether we expect issuers to do that or whether
- there is a <a>Cloud Agent</a> for Issuers as well.
+	Issuer Agent
        </td>
        <td><a href="#sctn-onboarding-as-issuer">Onboarding as an
             Issuer</a>
@@ -1222,10 +1209,7 @@ Issue: Need to specify in the sequence diagram when exactly the key is
 
 	</td>
        <td>
- 
-Issue: Need to clarify whether there is any signed object tying the
-    ISSUER_ID_PK to the <a>ISSUER_DA</a>.
-
+         via a DIDDoc kept in the GADI Global Directory.
        </td>  	  
        <td>
 
@@ -1239,10 +1223,7 @@ Issue: Need to clarify how the security characteristics of the
        <td><dfn>SP_ID_PK</dfn> / <dfn>SP_ID_SK</dfn></td>
        <td><a>Service Provider</a></td>
        <td>
-
-Issue: Need to clarify whether we expect SPs to do that or whether
- there is a <a>Cloud Agent</a> for SPs as well.
-
+         SP Agent
        </td>
        <td><a href="#sctn-onboarding-as-serviceprovider">Onboarding as
             Service Provider</a>
@@ -1252,10 +1233,7 @@ Issue: Need to specify in the sequence diagram when exactly the key is
 
 	</td>
        <td>
- 
-Issue: Need to clarify whether there is any signed object tying the
-    SP_ID_PK to the <a>SP_DA</a>.
-
+         via a DIDDoc kept in the GADI Global Directory.
        </td>  	  
        <td>
 
@@ -1274,10 +1252,7 @@ Issue: Need to clarify how the security characteristics of the
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
- 
-Issue: Need to clarify whether there is any signed object tying the
-    DAP_USER_ID_PK to the user's DA.
-
+         via a DIDDoc kept in the HomeDAP. 
        </td>  	  
        <td>
 
