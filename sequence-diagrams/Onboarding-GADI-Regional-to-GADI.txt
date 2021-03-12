@@ -1,5 +1,6 @@
-Title GADI Regional Directory Onboarded to GADI
+Title: GADI Regional Directory Onboarded to GADI
 participant GADI Regional Directory Admin
+participant GADI Regional Agent
 participant GADI
 participant GADI Agent
 participant GADI Admin
@@ -7,8 +8,11 @@ participant GADI Admin
 GADI Regional Directory Admin -> GADI: Primary contact and Org details
 GADI->GADI: Save Request. Generate Request ID
 GADI-> GADI Regional Directory Admin: Request Reference\n (RequestID, status=NEW)
+GADI Regional Directory Admin -> GADI Regional Agent: request GADI_REGIONAL_ID_PK/SK generation
+GADI Regional Agent -> GADI Regional Agent: Generate GADI_REGIONAL_ID + GADI_REGIONAL_ID_PK/SK
+GADI Regional Agent -> GADI Agent: send GADI_REGIONAL_ID, GADI_REGIONAL_ID_PK, RequestID
 GADI Admin -> GADI: View and Approve Request\n(RequestID,status=APPROVED)
-GADI -> GADI Agent: Create DID and DA for GADI Regional Directory
+GADI -> GADI Agent: Create DA for GADI Regional Directory
 GADI Agent --> GADI: Return DID and DA\n(GADI_REGIONAL_DS_ID, GADI_REGIONAL_DS_DA)
 GADI->GADI: Save Metadata
 GADI -> GADI Regional Directory Admin: Request Complete\n(GADI_REGIONAL_DS_ID, GADI_REGIONAL_DS_DA, status=APPROVED)
