@@ -1498,7 +1498,7 @@ Issue: Details for Cryptographic Suites
 ### Onboarding as a DAP ### {#sctn-onboarding-as-dap}
 
 <figure id="fig-onboarding-dap-to-regional-gadi">
-    <img src="sequence-diagrams/Onboarding-DAP-to-Regional-GADI.png"/>
+    <img src="sequence-diagrams/Onboarding-DAP-to-Regional-GADI.svg"/>
     <figcaption>Onboarding DAP to Regional GADI</figcaption>
 </figure>
 
