@@ -872,7 +872,7 @@ Digital Address as username? Keep this protocol separate?
 
     </dl>
 
-## DID  {#sctn-gadi-global-did-message}
+## DID ## {#sctn-gadi-global-did-message}
     <dl>
         : DirectoryDIDRequest // get DID to later disclose
         :: Who gets it (optional, for cache if omitted)
@@ -1299,7 +1299,7 @@ Issue: Need to clarify whether there is any signed object tying the
 
        </td>  	  
        <td>
-         FIDO authenticator attestation [[!WebAuthn]] or [[!UAFProtocol]].       
+         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].       
        </td>
      </tr>
    </tbody>
