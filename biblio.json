@@ -49,6 +49,22 @@
         "title": "FIDO 2.0: Client To Authenticator Protocol",
         "href": "https://fidoalliance.org/specs/fido-v2.0-rd-20170927/fido-client-to-authenticator-protocol-v2.0-rd-20170927.html"
     },
+    "UAFProtocol": {
+        "authors": [
+            "R. Lindemann",
+            "D. Baghdasaryan",
+            "E. Tiffany",
+            "D. Balfanz",
+            "B. Hill",
+            "J. Hodges",
+            "K. Yang"
+        ],
+        "date": "",
+        "publisher": "FIDO Alliance",
+        "status": "Proposed Standard",
+         "title": "FIDO UAF Protocol Specification v1.2",
+        "href": "https://fidoalliance.org/specs/fido-uaf-v1.2-ps-20201020/fido-uaf-protocol-v1.2-ps-20201020.html"
+    },
     "WebAuthn": {
         "authors": [
             "Dirk Balfanz",
