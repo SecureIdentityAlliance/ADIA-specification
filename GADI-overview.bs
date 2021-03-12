@@ -872,7 +872,10 @@ Digital Address as username? Keep this protocol separate?
 
     </dl>
 
-## DID  {#sctn-gadi-global-did-message}
+## DID ## {#sctn-gadi-global-did-message}
+
+Issue: Should improve the section title!
+
     <dl>
         : DirectoryDIDRequest // get DID to later disclose
         :: Who gets it (optional, for cache if omitted)
@@ -1114,11 +1117,6 @@ Issue: Describe what is verified by whom, what kind of objects
     <figcaption>GADI Trust Model</figcaption>
 </figure>
 
-Issue: We need a name for the object class that contain `???`now
-    (similar to Verifiable Credential or Verifiable Presentation).  It
-    cannot be DID, as the DID is the identifier for a specific
-    instance of such an object class.
-
 Issue: Will have to specify the assurance level to which the claims
     have been verified by the issuer.  Similarly for the other
     entities (e.g. DAP, Issuer, ...).
@@ -1150,77 +1148,85 @@ When verifying a verifiable presentation of a verifiable credential:
      <th>Key Holder</th>
      <th>When Generated</th>
      <th>How is key tied to Key Owner?</th>
+     <th>How is security level of device maintaining the key attested?</th>
    </thead>
    <tbody>
      <tr>
        <td><dfn>GADI_ID_PK</dfn> / <dfn>GADI_ID_SK</dfn></td>
        <td><a>GADI</a></td>
-       <td>
-Issue: Need to clarify whether we expect GADI to do that or whether
- there is a <a>Cloud Agent</a> for GADI as well.
+       <td><a>GADI</a></td>
+       <td>GADI setup.</td>
+       <td> 
+         via a DIDDoc kept in the GADI Global Directory.
        </td>
        <td>
-	 GADI setup.
-	</td>
-       <td>
- 
-Issue: Need to clarify whether there is any signed object tying the
-    GADI_ID_PK to the <a>GADI_DA</a>.
 
-       </td>  	  
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>GADI_REGIONAL_ID_PK</dfn> / <dfn>GADI_REGIONAL_ID_SK</dfn></td>
+       <td><a>GADI Regional</a></td>
+       <td><a>GADI Regional</a></td>
+       <td>GADI Regional setup.</td>
+       <td> 
+         via a DIDDoc kept in the GADI Global Directory.
+       </td>
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
      </tr>
 
      <tr>
        <td><dfn>DAP_ID_PK</dfn> / <dfn>DAP_ID_SK</dfn></td>
        <td><a>DAP</a></td>
        <td>
-Issue: Need to clarify whether we expect DAPs to do that or whether
- there is a <a>Cloud Agent</a> for DAPs as well.
+         DAP Agent
        </td>
        <td><a href="#sctn-onboarding-as-dap">Onboarding as DAP</a>
-
-Issue: Need to specify in the sequence diagram when exactly the key is
-   generated and by whom.
-
 	</td>
        <td>
- 
-Issue: Need to clarify whether there is any signed object tying the
-    DAP_ID_PK to the <a>DAP_DA</a>.
-
+         via a DIDDoc kept in the GADI Global Directory.
        </td>  	  
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
      </tr>
 
      <tr>
        <td><dfn>ISSUER_ID_PK<dfn> / <dfn>ISSUER_ID_SK</dfn></td>
        <td><a>Issuer</a></td>
        <td>
-Issue: Need to clarify whether we expect issuers to do that or whether
- there is a <a>Cloud Agent</a> for Issuers as well.
+	Issuer Agent
        </td>
        <td><a href="#sctn-onboarding-as-issuer">Onboarding as an
             Issuer</a>
-
-Issue: Need to specify in the sequence diagram when exactly the key is
-   generated and by whom.
-
 	</td>
        <td>
- 
-Issue: Need to clarify whether there is any signed object tying the
-    ISSUER_ID_PK to the <a>ISSUER_DA</a>.
-
+         via a DIDDoc kept in the GADI Global Directory.
        </td>  	  
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
      </tr>
 
      <tr>
        <td><dfn>SP_ID_PK</dfn> / <dfn>SP_ID_SK</dfn></td>
        <td><a>Service Provider</a></td>
        <td>
-
-Issue: Need to clarify whether we expect SPs to do that or whether
- there is a <a>Cloud Agent</a> for SPs as well.
-
+         SP Agent
        </td>
        <td><a href="#sctn-onboarding-as-serviceprovider">Onboarding as
             Service Provider</a>
@@ -1230,15 +1236,18 @@ Issue: Need to specify in the sequence diagram when exactly the key is
 
 	</td>
        <td>
- 
-Issue: Need to clarify whether there is any signed object tying the
-    SP_ID_PK to the <a>SP_DA</a>.
-
+         via a DIDDoc kept in the GADI Global Directory.
        </td>  	  
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
      </tr>
 
      <tr>
-       <td>DAP_USER_ID_PK/SK</td>
+       <td><dfn>DAP_USER_ID_PK</dfn> / <dfn>DAP_USER_ID_SK</dfn></td>
        <td><a>User</a></td>
        <td>Typically the Cloud Agent (potentially the DAA once we specify
          the device migration)
@@ -1246,11 +1255,33 @@ Issue: Need to clarify whether there is any signed object tying the
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
+         via a DIDDoc kept in the HomeDAP. 
+       </td>  	  
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>USER_FIDO_PK</dfn> / <dfn>USER_FIDO_SK</dfn></td>
+       <td><a>User</a></td>
+       <td>The <a>User</a>'s FIDO Authenticator, e.g. SecurityKey or
+              platform authenticator on smartphone, tablet or PC.
+       </td>
+       <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
+           First Issuer</a></td>
+       <td>
  
 Issue: Need to clarify whether there is any signed object tying the
-    DAP_USER_ID_PK to the user's DA.
+    USER_FIDO_PK to the user's DA.
 
        </td>  	  
+       <td>
+         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].       
+       </td>
      </tr>
    </tbody>
  </table>
@@ -1288,8 +1319,10 @@ DAP Identifier, GADI Regional Directory Identifier
        : <dfn>DAP_USER_ID</dfn>
        :: The DAP specific Decentralized Identifier (DID) related to the <a>DA</a>, e.g. did:example:123456789abcdefghi
 
-       :  <dfn>DAP_USER_ID_PK</dfn>, <dfn>DAP_USER_ID_SK</dfn>
-       :: Public Key (PK) and Private Key (SK) related to the <a>DAP_USER_ID</a>.
+       :  <a>DAP_USER_ID_PK</a>, <a>DAP_USER_ID_SK</a>
+       :: Public Key (PK) and Private Key (SK) related to the
+           <a>DAP_USER_ID</a>.  See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           more details.
 
        :  <dfn>DAA</dfn>
        :: Digital Address Application, e.g. Android App or iOS App that
@@ -1375,9 +1408,10 @@ DAP Identifier, GADI Regional Directory Identifier
        :  <dfn>User</dfn>
        :: The User and owner of the <a>DA</a> and holder of the <a>VC</a>s.
 
-       : <dfn>USER_FIDO_PK</dfn>, <dfn>USER_FIDO_SK</dfn>
+       : <a>USER_FIDO_PK</a>, <a>USER_FIDO_SK</a>
        :: The FIDO credential owned by the user's authenticator and used
-           to authenticator to <a>DAP</a> and <a>Cloud Agent</a>.
+           to authenticator to <a>DAP</a> and <a>Cloud Agent</a>.  See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           more details.
 
        :  <dfn>VC</dfn>
        :: <dfn>Verifiable Credential</dfn>, see [[!vc-data-model]].
@@ -1446,7 +1480,7 @@ Issue: Details for Cryptographic Suites
 ### Onboarding as an Issuer ### {#sctn-onboarding-as-issuer}
 
 <figure id="fig-onboarding-issuer-to-dap">
-    <img src="sequence-diagrams/Onboarding-Issuer-to-DAP.png"/>
+    <img src="sequence-diagrams/Onboarding-Issuer-to-DAP.svg"/>
     <figcaption>Onboarding Issuer to a DAP</figcaption>
 </figure>
 
@@ -1460,14 +1494,14 @@ Issue: Details for Cryptographic Suites
 ### Onboarding as a DAP ### {#sctn-onboarding-as-dap}
 
 <figure id="fig-onboarding-dap-to-regional-gadi">
-    <img src="sequence-diagrams/Onboarding-DAP-to-Regional-GADI.png"/>
+    <img src="sequence-diagrams/Onboarding-DAP-to-Regional-GADI.svg"/>
     <figcaption>Onboarding DAP to Regional GADI</figcaption>
 </figure>
 
 ### Onboarding as GADI Regional Directory ### {#sctn-onboarding-as-GADI-regional}
 
 <figure id="fig-onboarding-regional-gadi-to-gadi">
-    <img src="sequence-diagrams/Onboarding-GADI-Regional-to-GADI.png"/>
+    <img src="sequence-diagrams/Onboarding-GADI-Regional-to-GADI.svg"/>
     <figcaption>Onboarding Regional GADI to GADI</figcaption>
 </figure>
 
