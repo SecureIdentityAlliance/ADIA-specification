@@ -1117,11 +1117,6 @@ Issue: Describe what is verified by whom, what kind of objects
     <figcaption>GADI Trust Model</figcaption>
 </figure>
 
-Issue: We need a name for the object class that contain `???`now
-    (similar to Verifiable Credential or Verifiable Presentation).  It
-    cannot be DID, as the DID is the identifier for a specific
-    instance of such an object class.
-
 Issue: Will have to specify the assurance level to which the claims
     have been verified by the issuer.  Similarly for the other
     entities (e.g. DAP, Issuer, ...).
@@ -1489,7 +1484,7 @@ Issue: Details for Cryptographic Suites
 ### Onboarding as an Issuer ### {#sctn-onboarding-as-issuer}
 
 <figure id="fig-onboarding-issuer-to-dap">
-    <img src="sequence-diagrams/Onboarding-Issuer-to-DAP.png"/>
+    <img src="sequence-diagrams/Onboarding-Issuer-to-DAP.svg"/>
     <figcaption>Onboarding Issuer to a DAP</figcaption>
 </figure>
 
