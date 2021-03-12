@@ -1,5 +1,6 @@
-Title Issuer Onboarded to DAP
+Title: Issuer Onboarded to DAP
 participant Issuer Admin
+participant Issuer Agent
 participant DAP
 participant DAP Agent
 participant DAP Admin
@@ -9,6 +10,9 @@ participant GADI Global Directory
 Issuer Admin -> DAP: Primary contact and Org details
 DAP->DAP: Save Request. Generate Request ID
 DAP-> Issuer Admin: Request Reference\n (RequestID, status=NEW)
+Issuer Admin -> Issuer Agent: request ISSUER_ID_PK/SK generation
+Issuer Agent -> Issuer Agent: Generate ISSUER_ID + ISSUER_ID_PK/SK
+Issuer Agent -> DAP Agent: send ISSUER_ID, ISSUER_ID_PK, RequestID
 DAP Admin -> DAP: View and Approve Request\n(RequestID,status=APPROVED)
 DAP -> DAP Agent: Create DID and Digital Address for Issuer
 DAP Agent --> DAP: Return DID and DA\n(ISSUER_ID, ISSUER_DA)

@@ -1173,16 +1173,28 @@ Issue: Need to clarify how the security characteristics of the
      </tr>
 
      <tr>
+       <td><dfn>GADI_REGIONAL_ID_PK</dfn> / <dfn>GADI_REGIONAL_ID_SK</dfn></td>
+       <td><a>GADI Regional</a></td>
+       <td><a>GADI Regional</a></td>
+       <td>GADI Regional setup.</td>
+       <td> 
+         via a DIDDoc kept in the GADI Global Directory.
+       </td>
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
+     </tr>
+
+     <tr>
        <td><dfn>DAP_ID_PK</dfn> / <dfn>DAP_ID_SK</dfn></td>
        <td><a>DAP</a></td>
        <td>
          DAP Agent
        </td>
        <td><a href="#sctn-onboarding-as-dap">Onboarding as DAP</a>
-
-Issue: Need to specify in the sequence diagram when exactly the key is
-   generated and by whom.
-
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.

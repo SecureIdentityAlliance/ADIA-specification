@@ -13,6 +13,6 @@ GADI Regional Agent -> GADI Regional Agent: Generate GADI_REGIONAL_ID + GADI_REG
 GADI Regional Agent -> GADI Agent: send GADI_REGIONAL_ID, GADI_REGIONAL_ID_PK, RequestID
 GADI Admin -> GADI: View and Approve Request\n(RequestID,status=APPROVED)
 GADI -> GADI Agent: Create DA for GADI Regional Directory
-GADI Agent --> GADI: Return DID and DA\n(GADI_REGIONAL_DS_ID, GADI_REGIONAL_DS_DA)
+GADI Agent --> GADI: Return DID and DA\n(GADI_REGIONAL_ID, GADI_REGIONAL_DA)
 GADI->GADI: Save Metadata
-GADI -> GADI Regional Directory Admin: Request Complete\n(GADI_REGIONAL_DS_ID, GADI_REGIONAL_DS_DA, status=APPROVED)
+GADI -> GADI Regional Directory Admin: Request Complete\n(GADI_REGIONAL_ID, GADI_REGIONAL_DA, status=APPROVED)
