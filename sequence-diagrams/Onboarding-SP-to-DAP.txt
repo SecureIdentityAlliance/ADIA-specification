@@ -1,5 +1,6 @@
 Title SP Onboarded to DAP
 participant SP Admin
+participant SP Agent
 participant DAP
 participant DAP Agent
 participant GADI Regional Directory
@@ -7,12 +8,15 @@ participant GADI Global Directory
 SP Admin -> DAP: Primary contact and Org details
 DAP->DAP: Save Request. Generate Request ID
 DAP-> SP Admin: Request Reference\n (RequestID, status=NEW)
+SP Admin -> SP Agent: request SP_ID_PK/SK generation
+SP Agent -> SP Agent: Generate SP_ID + SP_ID_PK/SK
+SP Agent -> DAP Agent: send SP_ID, SP_ID_PK, RequestID
 DAP -> DAP: Automated Approval \n(RequestID,status=APPROVED)
 DAP -> DAP Agent: Create DID and Digital Address for SP
-DAP Agent --> DAP: Returns DID and DA\n(ISSUER_ID, ISSUER_DA)
-DAP Agent ->GADI Regional Directory: SP Metadata \n(ISSUER_ID, ISSUER_DA,DAP_ID)
-GADI Regional Directory->GADI Global Directory: Proxy Request \n(ISSUER_ID, ISSUER_DA,DAP_ID)
+DAP Agent --> DAP: Returns DID and DA\n(SP_ID, SP_DA)
+DAP Agent -> GADI Regional Directory: SP Metadata \n(SP_ID, SP_DA,DAP_ID)
+GADI Regional Directory->GADI Global Directory: Proxy Request \n(SP_ID, SP_DA,DAP_ID)
 GADI Global Directory->GADI Global Directory: Save Metadata
 GADI Global Directory-->GADI Regional Directory: SP Metadata saved\nto Global Directory
 GADI Regional Directory-->DAP: SP Metadata Save Successful
-DAP -> SP Admin: Onboarding Complete\n(ISSUER_ID, ISSUER_DA, status=APPROVED)
+DAP -> SP Admin: Onboarding Complete\n(SP_ID, SP_DA, status=APPROVED)
