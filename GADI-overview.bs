@@ -1487,7 +1487,7 @@ Issue: Details for Cryptographic Suites
 ### Onboarding as a Service Provider ### {#sctn-onboarding-as-serviceprovider}
 
 <figure id="fig-onboarding-sp-to-dap">
-    <img src="sequence-diagrams/Onboarding-SP-to-DAP.png"/>
+    <img src="sequence-diagrams/Onboarding-SP-to-DAP.svg"/>
     <figcaption>Onboarding SP to DAP</figcaption>
 </figure>
 
@@ -1519,7 +1519,7 @@ Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] section
 The <a>DAP</a> related to the first <a>Digital Address</a> Issuer is called <a>HomeDAP</a>.
 
 <figure id="fig-onboarding-1st-issuer">
-    <img src="sequence-diagrams/User-onboarding-to-first-issuer.png"/>
+    <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg"/>
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
