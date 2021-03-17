@@ -1,4 +1,4 @@
-Title SP Onboarded to DAP
+Title: SP Onboarded to DAP
 participant SP Admin
 participant SP Agent
 participant DAP
