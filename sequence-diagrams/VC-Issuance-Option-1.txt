@@ -1,17 +1,21 @@
-Title: VC Issuance - Option 1
+Title: VC Issuance
+
+Participant USER
 Participant Issuer
-Participant Credential Storage
-Participant DAP Agency
-Participant Cloud Agent
+Participant VC Storage
+Participant DAP Cloud Agent
+Participant Key Vault
 
-Issuer -> DAP Agency: Queries for DID for user's DA (i.e. DAP_USER_ID)
-DAP Agency -> Issuer: Responds with the DAP_USER_ID for DA
-Issuer -> Cloud Agent: Invite the Cloud Agent for DIDcomm conn
-Cloud Agent -> Issuer: DIDcomm connection estabilshed
-Issuer -> Cloud Agent: Credential offer
 
-Cloud Agent -> Issuer: Credential Request
+USER -> Issuer: request issue VC 
+Issuer -> DAP Cloud Agent: Invite the DAP Cloud Agent for DIDcomm conn
+DAP Cloud Agent -> Issuer: DIDcomm connection estabilshed
+Issuer -> DAP Cloud Agent: Queries for DID for user's DA (i.e. DAP_USER_ID)
+DAP Cloud Agent -> Issuer: Responds with the DAP_USER_ID for DA
+
 Issuer -> Issuer: Issue VC
-Issuer -> Credential Storage: Store VC
-Credential Storage -> Issuer: success
-Issuer -> DAP Agency: request deploy credential metadata
+Issuer -> VC Storage: Store VC
+Issuer -> DAP Cloud Agent: request publish VC meta
+DAP Cloud Agent -> DAP Cloud Agent: publish VC metadata
+DAP Cloud Agent -> Issuer: publish metadata success
+Issuer -> USER: VC issuance success
