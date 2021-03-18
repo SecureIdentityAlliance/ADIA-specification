@@ -1,21 +1,19 @@
-Title: VC Presentation and Verification - Option 1
-Participant User
-Participant DAA
-Participant Cloud Agent
-Participant DAP Agency
-Participant SP
-User -> SP: User wants a service from SP
-SP -> User: Wants proof and requests User to connect DAA via SP_ID
-User -> DAA: Provide SP_ID to DAA
-DAA -> Cloud Agent: Pass SP_ID to Cloud Agent to connect with SP
-Cloud Agent -> SP: Invites SP for DIDComm connection (mutual authentication)
-Cloud Agent -> SP: Generate and exchange pairwise peer DIDs for DIDcomm connection. \n Connection established
-SP -> Cloud Agent: Request VC presentation (provide VC schema)
-Cloud Agent -> Cloud Agent: lookup VC metadata by VC schema\n and other criteria
-Cloud Agent -> DAA: Let user select the VC to be presented to SP 
-DAA -> User: show selectable VCs
-User --> DAA: user selects & approves VC to be presented
-DAA -> Cloud Agent: Send the selected VC & authenticate with USER_FIDO_PK for providing consent
-Cloud Agent -> Cloud Agent: Retrieve VC and prepare VC presentation to SP
-Cloud Agent -> SP: Present VC or selected values to SP 
-SP -> DAP Agency: SP receives the VC or selected values and verifies VC\n by querying DAP for Issuer public keys (ISSUER_ID_PK)
+Participant USER
+Participant Issuer
+Participant VC Storage
+Participant DAP Cloud Agent
+Participant Key Vault
+
+
+USER -> Issuer: request issue VC 
+Issuer -> DAP Cloud Agent: Invite the DAP Cloud Agent for DIDcomm conn
+DAP Cloud Agent -> Issuer: DIDcomm connection estabilshed
+Issuer -> DAP Cloud Agent: Queries for DID for user's DA (i.e. DAP_USER_ID)
+DAP Cloud Agent -> Issuer: Responds with the DAP_USER_ID for DA
+
+Issuer -> Issuer: Issue VC
+Issuer -> VC Storage: Store VC
+Issuer -> DAP Cloud Agent: request publish VC meta
+DAP Cloud Agent -> DAP Cloud Agent: publish VC metadata
+DAP Cloud Agent -> Issuer: publish metadata success
+Issuer -> USER: VC issuance success
