@@ -1625,6 +1625,12 @@ Issue: This is true for case 1, but how does it work in case 2?
 
 Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP</a>/GADI system.
 
+<figure id="fig-vc-presentation-and-verification-option-2">
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-2.svg"/>
+    <figcaption>Verifiable Presentation and Verification (Option 2: Anonymous)</figcaption>
+</figure>
+
+
 Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
 
 
