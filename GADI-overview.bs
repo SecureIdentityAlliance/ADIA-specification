@@ -1456,22 +1456,32 @@ Issue: Add details for DAP to GADI Regional Directory
 Issue: Add details for GADI Regional Directory to GADI Global
 
 
+# Considerations # {#sctn-considerations}
 
-# Security Considerations # {#sctn-security-considerations}
+## Security Considerations ## {#sctn-security-considerations}
 
-## Storage of Trust Anchor and Digital Address## {#sctn-storage-ta-da}
+Issue: TODOs here: how to enforce that even recovery cannot be used to
+    provide access to existing credentials via ID proofing of a lower
+    assurance level.  
+
+### Storage of Trust Anchor and Digital Address ### {#sctn-storage-ta-da}
 
 Issue: Details for Trust Anchor and Digital Address Storage
 
 
-## Recovery of Trust Anchor and Digital Address ## {#sctn-recovery-trust-anchor}
+### Recovery of Trust Anchor and Digital Address ### {#sctn-recovery-trust-anchor}
 
 Issue: Details for Trust Anchor Recovery
 
-## Cryptographic Suites ## {#sctn-cryptographic-suite}
+### Cryptographic Suites ### {#sctn-cryptographic-suite}
 
 Issue: Details for Cryptographic Suites
 
+## Privacy Considerations ## {#sctn-privacy-considerations}
+
+Issue: Items to cover: User consent for sharing data, Which entities
+    can observe what users are doing, Anonymous claims, how do we
+    handle the right to be forgotten, 
 
 # Operations # {#sctn-ops}
 
