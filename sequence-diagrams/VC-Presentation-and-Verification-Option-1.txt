@@ -1,19 +1,31 @@
+Title: VC Presentation and Verification Option1
+
+Participant DAA
 Participant USER
-Participant Issuer
+participant SP
+Participant DAP Agent
+Participant Cloud Agent
 Participant VC Storage
-Participant DAP Cloud Agent
-Participant Key Vault
+Participant Issuer
 
 
-USER -> Issuer: request issue VC 
-Issuer -> DAP Cloud Agent: Invite the DAP Cloud Agent for DIDcomm conn
-DAP Cloud Agent -> Issuer: DIDcomm connection estabilshed
-Issuer -> DAP Cloud Agent: Queries for DID for user's DA (i.e. DAP_USER_ID)
-DAP Cloud Agent -> Issuer: Responds with the DAP_USER_ID for DA
+USER -> SP: I want to get service (show DA)
+SP -> DAP Agent: Invite SP for DIDcomm conn
+DAP Agent -> SP: DIDcomm connection estabilshed
+SP -> DAP Agent: request VP for the DA (proof offer)
+SP -> USER: show QR
+DAA -> SP: scan QR
+DAA -> DAP Agent: FIDO Auth
+DAP Agent -> DAP Agent: find DAP_USER_ID\nfind VC metadata
 
-Issuer -> Issuer: Issue VC
-Issuer -> VC Storage: Store VC
-Issuer -> DAP Cloud Agent: request publish VC meta
-DAP Cloud Agent -> DAP Cloud Agent: publish VC metadata
-DAP Cloud Agent -> Issuer: publish metadata success
-Issuer -> USER: VC issuance success
+DAP Agent -> Issuer: request VC for DAP_USER_ID
+VC Storage -> Issuer : retrieve VC for DAP_USER_ID
+Issuer  -> DAP Agent: return VC
+
+DAP Agent -> Cloud Agent: request VP
+Cloud Agent -> Cloud Agent: generate VP signed by DAP_USER_ID_SK
+
+Cloud Agent -> DAP Agent: return VP
+DAP Agent -> SP: return VP and DAP_USER_ID_PK
+SP -> SP: Verify VP
+SP -> USER: get service
