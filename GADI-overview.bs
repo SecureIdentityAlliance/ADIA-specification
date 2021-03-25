@@ -1607,31 +1607,42 @@ Goal of this operation is to provide some identity attributes related to the use
   These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
   We always use <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
 
+Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
+
+
 We distinguish 2 different types of <a>verifiable credential</a>s:
-1. Credentials that include sufficient personal identifiable information to uniquely identify the user and
-2. Credentials that don't. For example just stating that the user is older than 21.
+1. Credentials that include sufficient personal identifiable
+    information to uniquely identify the user (identifying credentials) and
+2. Credentials that don't (anonymous credentials). For example just stating that the user is older than 21.
+
 
 In both cases, a public key is typically linked to the <a>verifiable credential</a> via the subject's DID document (see example 2 in [[did-core]]).
   It is used as a proxy for the user, meaning anyone that can proof access of the related private key is assumed to be the user.
   Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
-  temporary use key, that is included in order to allow the <a>SP</a> to detect which subject the attributes relate to.
+  single-time use key, that is included in order to allow the
+  <a>SP</a> to recognize the subject the attributes relate to.
 
-Issue: This is true for case 1, but how does it work in case 2?
+
+### Presentation and Verification of "Identifing" Credentials ### {#sctn-iden-creds}
 
 <figure id="fig-vc-presentation-and-verification-option-1">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
 
-Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP</a>/GADI system.
+
+### Presentation and Verification of "Anonymous" Credentials ### {#sctn-anon-creds}
+
+A key that is used for this operation only is created by the user's
+Cloud Agent.
+
+Issue: How is that one-time use key linked to the credential itself?
 
 <figure id="fig-vc-presentation-and-verification-option-2">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-2.svg"/>
     <figcaption>Verifiable Presentation and Verification (Option 2: Anonymous)</figcaption>
 </figure>
 
-
-Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
 
 
 ## User Consents ## {#sctn-user-consents}
