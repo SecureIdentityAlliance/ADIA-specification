@@ -8,10 +8,13 @@ Status: ED
 Group: fido
 URL:
 Editor: Ramesh Kesanupalli, ramesh@digitaltrust.net
+Editor: Abbie Barbir, BarbirA@cvshealth.com
 Editor: Rolf Lindemann, rolf@noknok.com
 Editor: Suresh Batchu, suresh@digitaltrust.net
 Editor: Kiran Addepalli, kiran@digitaltrust.net
-
+Editor: Ken Ebert, ken@indicio.tech
+Editor: Sam Curren, sam@indicio.tech
+Editor: Sunghooon Choi,shchoi@raoncorp.com
 
 
 Abstract: The GADI Specification establishes the foundational technology components to establish a Trustable Identity Framework by providing a unique <a>Digital Address</a> to Human Identities to empower them to distribute Identity information and reinforce Trust and Accountability the in the Digital World.
@@ -600,7 +603,7 @@ New
     <dl>
         : Trust Anchor Protocol
 
-            This protocol facilitates the retrieval of a Trust Anchor for the purposes of identifying unique registrants in a directory. Each directory is responsible for maintaining uniqueness in a directory, and creates a unique identifier for each party listed. This trust anchor is the same no matter how the user is identified. 
+            This protocol facilitates the retrieval of a Trust Anchor for the purposes of identifying unique registrants in a directory. Each directory is responsible for maintaining uniqueness in a directory, and creates a unique identifier for each party listed. This trust anchor is the same no matter how the user is identified.
 
             Trust Anchors have been kept isolated from the other directory related protocols to allow specific permissioning to use trust anchors.
 
@@ -626,7 +629,7 @@ New
         : Messages
 
         :: Request
-            Sent by the Service to the Directory. 
+            Sent by the Service to the Directory.
             - `did` - The DID of the user for which the Service is requesting a Trust Anchor.
 
             ```json
@@ -731,7 +734,7 @@ Digital Address as username? Keep this protocol separate?
         : Messages
 
         :: Register
-            Sent by the User to the Directory. 
+            Sent by the User to the Directory.
             Sent once per Digital Address being registered.
             - `digital_address` - The Digital Address to register with the Directory.
 
@@ -744,7 +747,7 @@ Digital Address as username? Keep this protocol separate?
             ```
 
         :: Remove
-            Sent by the User to the Directory. This comprises the request to remove a previously 
+            Sent by the User to the Directory. This comprises the request to remove a previously
             - `digital_address`
 
             ```json
@@ -871,10 +874,6 @@ Digital Address as username? Keep this protocol separate?
             - What is necessary to identify a service?
 
     </dl>
-
-## DID ## {#sctn-gadi-global-did-message}
-
-Issue: Should improve the section title!
 
     <dl>
         : DirectoryDIDRequest // get DID to later disclose
@@ -1138,7 +1137,7 @@ When verifying a verifiable presentation of a verifiable credential:
 3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
     via TODO: not yet specified!
 
-4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via 
+4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via
 
 <figure id="fig-key-material">
  <table class="data longlastcol">
@@ -1156,7 +1155,7 @@ When verifying a verifiable presentation of a verifiable credential:
        <td><a>GADI</a></td>
        <td><a>GADI</a></td>
        <td>GADI setup.</td>
-       <td> 
+       <td>
          via a DIDDoc kept in the GADI Global Directory.
        </td>
        <td>
@@ -1172,7 +1171,7 @@ Issue: Need to clarify how the security characteristics of the
        <td><a>GADI Regional</a></td>
        <td><a>GADI Regional</a></td>
        <td>GADI Regional setup.</td>
-       <td> 
+       <td>
          via a DIDDoc kept in the GADI Global Directory.
        </td>
        <td>
@@ -1193,7 +1192,7 @@ Issue: Need to clarify how the security characteristics of the
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.
-       </td>  	  
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1213,7 +1212,7 @@ Issue: Need to clarify how the security characteristics of the
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.
-       </td>  	  
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1237,7 +1236,7 @@ Issue: Need to specify in the sequence diagram when exactly the key is
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.
-       </td>  	  
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1255,8 +1254,8 @@ Issue: Need to clarify how the security characteristics of the
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
-         via a DIDDoc kept in the HomeDAP. 
-       </td>  	  
+         via a DIDDoc kept in the HomeDAP.
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1274,13 +1273,13 @@ Issue: Need to clarify how the security characteristics of the
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
- 
+
 Issue: Need to clarify whether there is any signed object tying the
     USER_FIDO_PK to the user's DA.
 
-       </td>  	  
+       </td>
        <td>
-         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].       
+         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].
        </td>
      </tr>
    </tbody>
@@ -1288,6 +1287,36 @@ Issue: Need to clarify whether there is any signed object tying the
  <figcaption>Cryptographic Key Material</figcaption>
 </figure>
 
+## Assurance Level ## {#sctn-assurance-level}
+
+GADI provides a Governance Framework to ensure that Trusted entities are deemed Issuers in the overall ecosystem. This combines
+a set of policies and procedures to verify that Issuers are verified by a Registration Authority and entity issuing Verifiable Credentials
+is an organization with Good standing Rating, Financial Standing, Risk of Failure, Insurance and maturity of the processes in collecting, verifying, storage and access to Credentials
+for all its constituents is in accordance with the GADI ecosystem standards and local jurisdiction.
+
+### Applicability ### {#sctn-assurance-level-applicability}
+There are types of Assurance Levels that may be addressed in the future version of the specification:
+- Issuer Assurance Level (I-AL) - The overall level of trust in an Issuer at the time on enrollment or recertification.
+- Verifiable Credential Assurance Level (VC-AL) - The strength and rigor of the processes in credential creation, issuance and storage
+- User Assurance Level (U-AL) - The maturity of the enrolment, activation and identity information verification processed of the user acquiring the Digital Address
+
+### User Assurance Level ### {#sctn-assurance-level-user}
+This specification deems the need for such levels but defers the definition of these levels to a future release. The current version of the
+specification aligns with the NIST 800-63A Digital Identity Guidelines to determine the Assurance of the User acquiring the Digital Address.
+There primarily apply to the identity proofing performed by the Issuers or the Users themselves at the time of issuing
+and/or importing the Digital Address.These levels are:
+
+- U-AL1 - Attributes, if any, are self-asserted or should be treated as self-asserted.
+- U-AL2 - Either remote or in-person identity proofing is required. IAL2 requires identifying attributes to have been verified in person or remotely using, at a minimum, the procedures given in SP 800-63A
+- U-AL3 - In-person identity proofing is required. Identifying attributes must be verified by an authorized CSP representative through examination of physical documentation as described in SP 800-63A
+
+### Usage ### {#sctn-assurance-level-usage}
+Service Providers may create complex criteria for requesting proofs from users, including the Assurance Level of any entity or the type of the VC to ensure
+the identity of the user before rendering any services.
+
+### Transitions ### {#sctn-assurance-level-transition}
+Users may acquire a Digital Address with a lower level of assurance Ex: Self-asserted to join the ecosystem, but transition to a higher level of U-AL
+by either remotely proving their identity or approaching a Trusted Issuer in the GADI ecosystem and presenting valid identity credentials.
 
 ## Identifiers ## {#sctn-gadi-identifiers}
 
@@ -2142,16 +2171,15 @@ The DID Alliance (DIDA) is an open industry association created to drive the dev
 
 ### Major Contributors ### {#sctn-acknowledgments-contributors}
 
-* Abbie Barbir, BarbirA@cvshealth.com
 * Jason Burnett, jason@digitaltrust.net
-* Ken Ebert, ken@indicio.tech
-* Sam Curren, sam@indicio.tech
-
+* Taejin Kim, tjkim1212@raoncorp.com
+* Alan Bachmann, AABachmann@aetna.com
+* Tina Srivastava, tinaps@badgeinc.com
 
 ### Other Contributors and Reviewers ### {#sctn-acknowledgments-Reviewers}
 
-* Alan Bachmann, AABachmann@aetna.com
-* Tina Srivastava, tinaps@badgeinc.com
 * Raju Nadakuduty, perraju.nadakuduty@capitalone.com
+* Santosh Rajvaidya, santosh.rajvaidya@jumio.com
+* Chris Clason, chris.clason@digitalasset.com
 
 If a credit is missing from the credit list below, please log a ticket at GitHub to be recognized in future updates.
