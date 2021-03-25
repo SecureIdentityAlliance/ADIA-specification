@@ -600,7 +600,7 @@ New
     <dl>
         : Trust Anchor Protocol
 
-            This protocol facilitates the retrieval of a Trust Anchor for the purposes of identifying unique registrants in a directory. Each directory is responsible for maintaining uniqueness in a directory, and creates a unique identifier for each party listed. This trust anchor is the same no matter how the user is identified. 
+            This protocol facilitates the retrieval of a Trust Anchor for the purposes of identifying unique registrants in a directory. Each directory is responsible for maintaining uniqueness in a directory, and creates a unique identifier for each party listed. This trust anchor is the same no matter how the user is identified.
 
             Trust Anchors have been kept isolated from the other directory related protocols to allow specific permissioning to use trust anchors.
 
@@ -626,7 +626,7 @@ New
         : Messages
 
         :: Request
-            Sent by the Service to the Directory. 
+            Sent by the Service to the Directory.
             - `did` - The DID of the user for which the Service is requesting a Trust Anchor.
 
             ```json
@@ -731,7 +731,7 @@ Digital Address as username? Keep this protocol separate?
         : Messages
 
         :: Register
-            Sent by the User to the Directory. 
+            Sent by the User to the Directory.
             Sent once per Digital Address being registered.
             - `digital_address` - The Digital Address to register with the Directory.
 
@@ -744,7 +744,7 @@ Digital Address as username? Keep this protocol separate?
             ```
 
         :: Remove
-            Sent by the User to the Directory. This comprises the request to remove a previously 
+            Sent by the User to the Directory. This comprises the request to remove a previously
             - `digital_address`
 
             ```json
@@ -871,10 +871,6 @@ Digital Address as username? Keep this protocol separate?
             - What is necessary to identify a service?
 
     </dl>
-
-## DID ## {#sctn-gadi-global-did-message}
-
-Issue: Should improve the section title!
 
     <dl>
         : DirectoryDIDRequest // get DID to later disclose
@@ -1138,7 +1134,7 @@ When verifying a verifiable presentation of a verifiable credential:
 3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
     via TODO: not yet specified!
 
-4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via 
+4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via
 
 <figure id="fig-key-material">
  <table class="data longlastcol">
@@ -1156,7 +1152,7 @@ When verifying a verifiable presentation of a verifiable credential:
        <td><a>GADI</a></td>
        <td><a>GADI</a></td>
        <td>GADI setup.</td>
-       <td> 
+       <td>
          via a DIDDoc kept in the GADI Global Directory.
        </td>
        <td>
@@ -1172,7 +1168,7 @@ Issue: Need to clarify how the security characteristics of the
        <td><a>GADI Regional</a></td>
        <td><a>GADI Regional</a></td>
        <td>GADI Regional setup.</td>
-       <td> 
+       <td>
          via a DIDDoc kept in the GADI Global Directory.
        </td>
        <td>
@@ -1193,7 +1189,7 @@ Issue: Need to clarify how the security characteristics of the
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.
-       </td>  	  
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1213,7 +1209,7 @@ Issue: Need to clarify how the security characteristics of the
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.
-       </td>  	  
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1237,7 +1233,7 @@ Issue: Need to specify in the sequence diagram when exactly the key is
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.
-       </td>  	  
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1255,8 +1251,8 @@ Issue: Need to clarify how the security characteristics of the
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
-         via a DIDDoc kept in the HomeDAP. 
-       </td>  	  
+         via a DIDDoc kept in the HomeDAP.
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1274,13 +1270,13 @@ Issue: Need to clarify how the security characteristics of the
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
- 
+
 Issue: Need to clarify whether there is any signed object tying the
     USER_FIDO_PK to the user's DA.
 
-       </td>  	  
+       </td>
        <td>
-         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].       
+         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].
        </td>
      </tr>
    </tbody>
