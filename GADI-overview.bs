@@ -14,7 +14,7 @@ Editor: Suresh Batchu, suresh@digitaltrust.net
 Editor: Kiran Addepalli, kiran@digitaltrust.net
 Editor: Ken Ebert, ken@indicio.tech
 Editor: Sam Curren, sam@indicio.tech
-Editor: Sunghoon Choi,shchoi@raoncorp.com
+Editor: Sunghoon Choi, shchoi@raoncorp.com
 
 
 Abstract: The GADI Specification establishes the foundational technology components to establish a Trustable Identity Framework by providing a unique <a>Digital Address</a> to Human Identities to empower them to distribute Identity information and reinforce Trust and Accountability the in the Digital World.
