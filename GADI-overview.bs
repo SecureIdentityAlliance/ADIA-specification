@@ -1112,6 +1112,11 @@ Issue: Describe what is verified by whom, what kind of objects
    ("credentials") are being created and what kind of identifiers they
    bind together (e.g. public keys and digital addresses, ...).
 
+Issue: Distinguish Base/Peer-DIDDoc-USER and Pair-wise-Use
+    DIDDoc-USER.  All DIDDoc-USER are stored off-ledger.  We use ZKP
+    algs all over.
+    
+
 <figure id="fig-gadi-trust-model">
     <img src="images/gadi-trust-model.svg"/>
     <figcaption>GADI Trust Model</figcaption>
@@ -1142,9 +1147,9 @@ the following objects need to be verified:
 
 
 In the case of <a>Anonymous Verifiable Credential</a>s (e.g. "older than 21"), the
-   <a>DIDDoc-USER</a> is a one-time use object and the included
-   <a>DAP_USER_ID_PK</a> is a one-time use key.  One-time use means it is not
-   shared with any other <a>SP</a> and it will not even be referenced by
+   <a>DIDDoc-USER</a> is a pair-wise use object and the included
+   <a>DAP_USER_ID_PK</a> is a one-time use key.  Pair-wise use means it is not
+   shared with any other <a>SP</a> and it will typically not even be referenced by
    another verifiable presentation to the same <a>SP</a> again to
    maintain the user's privacy.
 
@@ -1266,7 +1271,7 @@ Issue: Need to clarify how the security characteristics of the
        <td>
          via the <a>DIDDoc-USER</a> kept in the <a>HomeDAP</a>.
 
-Note: a one-time use object will be created for each <a>Verifiable
+Note: a pair-wise object will be created for each <a>Verifiable
    Presentation</a> of an <a>Anonymous Verifiable Credential</a>.
 
        </td>  	  
@@ -1664,8 +1669,6 @@ In both cases, a public key is typically linked to the <a>verifiable credential<
 
 A key that is used for this operation only is created by the user's
 Cloud Agent.
-
-Issue: How is that one-time use key linked to the credential itself?
 
 <figure id="fig-vc-presentation-and-verification-option-2">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-2.svg"/>
