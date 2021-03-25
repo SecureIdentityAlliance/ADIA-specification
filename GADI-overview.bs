@@ -1134,9 +1134,10 @@ the following objects need to be verified:
     issuer ISSUER_ID_PK/SK key.
 
 3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
-    via TODO: not yet specified!
+    via the <a>DIDDoc-ISSUER</a>.
 
-4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via 
+4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via
+    the <a>DIDDoc-USER</a>.
 
 
 In the case of <a>Anonymous Verifiable Credential</a>s (e.g. "older than 21"), the
