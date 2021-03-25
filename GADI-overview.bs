@@ -1108,10 +1108,6 @@ The types of actors that interact with the Mobile App are described below:
 
 ## Trust Model ## {#sctn-trust-model}
 
-Issue: Describe what is verified by whom, what kind of objects
-   ("credentials") are being created and what kind of identifiers they
-   bind together (e.g. public keys and digital addresses, ...).
-
 <figure id="fig-gadi-trust-model">
     <img src="images/gadi-trust-model.svg"/>
     <figcaption>GADI Trust Model</figcaption>
@@ -1123,6 +1119,8 @@ Issue: Will have to specify the assurance level to which the claims
 
 Issue: Need a similar diagram for anonymous claims (e.g. older than
     21, ...).  In such case there won't be an Id included in the claim.
+
+Issue: How to trust the issuer?  How to trust the SP?  How to trust DAPs?
 
 When verifying a verifiable presentation of a verifiable credential:
 1. Presentation Object, i.e. an object containing a
@@ -1421,12 +1419,6 @@ DAP Identifier, GADI Regional Directory Identifier
 
    </dl>
 
-
-
-
-
-
-
 # Inter-domain Communication # {#sctn-interd-comm}
 
 ## Communication Protocol ## {#sctn-communication-protocol}
@@ -1481,7 +1473,9 @@ Issue: Details for Cryptographic Suites
 
 Issue: Items to cover: User consent for sharing data, Which entities
     can observe what users are doing, Anonymous claims, how do we
-    handle the right to be forgotten, 
+    handle the right to be forgotten,
+
+
 
 # Operations # {#sctn-ops}
 
