@@ -1265,8 +1265,10 @@ Issue: Need to clarify how the security characteristics of the
            First Issuer</a></td>
        <td>
          via the <a>DIDDoc-USER</a> kept in the <a>HomeDAP</a>.
-	 Note a one-time use object ill be created for each
-       <a>Verifiable Presentation</a> of an <a>Anonymous Verifiable Credential</a>
+
+Note: a one-time use object will be created for each <a>Verifiable
+   Presentation</a> of an <a>Anonymous Verifiable Credential</a>.
+
        </td>  	  
        <td>
 
@@ -1329,10 +1331,10 @@ DAP Identifier, GADI Regional Directory Identifier
        :: Human readabe <a>Digital Address</a> of the <a>User</a>
             (e.g. blackbird@issuer.dap.gadi.org).
 
-            Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
-            name - "fun" names are allowed and recommended. However, real
-            names are still allowed and the GADI system doesn't check
-            whether users use them.
+Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
+      name - "fun" names are allowed and recommended. However, real
+      names are still allowed and the GADI system doesn't check
+      whether users use them.
 
 
        : <dfn>DAP_USER_ID</dfn>
@@ -1839,7 +1841,7 @@ Issue: What do you mean with Add Delete Entry to DLT?  The *existing* Entry need
 Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
 
 Note: I have added this as an optional step in the sequence diagram. My personal opinion is that all issuers that have issued non-expired VCs MUST be notified. Whether they act or not in
-deleting the VC from their local storage is defined by Governance and retentional policies defined by the Issuers themselves
+    deleting the VC from their local storage is defined by Governance and retentional policies defined by the Issuers themselves
 
 Issue: Is it expected that VCs are not deleted?
 
