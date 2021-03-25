@@ -1121,8 +1121,9 @@ Issue: Will have to specify the assurance level to which the claims
     have been verified by the issuer.  Similarly for the other
     entities (e.g. DAP, Issuer, ...).
 
-When verifying a verifiable presentation of a verifiable credential:
-1. Presentation Object, i.e. an object containing a
+When verifying a verifiable presentation of a verifiable credential,
+the following objects need to be verified:
+1. <a>Verifiable Presentation</a>, i.e. an object containing a
     <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
     or Derived Data (in the case of ZKP) (<a
     href="(e.g. https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
@@ -1138,7 +1139,7 @@ When verifying a verifiable presentation of a verifiable credential:
 4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via 
 
 
-In the case of anonymous credentials (e.g. "older than 21"), the
+In the case of <a>Anonymous Verifiable Credential</a>s (e.g. "older than 21"), the
    <a>DIDDoc-USER</a> is a one-time use object and the included
    <a>DAP_USER_ID_PK</a> is a one-time use key.  One-time use means it is not
    shared with any other <a>SP</a> and it will not even be referenced by
@@ -1261,7 +1262,9 @@ Issue: Need to clarify how the security characteristics of the
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
-         via a DIDDoc kept in the HomeDAP. 
+         via the <a>DIDDoc-USER</a> kept in the <a>HomeDAP</a>.
+	 Note a one-time use object ill be created for each
+       <a>Verifiable Presentation</a> of an <a>Anonymous Verifiable Credential</a>
        </td>  	  
        <td>
 
@@ -1303,6 +1306,14 @@ DAP Identifier, GADI Regional Directory Identifier
 
 
    <dl>
+       :  <dfn>AVC</dfn>
+       :: <dfn>Anonymous Verifiable Credential</dfn>.  This is a
+            special case of a <a>Verifiable Credential</a> when the
+            included claims to not uniquely identify any specific
+            user.  For example a credential that just proof the user
+            is older than 21.
+
+
        : <dfn>Cloud Agent</dfn>
        :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
             <a href="https://ec.europa.eu/digital-single-market/en/trust-services">eIDAS Trust Service Providers</a>.
