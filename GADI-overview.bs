@@ -1121,9 +1121,6 @@ Issue: Will have to specify the assurance level to which the claims
     have been verified by the issuer.  Similarly for the other
     entities (e.g. DAP, Issuer, ...).
 
-Issue: Need a similar diagram for anonymous claims (e.g. older than
-    21, ...).  In such case there won't be an Id included in the claim.
-
 When verifying a verifiable presentation of a verifiable credential:
 1. Presentation Object, i.e. an object containing a
     <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
@@ -1139,6 +1136,15 @@ When verifying a verifiable presentation of a verifiable credential:
     via TODO: not yet specified!
 
 4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via 
+
+
+In the case of anonymous credentials (e.g. "older than 21"), the
+   <a>DIDDoc-USER</a> is a one-time use object and the included
+   <a>DAP_USER_ID_PK</a> is a one-time use key.  One-time use means it is not
+   shared with any other <a>SP</a> and it will not even be referenced by
+   another verifiable presentation to the same <a>SP</a> again to
+   maintain the user's privacy.
+
 
 <figure id="fig-key-material">
  <table class="data longlastcol">
@@ -1203,7 +1209,7 @@ Issue: Need to clarify how the security characteristics of the
      </tr>
 
      <tr>
-       <td><dfn>ISSUER_ID_PK<dfn> / <dfn>ISSUER_ID_SK</dfn></td>
+       <td><dfn>ISSUER_ID_PK</dfn> / <dfn>ISSUER_ID_SK</dfn></td>
        <td><a>Issuer</a></td>
        <td>
 	Issuer Agent
@@ -1343,8 +1349,16 @@ DAP Identifier, GADI Regional Directory Identifier
        : <dfn>DID</dfn>
        :: Decentralized Identifier according to [[!did-core]]
 
+       : <dfn>DIDDoc-USER</dfn>
+       :: DID document binding the user's public key to the <a>DAP_USER_ID</a>.
+
        : <dfn>GADI</dfn>
        :: Global Architecture for Digital IDentity. See [[GADI-API]] for the DAP API.
+
+       : <dfn>GADI Regional</dfn>
+       ::
+
+Issue: TODO.
 
        : <dfn>GADI_ID</dfn>
        :: The <a>GADI</a> IDentity, i.e. the the W3C DID style identifier for the <a>GADI</a>.
