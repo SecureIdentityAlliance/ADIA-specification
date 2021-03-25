@@ -1119,7 +1119,7 @@ Issue: Describe what is verified by whom, what kind of objects
 
 Issue: Will have to specify the assurance level to which the claims
     have been verified by the issuer.  Similarly for the other
-    entities (e.g. DAP, Issuer, ...).
+    entities (e.g. DAP, Issuer, ...). See ASSURANCE_LEVEL in <a>DigitalAddress</a>.
 
 When verifying a verifiable presentation of a verifiable credential,
 the following objects need to be verified:
