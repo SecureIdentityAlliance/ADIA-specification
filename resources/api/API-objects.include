@@ -421,12 +421,12 @@
         <td></td>
       </tr>
       <tr>
-        <td>issuedentityID</td>
+        <td>entityID</td>
         <td>String</td>
         <td></td>
       </tr>
       <tr>
-        <td>issuedEntityDA</td>
+        <td>entityDigitalAddress</td>
         <td>String</td>
         <td></td>
       </tr>
@@ -446,17 +446,17 @@
         <td>ISO 8601 format</td>
       </tr>
       <tr>
-        <td>issuingentityID</td>
+        <td>issuerID</td>
         <td>String</td>
         <td></td>
       </tr>
       <tr>
-        <td>issuingEntityDA</td>
+        <td>issuerDigitalAddress</td>
         <td>String</td>
         <td></td>
       </tr>
       <tr>
-        <td>issuingEntityRole</td>
+        <td>issuerRole</td>
         <td>Enum</td>
         <td>
           <ul>
@@ -483,12 +483,12 @@
         <td>ISO 8601 format</td>
       </tr>
       <tr>
-        <td>revokingentityID</td>
+        <td>revokingEntityID</td>
         <td>String</td>
         <td></td>
       </tr>
       <tr>
-        <td>revokingEntityDA</td>
+        <td>revokingEntityDigitalAddress</td>
         <td>String</td>
         <td></td>
       </tr>
@@ -503,12 +503,12 @@
         </td>
       </tr>
       <tr>
-        <td>dapDID</td>
+        <td>dapID</td>
         <td>String</td>
         <td></td>
       </tr>
       <tr>
-        <td>dapDA</td>
+        <td>dapDigitalAddress</td>
         <td>String</td>
         <td></td>
       </tr>
