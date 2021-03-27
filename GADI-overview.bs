@@ -974,23 +974,6 @@ Payment flows can be used for credentials but may also be used for general purpo
 Issue: Content copied as-is from Indicio's recommendations. Add details for Payment Broker
 
 
-### Agent ### {#sctn-gadi-role-agent}
-
-All interactions between entities is facilitated through agents and services provided by the DAP. Each entity’s Agent holds cryptographic keys and digital credentials on behalf of the entity.
-Agents also manages the participant’s connections with services in the ecosystem. The agents for Issuers and Service Providers implement protocols for establishing connection and perform exchanging DIDs, Credentials and Proofs requests.
-
-Inbound and outbound communication are based on DIDComm Messaging Specification.
-
-#### Issuer/Service Provider Agent #### {#sctn-gadi-role-issuer-sp-agent}
-
-Issue: Add details for Issuer and Service Provider agents supporting DIDComm
-
-#### Cloud Agent #### {#sctn-gadi-role-cloud-agent}
-
-Issue: Add details for User Agents/Cloud agents supporting DIDComm
-
-
-
 ### Issuer ### {#sctn-gadi-role-issuer}
 
 GADI Architecture trust between entities is brokered by the DAP. Issuers of a Verified Credential are separated from
@@ -1451,38 +1434,658 @@ DAP Identifier, GADI Regional Directory Identifier
    </dl>
 
 
-
-
-
-
-
 # Inter-domain Communication # {#sctn-interd-comm}
 
 ## Communication Protocol ## {#sctn-communication-protocol}
+In general, DIDcomm [[!didcomm-messaging]] is used for securing the communication. All interactions between entities is facilitated through agents and services in the entity's domain.
+Each entity’s Agent holds cryptographic keys and digital credentials on behalf of the entity.
 
-In general, DIDcomm [[!didcomm-messaging]] is used for securing the communication
-between the entities.
+Agents also manages the participant’s connections with services by implementing protocols to establish connections, perform DID exchanges, issue credentials and present proofs.
+The GADI Messaging Specification is an extension of the DIDComm protocol. These protocols are:
 
-The communication between <a>SP</a>s, <a>Issuer</a>s, <a>DAP</a>s, and <a>GADI</a>
-itself uses "Sender Authenticated Encryption".
-The <a>SP_ID_PK</a>, <a>SP_ID_SK</a>, <a>ISSUER_ID_PK</a>, <a>ISSUER_ID_SK</a>, <a>DAP_ID_PK</a>,
-<a>DAP_ID_SK</a> and <a>GADI_ID_PK</a> and <a>GADI_ID_SK</a> are being used for that.
+<table class="data longlastcol">
+  <thead>
+    <th>Name</th>
+    <th>Version</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>Digital Address Protocol</td>
+      <td>1.0</td>
+      <td>Create, revoke and share Digital addresses</td>
+    </tr>
+    <tr>
+      <td nowrap>Directory Protocol</td>
+      <td>1.0</td>
+      <td>Search entities within the Ecosystem</td>
+    </tr>
+    <tr>
+      <td nowrap>Onboarding Protocol</td>
+      <td>1.0</td>
+      <td>Request, approve and onboard trusted entities to the ecosystem</td>
+    </tr>
+    <tr>
+      <td nowrap>Credential Schema Protocol</td>
+      <td>1.0</td>
+      <td>Create, publish and discover credential schema for VC issuance</td>
+    </tr>
+    <tr>
+      <td nowrap>Credential Protocol</td>
+      <td>1.0</td>
+      <td>Extensions to the DIDComm <i>issue-credential</i> protocol to issue, revoke and expire VCs to entities</td>
+    </tr>
+    <tr>
+      <td nowrap>Verification Protocol</td>
+      <td>1.0</td>
+      <td>Extensions to the DIDComm <i>Verifiable Presentation</i> protocol to request, forward and present proofs</td>
+    </tr>
+  </tbody>
+  <table>
 
-## Issuer to DAP ## {#sctn-interd-comm-issuer-to-dap}
+  ## Communication Agents ## {#sctn-communication-agents}
 
-Issue: Add details for Issuer to DAP communications
+   The agents for Issuers and Service Providers implement protocols for establishing connection and perform exchanging DIDs, Credentials and Proofs requests.
 
-## DAP to DAP (Future) ## {#sctn-interd-comm-dap-to-dap}
+  There are six types of GADI agents:
+  1. GADI Global Directory Agent (GGD Agent)
+  2. GADI Regional Directory Agent (GRD Agent)
+  3. DAP Agent
+  4. Issuer Agent
+  5. Service Provider Agent (SP Agent)
+  6. Cloud Agent
 
-Issue: Add details for DAP to DAP communications
+  In accordance with the overall ecosystem, GADI agents are permitted to interactions with only certain entities. A two-way trust is mandatory to enable interactions between them. This is represented in the table below:
 
-## DAP to GADI Regional Directory ## {#sctn-interd-comm-dap-to-gadi-regional}
+  <table class="data">
+    <thead>
+      <th>Agent/Agent</th>
+      <th>GGD Agent</th>
+      <th>GRD Agent</th>
+      <th>DAP Agent</th>
+      <th>Issuer Agent</th>
+      <th>SP Agent</th>
+      <th>Cloud Agent</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>GGD Agent</th>
+        <td></td>
+        <td><center>X</center></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>GRD Agent</th>
+        <td><center>X</center></td>
+        <td></td>
+        <td><center>X</center></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>DAP Agent</th>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+        <td><center>X</center></td>
+        <td><center>X</center></td>
+        <td><center>X</center></td>
+      </tr>
+      <tr>
+        <th>Issuer Agent</th>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+      </tr>
+      <tr>
+        <th>SP Agent</th>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+      </tr>
+      <tr>
+        <th>Cloud Agent</th>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+        <td><center>X</center></td>
+        <td></td>
+        <td><center>X</center></td>
+      </tr>
 
-Issue: Add details for DAP to GADI Regional Directory
+    </tbody>
+    </table>
 
-## GADI Regional Directory to GADI Global ## {#sctn-interd-comm-gadi-reg-to-gadi-global}
 
-Issue: Add details for GADI Regional Directory to GADI Global
+## Protocol to Agent Mapping ## {#sctn-communication-protocol-agents}
+
+### Digital Address Protocol ### {#sctn-protocol-digital-address}
+The mapping below represents the protocol messages for the Digital Address Protocol and the agents that implement the handing of these messages.
+An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/digital-address/1.0/create</td>
+      <td>Create a Digital Address</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/revoke</td>
+      <td>Revoke/Remove a Digital Address</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/share</td>
+      <td>Send or share the DA/DID of a given entity</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/resolve</td>
+      <td>Resolve the DA and DID. One to one mapping at a given point in time</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/rename</td>
+      <td>Rename a Digital Address</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/update</td>
+      <td>Update Digital Address Information</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/import</td>
+      <td>Receive a Digital Address from an issuer</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/trust-anchor/1.0/create</td>
+      <td>Create a trust anchor and link it with the HIDA and save the relationship to the DLT and offledger storage</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/trust-anchor/1.0/search</td>
+      <td>Search a Trust anchor with its HIDA</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/trust-anchor/1.0/remove</td>
+      <td>Mark a Trust anchor inactive</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+
+  ### Directory Protocol ### {#sctn-protocol-directory}
+  The mapping below represents the protocol messages for the Directory Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/directory/1.0/search</td>
+      <td>Search an entity with its DA or DID</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/search/regional-directories</td>
+      <td>Search Regional Directories with a criteria</td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/interchanges</td>
+      <td>Search Interchanges with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/issuers</td>
+      <td>Search Issuers with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/service-Providers</td>
+      <td>Search Service Providers with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/users</td>
+      <td>Search Users with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+  </tbody>
+  </table>
+
+
+
+  ### Onboarding Protocol ### {#sctn-protocol-onboarding}
+  The mapping below represents the protocol messages for the Onboarding Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/onboarding/1.0/regional-directory</td>
+      <td>Onboard a regional directory to the ecosystem</td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/interchange</td>
+      <td>Onboard an interchange to the ecosystem</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/issuer</td>
+      <td>Onboard an Issuer to the ecosystem</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/service-provider</td>
+      <td>Onboard a Service Provider to the ecosystem</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/status</td>
+      <td>Get the onboarding status</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/update</td>
+      <td>Update the onboarding status</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+
+  ### Credential Schema Protocol ### {#sctn-protocol-credential-schema}
+  The mapping below represents the protocol messages for the Credential Schema Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/credential-schema/1.0/search</td>
+      <td>Search Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential-schema/1.0/publish</td>
+      <td>Publish Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential-schema/1.0/update</td>
+      <td>Update Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential-schema/1.0/revoke</td>
+      <td>Revoke Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+  ### Credential Protocol ### {#sctn-protocol-credential}
+  The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/credential/1.0/search</td>
+      <td>Search Credentials</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/issue</td>
+      <td>Issue a Verifiable Credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/revoke</td>
+      <td>Revoke a Verifiable Credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/expire</td>
+      <td>Expire a Verifiable Credential on a certain date</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/remove</td>
+      <td>Remove a Verifiable Credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/save-metadata</td>
+      <td>Save Credential Metadata</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/update-metadata</td>
+      <td>Update Credential Metadata</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/remove-metadata</td>
+      <td>Remove Credential Metadata</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+  ### Verification Protocol ### {#sctn-protocol-verification}
+  The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/verification/1.0/request-proof</td>
+      <td>Request a proof from the user</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/check-credential-metadata</td>
+      <td>Check credential metadata for valid credentials </td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/request-consent</td>
+      <td>Request a User consent before routing to issuers</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/request-credential</td>
+      <td>Request an issuer for matching credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/send-presentation</td>
+      <td>Forward the collected proof responses to the user agent</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+  </tbody>
+  </table>
+
+
+  ## Protocol Messages ## {#sctn-communication-protocol-messages}
+
+  <pre class=include>
+  path: resources/protocol/messages.include
+  </pre>
 
 
 
