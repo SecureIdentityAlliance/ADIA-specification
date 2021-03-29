@@ -1434,7 +1434,7 @@ DAP Identifier, GADI Regional Directory Identifier
    </dl>
 
 
-# Inter-domain Communication # {#sctn-interd-comm}
+# GADI Protocol # {#sctn-gadi-protocol}
 
 ## Communication Protocol ## {#sctn-communication-protocol}
 In general, DIDcomm [[!didcomm-messaging]] is used for securing the communication. All interactions between entities is facilitated through agents and services in the entity's domain.
@@ -2268,6 +2268,31 @@ is performed using FIDO.
 
 
 ## Revoking a Verifiable Credential ## {#sctn-revoking-credential}
+
+Issuers have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
+the Credential Metadata on the DAP. The DAP checks for constraints before allowing the revocation of an issued VC. Some of them are:
+1. Issuers may revoke VCs only for the credentials issued by them.
+2. The Digital Address is valid and not in an invalid state.
+3. The Credential is valid and in a non-expired state.
+
+<figure id="fig-revoke-vc">
+    <img src="sequence-diagrams/Revoking-VC.png"/>
+    <figcaption>Revoke a VC</figcaption>
+</figure>
+
+The User is notified of the revocation status but there is no expectation of an action from the User. Revoked VCs are no longer valid and hence not considered
+in any subsequent proof presentations.
+
+## Verifiable Credential Expiration ## {#sctn-vc-expiration}
+
+Most Verifiable Credentials are temporal in nature with an expiration date set on them. Expired credentials are not valid for any proof presentations.
+
+<figure id="fig-expire-vc">
+    <img src="sequence-diagrams/VC-Expiration.png"/>
+    <figcaption>Expire a VC</figcaption>
+</figure>
+
+
 
 
 ## Digital Address Recovery ## {#sctn-digital-address-recovery}
