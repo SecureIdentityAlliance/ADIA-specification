@@ -1115,7 +1115,7 @@ For users to be part of the GADI ecosystem, they must be in control of a <a>Digi
 Email, SmartCard or directly from a trusted Issuer.
 
 
-The <dfn>Digital Address Application</dfn> (<dfn>DAA</dfn) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind <a>Digital Address</a> with the DAP and consent for verification requests.
+The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind <a>Digital Address</a> with the DAP and consent for verification requests.
 
 #### Components #### {#sctn-daa-components}
 
@@ -1233,7 +1233,7 @@ Issue: Need to clarify how the security characteristics of the
      </tr>
 
      <tr>
-       <td><dfn>ISSUER_ID_PK<dfn> / <dfn>ISSUER_ID_SK</dfn></td>
+       <td><dfn>ISSUER_ID_PK</dfn> / <dfn>ISSUER_ID_SK</dfn></td>
        <td><a>Issuer</a></td>
        <td>
 	Issuer Agent
