@@ -2131,6 +2131,7 @@ An agent may implement the handler or delegate to another agent for handling via
 
 
   ## Protocol Messages ## {#sctn-communication-protocol-messages}
+  [NORMATIVE]
 
   <pre class=include>
   path: resources/protocol/messages.include
