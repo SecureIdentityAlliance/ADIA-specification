@@ -40,6 +40,7 @@ spec:webidl; type:interface; text:Promise
   the specification-maturity-appropriate boilerplate -->
 
 # Global Architecture for Digital Identity # {#sctn-gadi}
+[INFORMATIVE]
 
 One of the greatest challenges in any digital identity system is connecting, or binding, a physical identity with a logical identity. The question of how to bind an individual to a digital representation of that individual has proven to be a challenging one
 
@@ -548,16 +549,16 @@ A GADI Regional Directory shall:
 Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by GADI to seed the ecosystem. Other entities may operate directories in conformance with the governance structure and APIs.
 
 #### Attribute selection and management #### {#sctn-gadi-global-attribute}
-[NORMATIVE]
+[INFORMATIVE]
 
 Each directory has a set of attributes used to list users in the directory. These attributes are received via credentials from issuers authorized by the appropriate governance framework. When necessary for uniqueness (described in the next section), the directory may request additional attributes from a user, also supplied via credentials.
 
-Directories may use any datastore sufficient to the requirements of storing attributes. Datastores MUST be able to remove listed records at the request of the user.
+Directories may use any datastore sufficient to the requirements of storing attributes. Datastores must be able to remove listed records at the request of the user.
 
 #### Uniqueness properties #### {#sctn-gadi-global-uniqueness}
-[NORMATIVE]
+[INFORMATIVE]
 
-GADI Directories ensure uniqueness of the listed users. This is done by ensuring a unique set of attributes for each user. If a new user matches an existing user, additional attributes MUST be requested for use in distinguishing between the matching users.
+GADI Directories ensure uniqueness of the listed users. This is done by ensuring a unique set of attributes for each user. If a new user matches an existing user, additional attributes must be requested for use in distinguishing between the matching users.
 
 Each directory MUST have a process to follow when users cannot be uniquely identified either during addition of a user to the directory or during lookup of a user within the directory.
 
@@ -930,7 +931,7 @@ Issue: Digital Address as username? Keep this protocol separate?
 
 
 ### Interchange ### {#sctn-gadi-role-interchange}
-[NORMATIVE]
+[INFORMATIVE]
 
 The Interchange is composed of one or more the services that provide User Access services such as, <a>Digital Address</a> and Authentication to users, Agency services such as
 Issuer and Service Provider Agents and optional value-added services such as Identity Escrow, Credential Brokerage and Payment Brokerage services.
@@ -939,7 +940,7 @@ Issue: Add details for Interchange
 
 
 #### DAP #### {#sctn-gadi-role-dap-agency}
-[NORMATIVE]
+[INFORMATIVE]
 
 Digital Address Provider (DAP) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAP uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
 
@@ -949,9 +950,9 @@ The Agent is configured with and uses machine-readable governance framework docu
 All interactions through the agent are logged and available for inspection by the entity.
 
 ##### Scope ##### {#sctn-dap-scope}
-[NORMATIVE]
+[INFORMATIVE]
 
-A DAP MUST:
+A DAP must:
 
 * Onboard trusted Issuers and Service Providers to the system.
 * Assign trusted identifiers to participating entities in the closed-ecosystem.
@@ -974,7 +975,7 @@ The core components of a DAP are:
 * **Mediator**: Service to facilitate interactions with the user device with an SDK. Ex: Notifications, consent, etc.
 
 ##### Roles ##### {#sctn-dap-roles}
-[NORMATIVE]
+[INFORMATIVE]
 
 The types of actors that interact with the DAP are described below:
 * *Admin*: Role to configure the DAP with system and issuer level properties
@@ -1028,7 +1029,7 @@ the Service Providers (verifiers of a credentials) with a level of trust. Issuer
 
 #### Scope #### {#sctn-issuer-scope}
 
-A Trusted Issuer MUST:
+A Trusted Issuer must:
 * Use an approved method or process to create a unique Trust Anchor based on Identity attributes for a new or existing user in a scope.
 * Detect the presence of a Trust Anchor in the GADI ecosystem.
 * Use an approved method or process to Create and Lookup a unique <a>Digital Address</a> for the User.
@@ -1072,7 +1073,7 @@ Service Providers take a risk-based approach based on their enterprise needs and
 
 #### Scope #### {#sctn-serviceprovider-scope}
 
-A Service Provider MUST:
+A Service Provider must:
 
 * Accept and verify a <a>Digital Address</a> for a user in multiple forms - QR code, a user friendly moniker or a smart card.
 * Request for proofs on one or more user claims using a credential schema.
@@ -1096,6 +1097,7 @@ The core components of a Service Provider are:
 
 
 ### User ### {#sctn-gadi-role-user}
+[INFORMATIVE]
 
 A User is a holder of a unique <a>Digital Address</a> and receives it from a Trust Issuer after the KYC Process is completed.
 The user can then use their <a>Digital Address</a> for various purposes like, for example, receiving Verifiable Credentials such as an Identity Credential, or credentials that prove Educational qualifications, Health records, Employment, etc.
@@ -1110,6 +1112,7 @@ The user can then use their <a>Digital Address</a> for various purposes like, fo
 
 
 ### Digital Address Application (DAA) ### {#sctn-gadi-role-daa}
+[INFORMATIVE]
 
 For users to be part of the GADI ecosystem, they must be in control of a <a>Digital Address</a>. The <a>Digital Address</a> may be acquired in many forms, primarily a QR code over various channels such as an Authenticator App,
 Email, SmartCard or directly from a trusted Issuer.
@@ -1137,6 +1140,7 @@ The types of actors that interact with the Mobile App are described below:
 
 
 ## Trust Model ## {#sctn-trust-model}
+[INFORMATIVE]
 
 Issue: Describe what is verified by whom, what kind of objects
    ("credentials") are being created and what kind of identifiers they
@@ -1318,7 +1322,9 @@ Issue: Need to clarify whether there is any signed object tying the
  <figcaption>Cryptographic Key Material</figcaption>
 </figure>
 
+
 ## Assurance Level ## {#sctn-assurance-level}
+[INFORMATIVE]
 
 GADI provides a Governance Framework to ensure that Trusted entities are deemed Issuers in the overall ecosystem. This combines
 a set of policies and procedures to verify that Issuers are verified by a Registration Authority and entity issuing Verifiable Credentials
@@ -1483,6 +1489,7 @@ DAP Identifier, GADI Regional Directory Identifier
 
 
 # GADI Protocol # {#sctn-gadi-protocol}
+[NORMATIVE]
 
 ## Communication Protocol ## {#sctn-communication-protocol}
 In general, DIDcomm [[!didcomm-messaging]] is used for securing the communication. All interactions between entities is facilitated through agents and services in the entity's domain.
@@ -2140,6 +2147,8 @@ An agent may implement the handler or delegate to another agent for handling via
 
 
 # Security Considerations # {#sctn-security-considerations}
+[INFORMATIVE]
+
 
 ## Storage of Trust Anchor and Digital Address## {#sctn-storage-ta-da}
 
@@ -2156,6 +2165,7 @@ Issue: Details for Cryptographic Suites
 
 
 # Operations # {#sctn-ops}
+[INFORMATIVE]
 
 ## Onboarding Entities ## {#sctn-opts-onboarding}
 
@@ -2815,6 +2825,8 @@ Issue: Description/ sequence diagram for Payment Broker Certification
 
 # API # {#sctn-gadi-api}
 [NORMATIVE]
+
+Issue: Remove section as it has been superseded by section 2
 
   <pre class=include>
   path: resources/api/GADI-global-api.include
