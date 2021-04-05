@@ -2788,6 +2788,7 @@ Issue: Description/ sequence diagram for Payment Broker
 
 
 # Certification # {#sctn-certification}
+[INFORMATIVE]
 
 ## DAP Certification ## {#sctn-certification-dap}
 
