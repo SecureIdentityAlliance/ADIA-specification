@@ -1,4 +1,4 @@
-Title: VC Presentation and Verification - Option 1
+Title: VC Presentation and Verification - Option 2 (Anonymous)
 Participant User
 Participant DAA
 Participant Cloud Agent
@@ -16,7 +16,9 @@ Cloud Agent -> DAA: Let user select the VC to be presented to SP
 DAA -> User: show selectable VCs
 User --> DAA: user selects & approves VC to be presented
 DAA -> Cloud Agent: Send the selected VC & authenticate with USER_FIDO_PK for providing consent
+Cloud Agent -> Cloud Agent: Verify that no privacy leak exists
 Cloud Agent -> Cloud Agent: Retrieve VC and prepare VC presentation to SP
-Cloud Agent -> Cloud Agent: Sign VP using DAP_USER_ID_SK
+Cloud Agent -> Cloud Agent: Generate one-time use key pair DAP_USER_ID_TMPx_PK/SK
+Cloud Agent -> Cloud Agent: Sign VP using DAP_USER_ID_TMPx_SK
 Cloud Agent -> SP: Present VC or selected values to SP 
 SP -> DAP Agency: SP receives the VC or selected values and verifies VC\n by querying DAP for Issuer public keys (ISSUER_ID_PK)

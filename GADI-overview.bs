@@ -1146,6 +1146,11 @@ Issue: Describe what is verified by whom, what kind of objects
    ("credentials") are being created and what kind of identifiers they
    bind together (e.g. public keys and digital addresses, ...).
 
+Issue: Distinguish Base/Peer-DIDDoc-USER and Pair-wise-Use
+    DIDDoc-USER.  All DIDDoc-USER are stored off-ledger.  We use ZKP
+    algs all over.
+    
+
 <figure id="fig-gadi-trust-model">
     <img src="images/gadi-trust-model.svg"/>
     <figcaption>GADI Trust Model</figcaption>
@@ -1153,13 +1158,12 @@ Issue: Describe what is verified by whom, what kind of objects
 
 Issue: Will have to specify the assurance level to which the claims
     have been verified by the issuer.  Similarly for the other
-    entities (e.g. DAP, Issuer, ...).
+    entities (e.g. DAP, Issuer, ...). See ASSURANCE_LEVEL in
+    <a>DigitalAddress</a> and in <a href="#sctn-credential-metadata">Credential Metadata</a>.
 
-Issue: Need a similar diagram for anonymous claims (e.g. older than
-    21, ...).  In such case there won't be an Id included in the claim.
-
-When verifying a verifiable presentation of a verifiable credential:
-1. Presentation Object, i.e. an object containing a
+When verifying a verifiable presentation of a verifiable credential,
+the following objects need to be verified:
+1. <a>Verifiable Presentation</a>, i.e. an object containing a
     <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
     or Derived Data (in the case of ZKP) (<a
     href="(e.g. https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
@@ -1170,9 +1174,19 @@ When verifying a verifiable presentation of a verifiable credential:
     issuer ISSUER_ID_PK/SK key.
 
 3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
-    via TODO: not yet specified!
+    via the <a>DIDDoc-ISSUER</a>.
 
 4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via
+    the <a>DIDDoc-USER</a>.
+
+
+In the case of <a>Anonymous Verifiable Credential</a>s (e.g. "older than 21"), the
+   <a>DIDDoc-USER</a> is a pair-wise use object and the included
+   <a>DAP_USER_ID_PK</a> is a one-time use key.  Pair-wise use means it is not
+   shared with any other <a>SP</a> and it will typically not even be referenced by
+   another verifiable presentation to the same <a>SP</a> again to
+   maintain the user's privacy.
+
 
 <figure id="fig-key-material">
  <table class="data longlastcol">
@@ -1363,6 +1377,14 @@ DAP Identifier, GADI Regional Directory Identifier
 
 
    <dl>
+       :  <dfn>AVC</dfn>
+       :: <dfn>Anonymous Verifiable Credential</dfn>.  This is a
+            special case of a <a>Verifiable Credential</a> when the
+            included claims to not uniquely identify any specific
+            user.  For example a credential that just proof the user
+            is older than 21.
+
+
        : <dfn>Cloud Agent</dfn>
        :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
             <a href="https://ec.europa.eu/digital-single-market/en/trust-services">eIDAS Trust Service Providers</a>.
@@ -1376,10 +1398,10 @@ DAP Identifier, GADI Regional Directory Identifier
        :: Human readabe <a>Digital Address</a> of the <a>User</a>
             (e.g. blackbird@issuer.dap.gadi.org).
 
-            Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
-            name - "fun" names are allowed and recommended. However, real
-            names are still allowed and the GADI system doesn't check
-            whether users use them.
+Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
+      name - "fun" names are allowed and recommended. However, real
+      names are still allowed and the GADI system doesn't check
+      whether users use them.
 
 
        : <dfn>DAP_USER_ID</dfn>
@@ -1409,8 +1431,16 @@ DAP Identifier, GADI Regional Directory Identifier
        : <dfn>DID</dfn>
        :: Decentralized Identifier according to [[!did-core]]
 
+       : <dfn>DIDDoc-USER</dfn>
+       :: DID document binding the user's public key to the <a>DAP_USER_ID</a>.
+
        : <dfn>GADI</dfn>
        :: Global Architecture for Digital IDentity. See [[GADI-API]] for the DAP API.
+
+       : <dfn>GADI Regional</dfn>
+       ::
+
+Issue: TODO.
 
        : <dfn>GADI_ID</dfn>
        :: The <a>GADI</a> IDentity, i.e. the the W3C DID style identifier for the <a>GADI</a>.
@@ -2299,25 +2329,40 @@ Goal of this operation is to provide some identity attributes related to the use
   These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
   We always use <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
 
+Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
+
+
 We distinguish 2 different types of <a>verifiable credential</a>s:
-1. Credentials that include sufficient personal identifiable information to uniquely identify the user and
-2. Credentials that don't. For example just stating that the user is older than 21.
+1. Credentials that include sufficient personal identifiable
+    information to uniquely identify the user (identifying credentials) and
+2. Credentials that don't (anonymous credentials). For example just stating that the user is older than 21.
+
 
 In both cases, a public key is typically linked to the <a>verifiable credential</a> via the subject's DID document (see example 2 in [[did-core]]).
   It is used as a proxy for the user, meaning anyone that can proof access of the related private key is assumed to be the user.
   Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
-  temporary use key, that is included in order to allow the <a>SP</a> to detect which subject the attributes relate to.
+  single-time use key, that is included in order to allow the
+  <a>SP</a> to recognize the subject the attributes relate to.
 
-Issue: This is true for case 1, but how does it work in case 2?
+
+### Presentation and Verification of "Identifing" Credentials ### {#sctn-iden-creds}
 
 <figure id="fig-vc-presentation-and-verification-option-1">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
 
-Issue: For an anonymous verifiable presentation, we need to run some "join" protocol between the <a>DAA</a> and/or <a>Cloud Agent</a> and the <a>DAP</a>/GADI system.
 
-Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAP</a>).  And in the next step how to verify whether <a>DAP_ID_PK</a> is trustworthy or not.
+### Presentation and Verification of "Anonymous" Credentials ### {#sctn-anon-creds}
+
+A key that is used for this operation only is created by the user's
+Cloud Agent.
+
+<figure id="fig-vc-presentation-and-verification-option-2">
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-2.svg"/>
+    <figcaption>Verifiable Presentation and Verification (Option 2: Anonymous)</figcaption>
+</figure>
+
 
 
 ## User Consents ## {#sctn-user-consents}
@@ -2508,7 +2553,7 @@ Issue: What do you mean with Add Delete Entry to DLT?  The *existing* Entry need
 Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAP</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
 
 Note: I have added this as an optional step in the sequence diagram. My personal opinion is that all issuers that have issued non-expired VCs MUST be notified. Whether they act or not in
-deleting the VC from their local storage is defined by Governance and retentional policies defined by the Issuers themselves
+    deleting the VC from their local storage is defined by Governance and retentional policies defined by the Issuers themselves
 
 Issue: Is it expected that VCs are not deleted?
 
