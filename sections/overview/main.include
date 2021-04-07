@@ -344,29 +344,7 @@ A Trust Anchor uniquely maps a User's <a>Digital Address</a> and a DAP assigned 
 
 The GADI Directories, for regulatory purposes and user privacy, do not store any personal information about a user or an entity.
 Directories support the ability to of a user’s right to be forgotten
-in many jurisdiction. GADI Regional and GADI Global Directories MUST support
-on-chain and off-ledger storages:
-* A privacy preserving distributed database that holds the <a>HIDA</a>
-* A DLT holding the Trust Anchor and any metadata relating to the <a>Digital Address</a>es
-
-### Trust Anchor Format ### {#sctn-ta-format}
-[NORMATIVE]
-
-A Trust Anchor is an opaque string with no logic embedded. It is a technical identifier to the <a>Digital Address</a> metadata. The format is specified as follows:
-
-<pre class="highlight">
-  <code>
-    234345456AABCCC23456456456DSDS
-  </code>
-</pre>
-
-A Trust Anchor has the following constraints:
-
-* MUST contain a minimum of 36 alpha-numeric characters.
-* MUST be unique to a DAP.
-* MAY NOT contain certain special characters
-
-
+in many jurisdiction.
 
 
 ## Digital Address ## {#sctn-digital-address}
@@ -383,33 +361,6 @@ Their role is specifically limited to easing participant-onboarding processes.
 
 The creation of a <a>Digital Address</a> is a vitally important step in ensuring there is both trust and accountability within the GADI ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises; organizations that are central to the trust economy.
 
-### Digital Address Format ### {#sctn-da-format}
-[NORMATIVE]
-
-<a>Digital Address</a> is an user friendly mnemonic that maps to a technical identifier, the DID for the user. The format is specified as follows:
-
-<pre class="highlight">
-  <code>
-    Alphanumeric@HomeDAPIdentifier
-  </code>
-</pre>
-
-<a>Digital Address</a> prefix has the following constraints:
-
-* MUST contain a minimum of 8 alpha-numeric characters.
-* MUST be no longer than 16 characters.
-* MUST be unique to a DAP.
-* MAY contain certain special characters (will this be allowed? what would the set be?)
-* SHOULD be human-readable and memorable.
-* The Separator MUST be an @ sign.
-
-The <a>Digital Address</a> postfix:
-* MUST contain the HomeDAP identifier.
-
-Example:
-<code>
-  steve77@MRVL
-</code>
 
 
 ### Only One Digital Address Per User ### {#sctn-da-uniqueness}
@@ -521,372 +472,12 @@ GADI Directories ensure uniqueness of the listed users. This is done by ensuring
 
 Each directory MUST have a process to follow when users cannot be uniquely identified either during addition of a user to the directory or during lookup of a user within the directory.
 
-#### Hashed Attributes
-[NORMATIVE]
-
-Directories (MAY/MUST TBD) only store hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
-
-Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the GADI regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
-
-#### Digital address #### {#sctn-gadi-global-da}
-[NORMATIVE]
-
-<a>Digital Address</a>es function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user.
-
-<a>Digital Address</a>es may contain PII, but the user MUST be warned if they choose one containing PII and MUST be allowed to choose a digital address that does not contain PII.
-
-A single user MAY have multiple digital addresses that all link to the same user in the directory. Any of the linked digital addresses can be used to identify the user. Digital addresses do not function as a mechanism of uniqueness.
-
-#### Listing Modifications #### {#sctn-gadi-global-modifications}
-[INFORMATIVE]
-
-Users are listed in a directory by creating a DIDComm connection with the directory, then presenting credentials containing attributes issued by an acceptable issuer as determined by the governance framework.
-
-The user lists a digital address by communicating that intent over the DIDComm connection with the directory.
-
-When the user desires to be removed from the directory, they indicate that over the existing DIDComm connection.
-
-These interactions are all detailed in the associated protocols summarized and linked below.
-
 #### Directory Querying #### {#sctn-gadi-global-directory-query}
 [INFORMATIVE]
 
 A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the user identified. The DID provided is created by the user’s agent, and provided to the directory for the purpose of returning to the party querying the directory. The user’s agent is notified of which party identified them in the directory.
 
 The protocols for querying users are summarized and linked below.
-
-#### Logging requirements #### {#sctn-gadi-global-logging}
-[INFORMATIVE]
-
-Directories MUST log all listing modifications and queries.
-
-#### Protocols for interaction #### {#sctn-gadi-global-protocol}
-Existing
-
-##### DID Exchange ##### {#sctn-gadi-global-did-exchange}
-
-New
-##### Credential Listing ##### {#sctn-gadi-global-credential-message}
-[NORMATIVE]
-
-    <dl>
-        : CredentialListingUpdate //do we just add, or can we remove old listed things?
-        :: Credential // how does this interface with credential exchange?
-
-        : CredentialListingUpdateError
-        :: Invalid Credential
-        :: Duplicate detected
-
-        : CredentialListingRemove
-    </dl>
-
-##### Directory Query ##### {#sctn-gadi-global-query-message}
-[NORMATIVE]
-
-// should this be a ‘one match only’ query protocol? As opposed to a directory that will return multiple matches?
-    <dl>
-        : DirectorySingleQuery directory
-        :: Attributes
-        : DirectorySingleResult
-        :: DID
-        : DirectorySingleEmpty // or is this a case of Result?
-        : DirectorySingleConflict
-        :: Attributes needed to resolve multiple answers
-    </dl>
-
-##### Trust Anchor Protocol ##### {#sctn-gadi-global-query-message}
-[NORMATIVE]
-
-    <dl>
-        : Trust Anchor Protocol
-
-            This protocol facilitates the retrieval of a Trust Anchor for the purposes of identifying unique registrants in a directory. Each directory is responsible for maintaining uniqueness in a directory, and creates a unique identifier for each party listed. This trust anchor is the same no matter how the user is identified.
-
-            Trust Anchors have been kept isolated from the other directory related protocols to allow specific permissioning to use trust anchors.
-
-        : Participants
-
-            **Directory** - Maintains connections to a user, alongside the DIDs issued to each service for the user, and each user's Trust Anchor.
-            **Service** - The party requesting the Trust Anchor.
-            **User** - Receives notification about Trust Anchor release.
-
-
-        : Protocol
-
-            **Name**: TrustAnchor v0.1
-            **Protocol Type URI**:
-            ```http://<protocolhost>/trustanchor/0.1/```
-
-        : Prerequisites
-
-            Prior to use of this protocol, the Service must have received a DID for a user from the directory. This may be accomplished with the Digital Address protocol or similar. This requires that the user must have registered with the Directory.
-
-            The Directory MUST have requirements for which Services it will allow to receive Trust Anchors. Qualification of those services should be performed prior to serving `Retrieve` requests. The process of qualifying those services is outside the scope of this protocol.
-
-        : Messages
-
-        :: Request
-            Sent by the Service to the Directory.
-            - `did` - The DID of the user for which the Service is requesting a Trust Anchor.
-
-            ```json
-            {
-                "@id": "978654364758"
-                "@type": "http://<protocolhost>/trustanchor/0.1/request",
-                "did": "did:example:userdid"
-            }
-            ```
-
-        :: Release
-            Sent by the Directory to the Service in response to a `Request`.
-            - `did` - The DID of the user for which the Service is requesting a Trust Anchor.
-            - `trust_anchor` - The Trust Anchor of the user.
-
-            ```json
-            {
-                "@id": "4568765",
-                "~thread": {
-                    "thid": "978654364758",
-                },
-                "@type": "http://<protocolhost>/trustanchor/0.1/release",
-                "did": "did:example:userdid",
-                "trustanchor": "exampletrustanchor@directory"
-            }
-            ```
-
-        :: ReleaseNotification
-            - `trust_anchor` - The Trust Anchor which was released corresponding to the DID which was requested.
-            - `did` - DID for which the Trust Anchor was requested.
-            - `service_did` - DID of the service requesting Trust Anchor resolution.
-
-            ```json
-            {
-                "@id": "34252435",
-                "@type": "http://<protocolhost>/trustanchor/0.1/releasenotification",
-                "did": "did:example:userdid",
-                "trust_anchor": "exampletrustanchor@directory",
-                "service_did": "did:of:service"
-            }
-            ```
-
-        :: Error
-            Sent by the Directory to the Service in response to a `resolve` message when a match is not found for the provided DID.
-            - `did` - DID sent in request
-            - `reason` - the reason for the error.
-                - DID Not Found
-                - Not Authorized
-
-            ```json
-            {
-                "@id": "06798607980769",
-                "~thread": {
-                    "thid": "978654364758",
-                },
-                "@type": "http://<protocolhost>/trustanchor/0.1/unknown",
-                "did": "did:example:userdid",
-                "reason": "DID Not Found"
-            }
-            ```
-
-        : Notes
-            - This protocol requires that Directories retain a record of which user's DID was released to which party. When a Trust Anchor Request is made, it must only disclose the user's Trust Anchor to a party that has previously been given a DID for that user, and qualifies for the trusted role.
-
-        : Issues
-            - What is necessary to identify a service?
-            - Does the user benefit from having the Trust Anchor value released to them?
-
-    </dl>
-
-##### Digital Address Protocol ##### {#sctn-gadi-global-da-message}
-[NORMATIVE]
-
-Issue: Digital Address as username? Keep this protocol separate?
-
-    <dl>
-        : Digital Address Protocol
-
-        : Overview
-            This protocol is used between mulitple parties to manage the registration and lookup of a Digital Address, unique to the GADI Ecosystem.
-
-            Digital Addresses are a human friendly string that facilitates the retrieval of a DID for the user who presents the Digital Address.
-
-        :: Participants
-
-            **Directory** - Maintains connections to a user, alongside the Digital Address(es) registered by the user. Retrieves DIDs from the User and distributes them to Services upon match of a Digital Address.
-            **User** - Connects to the directory and registers Digital Addresses. Provides DIDs to the directory for distribution to Services who look up the Digital Address.
-            **Service** - The party who looks up the Digital Address, after having received the Digital Address from the User. (Not the right name.)
-
-        :: Protocol
-
-            **Name**: DigitalAddress v0.1
-            **Protocol Type URI**:
-            ```http://<protocolhost>/digitaladdress/0.1/```
-
-        :: Prerequisites
-
-            Prior to use of this protocol, the User needs to have a relationship with the Directory.
-
-            The Directory may have requirements to satisfy regarding which users they will serve with Digital Address lookup. The process of verifying users should be performed prior to use of this protocol by the User, and is outside the scope of this protocol.
-
-            The Directory may also have requirements for which Services it will allow to submit queries. Qualification of those services should be performed prior to serving `Resolve` requests. The process of qualifying those services is outside the scope of this protocol.
-
-        : Messages
-
-        :: Register
-            Sent by the User to the Directory.
-            Sent once per Digital Address being registered.
-            - `digital_address` - The Digital Address to register with the Directory.
-
-            ```json
-            {
-                "@id": "978654364758"
-                "@type": "http://<protocolhost>/digitaladdress/0.1/register",
-                "digital_address": "exampledigitaladdress"
-            }
-            ```
-
-        :: Remove
-            Sent by the User to the Directory. This comprises the request to remove a previously
-            - `digital_address`
-
-            ```json
-            {
-                "@id": "4568765"
-                "@type": "http://<protocolhost>/digitaladdress/0.1/remove",
-                "digital_address": "exampledigitaladdress"
-            }
-            ```
-
-        :: RegistrationStatus
-            Sent by the Directory to the User after a registration has changed
-            - `digital_address`
-            - `status` ['registered', 'removed', 'duplicate', 'rejected', 'unknown']
-                - registered: Newly submitted address has been properly registered.
-                - removed - digital_address has been removed.
-                - duplicate - Register message specifies a digital_address registered to another user.
-                - rejected - Register message specifies a digital_address that has been rejected by the Directory.
-                - unknown - Remove specifies a digital address not registered to the user who sent the message.
-
-            ```json
-            {
-                "@id": "123476432"
-                "~thread": {
-                    "thid": "978654364758",
-                },
-                "@type": "http://<protocolhost>/digitaladdress/0.1/registrationstatus",
-                "digital_address": "exampledigitaladdress",
-                "status": "registered"
-            }
-            ```
-
-        :: DIDRequest
-            - `digital_address` - The Digital Address for which a DID is being requested.
-
-            ```json
-            {
-                "@id": "345674463536"
-                "@type": "http://<protocolhost>/digitaladdress/0.1/didrequest",
-                "digital_address": "exampledigitaladdress"
-            }
-            ```
-
-        :: DID
-            - `did` - The DID to provide to the Service.
-
-            ```json
-            {
-                "@id": "34252435"
-                "~thread": {
-                    "thid": "345674463536",
-                },
-                "@type": "http://<protocolhost>/digitaladdress/0.1/did",
-                "did": "did:example:uniquedid"
-            }
-            ```
-
-        :: DIDReceipt
-            - `digital_address` - The Digital Address for which a DID is being requested.
-            - `did_disclosed` - DID revealed to the other party.
-            - `service_did` - DID of the service requesting Digital Address resolution.
-
-            ```json
-            {
-                "@id": "34252435"
-                "~thread": {
-                    "thid": "345674463536",
-                },
-                "@type": "http://<protocolhost>/digitaladdress/0.1/didreceipt",
-                "did_disclosed": "did:example:uniquedid",
-                "digital_address": "exampledigitaladdress",
-                "service_did": "did:of:service"
-            }
-            ```
-
-        :: Resolve
-            Sent by a Service to the Directory to retrieve a DID for the supplied digital_address. The digital address will be provided to the Service outside this protocol.
-            - `digital_address`
-
-            ```json
-            {
-                "@id": "202102189"
-                "@type": "http://<protocolhost>/digitaladdress/0.1/resolve",
-                "digital_address": "exampledigitaladdress"
-            }
-            ```
-
-        :: ResolutionResult
-            Sent by the Directory to the Service in response to a `resolve` message when a match is found.
-            - `digital_address`
-            - `did`
-
-            ```json
-            {
-                "@id": "06798607980769"
-                "~thread": {
-                    "thid": "202102189",
-                },
-                "@type": "http://<protocolhost>/digitaladdress/0.1/resolutionresult",
-                "digital_address": "exampledigitaladdress",
-                "did": "did:example:uniquedid"
-            }
-            ```
-
-        :: Unknown
-            Sent by the Directory to the Service in response to a `resolve` message when a match is not found for the provided digital_address.
-            - `digital_address`
-
-            ```json
-            {
-                "@id": "06798607980769"
-                "~thread": {
-                    "thid": "202102189",
-                },
-                "@type": "http://<protocolhost>/digitaladdress/0.1/unknown",
-                "digital_address": "exampledigitaladdress"
-            }
-            ```
-
-        : Notes
-            - This protocol assumes that the Directory will retrieve and cache DIDs for sending to Services. The Directory will then notifiy the User which DID was disclosed to which Service, and for which Digital Address. An adjustment to this protocol could include real-time requests for disclosure, which has different consent properties.
-
-        : Issues
-            - What is necessary to identify a service?
-
-    </dl>
-
-    <dl>
-        : DirectoryDIDRequest // get DID to later disclose
-        :: Who gets it (optional, for cache if omitted)
-        : DirectoryDIDAllocate //grant?
-        :: DID
-        : DirectoryDIDReceipt //already happened
-        :: Who got it.  (DID? Attributes)
-        :: Which DID.
-        :: Which Digital Address  / attribute set
-
-        :: //discovery? Is there a way to discover a directory schema prior to listing or querying?
-        :: //did or invitation? Kind of same thing? Rotation expected?
-    </dl>
 
 
 ### Interchange ### {#sctn-gadi-role-interchange}
@@ -907,20 +498,6 @@ The DAP may host a set of user-focused wallet storage and secure communication a
 Each entity's Agent holds cryptographic keys and digital credentials on behalf of the participant. The agent also manages the participant’s connections with services in the ecosystem. It maintains the participant’s directory listings and requests for unique DIDs when a new connection is made.
 The Agent is configured with and uses machine-readable governance framework documents as policy for automatically accepting or rejecting credential interactions. When necessary, the agent will communicate with the participant through a secure channel and obtain consent. Participants authenticate to the Agent via FIDO when consent is required.
 All interactions through the agent are logged and available for inspection by the entity.
-
-##### Scope ##### {#sctn-dap-scope}
-[INFORMATIVE]
-
-A DAP must:
-
-* Onboard trusted Issuers and Service Providers to the system.
-* Assign trusted identifiers to participating entities in the closed-ecosystem.
-* Enable storage and retrieval of credential metadata to trusted issuers.
-* Provide a mechanism to create and publish a <a>Digital Address</a>.
-* Provide authentication services to users with their <a>Digital Address</a>es.
-* Provide discovery services to identify and connect issuers, service providers and users securely.
-* Meeting regulatory and compliance requirements in various geography and jurisdiction.
-
 
 ##### Components ##### {#sctn-dap-components}
 [INFORMATIVE]
@@ -986,20 +563,6 @@ Issue: Content copied as-is from Indicio's recommendations. Add details for Paym
 GADI Architecture trust between entities is brokered by the DAP. Issuers of a Verified Credential are separated from
 the Service Providers (verifiers of a credentials) with a level of trust. Issuers are also custodians of an issued credentials but owned by the user it is issued to.
 
-#### Scope #### {#sctn-issuer-scope}
-
-A Trusted Issuer must:
-* Use an approved method or process to create a unique Trust Anchor based on Identity attributes for a new or existing user in a scope.
-* Detect the presence of a Trust Anchor in the GADI ecosystem.
-* Use an approved method or process to Create and Lookup a unique <a>Digital Address</a> for the User.
-* Provide mechanism to link a <a>Digital Address</a> for existing users.
-* Certify the KYC process for the entity and determine Assurance Levels for issued credential using an approved method or process.
-* Onboard users to issuer systems using a <a>Digital Address</a> with the holder’s consent.
-* Issue/reissue or revoke one or more Verifiable Credentials to the holder of a <a>Digital Address</a>
-* Persist Verifiable credential in a secure storage (VC Storage)
-* Publish credential metadata to the <a>Digital Address</a> Provider and user of the <a>Digital Address</a>.
-* Verify proof requests from Service Providers or other entities for credentials of the holder with a <a>Digital Address</a>.
-
 #### Components #### {#sctn-issuer-components}
 
 The core components of an Issuer are:
@@ -1029,16 +592,6 @@ defined by Service Providers from one or more Credential Schema published by Tru
 
 Service Providers take a risk-based approach based on their enterprise needs and risk management policies before accepting the Verifiable Presentations made by the User.
 
-
-#### Scope #### {#sctn-serviceprovider-scope}
-
-A Service Provider must:
-
-* Accept and verify a <a>Digital Address</a> for a user in multiple forms - QR code, a user friendly moniker or a smart card.
-* Request for proofs on one or more user claims using a credential schema.
-* Accept responses to proof requests from one or more trusted Issuers in the ecosystem.
-* Determine acceptable Assurance Levels for credentials and define policies based on risk tolerance of the organization.
-* Grant or deny services to a user based on risk-based policies.
 
 #### Components #### {#sctn-serviceprovider-components}
 
@@ -1097,203 +650,6 @@ The types of actors that interact with the Mobile App are described below:
 * *Service Provider Admin*: Configures rules to evaluate one or more credentials based on the available credential schema. Requests proofs and verifies the credentials.
 
 
-
-## Trust Model ## {#sctn-trust-model}
-[INFORMATIVE]
-
-Issue: Describe what is verified by whom, what kind of objects
-   ("credentials") are being created and what kind of identifiers they
-   bind together (e.g. public keys and digital addresses, ...).
-
-Issue: Distinguish Base/Peer-DIDDoc-USER and Pair-wise-Use
-    DIDDoc-USER.  All DIDDoc-USER are stored off-ledger.  We use ZKP
-    algs all over.
-
-
-<figure id="fig-gadi-trust-model">
-    <img src="images/gadi-trust-model.svg"/>
-    <figcaption>GADI Trust Model</figcaption>
-</figure>
-
-Issue: Will have to specify the assurance level to which the claims
-    have been verified by the issuer.  Similarly for the other
-    entities (e.g. DAP, Issuer, ...). See ASSURANCE_LEVEL in
-    <a>DigitalAddress</a> and in <a href="#sctn-credential-metadata">Credential Metadata</a>.
-
-When verifying a verifiable presentation of a verifiable credential,
-the following objects need to be verified:
-1. <a>Verifiable Presentation</a>, i.e. an object containing a
-    <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
-    or Derived Data (in the case of ZKP) (<a
-    href="(e.g. https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
-    and a signature by the subjects's DAP_USER_ID_PK/SK key.
-
-2. <a>Verifiable Credential</a>, i.e. an object containing a
-    <dfn>CredentialSubject</dfn>, an issuer and a signature by the
-    issuer ISSUER_ID_PK/SK key.
-
-3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
-    via the <a>DIDDoc-ISSUER</a>.
-
-4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via
-    the <a>DIDDoc-USER</a>.
-
-
-In the case of <a>Anonymous Verifiable Credential</a>s (e.g. "older than 21"), the
-   <a>DIDDoc-USER</a> is a pair-wise use object and the included
-   <a>DAP_USER_ID_PK</a> is a one-time use key.  Pair-wise use means it is not
-   shared with any other <a>SP</a> and it will typically not even be referenced by
-   another verifiable presentation to the same <a>SP</a> again to
-   maintain the user's privacy.
-
-
-<figure id="fig-key-material">
- <table class="data longlastcol">
-   <thead>
-     <th>Key Name</th>
-     <th>Key Owner</th>
-     <th>Key Holder</th>
-     <th>When Generated</th>
-     <th>How is key tied to Key Owner?</th>
-     <th>How is security level of device maintaining the key attested?</th>
-   </thead>
-   <tbody>
-     <tr>
-       <td><dfn>GADI_ID_PK</dfn> / <dfn>GADI_ID_SK</dfn></td>
-       <td><a>GADI</a></td>
-       <td><a>GADI</a></td>
-       <td>GADI setup.</td>
-       <td>
-         via a DIDDoc kept in the GADI Global Directory.
-       </td>
-       <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
-       </td>
-     </tr>
-
-     <tr>
-       <td><dfn>GADI_REGIONAL_ID_PK</dfn> / <dfn>GADI_REGIONAL_ID_SK</dfn></td>
-       <td><a>GADI Regional</a></td>
-       <td><a>GADI Regional</a></td>
-       <td>GADI Regional setup.</td>
-       <td>
-         via a DIDDoc kept in the GADI Global Directory.
-       </td>
-       <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
-       </td>
-     </tr>
-
-     <tr>
-       <td><dfn>DAP_ID_PK</dfn> / <dfn>DAP_ID_SK</dfn></td>
-       <td><a>DAP</a></td>
-       <td>
-         DAP Agent
-       </td>
-       <td><a href="#sctn-onboarding-as-dap">Onboarding as DAP</a>
-	</td>
-       <td>
-         via a DIDDoc kept in the GADI Global Directory.
-       </td>
-       <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
-       </td>
-     </tr>
-
-     <tr>
-       <td><dfn>ISSUER_ID_PK</dfn> / <dfn>ISSUER_ID_SK</dfn></td>
-       <td><a>Issuer</a></td>
-       <td>
-	Issuer Agent
-       </td>
-       <td><a href="#sctn-onboarding-as-issuer">Onboarding as an
-            Issuer</a>
-	</td>
-       <td>
-         via a DIDDoc kept in the GADI Global Directory.
-       </td>
-       <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
-       </td>
-     </tr>
-
-     <tr>
-       <td><dfn>SP_ID_PK</dfn> / <dfn>SP_ID_SK</dfn></td>
-       <td><a>Service Provider</a></td>
-       <td>
-         SP Agent
-       </td>
-       <td><a href="#sctn-onboarding-as-serviceprovider">Onboarding as
-            Service Provider</a>
-
-Issue: Need to specify in the sequence diagram when exactly the key is
-   generated and by whom.
-
-	</td>
-       <td>
-         via a DIDDoc kept in the GADI Global Directory.
-       </td>
-       <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
-       </td>
-     </tr>
-
-     <tr>
-       <td><dfn>DAP_USER_ID_PK</dfn> / <dfn>DAP_USER_ID_SK</dfn></td>
-       <td><a>User</a></td>
-       <td>Typically the Cloud Agent (potentially the DAA once we specify
-         the device migration)
-       </td>
-       <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
-           First Issuer</a></td>
-       <td>
-         via a DIDDoc kept in the HomeDAP.
-       </td>
-       <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
-       </td>
-     </tr>
-
-     <tr>
-       <td><dfn>USER_FIDO_PK</dfn> / <dfn>USER_FIDO_SK</dfn></td>
-       <td><a>User</a></td>
-       <td>The <a>User</a>'s FIDO Authenticator, e.g. SecurityKey or
-              platform authenticator on smartphone, tablet or PC.
-       </td>
-       <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
-           First Issuer</a></td>
-       <td>
-
-Issue: Need to clarify whether there is any signed object tying the
-    USER_FIDO_PK to the user's DA.
-
-       </td>
-       <td>
-         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].
-       </td>
-     </tr>
-   </tbody>
- </table>
- <figcaption>Cryptographic Key Material</figcaption>
-</figure>
 
 
 ## Assurance Level ## {#sctn-assurance-level}
@@ -1475,3 +831,200 @@ Issue: TODO.
        :: Metadata of a <a>VC</a>, i.e. <a>DID</a>, VC Schema Name, VC Schema Friendly Name
 
    </dl>
+
+   ## Trust Model ## {#sctn-trust-model}
+   [INFORMATIVE]
+
+   Issue: Describe what is verified by whom, what kind of objects
+      ("credentials") are being created and what kind of identifiers they
+      bind together (e.g. public keys and digital addresses, ...).
+
+   Issue: Distinguish Base/Peer-DIDDoc-USER and Pair-wise-Use
+       DIDDoc-USER.  All DIDDoc-USER are stored off-ledger.  We use ZKP
+       algs all over.
+
+
+   <figure id="fig-gadi-trust-model">
+       <img src="images/gadi-trust-model.svg"/>
+       <figcaption>GADI Trust Model</figcaption>
+   </figure>
+
+   Issue: Will have to specify the assurance level to which the claims
+       have been verified by the issuer.  Similarly for the other
+       entities (e.g. DAP, Issuer, ...). See ASSURANCE_LEVEL in
+       <a>DigitalAddress</a> and in <a href="#sctn-credential-metadata">Credential Metadata</a>.
+
+   When verifying a verifiable presentation of a verifiable credential,
+   the following objects need to be verified:
+   1. <a>Verifiable Presentation</a>, i.e. an object containing a
+       <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
+       or Derived Data (in the case of ZKP) (<a
+       href="(e.g. https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
+       and a signature by the subjects's DAP_USER_ID_PK/SK key.
+
+   2. <a>Verifiable Credential</a>, i.e. an object containing a
+       <dfn>CredentialSubject</dfn>, an issuer and a signature by the
+       issuer ISSUER_ID_PK/SK key.
+
+   3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
+       via the <a>DIDDoc-ISSUER</a>.
+
+   4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via
+       the <a>DIDDoc-USER</a>.
+
+
+   In the case of <a>Anonymous Verifiable Credential</a>s (e.g. "older than 21"), the
+      <a>DIDDoc-USER</a> is a pair-wise use object and the included
+      <a>DAP_USER_ID_PK</a> is a one-time use key.  Pair-wise use means it is not
+      shared with any other <a>SP</a> and it will typically not even be referenced by
+      another verifiable presentation to the same <a>SP</a> again to
+      maintain the user's privacy.
+
+
+   <figure id="fig-key-material">
+    <table class="data longlastcol">
+      <thead>
+        <th>Key Name</th>
+        <th>Key Owner</th>
+        <th>Key Holder</th>
+        <th>When Generated</th>
+        <th>How is key tied to Key Owner?</th>
+        <th>How is security level of device maintaining the key attested?</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td><dfn>GADI_ID_PK</dfn> / <dfn>GADI_ID_SK</dfn></td>
+          <td><a>GADI</a></td>
+          <td><a>GADI</a></td>
+          <td>GADI setup.</td>
+          <td>
+            via a DIDDoc kept in the GADI Global Directory.
+          </td>
+          <td>
+
+   Issue: Need to clarify how the security characteristics of the
+       cryptographic device generating and using the key are attested.
+
+          </td>
+        </tr>
+
+        <tr>
+          <td><dfn>GADI_REGIONAL_ID_PK</dfn> / <dfn>GADI_REGIONAL_ID_SK</dfn></td>
+          <td><a>GADI Regional</a></td>
+          <td><a>GADI Regional</a></td>
+          <td>GADI Regional setup.</td>
+          <td>
+            via a DIDDoc kept in the GADI Global Directory.
+          </td>
+          <td>
+
+   Issue: Need to clarify how the security characteristics of the
+       cryptographic device generating and using the key are attested.
+
+          </td>
+        </tr>
+
+        <tr>
+          <td><dfn>DAP_ID_PK</dfn> / <dfn>DAP_ID_SK</dfn></td>
+          <td><a>DAP</a></td>
+          <td>
+            DAP Agent
+          </td>
+          <td><a href="#sctn-onboarding-as-dap">Onboarding as DAP</a>
+   	</td>
+          <td>
+            via a DIDDoc kept in the GADI Global Directory.
+          </td>
+          <td>
+
+   Issue: Need to clarify how the security characteristics of the
+       cryptographic device generating and using the key are attested.
+
+          </td>
+        </tr>
+
+        <tr>
+          <td><dfn>ISSUER_ID_PK</dfn> / <dfn>ISSUER_ID_SK</dfn></td>
+          <td><a>Issuer</a></td>
+          <td>
+   	Issuer Agent
+          </td>
+          <td><a href="#sctn-onboarding-as-issuer">Onboarding as an
+               Issuer</a>
+   	</td>
+          <td>
+            via a DIDDoc kept in the GADI Global Directory.
+          </td>
+          <td>
+
+   Issue: Need to clarify how the security characteristics of the
+       cryptographic device generating and using the key are attested.
+
+          </td>
+        </tr>
+
+        <tr>
+          <td><dfn>SP_ID_PK</dfn> / <dfn>SP_ID_SK</dfn></td>
+          <td><a>Service Provider</a></td>
+          <td>
+            SP Agent
+          </td>
+          <td><a href="#sctn-onboarding-as-serviceprovider">Onboarding as
+               Service Provider</a>
+
+   Issue: Need to specify in the sequence diagram when exactly the key is
+      generated and by whom.
+
+   	</td>
+          <td>
+            via a DIDDoc kept in the GADI Global Directory.
+          </td>
+          <td>
+
+   Issue: Need to clarify how the security characteristics of the
+       cryptographic device generating and using the key are attested.
+
+          </td>
+        </tr>
+
+        <tr>
+          <td><dfn>DAP_USER_ID_PK</dfn> / <dfn>DAP_USER_ID_SK</dfn></td>
+          <td><a>User</a></td>
+          <td>Typically the Cloud Agent (potentially the DAA once we specify
+            the device migration)
+          </td>
+          <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
+              First Issuer</a></td>
+          <td>
+            via a DIDDoc kept in the HomeDAP.
+          </td>
+          <td>
+
+   Issue: Need to clarify how the security characteristics of the
+       cryptographic device generating and using the key are attested.
+
+          </td>
+        </tr>
+
+        <tr>
+          <td><dfn>USER_FIDO_PK</dfn> / <dfn>USER_FIDO_SK</dfn></td>
+          <td><a>User</a></td>
+          <td>The <a>User</a>'s FIDO Authenticator, e.g. SecurityKey or
+                 platform authenticator on smartphone, tablet or PC.
+          </td>
+          <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
+              First Issuer</a></td>
+          <td>
+
+   Issue: Need to clarify whether there is any signed object tying the
+       USER_FIDO_PK to the user's DA.
+
+          </td>
+          <td>
+            FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <figcaption>Cryptographic Key Material</figcaption>
+   </figure>
