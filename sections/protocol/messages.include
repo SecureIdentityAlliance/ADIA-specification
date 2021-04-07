@@ -118,6 +118,31 @@
 
 ### DigitalAddress ### {#sctn-protocol-message-digital-address}
 
+<a>Digital Address</a> is an user friendly mnemonic that maps to a technical identifier, the DID for the user. The format is specified as follows:
+
+<pre class="highlight">
+  <code>
+    Alphanumeric@HomeDAPIdentifier
+  </code>
+</pre>
+
+<a>Digital Address</a> prefix has the following constraints:
+
+* MUST contain a minimum of 8 alpha-numeric characters.
+* MUST be no longer than 16 characters.
+* MUST be unique to a DAP.
+* MAY contain certain special characters (will this be allowed? what would the set be?)
+* SHOULD be human-readable and memorable.
+* The Separator MUST be an @ sign.
+
+The <a>Digital Address</a> postfix:
+* MUST contain the HomeDAP identifier.
+
+Example:
+<code>
+  steve77@MRVL
+</code>
+
 <table class="data longlastcol">
   <thead>
     <th>Attibute</th>
@@ -242,6 +267,24 @@
 
 
   ### TrustAnchor ### {#sctn-protocol-message-trust-anchor}
+
+  [NORMATIVE]
+
+  Trust Anchor is an opaque string with no logic embedded. It is a technical identifier to the <a>Digital Address</a> metadata. The format is specified as follows:
+
+  <pre class="highlight">
+    <code>
+      234345456AABCCC23456456456DSDS
+    </code>
+  </pre>
+
+  A Trust Anchor has the following constraints:
+
+  * MUST contain a minimum of 36 alpha-numeric characters.
+  * MUST be unique to a DAP.
+  * MAY NOT contain certain special characters
+
+
 
   <table class="data longlastcol">
     <thead>

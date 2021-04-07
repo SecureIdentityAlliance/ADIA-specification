@@ -1,0 +1,16 @@
+# Security Considerations # {#sctn-security-considerations}
+[INFORMATIVE]
+
+
+## Storage of Trust Anchor and Digital Address## {#sctn-storage-ta-da}
+
+Issue: Details for Trust Anchor and Digital Address Storage
+
+
+## Recovery of Trust Anchor and Digital Address ## {#sctn-recovery-trust-anchor}
+
+Issue: Details for Trust Anchor Recovery
+
+## Cryptographic Suites ## {#sctn-cryptographic-suite}
+
+Issue: Details for Cryptographic Suites

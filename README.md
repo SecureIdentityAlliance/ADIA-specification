@@ -1,7 +1,7 @@
-# DID-specification
+# Accountable Digital Identity Architecture Specification
 Main specification repository
 
-To view the latest editor draft, see https://did-spec.dev.digitaltrust.net/GADI-overview.html 
+To view the latest editor draft, see https://did-spec.dev.digitaltrust.net/GADI-overview.html
 
 The clone the repository locally:
 1. Click on "Code" and copy the HTTPS-URL -or- choose "Open with GitHub Desktop" (see note below)
