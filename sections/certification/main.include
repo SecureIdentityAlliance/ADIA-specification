@@ -1,0 +1,23 @@
+# Certification # {#sctn-certification}
+[INFORMATIVE]
+
+## DAP Certification ## {#sctn-certification-dap}
+
+Issue: Description/ sequence diagram for DAP Certification
+
+
+## Digital Address Issuer Certification ## {#sctn-certification-da-issuer}
+
+Issue: Description/ sequence diagram for Digital Address Issuer Certification
+
+## Credential Issuer Certification ## {#sctn-certification-credential-issuer}
+
+Issue: Description/ sequence diagram for Credential Issuer Certification
+
+## Identity Escrow Certification ## {#sctn-certification-identity-escrow}
+
+Issue: Description/ sequence diagram for Identity Escrow Certification
+
+## Payment Broker Certification ## {#sctn-certification-payment-broker}
+
+Issue: Description/ sequence diagram for Payment Broker Certification
