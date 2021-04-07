@@ -127,7 +127,7 @@ Issue: Distinguish two different cases: (1) DA Issuer and VC Issuer are part of 
 Issue: Description and sequence for user initiated Issuance
 
 
-## Verifiable Credential Presentation and Verification ## {#sctn-vc-presentation-and-verification-1}
+## Verifiable Credential Presentation ## {#sctn-vc-presentation-and-verification-1}
 
 Goal of this operation is to provide some identity attributes related to the user with the Service Provider (<a>SP</a>).
   These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
@@ -149,7 +149,7 @@ In both cases, a public key is typically linked to the <a>verifiable credential<
   <a>SP</a> to recognize the subject the attributes relate to.
 
 
-### Presentation and Verification of "Identifing" Credentials ### {#sctn-iden-creds}
+### Presentation of "Identifing" Credentials ### {#sctn-iden-creds}
 
 <figure id="fig-vc-presentation-and-verification-option-1">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
@@ -157,7 +157,7 @@ In both cases, a public key is typically linked to the <a>verifiable credential<
 </figure>
 
 
-### Presentation and Verification of "Anonymous" Credentials ### {#sctn-anon-creds}
+### Presentation "Anonymous" Credentials ### {#sctn-anon-creds}
 
 A key that is used for this operation only is created by the user's
 Cloud Agent.
@@ -279,17 +279,7 @@ Issue: Need more detail on the restored Assurance Level for the User and issued 
 
 ## User Device Management ## {#sctn-device-management}
 
-### User Bootstraps Additional DAA Instance "New Phone" ### {#sctn-user-bootstraps-addtl-daa-instance-1}
-The user got a new smartphone with the working <a>DAA</a>
-instance.  This is about bootstrapping the new <a>DAA</a> on the additional
-smartphone - <i>while still</i> having access to the old <a>DAA</a> instance.
-
-<figure id="fig-user-bootstraps-addtl-daa-instance">
-    <img src="sequence-diagrams/User-bootstrap-addtl-DAA-instance.svg"/>
-    <figcaption>User Bootstraps Additional DAA Instance "New Phone"</figcaption>
-</figure>
-
-### User Bootstraps New DAA Instance "Lost Phone" ### {#sctn-user-bootstraps-new-daa-instance-1}
+### Bootstrap a New DAA Instance - Lost Phone ### {#sctn-user-bootstraps-new-daa-instance-1}
 
 The user has lost his smartphone with the working <a>DAA</a> instance.
 This is about bootstrapping the new <a>DAA</a> on the new smartphone -
@@ -304,6 +294,15 @@ Issue: requiring ID Proofing looks expensive here. Are there methods without tha
 
 Issue: Do we want <a>DAP</a> to perform the ID proofing - not the <a>Issuer</a>?
 
+### Bootstrap Additional DAA Instance - New Phone ### {#sctn-user-bootstraps-addtl-daa-instance-1}
+The user got a new smartphone with the working <a>DAA</a>
+instance.  This is about bootstrapping the new <a>DAA</a> on the additional
+smartphone - <i>while still</i> having access to the old <a>DAA</a> instance.
+
+<figure id="fig-user-bootstraps-addtl-daa-instance">
+    <img src="sequence-diagrams/User-bootstrap-addtl-DAA-instance.svg"/>
+    <figcaption>User Bootstraps Additional DAA Instance "New Phone"</figcaption>
+</figure>
 
 ### User Initiated Digital Address Creation (Remote) ### {#sctn-user-initiated-da-remote}
 

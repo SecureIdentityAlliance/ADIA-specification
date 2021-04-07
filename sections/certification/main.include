@@ -83,16 +83,3 @@ A Service Provider must:
 * Accept responses to proof requests from one or more trusted Issuers in the ecosystem.
 * Determine acceptable Assurance Levels for credentials and define policies based on risk tolerance of the organization.
 * Grant or deny services to a user based on risk-based policies.
-
-
-## Credential Issuer Certification ## {#sctn-certification-credential-issuer}
-
-Issue: Description/ sequence diagram for Credential Issuer Certification
-
-## Identity Escrow Certification ## {#sctn-certification-identity-escrow}
-
-Issue: Description/ sequence diagram for Identity Escrow Certification
-
-## Payment Broker Certification ## {#sctn-certification-payment-broker}
-
-Issue: Description/ sequence diagram for Payment Broker Certification
