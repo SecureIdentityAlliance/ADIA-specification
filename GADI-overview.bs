@@ -8,10 +8,13 @@ Status: ED
 Group: fido
 URL:
 Editor: Ramesh Kesanupalli, ramesh@digitaltrust.net
+Editor: Abbie Barbir, BarbirA@cvshealth.com
 Editor: Rolf Lindemann, rolf@noknok.com
 Editor: Suresh Batchu, suresh@digitaltrust.net
 Editor: Kiran Addepalli, kiran@digitaltrust.net
-
+Editor: Ken Ebert, ken@indicio.tech
+Editor: Sam Curren, sam@indicio.tech
+Editor: Sunghoon Choi, shchoi@raoncorp.com
 
 
 Abstract: The GADI Specification establishes the foundational technology components to establish a Trustable Identity Framework by providing a unique <a>Digital Address</a> to Human Identities to empower them to distribute Identity information and reinforce Trust and Accountability the in the Digital World.
@@ -37,6 +40,7 @@ spec:webidl; type:interface; text:Promise
   the specification-maturity-appropriate boilerplate -->
 
 # Global Architecture for Digital Identity # {#sctn-gadi}
+[INFORMATIVE]
 
 One of the greatest challenges in any digital identity system is connecting, or binding, a physical identity with a logical identity. The question of how to bind an individual to a digital representation of that individual has proven to be a challenging one
 
@@ -47,6 +51,7 @@ share credentials that have been asserted by an issuer with service
 providers in a verifiable manner.
 
 ## Ecosystem Overview ## {#sctn-ecosystem-overview}
+[INFORMATIVE]
 
 Global Architecture for Digital Identity (GADI) is a decentralized network of networks integrating Regional Directories, Interchanges, Issuers, Service Provider and Users with
 unique Trust Anchors. All entities within the architecture are represented by DIDs.
@@ -76,6 +81,7 @@ These entities and their role in the GADI ecosystem are described in [[#sctn-rol
 
 
 ## GADI Requirements ## {#sctn-reqs}
+[INFORMATIVE]
 
 Issue: We will likely remove this section later.  But for now let's
    keep it as a reference for the requirements th specs needs to meet.
@@ -371,18 +377,21 @@ Issue: Need to specify what functionality/certification is needed to call an app
 
 
 ## Trust Anchor ## {#sctn-trust-anchor}
+[NORMATIVE]
 
 Trust Anchor is a Unique Key for a given entity in the GADI ecosystem. It provides a binding with a Human Identity without storing any personal information.
 A Trust Anchor uniquely maps a User's <a>Digital Address</a> and a DAP assigned DID.
 
 
 The GADI Directories, for regulatory purposes and user privacy, do not store any personal information about a user or an entity.
-Directories support the ability to of a user’s right to be forgotten in many jurisdiction. GADI Regional and GADI Global Directories MUST support
+Directories support the ability to of a user’s right to be forgotten
+in many jurisdiction. GADI Regional and GADI Global Directories MUST support
 on-chain and off-ledger storages:
 * A privacy preserving distributed database that holds the <a>HIDA</a>
 * A DLT holding the Trust Anchor and any metadata relating to the <a>Digital Address</a>es
 
 ### Trust Anchor Format ### {#sctn-ta-format}
+[NORMATIVE]
 
 A Trust Anchor is an opaque string with no logic embedded. It is a technical identifier to the <a>Digital Address</a> metadata. The format is specified as follows:
 
@@ -402,6 +411,7 @@ A Trust Anchor has the following constraints:
 
 
 ## Digital Address ## {#sctn-digital-address}
+[INFORMATIVE]
 
 DIDs are the foundational identifiers of the system but are not
 participant friendly. The <dfn>Digital Address</dfn> is a special GADI identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed.
@@ -415,6 +425,7 @@ Their role is specifically limited to easing participant-onboarding processes.
 The creation of a <a>Digital Address</a> is a vitally important step in ensuring there is both trust and accountability within the GADI ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises; organizations that are central to the trust economy.
 
 ### Digital Address Format ### {#sctn-da-format}
+[NORMATIVE]
 
 <a>Digital Address</a> is an user friendly mnemonic that maps to a technical identifier, the DID for the user. The format is specified as follows:
 
@@ -443,6 +454,7 @@ Example:
 
 
 ### Only One Digital Address Per User ### {#sctn-da-uniqueness}
+[INFORMATIVE]
 
 A user shall not have more than one GADI <a>Digital Address</a>.  To ensure
 this uniqueness, the identity-related traits for a user are verified and hashed by an Issuer Agent.
@@ -464,12 +476,14 @@ The process of binding the <a>Digital Address</a> with the Trust Anchor notifyin
 ## Roles in GADI ## {#sctn-roles-in-gadi}
 
 ### GADI Global Directory ### {#sctn-gadi-role-global-directory}
+[INFORMATIVE]
 
 The <dfn>GADI Global Directory</dfn> serves as a Root of Trust to all entities in the ecosystem except the Users. The Directory ensures interoperability between multiple Regional Directories and Interchanges.
 Uniqueness of the entities is defined by the relationship of identifiers -  the Entity's <a>Digital Address</a>, the DID and the Trust Anchors and binding them to
 organizational entities at a global level.
 
 #### Directory Scope #### {#sctn-gadi-global-directory-scope}
+[INFORMATIVE]
 
 The GADI Governance Framework, described in a separate document, defines onboarding policies and procedures for organizational entities and establishing the relationships
 between the <a>Digital Address</a>, the DID and Trust Anchor. The entities governed by the <a>GADI Global Directory</a> are:
@@ -486,12 +500,14 @@ The <a>GADI Global Directory</a> may provide Discovery and Routing services betw
 Issue: Link the Governance Policies and procedures
 
 #### Uniqueness properties #### {#sctn-gadi-global-uniqueness}
+[INFORMATIVE]
 
 <a>GADI Global Directory</a> ensure uniqueness of the listed organizational entities. This is done by ensuring a unique set of attributes for each organization.
 
 Issue: uniqueness properties are required for Business entities just like users
 
 #### Directory Querying #### {#sctn-gadi-global-ds-query}
+[INFORMATIVE]
 
 A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the entity identified.
 The <a>GADI Global Directory</a> has several components that enable saving Trust Anchors and relationships:
@@ -502,6 +518,7 @@ The <a>GADI Global Directory</a> has several components that enable saving Trust
 * **API Services**: REST endpoints to provide lookup and discover services.
 
 #### Roles #### {#sctn-gadi-global-ds-roles}
+[INFORMATIVE]
 
 The types of actors that interact with GADI are described below:
 
@@ -511,13 +528,16 @@ The types of actors that interact with GADI are described below:
 
 
 ### GADI Regional Directory ### {#sctn-gadi-role-regional-directory}
+[INFORMATIVE]
 
 A directory serves to identify participants with an ecosystem. This can make it easier for users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
 
 #### Directory Scope  #### {#sctn-gadi-regional-directory-scope}
+[INFORMATIVE]
+
 Each directory serves a particular scope. Scopes can be geopolitical, like a country, or organizational, such as a multi-national medical organization or a university. Each directory serves to uniquely identify each participant via digital address or a collection of attributes.
 
-A GADI Regional Directory MUST:
+A GADI Regional Directory shall:
 * prevent a person from intentionally or unintentionally creating more than one Trust Anchor within a given scope.
 * provide interoperability between multiple Digital Address Providers within its scope.
 * provide discovery and routing services between one or more Digital Address Providers.
@@ -529,28 +549,38 @@ A GADI Regional Directory MUST:
 Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by GADI to seed the ecosystem. Other entities may operate directories in conformance with the governance structure and APIs.
 
 #### Attribute selection and management #### {#sctn-gadi-global-attribute}
+[INFORMATIVE]
+
 Each directory has a set of attributes used to list users in the directory. These attributes are received via credentials from issuers authorized by the appropriate governance framework. When necessary for uniqueness (described in the next section), the directory may request additional attributes from a user, also supplied via credentials.
 
-Directories may use any datastore sufficient to the requirements of storing attributes. Datastores MUST be able to remove listed records at the request of the user.
+Directories may use any datastore sufficient to the requirements of storing attributes. Datastores must be able to remove listed records at the request of the user.
 
 #### Uniqueness properties #### {#sctn-gadi-global-uniqueness}
-GADI Directories ensure uniqueness of the listed users. This is done by ensuring a unique set of attributes for each user. If a new user matches an existing user, additional attributes MUST be requested for use in distinguishing between the matching users.
+[INFORMATIVE]
+
+GADI Directories ensure uniqueness of the listed users. This is done by ensuring a unique set of attributes for each user. If a new user matches an existing user, additional attributes must be requested for use in distinguishing between the matching users.
 
 Each directory MUST have a process to follow when users cannot be uniquely identified either during addition of a user to the directory or during lookup of a user within the directory.
 
 #### Hashed Attributes
+[NORMATIVE]
+
 Directories (MAY/MUST TBD) only store hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
 
 Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the GADI regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
 
 #### Digital address #### {#sctn-gadi-global-da}
+[NORMATIVE]
+
 <a>Digital Address</a>es function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user.
 
-<a>Digital Address</a>es MAY contain PII, but the user MUST be warned if they choose one containing PII and MUST be allowed to choose a digital address that does not contain PII.
+<a>Digital Address</a>es may contain PII, but the user MUST be warned if they choose one containing PII and MUST be allowed to choose a digital address that does not contain PII.
 
 A single user MAY have multiple digital addresses that all link to the same user in the directory. Any of the linked digital addresses can be used to identify the user. Digital addresses do not function as a mechanism of uniqueness.
 
 #### Listing Modifications #### {#sctn-gadi-global-modifications}
+[INFORMATIVE]
+
 Users are listed in a directory by creating a DIDComm connection with the directory, then presenting credentials containing attributes issued by an acceptable issuer as determined by the governance framework.
 
 The user lists a digital address by communicating that intent over the DIDComm connection with the directory.
@@ -560,19 +590,26 @@ When the user desires to be removed from the directory, they indicate that over 
 These interactions are all detailed in the associated protocols summarized and linked below.
 
 #### Directory Querying #### {#sctn-gadi-global-directory-query}
+[INFORMATIVE]
+
 A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the user identified. The DID provided is created by the user’s agent, and provided to the directory for the purpose of returning to the party querying the directory. The user’s agent is notified of which party identified them in the directory.
 
 The protocols for querying users are summarized and linked below.
 
 #### Logging requirements #### {#sctn-gadi-global-logging}
+[INFORMATIVE]
+
 Directories MUST log all listing modifications and queries.
 
 #### Protocols for interaction #### {#sctn-gadi-global-protocol}
 Existing
+
 ##### DID Exchange ##### {#sctn-gadi-global-did-exchange}
 
 New
 ##### Credential Listing ##### {#sctn-gadi-global-credential-message}
+[NORMATIVE]
+
     <dl>
         : CredentialListingUpdate //do we just add, or can we remove old listed things?
         :: Credential // how does this interface with credential exchange?
@@ -585,6 +622,8 @@ New
     </dl>
 
 ##### Directory Query ##### {#sctn-gadi-global-query-message}
+[NORMATIVE]
+
 // should this be a ‘one match only’ query protocol? As opposed to a directory that will return multiple matches?
     <dl>
         : DirectorySingleQuery directory
@@ -597,10 +636,12 @@ New
     </dl>
 
 ##### Trust Anchor Protocol ##### {#sctn-gadi-global-query-message}
+[NORMATIVE]
+
     <dl>
         : Trust Anchor Protocol
 
-            This protocol facilitates the retrieval of a Trust Anchor for the purposes of identifying unique registrants in a directory. Each directory is responsible for maintaining uniqueness in a directory, and creates a unique identifier for each party listed. This trust anchor is the same no matter how the user is identified. 
+            This protocol facilitates the retrieval of a Trust Anchor for the purposes of identifying unique registrants in a directory. Each directory is responsible for maintaining uniqueness in a directory, and creates a unique identifier for each party listed. This trust anchor is the same no matter how the user is identified.
 
             Trust Anchors have been kept isolated from the other directory related protocols to allow specific permissioning to use trust anchors.
 
@@ -626,7 +667,7 @@ New
         : Messages
 
         :: Request
-            Sent by the Service to the Directory. 
+            Sent by the Service to the Directory.
             - `did` - The DID of the user for which the Service is requesting a Trust Anchor.
 
             ```json
@@ -698,7 +739,9 @@ New
     </dl>
 
 ##### Digital Address Protocol ##### {#sctn-gadi-global-da-message}
-Digital Address as username? Keep this protocol separate?
+[NORMATIVE]
+
+Issue: Digital Address as username? Keep this protocol separate?
 
     <dl>
         : Digital Address Protocol
@@ -731,7 +774,7 @@ Digital Address as username? Keep this protocol separate?
         : Messages
 
         :: Register
-            Sent by the User to the Directory. 
+            Sent by the User to the Directory.
             Sent once per Digital Address being registered.
             - `digital_address` - The Digital Address to register with the Directory.
 
@@ -744,7 +787,7 @@ Digital Address as username? Keep this protocol separate?
             ```
 
         :: Remove
-            Sent by the User to the Directory. This comprises the request to remove a previously 
+            Sent by the User to the Directory. This comprises the request to remove a previously
             - `digital_address`
 
             ```json
@@ -872,10 +915,6 @@ Digital Address as username? Keep this protocol separate?
 
     </dl>
 
-## DID ## {#sctn-gadi-global-did-message}
-
-Issue: Should improve the section title!
-
     <dl>
         : DirectoryDIDRequest // get DID to later disclose
         :: Who gets it (optional, for cache if omitted)
@@ -892,6 +931,7 @@ Issue: Should improve the section title!
 
 
 ### Interchange ### {#sctn-gadi-role-interchange}
+[INFORMATIVE]
 
 The Interchange is composed of one or more the services that provide User Access services such as, <a>Digital Address</a> and Authentication to users, Agency services such as
 Issuer and Service Provider Agents and optional value-added services such as Identity Escrow, Credential Brokerage and Payment Brokerage services.
@@ -900,6 +940,7 @@ Issue: Add details for Interchange
 
 
 #### DAP #### {#sctn-gadi-role-dap-agency}
+[INFORMATIVE]
 
 Digital Address Provider (DAP) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAP uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
 
@@ -909,8 +950,9 @@ The Agent is configured with and uses machine-readable governance framework docu
 All interactions through the agent are logged and available for inspection by the entity.
 
 ##### Scope ##### {#sctn-dap-scope}
+[INFORMATIVE]
 
-A DAP MUST:
+A DAP must:
 
 * Onboard trusted Issuers and Service Providers to the system.
 * Assign trusted identifiers to participating entities in the closed-ecosystem.
@@ -922,6 +964,7 @@ A DAP MUST:
 
 
 ##### Components ##### {#sctn-dap-components}
+[INFORMATIVE]
 
 The core components of a DAP are:
 * **DAP Ledger**: DLT to maintain immutable entity relationships and transactions related to the identity verifications. Ledger APIs abstract details of the underlying storage and interaction with the ledger.
@@ -932,6 +975,7 @@ The core components of a DAP are:
 * **Mediator**: Service to facilitate interactions with the user device with an SDK. Ex: Notifications, consent, etc.
 
 ##### Roles ##### {#sctn-dap-roles}
+[INFORMATIVE]
 
 The types of actors that interact with the DAP are described below:
 * *Admin*: Role to configure the DAP with system and issuer level properties
@@ -941,8 +985,8 @@ The types of actors that interact with the DAP are described below:
 * *User*: A subject or holder of the credential. Authenticates to the DAP with the <a>Digital Address</a>.
 
 
-
 #### Credential Broker (Future) #### {#sctn-gadi-role-credential-broker}
+[INFORMATIVE]
 
 The process of receiving credential presentations can be complicated. Verifiers and participants may enlist the use of a credential broker.
 The broker can serve several functions in the process of aiding a credential presentation. The credential may be translated between formats, verifying one format and creating another that is readable by the verifier.
@@ -956,6 +1000,7 @@ Issue: Content copied as-is from Indicio's recommendations. Please add details f
 
 
 #### Identity Escrow (Future) #### {#sctn-gadi-role-identity-escrow}
+[INFORMATIVE]
 
 Privacy preserving accountability is provided by Identity Escrow Services. Identity data is presented to the Identity Escrow Service in a credential from an approved issuer. The Escrow Service stores the data and issues an escrow credential to the participant. Each escrow credential obtained by the participant contains a unique id.
 
@@ -968,6 +1013,7 @@ Issue: Content copied as-is from Indicio's recommendations. Please add details f
 
 
 #### Payment Broker (Future) #### {#sctn-gadi-role-payment-broker}
+[INFORMATIVE]
 
 Financial transactions are another area that can benefit from the involvement of a broker. The broker can perform currency conversions to the benefit of both parties. The broker will also communicate with all parties in the payment flow. When required by law, the broker can log the transaction sufficiently to satisfy regulation such as Anti-Money Laundering (AML) laws.
 Payment flows can be used for credentials but may also be used for general purpose payment. In the future, payment can also involve verifying goods delivery prior to releasing payment.
@@ -975,31 +1021,15 @@ Payment flows can be used for credentials but may also be used for general purpo
 Issue: Content copied as-is from Indicio's recommendations. Add details for Payment Broker
 
 
-### Agent ### {#sctn-gadi-role-agent}
-
-All interactions between entities is facilitated through agents and services provided by the DAP. Each entity’s Agent holds cryptographic keys and digital credentials on behalf of the entity.
-Agents also manages the participant’s connections with services in the ecosystem. The agents for Issuers and Service Providers implement protocols for establishing connection and perform exchanging DIDs, Credentials and Proofs requests.
-
-Inbound and outbound communication are based on DIDComm Messaging Specification.
-
-#### Issuer/Service Provider Agent #### {#sctn-gadi-role-issuer-sp-agent}
-
-Issue: Add details for Issuer and Service Provider agents supporting DIDComm
-
-#### Cloud Agent #### {#sctn-gadi-role-cloud-agent}
-
-Issue: Add details for User Agents/Cloud agents supporting DIDComm
-
-
-
 ### Issuer ### {#sctn-gadi-role-issuer}
+[INFORMATIVE]
 
 GADI Architecture trust between entities is brokered by the DAP. Issuers of a Verified Credential are separated from
 the Service Providers (verifiers of a credentials) with a level of trust. Issuers are also custodians of an issued credentials but owned by the user it is issued to.
 
 #### Scope #### {#sctn-issuer-scope}
 
-A Trusted Issuer MUST:
+A Trusted Issuer must:
 * Use an approved method or process to create a unique Trust Anchor based on Identity attributes for a new or existing user in a scope.
 * Detect the presence of a Trust Anchor in the GADI ecosystem.
 * Use an approved method or process to Create and Lookup a unique <a>Digital Address</a> for the User.
@@ -1028,6 +1058,7 @@ The core components of an Issuer are:
 
 
 ### Service Provider ### {#sctn-gadi-role-serviceprovider}
+[INFORMATIVE]
 
 Service Providers are relying parties in the ecosystem. Credential verification are requested from the user to identity the user reliably before providing services. The proof requests are
 defined by Service Providers from one or more Credential Schema published by Trusted Issuers in the GADI ecosystem. The verification rulesets may be defined based on a combination of criteria:
@@ -1042,7 +1073,7 @@ Service Providers take a risk-based approach based on their enterprise needs and
 
 #### Scope #### {#sctn-serviceprovider-scope}
 
-A Service Provider MUST:
+A Service Provider must:
 
 * Accept and verify a <a>Digital Address</a> for a user in multiple forms - QR code, a user friendly moniker or a smart card.
 * Request for proofs on one or more user claims using a credential schema.
@@ -1066,6 +1097,7 @@ The core components of a Service Provider are:
 
 
 ### User ### {#sctn-gadi-role-user}
+[INFORMATIVE]
 
 A User is a holder of a unique <a>Digital Address</a> and receives it from a Trust Issuer after the KYC Process is completed.
 The user can then use their <a>Digital Address</a> for various purposes like, for example, receiving Verifiable Credentials such as an Identity Credential, or credentials that prove Educational qualifications, Health records, Employment, etc.
@@ -1080,12 +1112,13 @@ The user can then use their <a>Digital Address</a> for various purposes like, fo
 
 
 ### Digital Address Application (DAA) ### {#sctn-gadi-role-daa}
+[INFORMATIVE]
 
 For users to be part of the GADI ecosystem, they must be in control of a <a>Digital Address</a>. The <a>Digital Address</a> may be acquired in many forms, primarily a QR code over various channels such as an Authenticator App,
 Email, SmartCard or directly from a trusted Issuer.
 
 
-The <dfn>Digital Address Application</dfn> (<dfn>DAA</dfn) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind <a>Digital Address</a> with the DAP and consent for verification requests.
+The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind <a>Digital Address</a> with the DAP and consent for verification requests.
 
 #### Components #### {#sctn-daa-components}
 
@@ -1107,6 +1140,7 @@ The types of actors that interact with the Mobile App are described below:
 
 
 ## Trust Model ## {#sctn-trust-model}
+[INFORMATIVE]
 
 Issue: Describe what is verified by whom, what kind of objects
    ("credentials") are being created and what kind of identifiers they
@@ -1170,7 +1204,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g. "older than 21"), t
        <td><a>GADI</a></td>
        <td><a>GADI</a></td>
        <td>GADI setup.</td>
-       <td> 
+       <td>
          via a DIDDoc kept in the GADI Global Directory.
        </td>
        <td>
@@ -1186,7 +1220,7 @@ Issue: Need to clarify how the security characteristics of the
        <td><a>GADI Regional</a></td>
        <td><a>GADI Regional</a></td>
        <td>GADI Regional setup.</td>
-       <td> 
+       <td>
          via a DIDDoc kept in the GADI Global Directory.
        </td>
        <td>
@@ -1207,7 +1241,7 @@ Issue: Need to clarify how the security characteristics of the
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.
-       </td>  	  
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1227,7 +1261,7 @@ Issue: Need to clarify how the security characteristics of the
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.
-       </td>  	  
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1251,7 +1285,7 @@ Issue: Need to specify in the sequence diagram when exactly the key is
 	</td>
        <td>
          via a DIDDoc kept in the GADI Global Directory.
-       </td>  	  
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1269,12 +1303,8 @@ Issue: Need to clarify how the security characteristics of the
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
-         via the <a>DIDDoc-USER</a> kept in the <a>HomeDAP</a>.
-
-Note: a pair-wise object will be created for each <a>Verifiable
-   Presentation</a> of an <a>Anonymous Verifiable Credential</a>.
-
-       </td>  	  
+         via a DIDDoc kept in the HomeDAP.
+       </td>
        <td>
 
 Issue: Need to clarify how the security characteristics of the
@@ -1292,13 +1322,13 @@ Issue: Need to clarify how the security characteristics of the
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
- 
+
 Issue: Need to clarify whether there is any signed object tying the
     USER_FIDO_PK to the user's DA.
 
-       </td>  	  
+       </td>
        <td>
-         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].       
+         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].
        </td>
      </tr>
    </tbody>
@@ -1306,6 +1336,38 @@ Issue: Need to clarify whether there is any signed object tying the
  <figcaption>Cryptographic Key Material</figcaption>
 </figure>
 
+
+## Assurance Level ## {#sctn-assurance-level}
+[INFORMATIVE]
+
+GADI provides a Governance Framework to ensure that Trusted entities are deemed Issuers in the overall ecosystem. This combines
+a set of policies and procedures to verify that Issuers are verified by a Registration Authority and entity issuing Verifiable Credentials
+is an organization with Good standing Rating, Financial Standing, Risk of Failure, Insurance and maturity of the processes in collecting, verifying, storage and access to Credentials
+for all its constituents is in accordance with the GADI ecosystem standards and local jurisdiction.
+
+### Applicability ### {#sctn-assurance-level-applicability}
+There are types of Assurance Levels that may be addressed in the future version of the specification:
+- Issuer Assurance Level (I-AL) - The overall level of trust in an Issuer at the time on enrollment or recertification.
+- Verifiable Credential Assurance Level (VC-AL) - The strength and rigor of the processes in credential creation, issuance and storage
+- User Assurance Level (U-AL) - The maturity of the enrolment, activation and identity information verification processed of the user acquiring the Digital Address
+
+### User Assurance Level ### {#sctn-assurance-level-user}
+This specification deems the need for such levels but defers the definition of these levels to a future release. The current version of the
+specification aligns with the NIST 800-63A Digital Identity Guidelines to determine the Assurance of the User acquiring the Digital Address.
+There primarily apply to the identity proofing performed by the Issuers or the Users themselves at the time of issuing
+and/or importing the Digital Address.These levels are:
+
+- U-AL1 - Attributes, if any, are self-asserted or should be treated as self-asserted.
+- U-AL2 - Either remote or in-person identity proofing is required. IAL2 requires identifying attributes to have been verified in person or remotely using, at a minimum, the procedures given in SP 800-63A
+- U-AL3 - In-person identity proofing is required. Identifying attributes must be verified by an authorized CSP representative through examination of physical documentation as described in SP 800-63A
+
+### Usage ### {#sctn-assurance-level-usage}
+Service Providers may create complex criteria for requesting proofs from users, including the Assurance Level of any entity or the type of the VC to ensure
+the identity of the user before rendering any services.
+
+### Transitions ### {#sctn-assurance-level-transition}
+Users may acquire a Digital Address with a lower level of assurance Ex: Self-asserted to join the ecosystem, but transition to a higher level of U-AL
+by either remotely proving their identity or approaching a Trusted Issuer in the GADI ecosystem and presenting valid identity credentials.
 
 ## Identifiers ## {#sctn-gadi-identifiers}
 
@@ -1456,42 +1518,667 @@ Issue: TODO.
    </dl>
 
 
-
-
-
-
-
-# Inter-domain Communication # {#sctn-interd-comm}
+# GADI Protocol # {#sctn-gadi-protocol}
+[NORMATIVE]
 
 ## Communication Protocol ## {#sctn-communication-protocol}
+In general, DIDcomm [[!didcomm-messaging]] is used for securing the communication. All interactions between entities is facilitated through agents and services in the entity's domain.
+Each entity’s Agent holds cryptographic keys and digital credentials on behalf of the entity.
 
-In general, DIDcomm [[!didcomm-messaging]] is used for securing the communication
-between the entities.
+Agents also manages the participant’s connections with services by implementing protocols to establish connections, perform DID exchanges, issue credentials and present proofs.
+The GADI Messaging Specification is an extension of the DIDComm protocol. These protocols are:
 
-The communication between <a>SP</a>s, <a>Issuer</a>s, <a>DAP</a>s, and <a>GADI</a>
-itself uses "Sender Authenticated Encryption".
-The <a>SP_ID_PK</a>, <a>SP_ID_SK</a>, <a>ISSUER_ID_PK</a>, <a>ISSUER_ID_SK</a>, <a>DAP_ID_PK</a>,
-<a>DAP_ID_SK</a> and <a>GADI_ID_PK</a> and <a>GADI_ID_SK</a> are being used for that.
+<table class="data longlastcol">
+  <thead>
+    <th>Name</th>
+    <th>Version</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>Digital Address Protocol</td>
+      <td>1.0</td>
+      <td>Create, revoke and share Digital addresses</td>
+    </tr>
+    <tr>
+      <td nowrap>Directory Protocol</td>
+      <td>1.0</td>
+      <td>Search entities within the Ecosystem</td>
+    </tr>
+    <tr>
+      <td nowrap>Onboarding Protocol</td>
+      <td>1.0</td>
+      <td>Request, approve and onboard trusted entities to the ecosystem</td>
+    </tr>
+    <tr>
+      <td nowrap>Credential Schema Protocol</td>
+      <td>1.0</td>
+      <td>Create, publish and discover credential schema for VC issuance</td>
+    </tr>
+    <tr>
+      <td nowrap>Credential Protocol</td>
+      <td>1.0</td>
+      <td>Extensions to the DIDComm <i>issue-credential</i> protocol to issue, revoke and expire VCs to entities</td>
+    </tr>
+    <tr>
+      <td nowrap>Verification Protocol</td>
+      <td>1.0</td>
+      <td>Extensions to the DIDComm <i>Verifiable Presentation</i> protocol to request, forward and present proofs</td>
+    </tr>
+  </tbody>
+  <table>
 
-## Issuer to DAP ## {#sctn-interd-comm-issuer-to-dap}
+  ## Communication Agents ## {#sctn-communication-agents}
 
-Issue: Add details for Issuer to DAP communications
+   The agents for Issuers and Service Providers implement protocols for establishing connection and perform exchanging DIDs, Credentials and Proofs requests.
 
-## DAP to DAP (Future) ## {#sctn-interd-comm-dap-to-dap}
+  There are six types of GADI agents:
+  1. GADI Global Directory Agent (GGD Agent)
+  2. GADI Regional Directory Agent (GRD Agent)
+  3. DAP Agent
+  4. Issuer Agent
+  5. Service Provider Agent (SP Agent)
+  6. Cloud Agent
 
-Issue: Add details for DAP to DAP communications
+  In accordance with the overall ecosystem, GADI agents are permitted to interactions with only certain entities. A two-way trust is mandatory to enable interactions between them. This is represented in the table below:
 
-## DAP to GADI Regional Directory ## {#sctn-interd-comm-dap-to-gadi-regional}
+  <table class="data">
+    <thead>
+      <th>Agent/Agent</th>
+      <th>GGD Agent</th>
+      <th>GRD Agent</th>
+      <th>DAP Agent</th>
+      <th>Issuer Agent</th>
+      <th>SP Agent</th>
+      <th>Cloud Agent</th>
+    </thead>
+    <tbody>
+      <tr>
+        <th>GGD Agent</th>
+        <td></td>
+        <td><center>X</center></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>GRD Agent</th>
+        <td><center>X</center></td>
+        <td></td>
+        <td><center>X</center></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>DAP Agent</th>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+        <td><center>X</center></td>
+        <td><center>X</center></td>
+        <td><center>X</center></td>
+      </tr>
+      <tr>
+        <th>Issuer Agent</th>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+      </tr>
+      <tr>
+        <th>SP Agent</th>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+      </tr>
+      <tr>
+        <th>Cloud Agent</th>
+        <td></td>
+        <td></td>
+        <td><center>X</center></td>
+        <td><center>X</center></td>
+        <td></td>
+        <td><center>X</center></td>
+      </tr>
 
-Issue: Add details for DAP to GADI Regional Directory
+    </tbody>
+    </table>
 
-## GADI Regional Directory to GADI Global ## {#sctn-interd-comm-gadi-reg-to-gadi-global}
 
-Issue: Add details for GADI Regional Directory to GADI Global
+## Protocol to Agent Mapping ## {#sctn-communication-protocol-agents}
+[INFORMATIVE]
+
+### Digital Address Protocol ### {#sctn-protocol-digital-address}
+The mapping below represents the protocol messages for the Digital Address Protocol and the agents that implement the handing of these messages.
+An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/digital-address/1.0/create</td>
+      <td>Create a Digital Address</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/revoke</td>
+      <td>Revoke/Remove a Digital Address</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/share</td>
+      <td>Send or share the DA/DID of a given entity</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/resolve</td>
+      <td>Resolve the DA and DID. One to one mapping at a given point in time</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/rename</td>
+      <td>Rename a Digital Address</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/update</td>
+      <td>Update Digital Address Information</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/import</td>
+      <td>Receive a Digital Address from an issuer</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/trust-anchor/1.0/create</td>
+      <td>Create a trust anchor and link it with the HIDA and save the relationship to the DLT and offledger storage</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/trust-anchor/1.0/search</td>
+      <td>Search a Trust anchor with its HIDA</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/trust-anchor/1.0/remove</td>
+      <td>Mark a Trust anchor inactive</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+
+  ### Directory Protocol ### {#sctn-protocol-directory}
+  The mapping below represents the protocol messages for the Directory Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/directory/1.0/search</td>
+      <td>Search an entity with its DA or DID</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/search/regional-directories</td>
+      <td>Search Regional Directories with a criteria</td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/interchanges</td>
+      <td>Search Interchanges with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/issuers</td>
+      <td>Search Issuers with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/service-Providers</td>
+      <td>Search Service Providers with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/users</td>
+      <td>Search Users with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+  </tbody>
+  </table>
+
+
+
+  ### Onboarding Protocol ### {#sctn-protocol-onboarding}
+  The mapping below represents the protocol messages for the Onboarding Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/onboarding/1.0/regional-directory</td>
+      <td>Onboard a regional directory to the ecosystem</td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/interchange</td>
+      <td>Onboard an interchange to the ecosystem</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/issuer</td>
+      <td>Onboard an Issuer to the ecosystem</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/service-provider</td>
+      <td>Onboard a Service Provider to the ecosystem</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/status</td>
+      <td>Get the onboarding status</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/update</td>
+      <td>Update the onboarding status</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+
+  ### Credential Schema Protocol ### {#sctn-protocol-credential-schema}
+  The mapping below represents the protocol messages for the Credential Schema Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/credential-schema/1.0/search</td>
+      <td>Search Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential-schema/1.0/publish</td>
+      <td>Publish Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential-schema/1.0/update</td>
+      <td>Update Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential-schema/1.0/revoke</td>
+      <td>Revoke Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+  ### Credential Protocol ### {#sctn-protocol-credential}
+  The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/credential/1.0/search</td>
+      <td>Search Credentials</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/issue</td>
+      <td>Issue a Verifiable Credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/revoke</td>
+      <td>Revoke a Verifiable Credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/expire</td>
+      <td>Expire a Verifiable Credential on a certain date</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/remove</td>
+      <td>Remove a Verifiable Credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/save-metadata</td>
+      <td>Save Credential Metadata</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/update-metadata</td>
+      <td>Update Credential Metadata</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/remove-metadata</td>
+      <td>Remove Credential Metadata</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+  ### Verification Protocol ### {#sctn-protocol-verification}
+  The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>GGD Agent</th>
+    <th>GRD Agent</th>
+    <th>DAP Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/verification/1.0/request-proof</td>
+      <td>Request a proof from the user</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/check-credential-metadata</td>
+      <td>Check credential metadata for valid credentials </td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/request-consent</td>
+      <td>Request a User consent before routing to issuers</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/request-credential</td>
+      <td>Request an issuer for matching credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/send-presentation</td>
+      <td>Forward the collected proof responses to the user agent</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+  </tbody>
+  </table>
+
+
+  ## Protocol Messages ## {#sctn-communication-protocol-messages}
+  [NORMATIVE]
+
+  <pre class=include>
+  path: resources/protocol/messages.include
+  </pre>
 
 
 
 # Security Considerations # {#sctn-security-considerations}
+[INFORMATIVE]
+
 
 ## Storage of Trust Anchor and Digital Address## {#sctn-storage-ta-da}
 
@@ -1508,6 +2195,7 @@ Issue: Details for Cryptographic Suites
 
 
 # Operations # {#sctn-ops}
+[INFORMATIVE]
 
 ## Onboarding Entities ## {#sctn-opts-onboarding}
 
@@ -1686,6 +2374,31 @@ is performed using FIDO.
 
 ## Revoking a Verifiable Credential ## {#sctn-revoking-credential}
 
+Issuers have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
+the Credential Metadata on the DAP. The DAP checks for constraints before allowing the revocation of an issued VC. Some of them are:
+1. Issuers may revoke VCs only for the credentials issued by them.
+2. The Digital Address is valid and not in an invalid state.
+3. The Credential is valid and in a non-expired state.
+
+<figure id="fig-revoke-vc">
+    <img src="sequence-diagrams/Revoking-VC.png"/>
+    <figcaption>Revoke a VC</figcaption>
+</figure>
+
+The User is notified of the revocation status but there is no expectation of an action from the User. Revoked VCs are no longer valid and hence not considered
+in any subsequent proof presentations.
+
+## Verifiable Credential Expiration ## {#sctn-vc-expiration}
+
+Most Verifiable Credentials are temporal in nature with an expiration date set on them. Expired credentials are not valid for any proof presentations.
+
+<figure id="fig-expire-vc">
+    <img src="sequence-diagrams/VC-Expiration.png"/>
+    <figcaption>Expire a VC</figcaption>
+</figure>
+
+
+
 
 ## Digital Address Recovery ## {#sctn-digital-address-recovery}
 
@@ -1821,10 +2534,6 @@ The DAP may independently request the user to authenticate before upgrading the 
 </figure>
 
 
-## Minimum ID Proofing Level ## {#sctn-user-bootstraps-min-id-proofing-level}
-
-Issue: Description/ sequence diagram for  Minimum ID Proofing Level
-
 ## User Account Deletion ## {#sctn-user-account-deletion}
 
 The User acquires the <a>Digital Address</a> and Verifiable Credentials through their lifetime in the GADI ecosystem. Relationships of the User with other entities, such as
@@ -1903,6 +2612,7 @@ Issue: Description/ sequence diagram for  Backup and Recovery
 
 
 # Data Schema # {#sctn-data-schema}
+[NORMATIVE]
 
 ## Entity Model ## {#sctn-data-schema-entitymodel}
 
@@ -2133,6 +2843,7 @@ Issue: Description/ sequence diagram for Payment Broker
 
 
 # Certification # {#sctn-certification}
+[INFORMATIVE]
 
 ## DAP Certification ## {#sctn-certification-dap}
 
@@ -2158,6 +2869,9 @@ Issue: Description/ sequence diagram for Payment Broker Certification
 
 
 # API # {#sctn-gadi-api}
+[NORMATIVE]
+
+Issue: Remove section as it has been superseded by section 2
 
   <pre class=include>
   path: resources/api/GADI-global-api.include
@@ -2184,6 +2898,7 @@ Issue: Description/ sequence diagram for Payment Broker Certification
 
 
 # Appendix
+[INFORMATIVE]
 
 ## Acknowledgments ## {#sctn-acknowledgments}
 
@@ -2191,16 +2906,15 @@ The DID Alliance (DIDA) is an open industry association created to drive the dev
 
 ### Major Contributors ### {#sctn-acknowledgments-contributors}
 
-* Abbie Barbir, BarbirA@cvshealth.com
 * Jason Burnett, jason@digitaltrust.net
-* Ken Ebert, ken@indicio.tech
-* Sam Curren, sam@indicio.tech
-
+* Taejin Kim, tjkim1212@raoncorp.com
+* Alan Bachmann, AABachmann@aetna.com
+* Tina Srivastava, tinaps@badgeinc.com
 
 ### Other Contributors and Reviewers ### {#sctn-acknowledgments-Reviewers}
 
-* Alan Bachmann, AABachmann@aetna.com
-* Tina Srivastava, tinaps@badgeinc.com
 * Raju Nadakuduty, perraju.nadakuduty@capitalone.com
+* Santosh Rajvaidya, santosh.rajvaidya@jumio.com
+* Chris Clason, chris.clason@digitalasset.com
 
 If a credit is missing from the credit list below, please log a ticket at GitHub to be recognized in future updates.
