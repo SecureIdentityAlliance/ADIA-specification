@@ -1,7 +1,7 @@
 <!-- -*- mode: Text; eval: (auto-fill-mode 1); -*- -->
 <pre class='metadata'>
-Title: DID Alliance GADI Overview
-Shortname: gadi-overview
+Title: Accountable Digital Identity Specification
+Shortname: adia-specification
 Prepare for TR: true
 Level: 1
 Status: ED
