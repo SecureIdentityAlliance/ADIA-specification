@@ -7,9 +7,17 @@
   <style data-fill-with="stylesheet">
   </style>
   <style>
+  body {
+    max-width: 90%;
+    text-align: justify;
+  }
   h1, h2, h3 {
     color: #f29c00;
   }
+  li {
+    text-align: left;
+  }
+
   </style>
 </head>
 <body class="h-entry">

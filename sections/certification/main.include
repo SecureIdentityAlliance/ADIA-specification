@@ -1,0 +1,85 @@
+# Certification # {#sctn-certification}
+[INFORMATIVE]
+
+## Regional Directory Certification ## {#sctn-regional-dir-certification}
+
+### Digital address ### {#sctn-gadi-regional-da}
+[NORMATIVE]
+
+<a>Digital Address</a>es function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user.
+
+<a>Digital Address</a>es may contain PII, but the user MUST be warned if they choose one containing PII and MUST be allowed to choose a digital address that does not contain PII.
+
+A single user MAY have multiple digital addresses that all link to the same user in the directory. Any of the linked digital addresses can be used to identify the user. Digital addresses do not function as a mechanism of uniqueness.
+
+### Hashed Attributes ### {#sctn-gadi-regional-hashed-attributes}
+[NORMATIVE]
+
+Directories (MAY/MUST TBD) only store hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
+
+Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the GADI regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
+
+### Listing Modifications ### {#sctn-gadi-regional-modifications}
+[INFORMATIVE]
+
+Users are listed in a directory by creating a DIDComm connection with the directory, then presenting credentials containing attributes issued by an acceptable issuer as determined by the governance framework.
+
+The user lists a digital address by communicating that intent over the DIDComm connection with the directory.
+
+When the user desires to be removed from the directory, they indicate that over the existing DIDComm connection.
+
+These interactions are all detailed in the associated protocols summarized and linked below.
+
+### Logging requirements ### {#sctn-gadi-regional-logging}
+[INFORMATIVE]
+
+Directories MUST log all listing modifications and queries.
+
+
+### Storage ### {#sctn-gadi-regional-storage}
+
+GADI Regional and GADI Global Directories MUST support
+on-chain and off-ledger storages:
+* A privacy preserving distributed database that holds the <a>HIDA</a>
+* A DLT holding the Trust Anchor and any metadata relating to the <a>Digital Address</a>es
+
+
+
+## DAP Certification ## {#sctn-certification-dap}
+
+[INFORMATIVE]
+A DAP must:
+
+* Onboard trusted Issuers and Service Providers to the system.
+* Assign trusted identifiers to participating entities in the closed-ecosystem.
+* Enable storage and retrieval of credential metadata to trusted issuers.
+* Provide a mechanism to create and publish a <a>Digital Address</a>.
+* Provide authentication services to users with their <a>Digital Address</a>es.
+* Provide discovery services to identify and connect issuers, service providers and users securely.
+* Meeting regulatory and compliance requirements in various geography and jurisdiction.
+
+
+## Issuer Certification ## {#sctn-certification-da-issuer}
+
+A Trusted Issuer must:
+* Use an approved method or process to create a unique Trust Anchor based on Identity attributes for a new or existing user in a scope.
+* Detect the presence of a Trust Anchor in the GADI ecosystem.
+* Use an approved method or process to Create and Lookup a unique <a>Digital Address</a> for the User.
+* Provide mechanism to link a <a>Digital Address</a> for existing users.
+* Certify the KYC process for the entity and determine Assurance Levels for issued credential using an approved method or process.
+* Onboard users to issuer systems using a <a>Digital Address</a> with the holder’s consent.
+* Issue/reissue or revoke one or more Verifiable Credentials to the holder of a <a>Digital Address</a>
+* Persist Verifiable credential in a secure storage (VC Storage)
+* Publish credential metadata to the <a>Digital Address</a> Provider and user of the <a>Digital Address</a>.
+* Verify proof requests from Service Providers or other entities for credentials of the holder with a <a>Digital Address</a>.
+
+
+## Service Provider Certification ## {#sctn-certification-sp}
+
+A Service Provider must:
+
+* Accept and verify a <a>Digital Address</a> for a user in multiple forms - QR code, a user friendly moniker or a smart card.
+* Request for proofs on one or more user claims using a credential schema.
+* Accept responses to proof requests from one or more trusted Issuers in the ecosystem.
+* Determine acceptable Assurance Levels for credentials and define policies based on risk tolerance of the organization.
+* Grant or deny services to a user based on risk-based policies.
