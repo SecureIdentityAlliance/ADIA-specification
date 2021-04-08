@@ -57,7 +57,7 @@ path: sections/protocol/main.include
 </pre>
 
 <pre class=include>
-path: sections/security/main.include
+path: sections/considerations/main.include
 </pre>
 
 <pre class=include>

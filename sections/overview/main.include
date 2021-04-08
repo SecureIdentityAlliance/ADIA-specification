@@ -854,6 +854,10 @@ Issue: TODO.
        entities (e.g. DAP, Issuer, ...). See ASSURANCE_LEVEL in
        <a>DigitalAddress</a> and in <a href="#sctn-credential-metadata">Credential Metadata</a>.
 
+
+   Issue: How to trust the issuer?  How to trust the SP?  How to trust DAPs?
+
+
    When verifying a verifiable presentation of a verifiable credential,
    the following objects need to be verified:
    1. <a>Verifiable Presentation</a>, i.e. an object containing a
