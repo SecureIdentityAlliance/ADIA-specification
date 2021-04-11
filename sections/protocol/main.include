@@ -133,7 +133,6 @@ The GADI Messaging Specification is an extension of the DIDComm protocol. These 
 
 
 ## Protocol to Agent Mapping ## {#sctn-communication-protocol-agents}
-[INFORMATIVE]
 
 ### Digital Address Protocol ### {#sctn-protocol-digital-address}
 The mapping below represents the protocol messages for the Digital Address Protocol and the agents that implement the handing of these messages.
@@ -648,7 +647,6 @@ An agent may implement the handler or delegate to another agent for handling via
 
 
   ## Protocol Messages ## {#sctn-communication-protocol-messages}
-  [NORMATIVE]
 
   <pre class=include>
   path: sections/protocol/messages.include
