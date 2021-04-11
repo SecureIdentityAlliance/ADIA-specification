@@ -508,7 +508,7 @@ The core components of a DAP are:
 * **DAP Agent**: A communications agent to integrate identity transactions between an Issuer network and the DAP
 * **FIDO Service**: A FIDO server providing authentication services and authenticator policy management to users with a <a>Digital Address</a>.
 * **API Services**: REST endpoints to provide credential issuance, verification, routing and discovery services for identity transactions.
-* **Mediator**: Service to facilitate interactions with the user device with an SDK. Ex: Notifications, consent, etc.
+* **Mediator**: Service to facilitate interactions with the user device with an SDK. For example notifications, consent, etc.
 
 ##### Roles ##### {#sctn-dap-roles}
 [INFORMATIVE]
@@ -673,15 +673,15 @@ There primarily apply to the identity proofing performed by the Issuers or the U
 and/or importing the Digital Address.These levels are:
 
 - U-AL1 - Attributes, if any, are self-asserted or should be treated as self-asserted.
-- U-AL2 - Either remote or in-person identity proofing is required. IAL2 requires identifying attributes to have been verified in person or remotely using, at a minimum, the procedures given in SP 800-63A
-- U-AL3 - In-person identity proofing is required. Identifying attributes must be verified by an authorized CSP representative through examination of physical documentation as described in SP 800-63A
+- U-AL2 - Either remote or in-person identity proofing is required. IAL2 requires identifying attributes to have been verified in person or remotely using, at a minimum, the procedures given in [[!SP800-63A]]
+- U-AL3 - In-person identity proofing is required. Identifying attributes must be verified by an authorized CSP representative through examination of physical documentation as described in [[!SP800-63A]]
 
 ### Usage ### {#sctn-assurance-level-usage}
 Service Providers may create complex criteria for requesting proofs from users, including the Assurance Level of any entity or the type of the VC to ensure
 the identity of the user before rendering any services.
 
 ### Transitions ### {#sctn-assurance-level-transition}
-Users may acquire a Digital Address with a lower level of assurance Ex: Self-asserted to join the ecosystem, but transition to a higher level of U-AL
+Users may acquire a Digital Address with a lower level of assurance, e.g. start with lowest level identity assertion to join the ecosystem, but transition to a higher level of U-AL
 by either remotely proving their identity or approaching a Trusted Issuer in the GADI ecosystem and presenting valid identity credentials.
 
 ## Identifiers ## {#sctn-gadi-identifiers}
