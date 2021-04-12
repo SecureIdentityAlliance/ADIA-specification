@@ -217,7 +217,7 @@ Please see [[#sctn-user-bootstraps-new-daa-instance-1]]
 
 ### Email based Recovery ### {#sctn-da-self-recovery-email}
 
-Original Text - Abbie
+Issue: Original Text - Abbie.  Needs polishing & consistency check
 
 1. DAP has acquired information at registration time to enable the user to recover the DA from the original issuer at DAP enrolment time. So the assumption here is that the DAP does have an email or sms for the user to help in the recovery.
 2. user will do to dap and input email or number

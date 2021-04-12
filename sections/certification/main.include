@@ -4,23 +4,20 @@
 ## Regional Directory Certification ## {#sctn-regional-dir-certification}
 
 ### Digital address ### {#sctn-gadi-regional-da}
-[NORMATIVE]
 
 <a>Digital Address</a>es function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user.
 
-<a>Digital Address</a>es may contain PII, but the user MUST be warned if they choose one containing PII and MUST be allowed to choose a digital address that does not contain PII.
+<a>Digital Address</a>es may contain PII, but the user must be warned if they choose one containing PII and must be allowed to choose a digital address that does not contain PII.
 
 A single user MAY have multiple digital addresses that all link to the same user in the directory. Any of the linked digital addresses can be used to identify the user. Digital addresses do not function as a mechanism of uniqueness.
 
 ### Hashed Attributes ### {#sctn-gadi-regional-hashed-attributes}
-[NORMATIVE]
 
 Directories (MAY/MUST TBD) only store hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
 
 Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the GADI regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
 
 ### Listing Modifications ### {#sctn-gadi-regional-modifications}
-[INFORMATIVE]
 
 Users are listed in a directory by creating a DIDComm connection with the directory, then presenting credentials containing attributes issued by an acceptable issuer as determined by the governance framework.
 
@@ -31,14 +28,13 @@ When the user desires to be removed from the directory, they indicate that over 
 These interactions are all detailed in the associated protocols summarized and linked below.
 
 ### Logging requirements ### {#sctn-gadi-regional-logging}
-[INFORMATIVE]
 
 Directories MUST log all listing modifications and queries.
 
 
 ### Storage ### {#sctn-gadi-regional-storage}
 
-GADI Regional and GADI Global Directories MUST support
+GADI Regional and GADI Global Directories must support
 on-chain and off-ledger storages:
 * A privacy preserving distributed database that holds the <a>HIDA</a>
 * A DLT holding the Trust Anchor and any metadata relating to the <a>Digital Address</a>es
@@ -47,7 +43,6 @@ on-chain and off-ledger storages:
 
 ## DAP Certification ## {#sctn-certification-dap}
 
-[INFORMATIVE]
 A DAP must:
 
 * Onboard trusted Issuers and Service Providers to the system.
