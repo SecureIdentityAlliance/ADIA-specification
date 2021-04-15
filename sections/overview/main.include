@@ -1,9 +1,13 @@
-# Accountable Digital Identity Architecture # {#sctn-adia}
+DAS# Accountable Digital Identity Architecture # {#sctn-adia}
 [INFORMATIVE]
 
-One of the greatest challenges in any digital identity system is connecting, or binding, a physical identity with a logical identity. The question of how to bind an individual to a digital representation of that individual has proven to be a challenging one
+One of the greatest challenges in any digital identity system is connecting, or binding, a physical identity with a logical identity.
 
-Identity verification or proofing is one method in which a combination of trusted, normally government-issued, documents (passports, driving licenses and national ID cards), biometric data, nominally face, and other identity information can be linked to verifiable digital identity credentials to form effective binding between physical and digital identity. A major problem with the current approach is that there is no one source for a verified digital identity, a unique digital address that acts a trust anchor. Users have to repeat similar processes each time they are required to prove their identities. This is inefficient, adds friction for users and is costly for service providers.
+Identity verification or proofing is one method in which a combination of trusted, normally government-issued, documents (passports, driving licenses 
+and national ID cards), biometric data, nominally face, and other identity information can be linked to verifiable digital identity credentials to form 
+effective binding between physical and digital identity. A major problem with the current approach is that there is no one source for a verified digital 
+identity, a unique digital address that acts a trust anchor. Users must repeat similar processes each time they are required to prove their identities. 
+This is inefficient, adds friction for users and is costly for service providers.
 
 The Accountable Digital Identity Architecture (ADIA) allows users to
 share credentials that have been asserted by an issuer with service
@@ -29,23 +33,26 @@ The ecosystem consists of several entities that are involved in the Trust framew
 
 * **ADIA Global Directory (AGD) **: One primary Root of Trust system with one or more distributed or delegated shared instances.
 * **ADIA Regional Directory (ARD) **: One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
-* **Interchange**: A loose composition of services providing foundational services such as Agency, Identity Brokering, Credential Brokering and Payment Brokering functionality for the entities in the ecosystem.
-* **Digital Address Service (DAS)**: An agency providing services to entities within its domain. All interactions between entities is facilitated through agents and services provided by the Agency.
-* **Issuer**: One or more Issuers representing both Identity (e.g. DMV, Passport Office, etc) or Non-Identity Credential Issuers (e.g. University, Enterprise, Healthcare Provider, etc).
-* **Service Provider**: One or more service providers acting as relying parties. E.g. E-commerce site, Retailer, etc
-* **User**: Holder and usually Subject of the <a>Digital Address</a> - One per human identity.
+* **Interchange**: A loose composition of services providing foundational services such as Digital Address Service, Identity Escrow, Credential Broker, and Payment Broker functionality for the entities in the ecosystem.
+* **Digital Address Service (DAS)**: An agency providing services to entities within its domain. All interactions between entities are facilitated through agents and services provided by the Agency.
+* **Issuer**: One or more Issuers representing both Identity (e.g., DMV, Passport Office, etc.) or Non-Identity Credential Issuers (e.g., University, Enterprise, Healthcare Provider, etc.)
+* **Service Provider**: One or more service providers acting as relying parties. E.g., E-commerce site, Retailer, etc.
+* **User**: Holder and usually Subject of the <a>Digital Address</a> - One per human identity in a region.
 
 These entities and their role in the ADIA ecosystem are described in [[#sctn-roles-in-adia]].
 
 ## Trust Anchor ## {#sctn-trust-anchor}
 
-Trust Anchor is a Unique Key for a given entity in the ADIA ecosystem. It provides a binding with a Human Identity without storing any personal information.
-A Trust Anchor uniquely maps a User's <a>Digital Address</a> and a DAS assigned DID.
+Trust Anchor is a Unique Key for a given entity in the ADIA ecosystem.
+A Trust Anchor uniquely maps an entity's <a>Digital Address</a> and a DAS assigned DID.
 
 
 The ADIA Directories, for regulatory purposes and user privacy, do not store any personal information about a user or an entity.
-Directories support the ability to of a user’s right to be forgotten
-in many jurisdiction.
+Directories support a user’s right to be forgotten
+in many jurisdictions.  Regional and Global Directories MUST support on-ledger and off-ledger storages:
+
+* a privacy-preserving distributed database that holds the <a>HIDA</a>
+* a DLT holding the Trust Anchor and any metadata related to <a>Digital Addresses</a>
 
 
 ## Digital Address ## {#sctn-digital-address}
@@ -53,13 +60,13 @@ in many jurisdiction.
 DIDs are the foundational identifiers of the system but are not
 participant friendly. The <dfn>Digital Address</dfn> is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed.
 
-<a>Digital Address</a>es are designed to be human friendly and facilitate interaction with entities. Entities can register one or more digital addresses with a directory. When they present their digital address to a participating service, the service can contact the directory and receive a DID that represents the participant.
+<a>Digital Address</a>es are designed to be human friendly and facilitate interaction with entities. When they present their Digital Address to a participating service, the service can contact the directory and receive a DID that represents the participant.
 Further communication and cryptographic trust are then founded on the provided DID. <a>Digital Address</a>es contain a directory indicator that can be used to identify which directory has the associated listing.
 
-To prevent the <a>Digital Address</a> from being misused as a correlating identifier, <a>Digital Address</a>es must not be retained by participating services after resolution.
-Their role is specifically limited to easing participant-onboarding processes.
+To prevent the <a>Digital Address</a> from being misused as a correlating identifier, <a>Digital Address</a>es must not be retained by participating Service Providers after resolution.
+Their role is specifically limited to facilitating the participant-onboarding processes.
 
-The creation of a <a>Digital Address</a> is a vitally important step in ensuring there is both trust and accountability within the ADIA ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises; organizations that are central to the trust economy.
+The creation of a <a>Digital Address</a> is a crucial step in ensuring there is both trust and accountability within the ADIA ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises; organizations that are central to the trust economy.
 
 
 
@@ -73,7 +80,8 @@ a cryptographic hash computed over the following identity attributes:
 1. First name
 2. Last name
 3. Date of Birth
-4. Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc
+4. Country of Residence
+5. Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc.
 
 The <a>HIDA</a> is used to query the ADIA Regional Directory to determine uniqueness of the user based on the identity attributes provided.
 The process of binding the <a>Digital Address</a> with the Trust Anchor notifying the user is described in [[#sctn-onboarding-1st-issuer]]
@@ -294,7 +302,7 @@ The user can then use their <a>Digital Address</a> for various purposes like, fo
 
 * Obtain a <a>Digital Address</a> from a Trusted Issuer in the ADIA ecosystem.
 * Receive one or more Identity Credentials by complying to KYC processes from Trusted Identity Issuers.
-* Receive one or more User Credentials such as Employment Credential, Medical Record etc  from one or more Credential Issuers.
+* Receive one or more User Credentials such as Employment Credential, Medical Record etc.  from one or more Credential Issuers.
 * Present issued credentials as proof to Service Providers.
 * Grant consent for verification requests from Service Providers.
 
@@ -385,7 +393,7 @@ DAS Identifier, ADIA Regional Directory Identifier
 
        : <dfn>DA</dfn>
        :: Human readabe <a>Digital Address</a> of the <a>User</a>
-            (e.g. blackbird@issuer.dap.adia.org).
+            (e.g., blackbird@issuer.dap.adia.org).
 
 Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
       name - "fun" names are allowed and recommended. However, real
@@ -394,7 +402,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
 
 
        : <dfn>DAS_USER_ID</dfn>
-       :: The DAS specific Decentralized Identifier (DID) related to the <a>DA</a>, e.g. did:example:123456789abcdefghi
+       :: The DAS specific Decentralized Identifier (DID) related to the <a>DA</a>, e.g., did:example:123456789abcdefghi
 
        :  <a>DAS_USER_ID_PK</a>, <a>DAS_USER_ID_SK</a>
        :: Public Key (PK) and Private Key (SK) related to the
@@ -402,7 +410,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
            more details.
 
        :  <dfn>DAA</dfn>
-       :: Digital Address Application, e.g. Android App or iOS App that
+       :: Digital Address Application, e.g., Android App or iOS App that
            knows how to talk to the <a>DAS</a> on behalf of the <a>User</a>.
 
        :  <dfn>DAS</dfn> (formerly DAS)
@@ -478,7 +486,7 @@ Issue: TODO.
            more details.
 
        : <dfn>TA</dfn>
-       :: <dfn>Trust Anchor</dfn>, i.e. a randomly generated number related to a User. E.g. 3456893265abf...849287c.
+       :: <dfn>Trust Anchor</dfn>, i.e. a randomly generated number related to a User. E.g., 3456893265abf...849287c.
 
 
    Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagram so far.
@@ -507,7 +515,7 @@ Issue: TODO.
 
    Issue: Describe what is verified by whom, what kind of objects
       ("credentials") are being created and what kind of identifiers they
-      bind together (e.g. public keys and digital addresses, ...).
+      bind together (e.g., public keys and digital addresses, ...).
 
    Issue: Distinguish Base/Peer-DIDDoc-USER and Pair-wise-Use
        DIDDoc-USER.  All DIDDoc-USER are stored off-ledger.  We use ZKP
@@ -521,7 +529,7 @@ Issue: TODO.
 
    Issue: Will have to specify the assurance level to which the claims
        have been verified by the issuer.  Similarly for the other
-       entities (e.g. DAS, Issuer, ...). See ASSURANCE_LEVEL in
+       entities (e.g., DAS, Issuer, ...). See ASSURANCE_LEVEL in
        <a>DigitalAddress</a> and in <a href="#sctn-credential-metadata">Credential Metadata</a>.
 
 
@@ -533,7 +541,7 @@ Issue: TODO.
    1. <a>Verifiable Presentation</a>, i.e. an object containing a
        <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
        or Derived Data (in the case of ZKP) (<a
-       href="(e.g. https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
+       href="(e.g., https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
        and a signature by the subjects's DAS_USER_ID_PK/SK key.
 
    2. <a>Verifiable Credential</a>, i.e. an object containing a
@@ -547,7 +555,7 @@ Issue: TODO.
        the <a>DIDDoc-USER</a>.
 
 
-   In the case of <a>Anonymous Verifiable Credential</a>s (e.g. "older than 21"), the
+   In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), the
       <a>DIDDoc-USER</a> is a pair-wise use object and the included
       <a>DAS_USER_ID_PK</a> is a one-time use key.  Pair-wise use means it is not
       shared with any other <a>SP</a> and it will typically not even be referenced by
@@ -683,7 +691,7 @@ Issue: TODO.
         <tr>
           <td><dfn>USER_FIDO_PK</dfn> / <dfn>USER_FIDO_SK</dfn></td>
           <td><a>User</a></td>
-          <td>The <a>User</a>'s FIDO Authenticator, e.g. SecurityKey or
+          <td>The <a>User</a>'s FIDO Authenticator, e.g., SecurityKey or
                  platform authenticator on smartphone, tablet or PC.
           </td>
           <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
