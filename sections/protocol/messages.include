@@ -131,7 +131,7 @@
 * MUST contain a minimum of 8 alpha-numeric characters.
 * MUST be no longer than 16 characters.
 * MUST be unique to a DAS.
-* MAY contain certain special characters (will this be allowed? what would the set be?)
+* MAY contain certain special characters (set to be defined)
 * SHOULD be human-readable and memorable.
 * The Separator MUST be an @ sign.
 
@@ -140,7 +140,7 @@ The <a>Digital Address</a> postfix:
 
 Example:
 <code>
-  steve77@MRVL
+  steve007@MRVL
 </code>
 
 <table class="data longlastcol">
