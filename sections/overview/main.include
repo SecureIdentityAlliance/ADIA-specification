@@ -722,9 +722,6 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
        : <dfn>DIDDoc-USER</dfn>
        :: DID document binding the user's public key to the <a>DAP_USER_ID</a>.
 
-       : <dfn>ADIA</dfn>
-       :: Global Architecture for Digital IDentity. See [[ADIA-API]] for the DAP API.
-
        : <dfn>ADIA Regional</dfn>
        ::
 

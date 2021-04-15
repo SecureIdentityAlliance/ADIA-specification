@@ -1,0 +1,54 @@
+<!-- -*- mode: Text; eval: (auto-fill-mode 1); -*- -->
+<pre class='metadata'>
+Title: Accountable Digital Identity Association(ADIA) API
+Shortname: adia-api
+Prepare for TR: true
+Level: 1
+Status: ED
+Group: fido
+URL:
+Editor: Kiran Addepalli, kiran@digitaltrust.net
+
+
+Abstract: API definitions for implementing ADIA protocols
+
+Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
+Text Macro: INFORMATIVE <em>This section is not normative.</em>
+Text Macro: NORMATIVE <em>This section is normative.</em>
+Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Local Boilerplate: header yes, footer yes, logo yes, copyright yes
+Markup Shorthands: css off, markdown on
+</pre>
+
+<pre class="link-defaults">
+spec:html; type:dfn; for:environment settings object; text:global object
+spec:infra; type:dfn; text:list
+spec:url; type:dfn; text:domain
+spec:url; type:dfn; text:valid domain;
+spec:webappsec-credential-management-1; type:dictionary; for:/; text:CredentialRequestOptions
+spec:webidl; type:interface; text:Promise
+</pre>
+
+<!-- only put content here if you want a custom status of document not
+  the specification-maturity-appropriate boilerplate -->
+
+  # ADIA API # {#sctn-adia-api}
+
+  <pre class=include>
+  path: sections/api/Issuer-api.include
+  </pre>
+
+  <pre class=include>
+  path: sections/api/DAP-agency-api.include
+  </pre>
+
+  <pre class=include>
+  path: sections/api/ADIA-regional-api.include
+  </pre>
+  <pre class=include>
+  path: sections/api/ADIA-global-api.include
+  </pre>
+
+  <pre class=include>
+  path: sections/api/API-objects.include
+  </pre>

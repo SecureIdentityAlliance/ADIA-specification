@@ -1,9 +1,9 @@
-## GADI Global API ## {#sctn-gadi-global-api}
+## ADIA Global API ## {#sctn-gadi-global-api}
 
 ### Directory Service ### {#sctn-gadi-directory-service}
 
 #### Search Entities #### {#sctn-gadi-get-entities}
-Returns a list of Entities matching a criteria from the GADI Directory
+Returns a list of Entities matching a criteria from the ADIA Directory
 
 <table class="data longlastcol">
   <tbody>
@@ -180,7 +180,7 @@ curl -X GET  /api/entities/abc@dtx
 </aside>
 
 #### Get Regional Directories #### {#sctn-gadi-global-get-regional-directories}
-Gets a list of Regional Directories in GADI.
+Gets a list of Regional Directories in ADIA.
 
 <table class="data longlastcol">
   <tbody>
@@ -337,7 +337,7 @@ curl -X GET  /api/regional-directories/abc@DTX
 </aside>
 
 #### Save Regional Directories #### {#sctn-gadi-save-regional-ds}
-Save GADI Regional Directory
+Save ADIA Regional Directory
 
 <table class="data longlastcol">
   <tbody>
@@ -428,7 +428,7 @@ Save GADI Regional Directory
 
 
 #### Get DAPs #### {#sctn-gadi-get-dap-agencies}
-Gets a list of dap-agencies in any of the GADI Regions.
+Gets a list of dap-agencies in any of the ADIA Regions.
 
 
 <table class="data longlastcol">
@@ -585,7 +585,7 @@ curl -X GET  /api/dap-agencies/did:gadi:I1111111111
 </aside>
 
 #### Get issuers #### {#sctn-gadi-get-issuers}
-Gets a list of issuers in in any of the GADI Regions.
+Gets a list of issuers in in any of the ADIA Regions.
 
 
 <table class="data longlastcol">
@@ -742,7 +742,7 @@ curl -X GET  /api/issuers/did:gadi:I1111111111
 </aside>
 
 #### Get Service Providers #### {#sctn-gadi-get-service-providers}
-Gets a list of service-providers in in any of the GADI Regions.
+Gets a list of service-providers in in any of the ADIA Regions.
 
 
 <table class="data longlastcol">

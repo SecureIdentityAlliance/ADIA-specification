@@ -1,4 +1,4 @@
-## GADI Regional Directory API ## {#sctn-gadi-regional-api}
+## ADIA Regional Directory API ## {#sctn-gadi-regional-api}
 
 ### Directory Service ### {#sctn-gadi-regional-directory-service}
 
@@ -30,7 +30,7 @@ Save A Digital Address with its corresponding Hashed anchor attributes
     <tr>
       <td><strong>Request Body</strong></td>
       <td>DigitalAddress (required)<br/>
-      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Regional Directory Service.
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service.
       </td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@ Save A Digital Address with its corresponding Hashed anchor attributes
 </aside>
 
 #### Search Digital Addresses #### {#sctn-gadi-regional-get-da}
-Returns a list of Digital Addresses matching a criteria from the GADI Regional Directory
+Returns a list of Digital Addresses matching a criteria from the ADIA Regional Directory
 
 <table class="data longlastcol">
   <tbody>
