@@ -1,4 +1,4 @@
-# GADI Protocol # {#sctn-gadi-protocol}
+# ADIA Protocol # {#sctn-adia-protocol}
 [NORMATIVE]
 
 ## Communication Protocol ## {#sctn-communication-protocol}
@@ -6,7 +6,7 @@ In general, DIDcomm [[!didcomm-messaging]] is used for securing the communicatio
 Each entity’s Agent holds cryptographic keys and digital credentials on behalf of the entity.
 
 Agents also manages the participant’s connections with services by implementing protocols to establish connections, perform DID exchanges, issue credentials and present proofs.
-The GADI Messaging Specification is an extension of the DIDComm protocol. These protocols are:
+The ADIA Messaging Specification is an extension of the DIDComm protocol. These protocols are:
 
 <table class="data longlastcol">
   <thead>
@@ -52,22 +52,22 @@ The GADI Messaging Specification is an extension of the DIDComm protocol. These 
 
    The agents for Issuers and Service Providers implement protocols for establishing connection and perform exchanging DIDs, Credentials and Proofs requests.
 
-  There are six types of GADI agents:
-  1. GADI Global Directory Agent (GGD Agent)
-  2. GADI Regional Directory Agent (GRD Agent)
-  3. DAP Agent
+  There are six types of ADIA agents:
+  1. ADIA Global Directory Agent (GGD Agent)
+  2. ADIA Regional Directory Agent (GRD Agent)
+  3. DAS Agent
   4. Issuer Agent
   5. Service Provider Agent (SP Agent)
   6. Cloud Agent
 
-  In accordance with the overall ecosystem, GADI agents are permitted to interactions with only certain entities. A two-way trust is mandatory to enable interactions between them. This is represented in the table below:
+  In accordance with the overall ecosystem, ADIA agents are permitted to interactions with only certain entities. A two-way trust is mandatory to enable interactions between them. This is represented in the table below:
 
   <table class="data">
     <thead>
       <th>Agent/Agent</th>
       <th>GGD Agent</th>
       <th>GRD Agent</th>
-      <th>DAP Agent</th>
+      <th>DAS Agent</th>
       <th>Issuer Agent</th>
       <th>SP Agent</th>
       <th>Cloud Agent</th>
@@ -92,7 +92,7 @@ The GADI Messaging Specification is an extension of the DIDComm protocol. These 
         <td></td>
       </tr>
       <tr>
-        <th>DAP Agent</th>
+        <th>DAS Agent</th>
         <td></td>
         <td></td>
         <td><center>X</center></td>
@@ -144,7 +144,7 @@ An agent may implement the handler or delegate to another agent for handling via
     <th>Description</th>
     <th>GGD Agent</th>
     <th>GRD Agent</th>
-    <th>DAP Agent</th>
+    <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
     <th>Cloud Agent</th>
@@ -264,7 +264,7 @@ An agent may implement the handler or delegate to another agent for handling via
     <th>Description</th>
     <th>GGD Agent</th>
     <th>GRD Agent</th>
-    <th>DAP Agent</th>
+    <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
     <th>Cloud Agent</th>
@@ -346,7 +346,7 @@ An agent may implement the handler or delegate to another agent for handling via
     <th>Description</th>
     <th>GGD Agent</th>
     <th>GRD Agent</th>
-    <th>DAP Agent</th>
+    <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
     <th>Cloud Agent</th>
@@ -426,7 +426,7 @@ An agent may implement the handler or delegate to another agent for handling via
     <th>Description</th>
     <th>GGD Agent</th>
     <th>GRD Agent</th>
-    <th>DAP Agent</th>
+    <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
     <th>Cloud Agent</th>
@@ -486,7 +486,7 @@ An agent may implement the handler or delegate to another agent for handling via
     <th>Description</th>
     <th>GGD Agent</th>
     <th>GRD Agent</th>
-    <th>DAP Agent</th>
+    <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
     <th>Cloud Agent</th>
@@ -586,7 +586,7 @@ An agent may implement the handler or delegate to another agent for handling via
     <th>Description</th>
     <th>GGD Agent</th>
     <th>GRD Agent</th>
-    <th>DAP Agent</th>
+    <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
     <th>Cloud Agent</th>

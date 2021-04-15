@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: GADI API
-  description: GADI API documentation
+  title: ADIA API
+  description: ADIA API documentation
   version: 1.0.0
 servers:
-- url: gadi-service.stage.digitaltrust.net/
+- url: adia-service.stage.digitaltrust.net/
 tags:
 - name: directory-resource
   description: Digital Address Resource
@@ -16,7 +16,7 @@ paths:
       summary: Save Digital Address
       operationId: save-digital-address
       requestBody:
-        description: Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Directory Service
+        description: Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Directory Service
         content:
           application/json:
             schema:
@@ -108,7 +108,7 @@ paths:
     get:
       tags:
       - directory-resource
-      summary: Get all registered DAPs
+      summary: Get all registered DASs
       operationId: get-all-daps
       responses:
         200:
@@ -132,7 +132,7 @@ paths:
     post:
       tags:
       - directory-resource
-      summary: Create DAP
+      summary: Create DAS
       operationId: create-dap
       requestBody:
         description: dap
@@ -149,7 +149,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DigitalAddress'
         201:
-          description: DAP Created
+          description: DAS Created
           content: {}
         401:
           description: Unauthorized Access
@@ -158,7 +158,7 @@ paths:
           description: Forbidden Access
           content: {}
         404:
-          description: DAP Not Found
+          description: DAS Not Found
           content: {}
       deprecated: false
       x-codegen-request-body-name: dap
@@ -166,12 +166,12 @@ paths:
     get:
       tags:
       - directory-resource
-      summary: Get all registered Issuers for a DAP
+      summary: Get all registered Issuers for a DAS
       operationId: get-issues-for-dap
       parameters:
       - name: dapId
         in: path
-        description: The identifier for the DAP
+        description: The identifier for the DAS
         required: true
         schema:
           type: string
@@ -191,18 +191,18 @@ paths:
           description: Forbidden Access
           content: {}
         404:
-          description: DAP Not Found
+          description: DAS Not Found
           content: {}
       deprecated: false
     post:
       tags:
       - directory-resource
-      summary: Create an Issuer for a DAP
+      summary: Create an Issuer for a DAS
       operationId: create-issuer-for-dap
       parameters:
       - name: dapId
         in: path
-        description: The identifier for the DAP
+        description: The identifier for the DAS
         required: true
         schema:
           type: string
@@ -230,19 +230,19 @@ paths:
           description: Forbidden Access
           content: {}
         404:
-          description: DAP Not Found
+          description: DAS Not Found
           content: {}
       deprecated: false
   /api/directory/daps/{dapId}/service_providers:
     get:
       tags:
       - directory-resource
-      summary: Get all registered Service Providers for a DAP
+      summary: Get all registered Service Providers for a DAS
       operationId: get-serviceproviders-for-dap
       parameters:
       - name: dapId
         in: path
-        description: The identifier for the DAP
+        description: The identifier for the DAS
         required: true
         schema:
           type: string
@@ -262,18 +262,18 @@ paths:
           description: Forbidden Access
           content: {}
         404:
-          description: DAP Not Found Access
+          description: DAS Not Found Access
           content: {}
       deprecated: false
     post:
       tags:
       - directory-resource
-      summary: Create a ServiceProvider for a DAP
+      summary: Create a ServiceProvider for a DAS
       operationId: create-serviceprovider-for-dap
       parameters:
       - name: dapId
         in: path
-        description: The identifier for the DAP
+        description: The identifier for the DAS
         required: true
         schema:
           type: string
@@ -301,7 +301,7 @@ paths:
           description: Forbidden Access
           content: {}
         404:
-          description: DAP Not Found
+          description: DAS Not Found
           content: {}
       deprecated: false
 components:
@@ -319,7 +319,7 @@ components:
           enum:
           - Issuer
           - ServiceProvider
-          - DAP
+          - DAS
         primaryHash:
           type: string
         secondaryHash:
@@ -348,7 +348,7 @@ components:
           enum:
           - Issuer
           - ServiceProvider
-          - DAP
+          - DAS
         active:
           type: boolean
         createdBy:

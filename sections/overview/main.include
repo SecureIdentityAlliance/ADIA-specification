@@ -1,4 +1,4 @@
-# Accountable Digital Identity Architecture # {#sctn-adia}
+DAS# Accountable Digital Identity Architecture # {#sctn-adia}
 [INFORMATIVE]
 
 One of the greatest challenges in any digital identity system is connecting, or binding, a physical identity with a logical identity. The question of how to bind an individual to a digital representation of that individual has proven to be a challenging one
@@ -27,316 +27,20 @@ Three main concerns addressed by the ecosystem are to:
 
 The ecosystem consists of several entities that are involved in the Trust framework. These are:
 
-* **ADIA Global Directory**: One primary Root of Trust system with one or more distributed or delegated shared instances.
-* **ADIA Regional Directory**: One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
+* **ADIA Global Directory (AGD) **: One primary Root of Trust system with one or more distributed or delegated shared instances.
+* **ADIA Regional Directory (ARD) **: One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
 * **Interchange**: A loose composition of services providing foundational services such as Agency, Identity Brokering, Credential Brokering and Payment Brokering functionality for the entities in the ecosystem.
-* **Digital Address Provider (DAP)**: An agency providing services to entities within its domain. All interactions between entities is facilitated through agents and services provided by the Agency.
+* **Digital Address Service (DAS)**: An agency providing services to entities within its domain. All interactions between entities is facilitated through agents and services provided by the Agency.
 * **Issuer**: One or more Issuers representing both Identity (e.g. DMV, Passport Office, etc) or Non-Identity Credential Issuers (e.g. University, Enterprise, Healthcare Provider, etc).
 * **Service Provider**: One or more service providers acting as relying parties. E.g. E-commerce site, Retailer, etc
 * **User**: Holder and usually Subject of the <a>Digital Address</a> - One per human identity.
 
 These entities and their role in the ADIA ecosystem are described in [[#sctn-roles-in-adia]].
 
-
-## ADIA Requirements ## {#sctn-reqs}
-
-Issue: We will likely remove this section later.  But for now let's
-   keep it as a reference for the requirements th specs needs to meet.
-
-<figure id="table-security-privacy-goals" class="table">
-    <table class="data longlastcol">
-        <thead>
-            <th>No</th>
-            <th>Goal</th>
-            <th>Rationale</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>1</td>
-            <td>
-    The ADIA Framework respects national laws and allows the <a>DAP</a>s to operate according to their local regulations.
-     This includes compliance to CCPA and GDPR.
-      </td>
-            <td>
-          Local law is the basis for any business.
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>
-        Users must have control on user credentials, i.e. no credentials are created or shared without the user's consent.
-        This means, <a>DAP</a> asks for user consent and strongly authenticates the user.
-      </td>
-            <td>
-        Data Privacy regulation & expectation
-            </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>
-        Users have the ability to select a set of attributes verified by a specific issuer to be included in a specific credential.
-      </td>
-            <td>
-        Data Privacy regulation & expectation.  If the user only wants to share a subset of the data that should be ok to the issuer.
-            </td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>
-        ADIA doesn't make user tracking or collusion between Service Providers easier.
-        If two <a>SP</a>s both received a credential that John Doe was born on date X in Y,
-        then the two <a>SP</a>s could learn it is the very likely same user. But this has nothing to do with ADIA.
-
-        As a consequence, the <a>Digital Address</a> / <a>Trust Anchor</a> are NOT part of the credential.
-        Credentials are in the W3C VC format [[!vc-data-model]] and are tied to a <a>DID</a>.
-      </td>
-            <td>
-        ADIA doesn't share correlation handles with <a>SP</a>s for privacy reasons.
-            </td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>
-        People who are not smartphone users must be part of the new Digital Identity ecosystem.
-      </td>
-            <td>
-        A substantial part of the world's population belongs to this category.  This part is key for future growth opportunities
-            </td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>
-        <a>Issuer</a>s must be in the value chain.  This means that users cannot share credentials issued by
-        an issuer without allowing financial compensation for the issuer.
-      </td>
-            <td>
-        This is one of the main ADIA benefits compared to other approaches.
-            </td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>
-        ADIA enables a push model from the issuers where when there is change in credential status,
-        latest credential information is what would be presented.
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>
-        <a>Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
-        who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAP</a>) than the one this issuer is primarily using.
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>
-        There should be cross ledger value settlements for the issuers and may be
-        some reward points for the issuers as Users assert their credentials and provide data.
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>
-        Onboard the user with a trusted Identity that is approved by an <a>Issuer</a> after proper Identity vetting
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>
-         It is possible for users to start their participation
-        based on a low level identity assertion and increase
-        that level over time.
-
-        However, there is a minmum identity assertion specified
-        by the ADIA Governance Group. We need this to prevent
-        user impersonation attacks through weak ID proofing methods.
-
-      </td>
-            <td>
-        Many users don't have connections to a <a>SP</a> which has performed strong ID proofing today.
-         But that might change over time.  We need to support such users.
-            </td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>
-        Each <a>DAP</a> provides one Single <a>Digital Address Application</a> for the user to be able to access and control the
-        Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
-        user credentials on demand with user consent.
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>13</td>
-            <td>
-        <a>Digital Address</a> (<a>DA</a>) is a Human readable string that is easy to use, that is associated with the Users <a>Trust Anchor</a>.
-        This becomes that identifier that the user can provide to issuers to get the credentials issued.
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>14</td>
-            <td>
-        Users in this scenario will have a single <a>Digital Address Application</a> from one Digital Address Provider
-        and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
-        push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
-        different handles (Different <a>Digital Address</a>es) that can be orchestrated between the user Device and <a>DAP</a> to
-        present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>
-        The ADIA ledger is accessible to <a>DAP</a>s only.
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>16</td>
-            <td>
-        <a>Trust Anchor</a>s are generated randomly by the <a>HomeDAP</a>, such that collisions do not practically occur.
-        See <a>Trust Anchor</a> Discussion below.
-        (not clear, see 20)
-      </td>
-            <td>
-        So that we only need to delete the relation between the <a>Trust Anchor</a> and any other PII when the user
-        asks for account deletion (removal from ADIA).
-            </td>
-        </tr>
-        <tr>
-            <td>17</td>
-            <td>
-        Credentials that do not include PII shall be supported.  For example "the holder of the credential is at least 21 years old"
-        or "the holder of this credential got vaccinated against X".
-
-Note: sometimes there are existing business processes which will convey PI/PII outside of ADIA.
-       </td>
-            <td>
-        In the physical world we have those and for privacy reasons we should carry them over to the digital world.
-            </td>
-        </tr>
-        <tr>
-            <td>18</td>
-            <td>
-        ADIA and <a>DAP</a>s do NOT persistently store personal information (PI).
-        And even pass-through of PI should be avoided.
-
-Note: they will likely need to store PII, i.e. information related to users
-
-Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credentials)
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>19</td>
-            <td>
-        ADIA will store the <a>HomeDAP</a> Identifier (i.e. <a>HomeDAP_ID</a>) along with the user's <a>Trust Anchor</a>.
-        So each <a>DAP</a> could ask ADIA for the <a>HomeDAP</a> of a given user and would then directly talk to the user's <a>HomeDAP</a>.
-      </td>
-            <td>
-        We need that for cross-<a>DAP</a> communications
-            </td>
-        </tr>
-        <tr>
-            <td>20</td>
-            <td>
-        We compute a Hash(firstname, last name, date of birth, country+city of birth) as either use this as
-        <a>Trust Anchor</a> or as an attribute stored along with the <a>Trust Anchor</a> in ADIA.
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>21</td>
-            <td>
-        It shall  be possible to change the <a>HomeDAP</a> of a user (e.g. from <a>DAP</a>1 to <a>DAP</a>2).
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>22</td>
-            <td>
-        <a>Issuer</a>s shouldn't learn the <a>SP</a> that verifies a credential.
-      </td>
-            <td>
-        Privacy
-            </td>
-        </tr>
-        <tr>
-            <td>23</td>
-            <td>
-             <a>SP</a>s want to verify the <a>VC</a> and hence will
-         need to decide whether they want to trust a specific
-        <a>Issuer</a>.
-        As a consequence, the <a>SP</a> will learn who the
-        <a>Issuer</a> of that <a>VC</a> is.
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>24</td>
-            <td>
-
-Issue: Need to specify what functionality/certification is needed to call an application a ADIA "<a>Digital Address Application</a>".
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>25</td>
-            <td>
-        Organizational participants, including issuers, verifiers, and service providers require a publicly
-           resolvable DID
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>26</td>
-            <td>
-      Regional directory services include the User related information,
-      the global directory only includes information on issuers,
-      service providers abd interchanges.
-      So compliance can be managed on a regional level.
-      </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <td>27</td>
-            <td>
-      Logically, the DAA is provided by The Agency - not the Issuer.
-      However, the Issuer could still provide the DAA on behalf
-      of The Agency.
-      </td>
-            <td>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</figure>
-
-
 ## Trust Anchor ## {#sctn-trust-anchor}
 
 Trust Anchor is a Unique Key for a given entity in the ADIA ecosystem. It provides a binding with a Human Identity without storing any personal information.
-A Trust Anchor uniquely maps a User's <a>Digital Address</a> and a DAP assigned DID.
+A Trust Anchor uniquely maps a User's <a>Digital Address</a> and a DAS assigned DID.
 
 
 The ADIA Directories, for regulatory purposes and user privacy, do not store any personal information about a user or an entity.
@@ -369,10 +73,7 @@ a cryptographic hash computed over the following identity attributes:
 1. First name
 2. Last name
 3. Date of Birth
-4. Gender
-5. and One of the following:
-    * Country of Birth
-    * Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc if such exists
+4. Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc
 
 The <a>HIDA</a> is used to query the ADIA Regional Directory to determine uniqueness of the user based on the identity attributes provided.
 The process of binding the <a>Digital Address</a> with the Trust Anchor notifying the user is described in [[#sctn-onboarding-1st-issuer]]
@@ -391,7 +92,7 @@ organizational entities at a global level.
 The ADIA Governance Framework, described in a separate document, defines onboarding policies and procedures for organizational entities and establishing the relationships
 between the <a>Digital Address</a>, the DID and Trust Anchor. The entities governed by the <a>ADIA Global Directory</a> are:
   * *ADIA Regional Directories*
-  * *DAP Agencies*
+  * *Digital Address Service*
   * *Issuers*
   * *Service Providers*
   * *Identity Escrow (Future)*
@@ -423,7 +124,7 @@ The <a>ADIA Global Directory</a> has several components that enable saving Trust
 The types of actors that interact with ADIA are described below:
 
 * *Admin*: Role to configure the ADIA with system level information.
-* *Approver*: Role to approve or reject onboarding of a DAP or Interchange Services.
+* *Approver*: Role to approve or reject onboarding of a DAS or Interchange Services.
 * *ADIA Regional Directory Admin*: Requests onboarding to ADIA via the ADIA Console. Requests changes to Assurance Levels and policy changes.
 
 
@@ -473,33 +174,33 @@ Issuer and Service Provider Agents and optional value-added services such as Ide
 Issue: Add details for Interchange
 
 
-#### DAP #### {#sctn-adia-role-dap-agency}
+#### DAS #### {#sctn-adia-role-das}
 
-Digital Address Provider (DAP) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAP uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
+Digital Address Provider (DAS) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
 
-The DAP may host a set of user-focused wallet storage and secure communication agents. When any interaction with a participant happens, it happens through their Agent via services.
+The DAS may host a set of user-focused wallet storage and secure communication agents. When any interaction with a participant happens, it happens through their Agent via services.
 Each entity's Agent holds cryptographic keys and digital credentials on behalf of the participant. The agent also manages the participant’s connections with services in the ecosystem. It maintains the participant’s directory listings and requests for unique DIDs when a new connection is made.
 The Agent is configured with and uses machine-readable governance framework documents as policy for automatically accepting or rejecting credential interactions. When necessary, the agent will communicate with the participant through a secure channel and obtain consent. Participants authenticate to the Agent via FIDO when consent is required.
 All interactions through the agent are logged and available for inspection by the entity.
 
-##### Components ##### {#sctn-dap-components}
+##### Components ##### {#sctn-das-components}
 
-The core components of a DAP are:
-* **DAP Ledger**: DLT to maintain immutable entity relationships and transactions related to the identity verifications. Ledger APIs abstract details of the underlying storage and interaction with the ledger.
-* **DAP Console**: An administrative interface to manage issuers, service providers and system settings.
-* **DAP Agent**: A communications agent to integrate identity transactions between an Issuer network and the DAP
+The core components of a DAS are:
+* **DAS Ledger**: DLT to maintain immutable entity relationships and transactions related to the identity verifications. Ledger APIs abstract details of the underlying storage and interaction with the ledger.
+* **DAS Console**: An administrative interface to manage issuers, service providers and system settings.
+* **DAS Agent**: A communications agent to integrate identity transactions between an Issuer network and the DAS
 * **FIDO Service**: A FIDO server providing authentication services and authenticator policy management to users with a <a>Digital Address</a>.
 * **API Services**: REST endpoints to provide credential issuance, verification, routing and discovery services for identity transactions.
 * **Mediator**: Service to facilitate interactions with the user device with an SDK. Ex: Notifications, consent, etc.
 
-##### Roles ##### {#sctn-dap-roles}
+##### Roles ##### {#sctn-das-roles}
 
-The types of actors that interact with the DAP are described below:
-* *Admin*: Role to configure the DAP with system and issuer level properties
+The types of actors that interact with the DAS are described below:
+* *Admin*: Role to configure the DAS with system and issuer level properties
 * *Approver*: Role to approve or reject onboarding of a trusted issuers in the system
-* *Issuer Admin*: Requests onboarding to the DAP via the DAP Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAP.
+* *Issuer Admin*: Requests onboarding to the DAS via the DAS Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAS.
 * *Service Provider Admin*: Configures rules to evaluate one or more credentials based on the available credential schema
-* *User*: A subject or holder of the credential. Authenticates to the DAP with the <a>Digital Address</a>.
+* *User*: A subject or holder of the credential. Authenticates to the DAS with the <a>Digital Address</a>.
 
 
 #### Credential Broker (Future) #### {#sctn-adia-role-credential-broker}
@@ -537,22 +238,22 @@ Issue: Content copied as-is from Indicio's recommendations. Add details for Paym
 
 ### Issuer ### {#sctn-adia-role-issuer}
 
-ADIA Architecture trust between entities is brokered by the DAP. Issuers of a Verified Credential are separated from
+ADIA Architecture trust between entities is brokered by the DAS. Issuers of a Verified Credential are separated from
 the Service Providers (verifiers of a credentials) with a level of trust. Issuers are also custodians of an issued credentials but owned by the user it is issued to.
 
 #### Components #### {#sctn-issuer-components}
 
 The core components of an Issuer are:
 * **Issuer Console**: An administrative interface to view Users, Identity information and Credential information. Administrators issue Verifiable Credential from the console to holders.
-* **Issuer Agent**: A communications agent to integrate identity transactions between an Issuer network and the DAP
+* **Issuer Agent**: A communications agent to integrate identity transactions between an Issuer network and the DAS
 * **VC Store**: A secure storage area for issuers to persist issued Verifiable Credentials.
 * **API Services**: REST endpoints to abstract interactions with the communication and transformation agents.
 * **Connectors**: Adapters that connect to Identity and Credential datastores, perform scheduled transfers, transform content for the Issuers to view and issue Credentials to users.
 
 #### Roles #### {#sctn-issuer-components}
 
-* *Issuer Admin*: Requests onboarding to the DAP via the DAP Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAP.
-* *DAP Admin*: Role to approve or reject onboarding of a trusted issuers in the system. This may be an automated process or a service agent acting on behalf of a DAP.
+* *Issuer Admin*: Requests onboarding to the DAS via the DAS Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAS.
+* *DAS Admin*: Role to approve or reject onboarding of a trusted issuers in the system. This may be an automated process or a service agent acting on behalf of a DAS.
 * *User*: A subject or holder requesting a credential to be issued. The credential may be requested in person or online. Users must have a <a>Digital Address</a> before receiving a credential issued to them.
 
 
@@ -573,13 +274,13 @@ Service Providers take a risk-based approach based on their enterprise needs and
 
 The core components of a Service Provider are:
 * **Service Provider Console**: An administrative interface to create rule definitions for a certain service.
-* **Service Provider Agent**: A communications agent to integrate identity transactions between an Service Provider network and the DAP
+* **Service Provider Agent**: A communications agent to integrate identity transactions between an Service Provider network and the DAS
 * **API Services**: REST endpoints to abstract interactions with the communication and transformation agents.
 
 
 #### Roles #### {#sctn-serviceprovider-roles}
-* *Service Provider Admin*: Requests onboarding to the DAP via the DAP Console and define new rulesets
-* *DAP Admin*: Role to approve or reject onboarding of a trusted Service Providers in the system. This may be an automated process or a service agent acting on behalf of a DAP.
+* *Service Provider Admin*: Requests onboarding to the DAS via the DAS Console and define new rulesets
+* *DAS Admin*: Role to approve or reject onboarding of a trusted Service Providers in the system. This may be an automated process or a service agent acting on behalf of a DAS.
 * *User*: A subject or holder verifying a credential. Users must have a <a>Digital Address</a> and consented before verifying a credential issued to them.
 
 
@@ -604,22 +305,22 @@ For users to be part of the ADIA ecosystem, they must be in control of a <a>Digi
 Email, SmartCard or directly from a trusted Issuer.
 
 
-The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind <a>Digital Address</a> with the DAP and consent for verification requests.
+The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind <a>Digital Address</a> with the DAS and consent for verification requests.
 
 #### Components #### {#sctn-daa-components}
 
 The core components of a <a>Digital Address Application</a> are:
 
-* **DAP Mobile SDK**: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAP services.
+* **DAS Mobile SDK**: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAS services.
 * **FIDO Client**: OnePass Client SDK to provide register and authenticate with a <a>Digital Address</a>.
 * **Identity Verification SDK**: An Identity Verification client SDK to ID proof a government-issued identification document such as Driver’s License or Passport
-* **Credential Metadata**: On-device store of the credential metadata issued to the digital address. Interacts with the DAP services to lookup and retrieve actual credentials from the issuer.
+* **Credential Metadata**: On-device store of the credential metadata issued to the digital address. Interacts with the DAS services to lookup and retrieve actual credentials from the issuer.
 * **Push Notification Service**: External service to push notifications to the user for events such as credential issuance, revocation, proof requests, and consent
 
 #### Roles #### {#sctn-daa-roles}
 
 The types of actors that interact with the Mobile App are described below:
-* *User*: A subject or holder of the credential. Authenticates to the DAP with the <a>Digital Address</a>.
+* *User*: A subject or holder of the credential. Authenticates to the DAS with the <a>Digital Address</a>.
 * *Issuer Admin*: Issues a <a>Digital Address</a>, Issues and revokes credentials issued to the user.
 * *Service Provider Admin*: Configures rules to evaluate one or more credentials based on the available credential schema. Requests proofs and verifies the credentials.
 
@@ -660,8 +361,8 @@ by either remotely proving their identity or approaching a Trusted Issuer in the
 ## Identifiers ## {#sctn-adia-identifiers}
 
 Issue: Please check - Trust Anchor, <a>Digital Address</a>,
-DAP Identifier, Home DAP Identifier, Issuer Identifier, Service Provider Identifier,
-DAP Identifier, ADIA Regional Directory Identifier
+DAS Identifier, Home DAS Identifier, Issuer Identifier, Service Provider Identifier,
+DAS Identifier, ADIA Regional Directory Identifier
 
 
    <dl>
@@ -692,38 +393,35 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
       whether users use them.
 
 
-       : <dfn>DAP_USER_ID</dfn>
-       :: The DAP specific Decentralized Identifier (DID) related to the <a>DA</a>, e.g. did:example:123456789abcdefghi
+       : <dfn>DAS_USER_ID</dfn>
+       :: The DAS specific Decentralized Identifier (DID) related to the <a>DA</a>, e.g. did:example:123456789abcdefghi
 
-       :  <a>DAP_USER_ID_PK</a>, <a>DAP_USER_ID_SK</a>
+       :  <a>DAS_USER_ID_PK</a>, <a>DAS_USER_ID_SK</a>
        :: Public Key (PK) and Private Key (SK) related to the
-           <a>DAP_USER_ID</a>.  See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           <a>DAS_USER_ID</a>.  See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
            more details.
 
        :  <dfn>DAA</dfn>
        :: Digital Address Application, e.g. Android App or iOS App that
-           knows how to talk to the <a>DAP</a> on behalf of the <a>User</a>.
+           knows how to talk to the <a>DAS</a> on behalf of the <a>User</a>.
 
-       :  <dfn>DAP</dfn> (formerly DAP)
-       :: Digital Address Provider Agency.  See [[DAP-API]] for the DAP
-           Agency API.  Multiple DAP Agencies can exist in the ADIA "universe".
+       :  <dfn>DAS</dfn> (formerly DAS)
+       :: Digital Address Service.  See DAS-API for the DAS
+           Agency API.  Multiple DAS Agencies can exist in the ADIA "universe".
 
-       :  <dfn>DAP_ID</dfn>
-       :: <a>DAP</a> IDentity, i.e. the W3C DID style identifier for the <a>DAP</a>.
+       :  <dfn>DAS_ID</dfn>
+       :: <a>DAS</a> IDentity, i.e. the W3C DID style identifier for the <a>DAS</a>.
 
-       :  <a>DAP_ID_PK</a>, <a>DAP_ID_SK</a>
+       :  <a>DAS_ID_PK</a>, <a>DAS_ID_SK</a>
        :: Public Key (PK) and Private Key (SK) related to the
-           <a>DAP_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           <a>DAS_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
            more details.
 
        : <dfn>DID</dfn>
        :: Decentralized Identifier according to [[!did-core]]
 
        : <dfn>DIDDoc-USER</dfn>
-       :: DID document binding the user's public key to the <a>DAP_USER_ID</a>.
-
-       : <dfn>ADIA</dfn>
-       :: Global Architecture for Digital IDentity. See [[ADIA-API]] for the DAP API.
+       :: DID document binding the user's public key to the <a>DAS_USER_ID</a>.
 
        : <dfn>ADIA Regional</dfn>
        ::
@@ -741,8 +439,8 @@ Issue: TODO.
        :  <dfn>HIDA</dfn>
        :: Cryptographic hash computed over the <a>ID Attributes</a>
 
-       :  <dfn>HomeDAP_ID</dfn>
-       :: DAP_ID of the <a>DAP</a> that user primarliy belongs to (i.e. <dfn>HomeDAP</dfn>).
+       :  <dfn>HomeDAS_ID</dfn>
+       :: DAS_ID of the <a>DAS</a> that user primarliy belongs to (i.e. <dfn>HomeDAS</dfn>).
 
        :  <dfn>ID Attributes</dfn>
        :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
@@ -755,7 +453,7 @@ Issue: TODO.
        :  <dfn>Issuer</dfn>
        :: Issuer of <a>VC</a>s to users.  ADIA supports multiple Issuers
            per <a>User</a>.  Issuers use an <dfn>Issuer Agent</dfn> to
-           connect to the <a>DAP</a>.
+           connect to the <a>DAS</a>.
 
        :  <dfn>ISSUER_ID</dfn>
        :: Issuer IDentity, i.e. the <a>DID</a> style identifier for the <a>Issuer</a>.
@@ -769,7 +467,7 @@ Issue: TODO.
        :: <dfn>Service Provider</dfn> that verifies <a>VC</a>s.  In the
             Decentralized Identity community it is typically called
             Verifier. <a>Service Providers</a> use a <dfn>Service Provider Agent</dfn> to
-            connect to the <a>DAP</a>, the <a>Credential Broker</a> and the <a>Identity Escrow</a>.
+            connect to the <a>DAS</a>, the <a>Credential Broker</a> and the <a>Identity Escrow</a>.
 
        :  <dfn>SP_ID</dfn>
        :: Service Provider IDentity, i.e. the <a>DID</a> style identifier for the <a>SP</a>.
@@ -794,7 +492,7 @@ Issue: TODO.
 
        : <a>USER_FIDO_PK</a>, <a>USER_FIDO_SK</a>
        :: The FIDO credential owned by the user's authenticator and used
-           to authenticator to <a>DAP</a> and <a>Cloud Agent</a>.  See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           to authenticator to <a>DAS</a> and <a>Cloud Agent</a>.  See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
            more details.
 
        :  <dfn>VC</dfn>
@@ -823,11 +521,11 @@ Issue: TODO.
 
    Issue: Will have to specify the assurance level to which the claims
        have been verified by the issuer.  Similarly for the other
-       entities (e.g. DAP, Issuer, ...). See ASSURANCE_LEVEL in
+       entities (e.g. DAS, Issuer, ...). See ASSURANCE_LEVEL in
        <a>DigitalAddress</a> and in <a href="#sctn-credential-metadata">Credential Metadata</a>.
 
 
-   Issue: How to trust the issuer?  How to trust the SP?  How to trust DAPs?
+   Issue: How to trust the issuer?  How to trust the SP?  How to trust DASs?
 
 
    When verifying a verifiable presentation of a verifiable credential,
@@ -836,7 +534,7 @@ Issue: TODO.
        <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
        or Derived Data (in the case of ZKP) (<a
        href="(e.g. https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
-       and a signature by the subjects's DAP_USER_ID_PK/SK key.
+       and a signature by the subjects's DAS_USER_ID_PK/SK key.
 
    2. <a>Verifiable Credential</a>, i.e. an object containing a
        <dfn>CredentialSubject</dfn>, an issuer and a signature by the
@@ -845,13 +543,13 @@ Issue: TODO.
    3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
        via the <a>DIDDoc-ISSUER</a>.
 
-   4. Subject DAP_USER_ID_PK/SK key. This key is linked to the user via
+   4. Subject DAS_USER_ID_PK/SK key. This key is linked to the user via
        the <a>DIDDoc-USER</a>.
 
 
    In the case of <a>Anonymous Verifiable Credential</a>s (e.g. "older than 21"), the
       <a>DIDDoc-USER</a> is a pair-wise use object and the included
-      <a>DAP_USER_ID_PK</a> is a one-time use key.  Pair-wise use means it is not
+      <a>DAS_USER_ID_PK</a> is a one-time use key.  Pair-wise use means it is not
       shared with any other <a>SP</a> and it will typically not even be referenced by
       another verifiable presentation to the same <a>SP</a> again to
       maintain the user's privacy.
@@ -901,12 +599,12 @@ Issue: TODO.
         </tr>
 
         <tr>
-          <td><dfn>DAP_ID_PK</dfn> / <dfn>DAP_ID_SK</dfn></td>
-          <td><a>DAP</a></td>
+          <td><dfn>DAS_ID_PK</dfn> / <dfn>DAS_ID_SK</dfn></td>
+          <td><a>DAS</a></td>
           <td>
-            DAP Agent
+            DAS Agent
           </td>
-          <td><a href="#sctn-onboarding-as-dap">Onboarding as DAP</a>
+          <td><a href="#sctn-onboarding-as-dap">Onboarding as DAS</a>
    	</td>
           <td>
             via a DIDDoc kept in the ADIA Global Directory.
@@ -964,7 +662,7 @@ Issue: TODO.
         </tr>
 
         <tr>
-          <td><dfn>DAP_USER_ID_PK</dfn> / <dfn>DAP_USER_ID_SK</dfn></td>
+          <td><dfn>DAS_USER_ID_PK</dfn> / <dfn>DAS_USER_ID_SK</dfn></td>
           <td><a>User</a></td>
           <td>Typically the Cloud Agent (potentially the DAA once we specify
             the device migration)
@@ -972,7 +670,7 @@ Issue: TODO.
           <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
               First Issuer</a></td>
           <td>
-            via a DIDDoc kept in the HomeDAP.
+            via a DIDDoc kept in the HomeDAS.
           </td>
           <td>
 
