@@ -1,4 +1,4 @@
-## DAP API ## {#sctn-dap-agency-api}
+## DAS API ## {#sctn-dap-agency-api}
 
 ### Directory Service ### {#sctn-adia-directory-service}
 
@@ -339,7 +339,7 @@ curl -X GET  /api/issuers/did:adia:I1111111111
 
 
 #### Save Issuer #### {#sctn-dap-agency-save-issuer}
-Save an Issuer with the DAP Agency
+Save an Issuer with the DAS
 
 <table class="data longlastcol">
   <tbody>
@@ -588,7 +588,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
 </aside>
 
 #### Save Service Provider #### {#sctn-dap-agency-save-serviceprovider}
-Save a Service Provider with the DAP Agency
+Save a Service Provider with the DAS
 
 <table class="data longlastcol">
   <tbody>
@@ -708,7 +708,7 @@ Search A Scheme against which Verifiable Credentials are issued. A Schema is pub
     <tr>
       <td><strong>Request Body</strong></td>
       <td>CredentialCriteria (required)<br/>
-      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAP Ledger.
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAS Ledger.
       </td>
     </tr>
     <tr>
@@ -1039,7 +1039,7 @@ Search A Scheme against which Verifiable Credentials are issued. A Metadata is p
     <tr>
       <td><strong>Request Body</strong></td>
       <td>CredentialCriteria (required)<br/>
-      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential metadata records from the DAP Ledger.
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential metadata records from the DAS Ledger.
       </td>
     </tr>
     <tr>

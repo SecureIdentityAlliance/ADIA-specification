@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: DAP API
-  description: DAP API documentation
+  title: DAS API
+  description: DAS API documentation
   version: 1.0.0
 servers:
 - url: dap-service.stage.digitaltrust.net/
@@ -21,7 +21,7 @@ paths:
       operationId: save-digital-address
       requestBody:
         description: Payload contains the primary and secondary hashes created from
-          the core attributes provided by the user and persisted to the GADI Directory
+          the core attributes provided by the user and persisted to the ADIA Directory
           Service
         content:
           application/json:
@@ -117,12 +117,12 @@ paths:
     get:
       tags:
       - directory-resource
-      summary: Get all registered Issuers for a DAP
+      summary: Get all registered Issuers for a DAS
       operationId: get-issues-for-dap
       parameters:
       - name: dapId
         in: path
-        description: The identifier for the DAP
+        description: The identifier for the DAS
         required: true
         style: simple
         explode: false
@@ -144,18 +144,18 @@ paths:
           description: Forbidden Access
           content: {}
         "404":
-          description: DAP Not Found
+          description: DAS Not Found
           content: {}
       deprecated: false
     post:
       tags:
       - directory-resource
-      summary: Create an Issuer for a DAP
+      summary: Create an Issuer for a DAS
       operationId: create-issuer-for-dap
       parameters:
       - name: dapId
         in: path
-        description: The identifier for the DAP
+        description: The identifier for the DAS
         required: true
         style: simple
         explode: false
@@ -185,19 +185,19 @@ paths:
           description: Forbidden Access
           content: {}
         "404":
-          description: DAP Not Found
+          description: DAS Not Found
           content: {}
       deprecated: false
   /api/directory/daps/{dapId}/service_providers:
     get:
       tags:
       - directory-resource
-      summary: Get all registered Service Providers for a DAP
+      summary: Get all registered Service Providers for a DAS
       operationId: get-serviceproviders-for-dap
       parameters:
       - name: dapId
         in: path
-        description: The identifier for the DAP
+        description: The identifier for the DAS
         required: true
         style: simple
         explode: false
@@ -219,18 +219,18 @@ paths:
           description: Forbidden Access
           content: {}
         "404":
-          description: DAP Not Found Access
+          description: DAS Not Found Access
           content: {}
       deprecated: false
     post:
       tags:
       - directory-resource
-      summary: Create a ServiceProvider for a DAP
+      summary: Create a ServiceProvider for a DAS
       operationId: create-serviceprovider-for-dap
       parameters:
       - name: dapId
         in: path
-        description: The identifier for the DAP
+        description: The identifier for the DAS
         required: true
         style: simple
         explode: false
@@ -260,7 +260,7 @@ paths:
           description: Forbidden Access
           content: {}
         "404":
-          description: DAP Not Found
+          description: DAS Not Found
           content: {}
       deprecated: false
   /api/credentials/credential-schema:
@@ -301,11 +301,11 @@ paths:
     post:
       tags:
       - credential-resource
-      summary: Lookup if a Credential Schema exists on the DAP Ledger
+      summary: Lookup if a Credential Schema exists on the DAS Ledger
       operationId: lookup-credential-schema
       requestBody:
         description: A criteria based search consisting of one or more attributes.
-          Returns matching credential schema records from the DAP Ledger.
+          Returns matching credential schema records from the DAS Ledger.
         content:
           application/json:
             schema:
@@ -399,11 +399,11 @@ paths:
     post:
       tags:
       - credential-resource
-      summary: Lookup if a Credential Metadata exists on the DAP Ledger
+      summary: Lookup if a Credential Metadata exists on the DAS Ledger
       operationId: lookup-credential-metadata
       requestBody:
         description: A criteria based search consisting of one or more attributes.
-          Returns matching credential metadata records from the DAP Ledger.
+          Returns matching credential metadata records from the DAS Ledger.
         content:
           application/json:
             schema:
@@ -759,7 +759,7 @@ components:
           enum:
           - Issuer
           - ServiceProvider
-          - DAP
+          - DAS
         primaryHash:
           type: string
         secondaryHash:
@@ -788,7 +788,7 @@ components:
           enum:
           - Issuer
           - ServiceProvider
-          - DAP
+          - DAS
         active:
           type: boolean
         createdBy:
@@ -825,7 +825,7 @@ components:
           type: string
           enum:
           - Issuer
-          - DAP
+          - DAS
         revoked:
           type: boolean
         revokedDate:
@@ -837,7 +837,7 @@ components:
           type: string
           enum:
           - Issuer
-          - DAP
+          - DAS
         createdBy:
           type: string
         createdDate:
@@ -854,7 +854,7 @@ components:
           enum:
           - Issuer
           - ServiceProvider
-          - DAP
+          - DAS
         userDID:
           type: string
         verifierDID:
@@ -898,7 +898,7 @@ components:
           type: string
           enum:
           - Issuer
-          - DAP
+          - DAS
         issuedDate:
           type: string
           format: date-time
@@ -911,7 +911,7 @@ components:
           enum:
           - Issuer
           - ServiceProvider
-          - DAP
+          - DAS
           - User
         revoked:
           type: boolean
@@ -926,7 +926,7 @@ components:
           type: string
           enum:
           - Issuer
-          - DAP
+          - DAS
         dapDID:
           type: string
         dapDA:
@@ -950,7 +950,7 @@ components:
           enum:
           - Issuer
           - ServiceProvider
-          - DAP
+          - DAS
         userDID:
           type: string
         verifierDID:

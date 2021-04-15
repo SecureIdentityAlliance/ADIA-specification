@@ -303,7 +303,7 @@ Search A Scheme against which Verifiable Credentials are issued. A Schema is pub
     <tr>
       <td><strong>Request Body</strong></td>
       <td>CredentialCriteria (required)<br/>
-      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAP Ledger.
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAS Ledger.
       </td>
     </tr>
     <tr>

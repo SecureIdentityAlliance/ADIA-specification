@@ -14,7 +14,7 @@ Issue: We will likely remove this section later.  But for now let's
         <tr>
             <td>1</td>
             <td>
-    The ADIA Framework respects national laws and allows the <a>DAP</a>s to operate according to their local regulations.
+    The ADIA Framework respects national laws and allows the <a>DAS</a>s to operate according to their local regulations.
      This includes compliance to CCPA and GDPR.
       </td>
             <td>
@@ -25,7 +25,7 @@ Issue: We will likely remove this section later.  But for now let's
             <td>2</td>
             <td>
         Users must have control on user credentials, i.e. no credentials are created or shared without the user's consent.
-        This means, <a>DAP</a> asks for user consent and strongly authenticates the user.
+        This means, <a>DAS</a> asks for user consent and strongly authenticates the user.
       </td>
             <td>
         Data Privacy regulation & expectation
@@ -86,7 +86,7 @@ Issue: We will likely remove this section later.  But for now let's
             <td>8</td>
             <td>
         <a>Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
-        who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAP</a>) than the one this issuer is primarily using.
+        who got their <a>Trust Anchor</a> from a different Digital Address Provider (<a>DAS</a>) than the one this issuer is primarily using.
       </td>
             <td>
             </td>
@@ -128,7 +128,7 @@ Issue: We will likely remove this section later.  But for now let's
         <tr>
             <td>12</td>
             <td>
-        Each <a>DAP</a> provides one Single <a>Digital Address Application</a> for the user to be able to access and control the
+        Each <a>DAS</a> provides one Single <a>Digital Address Application</a> for the user to be able to access and control the
         Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
         user credentials on demand with user consent.
       </td>
@@ -150,7 +150,7 @@ Issue: We will likely remove this section later.  But for now let's
         Users in this scenario will have a single <a>Digital Address Application</a> from one Digital Address Provider
         and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
         push the credentials for the user.   This is just between users and <a>Issuer</a>s.  We however can also provide
-        different handles (Different <a>Digital Address</a>es) that can be orchestrated between the user Device and <a>DAP</a> to
+        different handles (Different <a>Digital Address</a>es) that can be orchestrated between the user Device and <a>DAS</a> to
         present to different issuers if we need to also make DA one time as the issued credential is a <a>DID</a>.
       </td>
             <td>
@@ -159,7 +159,7 @@ Issue: We will likely remove this section later.  But for now let's
         <tr>
             <td>15</td>
             <td>
-        The ADIA ledger is accessible to <a>DAP</a>s only.
+        The ADIA ledger is accessible to <a>DAS</a>s only.
       </td>
             <td>
             </td>
@@ -167,7 +167,7 @@ Issue: We will likely remove this section later.  But for now let's
         <tr>
             <td>16</td>
             <td>
-        <a>Trust Anchor</a>s are generated randomly by the <a>HomeDAP</a>, such that collisions do not practically occur.
+        <a>Trust Anchor</a>s are generated randomly by the <a>HomeDAS</a>, such that collisions do not practically occur.
         See <a>Trust Anchor</a> Discussion below.
         (not clear, see 20)
       </td>
@@ -191,7 +191,7 @@ Note: sometimes there are existing business processes which will convey PI/PII o
         <tr>
             <td>18</td>
             <td>
-        ADIA and <a>DAP</a>s do NOT persistently store personal information (PI).
+        ADIA and <a>DAS</a>s do NOT persistently store personal information (PI).
         And even pass-through of PI should be avoided.
 
 Note: they will likely need to store PII, i.e. information related to users
@@ -204,11 +204,11 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
         <tr>
             <td>19</td>
             <td>
-        ADIA will store the <a>HomeDAP</a> Identifier (i.e. <a>HomeDAP_ID</a>) along with the user's <a>Trust Anchor</a>.
-        So each <a>DAP</a> could ask ADIA for the <a>HomeDAP</a> of a given user and would then directly talk to the user's <a>HomeDAP</a>.
+        ADIA will store the <a>HomeDAS</a> Identifier (i.e. <a>HomeDAS_ID</a>) along with the user's <a>Trust Anchor</a>.
+        So each <a>DAS</a> could ask ADIA for the <a>HomeDAS</a> of a given user and would then directly talk to the user's <a>HomeDAS</a>.
       </td>
             <td>
-        We need that for cross-<a>DAP</a> communications
+        We need that for cross-<a>DAS</a> communications
             </td>
         </tr>
         <tr>
@@ -223,7 +223,7 @@ Note: <a>Issuer</a>s will have to store PI (in order to be able to issue credent
         <tr>
             <td>21</td>
             <td>
-        It shall  be possible to change the <a>HomeDAP</a> of a user (e.g. from <a>DAP</a>1 to <a>DAP</a>2).
+        It shall  be possible to change the <a>HomeDAS</a> of a user (e.g. from <a>DAS</a>1 to <a>DAS</a>2).
       </td>
             <td>
             </td>

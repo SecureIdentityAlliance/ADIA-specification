@@ -3,7 +3,7 @@
 
 ## Entity Model ## {#sctn-data-schema-entitymodel}
 
-The following diagram depicts a logical view of an entity in GADI.
+The following diagram depicts a logical view of an entity in ADIA.
 
 * An Entity are Organization, Person or a Device.
 * Entities are associated with other parties through relationships and a role.
@@ -50,7 +50,7 @@ The following diagram depicts a logical view of an entity in GADI.
         <ul>
           <li>Issuer</li>
           <li>ServiceProvider</li>
-          <li>DAP</li>
+          <li>DAS</li>
           <li>RegionalDirectory</li>
         </ul>
       </td>
