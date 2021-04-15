@@ -1,8 +1,8 @@
-## ADIA Regional Directory API ## {#sctn-gadi-regional-api}
+## ADIA Regional Directory API ## {#sctn-adia-regional-api}
 
-### Directory Service ### {#sctn-gadi-regional-directory-service}
+### Directory Service ### {#sctn-adia-regional-directory-service}
 
-#### Save Digital Address #### {#sctn-gadi-regional-save-da}
+#### Save Digital Address #### {#sctn-adia-regional-save-da}
 Save A Digital Address with its corresponding Hashed anchor attributes
 
 <table class="data longlastcol">
@@ -90,7 +90,7 @@ Save A Digital Address with its corresponding Hashed anchor attributes
 </table>
 </aside>
 
-#### Search Digital Addresses #### {#sctn-gadi-regional-get-da}
+#### Search Digital Addresses #### {#sctn-adia-regional-get-da}
 Returns a list of Digital Addresses matching a criteria from the ADIA Regional Directory
 
 <table class="data longlastcol">
@@ -189,7 +189,7 @@ Returns a list of Digital Addresses matching a criteria from the ADIA Regional D
 </aside>
 
 
-#### Get a Digital Address by an Identifier #### {#sctn-gadi-regional-get-byId}
+#### Get a Digital Address by an Identifier #### {#sctn-adia-regional-get-byId}
 Get an entity with its DID or Digital DigitalAddress
 
 <table class="data longlastcol">

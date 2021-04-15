@@ -39,7 +39,7 @@ spec:webidl; type:interface; text:Promise
   </pre>
 
   <pre class=include>
-  path: sections/api/DAP-agency-api.include
+  path: sections/api/DAS-api.include
   </pre>
 
   <pre class=include>

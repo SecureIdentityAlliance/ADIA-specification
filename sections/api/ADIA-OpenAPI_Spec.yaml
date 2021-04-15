@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: GADI API
-  description: GADI API documentation
+  title: ADIA API
+  description: ADIA API documentation
   version: 1.0.0
 servers:
-- url: gadi-service.stage.digitaltrust.net/
+- url: adia-service.stage.digitaltrust.net/
 tags:
 - name: directory-resource
   description: Digital Address Resource
@@ -16,7 +16,7 @@ paths:
       summary: Save Digital Address
       operationId: save-digital-address
       requestBody:
-        description: Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the GADI Directory Service
+        description: Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Directory Service
         content:
           application/json:
             schema:
