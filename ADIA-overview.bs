@@ -18,7 +18,7 @@ Editor: Taejin Kim, tjkim1212@raoncorp.com
 Editor: Sunghoon Choi, shchoi@raoncorp.com
 
 
-Abstract: The Accountable Digital Identity Specification establishes the foundational technology components to establish a Trustable Identity Framework by providing a unique <a>Digital Address</a> to Human Identities to empower them to distribute Identity information and reinforce Trust and Accountability the in the Digital World.
+Abstract: The Accountable Digital Identity Specification establishes the foundational technology components to establish a Trustable Identity Framework by providing a unique <a>Digital Address</a> for Human Identities to empower them to distribute Identity information and reinforce Trust and Accountability in the Digital World.
 
 Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
