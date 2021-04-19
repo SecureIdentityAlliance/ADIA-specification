@@ -1,43 +1,47 @@
-title: User onboarding to first issuer
+title User onboarding to first Issuer
+
 Participant User
 Participant DAA
 Participant Issuer
 Participant Cloud Agent
-Participant DAP
-Participant GADI Regional Directory
-User -> Issuer: I want to get Digital Address (provide authentication + accept T&C)\n Issuer has ID-proofed user before
-Issuer -> Issuer: lookup ID-Attribs for that user
-Issuer -> Issuer: compute HIDA = hash(ID-Attribs)
-Issuer -> DAP: securely send HIDA
-DAP -> GADI Regional Directory: lookup TA_USER_ISSUER for HIDA
-GADI Regional Directory -> GADI Regional Directory: lookup TA for HIDA
-GADI Regional Directory -> GADI Regional Directory: if TA not found: generate TA = random
-GADI Regional Directory -> GADI Regional Directory: store HIDA, HomeDAP-ID=DAP-ID, TA (in DLT)
-GADI Regional Directory --> DAP: No conflict with TA. \nReturn TA_USER_ISSUER = hash(TA, ISSUER_ID)
-DAP -> DAP: Create DA and DAP_USER_ID
-DAP -> DAP: Remember (TA_USER_ISSUER, DAP_USER_ID) in DLT
-DAP -> GADI Regional Directory: Send HIDA, TA_USER_ISSUER, DA to notify about DA
-GADI Regional Directory -> GADI Regional Directory: Remember DA exists for HIDA\n(don't store DA!)
-GADI Regional Directory --> DAP: Success
-DAP --> Issuer: Return TA_USER_ISSUER, DAP_USER_ID, DA
-Issuer -> Issuer: Remember DA and DAP_USER_ID for user in userDB
-Issuer -> Issuer: Creates QR code (DA, Issuer-URL?)
-Issuer -> User: presents or sends the QR code in Web interface/Issuer PC
-User -> DAA: Scans the QR code and extracts DA+IssuerURL
-DAA -> DAP: Register FIDO Authenticator for this DA to the DAP (USER_FIDO_PK)
-DAP-> DAP: Remember create and store VC(USER_FIDO_PK, DAP_USER_ID)
-DAP --> DAA: acknowledge successful FIDO registration
-DAA -> DAP: ID proofing starts on the device and extracts the user info
-DAP -> DAP: If successful: Mark ID proofing as complete for this DAP_USER_ID
-DAP --> DAA: Success
-DAA -> Issuer: Send Verified User Attributes + DA to IssuerURL
-Issuer -> Issuer: Verifies User Attributes against userDB identified by DA
-Issuer -> Issuer: create VC(TA_USER_ISSUER, Validation Succeeded)
-Issuer -> DAA: validation succeeded for DA+VC(TA_USER_ISSUER, Validation Succeeded)
-DAA -> DAA: Remember TA_USER_ISSUER, HIDA
-DAA -> Cloud Agent: request to generate DAP_USER_ID_PK/SK (TODO: Where do we have to send it??)
-Cloud Agent -> Cloud Agent: Generate keypair and store in vault.
-DAA -> Issuer: Accept DA
-Issuer --> DAA: OK
-DAA -> DAP: Register FIDO Authenticator for this DA to the DAP+send VC (implicitly: User accepted DA)
-DAP -> DAP: Remember USER_FIDO_PK for TA_USER_ISSUER
+Participant DAS
+Participant ARD
+
+
+User -> Issuer: I want a Digital Address\n(Authentication + accept T&C)\n Issuer has ID-proofed user before
+Issuer -> Issuer: lookup ID-Attribs for that user in Issuer DB
+Issuer -> Issuer: compute HIDA = hash (ID-Attribs)
+Issuer -> DAS: securely send HIDA, ISSUER_ID \nand request Digital Address
+DAS -> ARD: lookup TA_USER_ISSUER for HIDA, ISSUER_ID
+ARD -> ARD: lookup TA for HIDA
+
+alt TA not found
+ARD -> ARD: Generate TA = random
+end
+
+ARD --> DAS: No conflict with TA.\n Return TA_USER_ISSUER = hash (TA, ISSUER_ID)
+DAS->DAS: Provision a Cloud Agent for User with HIDA
+DAS->Cloud Agent: Request to Create DAS_USER_ID for HIDA
+Cloud Agent ->Cloud Agent: Create DAS_USER_ID & DAS_USER_ID_PK/SK
+Cloud Agent->DAS: Send [DAS_USER_ID, DAS_USER_ID_PK] to DAS
+Cloud Agent->DAS: Create and Send DAS_USER_ID to DAS
+DAS -> DAS: Create DA. Store [DA, TA_USER_ISSUER, DAS_USER_ID, DAS_USER_ID_PK]
+DAS -> ARD: Send [DAS_USER_ID, HIDA, HomeDAS_ID] to notify about DA
+ARD -> ARD: store [HIDA, TA]\n [TA, DAS_USER_ID, HomeDAS_ID=DAS_ID]
+ARD --> DAS: Success
+DAS --> Issuer: Return DAS_USER_ID
+Issuer -> Issuer: Remember DAS_USER_ID for user in Issuer DB
+Issuer -> Issuer: Creates QR code (DAS_USER_ID, IssuerConnectionURL)
+Issuer -> User: presents (Ex: Console) or sends the QR code (Ex: Email)
+User -> DAA: Scans the QR code and \nextracts DAS_USER_ID+ IssuerConnectionURL
+DAA -> DAS: ID proofing starts on the device \nand extracts the user info
+DAA->DAS: Send Verified User Attributes +\n DAS_USER_ID to IssuerConnectionURL
+DAS->Issuer: Verify User [DAS_USER_ID, User Attributes]
+Issuer -> Issuer: Verifies User Attributes against \nIssuer DB [DAS_USER_ID, User Attributes]
+Issuer->DAS: Verification Status [DAS_USER_ID, Success/Failure]
+DAS -> DAA: validation status [DAS_USER_ID, DA, Validation Success/Failure]
+DAA -> DAA: If successful: Remember DAS_USER_ID, DA
+DAA -> DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
+DAS-> DAS: Remember (USER_FIDO_PK, DAS_USER_ID)
+DAS --> DAA: acknowledge successful FIDO registration
+DAA->User: Digital Address enrolled and ready for use 
