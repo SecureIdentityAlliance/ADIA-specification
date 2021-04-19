@@ -298,7 +298,7 @@ smartphone - <i>while still</i> having access to the old <a>DAA</a> instance.
     <figcaption>User Bootstraps Additional DAA Instance "New Phone"</figcaption>
 </figure>
 
-### User Initiated Digital Address Creation (Remote) ### {#sctn-user-initiated-da-remote}
+### User initiated DA creation with DAA ### {#sctn-user-initiated-da-with-daa}
 
 A user may initiate the creation of a Digital Address remotely, via an online service
 provided by a Trusted Digital Address Issuer. The Issuer's service MUST follow procedures similar to the
@@ -313,7 +313,7 @@ A successful authentication and binding to the HomeDAS's services should allow t
 
 
 <figure id="fig-user-initiated-da">
-    <img src="sequence-diagrams/User-initiated-DA.png"/>
+    <img src="sequence-diagrams/User-initiated-DA-with-daa.svg"/>
     <figcaption>User Initiated Digital Address Creation</figcaption>
 </figure>
 
