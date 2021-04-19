@@ -114,6 +114,55 @@
         "title": "ISO/IEC 2382-37 Harmonized Biometric Vocabulary",
         "href": "https://www.iso.org/obp/ui/#iso:std:iso-iec:2382:-37:ed-2:v1:en"
     },
+    "SP800-63-3": {
+        "authors": [
+            "P. Grassi",
+            "M. Garcia",
+            "J. Fenton"
+        ],
+        "date": "June 2017",
+        "publisher": "National Institute of Standards and Technology",
+        "status": "",
+        "title": "NIST Special Publication 800-63-3: Digital Identity Guidelines",
+        "href": "https://doi.org/10.6028/NIST.SP.800-63-3"
+    },
+    "SP800-63A": {
+        "authors": [
+            "P. Grassi",
+            "J. Fenton",
+            "N. Lefkovitz",
+            "J. Danker",
+            "Y. Choong",
+            "K. Greene",
+            "M. Theofanos"
+        ],
+        "date": "June 2017",
+        "publisher": "National Institute of Standards and Technology",
+        "status": "",
+        "title": "NIST Special Publication 800-63A: Digital Identity Guidelines - Enrollment and Identity Proofing Requirements",
+        "href": "https://doi.org/10.6028/NIST.SP.800-63a"
+    },
+    "SP800-63B": {
+        "authors": [
+            "P. Grassi",
+            "J. Fenton",
+            "E. Newton",
+            "R. Perlner",
+            "A. Regenscheid",
+            "W. Burr",
+            "J. Richer",    
+            "N. Lefkovitz",
+            "J. Danker",
+            "Y. Choong",
+            "K. Greene",
+            "M. Theofanos"
+        ],
+        "date": "June 2017",
+        "publisher": "National Institute of Standards and Technology",
+        "status": "",
+        "title": "NIST Special Publication 800-63B: Digital Identity Guidelines - Authentication and Lifecycle Management",
+        "href": "https://doi.org/10.6028/NIST.SP.800-63b"
+    },
     "JSON": {
         "authors": [
             ""
