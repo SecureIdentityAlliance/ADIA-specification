@@ -1,4 +1,4 @@
-DAS# Accountable Digital Identity Architecture # {#sctn-adia}
+# Accountable Digital Identity Architecture # {#sctn-adia}
 [INFORMATIVE]
 
 One of the greatest challenges in any digital identity system is connecting, or binding, a physical identity with a logical identity.
@@ -184,7 +184,7 @@ Issue: Add details for Interchange
 
 #### DAS #### {#sctn-adia-role-das}
 
-Digital Address Provider (DAS) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
+<dfn export=true>Digital Address Provider</dfn> (<dfn>DAS</dfn>) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
 
 The DAS may host a set of user-focused wallet storage and secure communication agents. When any interaction with a participant happens, it happens through their Agent via services.
 Each entity's Agent holds cryptographic keys and digital credentials on behalf of the participant. The agent also manages the participant’s connections with services in the ecosystem. It maintains the participant’s directory listings and requests for unique DIDs when a new connection is made.
@@ -199,7 +199,7 @@ The core components of a DAS are:
 * **DAS Agent**: A communications agent to integrate identity transactions between an Issuer network and the DAS
 * **FIDO Service**: A FIDO server providing authentication services and authenticator policy management to users with a <a>Digital Address</a>.
 * **API Services**: REST endpoints to provide credential issuance, verification, routing and discovery services for identity transactions.
-* **Mediator**: Service to facilitate interactions with the user device with an SDK. Ex: Notifications, consent, etc.
+* **Mediator**: Service to facilitate interactions with the user device with an SDK. For example notifications, consent, etc.
 
 ##### Roles ##### {#sctn-das-roles}
 
@@ -258,7 +258,7 @@ The core components of an Issuer are:
 * **API Services**: REST endpoints to abstract interactions with the communication and transformation agents.
 * **Connectors**: Adapters that connect to Identity and Credential datastores, perform scheduled transfers, transform content for the Issuers to view and issue Credentials to users.
 
-#### Roles #### {#sctn-issuer-components}
+#### Roles #### {#sctn-issuer-roles}
 
 * *Issuer Admin*: Requests onboarding to the DAS via the DAS Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAS.
 * *DAS Admin*: Role to approve or reject onboarding of a trusted issuers in the system. This may be an automated process or a service agent acting on behalf of a DAS.
@@ -355,26 +355,26 @@ There primarily apply to the identity proofing performed by the Issuers or the U
 and/or importing the Digital Address.These levels are:
 
 - U-AL1 - Attributes, if any, are self-asserted or should be treated as self-asserted.
-- U-AL2 - Either remote or in-person identity proofing is required. IAL2 requires identifying attributes to have been verified in person or remotely using, at a minimum, the procedures given in SP 800-63A
-- U-AL3 - In-person identity proofing is required. Identifying attributes must be verified by an authorized CSP representative through examination of physical documentation as described in SP 800-63A
+- U-AL2 - Either remote or in-person identity proofing is required. IAL2 requires identifying attributes to have been verified in person or remotely using, at a minimum, the procedures given in [[!SP800-63A]]
+- U-AL3 - In-person identity proofing is required. Identifying attributes must be verified by an authorized CSP representative through examination of physical documentation as described in [[!SP800-63A]]
 
 ### Usage ### {#sctn-assurance-level-usage}
 Service Providers may create complex criteria for requesting proofs from users, including the Assurance Level of any entity or the type of the VC to ensure
 the identity of the user before rendering any services.
 
 ### Transitions ### {#sctn-assurance-level-transition}
-Users may acquire a Digital Address with a lower level of assurance Ex: Self-asserted to join the ecosystem, but transition to a higher level of U-AL
-by either remotely proving their identity or approaching a Trusted Issuer in the ADIA ecosystem and presenting valid identity credentials.
+Users may acquire a Digital Address with a lower level of assurance, e.g. start with lowest level identity assertion to join the ecosystem, but transition to a higher level of U-AL
+by either remotely proving their identity or approaching a Trusted Issuer in the GADI ecosystem and presenting valid identity credentials.
 
 ## Identifiers ## {#sctn-adia-identifiers}
 
 Issue: Please check - Trust Anchor, <a>Digital Address</a>,
-DAS Identifier, Home DAS Identifier, Issuer Identifier, Service Provider Identifier,
-DAS Identifier, ADIA Regional Directory Identifier
+   DAS Identifier, Home DAS Identifier, Issuer Identifier, Service Provider Identifier,
+   DAS Identifier, ADIA Regional Directory Identifier
 
 
    <dl>
-       :  <dfn>AVC</dfn>
+       :  <dfn export=true>AVC</dfn>
        :: <dfn>Anonymous Verifiable Credential</dfn>.  This is a
             special case of a <a>Verifiable Credential</a> when the
             included claims to not uniquely identify any specific
@@ -413,7 +413,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
        :: Digital Address Application, e.g., Android App or iOS App that
            knows how to talk to the <a>DAS</a> on behalf of the <a>User</a>.
 
-       :  <dfn>DAS</dfn> (formerly DAS)
+       :  DAS 
        :: Digital Address Service.  See DAS-API for the DAS
            Agency API.  Multiple DAS Agencies can exist in the ADIA "universe".
 
@@ -427,6 +427,9 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
 
        : <dfn>DID</dfn>
        :: Decentralized Identifier according to [[!did-core]]
+
+       : <dfn>DIDDoc-ISSUER</dfn>
+       :: DID document binding the issuer's public key to the <a>ISSUER_ID</a>.
 
        : <dfn>DIDDoc-USER</dfn>
        :: DID document binding the user's public key to the <a>DAS_USER_ID</a>.
@@ -474,7 +477,7 @@ Issue: TODO.
        :  <dfn>SP</dfn>
        :: <dfn>Service Provider</dfn> that verifies <a>VC</a>s.  In the
             Decentralized Identity community it is typically called
-            Verifier. <a>Service Providers</a> use a <dfn>Service Provider Agent</dfn> to
+            Verifier. <a>Service Providers</a> use a <dfn export=true>Service Provider Agent</dfn> to
             connect to the <a>DAS</a>, the <a>Credential Broker</a> and the <a>Identity Escrow</a>.
 
        :  <dfn>SP_ID</dfn>
@@ -506,7 +509,7 @@ Issue: TODO.
        :  <dfn>VC</dfn>
        :: <dfn>Verifiable Credential</dfn>, see [[!vc-data-model]].
 
-       :  <dfn>VC_METADATA</dfn>
+       :  <dfn export=true>VC_METADATA</dfn>
        :: Metadata of a <a>VC</a>, i.e. <a>DID</a>, VC Schema Name, VC Schema Friendly Name
 
    </dl>
@@ -545,7 +548,7 @@ Issue: TODO.
        and a signature by the subjects's DAS_USER_ID_PK/SK key.
 
    2. <a>Verifiable Credential</a>, i.e. an object containing a
-       <dfn>CredentialSubject</dfn>, an issuer and a signature by the
+       <dfn export=true>CredentialSubject</dfn>, an issuer and a signature by the
        issuer ISSUER_ID_PK/SK key.
 
    3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
@@ -591,7 +594,7 @@ Issue: TODO.
         </tr>
 
         <tr>
-          <td><dfn>ADIA_REGIONAL_ID_PK</dfn> / <dfn>ADIA_REGIONAL_ID_SK</dfn></td>
+          <td><dfn export=true>ADIA_REGIONAL_ID_PK</dfn> / <dfn export=true>ADIA_REGIONAL_ID_SK</dfn></td>
           <td><a>ADIA Regional</a></td>
           <td><a>ADIA Regional</a></td>
           <td>ADIA Regional setup.</td>

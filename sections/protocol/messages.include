@@ -572,7 +572,7 @@ Example:
   </table>
 
 
-  ### CredentialMetadataCriteria ### {#sctn-protocol-message-credential-metadata}
+  ### CredentialMetadataCriteria ### {#sctn-protocol-message-credential-metadata-criteria}
 
   <table class="data longlastcol">
     <thead>
