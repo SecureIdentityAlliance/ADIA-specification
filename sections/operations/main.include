@@ -314,10 +314,10 @@ A successful authentication and binding to the HomeDAS's services should allow t
 
 <figure id="fig-user-initiated-da">
     <img src="sequence-diagrams/User-initiated-DA-with-daa.svg"/>
-    <figcaption>User Initiated Digital Address Creation</figcaption>
+    <figcaption>User Initiated Digital Address Creation with DAA</figcaption>
 </figure>
 
-### User Initiated In-person Verification of Digital Address ### {#sctn-verify-user-initiated-da-remote}
+### Verify User with Digital Address to upgrade Assurance Level ### {#sctn-verify-user-da-in-person}
 
 The user may choose to visit a Verification Center in person to upgrade the Assurance Level
 initially assigned by the system. An in-person verification may include a manual review/ verification
@@ -326,8 +326,8 @@ of the identity documents by a certified operator before indicating to the DAS a
 The DAS may independently request the user to authenticate before upgrading the User's Assurance Level.
 
 <figure id="fig-verify-user-initiated-da">
-    <img src="sequence-diagrams/Verify-user-initiated-DA.png"/>
-    <figcaption>User Initiated Digital Address Verification</figcaption>
+    <img src="sequence-diagrams/Verify-user-initiated-DA.svg"/>
+    <figcaption>Verify User with Digital Address to upgrade Assurance Level</figcaption>
 </figure>
 
 
