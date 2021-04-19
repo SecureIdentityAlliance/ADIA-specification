@@ -1,4 +1,4 @@
-## API Objects ## {#sctn-gadi-api-objects}
+## API Objects ## {#sctn-adia-api-objects}
 
 ### Entity ### {#sctn-api-object-entity}
 <table class="data longlastcol">
@@ -25,7 +25,7 @@
       <ul>
         <li>RegionalDirectory</li>
         <li>Interchange</li>
-        <li>DAPAgency</li>
+        <li>DASAgency</li>
         <li>Issuer</li>
         <li>ServiceProvider</li>
     </ul>
@@ -80,7 +80,7 @@
           <ul>
             <li>Issuer</li>
             <li>ServiceProvider</li>
-            <li>DAP</li>
+            <li>DAS</li>
           </ul>
         </td>
       </tr>
@@ -139,7 +139,7 @@
         <ul>
           <li>Issuer</li>
           <li>ServiceProvider</li>
-          <li>DAP</li>
+          <li>DAS</li>
         </ul>
       </td>
     </tr>
@@ -203,7 +203,7 @@
           <ul>
             <li>Issuer</li>
             <li>ServiceProvider</li>
-            <li>DAP</li>
+            <li>DAS</li>
           </ul>
         </td>
       </tr>
@@ -286,7 +286,7 @@
         <td>
           <ul>
             <li>Issuer</li>
-            <li>DAP</li>
+            <li>DAS</li>
           </ul>
         </td>
       </tr>
@@ -311,7 +311,7 @@
         <td>
           <ul>
             <li>Issuer</li>
-            <li>DAP</li>
+            <li>DAS</li>
           </ul>
         </td>
       </tr>
@@ -363,7 +363,7 @@
         <td>
           <ul>
             <li>Issuer</li>
-            <li>DAP</li>
+            <li>DAS</li>
           </ul>
         </td>
       </tr>
@@ -436,7 +436,7 @@
         <td>
           <ul>
             <li>Issuer</li>
-            <li>DAP</li>
+            <li>DAS</li>
           </ul>
         </td>
       </tr>
@@ -461,7 +461,7 @@
         <td>
           <ul>
             <li>Issuer</li>
-            <li>DAP</li>
+            <li>DAS</li>
           </ul>
         </td>
       </tr>
@@ -498,7 +498,7 @@
         <td>
           <ul>
             <li>Issuer</li>
-            <li>DAP</li>
+            <li>DAS</li>
           </ul>
         </td>
       </tr>
@@ -545,7 +545,7 @@
         <td>
           <ul>
             <li>Issuer</li>
-            <li>DAP</li>
+            <li>DAS</li>
           </ul>
         </td>
       </tr>

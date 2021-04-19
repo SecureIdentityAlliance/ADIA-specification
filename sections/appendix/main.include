@@ -1,6 +1,10 @@
 # Appendix # {#sctn-appendix}
 [INFORMATIVE]
 
+<pre class=include>
+path: sections/appendix/requirements.include
+</pre>
+
 ## Acknowledgments ## {#sctn-acknowledgments}
 
 The DID Alliance (DIDA) is an open industry association created to drive the development of a standardized, interoperable framework for decentralized identity services to ensure the authenticity of and establish trust in digital identities.

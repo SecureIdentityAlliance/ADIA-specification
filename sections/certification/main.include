@@ -3,24 +3,21 @@
 
 ## Regional Directory Certification ## {#sctn-regional-dir-certification}
 
-### Digital address ### {#sctn-gadi-regional-da}
-[NORMATIVE]
+### Digital address ### {#sctn-adia-regional-da}
 
 <a>Digital Address</a>es function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user.
 
-<a>Digital Address</a>es may contain PII, but the user MUST be warned if they choose one containing PII and MUST be allowed to choose a digital address that does not contain PII.
+<a>Digital Address</a>es may contain PII, but the user must be warned if they choose one containing PII and must be allowed to choose a digital address that does not contain PII.
 
 A single user MAY have multiple digital addresses that all link to the same user in the directory. Any of the linked digital addresses can be used to identify the user. Digital addresses do not function as a mechanism of uniqueness.
 
-### Hashed Attributes ### {#sctn-gadi-regional-hashed-attributes}
-[NORMATIVE]
+### Hashed Attributes ### {#sctn-adia-regional-hashed-attributes}
 
 Directories (MAY/MUST TBD) only store hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
 
-Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the GADI regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
+Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the ADIA regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
 
-### Listing Modifications ### {#sctn-gadi-regional-modifications}
-[INFORMATIVE]
+### Listing Modifications ### {#sctn-adia-regional-modifications}
 
 Users are listed in a directory by creating a DIDComm connection with the directory, then presenting credentials containing attributes issued by an acceptable issuer as determined by the governance framework.
 
@@ -30,25 +27,23 @@ When the user desires to be removed from the directory, they indicate that over 
 
 These interactions are all detailed in the associated protocols summarized and linked below.
 
-### Logging requirements ### {#sctn-gadi-regional-logging}
-[INFORMATIVE]
+### Logging requirements ### {#sctn-adia-regional-logging}
 
 Directories MUST log all listing modifications and queries.
 
 
-### Storage ### {#sctn-gadi-regional-storage}
+### Storage ### {#sctn-adia-regional-storage}
 
-GADI Regional and GADI Global Directories MUST support
+ADIA Regional and ADIA Global Directories must support
 on-chain and off-ledger storages:
 * A privacy preserving distributed database that holds the <a>HIDA</a>
 * A DLT holding the Trust Anchor and any metadata relating to the <a>Digital Address</a>es
 
 
 
-## DAP Certification ## {#sctn-certification-dap}
+## DAS Certification ## {#sctn-certification-dap}
 
-[INFORMATIVE]
-A DAP must:
+A DAS must:
 
 * Onboard trusted Issuers and Service Providers to the system.
 * Assign trusted identifiers to participating entities in the closed-ecosystem.
@@ -63,7 +58,7 @@ A DAP must:
 
 A Trusted Issuer must:
 * Use an approved method or process to create a unique Trust Anchor based on Identity attributes for a new or existing user in a scope.
-* Detect the presence of a Trust Anchor in the GADI ecosystem.
+* Detect the presence of a Trust Anchor in the ADIA ecosystem.
 * Use an approved method or process to Create and Lookup a unique <a>Digital Address</a> for the User.
 * Provide mechanism to link a <a>Digital Address</a> for existing users.
 * Certify the KYC process for the entity and determine Assurance Levels for issued credential using an approved method or process.

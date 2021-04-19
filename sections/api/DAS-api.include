@@ -1,9 +1,9 @@
-## DAP API ## {#sctn-dap-agency-api}
+## DAS API ## {#sctn-dap-agency-api}
 
-### Directory Service ### {#sctn-gadi-directory-service}
+### Directory Service ### {#sctn-adia-directory-service}
 
 #### Search Entities #### {#sctn-dap-agency-get-entities}
-Returns a list of Entities matching a criteria from the GADI Directory
+Returns a list of Entities matching a criteria from the ADIA Directory
 
 <table class="data longlastcol">
   <tbody>
@@ -74,7 +74,7 @@ Returns a list of Entities matching a criteria from the GADI Directory
       <pre class="highlight">
       <code>
         [{
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "Issuer",
             "createdBy" : "did:dtx:888888888888",
@@ -82,7 +82,7 @@ Returns a list of Entities matching a criteria from the GADI Directory
             "status" : "Active"
             },
           {
-            "entityID" : "did:gadi:I2222222222",
+            "entityID" : "did:adia:I2222222222",
             "entityDigitalAddress" : "abc@OCN",
             "entityRole" : "Issuer",
             "createdBy" : "did:DTX:U2222222222",
@@ -164,7 +164,7 @@ curl -X GET  /api/entities/abc@dtx
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "Issuer",
             "createdBy" : "did:dtx:888888888888",
@@ -181,7 +181,7 @@ curl -X GET  /api/entities/abc@dtx
 
 
 #### Get issuers #### {#sctn-dap-agency-get-issuers}
-Gets a list of issuers in in any of the GADI Regions.
+Gets a list of issuers in in any of the ADIA Regions.
 
 
 <table class="data longlastcol">
@@ -232,7 +232,7 @@ Gets a list of issuers in in any of the GADI Regions.
       <pre class="highlight">
       <code>
         [{
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "Issuer",
             "createdBy" : "did:dtx:888888888888",
@@ -240,7 +240,7 @@ Gets a list of issuers in in any of the GADI Regions.
             "status" : "Active"
             },
             {
-                "entityID" : "did:gadi:I2222222222",
+                "entityID" : "did:adia:I2222222222",
                 "entityDigitalAddress" : "abc@OCN",
                 "entityRole" : "Issuer",
                 "createdBy" : "did:DTX:U2222222222",
@@ -309,7 +309,7 @@ Get a Issuer with its DID or Digital DigitalAddress
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
-curl -X GET  /api/issuers/did:gadi:I1111111111
+curl -X GET  /api/issuers/did:adia:I1111111111
 </code>
 </pre>
 
@@ -322,7 +322,7 @@ curl -X GET  /api/issuers/did:gadi:I1111111111
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "Issuer",
             "createdBy" : "did:dtx:888888888888",
@@ -339,7 +339,7 @@ curl -X GET  /api/issuers/did:gadi:I1111111111
 
 
 #### Save Issuer #### {#sctn-dap-agency-save-issuer}
-Save an Issuer with the DAP Agency
+Save an Issuer with the DAS
 
 <table class="data longlastcol">
   <tbody>
@@ -401,7 +401,7 @@ Save an Issuer with the DAP Agency
     <pre class="highlight">
     <code>
     {
-        "entityID" : "did:gadi:I1111111111",
+        "entityID" : "did:adia:I1111111111",
         "entityDigitalAddress" : "abc@DTX",
         "entityRole" : "Issuer"
         }
@@ -412,7 +412,7 @@ Save an Issuer with the DAP Agency
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "Issuer",
             "createdBy" : "did:dtx:888888888888",
@@ -431,7 +431,7 @@ Save an Issuer with the DAP Agency
 
 
 #### Get Service Providers #### {#sctn-dap-agency-get-service-providers}
-Gets a list of service-providers in in any of the GADI Regions.
+Gets a list of service-providers in in any of the ADIA Regions.
 
 
 <table class="data longlastcol">
@@ -482,7 +482,7 @@ Gets a list of service-providers in in any of the GADI Regions.
       <pre class="highlight">
       <code>
         [{
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "ServiceProvider",
             "createdBy" : "did:dtx:888888888888",
@@ -490,7 +490,7 @@ Gets a list of service-providers in in any of the GADI Regions.
             "status" : "Active"
             },
             {
-                "entityID" : "did:gadi:I2222222222",
+                "entityID" : "did:adia:I2222222222",
                 "entityDigitalAddress" : "abc@OCN",
                 "entityRole" : "ServiceProvider",
                 "createdBy" : "did:DTX:U2222222222",
@@ -559,7 +559,7 @@ Get a Service Provider with its DID or Digital DigitalAddress
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
-curl -X GET  /api/interchanges/did:gadi:I1111111111
+curl -X GET  /api/interchanges/did:adia:I1111111111
 </code>
 </pre>
 
@@ -572,7 +572,7 @@ curl -X GET  /api/interchanges/did:gadi:I1111111111
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "ServiceProvider",
             "createdBy" : "did:dtx:888888888888",
@@ -588,7 +588,7 @@ curl -X GET  /api/interchanges/did:gadi:I1111111111
 </aside>
 
 #### Save Service Provider #### {#sctn-dap-agency-save-serviceprovider}
-Save a Service Provider with the DAP Agency
+Save a Service Provider with the DAS
 
 <table class="data longlastcol">
   <tbody>
@@ -650,7 +650,7 @@ Save a Service Provider with the DAP Agency
     <pre class="highlight">
     <code>
     {
-        "entityID" : "did:gadi:I1111111111",
+        "entityID" : "did:adia:I1111111111",
         "entityDigitalAddress" : "abc@DTX",
         "entityRole" : "ServiceProvider"
         }
@@ -661,7 +661,7 @@ Save a Service Provider with the DAP Agency
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "ServiceProvider",
             "createdBy" : "did:dtx:888888888888",
@@ -678,7 +678,7 @@ Save a Service Provider with the DAP Agency
 
 
 
-### Credential Service ### {#sctn-gadi-credential-service}
+### Credential Service ### {#sctn-adia-credential-service}
 
 #### Search Credential Schema #### {#sctn-dap-agency-get-credential-schema}
 Search A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer
@@ -708,7 +708,7 @@ Search A Scheme against which Verifiable Credentials are issued. A Schema is pub
     <tr>
       <td><strong>Request Body</strong></td>
       <td>CredentialCriteria (required)<br/>
-      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAP Ledger.
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAS Ledger.
       </td>
     </tr>
     <tr>
@@ -1039,7 +1039,7 @@ Search A Scheme against which Verifiable Credentials are issued. A Metadata is p
     <tr>
       <td><strong>Request Body</strong></td>
       <td>CredentialCriteria (required)<br/>
-      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential metadata records from the DAP Ledger.
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential metadata records from the DAS Ledger.
       </td>
     </tr>
     <tr>
@@ -1104,7 +1104,7 @@ Search A Scheme against which Verifiable Credentials are issued. A Metadata is p
           "revokingEntityDA": null,
           "revokingEntityRole": null,
           "dapDID": "did:dtx:3424234324",
-          "dapDA": "dtx@GADI",
+          "dapDA": "dtx@ADIA",
           "active": true,
           "createdBy": "did:dtx:111111111",
           "createdDate": "2021-01-28T01:14:06.817Z"
@@ -1127,7 +1127,7 @@ Search A Scheme against which Verifiable Credentials are issued. A Metadata is p
           "revokingEntityDA": null,
           "revokingEntityRole": null,
           "dapDID": "did:dtx:3424234324",
-          "dapDA": "dtx@GADI",
+          "dapDA": "dtx@ADIA",
           "active": true,
           "createdBy": "did:dtx:111111111",
           "createdDate": "2021-01-28T01:14:06.817Z"
@@ -1239,7 +1239,7 @@ Metadata of the credential issued by an Issuer. A credential is bound by a crede
         "revokingEntityDA": null,
         "revokingEntityRole": null,
         "dapDID": "did:dtx:3424234324",
-        "dapDA": "dtx@GADI",
+        "dapDA": "dtx@ADIA",
         "active": true,
         "createdBy": "did:dtx:111111111",
         "createdDate": "2021-01-28T01:14:06.817Z"
@@ -1337,7 +1337,7 @@ curl -X GET  /api/credential-metadata/434343434343
         "revokingEntityDA": null,
         "revokingEntityRole": null,
         "dapDID": "did:dtx:3424234324",
-        "dapDA": "dtx@GADI",
+        "dapDA": "dtx@ADIA",
         "active": true,
         "createdBy": "did:dtx:111111111",
         "createdDate": "2021-01-28T01:14:06.817Z"

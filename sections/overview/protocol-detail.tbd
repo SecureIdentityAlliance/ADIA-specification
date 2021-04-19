@@ -1,10 +1,10 @@
-#### Protocols for interaction #### {#sctn-gadi-global-protocol}
+#### Protocols for interaction #### {#sctn-adia-global-protocol}
 Existing
 
-##### DID Exchange ##### {#sctn-gadi-global-did-exchange}
+##### DID Exchange ##### {#sctn-adia-global-did-exchange}
 
 New
-##### Credential Listing ##### {#sctn-gadi-global-credential-message}
+##### Credential Listing ##### {#sctn-adia-global-credential-message}
 [NORMATIVE]
 
     <dl>
@@ -18,7 +18,7 @@ New
         : CredentialListingRemove
     </dl>
 
-##### Directory Query ##### {#sctn-gadi-global-query-message}
+##### Directory Query ##### {#sctn-adia-global-query-message}
 [NORMATIVE]
 
 // should this be a ‘one match only’ query protocol? As opposed to a directory that will return multiple matches?
@@ -32,7 +32,7 @@ New
         :: Attributes needed to resolve multiple answers
     </dl>
 
-##### Trust Anchor Protocol ##### {#sctn-gadi-global-query-message}
+##### Trust Anchor Protocol ##### {#sctn-adia-global-query-message}
 [NORMATIVE]
 
     <dl>
@@ -135,7 +135,7 @@ New
 
     </dl>
 
-##### Digital Address Protocol ##### {#sctn-gadi-global-da-message}
+##### Digital Address Protocol ##### {#sctn-adia-global-da-message}
 [NORMATIVE]
 
 Issue: Digital Address as username? Keep this protocol separate?
@@ -144,7 +144,7 @@ Issue: Digital Address as username? Keep this protocol separate?
         : Digital Address Protocol
 
         : Overview
-            This protocol is used between mulitple parties to manage the registration and lookup of a Digital Address, unique to the GADI Ecosystem.
+            This protocol is used between mulitple parties to manage the registration and lookup of a Digital Address, unique to the ADIA Ecosystem.
 
             Digital Addresses are a human friendly string that facilitates the retrieval of a DID for the user who presents the Digital Address.
 

@@ -1,9 +1,9 @@
-## GADI Global API ## {#sctn-gadi-global-api}
+## ADIA Global API ## {#sctn-adia-global-api}
 
-### Directory Service ### {#sctn-gadi-directory-service}
+### Directory Service ### {#sctn-adia-directory-service}
 
-#### Search Entities #### {#sctn-gadi-get-entities}
-Returns a list of Entities matching a criteria from the GADI Directory
+#### Search Entities #### {#sctn-adia-get-entities}
+Returns a list of Entities matching a criteria from the ADIA Directory
 
 <table class="data longlastcol">
   <tbody>
@@ -74,7 +74,7 @@ Returns a list of Entities matching a criteria from the GADI Directory
       <pre class="highlight">
       <code>
         [{
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "Interchange",
             "createdBy" : "did:dtx:888888888888",
@@ -82,7 +82,7 @@ Returns a list of Entities matching a criteria from the GADI Directory
             "status" : "Active"
             },
           {
-            "entityID" : "did:gadi:I2222222222",
+            "entityID" : "did:adia:I2222222222",
             "entityDigitalAddress" : "abc@OCN",
             "entityRole" : "Interchange",
             "createdBy" : "did:DTX:U2222222222",
@@ -98,7 +98,7 @@ Returns a list of Entities matching a criteria from the GADI Directory
 </table>
 </aside>
 
-#### Get an Entity by Identifier #### {#sctn-gadi-get-entities}
+#### Get an Entity by Identifier #### {#sctn-adia-get-entities}
 Get an entity with its DID or Digital DigitalAddress
 
 <table class="data longlastcol">
@@ -164,7 +164,7 @@ curl -X GET  /api/entities/abc@dtx
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "Interchange",
             "createdBy" : "did:dtx:888888888888",
@@ -179,8 +179,8 @@ curl -X GET  /api/entities/abc@dtx
 </table>
 </aside>
 
-#### Get Regional Directories #### {#sctn-gadi-global-get-regional-directories}
-Gets a list of Regional Directories in GADI.
+#### Get Regional Directories #### {#sctn-adia-global-get-regional-directories}
+Gets a list of Regional Directories in ADIA.
 
 <table class="data longlastcol">
   <tbody>
@@ -230,7 +230,7 @@ Gets a list of Regional Directories in GADI.
       <pre class="highlight">
       <code>
         [{
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "RegionalDirectory",
             "createdBy" : "did:dtx:888888888888",
@@ -238,7 +238,7 @@ Gets a list of Regional Directories in GADI.
             "status" : "Active"
             },
             {
-                "entityID" : "did:gadi:I2222222222",
+                "entityID" : "did:adia:I2222222222",
                 "entityDigitalAddress" : "abc@OCN",
                 "entityRole" : "RegionalDirectory",
                 "createdBy" : "did:DTX:U2222222222",
@@ -253,7 +253,7 @@ Gets a list of Regional Directories in GADI.
 </table>
 </aside>
 
-#### Get a Regional Directory by Identifier #### {#sctn-gadi-get-one-regional-ds}
+#### Get a Regional Directory by Identifier #### {#sctn-adia-get-one-regional-ds}
 Get a Regional Directory with its DID or Digital DigitalAddress
 
 <table class="data longlastcol">
@@ -321,7 +321,7 @@ curl -X GET  /api/regional-directories/abc@DTX
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "RegionalDirectory",
             "createdBy" : "did:dtx:888888888888",
@@ -336,8 +336,8 @@ curl -X GET  /api/regional-directories/abc@DTX
 </table>
 </aside>
 
-#### Save Regional Directories #### {#sctn-gadi-save-regional-ds}
-Save GADI Regional Directory
+#### Save Regional Directories #### {#sctn-adia-save-regional-ds}
+Save ADIA Regional Directory
 
 <table class="data longlastcol">
   <tbody>
@@ -399,7 +399,7 @@ Save GADI Regional Directory
     <pre class="highlight">
     <code>
     {
-        "entityID" : "did:gadi:I1111111111",
+        "entityID" : "did:adia:I1111111111",
         "entityDigitalAddress" : "abc@DTX",
         "entityRole" : "RegionalDirectory"
         }
@@ -410,7 +410,7 @@ Save GADI Regional Directory
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "RegionalDirectory",
             "createdBy" : "did:dtx:888888888888",
@@ -427,8 +427,8 @@ Save GADI Regional Directory
 
 
 
-#### Get DAPs #### {#sctn-gadi-get-dap-agencies}
-Gets a list of dap-agencies in any of the GADI Regions.
+#### Get DASs #### {#sctn-adia-get-dap-agencies}
+Gets a list of dap-agencies in any of the ADIA Regions.
 
 
 <table class="data longlastcol">
@@ -479,17 +479,17 @@ Gets a list of dap-agencies in any of the GADI Regions.
       <pre class="highlight">
       <code>
         [{
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
-            "entityRole" : "DAP",
+            "entityRole" : "DAS",
             "createdBy" : "did:dtx:888888888888",
             "createdDate" : "2000-01-23T04:56:07.000+00:00",
             "status" : "Active"
             },
             {
-                "entityID" : "did:gadi:I2222222222",
+                "entityID" : "did:adia:I2222222222",
                 "entityDigitalAddress" : "abc@OCN",
-                "entityRole" : "DAP",
+                "entityRole" : "DAS",
                 "createdBy" : "did:DTX:U2222222222",
                 "createdDate" : "2000-01-23T04:56:07.000+00:00",
                 "status" : "Active"
@@ -502,8 +502,8 @@ Gets a list of dap-agencies in any of the GADI Regions.
 </table>
 </aside>
 
-#### Get a DAP by Identifier #### {#sctn-gadi-get-one-dap-agency}
-Get a DAP with its DID or Digital DigitalAddress
+#### Get a DAS by Identifier #### {#sctn-adia-get-one-dap-agency}
+Get a DAS with its DID or Digital DigitalAddress
 
 <table class="data longlastcol">
   <tbody>
@@ -527,7 +527,7 @@ Get a DAP with its DID or Digital DigitalAddress
       <td><strong>Parameters</strong></td>
       <td>
        <ul>
-        <li><i>identifier</i> (required) - DID or Digital Address of the DAP</li>
+        <li><i>identifier</i> (required) - DID or Digital Address of the DAS</li>
       </ul>
       </td>
     </tr>
@@ -539,10 +539,10 @@ Get a DAP with its DID or Digital DigitalAddress
       <td><strong>HTTP Status</strong></td>
       <td>
         <ul>
-          <li><strong>200</strong>: OK Returns DAP</li>
+          <li><strong>200</strong>: OK Returns DAS</li>
           <li><strong>401</strong>: Unauthorized Access</li>
           <li><strong>403</strong>: Forbidden Access</li>
-          <li><strong>404</strong>: DAP Not Found</li>
+          <li><strong>404</strong>: DAS Not Found</li>
         </ul>
       </td>
     </tr>
@@ -556,7 +556,7 @@ Get a DAP with its DID or Digital DigitalAddress
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
-curl -X GET  /api/dap-agencies/did:gadi:I1111111111
+curl -X GET  /api/dap-agencies/did:adia:I1111111111
 </code>
 </pre>
 
@@ -569,9 +569,9 @@ curl -X GET  /api/dap-agencies/did:gadi:I1111111111
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
-            "entityRole" : "DAPAgency",
+            "entityRole" : "DASAgency",
             "createdBy" : "did:dtx:888888888888",
             "createdDate" : "2000-01-23T04:56:07.000+00:00",
             "status" : "Active"
@@ -584,8 +584,8 @@ curl -X GET  /api/dap-agencies/did:gadi:I1111111111
 </table>
 </aside>
 
-#### Get issuers #### {#sctn-gadi-get-issuers}
-Gets a list of issuers in in any of the GADI Regions.
+#### Get issuers #### {#sctn-adia-get-issuers}
+Gets a list of issuers in in any of the ADIA Regions.
 
 
 <table class="data longlastcol">
@@ -636,7 +636,7 @@ Gets a list of issuers in in any of the GADI Regions.
       <pre class="highlight">
       <code>
         [{
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "Issuer",
             "createdBy" : "did:dtx:888888888888",
@@ -644,7 +644,7 @@ Gets a list of issuers in in any of the GADI Regions.
             "status" : "Active"
             },
             {
-                "entityID" : "did:gadi:I2222222222",
+                "entityID" : "did:adia:I2222222222",
                 "entityDigitalAddress" : "abc@OCN",
                 "entityRole" : "Issuer",
                 "createdBy" : "did:DTX:U2222222222",
@@ -659,7 +659,7 @@ Gets a list of issuers in in any of the GADI Regions.
 </table>
 </aside>
 
-#### Get a Issuer by Identifier #### {#sctn-gadi-get-one-issuer}
+#### Get a Issuer by Identifier #### {#sctn-adia-get-one-issuer}
 Get a Issuer with its DID or Digital DigitalAddress
 
 <table class="data longlastcol">
@@ -713,7 +713,7 @@ Get a Issuer with its DID or Digital DigitalAddress
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
-curl -X GET  /api/issuers/did:gadi:I1111111111
+curl -X GET  /api/issuers/did:adia:I1111111111
 </code>
 </pre>
 
@@ -726,7 +726,7 @@ curl -X GET  /api/issuers/did:gadi:I1111111111
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "Issuer",
             "createdBy" : "did:dtx:888888888888",
@@ -741,8 +741,8 @@ curl -X GET  /api/issuers/did:gadi:I1111111111
 </table>
 </aside>
 
-#### Get Service Providers #### {#sctn-gadi-get-service-providers}
-Gets a list of service-providers in in any of the GADI Regions.
+#### Get Service Providers #### {#sctn-adia-get-service-providers}
+Gets a list of service-providers in in any of the ADIA Regions.
 
 
 <table class="data longlastcol">
@@ -793,7 +793,7 @@ Gets a list of service-providers in in any of the GADI Regions.
       <pre class="highlight">
       <code>
         [{
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "ServiceProvider",
             "createdBy" : "did:dtx:888888888888",
@@ -801,7 +801,7 @@ Gets a list of service-providers in in any of the GADI Regions.
             "status" : "Active"
             },
             {
-                "entityID" : "did:gadi:I2222222222",
+                "entityID" : "did:adia:I2222222222",
                 "entityDigitalAddress" : "abc@OCN",
                 "entityRole" : "ServiceProvider",
                 "createdBy" : "did:DTX:U2222222222",
@@ -816,7 +816,7 @@ Gets a list of service-providers in in any of the GADI Regions.
 </table>
 </aside>
 
-#### Get a Service Provider by Identifier #### {#sctn-gadi-get-one-service-provider}
+#### Get a Service Provider by Identifier #### {#sctn-adia-get-one-service-provider}
 Get a Service Provider with its DID or Digital DigitalAddress
 
 <table class="data longlastcol">
@@ -870,7 +870,7 @@ Get a Service Provider with its DID or Digital DigitalAddress
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
-curl -X GET  /api/interchanges/did:gadi:I1111111111
+curl -X GET  /api/interchanges/did:adia:I1111111111
 </code>
 </pre>
 
@@ -883,7 +883,7 @@ curl -X GET  /api/interchanges/did:gadi:I1111111111
       <pre class="highlight">
       <code>
         {
-            "entityID" : "did:gadi:I1111111111",
+            "entityID" : "did:adia:I1111111111",
             "entityDigitalAddress" : "abc@DTX",
             "entityRole" : "ServiceProvider",
             "createdBy" : "did:dtx:888888888888",
