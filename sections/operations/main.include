@@ -358,27 +358,6 @@ Note: Must be defined by Governance and Issuer retention policies
 
 
 
-### User Initiated Account Deletion without DAA ### {#sctn-user-account-deletion-user-initiated-no-daa}
-
-The use of DAA is not mandatory to initiate the deletion of <a>Digital Address</a>. There are alternate methods to initiate the process using,for example,
-* an online portal hosted by the DAS
-* a Kiosk managed by a DAS or a Trusted Issuer on behalf of the DAS for SmartCard holders
-* an assisted Customer Service method from a Certified ADIA Verification Center
-
-<figure id="fig-user-initiated-account-deletion-no-daa">
-    <img src="sequence-diagrams/User-Initiated-Account-Deletion-No-DAA.png"/>
-    <figcaption>User Initiated Account Deletion without DAA</figcaption>
-</figure>
-
-Issue: What do you mean with Add Delete Entry to DLT?  The *existing* Entry needs to be deleted.
-
-Issue: Authentication with DA is NOT considered authentication. Even
-   providing HIDA wouldn't we strong enough to delete an entry. Real KYC would be required - same level as was used for creating that user.
-
-Issue: How could a user without a working <a>DAA</a> instance trigger account deletion?
-Need to elaborate on each of these services either here or in a separate document.
-
-
 ### Issuer Initiated Account Deletion ### {#sctn-user-account-deletion-issuer-initiated}
 
 The Issuer may initiate a <a>Digital Address</a> that is not completely claimed by the User. This would be in case of an error by the Issuer or the User's desire not to
@@ -391,15 +370,9 @@ In such cases, an Issuer may initiate deletion of the <a>Digital Address</a> onl
 * There is no Credential Metadata on the DAS
 
 <figure id="fig-issuer-initiated-account-deletion">
-    <img src="sequence-diagrams/Issuer-Initiated-Account-Deletion.png"/>
+    <img src="sequence-diagrams/Issuer-Initiated-Account-Deletion.svg"/>
     <figcaption>Issuer Initiated Account Deletion</figcaption>
 </figure>
-
-
-
-Issue: Description/ sequence diagram for  Issuer Initiated Account Deletion
-
-
 
 
 ## Backup and Recovery ## {#sctn-user-backup-and-recovery}
