@@ -1,32 +1,35 @@
-title User created DA
+title User initiated DA creation with DAA
 
-participant User
-participant DAA
-participant Issuer
-participant DAP
-participant GADI Regional Directory
+Participant User  
+Participant DAA
+Participant Issuer
+Participant Cloud Agent
+Participant DAS
+Participant ARD
 
-User->Issuer: Request a New DA \nwith ID-Attributes (Remote)
-Issuer->Issuer: Compute HIDA
-Issuer->DAP: Send HIDA
-DAP->GADI Regional Directory: Lookup TA_USER_ISSUER for HIDA
-GADI Regional Directory->GADI Regional Directory: Generate TA\n(if not present)
-GADI Regional Directory->GADI Regional Directory: Save (HIDA, TA, HOMEDAP_ID)
-GADI Regional Directory->DAP: Return TA_USER_ISSUER
-DAP->DAP: Create and save DA, DAP_USER_ID
-DAP->DAP: Set User Assurance Level (U-AL1)
-DAP->Issuer: Send (DA, DAP_USER_ID)
-Issuer->User: Present QR Code \n(DA, DAP_USER_ID, ISSUER_ID)
-User->DAA: Scan QR Code and extract \n(DA, DAP_USER_ID, ISSUER_ID)
-DAA->DAP: Initiate ID Proofing to claim DA \n(Extract attributes from ID Document)
-DAP->DAP: Lookup Issuer (ISSUER_ID)
-DAP->Issuer:Verify User \n(DA, DAP_USER_ID, Identity Attributes)
-Issuer->DAP: Success/ Failure
-DAP-->DAA: Terminate process \n(Verifiation=FAILED)
-DAA->User: Notify failure\n(Verifiation=FAILED)
-DAP-->DAA: Authenticate User
-DAA->DAP:  Initiate Biometric Enrollment (DA, DAP_USER_ID)
-DAP->DAP: Save USER_FIDO_PK for DAP_USER_ID
-DAP->DAP: Update User Assurance Level (U-AL2)
-DAP->DAA: Biometric Enrollment complete
-DAA->User: Claim DA Successful
+
+User -> DAA: I want a Digital Address\n(accept T&C)
+DAA -> DAA: ID proofing starts on the device and extracts the user info
+DAA->User: Provide additional attributes to generate HIDA
+DAA -> DAA: compute HIDA = hash (ID-Attribs)
+DAA -> DAS: securely send HIDA,and request Digital Address
+DAS -> ARD: lookup TA_USER_ISSUER for HIDA
+ARD -> ARD: lookup TA for HIDA
+alt TA not found
+ARD -> ARD: Generate TA = random
+end
+ARD --> DAS: No conflict with TA.\n Return TA_USER_ISSUER
+DAS->DAS: Provision a Cloud Agent for User with HIDA
+DAS->Cloud Agent: Request to Create DAS_USER_ID for HIDA
+Cloud Agent ->Cloud Agent: Create DAS_USER_ID & DAS_USER_ID_PK/SK
+Cloud Agent->DAS: Send [DAS_USER_ID, DAS_USER_ID_PK] to DAS
+DAS -> DAS: Create DA. Store [DA, TA_USER_ISSUER, DAS_USER_ID]
+DAS -> ARD: Send [DAS_USER_ID, HIDA, HomeDAS_ID] to notify about DA
+ARD -> ARD: store [HIDA, TA]\n [TA, DAS_USER_ID, HomeDAS_ID=DAS_ID]
+ARD --> DAS: Success
+DAS->DAA: Send DAS_USER_ID, DA
+DAA -> DAA: If successful: Remember DAS_USER_ID, DA
+DAA -> DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
+DAS-> DAS: Remember (USER_FIDO_PK, DAS_USER_ID)
+DAS --> DAA: acknowledge successful FIDO registration
+DAA->User: Digital Address enrolled and ready for use
