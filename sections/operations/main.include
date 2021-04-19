@@ -95,15 +95,6 @@ In this scenario, the Digital Addresses created are published to the DAS and it 
     <figcaption>Home DAS - Issuers in separate DAS Agencies</figcaption>
 </figure>
 
-### User Changes Home-DAS ### {#sctn-user-changes-home-dap}
-Users may choose to transfer their credential metadata to a different DAS. This is initiated with a submission of a transfer request. The transferee DAS initiates the transfer of Digital Address metadata and Credential metadata with the consent of the user. Subsequent requests for credential operations, are routed to the transferred DAS.
-<figure id="fig-user-changes-home-dap">
-    <img src="sequence-diagrams/DAS-Transfer-By-User.svg"/>
-    <figcaption>Transfer DAS</figcaption>
-</figure>
-
-
-
 ## Verifiable Credential Issuance ## {#sctn-vc-issuance}
 
 <figure id="fig-vc-issuance-option-1">
