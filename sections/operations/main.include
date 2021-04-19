@@ -106,8 +106,6 @@ Users may choose to transfer their credential metadata to a different DAS. This 
 
 ## Verifiable Credential Issuance ## {#sctn-vc-issuance}
 
-### Issuer Initiated Issuance ### {#sctn-vc-issuance-issuer-initiated}
-
 <figure id="fig-vc-issuance-option-1">
     <img src="sequence-diagrams/VC-Issued-to-a-User-by-a-Trusted-Issuer.svg"/>
     <figcaption>VC Issued to a User by a Trusted Issuer</figcaption>
@@ -343,7 +341,7 @@ or the ADIA ecosystem entirely. The cases below describe process to initiate the
 ### User Initiated Account Deletion ### {#sctn-user-account-deletion-user-initiated}
 
 <figure id="fig-user-initiated-account-deletion">
-    <img src="sequence-diagrams/User-Initiated-Account-Deletion.png"/>
+    <img src="sequence-diagrams/User-Initiated-Account-Deletion.svg"/>
     <figcaption>User Initiated Account Deletion</figcaption>
 </figure>
 
