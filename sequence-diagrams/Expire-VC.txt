@@ -1,0 +1,15 @@
+title Expire VC
+
+participant DAS
+participant Issuer
+participant VC Store
+participant DAA
+
+
+DAS->DAS: Check Credential Metadata\n for Validity
+DAS->DAS: Update \n[Expiration Status, Expiration Date]
+DAS--> DAA: Send Notification of Expired Status
+opt
+DAS-> Issuer: Notify credential expiration status
+Issuer ->VC Store: Update/Remove VC from VC Store
+End
