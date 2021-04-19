@@ -32,7 +32,7 @@
 </figure>
 
 
-## Digital Address Issuance ## {#sctn-digital-address-issuance}
+## Create Digital Address ## {#sctn-create-digital-address}
 
 Users may approach Trusted Issuers to create a Digital Address or issuers may initiate the process of creating a Digital Address for a user prior to issuing a Verifiable Credential.
 A Digital Address creation starts with the collection of identity attributes from the User, creation of a unique trust anchor and ensuring that the Digital Address is unique
@@ -40,7 +40,7 @@ to in the given scope.
 
 Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details.
 
-### User Onboarding to First Issuer ### {#sctn-onboarding-1st-issuer}
+### Issuer Initiated: Enroll a new User ### {#sctn-onboarding-1st-issuer}
 
 The <a>DAS</a> related to the first <a>Digital Address</a> Issuer is called <a>HomeDAS</a>.
 
@@ -53,7 +53,7 @@ Note: <a>HIDA</a> is PII and might need to be erased on account deletion (see Us
 
 Issue: Check <a>DAS_USER_ID_PK</a>/<a>DAS_USER_ID_SK</a> generation. Would we store the PK in <a>HomeDAS</a> or ADIA??  When will that key be created and by Whom?
 
-### User Onboarding Attempt to 2nd Issuer ### {#sctn-onboarding-2nd-issuer}
+### Issuer Initiated: Enroll a User with Digital Address ### {#sctn-onboarding-2nd-issuer}
 
 <figure id="fig-onboarding-2nd-issuer">
     <img src="sequence-diagrams/User-onboarding-to-second-issuer.png"/>
@@ -64,19 +64,78 @@ Issue: This representation is not correct. There is no TA_USER_ISSUER in the <a>
 
 Issue: This opens the possibility to create multiple Digital Addresses for the same user in multiple regions.
 
+### User Initiated: Enroll with DAA ### {#sctn-user-initiated-da-with-daa}
+
+A user may initiate the creation of a Digital Address remotely, via an online service
+provided by a Trusted Digital Address Issuer. The Issuer's service MUST follow procedures similar to the
+in-person creation by request the Identity attributes from the User, generating the hashed attributes and verifying against
+the ADIA Regional Directory.
+
+The online service of the Issuer MUST present the user with a QR code either online on its website or offline via an email or alternate service,
+such that the User is capable of scanning the QR code containing their Digital Address information and initiating an Authenticating Binding processes
+with the HomeDAS.
+
+A successful authentication and binding to the HomeDAS's services should allow the user to use the <a>Digital Address</a> at the level of Assurance determined by the onboarding process.
+
+
+<figure id="fig-user-initiated-da">
+    <img src="sequence-diagrams/User-initiated-DA-with-daa.svg"/>
+    <figcaption>User Initiated Digital Address Creation with DAA</figcaption>
+</figure>
+
+### Verify User with Digital Address ### {#sctn-verify-user-da-in-person}
+
+The user may choose to visit a Verification Center in person to upgrade the Assurance Level
+initially assigned by the system. An in-person verification may include a manual review/ verification
+of the identity documents by a certified operator before indicating to the DAS about the genuineness of the subject.
+
+The DAS may independently request the user to authenticate before upgrading the User's Assurance Level.
+
+<figure id="fig-verify-user-initiated-da">
+    <img src="sequence-diagrams/Verify-user-initiated-DA.svg"/>
+    <figcaption>Verify User with Digital Address to upgrade Assurance Level</figcaption>
+</figure>
+
+
 ## Verifiable Credential Issuance ## {#sctn-vc-issuance}
 
 <figure id="fig-vc-issuance-option-1">
-    <img src="sequence-diagrams/VC-Issued-to-a-User-by-a-Trusted-Issuer.svg"/>
-    <figcaption>VC Issued to a User by a Trusted Issuer</figcaption>
+  <img src="sequence-diagrams/VC-Issued-to-a-User-by-a-Trusted-Issuer.svg"/>
+  <figcaption>VC Issued to a User by a Trusted Issuer</figcaption>
 </figure>
 
-  <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask ADIA via <a>DAS</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
+<a>Issuer</a>s have access to <a>HIDA</a> and hence could ask ADIA via <a>DAS</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
 
 
 Issue: Distinguish two different cases: (1) DA Issuer and VC Issuer are part of same DAS.
-       (2) DA Issuer and VC Issuer are part of different DAS
-       Agencies.  See github issue 53.
+     (2) DA Issuer and VC Issuer are part of different DAS
+     Agencies.  See github issue 53.
+
+
+## Revoking a Verifiable Credential ## {#sctn-revoking-credential}
+
+Issuers have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
+the Credential Metadata on the DAS. The DAS checks for constraints before allowing the revocation of an issued VC. Some of them are:
+1. Issuers may revoke VCs only for the credentials issued by them.
+2. The Digital Address is valid and not in an invalid state.
+3. The Credential is valid and in a non-expired state.
+
+<figure id="fig-revoke-vc">
+   <img src="sequence-diagrams/Revoke-VC.svg"/>
+   <figcaption>Revoke a VC</figcaption>
+</figure>
+
+The User is notified of the revocation status but there is no expectation of an action from the User. Revoked VCs are no longer valid and hence not considered
+in any subsequent proof presentations.
+
+## Verifiable Credential Expiration ## {#sctn-vc-expiration}
+
+Most Verifiable Credentials are temporal in nature with an expiration date set on them. Expired credentials are not valid for any proof presentations.
+
+<figure id="fig-expire-vc">
+   <img src="sequence-diagrams/VC-Expiration.png"/>
+   <figcaption>Expire a VC</figcaption>
+</figure>
 
 
 
@@ -129,31 +188,6 @@ User consent for actions needs to be provided.  The consent is
 collected via the <a>Digital Address Application</a>.  Authentication
 is performed using FIDO.
 
-
-## Revoking a Verifiable Credential ## {#sctn-revoking-credential}
-
-Issuers have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
-the Credential Metadata on the DAS. The DAS checks for constraints before allowing the revocation of an issued VC. Some of them are:
-1. Issuers may revoke VCs only for the credentials issued by them.
-2. The Digital Address is valid and not in an invalid state.
-3. The Credential is valid and in a non-expired state.
-
-<figure id="fig-revoke-vc">
-    <img src="sequence-diagrams/Revoking-VC.png"/>
-    <figcaption>Revoke a VC</figcaption>
-</figure>
-
-The User is notified of the revocation status but there is no expectation of an action from the User. Revoked VCs are no longer valid and hence not considered
-in any subsequent proof presentations.
-
-## Verifiable Credential Expiration ## {#sctn-vc-expiration}
-
-Most Verifiable Credentials are temporal in nature with an expiration date set on them. Expired credentials are not valid for any proof presentations.
-
-<figure id="fig-expire-vc">
-    <img src="sequence-diagrams/VC-Expiration.png"/>
-    <figcaption>Expire a VC</figcaption>
-</figure>
 
 
 
@@ -257,39 +291,6 @@ smartphone - <i>while still</i> having access to the old <a>DAA</a> instance.
     <img src="sequence-diagrams/User-bootstrap-addtl-DAA-instance.svg"/>
     <figcaption>User Bootstraps Additional DAA Instance "New Phone"</figcaption>
 </figure>
-
-### User initiated DA creation with DAA ### {#sctn-user-initiated-da-with-daa}
-
-A user may initiate the creation of a Digital Address remotely, via an online service
-provided by a Trusted Digital Address Issuer. The Issuer's service MUST follow procedures similar to the
-in-person creation by request the Identity attributes from the User, generating the hashed attributes and verifying against
-the ADIA Regional Directory.
-
-The online service of the Issuer MUST present the user with a QR code either online on its website or offline via an email or alternate service,
-such that the User is capable of scanning the QR code containing their Digital Address information and initiating an Authenticating Binding processes
-with the HomeDAS.
-
-A successful authentication and binding to the HomeDAS's services should allow the user to use the <a>Digital Address</a> at the level of Assurance determined by the onboarding process.
-
-
-<figure id="fig-user-initiated-da">
-    <img src="sequence-diagrams/User-initiated-DA-with-daa.svg"/>
-    <figcaption>User Initiated Digital Address Creation with DAA</figcaption>
-</figure>
-
-### Verify User with Digital Address to upgrade Assurance Level ### {#sctn-verify-user-da-in-person}
-
-The user may choose to visit a Verification Center in person to upgrade the Assurance Level
-initially assigned by the system. An in-person verification may include a manual review/ verification
-of the identity documents by a certified operator before indicating to the DAS about the genuineness of the subject.
-
-The DAS may independently request the user to authenticate before upgrading the User's Assurance Level.
-
-<figure id="fig-verify-user-initiated-da">
-    <img src="sequence-diagrams/Verify-user-initiated-DA.svg"/>
-    <figcaption>Verify User with Digital Address to upgrade Assurance Level</figcaption>
-</figure>
-
 
 ## User Account Deletion ## {#sctn-user-account-deletion}
 

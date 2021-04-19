@@ -1,16 +1,15 @@
-title Revoking a VC
+title Revoke a VC
+
 participant Issuer
-participant Issuer Agent
 participant VC Store
-Participant DAP
+Participant DAS
 participant DAA
 
-Issuer->Issuer Agent: Revoke a VC
-Issuer Agent->DAP: Revoke (DA,DAP_USER_ID, CREDENTIAL_ID)
-DAP->DAP: Check Credential Metadata for validity
-DAP->DAP: Update Revocation Status, Revocation Date
-DAP--> DAA: Send Notification of Revoked Status
-DAP->Issuer Agent: Credential Metadata updated
+Issuer->DAS: Revoke VC (DAS_USER_ID, CREDENTIAL_ID)
+DAS->DAS: Check Credential Metadata for validity
+DAS->DAS: Update Revocation Status, Revocation Date
+DAS--> DAA: Send Notification of Revoked Status
+DAS->Issuer: Credential Metadata updated
 opt
-Issuer Agent->VC Store: Remove VC from VC Store
-end
+Issuer ->VC Store: Remove VC from VC Store
+End
