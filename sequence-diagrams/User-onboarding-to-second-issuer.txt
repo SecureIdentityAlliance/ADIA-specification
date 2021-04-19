@@ -1,21 +1,18 @@
-Title: User Onboarding Attempt to 2nd Issuer
+title User Onboarding to 2nd Issuer
+
 Participant User
 Participant DAA
 Participant Issuer
-Participant DAP Agency
-Participant GADI Regional Directory
-Participant GADI Global Directory
+Participant DAS
+Participant ARD
+
 User -> Issuer: I want to get a DA
-Issuer -> Issuer: lookup ID-Attribs for that user
+Issuer -> Issuer: Collect ID-Attribs for  user
 Issuer -> Issuer: compute HIDA = hash(ID-Attribs)
-Issuer -> DAP Agency: securely send HIDA
-DAP Agency -> GADI Regional Directory: Lookup TA_USER_ISSUER for HIDA
-GADI Regional Directory -> GADI Regional Directory: lookup TA for HIDA (not found)
-GADI Regional Directory -> GADI Global Directory: Lookup TA_USER_ISSUER for HIDA
-GADI Global Directory -> GADI Global Directory: lookup TA for HIDA (found)
-GADI Global Directory --> GADI Regional Directory: Return TA_USER_ISSUER found on Home_DAP_ID
-GADI Regional Directory --> DAP Agency: Return TA_USER_ISSUER found on Home_DAP_ID
-DAP Agency -> DAP Agency: If Home_DAP_ID = self: check TA_USER_ISSUER exists locally
-DAP Agency --> Issuer: User exists in (Home_DAP_ID,Home DAP Name)
-Issuer --> User: Your DA exists in Home DAP Name.  Use your existing DAA.
-User -> User: Did I just forget about it? Or do I have to bootstrap new phone?
+Issuer -> DAS: securely send HIDA
+DAS -> ARD: Lookup TA_USER_ISSUER for HIDA
+ARD -> ARD: lookup TA for HIDA (found)
+ARD --> DAS: Compute and Return\nTA_USER_ISSUER found and HomeDAS_ID
+DAS -> DAS: Resolve DAS details for HomeDAS_ID
+DAS --> Issuer: User exists in (HomeDAS_ID, Home DAS Name)
+Issuer --> User: Your DA exists in Home DAS Name.  Use your existing DAA. 

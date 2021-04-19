@@ -60,7 +60,7 @@ Issue: Check <a>DAS_USER_ID_PK</a>/<a>DAS_USER_ID_SK</a> generation. Would we st
 ### Issuer Initiated: Enroll a User with Digital Address ### {#sctn-onboarding-2nd-issuer}
 
 <figure id="fig-onboarding-2nd-issuer">
-    <img src="sequence-diagrams/User-onboarding-to-second-issuer.png"/>
+    <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg"/>
     <figcaption>User Onboarding to Second Issuer</figcaption>
 </figure>
 
