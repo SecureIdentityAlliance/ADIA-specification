@@ -31,13 +31,13 @@ Three main concerns addressed by the ecosystem are to:
 
 The ecosystem consists of several entities that are involved in the Trust framework. These are:
 
-* **ADIA Global Directory (AGD) **: One primary Root of Trust system with one or more distributed or delegated shared instances.
-* **ADIA Regional Directory (ARD) **: One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
-* **Interchange**: A loose composition of services providing foundational services such as Digital Address Service, Identity Escrow, Credential Broker, and Payment Broker functionality for the entities in the ecosystem.
-* **Digital Address Service (DAS)**: An agency providing services to entities within its domain. All interactions between entities are facilitated through agents and services provided by the Agency.
-* **Issuer**: One or more Issuers representing both Identity (e.g., DMV, Passport Office, etc.) or Non-Identity Credential Issuers (e.g., University, Enterprise, Healthcare Provider, etc.)
-* **Service Provider**: One or more service providers acting as relying parties. E.g., E-commerce site, Retailer, etc.
-* **User**: Holder and usually Subject of the <a>Digital Address</a> - One per human identity in a region.
+* <a>ADIA Global Directory</a> (AGD): One primary Root of Trust system with one or more distributed or delegated shared instances.
+* <a>ADIA Regional Directory</a> (ARD): One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
+* <a>Interchange</a>: A loose composition of services providing foundational services such as <a>Digital Address Service</a>, Identity Escrow, Credential Broker, and Payment Broker functionality for the entities in the ecosystem.
+* <a>Digital Address Service</a> (<a>DAS</a>): An agency providing services to entities within its domain. All interactions between entities are facilitated through agents and services provided by the Agency.
+* <a>Issuer</a>: One or more Issuers representing both Identity (e.g., DMV, Passport Office, etc.) or Non-Identity Credential Issuers (e.g., University, Enterprise, Healthcare Provider, etc.)
+* <a>Service Provider</a>: One or more service providers acting as relying parties. E.g., E-commerce site, Retailer, etc.
+* <a>User</a>: Holder and usually Subject of the <a>Digital Address</a> - One per human identity in a region.
 
 These entities and their role in the ADIA ecosystem are described in [[#sctn-roles-in-adia]].
 
@@ -99,13 +99,13 @@ organizational entities at a global level.
 
 The ADIA Governance Framework, described in a separate document, defines onboarding policies and procedures for organizational entities and establishing the relationships
 between the <a>Digital Address</a>, the DID and Trust Anchor. The entities governed by the <a>ADIA Global Directory</a> are:
-  * *ADIA Regional Directories*
-  * *Digital Address Service*
-  * *Issuers*
-  * *Service Providers*
-  * *Identity Escrow (Future)*
-  * *Credential Broker (Future)*
-  * *Payment Broker (Future)*
+  * <a>ADIA Regional Directory</a>
+  * <a>Digital Address Service</a>
+  * <a>Issuer</a>
+  * <a>Service Provider</a>
+  * Identity Escrow (Future)
+  * Credential Broker (Future)
+  * Payment Broker (Future)
 
 The <a>ADIA Global Directory</a> may provide Discovery and Routing services between one or more Regional Directories to facilitate identity verifications across one or more geographical regions.
 
@@ -138,7 +138,7 @@ The types of actors that interact with ADIA are described below:
 
 ### ADIA Regional Directory ### {#sctn-adia-role-regional-directory}
 
-A directory serves to identify participants with an ecosystem. This can make it easier for users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
+The <dfn>ADIA Regional Directory</dfn> is a directory that serves to identify participants with an ecosystem. This can make it easier for users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
 
 #### Directory Scope  #### {#sctn-adia-regional-directory-scope}
 
@@ -146,10 +146,10 @@ Each directory serves a particular scope. Scopes can be geopolitical, like a cou
 
 A ADIA Regional Directory shall:
 * prevent a person from intentionally or unintentionally creating more than one Trust Anchor within a given scope.
-* provide interoperability between multiple Digital Address Providers within its scope.
-* provide discovery and routing services between one or more Digital Address Providers.
+* provide interoperability between multiple <a>Digital Address Service</a>s within its scope.
+* provide discovery and routing services between one or more <a>Digital Address Service</a>s.
 * provide a distributed ledger for maintaining relationships between Trust Anchors and <a>Digital Address</a>es and bindings to human identities.
-* onboard trusted Digital Address Providers to the ecosystem.
+* onboard trusted <a>Digital Address Service</a>s to the ecosystem.
 * maintain a relationship of identifiers - A Trust Anchor, user’s <a>Digital Address</a>, DID and Issuer Identifier.
 * detect collisions in Trust Anchor and/or <a>Digital Address</a>.
 
@@ -176,7 +176,7 @@ The protocols for querying users are summarized and linked below.
 
 ### Interchange ### {#sctn-adia-role-interchange}
 
-The Interchange is composed of one or more the services that provide User Access services such as, <a>Digital Address</a> and Authentication to users, Agency services such as
+The <dfn>Interchange</dfn> is composed of one or more the services that provide User Access services such as, <a>Digital Address</a> and Authentication to users, Agency services such as
 Issuer and Service Provider Agents and optional value-added services such as Identity Escrow, Credential Brokerage and Payment Brokerage services.
 
 Issue: Add details for Interchange
@@ -184,7 +184,7 @@ Issue: Add details for Interchange
 
 #### DAS #### {#sctn-adia-role-das}
 
-<dfn export=true>Digital Address Provider</dfn> (<dfn>DAS</dfn>) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
+<dfn export=true>Digital Address Service</dfn> (<dfn>DAS</dfn>) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
 
 The DAS may host a set of user-focused wallet storage and secure communication agents. When any interaction with a participant happens, it happens through their Agent via services.
 Each entity's Agent holds cryptographic keys and digital credentials on behalf of the participant. The agent also manages the participant’s connections with services in the ecosystem. It maintains the participant’s directory listings and requests for unique DIDs when a new connection is made.
