@@ -64,37 +64,6 @@ Issue: This representation is not correct. There is no TA_USER_ISSUER in the <a>
 
 Issue: This opens the possibility to create multiple Digital Addresses for the same user in multiple regions.
 
-
-
-## User Home DAS ## {#sctn-user-home-dap-agency}
-
-Issue: What is the action here?  Request VC from Issuer in same
-    DAS/different DAS than the DA Issuer?  Conclusion: (a) Merge this
-    section with section 4.4 Verifiable Credential Issuance and (b)
-    remove DA issuance form seq diagram.
-
-Home DAS is the entity that serves as the primary repository of credential metadata for a given user. Each DAS has a unique Identifier (A DID and a Digital Address) in the ADIA ecosystem.
-
-When a Trusted Issuer creates a Digital Address for a User, the Digital Address is suffixed with the DAS Identifier. Any entity in the ecosystem can use a Digital Address resolver to identify the Home DAS for a given User. Credential requests, issuance or verifications, are routed to the Home DAS for further processing.
-
-There are two possible scenarios to depict the role of a Home DAS as below:
-
-### Issuers in the same DAS ### {#sctn-user-home-dap-agency-scenario1}
-There are two issuers in this scenario, both as part of the same DAS. Digital Addresses created are published to the DAS and credential metadata and lookups are maintained by the DAS.
-<figure id="fig-user-home-dap-agency-scenario1">
-    <img src="sequence-diagrams/Home-DAS-Agency-Issuers-in-the-same-DAS-Agency.svg"/>
-    <figcaption>Home DAS - Issuers in the same DAS</figcaption>
-</figure>
-
-
-### Issuers in separate DAS Agencies ### {#sctn-user-home-dap-agency-scenario2}
-In this scenario, the Digital Addresses created are published to the DAS and it is designated as the Home DAS for the user. Credential metadata and look ups are  routed to the Home DAS from Issuers in other Interchanges.
-
-<figure id="fig-user-home-dap-agency-scenario2">
-    <img src="sequence-diagrams/Home-DAS-Agency-Issuers-in-the-Different-DAS.svg"/>
-    <figcaption>Home DAS - Issuers in separate DAS Agencies</figcaption>
-</figure>
-
 ## Verifiable Credential Issuance ## {#sctn-vc-issuance}
 
 <figure id="fig-vc-issuance-option-1">
