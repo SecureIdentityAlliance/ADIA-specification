@@ -1,35 +1,39 @@
 # Operations # {#sctn-ops}
 [INFORMATIVE]
 
-## Onboarding Entities ## {#sctn-opts-onboarding}
+## Directory enrollment ## {#sctn-directory-enrollment}
 
-### Onboarding as an Issuer ### {#sctn-onboarding-as-issuer}
+### Enroll ADIA Regional Directory ### {#sctn-enroll-as-ADIA-regional}
 
-<figure id="fig-onboarding-issuer-to-dap">
-    <img src="sequence-diagrams/Onboarding-Issuer-to-DAS.svg"/>
-    <figcaption>Onboarding Issuer to a DAS</figcaption>
+<figure id="fig-onboarding-regional-adia-to-gadi">
+    <img src="sequence-diagrams/Onboarding-ADIA-Regional-to-ADIA.svg"/>
+    <figcaption>Onboarding Regional ADIA to ADIA</figcaption>
 </figure>
 
-### Onboarding as a Service Provider ### {#sctn-onboarding-as-serviceprovider}
-
-<figure id="fig-onboarding-sp-to-dap">
-    <img src="sequence-diagrams/Onboarding-SP-to-DAS.svg"/>
-    <figcaption>Onboarding SP to DAS</figcaption>
-</figure>
-
-### Onboarding as a DAS ### {#sctn-onboarding-as-dap}
+### Enroll DAS ### {#sctn-enroll-as-dap}
 
 <figure id="fig-onboarding-dap-to-regional-gadi">
     <img src="sequence-diagrams/Onboarding-DAS-to-Regional-ADIA.svg"/>
     <figcaption>Onboarding DAS to Regional ADIA</figcaption>
 </figure>
 
-### Onboarding as ADIA Regional Directory ### {#sctn-onboarding-as-ADIA-regional}
 
-<figure id="fig-onboarding-regional-adia-to-gadi">
-    <img src="sequence-diagrams/Onboarding-ADIA-Regional-to-ADIA.svg"/>
-    <figcaption>Onboarding Regional ADIA to ADIA</figcaption>
+### Enroll Issuer ### {#sctn-enroll-as-issuer}
+
+<figure id="fig-onboarding-issuer-to-dap">
+    <img src="sequence-diagrams/Onboarding-Issuer-to-DAS.svg"/>
+    <figcaption>Onboarding Issuer to a DAS</figcaption>
 </figure>
+
+### Enroll Service Provider ### {#sctn-enroll-as-serviceprovider}
+
+<figure id="fig-onboarding-sp-to-dap">
+    <img src="sequence-diagrams/Onboarding-SP-to-DAS.svg"/>
+    <figcaption>Onboarding SP to DAS</figcaption>
+</figure>
+
+
+
 
 
 ## Create Digital Address ## {#sctn-create-digital-address}
@@ -97,7 +101,7 @@ The DAS may independently request the user to authenticate before upgrading the 
 </figure>
 
 
-## Verifiable Credential Issuance ## {#sctn-vc-issuance}
+## Issue Verifiable Credential ## {#sctn-issue-vc}
 
 <figure id="fig-vc-issuance-option-1">
   <img src="sequence-diagrams/VC-Issued-to-a-User-by-a-Trusted-Issuer.svg"/>
@@ -112,7 +116,7 @@ Issue: Distinguish two different cases: (1) DA Issuer and VC Issuer are part of 
      Agencies.  See github issue 53.
 
 
-## Revoking a Verifiable Credential ## {#sctn-revoking-credential}
+## Revoke a Verifiable Credential ## {#sctn-revoking-credential}
 
 Issuers have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
 the Credential Metadata on the DAS. The DAS checks for constraints before allowing the revocation of an issued VC. Some of them are:
@@ -128,19 +132,19 @@ the Credential Metadata on the DAS. The DAS checks for constraints before allowi
 The User is notified of the revocation status but there is no expectation of an action from the User. Revoked VCs are no longer valid and hence not considered
 in any subsequent proof presentations.
 
-## Verifiable Credential Expiration ## {#sctn-vc-expiration}
+## Expire Verifiable Credential ## {#sctn-expire-vc}
 
 Most Verifiable Credentials are temporal in nature with an expiration date set on them. Expired credentials are not valid for any proof presentations.
 
 <figure id="fig-expire-vc">
-   <img src="sequence-diagrams/VC-Expiration.png"/>
+   <img src="sequence-diagrams/Expire-VC.svg"/>
    <figcaption>Expire a VC</figcaption>
 </figure>
 
 
 
 
-## Verifiable Credential Presentation ## {#sctn-vc-presentation-and-verification-1}
+## Present Proof/Verifiable Presentation ## {#sctn-vc-presentation-and-verification-1}
 
 Goal of this operation is to provide some identity attributes related to the user with the Service Provider (<a>SP</a>).
   These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
@@ -182,7 +186,7 @@ Cloud Agent.
 
 
 
-## User Consents ## {#sctn-user-consents}
+## User Consent ## {#sctn-user-consents}
 
 User consent for actions needs to be provided.  The consent is
 collected via the <a>Digital Address Application</a>.  Authentication
@@ -192,7 +196,7 @@ is performed using FIDO.
 
 
 
-## Digital Address Recovery ## {#sctn-digital-address-recovery}
+## Recover Digital Address ## {#sctn-recover-digital-address}
 
 Users have the ability to recover a forgotten Digital Address in several ways such as, recovering from a backup device or a delegated recovery using other trusted third parties.
 
@@ -265,7 +269,7 @@ DASs may enforce constraints to validate the acceptance criteria before granting
 Issue: Need more detail on the restored Assurance Level for the User and issued VCs. Does the user go back to the same Assurance Level as before?
 
 
-## User Device Management ## {#sctn-device-management}
+## Device Management ## {#sctn-device-management}
 
 ### Bootstrap a New DAA Instance### {#sctn-user-bootstraps-new-daa-instance}
 
@@ -292,14 +296,14 @@ smartphone - <i>while still</i> having access to the old <a>DAA</a> instance.
     <figcaption>User Bootstraps Additional DAA Instance "New Phone"</figcaption>
 </figure>
 
-## User Account Deletion ## {#sctn-user-account-deletion}
+## Delete Digital Address ## {#sctn-user-account-deletion}
 
 The User acquires the <a>Digital Address</a> and Verifiable Credentials through their lifetime in the ADIA ecosystem. Relationships of the User with other entities, such as
 Issuers and Service Providers are maintained by the DAS. In some cases however, the User may choose to terminate their relationship with a DAS
 or the ADIA ecosystem entirely. The cases below describe process to initiate the dissociation of a User with their DASs.
 
 
-### User Initiated Account Deletion ### {#sctn-user-account-deletion-user-initiated}
+### User Initiated ### {#sctn-user-account-deletion-user-initiated}
 
 <figure id="fig-user-initiated-account-deletion">
     <img src="sequence-diagrams/User-Initiated-Account-Deletion.svg"/>
@@ -319,7 +323,7 @@ Note: Must be defined by Governance and Issuer retention policies
 
 
 
-### Issuer Initiated Account Deletion ### {#sctn-user-account-deletion-issuer-initiated}
+### Issuer Initiated ### {#sctn-user-account-deletion-issuer-initiated}
 
 The Issuer may initiate a <a>Digital Address</a> that is not completely claimed by the User. This would be in case of an error by the Issuer or the User's desire not to
 be part of the ADIA ecosystem.

@@ -615,7 +615,7 @@ Issue: TODO.
           <td>
             DAS Agent
           </td>
-          <td><a href="#sctn-onboarding-as-dap">Onboarding as DAS</a>
+          <td><a href="#sctn-enroll-as-dap">Onboarding as DAS</a>
    	</td>
           <td>
             via a DIDDoc kept in the ADIA Global Directory.
@@ -634,7 +634,7 @@ Issue: TODO.
           <td>
 	    <a>Issuer Agent</a>
           </td>
-          <td><a href="#sctn-onboarding-as-issuer">Onboarding as an
+          <td><a href="#sctn-enroll-as-issuer">Onboarding as an
                Issuer</a>
    	</td>
           <td>
@@ -654,7 +654,7 @@ Issue: TODO.
           <td>
             SP Agent
           </td>
-          <td><a href="#sctn-onboarding-as-serviceprovider">Onboarding as
+          <td><a href="#sctn-enroll-as-serviceprovider">Onboarding as
                Service Provider</a>
 
    Issue: Need to specify in the sequence diagram when exactly the key is
