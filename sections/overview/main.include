@@ -9,7 +9,7 @@ effective binding between physical and digital identity. A major problem with th
 identity, a unique digital address that acts a trust anchor. Users must repeat similar processes each time they are required to prove their identities. 
 This is inefficient, adds friction for users and is costly for service providers.
 
-The Accountable Digital Identity Architecture (ADIA) allows users to
+The <dfn export=true>Accountable Digital Identity Architecture</dfn> (<dfn>ADIA</dfn>) allows users to
 share credentials that have been asserted by an issuer with service
 providers in a verifiable manner.
 
@@ -73,7 +73,7 @@ The creation of a <a>Digital Address</a> is a crucial step in ensuring there is 
 ### Only One Digital Address Per User ### {#sctn-da-uniqueness}
 
 A user shall not have more than one ADIA <a>Digital Address</a>.  To ensure
-this uniqueness, the identity-related traits for a user are verified and hashed by an Issuer Agent.
+this uniqueness, the identity-related traits for a user are verified and hashed by an <a>Issuer Agent</a>.
 This specification defines the following attributes for all human identities to create a <a>HIDA</a>,
 a cryptographic hash computed over the following identity attributes:
 
@@ -253,7 +253,7 @@ the Service Providers (verifiers of a credentials) with a level of trust. Issuer
 
 The core components of an Issuer are:
 * **Issuer Console**: An administrative interface to view Users, Identity information and Credential information. Administrators issue Verifiable Credential from the console to holders.
-* **Issuer Agent**: A communications agent to integrate identity transactions between an Issuer network and the DAS
+* **<a>Issuer Agent</a>**: A communications agent to integrate identity transactions between an Issuer network and the DAS
 * **VC Store**: A secure storage area for issuers to persist issued Verifiable Credentials.
 * **API Services**: REST endpoints to abstract interactions with the communication and transformation agents.
 * **Connectors**: Adapters that connect to Identity and Credential datastores, perform scheduled transfers, transform content for the Issuers to view and issue Credentials to users.
@@ -632,7 +632,7 @@ Issue: TODO.
           <td><dfn>ISSUER_ID_PK</dfn> / <dfn>ISSUER_ID_SK</dfn></td>
           <td><a>Issuer</a></td>
           <td>
-   	Issuer Agent
+	    <a>Issuer Agent</a>
           </td>
           <td><a href="#sctn-onboarding-as-issuer">Onboarding as an
                Issuer</a>
