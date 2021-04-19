@@ -100,16 +100,42 @@ The DAS may independently request the user to authenticate before upgrading the 
 ## Verifiable Credential Issuance ## {#sctn-vc-issuance}
 
 <figure id="fig-vc-issuance-option-1">
-    <img src="sequence-diagrams/VC-Issued-to-a-User-by-a-Trusted-Issuer.svg"/>
-    <figcaption>VC Issued to a User by a Trusted Issuer</figcaption>
+  <img src="sequence-diagrams/VC-Issued-to-a-User-by-a-Trusted-Issuer.svg"/>
+  <figcaption>VC Issued to a User by a Trusted Issuer</figcaption>
 </figure>
 
-  <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask ADIA via <a>DAS</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
+<a>Issuer</a>s have access to <a>HIDA</a> and hence could ask ADIA via <a>DAS</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
 
 
 Issue: Distinguish two different cases: (1) DA Issuer and VC Issuer are part of same DAS.
-       (2) DA Issuer and VC Issuer are part of different DAS
-       Agencies.  See github issue 53.
+     (2) DA Issuer and VC Issuer are part of different DAS
+     Agencies.  See github issue 53.
+
+
+## Revoking a Verifiable Credential ## {#sctn-revoking-credential}
+
+Issuers have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
+the Credential Metadata on the DAS. The DAS checks for constraints before allowing the revocation of an issued VC. Some of them are:
+1. Issuers may revoke VCs only for the credentials issued by them.
+2. The Digital Address is valid and not in an invalid state.
+3. The Credential is valid and in a non-expired state.
+
+<figure id="fig-revoke-vc">
+   <img src="sequence-diagrams/Revoke-VC.svg"/>
+   <figcaption>Revoke a VC</figcaption>
+</figure>
+
+The User is notified of the revocation status but there is no expectation of an action from the User. Revoked VCs are no longer valid and hence not considered
+in any subsequent proof presentations.
+
+## Verifiable Credential Expiration ## {#sctn-vc-expiration}
+
+Most Verifiable Credentials are temporal in nature with an expiration date set on them. Expired credentials are not valid for any proof presentations.
+
+<figure id="fig-expire-vc">
+   <img src="sequence-diagrams/VC-Expiration.png"/>
+   <figcaption>Expire a VC</figcaption>
+</figure>
 
 
 
@@ -162,31 +188,6 @@ User consent for actions needs to be provided.  The consent is
 collected via the <a>Digital Address Application</a>.  Authentication
 is performed using FIDO.
 
-
-## Revoking a Verifiable Credential ## {#sctn-revoking-credential}
-
-Issuers have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
-the Credential Metadata on the DAS. The DAS checks for constraints before allowing the revocation of an issued VC. Some of them are:
-1. Issuers may revoke VCs only for the credentials issued by them.
-2. The Digital Address is valid and not in an invalid state.
-3. The Credential is valid and in a non-expired state.
-
-<figure id="fig-revoke-vc">
-    <img src="sequence-diagrams/Revoking-VC.png"/>
-    <figcaption>Revoke a VC</figcaption>
-</figure>
-
-The User is notified of the revocation status but there is no expectation of an action from the User. Revoked VCs are no longer valid and hence not considered
-in any subsequent proof presentations.
-
-## Verifiable Credential Expiration ## {#sctn-vc-expiration}
-
-Most Verifiable Credentials are temporal in nature with an expiration date set on them. Expired credentials are not valid for any proof presentations.
-
-<figure id="fig-expire-vc">
-    <img src="sequence-diagrams/VC-Expiration.png"/>
-    <figcaption>Expire a VC</figcaption>
-</figure>
 
 
 
