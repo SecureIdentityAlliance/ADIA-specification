@@ -104,27 +104,23 @@ Users may choose to transfer their credential metadata to a different DAS. This 
 
 
 
-## Verifiable Credential Issuance ## {#sctn-vc-issuance-1}
+## Verifiable Credential Issuance ## {#sctn-vc-issuance}
 
 ### Issuer Initiated Issuance ### {#sctn-vc-issuance-issuer-initiated}
 
 <figure id="fig-vc-issuance-option-1">
-    <img src="sequence-diagrams/VC-Issuance-Option-1.svg"/>
-    <figcaption>Verifiable Credential Issuance (Option 1)</figcaption>
+    <img src="sequence-diagrams/VC-Issued-to-a-User-by-a-Trusted-Issuer.svg"/>
+    <figcaption>VC Issued to a User by a Trusted Issuer</figcaption>
 </figure>
 
   <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask ADIA via <a>DAS</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
 
-Issue: Explain what "Invite the Cloud  Agent for DIDcomm conn" mean in detail, i.e. which keys are involved, what kind of encryption/integrity protection method is used, any channel binding?, etc. [[!didcomm-messaging]].
 
 Issue: Distinguish two different cases: (1) DA Issuer and VC Issuer are part of same DAS.
        (2) DA Issuer and VC Issuer are part of different DAS
        Agencies.  See github issue 53.
 
 
-### User Initiated Issuance ### {#sctn-vc-issuance-user-initiated}
-
-Issue: Description and sequence for user initiated Issuance
 
 
 ## Verifiable Credential Presentation ## {#sctn-vc-presentation-and-verification-1}
