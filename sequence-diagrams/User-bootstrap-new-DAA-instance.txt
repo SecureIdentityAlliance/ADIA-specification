@@ -1,35 +1,21 @@
-Title: User Bootstraps New DAA Instance
+title User Bootstraps New DAA Instance
+
 Participant User
 Participant DAA
 Participant Issuer
-Participant Cloud Agent
-Participant DAP Agency
-Participant Regional GADI Directory
-User -> Issuer: I want to recover my Digital Address because lost device
-Issuer -> Issuer: lookup ID-Attribs for that user
-Issuer -> Issuer: compute HIDA = hash(ID-Attribs)
-Issuer -> DAP Agency: securely send HIDA
-DAP Agency -> DAP Agency: lookup TA_USER_ISSUER for HIDA
-DAP Agency -> Regional GADI Directory: if TA_USER_ISSUER not found: lookup TA_USER_ISSUER for HIDA
-Regional GADI Directory -> Regional GADI Directory: lookup TA for HIDA (not found)
-Global GADI Directory -> Global GADI Directory: lookup TA for HIDA (found)
-Global GADI Directory -> Regional GADI Directory: Return found on Home_DAP_ID
-Regional GADI Directory --> DAP Agency: Return found on Home_DAP_ID
-DAP Agency --> Issuer: User exists in other DAP Agency (Home_DAP_ID,Home DAP Name)
-Issuer --> User: Your DA exists in Home DAP Name.  Use your existing DAA.
-User -> Issuer: Want to to bootstrap new phone
-Issuer -> Issuer: Lookup DA for HIDA
-Issuer -> Issuer: Create QR code (DA, Issuer-URL?)
-Issuer -> User: presents or sends the QR code in Web interface/Issuer PC
-User -> DAA: Scans the QR code and extracts DA+IssuerURL
-DAA -> DAP Agency: ID proofing starts on the device and extracts the user info 
-DAP Agency --> DAA: Success
-DAA -> Issuer: Send Verified User Attributes + DA to IssuerURL
-Issuer -> Issuer: Verifies User Attributes against userDB identified by DA
-Issuer -> Issuer: check whether VC(TA_USER_ISSUER, Validation Succeeded) exists (it should)
-Issuer -> DAA: validation succeeded for DA+VC(TA_USER_ISSUER, Validation Succeeded)
-DAA -> Issuer: Accept DA
-Issuer --> DAA: OK
-DAA -> DAP Agency: Register FIDO Authenticator for this DA to the DAP (USER_FIDO_PK)
-DAP Agency -> DAP Agency: Saves the FIDO public key against TA_USER_ISSUER - replacing old USER_FIDO_PK (from lost device)
-DAP Agency --> DAA: acknowledge successful FIDO registration
+Participant DAS
+
+User -> Issuer: Want to bootstrap new phone
+Issuer -> Issuer: Lookup DAS_USER_ID for HIDA\nCreates QR code (DAS_USER_ID, IssuerConnectionURL)
+Issuer -> User: presents or sends \nthe QR code in Web interface/Issuer PC
+User -> DAA: Scans the QR code and \nextracts DAS_USER_ID+ IssuerConnectionURL
+DAA -> DAS: ID proofing starts on the device \nand extracts the user info
+DAA->DAS: Send Verified User Attributes +\n DAS_USER_ID to IssuerConnectionURL
+DAS->Issuer: Verify User [DAS_USER_ID, User Attributes]
+Issuer -> DAS: Verifies User Attributes against \nIssuer DB [DAS_USER_ID, User Attributes]
+DAS -> DAA: validation status [DAS_USER_ID, DA, Validation Success/Failure]
+DAA -> DAA: If successful: Remember DAS_USER_ID, DA
+DAA -> DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
+DAS-> DAS: Remember (USER_FIDO_PK, DAS_USER_ID)
+DAS --> DAA: acknowledge successful FIDO registration
+DAA->User: Digital Address enrolled  on new device and ready for use

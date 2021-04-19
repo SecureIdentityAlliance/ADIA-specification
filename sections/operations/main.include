@@ -207,7 +207,7 @@ Users have the ability to recover a forgotten Digital Address in several ways su
 One of the most common ways to recover a Digital Address is similar to the process of bootstrapping a new device. The User may either use an Issuer's online service
 to provide Identity Attributes originally provided to generate the <a>HIDA</a>. The ID Proofing MUST be performed to validate the User's identity.
 
-Please see [[#sctn-user-bootstraps-new-daa-instance-1]]
+Please see [[#sctn-user-bootstraps-new-daa-instance]]
 
 ### Email based Recovery ### {#sctn-da-self-recovery-email}
 
@@ -273,7 +273,7 @@ Issue: Need more detail on the restored Assurance Level for the User and issued 
 
 ## User Device Management ## {#sctn-device-management}
 
-### Bootstrap a New DAA Instance - Lost Phone ### {#sctn-user-bootstraps-new-daa-instance-1}
+### Bootstrap a New DAA Instance### {#sctn-user-bootstraps-new-daa-instance}
 
 The user has lost his smartphone with the working <a>DAA</a> instance.
 This is about bootstrapping the new <a>DAA</a> on the new smartphone -
@@ -288,7 +288,7 @@ Issue: requiring ID Proofing looks expensive here. Are there methods without tha
 
 Issue: Do we want <a>DAS</a> to perform the ID proofing - not the <a>Issuer</a>?
 
-### Bootstrap Additional DAA Instance - New Phone ### {#sctn-user-bootstraps-addtl-daa-instance-1}
+### Bootstrap Additional DAA Instance ### {#sctn-user-bootstraps-addtl-daa-instance}
 The user got a new smartphone with the working <a>DAA</a>
 instance.  This is about bootstrapping the new <a>DAA</a> on the additional
 smartphone - <i>while still</i> having access to the old <a>DAA</a> instance.
