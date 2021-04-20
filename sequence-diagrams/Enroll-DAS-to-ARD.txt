@@ -1,0 +1,33 @@
+title Enroll a DAS to ARD
+actor DAS Admin
+participant DAS
+participant ARD
+actor ARD Admin
+participant AGD
+
+DAS Admin -> ARD: Primary contact and Org details
+ARD->ARD: Save Request [Status=NEW]. Generate REQUEST_ID
+ARD->DAS Admin:Request Reference\n[REQUEST_ID, Status=New]
+ARD Admin->ARD: Review Pending Request [REQUEST_ID]
+ARD->ARD: lookup ID-attributes for the entity \nand compute HIDA = hash (ID-attributes)
+ARD->ARD: securely send \n[HIDA,ARD_ID, CorrelationId=REQUEST_ID] \nand request DA
+ARD->AGD: lookup TA_ENTITY_ARD for [HIDA, ARD_ID]
+AGD->AGD: lookup TA for HIDA
+alt
+AGD->AGD: Generate TA = random
+end
+AGD->ARD: No conflict with TA\nReturn TA_ENTITY_ARD = hash[TA,ARD_ID]
+ARD->ARD: Approve [REQUEST_ID] and\nCreate [ARD_ENTITY_ID, ENTITY_TYPE]
+ARD->DAS Admin: Provision DAS Agent for DAS\n with HIDA [CorrelationId=REQUEST_ID]
+DAS Admin->DAS: Generate ARD_ENTITY_ID_PK/SK for ARD_ENTITY_ID
+DAS->ARD: Send [ARD_ENTITY_ID,ARD_ENTITY_ID_PK]
+ARD->ARD: CREATE DA. \nStore [ARD_ENTITY_ID,ENTITY_TYPE, DA, ARD_ENTITY_ID_PK,REQUEST_ID]
+opt Approve Request [REQUEST_ID]
+ARD Admin->ARD: Approve Request [REQUEST_ID]
+ARD->AGD: Forward Request [ARD_ENTITY_ID,ENTITY_TYPE, ARD_ENTITY_ID_PK]
+AGD->AGD: Store [TA,ARD_ENTITY_ID, ENTITY_TYPE, HomeARD_ID=ARD_ID] \nand [ARD_ENTITY_ID,ARD_ENTITY_ID_PK]
+AGD-->ARD: Success
+end
+ARD-->ARD:Store [REQUEST_ID,ARD_ENTITY_ID,ENTITY_TYPE, DA]
+ARD->ARD: Request Complete [REQUEST_ID, Status=APPROVED]
+ARD-->DAS: DAS provisioning complete [REQUEST_ID, Status=APPROVED]

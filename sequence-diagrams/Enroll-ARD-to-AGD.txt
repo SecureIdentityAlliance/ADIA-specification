@@ -1,0 +1,28 @@
+title Enroll a ARD to AGD
+actor ARD Admin
+participant ARD
+participant AGD
+actor AGD Admin
+
+ARD Admin -> AGD: Primary contact and Org details
+AGD->AGD: Save Request [Status=NEW]. Generate REQUEST_ID
+AGD->ARD Admin:Request Reference\n[REQUEST_ID, Status=New]
+AGD Admin->AGD: Review Pending Request [REQUEST_ID]
+AGD->AGD: lookup ID-attributes for the entity \nand compute HIDA = hash (ID-attributes)
+AGD->AGD: lookup TA for HIDA
+alt
+AGD->AGD: Generate TA = random
+end
+AGD->ARD: No conflict with TA\nReturn TA_ENTITY_ARD = hash[TA,AGD_ID]
+AGD->AGD: Approve [REQUEST_ID] and \nCreate [AGD_ENTITY_ID, ENTITY_TYPE]
+AGD->ARD Admin: Provision ARD Agent for ARD\n with HIDA [CorrelationId=REQUEST_ID]
+ARD Admin->ARD: Generate ARD_ENTITY_ID_PK/SK for ARD_ENTITY_ID
+ARD->AGD: Send [AGD_ENTITY_ID,AGD_ENTITY_ID_PK]
+AGD->AGD: Create DA\nStore [AGD_ENTITY_ID,ENTITY_TYPE, DA, AGD_ENTITY_ID_PK,REQUEST_ID]
+opt Approve Request[REQUEST_ID]
+AGD Admin->AGD: Approve Request [REQUEST_ID]
+AGD->AGD: Store [TA,AGD_ENTITY_ID, ENTITY_TYPE] \nand [AGD_ENTITY_ID,AGD_ENTITY_ID_PK]
+end
+AGD-->AGD: Store[REQUEST_ID, AGD_ENTITY_ID, ENTITY_TYPE, DA]
+AGD->ARD: Request Complete [REQUEST_ID, Status=APPROVED]
+ARD-->ARD: ARD provisioning complete [REQUEST_ID, Status=APPROVED]

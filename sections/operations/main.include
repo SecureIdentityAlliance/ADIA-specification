@@ -3,33 +3,33 @@
 
 ## Directory enrollment ## {#sctn-directory-enrollment}
 
-### Enroll ADIA Regional Directory ### {#sctn-enroll-as-ADIA-regional}
+### Enroll Regional Directory ### {#sctn-enroll-as-ADIA-regional}
 
 <figure id="fig-onboarding-regional-adia-to-gadi">
-    <img src="sequence-diagrams/Onboarding-ADIA-Regional-to-ADIA.svg"/>
-    <figcaption>Onboarding Regional ADIA to ADIA</figcaption>
+    <img src="sequence-diagrams/Enroll-ARD-to-AGD.svg"/>
+    <figcaption>Enroll Regional Directory to Global Directory</figcaption>
 </figure>
 
 ### Enroll DAS ### {#sctn-enroll-as-dap}
 
 <figure id="fig-onboarding-dap-to-regional-gadi">
-    <img src="sequence-diagrams/Onboarding-DAS-to-Regional-ADIA.svg"/>
-    <figcaption>Onboarding DAS to Regional ADIA</figcaption>
+    <img src="sequence-diagrams/Enroll-DAS-to-ARD.svg"/>
+    <figcaption>Enroll DAS to Regional Directory</figcaption>
 </figure>
 
 
 ### Enroll Issuer ### {#sctn-enroll-as-issuer}
 
 <figure id="fig-onboarding-issuer-to-dap">
-    <img src="sequence-diagrams/Onboarding-Issuer-to-DAS.svg"/>
-    <figcaption>Onboarding Issuer to a DAS</figcaption>
+    <img src="sequence-diagrams/Enroll-Issuer-to-DAS.svg"/>
+    <figcaption>Enroll Issuer to a DAS</figcaption>
 </figure>
 
 ### Enroll Service Provider ### {#sctn-enroll-as-serviceprovider}
 
 <figure id="fig-onboarding-sp-to-dap">
-    <img src="sequence-diagrams/Onboarding-SP-to-DAS.svg"/>
-    <figcaption>Onboarding SP to DAS</figcaption>
+    <img src="sequence-diagrams/Enroll-SP-to-DAS.svg"/>
+    <figcaption>Enroll an SP to DAS</figcaption>
 </figure>
 
 
