@@ -64,7 +64,7 @@ Issue: This representation is not correct. There is no TA_USER_ISSUER in the <a>
 
 Issue: This opens the possibility to create multiple Digital Addresses for the same user in multiple regions.
 
-#### User Initiated New User Engollment (using DAA) #### {#sctn-user-initiated-da-with-daa}
+#### User Initiated New User Enrollment (using DAA) #### {#sctn-user-initiated-da-with-daa}
 
 A user may initiate the creation of a Digital Address remotely, via an online service
 provided by a Trusted Digital Address Issuer. The Issuer's service MUST follow procedures similar to the
