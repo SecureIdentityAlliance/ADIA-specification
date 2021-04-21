@@ -21,8 +21,8 @@ Each DID is resolvable to a DID Document which contains cryptographic keys and s
 
 Three main concerns addressed by the ecosystem are to:
 * provide a Look up at the time of initial onboarding to make sure there no duplications
-* provide the Trust Framework and a source of truth should there be any fraud to facilitate the accountability.
-* facilitate the value settlements across different Identity System
+* provide the Trust Framework and a source of truth should there be any fraud to facilitate accountability.
+* facilitate value settlements across different Identity System
 
 <figure id="fig-adia-overview">
     <img src="images/adia_overview.svg"/>
@@ -33,7 +33,7 @@ The ecosystem consists of several entities that are involved in the Trust framew
 
 * <a>ADIA Global Directory</a> (AGD): One primary Root of Trust system with one or more distributed or delegated shared instances.
 * <a>ADIA Regional Directory</a> (ARD): One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
-* <a>Interchange</a>: A loose composition of services providing foundational services such as <a>Digital Address Service</a>, Identity Escrow, Credential Broker, and Payment Broker functionality for the entities in the ecosystem.
+* <a>Interchange</a>: A loose composition of services providing foundational services such as <a>Digital Address Service</a>, Identity Escrow, Credential Brokering, and Payment Brokering for the entities in the ecosystem.
 * <a>Digital Address Service</a> (<a>DAS</a>): An agency providing services to entities within its domain. All interactions between entities are facilitated through agents and services provided by the Agency.
 * <a>Issuer</a>: One or more Issuers representing both Identity (e.g., DMV, Passport Office, etc.) or Non-Identity Credential Issuers (e.g., University, Enterprise, Healthcare Provider, etc.)
 * <a>Service Provider</a>: One or more service providers acting as relying parties. E.g., E-commerce site, Retailer, etc.
