@@ -186,9 +186,9 @@ Issue: Add details for Interchange
 
 <dfn export=true>Digital Address Service</dfn> (<dfn>DAS</dfn>) enables the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the verification of credentials by relying parties.
 
-The DAS may host a set of user-focused wallet storage and secure communication agents. When any interaction with a participant happens, it happens through their Agent via services.
-Each entity's Agent holds cryptographic keys and digital credentials on behalf of the participant. The agent also manages the participant’s connections with services in the ecosystem. It maintains the participant’s directory listings and requests for unique DIDs when a new connection is made.
-The Agent is configured with and uses machine-readable governance framework documents as policy for automatically accepting or rejecting credential interactions. When necessary, the agent will communicate with the participant through a secure channel and obtain consent. Participants authenticate to the Agent via FIDO when consent is required.
+The DAS may host a set of user-focused wallet storage and secure communication agents. When any interaction with a user happens, it happens through their Agent via services.
+Each entity's Agent holds cryptographic keys and digital credentials on behalf of the user. The agent also manages the user's connections with services in the ecosystem. It maintains the user's directory listings and requests for unique DIDs when a new connection is made.
+The Agent is configured with and uses machine-readable governance framework documents as policy for automatically accepting or rejecting credential interactions. When necessary, the agent will communicate with the user through a secure channel and obtain consent. Users authenticate to the Agent via FIDO when consent is required.
 All interactions through the agent are logged and available for inspection by the entity.
 
 ##### Components ##### {#sctn-das-components}
@@ -320,7 +320,7 @@ The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App
 The core components of a <a>Digital Address Application</a> are:
 
 * **DAS Mobile SDK**: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAS services.
-* **FIDO Client**: OnePass Client SDK to provide register and authenticate with a <a>Digital Address</a>.
+* **FIDO Client**: SDK to provide FIDO operations to register and authenticate with a <a>Digital Address</a>.
 * **Identity Verification SDK**: An Identity Verification client SDK to ID proof a government-issued identification document such as Driver’s License or Passport
 * **Credential Metadata**: On-device store of the credential metadata issued to the digital address. Interacts with the DAS services to lookup and retrieve actual credentials from the issuer.
 * **Push Notification Service**: External service to push notifications to the user for events such as credential issuance, revocation, proof requests, and consent
