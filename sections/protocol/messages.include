@@ -20,8 +20,8 @@
     <tr>
       <td>entityRole</td>
       <td>Enum</td>
-      <td>GGD,
-        GRD, Issuer, SP,User</td>
+      <td>AGD,
+        ARD, Issuer, SP,User</td>
     </tr>
     <tr>
             <td>status</td>
@@ -75,7 +75,7 @@
   <tr>
     <td>entityRole</td>
     <td>String</td>
-    <td>GGD, GRD, Issuer, SP,User</td>
+    <td>AGD, ARD, Issuer, SP,User</td>
   </tr>
   <tr>
     <td>entityRoles</td>
@@ -163,7 +163,7 @@ Example:
   <tr>
     <td>entityRole</td>
     <td>Enum</td>
-    <td>GGD,GRD, Issuer, SP,User</td>
+    <td>AGD,ARD, Issuer, SP,User</td>
   </tr>
   <tr>
     <td>primaryHash</td>
@@ -225,7 +225,7 @@ Example:
   <tr>
     <td>entityRole</td>
     <td>Enum</td>
-    <td>GGD, GRD, Issuer, SP,User</td>
+    <td>AGD, ARD, Issuer, SP,User</td>
   </tr>
   <tr>
     <td>entityRoles</td>
@@ -368,7 +368,7 @@ Example:
     <tr>
       <td>publishingEntityRole</td>
       <td>Enum</td>
-      <td>GGD, GRD, Issuer, SP,User</td>
+      <td>AGD, ARD, Issuer, SP,User</td>
     </tr>
     <tr>
       <td>revoked</td>
@@ -441,7 +441,7 @@ Example:
     <tr>
       <td>entityRole</td>
       <td>Enum</td>
-      <td>GGD, GRD, Issuer, SP,User</td>
+      <td>AGD, ARD, Issuer, SP,User</td>
     </tr>
     <tr>
       <td>fromDate</td>
@@ -526,7 +526,7 @@ Example:
     <tr>
       <td>issuingEntityRole</td>
       <td>Enum</td>
-      <td>GGD, GRD, Issuer, SP,User</td>
+      <td>AGD, ARD, Issuer, SP,User</td>
     </tr>
     <tr>
       <td>active</td>
@@ -594,12 +594,12 @@ Example:
     <tr>
       <td>issuingEntityRole</td>
       <td>Enum</td>
-      <td>GGD, GRD, Issuer, SP,User</td>
+      <td>AGD, ARD, Issuer, SP,User</td>
     </tr>
     <tr>
       <td>issuingEntityRoles</td>
       <td>Array</td>
-      <td>GGD, GRD, Issuer, SP,User</td>
+      <td>AGD, ARD, Issuer, SP,User</td>
     </tr>
     <tr>
       <td>credentialId</td>

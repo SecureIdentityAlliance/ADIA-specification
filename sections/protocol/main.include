@@ -53,8 +53,8 @@ The ADIA Messaging Specification is an extension of the DIDComm protocol. These 
    The agents for Issuers and Service Providers implement protocols for establishing connection and perform exchanging DIDs, Credentials and Proofs requests.
 
   There are six types of ADIA agents:
-  1. ADIA Global Directory Agent (GGD Agent)
-  2. ADIA Regional Directory Agent (GRD Agent)
+  1. ADIA Global Directory Agent (AGD Agent)
+  2. ADIA Regional Directory Agent (ARD Agent)
   3. DAS Agent
   4. Issuer Agent
   5. Service Provider Agent (SP Agent)
@@ -65,8 +65,8 @@ The ADIA Messaging Specification is an extension of the DIDComm protocol. These 
   <table class="data">
     <thead>
       <th>Agent/Agent</th>
-      <th>GGD Agent</th>
-      <th>GRD Agent</th>
+      <th>AGD Agent</th>
+      <th>ARD Agent</th>
       <th>DAS Agent</th>
       <th>Issuer Agent</th>
       <th>SP Agent</th>
@@ -74,7 +74,7 @@ The ADIA Messaging Specification is an extension of the DIDComm protocol. These 
     </thead>
     <tbody>
       <tr>
-        <th>GGD Agent</th>
+        <th>AGD Agent</th>
         <td></td>
         <td><center>X</center></td>
         <td></td>
@@ -83,7 +83,7 @@ The ADIA Messaging Specification is an extension of the DIDComm protocol. These 
         <td></td>
       </tr>
       <tr>
-        <th>GRD Agent</th>
+        <th>ARD Agent</th>
         <td><center>X</center></td>
         <td></td>
         <td><center>X</center></td>
@@ -142,8 +142,8 @@ An agent may implement the handler or delegate to another agent for handling via
   <thead>
     <th>Endpoint</th>
     <th>Description</th>
-    <th>GGD Agent</th>
-    <th>GRD Agent</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
     <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
@@ -262,8 +262,8 @@ An agent may implement the handler or delegate to another agent for handling via
   <thead>
     <th>Endpoint</th>
     <th>Description</th>
-    <th>GGD Agent</th>
-    <th>GRD Agent</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
     <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
@@ -344,8 +344,8 @@ An agent may implement the handler or delegate to another agent for handling via
   <thead>
     <th>Endpoint</th>
     <th>Description</th>
-    <th>GGD Agent</th>
-    <th>GRD Agent</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
     <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
@@ -424,8 +424,8 @@ An agent may implement the handler or delegate to another agent for handling via
   <thead>
     <th>Endpoint</th>
     <th>Description</th>
-    <th>GGD Agent</th>
-    <th>GRD Agent</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
     <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
@@ -484,8 +484,8 @@ An agent may implement the handler or delegate to another agent for handling via
   <thead>
     <th>Endpoint</th>
     <th>Description</th>
-    <th>GGD Agent</th>
-    <th>GRD Agent</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
     <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
@@ -584,8 +584,8 @@ An agent may implement the handler or delegate to another agent for handling via
   <thead>
     <th>Endpoint</th>
     <th>Description</th>
-    <th>GGD Agent</th>
-    <th>GRD Agent</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
     <th>DAS Agent</th>
     <th>Issuer Agent</th>
     <th>SP Agent</th>
