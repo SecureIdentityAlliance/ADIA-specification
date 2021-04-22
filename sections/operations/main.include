@@ -174,8 +174,10 @@ In both cases, a public key is typically linked to the <a>verifiable credential<
 
 ### Present Anonymous Credentials ### {#sctn-anon-creds}
 
-A key that is used for this operation only is created by the user's
-Cloud Agent.
+<a>Anonymous Verifiable Credential</a>s don't intrinsically expose a link from the credential to a specific user.
+A key dedicated for this operation is created on-demand by the user's <a>Cloud Agent</a>.
+Presentations of the <a>Anonymous Verifiable Credential</a> to different <a>SP</a>s will trigger the use of different keys
+to avoid the exposure of a correlation handle.
 
 <figure id="fig-vc-presentation-and-verification-option-2">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-2.svg"/>
