@@ -264,9 +264,11 @@ Issue: Need more detail on the restored Assurance Level for the User and issued 
 
 ### Delete Digital Address ### {#sctn-user-account-deletion}
 
-The User acquires the <a>Digital Address</a> and Verifiable Credentials through their lifetime in the ADIA ecosystem. Relationships of the User with other entities, such as
-Issuers and Service Providers are maintained by the DAS. In some cases however, the User may choose to terminate their relationship with a DAS
-or the ADIA ecosystem entirely. The cases below describe process to initiate the dissociation of a User with their DASs.
+The <a>User</a> acquires the <a>Digital Address</a> and <a>Verifiable Credential</a>s through their lifetime in the <a>ADIA</a> ecosystem [[#sctn-ecosystem-overview]].
+    Relationships of the <a>User</a> with other entities, such as
+    <a>Issuer</a>s and <a>Service Provider</a>s are maintained by the <a>DAS</a>. In some cases however, the <a>User</a> may choose
+    to terminate their relationship with a <a>DAS</a> or the <a>ADIA</a> ecosystem entirely. The cases below describe process to initiate
+    the dissociation of a <a>User</a> with their <a>DAS</a>.
 
 
 #### User Initiated #### {#sctn-user-account-deletion-user-initiated}
@@ -278,14 +280,9 @@ or the ADIA ecosystem entirely. The cases below describe process to initiate the
 
 Issue: What do you mean with Add Delete Entry to DLT?  The *existing* Entry needs to be deleted.
 
-Issue: Is it expected that <a>Issuer</a> relations are not deleted?  Maybe <a>DAS</a> Account deletion should be just a part of <a>Issuer</a> account deletion?
+Note: Notification of issuers is as an optional step from a technical perspective.  The ADIA Governance and retention policies define the details of this.
 
-Note: I have added this as an optional step in the sequence diagram. My personal opinion is that all issuers that have issued non-expired VCs MUST be notified. Whether they act or not in
-    deleting the VC from their local storage is defined by Governance and retentional policies defined by the Issuers themselves
-
-Issue: Is it expected that VCs are not deleted?
-
-Note: Must be defined by Governance and Issuer retention policies
+Note: Deletion of <a>VC</a>s related to this <a>Digital Address</a> is defined in the ADIA Governance and retention policies.
 
 
 
