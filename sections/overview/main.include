@@ -213,7 +213,7 @@ The types of actors that interact with the DAS are described below:
 
 #### Credential Broker (Future) #### {#sctn-adia-role-credential-broker}
 
-The process of receiving credential presentations can be complicated. Verifiers and participants may enlist the use of a credential broker.
+The process of receiving credential presentations can be complicated. Verifiers and participants may enlist the use of a <dfn>Credential Broker</dfn>.
 The broker can serve several functions in the process of aiding a credential presentation. The credential may be translated between formats, verifying one format and creating another that is readable by the verifier.
 
 The broker can do the legwork of applying governance frameworks and checking the credential issuer for validity. This is particularly helpful when interacting with an interchange provider not previously known to the verifier.
@@ -374,6 +374,20 @@ Issue: Please check - Trust Anchor, <a>Digital Address</a>,
 
 
    <dl>
+       : <a>ADIA Global Directory</a> (<a>AGD</a>)
+       :: See [[#sctn-adia-role-global-directory]]
+
+       : <a>ADIA Regional Directory</a> (<a>ARD</a>)
+       :: See [[#sctn-adia-role-regional-directory]]
+
+       : <dfn>ADIA_ID</dfn>
+       :: The <a>ADIA</a> IDentity, i.e. the the W3C DID style identifier for the <a>ADIA</a>.
+
+       :  <a>ADIA_ID_PK</a>, <a>ADIA_ID_SK</a>
+       :: Public Key (PK) and Private Key (SK) related to the
+           <a>ADIA_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           more details.
+
        :  <dfn export=true>AVC</dfn>
        :: <dfn>Anonymous Verifiable Credential</dfn>.  This is a
             special case of a <a>Verifiable Credential</a> when the
@@ -386,10 +400,9 @@ Issue: Please check - Trust Anchor, <a>Digital Address</a>,
        :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
             <a href="https://ec.europa.eu/digital-single-market/en/trust-services">eIDAS Trust Service Providers</a>.
 
-       : <dfn>Credential Broker</dfn>
-       ::
+       : <a>Credential Broker</a>
+       :: See [[#sctn-adia-role-credential-broker]]
 
-   Issue: TODO
 
        : <dfn>DA</dfn>
        :: Human readabe <a>Digital Address</a> of the <a>User</a>
@@ -433,22 +446,6 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
 
        : <dfn>DIDDoc-USER</dfn>
        :: DID document binding the user's public key to the <a>DAS_USER_ID</a>.
-
-       : <a>ADIA Global Directory</a> (<a>AGD</a>)
-       :: See [[#sctn-adia-role-global-directory]]
-
-       : <a>ADIA Regional Directory</a> (<a>ARD</a>)
-       :: See [[#sctn-adia-role-regional-directory]]
-
-Issue: TODO.
-
-       : <dfn>ADIA_ID</dfn>
-       :: The <a>ADIA</a> IDentity, i.e. the the W3C DID style identifier for the <a>ADIA</a>.
-
-       :  <a>ADIA_ID_PK</a>, <a>ADIA_ID_SK</a>
-       :: Public Key (PK) and Private Key (SK) related to the
-           <a>ADIA_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
-           more details.
 
        :  <dfn>HIDA</dfn>
        :: Cryptographic hash computed over the <a>ID Attributes</a>
