@@ -93,7 +93,7 @@ The following diagram depicts a logical view of an entity in ADIA.
     <tr>
       <td>ASSURANCE_LEVEL
 
-      Issue: Explain whether this assurance level refers to the Identification of the user (related to NIST SP 800-63 IAL)!
+      This assurance level is related to the <a>User</a>, see [[#sctn-assurance-level-user]].
 
       </td>
       <td>Enum</td>
@@ -182,7 +182,7 @@ The following diagram depicts a logical view of an entity in ADIA.
     <tr>
       <td>ASSURANCE_LEVEL
 
-      Issue: Clarify whether this ASSURANCE_LEVEL relates to NIST SP 800-63 IAL, AAL or FAL (and under what conditions it does)!
+      This assurance level is related to the <a>Verifiable Credential</a>, see [[#sctn-assurance-level]].
 
       </td>
       <td>Enum</td>
