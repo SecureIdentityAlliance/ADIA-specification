@@ -1,4 +1,4 @@
-title Delegated Recovery-Peer Mode
+title: Delegated Recovery-Peer Mode
 Participant User
 participant User DAA
 participant User HomeDAP
@@ -6,16 +6,16 @@ Participant Delegated User
 participant Delegatee DAA
 participant Delegatee HomeDAP
 Participant Cloud Agent
-Participant DAP Agency
-Participant GADI Regional Directory
+Participant DAS
+Participant ARD
 
 
 opt User sets up Delegatee List
 User->User DAA: Set up Delegatees List
 User->User HomeDAP: Notify the Delegatees of nomination
 User HomeDAP->User HomeDAP: Resolve HomeDAP from DA
-User HomeDAP->GADI Regional Directory: Lookup HomeDAP for each Delegatee
-GADI Regional Directory-->Delegatee HomeDAP: Route to each HomeDAP
+User HomeDAP->ARD: Lookup HomeDAP for each Delegatee
+ARD-->Delegatee HomeDAP: Route to each HomeDAP
 Delegatee HomeDAP->Delegatee HomeDAP: Lookup DAP_USER_ID and Device Information
 Delegatee HomeDAP->Delegatee DAA: Push Notification to Device
 Delegated User->Delegatee DAA: View and Accept/Reject
@@ -28,8 +28,8 @@ User->Delegated User: I need to recover my access
 Delegated User->User DAA: Generate QR for User DA
 User->User DAA: Scan QR from Delegatee DAA
 User ->User HomeDAP: Resolve Delegated User
-User HomeDAP->GADI Regional Directory: Lookup HomeDAP for Delegatee
-GADI Regional Directory-->Delegatee HomeDAP: Route to HomeDAP
+User HomeDAP->ARD: Lookup HomeDAP for Delegatee
+ARD-->Delegatee HomeDAP: Route to HomeDAP
 Delegatee HomeDAP->Delegatee HomeDAP: Lookup DAP_USER_ID and Device Information
 Delegatee HomeDAP->Delegatee DAA: Push Notification to Device
 Delegated User->Delegatee DAA: View and Accept/Reject with FIDO
