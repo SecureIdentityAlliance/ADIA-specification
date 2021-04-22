@@ -34,7 +34,7 @@
 
 ### Enroll User ### {#sctn-enroll-user}
 
-Users may approach Trusted Issuers to create a Digital Address or issuers may initiate the process of creating a Digital Address for a user prior to issuing a Verifiable Credential.
+Users may approach Trusted <a>Issuer</a>s to create a Digital Address or issuers may initiate the process of creating a Digital Address for a user prior to issuing a Verifiable Credential.
 A Digital Address creation starts with the collection of identity attributes from the User, creation of a unique trust anchor and ensuring that the Digital Address is unique
 to in the given scope.
 
@@ -42,7 +42,7 @@ Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] section
 
 #### Issuer Initiated New User Enrollment #### {#sctn-onboarding-1st-issuer}
 
-The <a>DAS</a> related to the first <a>Digital Address</a> Issuer is called <a>HomeDAS</a>.
+The <a>DAS</a> related to the first <a>Digital Address</a> <a>Issuer</a> is called <a>HomeDAS</a>.
 
 <figure id="fig-onboarding-1st-issuer">
     <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg"/>
@@ -67,13 +67,13 @@ Issue: This opens the possibility to create multiple Digital Addresses for the s
 #### User Initiated New User Enrollment (using DAA) #### {#sctn-user-initiated-da-with-daa}
 
 A user may initiate the creation of a Digital Address remotely, via an online service
-provided by a Trusted Digital Address Issuer. The Issuer's service MUST follow procedures similar to the
+provided by a Trusted Digital Address <a>Issuer</a>. The <a>Issuer</a>'s service MUST follow procedures similar to the
 in-person creation by request the Identity attributes from the User, generating the hashed attributes and verifying against
 the ADIA Regional Directory.
 
-The online service of the Issuer MUST present the user with a QR code either online on its website or offline via an email or alternate service,
+The online service of the <a>Issuer</a> must present the user with a QR code either online on its website or offline via an email or alternate service,
 such that the User is capable of scanning the QR code containing their Digital Address information and initiating an Authenticating Binding processes
-with the HomeDAS.
+with the <a>HomeDAS</a>.
 
 A successful authentication and binding to the HomeDAS's services should allow the user to use the <a>Digital Address</a> at the level of Assurance determined by the onboarding process.
 
@@ -109,16 +109,16 @@ The DAS may independently request the user to authenticate before upgrading the 
 <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask ADIA via <a>DAS</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
 
 
-Issue: Distinguish two different cases: (1) DA Issuer and VC Issuer are part of same DAS.
-     (2) DA Issuer and VC Issuer are part of different DAS
+Issue: Distinguish two different cases: (1) DA <a>Issuer</a> and VC <a>Issuer</a> are part of same DAS.
+     (2) DA <a>Issuer</a> and VC <a>Issuer</a> are part of different DAS
      Agencies.  See github issue 53.
 
 
 ### Revoke a Verifiable Credential ### {#sctn-revoking-credential}
 
-Issuers have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
+<a>Issuer</a>s have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
 the Credential Metadata on the DAS. The DAS checks for constraints before allowing the revocation of an issued VC. Some of them are:
-1. Issuers may revoke VCs only for the credentials issued by them.
+1. <a>Issuer</a>s may revoke VCs only for the credentials issued by them.
 2. The Digital Address is valid and not in an invalid state.
 3. The Credential is valid and in a non-expired state.
 
@@ -153,8 +153,8 @@ Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is 
 
 We distinguish 2 different types of <a>verifiable credential</a>s:
 1. Credentials that include sufficient personal identifiable
-    information to uniquely identify the user (identifying credentials) and
-2. Credentials that don't (anonymous credentials). For example just stating that the user is older than 21.
+    information to uniquely identify the user (identifying verifiable credentials) and
+2. Credentials that don't (<a>Anonymous Verifiable Credential</a>s). For example just stating that the user is older than 21.
 
 
 In both cases, a public key is typically linked to the <a>verifiable credential</a> via the subject's DID document (see example 2 in [[did-core]]).
@@ -164,7 +164,7 @@ In both cases, a public key is typically linked to the <a>verifiable credential<
   <a>SP</a> to recognize the subject the attributes relate to.
 
 
-### Present Identifing Credentials ### {#sctn-iden-creds}
+### Present Identifying Credentials ### {#sctn-iden-creds}
 
 <figure id="fig-vc-presentation-and-verification-option-1">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
@@ -191,11 +191,11 @@ to avoid the exposure of a correlation handle.
 
 ### Recover Digital Address ### {#sctn-recover-digital-address}
 
-Users have the ability to recover a forgotten Digital Address in several ways such as, recovering from a backup device or a delegated recovery using other trusted third parties.
+<a>User</a>s have the ability to recover a forgotten <a>Digital Address</a> in several ways such as, recovering from a backup device or a delegated recovery using other trusted third parties.
 
 #### Self-Recovery #### {#sctn-da-self-recovery}
 
-One of the most common ways to recover a Digital Address is similar to the process of bootstrapping a new device. The User may either use an Issuer's online service
+One of the most common ways to recover a <a>Digital Address</a> is similar to the process of bootstrapping a new device. The User may either use an <a>Issuer</a>'s online service
 to provide Identity Attributes originally provided to generate the <a>HIDA</a>. The ID Proofing MUST be performed to validate the User's identity.
 
 Please see [[#sctn-user-bootstraps-new-daa-instance]]
@@ -211,7 +211,7 @@ Issue: Original Text - Abbie.  Needs polishing & consistency check
 5. user click on email, it is send back to the
 6. dap perform redirect to issuer
 7. issuer re-validate user (either through re-enrolment of other means such as Voice matching, other app access, MNO validation, DL matching, Login with a trusted partner etc.)
-8. Issuer direct back to DAS
+8. <a>Issuer</a> direct back to DAS
 9. Dap and issuer use DIDcom to confirm the transaction
 10. DAS re-enrol user with FIDO
 
@@ -223,7 +223,7 @@ if user does not remember email other options can be used
 
 1. do the DL flow as provided now
 2. remind teh user of a list of possible issuer that may help it (aka see a drop list and see if any of the following issuers can help)
-3. Issuers should implement a DAS recovery flow, basically re-enrol the user to the DAS (yes a DA exits but the flow will help the DAS to fido enable the user)
+3. <a>Issuer</a>s should implement a DAS recovery flow, basically re-enrol the user to the DAS (yes a DA exits but the flow will help the DAS to fido enable the user)
 
 
 Issue: This seems to be a method to avoid ID Proofing with DAS.
@@ -231,11 +231,11 @@ Issue: This seems to be a method to avoid ID Proofing with DAS.
 ### Delegated Recovery ### {#sctn-da-delegated-recovery}
 
 Users can recover access to their prior credentials by either enabling a back up device or using one or more trusted delegatees
-who also have a Digital Address.
+who also have a <a>Digital Address</a>.
 
 #### Delegated Recovery with a Trusted Peer #### {#sctn-da-delegated-recovery-peer}
 
-If the delegatee is a trusted person, such as a family member or a nominated friend, recovery of the Digital Address and credential metadata is possible
+If the delegatee is a trusted person, such as a family member or a nominated friend, recovery of the <a>Digital Address</a> and credential metadata is possible
 using a peer mode by directly scanning a QR code from the delegatee's device.
 
 
@@ -288,11 +288,11 @@ Note: Deletion of <a>VC</a>s related to this <a>Digital Address</a> is defined i
 
 #### Issuer Initiated #### {#sctn-user-account-deletion-issuer-initiated}
 
-The Issuer may initiate a <a>Digital Address</a> that is not completely claimed by the User. This would be in case of an error by the Issuer or the User's desire not to
+The <a>Issuer</a> may initiate a <a>Digital Address</a> that is not completely claimed by the User. This would be in case of an error by the <a>Issuer</a> or the User's desire not to
 be part of the ADIA ecosystem.
 
-In such cases, an Issuer may initiate deletion of the <a>Digital Address</a> only if:
-* The Issuer is the Digital Address Issuer
+In such cases, an <a>Issuer</a> may initiate deletion of the <a>Digital Address</a> only if:
+* The <a>Issuer</a> is the <a>Digital Address</a> <a>Issuer</a>
 * There is no binding of the user to the <a>Digital Address</a> i.e No FIDO keys associated with the <a>Digital Address</a> on the DAS.
 * There are no Verifiable Credentials issued to the <a>Digital Address</a>
 * There is no Credential Metadata on the DAS
