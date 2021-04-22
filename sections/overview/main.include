@@ -252,11 +252,11 @@ the Service Providers (verifiers of a credentials) with a level of trust. Issuer
 #### Components #### {#sctn-issuer-components}
 
 The core components of an Issuer are:
-* **Issuer Console**: An administrative interface to view Users, Identity information and Credential information. Administrators issue Verifiable Credential from the console to holders.
-* **<a>Issuer Agent</a>**: A communications agent to integrate identity transactions between an Issuer network and the DAS
-* **VC Store**: A secure storage area for issuers to persist issued Verifiable Credentials.
-* **API Services**: REST endpoints to abstract interactions with the communication and transformation agents.
-* **Connectors**: Adapters that connect to Identity and Credential datastores, perform scheduled transfers, transform content for the Issuers to view and issue Credentials to users.
+* Issuer Console: An administrative interface to view Users, Identity information and Credential information. Administrators issue Verifiable Credential from the console to holders.
+* <a>Issuer Agent</a>: A communications agent to integrate identity transactions between an Issuer network and the DAS
+* VC Store: A secure storage area for issuers to persist issued Verifiable Credentials.
+* API Services: REST endpoints to abstract interactions with the communication and transformation agents.
+* Connectors: Adapters that connect to Identity and Credential datastores, perform scheduled transfers, transform content for the Issuers to view and issue Credentials to users.
 
 #### Roles #### {#sctn-issuer-roles}
 
