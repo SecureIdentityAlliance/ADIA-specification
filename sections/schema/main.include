@@ -91,7 +91,11 @@ The following diagram depicts a logical view of an entity in ADIA.
       <td>ISO 8601 format</td>
     </tr>
     <tr>
-      <td>ASSURANCE_LEVEL</td>
+      <td>ASSURANCE_LEVEL
+
+      Issue: Explain whether this assurance level refers to the Identification of the user (related to NIST SP 800-63 IAL)!
+
+      </td>
       <td>Enum</td>
       <td>
         <ul>
@@ -176,7 +180,11 @@ The following diagram depicts a logical view of an entity in ADIA.
       </td>
     </tr>
     <tr>
-      <td>ASSURANCE_LEVEL</td>
+      <td>ASSURANCE_LEVEL
+
+      Issue: Clarify whether this ASSURANCE_LEVEL relates to NIST SP 800-63 IAL, AAL or FAL (and under what conditions it does)!
+
+      </td>
       <td>Enum</td>
       <td>
         <ul>
