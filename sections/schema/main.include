@@ -91,7 +91,11 @@ The following diagram depicts a logical view of an entity in ADIA.
       <td>ISO 8601 format</td>
     </tr>
     <tr>
-      <td>ASSURANCE_LEVEL</td>
+      <td>ASSURANCE_LEVEL
+
+      This assurance level is related to the <a>User</a>, see [[#sctn-assurance-level-user]].
+
+      </td>
       <td>Enum</td>
       <td>
         <ul>
@@ -176,7 +180,11 @@ The following diagram depicts a logical view of an entity in ADIA.
       </td>
     </tr>
     <tr>
-      <td>ASSURANCE_LEVEL</td>
+      <td>ASSURANCE_LEVEL
+
+      This assurance level is related to the <a>Verifiable Credential</a>, see [[#sctn-assurance-level]].
+
+      </td>
       <td>Enum</td>
       <td>
         <ul>

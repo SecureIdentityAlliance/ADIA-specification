@@ -15,14 +15,13 @@ providers in a verifiable manner.
 
 ## Ecosystem Overview ## {#sctn-ecosystem-overview}
 
-Accountable Digital Identity Architecture (ADIA) is a decentralized network of networks integrating Regional Directories, Interchanges, Issuers, Service Providers and Users with
-unique Trust Anchors. All entities within the architecture are represented by DIDs.
+Accountable Digital Identity Architecture (ADIA) is a decentralized network of networks integrating Regional Directories, Interchanges, Issuers, Service Providers and Users with unique Trust Anchors. All entities within the architecture are represented by DIDs.
 Each DID is resolvable to a DID Document which contains cryptographic keys and service endpoints as specified in the DID Core Specification.
 
 Three main concerns addressed by the ecosystem are to:
 * provide a Look up at the time of initial onboarding to make sure there no duplications
-* provide the Trust Framework and a source of truth should there be any fraud to facilitate accountability.
-* facilitate value settlements across different Identity System
+* provide the Trust Framework and a source of truth should there be any fraud to facilitate the accountability.
+* facilitate the value settlements across different Identity System
 
 <figure id="fig-adia-overview">
     <img src="images/adia_overview.svg"/>
@@ -33,7 +32,7 @@ The ecosystem consists of several entities that are involved in the Trust framew
 
 * <a>ADIA Global Directory</a> (AGD): One primary Root of Trust system with one or more distributed or delegated shared instances.
 * <a>ADIA Regional Directory</a> (ARD): One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
-* <a>Interchange</a>: A loose composition of services providing foundational services such as <a>Digital Address Service</a>, Identity Escrow, Credential Brokering, and Payment Brokering for the entities in the ecosystem.
+* <a>Interchange</a>: A loose composition of services providing foundational services such as <a>Digital Address Service</a>, Identity Escrow, Credential Broker, and Payment Broker functionality for the entities in the ecosystem.
 * <a>Digital Address Service</a> (<a>DAS</a>): An agency providing services to entities within its domain. All interactions between entities are facilitated through agents and services provided by the Agency.
 * <a>Issuer</a>: One or more Issuers representing both Identity (e.g., DMV, Passport Office, etc.) or Non-Identity Credential Issuers (e.g., University, Enterprise, Healthcare Provider, etc.)
 * <a>Service Provider</a>: One or more service providers acting as relying parties. E.g., E-commerce site, Retailer, etc.
@@ -44,7 +43,7 @@ These entities and their role in the ADIA ecosystem are described in [[#sctn-rol
 ## Trust Anchor ## {#sctn-trust-anchor}
 
 Trust Anchor is a Unique Key for a given entity in the ADIA ecosystem.
-A Trust Anchor uniquely maps an entity's <a>Digital Address</a> and a DAS-assigned DID.
+A Trust Anchor uniquely maps an entity's <a>Digital Address</a> and a DAS assigned DID.
 
 
 The ADIA Directories, for regulatory purposes and user privacy, do not store any personal information about a user or an entity.
@@ -58,7 +57,7 @@ in many jurisdictions.  Regional and Global Directories MUST support on-ledger a
 ## Digital Address ## {#sctn-digital-address}
 
 DIDs are the foundational identifiers of the system but are not
-participant-friendly. The <dfn>Digital Address</dfn> is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed.
+participant friendly. The <dfn>Digital Address</dfn> is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed.
 
 <a>Digital Address</a>es are designed to be human friendly and facilitate interaction with entities. When they present their Digital Address to a participating service, the service can contact the directory and receive a DID that represents the participant.
 Further communication and cryptographic trust are then founded on the provided DID. <a>Digital Address</a>es contain a directory indicator that can be used to identify which directory has the associated listing.
@@ -66,7 +65,7 @@ Further communication and cryptographic trust are then founded on the provided D
 To prevent the <a>Digital Address</a> from being misused as a correlating identifier, <a>Digital Address</a>es must not be retained by participating Service Providers after resolution.
 Their role is specifically limited to facilitating the participant-onboarding processes.
 
-The creation of a <a>Digital Address</a> is a crucial step in ensuring there is both trust and accountability within the ADIA ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises -- organizations that are central to the trust economy.
+The creation of a <a>Digital Address</a> is a crucial step in ensuring there is both trust and accountability within the ADIA ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises; organizations that are central to the trust economy.
 
 
 
@@ -91,7 +90,7 @@ The process of binding the <a>Digital Address</a> with the Trust Anchor notifyin
 
 ### ADIA Global Directory ### {#sctn-adia-role-global-directory}
 
-The <dfn>ADIA Global Directory</dfn> serves as a Root of Trust to all entities in the ecosystem except the Users. The Directory ensures interoperability between multiple Regional Directories and Interchanges.
+The <dfn>ADIA Global Directory</dfn> (<dfn>AGD</dfn>) serves as a Root of Trust to all entities in the ecosystem except the Users. The Directory ensures interoperability between multiple Regional Directories and Interchanges.
 Uniqueness of the entities is defined by the relationship of identifiers -  the Entity's <a>Digital Address</a>, the DID and the Trust Anchors and binding them to
 organizational entities at a global level.
 
@@ -132,28 +131,28 @@ The <a>ADIA Global Directory</a> has several components that enable saving Trust
 The types of actors that interact with ADIA are described below:
 
 * *Admin*: Role to configure the ADIA with system level information.
-* *Approver*: Role to approve or reject onboarding of a DAS or other Interchange Services.
+* *Approver*: Role to approve or reject onboarding of a DAS or Interchange Services.
 * *ADIA Regional Directory Admin*: Requests onboarding to ADIA via the ADIA Console. Requests changes to Assurance Levels and policy changes.
 
 
 ### ADIA Regional Directory ### {#sctn-adia-role-regional-directory}
 
-The <dfn>ADIA Regional Directory</dfn> is a directory that serves to identify participants within an ecosystem. This can make it easier to include users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
+The <dfn>ADIA Regional Directory</dfn> (<dfn>ARD</dfn>) is a directory that serves to identify participants with an ecosystem. This can make it easier for users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
 
 #### Directory Scope  #### {#sctn-adia-regional-directory-scope}
 
 Each directory serves a particular scope. Scopes can be geopolitical, like a country, or organizational, such as a multi-national medical organization or a university. Each directory serves to uniquely identify each participant via digital address or a collection of attributes.
 
-An ADIA Regional Directory SHALL:
+A ADIA Regional Directory shall:
 * prevent a person from intentionally or unintentionally creating more than one Trust Anchor within a given scope.
-* onboard trusted <a>Digital Address Service</a>s to the ecosystem.
 * provide interoperability between multiple <a>Digital Address Service</a>s within its scope.
 * provide discovery and routing services between one or more <a>Digital Address Service</a>s.
 * provide a distributed ledger for maintaining relationships between Trust Anchors and <a>Digital Address</a>es and bindings to human identities.
-* maintain a relationship of identifiers - A Trust Anchor, user’s <a>Digital Address</a>, user's DID, and Issuer Identifier.
-* detect collisions of Trust Anchor and/or <a>Digital Address</a>.
+* onboard trusted <a>Digital Address Service</a>s to the ecosystem.
+* maintain a relationship of identifiers - A Trust Anchor, user’s <a>Digital Address</a>, DID and Issuer Identifier.
+* detect collisions in Trust Anchor and/or <a>Digital Address</a>.
 
-Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where the government runs a directory for the country. People may be listed in multiple directories without conflict. Initial directories will be run by ADIA to seed the ecosystem. Other entities may operate directories in conformance with the ADIA governance structure and APIs.
+Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by ADIA to seed the ecosystem. Other entities may operate directories in conformance with the governance structure and APIs.
 
 #### Attribute selection and management #### {#sctn-adia-regional-attribute}
 
@@ -165,11 +164,11 @@ Directories may use any datastore sufficient to the requirements of storing attr
 
 ADIA Directories ensure uniqueness of the listed users. This is done by ensuring a unique set of attributes for each user. If a new user matches an existing user, additional attributes must be requested for use in distinguishing between the matching users.
 
-Each directory MUST have a process to follow when a user cannot be uniquely identified either during the addition of the user to the directory or during lookup of the user within the directory.
+Each directory MUST have a process to follow when users cannot be uniquely identified either during addition of a user to the directory or during lookup of a user within the directory.
 
 #### Directory Querying #### {#sctn-adia-regional-directory-query}
 
-A qualified party may query the directory by providing user attributes or a Digital Address. The directory will either return a ‘None Found’ response, or a DID of the user identified. The DID provided is created by the user’s agent, and provided to the directory for the purpose of returning to the party querying the directory. The user’s agent is notified of which party identified them in the directory.
+A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the user identified. The DID provided is created by the user’s agent, and provided to the directory for the purpose of returning to the party querying the directory. The user’s agent is notified of which party identified them in the directory.
 
 The protocols for querying users are summarized and linked below.
 
@@ -184,11 +183,11 @@ Issue: Add details for Interchange
 
 #### DAS #### {#sctn-adia-role-das}
 
-<dfn export=true>Digital Address Service</dfn> (<dfn>DAS</dfn>) enables the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the verification of credentials by relying parties.
+<dfn export=true>Digital Address Service</dfn> (<dfn>DAS</dfn>) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
 
-The DAS may host a set of user-focused wallet storage and secure communication agents. When any interaction with a user happens, it happens through their Agent via services.
-Each entity's Agent holds cryptographic keys and digital credentials on behalf of the user. The agent also manages the user's connections with services in the ecosystem. It maintains the user's directory listings and requests for unique DIDs when a new connection is made.
-The Agent is configured with and uses machine-readable governance framework documents as policy for automatically accepting or rejecting credential interactions. When necessary, the agent will communicate with the user through a secure channel and obtain consent. Users authenticate to the Agent via FIDO when consent is required.
+The DAS may host a set of user-focused wallet storage and secure communication agents. When any interaction with a participant happens, it happens through their Agent via services.
+Each entity's Agent holds cryptographic keys and digital credentials on behalf of the participant. The agent also manages the participant’s connections with services in the ecosystem. It maintains the participant’s directory listings and requests for unique DIDs when a new connection is made.
+The Agent is configured with and uses machine-readable governance framework documents as policy for automatically accepting or rejecting credential interactions. When necessary, the agent will communicate with the participant through a secure channel and obtain consent. Participants authenticate to the Agent via FIDO when consent is required.
 All interactions through the agent are logged and available for inspection by the entity.
 
 ##### Components ##### {#sctn-das-components}
@@ -213,7 +212,7 @@ The types of actors that interact with the DAS are described below:
 
 #### Credential Broker (Future) #### {#sctn-adia-role-credential-broker}
 
-The process of receiving credential presentations can be complicated. Verifiers and participants may enlist the use of a credential broker.
+The process of receiving credential presentations can be complicated. Verifiers and participants may enlist the use of a <dfn>Credential Broker</dfn>.
 The broker can serve several functions in the process of aiding a credential presentation. The credential may be translated between formats, verifying one format and creating another that is readable by the verifier.
 
 The broker can do the legwork of applying governance frameworks and checking the credential issuer for validity. This is particularly helpful when interacting with an interchange provider not previously known to the verifier.
@@ -252,11 +251,11 @@ the Service Providers (verifiers of a credentials) with a level of trust. Issuer
 #### Components #### {#sctn-issuer-components}
 
 The core components of an Issuer are:
-* **Issuer Console**: An administrative interface to view Users, Identity information and Credential information. Administrators issue Verifiable Credential from the console to holders.
-* **<a>Issuer Agent</a>**: A communications agent to integrate identity transactions between an Issuer network and the DAS
-* **VC Store**: A secure storage area for issuers to persist issued Verifiable Credentials.
-* **API Services**: REST endpoints to abstract interactions with the communication and transformation agents.
-* **Connectors**: Adapters that connect to Identity and Credential datastores, perform scheduled transfers, transform content for the Issuers to view and issue Credentials to users.
+* Issuer Console: An administrative interface to view Users, Identity information and Credential information. Administrators issue Verifiable Credential from the console to holders.
+* <a>Issuer Agent</a>: A communications agent to integrate identity transactions between an Issuer network and the DAS
+* VC Store: A secure storage area for issuers to persist issued Verifiable Credentials.
+* API Services: REST endpoints to abstract interactions with the communication and transformation agents.
+* Connectors: Adapters that connect to Identity and Credential datastores, perform scheduled transfers, transform content for the Issuers to view and issue Credentials to users.
 
 #### Roles #### {#sctn-issuer-roles}
 
@@ -320,7 +319,7 @@ The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App
 The core components of a <a>Digital Address Application</a> are:
 
 * **DAS Mobile SDK**: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAS services.
-* **FIDO Client**: SDK to provide FIDO operations to register and authenticate with a <a>Digital Address</a>.
+* **FIDO Client**: OnePass Client SDK to provide register and authenticate with a <a>Digital Address</a>.
 * **Identity Verification SDK**: An Identity Verification client SDK to ID proof a government-issued identification document such as Driver’s License or Passport
 * **Credential Metadata**: On-device store of the credential metadata issued to the digital address. Interacts with the DAS services to lookup and retrieve actual credentials from the issuer.
 * **Push Notification Service**: External service to push notifications to the user for events such as credential issuance, revocation, proof requests, and consent
@@ -359,12 +358,11 @@ and/or importing the Digital Address.These levels are:
 - U-AL3 - In-person identity proofing is required. Identifying attributes must be verified by an authorized CSP representative through examination of physical documentation as described in [[!SP800-63A]]
 
 ### Usage ### {#sctn-assurance-level-usage}
-Service Providers may create complex criteria for requesting proofs from users, including the Assurance Level of any entity or the type of the VC to ensure
-the identity of the user before rendering any services.
+Service Providers may create complex criteria for requesting proofs from users, including the Assurance Level of any entity or the type of the <a>VC</a> to ensure
+the identity of the <a>User</a> before rendering any services.
 
 ### Transitions ### {#sctn-assurance-level-transition}
-Users may acquire a Digital Address with a lower level of assurance, e.g. start with lowest level identity assertion to join the ecosystem, but transition to a higher level of U-AL
-by either remotely proving their identity or approaching a Trusted Issuer in the GADI ecosystem and presenting valid identity credentials.
+<a>User</a>s may acquire a <a>Digital Address</a> with a lower level of assurance, e.g. start with lowest level identity assertion to join the ecosystem, but transition to a higher level of U-AL by either remotely proving their identity or approaching a Trusted <a>Issuer</a> in the ADIA ecosystem and presenting valid identity credentials.
 
 ## Identifiers ## {#sctn-adia-identifiers}
 
@@ -374,6 +372,20 @@ Issue: Please check - Trust Anchor, <a>Digital Address</a>,
 
 
    <dl>
+       : <a>ADIA Global Directory</a> (<a>AGD</a>)
+       :: See [[#sctn-adia-role-global-directory]]
+
+       : <a>ADIA Regional Directory</a> (<a>ARD</a>)
+       :: See [[#sctn-adia-role-regional-directory]]
+
+       : <dfn>ADIA_ID</dfn>
+       :: The <a>ADIA</a> IDentity, i.e. the the W3C DID style identifier for the <a>ADIA</a>.
+
+       :  <a>ADIA_ID_PK</a>, <a>ADIA_ID_SK</a>
+       :: Public Key (PK) and Private Key (SK) related to the
+           <a>ADIA_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           more details.
+
        :  <dfn export=true>AVC</dfn>
        :: <dfn>Anonymous Verifiable Credential</dfn>.  This is a
             special case of a <a>Verifiable Credential</a> when the
@@ -386,10 +398,9 @@ Issue: Please check - Trust Anchor, <a>Digital Address</a>,
        :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
             <a href="https://ec.europa.eu/digital-single-market/en/trust-services">eIDAS Trust Service Providers</a>.
 
-       : <dfn>Credential Broker</dfn>
-       ::
+       : <a>Credential Broker</a>
+       :: See [[#sctn-adia-role-credential-broker]]
 
-   Issue: TODO
 
        : <dfn>DA</dfn>
        :: Human readabe <a>Digital Address</a> of the <a>User</a>
@@ -433,19 +444,6 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
 
        : <dfn>DIDDoc-USER</dfn>
        :: DID document binding the user's public key to the <a>DAS_USER_ID</a>.
-
-       : <dfn>ADIA Regional</dfn>
-       ::
-
-Issue: TODO.
-
-       : <dfn>ADIA_ID</dfn>
-       :: The <a>ADIA</a> IDentity, i.e. the the W3C DID style identifier for the <a>ADIA</a>.
-
-       :  <a>ADIA_ID_PK</a>, <a>ADIA_ID_SK</a>
-       :: Public Key (PK) and Private Key (SK) related to the
-           <a>ADIA_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
-           more details.
 
        :  <dfn>HIDA</dfn>
        :: Cryptographic hash computed over the <a>ID Attributes</a>
@@ -595,8 +593,8 @@ Issue: TODO.
 
         <tr>
           <td><dfn export=true>ADIA_REGIONAL_ID_PK</dfn> / <dfn export=true>ADIA_REGIONAL_ID_SK</dfn></td>
-          <td><a>ADIA Regional</a></td>
-          <td><a>ADIA Regional</a></td>
+          <td><a>ADIA Regional Directory</a></td>
+          <td><a>ADIA Regional Directory</a></td>
           <td>ADIA Regional setup.</td>
           <td>
             via a DIDDoc kept in the ADIA Global Directory.

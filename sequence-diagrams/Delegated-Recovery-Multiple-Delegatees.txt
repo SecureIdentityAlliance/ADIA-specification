@@ -6,16 +6,16 @@ Participant Delegated User
 participant Delegatee DAA
 participant Delegatee HomeDAP
 Participant Cloud Agent
-Participant DAP Agency
-Participant GADI Regional Directory
+Participant DAS
+Participant ARD
 
 
 opt User sets up Delegatee List
 User->User DAA: Set up Delegatees List
 User->User HomeDAP: Notify the Delegatees of nomination
 User HomeDAP->User HomeDAP: Resolve HomeDAP from DA
-User HomeDAP->GADI Regional Directory: Lookup HomeDAP for each Delegatee
-GADI Regional Directory-->Delegatee HomeDAP: Route to each HomeDAP
+User HomeDAP->ARD: Lookup HomeDAP for each Delegatee
+ARD-->Delegatee HomeDAP: Route to each HomeDAP
 Delegatee HomeDAP->Delegatee HomeDAP: Lookup DAP_USER_ID and Device Information
 Delegatee HomeDAP->Delegatee DAA: Push Notification to Device
 Delegated User->Delegatee DAA: View and Accept/Reject
@@ -34,8 +34,8 @@ Delegatee DAA->Delegatee HomeDAP: Send User DA + Recovery Code
 
 opt User in Different DAP
 Delegatee HomeDAP->Delegatee HomeDAP: Resolve User HomeDAP from DA
-Delegatee HomeDAP-->GADI Regional Directory: Route to User HomeDAP
-GADI Regional Directory->User HomeDAP: Route Respose
+Delegatee HomeDAP-->ARD: Route to User HomeDAP
+ARD->User HomeDAP: Route Respose
 end
 User HomeDAP->User HomeDAP: Lookup Recovery Code, TRANSACTION_ID
 User HomeDAP->User HomeDAP: Minimum criteria met (Delegatee Count>3)

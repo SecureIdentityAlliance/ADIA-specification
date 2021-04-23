@@ -2,7 +2,7 @@ Title: VC Presentation and Verification - Option 2 (Anonymous)
 Participant User
 Participant DAA
 Participant Cloud Agent
-Participant DAP Agency
+Participant DAS
 Participant SP
 User -> SP: User wants a service from SP
 SP -> User: Wants proof and requests User to connect DAA via SP_ID
@@ -21,4 +21,4 @@ Cloud Agent -> Cloud Agent: Retrieve VC and prepare VC presentation to SP
 Cloud Agent -> Cloud Agent: Generate one-time use key pair DAP_USER_ID_TMPx_PK/SK
 Cloud Agent -> Cloud Agent: Sign VP using DAP_USER_ID_TMPx_SK
 Cloud Agent -> SP: Present VC or selected values to SP 
-SP -> DAP Agency: SP receives the VC or selected values and verifies VC\n by querying DAP for Issuer public keys (ISSUER_ID_PK)
+SP -> DAS: SP receives the VC or selected values and verifies VC\n by querying DAP for Issuer public keys (ISSUER_ID_PK)
