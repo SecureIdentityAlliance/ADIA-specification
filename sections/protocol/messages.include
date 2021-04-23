@@ -331,6 +331,7 @@ Issue: If this is an entity similar to "HIDA", this field name is confusing nd i
   * MUST be unique to a DAS.
   * MAY NOT contain certain special characters
 
+Issue: what does *certain special characters* mean? We need to be specific in a spec!
 
 
   <table class="data longlastcol">
