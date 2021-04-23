@@ -166,12 +166,20 @@ Example:
     <td>AGD,ARD, Issuer, SP,User</td>
   </tr>
   <tr>
-    <td>primaryHash</td>
+    <td>primaryHash
+
+Issue: If this is the entity that we call "HIDA", this field name is confusing.  
+
+    </td>
     <td>String</td>
     <td>Hash from primary attributes</td>
   </tr>
   <tr>
-    <td>secondaryHash</td>
+    <td>secondaryHash
+
+Issue: If this is an entity similar to "HIDA", this field name is confusing nd it needs to be officially introduced we we introduce HIDA, e.g. as HIDA2 or so.
+
+    </td>
     <td>String</td>
     <td>Hash from secondary attributes</td>
   </tr>
@@ -264,6 +272,45 @@ Example:
   </tr>
   </tbody>
   </table>
+
+  ### HIDA Computation ### {#sctn-protocol-message-hida-comp}
+
+  [NORMATIVE]
+
+  The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
+  <ol>
+   <li>Compute a JSON object [[!JSON]] containing the following fields:
+       <dl>
+          <dt>"firstname"</dt>
+          <dd>UTF8 encoded firstname of the <a>User</a> according to the ID document.</dd>
+	  
+          <dt>"middle_names"</dt>
+          <dd>UTF8 encoded middle name(s) (if any) of the <a>User</a> according to the ID document.</dd>
+	  
+          <dt>"lastname"</dt>
+          <dd>UTF8 encoded last name of the <a>User</a> according to the ID document.</dd>
+	  
+          <dt>"birthdate"</dt>
+          <dd>Date of birth of the <a>User</a> according to the ID document.  Encoding MUST be `full-date` as specified by [[!RFC3339]].</dd>
+	  
+          <dt>"birthcity"</dt>
+          <dd>UTF8 encoded city of birth of the <a>User</a> according to the ID document.</dd>
+
+          <dt>"birthcountry"</dt>
+          <dd>Country of birth of the <a>User</a> according to the ID document. Encoding MUST be `ALPHA-2` country code as specified by [[!ISO3166]].</dd>
+       </dl>
+   </li>
+   <li>Canonicalize the resulting JSON structure according [[!RFC8785]].</li>
+   <li>Compute a hash value of the string that results from the previous step.</li>
+   <li>Construct the resulting `HIDA` JSON object with just two fields:
+     <dl>
+       <dt>"alg"</dt>
+       <dd>Name of the hash algorithm used (all uppercase, e.g. `SHA256`). Allowed hash algorithms are specified in the ADIA Governance and Certification rules.
+       <dt>"hb64"</dt>
+       <dd>The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.</dd>
+     </dl>   
+   </li>
+  </ol>
 
 
   ### TrustAnchor ### {#sctn-protocol-message-trust-anchor}
