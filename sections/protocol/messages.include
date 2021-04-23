@@ -282,19 +282,19 @@ Issue: If this is an entity similar to "HIDA", this field name is confusing nd i
    <li>Compute a JSON object [[!JSON]] containing the following fields:
        <dl>
           <dt>"firstname"</dt>
-          <dd>UTF8 encoded firstname of the <a>User</a> according to the ID document.</dd>
+          <dd>UTF8 encoded firstname of the <a>User</a> according to the ID document (all uppercase).</dd>
 	  
           <dt>"middle_names"</dt>
-          <dd>UTF8 encoded middle name(s) (if any) of the <a>User</a> according to the ID document.</dd>
+          <dd>UTF8 encoded middle name(s) (if any) of the <a>User</a> according to the ID document (all uppercase).</dd>
 	  
           <dt>"lastname"</dt>
-          <dd>UTF8 encoded last name of the <a>User</a> according to the ID document.</dd>
+          <dd>UTF8 encoded last name of the <a>User</a> according to the ID document (all uppercase).</dd>
 	  
           <dt>"birthdate"</dt>
           <dd>Date of birth of the <a>User</a> according to the ID document.  Encoding MUST be `full-date` as specified by [[!RFC3339]].</dd>
 	  
           <dt>"birthcity"</dt>
-          <dd>UTF8 encoded city of birth of the <a>User</a> according to the ID document.</dd>
+          <dd>UTF8 encoded city of birth of the <a>User</a> according to the ID document (all uppercase).</dd>
 
           <dt>"birthcountry"</dt>
           <dd>Country of birth of the <a>User</a> according to the ID document. Encoding MUST be `ALPHA-2` country code as specified by [[!ISO3166]].</dd>
