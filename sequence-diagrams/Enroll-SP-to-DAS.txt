@@ -1,4 +1,4 @@
-title Enroll a SP to DAS
+title Enroll an SP to DAS
 actor SP Admin
 participant SP
 participant DAS
@@ -29,12 +29,14 @@ DAS->SP Admin: Generate Keys and enroll
 SP Admin->SP: Generate DAS_ENTITY_ID_PK/SK for DAS_ENTITY_ID
 SP->DAS: Send [DAS_ENTITY_ID,DAS_ENTITY_ID_PK]
 end
-DAS->DAS: Store [DAS_ENTITY_ID,ENTITY_TYPE, DAS_ENTITY_ID_PK/SK,REQUEST_ID]
-DAS Admin->DAS: If Approve Request [REQUEST_ID]
+DAS->DAS: Create DA and \nStore [DAS_ENTITY_ID,ENTITY_TYPE, DA, DAS_ENTITY_ID_PK,REQUEST_ID]
+opt Approve Request [REQUEST_ID]
+DAS Admin->DAS: Approve Request [REQUEST_ID]
 DAS->ARD: Send [DAS_ENTITY_ID,ENTITY_TYPE, DAS_ENTITY_ID_PK,CorrelationId=REQUEST_ID]
 ARD->AGD: Forward Request [DAS_ENTITY_ID,ENTITY_TYPE, DAS_ENTITY_ID_PK]
 AGD->AGD: Store [TA,DAS_ENTITY_ID, ENTITY_TYPE, HomeDAS_ID=DAS_ID] \nand [DAS_ENTITY_ID,DAS_ENTITY_ID_PK]
 AGD-->ARD: Success
+end
 ARD-->DAS:Store [REQUEST_ID,DAS_ENTITY_ID,ENTITY_TYPE, DA]
 DAS->DAS: Request Complete [REQUEST_ID, Status=APPROVED]
 DAS-->SP: SP provisioning complete [REQUEST_ID, Status=APPROVED]

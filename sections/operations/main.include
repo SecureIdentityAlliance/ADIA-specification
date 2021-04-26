@@ -102,8 +102,8 @@ The DAS may independently request the user to authenticate before upgrading the 
 ### Issue Verifiable Credential ### {#sctn-issue-vc}
 
 <figure id="fig-vc-issuance-option-1">
-  <img src="sequence-diagrams/VC-Issued-to-a-User-by-a-Trusted-Issuer.svg"/>
-  <figcaption>VC Issued to a User by a Trusted Issuer</figcaption>
+  <img src="sequence-diagrams/VC-Issued-to-a-User-by-a-Issuer.svg"/>
+  <figcaption>VC Issued to a User by a Issuer</figcaption>
 </figure>
 
 <a>Issuer</a>s have access to <a>HIDA</a> and hence could ask ADIA via <a>DAS</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
