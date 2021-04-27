@@ -204,7 +204,7 @@ The core components of a DAS are:
 
 The types of actors that interact with the DAS are described below:
 * *Admin*: Role to configure the DAS with system and issuer level properties
-* *Approver*: Role to approve or reject onboarding of a trusted issuers in the system
+* *Approver*: Role to approve or reject onboarding of <a>Issuers</a> in the system
 * *Issuer Admin*: Requests onboarding to the DAS via the DAS Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAS.
 * *Service Provider Admin*: Configures rules to evaluate one or more credentials based on the available credential schema
 * *User*: A subject or holder of the credential. Authenticates to the DAS with the <a>Digital Address</a>.
@@ -260,14 +260,14 @@ The core components of an Issuer are:
 #### Roles #### {#sctn-issuer-roles}
 
 * *Issuer Admin*: Requests onboarding to the DAS via the DAS Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAS.
-* *DAS Admin*: Role to approve or reject onboarding of a trusted issuers in the system. This may be an automated process or a service agent acting on behalf of a DAS.
+* *DAS Admin*: Role to approve or reject onboarding of a <a>Issuer</a>s in the system. This may be an automated process or a service agent acting on behalf of a DAS.
 * *User*: A subject or holder requesting a credential to be issued. The credential may be requested in person or online. Users must have a <a>Digital Address</a> before receiving a credential issued to them.
 
 
 ### Service Provider ### {#sctn-adia-role-serviceprovider}
 
 Service Providers are relying parties in the ecosystem. Credential verification are requested from the user to identity the user reliably before providing services. The proof requests are
-defined by Service Providers from one or more Credential Schema published by Trusted Issuers in the ADIA ecosystem. The verification rulesets may be defined based on a combination of criteria:
+defined by Service Providers from one or more Credential Schema published by <a>Issuers</a> in the ADIA ecosystem. The verification rulesets may be defined based on a combination of criteria:
 * Claim information in the credential
 * Assurance Level of a credential type
 * Assurance Level of the Issuers in the system
@@ -287,7 +287,7 @@ The core components of a Service Provider are:
 
 #### Roles #### {#sctn-serviceprovider-roles}
 * *Service Provider Admin*: Requests onboarding to the DAS via the DAS Console and define new rulesets
-* *DAS Admin*: Role to approve or reject onboarding of a trusted Service Providers in the system. This may be an automated process or a service agent acting on behalf of a DAS.
+* *DAS Admin*: Role to approve or reject onboarding of <a>Service Provider</a>s in the system. This may be an automated process or a service agent acting on behalf of a DAS.
 * *User*: A subject or holder verifying a credential. Users must have a <a>Digital Address</a> and consented before verifying a credential issued to them.
 
 
