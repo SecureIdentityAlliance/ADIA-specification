@@ -13,7 +13,7 @@ DAS-->Issuer: Return [DA, DAS_USER_ID]
 end
 
 Issuer -> Issuer: Transform user dataset to VC
-Issuer -> VC Storage: Store VC in VC Store
+Issuer -> VC Store: Store VC in VC Store
 Issuer -> DAS : publish VC metadata \n[DAS_USER_ID, CREDENTIAL_ID, CREDENTAIL_SCHEMA_ID, ISSUER_ID]
 DAS -> DAS : Store VC metadata
 DAS --> Issuer: VC metadata save success
