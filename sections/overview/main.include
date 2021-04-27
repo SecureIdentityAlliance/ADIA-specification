@@ -204,7 +204,7 @@ The core components of a DAS are:
 
 The types of actors that interact with the DAS are described below:
 * *Admin*: Role to configure the DAS with system and issuer level properties
-* *Approver*: Role to approve or reject onboarding of <a>Issuers</a> in the system
+* *Approver*: Role to approve or reject onboarding of <a>Issuer</a>s in the system
 * *Issuer Admin*: Requests onboarding to the DAS via the DAS Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAS.
 * *Service Provider Admin*: Configures rules to evaluate one or more credentials based on the available credential schema
 * *User*: A subject or holder of the credential. Authenticates to the DAS with the <a>Digital Address</a>.
@@ -299,8 +299,8 @@ The user can then use their <a>Digital Address</a> for various purposes like, fo
 
 #### Scope #### {#sctn-user-scope}
 
-* Obtain a <a>Digital Address</a> from a Trusted Issuer in the ADIA ecosystem.
-* Receive one or more Identity Credentials by complying to KYC processes from Trusted Identity Issuers.
+* Obtain a <a>Digital Address</a> from an <a>Issuer</a> in the ADIA ecosystem.
+* Receive one or more Identity Credentials by complying to KYC processes from Identity <a>Issuer</a>s.
 * Receive one or more User Credentials such as Employment Credential, Medical Record etc.  from one or more Credential Issuers.
 * Present issued credentials as proof to Service Providers.
 * Grant consent for verification requests from Service Providers.
@@ -309,7 +309,7 @@ The user can then use their <a>Digital Address</a> for various purposes like, fo
 ### Digital Address Application (DAA) ### {#sctn-adia-role-daa}
 
 For users to be part of the ADIA ecosystem, they must be in control of a <a>Digital Address</a>. The <a>Digital Address</a> may be acquired in many forms, primarily a QR code over various channels such as an Authenticator App,
-Email, SmartCard or directly from a trusted Issuer.
+Email, SmartCard or directly from an <a>Issuer</a>.
 
 
 The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind <a>Digital Address</a> with the DAS and consent for verification requests.
@@ -336,7 +336,7 @@ The types of actors that interact with the Mobile App are described below:
 
 ## Assurance Level ## {#sctn-assurance-level}
 
-ADIA provides a Governance Framework to ensure that Trusted entities are deemed Issuers in the overall ecosystem. This combines
+ADIA provides a Governance Framework to ensure that Trusted entities are deemed <a>Issuer</a>s in the overall ecosystem. This combines
 a set of policies and procedures to verify that Issuers are verified by a Registration Authority and entity issuing Verifiable Credentials
 is an organization with Good standing Rating, Financial Standing, Risk of Failure, Insurance and maturity of the processes in collecting, verifying, storage and access to Credentials
 for all its constituents is in accordance with the ADIA ecosystem standards and local jurisdiction.
@@ -362,7 +362,7 @@ Service Providers may create complex criteria for requesting proofs from users, 
 the identity of the <a>User</a> before rendering any services.
 
 ### Transitions ### {#sctn-assurance-level-transition}
-<a>User</a>s may acquire a <a>Digital Address</a> with a lower level of assurance, e.g. start with lowest level identity assertion to join the ecosystem, but transition to a higher level of U-AL by either remotely proving their identity or approaching a Trusted <a>Issuer</a> in the ADIA ecosystem and presenting valid identity credentials.
+<a>User</a>s may acquire a <a>Digital Address</a> with a lower level of assurance, e.g. start with lowest level identity assertion to join the ecosystem, but transition to a higher level of U-AL by either remotely proving their identity or approaching an <a>Issuer</a> in the ADIA ecosystem and presenting valid identity credentials.
 
 ## Identifiers ## {#sctn-adia-identifiers}
 
