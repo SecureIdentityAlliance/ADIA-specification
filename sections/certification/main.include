@@ -47,9 +47,9 @@ on-chain and off-ledger storages:
 
 A <a>DAS</a> must:
 
-* Onboard trusted Issuers and Service Providers to the system.
-* Assign trusted identifiers to participating entities in the closed-ecosystem.
-* Enable storage and retrieval of credential metadata to trusted issuers.
+* Onboard Issuers and Service Providers to the system.
+* Assign identifiers to participating entities in the closed-ecosystem.
+* Enable storage and retrieval of credential metadata to issuers.
 * Provide a mechanism to create and publish a <a>Digital Address</a>.
 * Provide authentication services to users with their <a>Digital Address</a>es.
 * Provide discovery services to identify and connect issuers, service providers and users securely.
@@ -58,7 +58,7 @@ A <a>DAS</a> must:
 
 ## Issuer Certification ## {#sctn-certification-da-issuer}
 
-A Trusted <a>Issuer</a> must:
+An <a>Issuer</a> must:
 * Use an approved method or process to create a unique Trust Anchor based on Identity attributes for a new or existing user in a scope.
 * Detect the presence of a Trust Anchor in the ADIA ecosystem.
 * Use an approved method or process to Create and Lookup a unique <a>Digital Address</a> for the User.
@@ -77,6 +77,6 @@ A <a>Service Provider</a> must:
 
 * Accept and verify a <a>Digital Address</a> for a user in multiple forms - QR code, a user friendly moniker or a smart card.
 * Request for proofs on one or more user claims using a credential schema.
-* Accept responses to proof requests from one or more trusted <a>Issuer</a>s in the ecosystem.
+* Accept responses to proof requests from one or more <a>Issuer</a>s in the ecosystem.
 * Determine acceptable Assurance Levels for credentials and define policies based on risk tolerance of the organization.
 * Grant or deny services to a user based on risk-based policies.

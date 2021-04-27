@@ -34,7 +34,7 @@
 
 ### Enroll User ### {#sctn-enroll-user}
 
-Users may approach Trusted <a>Issuer</a>s to create a Digital Address or issuers may initiate the process of creating a Digital Address for a user prior to issuing a Verifiable Credential.
+Users may approach <a>Issuer</a>s to create a Digital Address or issuers may initiate the process of creating a Digital Address for a user prior to issuing a Verifiable Credential.
 A Digital Address creation starts with the collection of identity attributes from the User, creation of a unique trust anchor and ensuring that the Digital Address is unique
 to in the given scope.
 
@@ -67,7 +67,7 @@ Issue: This opens the possibility to create multiple Digital Addresses for the s
 #### User Initiated New User Enrollment (using DAA) #### {#sctn-user-initiated-da-with-daa}
 
 A user may initiate the creation of a Digital Address remotely, via an online service
-provided by a Trusted Digital Address <a>Issuer</a>. The <a>Issuer</a>'s service MUST follow procedures similar to the
+provided by a Digital Address <a>Issuer</a>. The <a>Issuer</a>'s service MUST follow procedures similar to the
 in-person creation by request the Identity attributes from the User, generating the hashed attributes and verifying against
 the ADIA Regional Directory.
 
