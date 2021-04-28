@@ -1,16 +1,20 @@
-title VC Issued to a User by a Issuer
+title VC Issued to a User by Issuer
 
 Participant User
 Participant Issuer
 Participant VC Store
 Participant DAS
+Participant Cloud Agent
 
 User -> Issuer: request issue VC [DA or DAS_USER_ID]
-Issuer->DAS: Send DA or DAS_USER_ID
-DAS->Issuer: Return [DA, DAS_USER_ID, DAS_USER_ID_PK]
-Issuer -> Issuer: Transform user dataset to VC. Sign with ISSUER_ID_SK
-Issuer->Issuer : Encrypt with DAS_USER_ID_PK and Save in VC Store
-Issuer -> DAS : publish VC metadata \n[DAS_USER_ID, CREDENTIAL_ID, CREDENTAIL_SCHEMA_ID, ISSUER_ID]
+opt If DA
+Issuer->DAS: Resolve DA
+DAS-->Issuer: Return [DA, DAS_USER_ID]
+end
+
+Issuer -> Issuer: Transform user dataset to VC
+Issuer -> VC Store: Store VC in VC Store
+Issuer -> DAS : publish VC metadata \n[DAS_USER_ID, CREDENTIAL_ID, CREDENTIAL_SCHEMA_ID, ISSUER_ID]
 DAS -> DAS : Store VC metadata
 DAS --> Issuer: VC metadata save success
 DAS-->DAA: Notify User of VC issuance
