@@ -1,4 +1,4 @@
-title VC Issued to a User by Issuer
+title VC Issued to a User by an Issuer
 
 Participant User
 Participant Issuer
