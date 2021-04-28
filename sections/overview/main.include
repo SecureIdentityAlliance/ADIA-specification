@@ -220,8 +220,6 @@ The broker must involve the participant’s agent and, in the process, obtain co
 During the exchange of the credential, the broker may also facilitate payment to the parties involved in the credential’s issuance and flow.
 
 
-Issue: Content copied as-is from Indicio's recommendations. Please add details for Credential Broker
-
 
 #### Identity Escrow (Future) #### {#sctn-adia-role-identity-escrow}
 
@@ -232,15 +230,11 @@ Upon connecting to a new service, the participant presents the escrow credential
 Both the service and the participant must agree on the terms and policy of the Identity Escrow Service. The use, policy, and terms of Identity Escrow use should be contained within applicable governance frameworks. The right to be forgotten may be delayed for a period of time to allow adequate time for violation disclosure requests to be processed and resolved.
 
 
-Issue: Content copied as-is from Indicio's recommendations. Please add details for Identity Escrow
-
 
 #### Payment Broker (Future) #### {#sctn-adia-role-payment-broker}
 
 Financial transactions are another area that can benefit from the involvement of a broker. The broker can perform currency conversions to the benefit of both parties. The broker will also communicate with all parties in the payment flow. When required by law, the broker can log the transaction sufficiently to satisfy regulation such as Anti-Money Laundering (AML) laws.
 Payment flows can be used for credentials but may also be used for general purpose payment. In the future, payment can also involve verifying goods delivery prior to releasing payment.
-
-Issue: Content copied as-is from Indicio's recommendations. Add details for Payment Broker
 
 
 ### Issuer ### {#sctn-adia-role-issuer}
@@ -398,10 +392,7 @@ Issue: Please check - Trust Anchor, <a>Digital Address</a>,
        :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
             <a href="https://ec.europa.eu/digital-single-market/en/trust-services">eIDAS Trust Service Providers</a>.
 
-       : <a>Credential Broker</a>
-       :: See [[#sctn-adia-role-credential-broker]]
-
-
+       
        : <dfn>DA</dfn>
        :: Human readabe <a>Digital Address</a> of the <a>User</a>
             (e.g., blackbird@issuer.dap.adia.org).
@@ -454,10 +445,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
        :  <dfn>ID Attributes</dfn>
        :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
 
-       :  <dfn>Identity Escrow</dfn>
-       ::
-
-   Issue: TODO
+     
 
        :  <dfn>Issuer</dfn>
        :: Issuer of <a>VC</a>s to users.  ADIA supports multiple Issuers
@@ -486,12 +474,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
            <a>SP_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
            more details.
 
-       : <dfn>TA</dfn>
-       :: <dfn>Trust Anchor</dfn>, i.e. a randomly generated number related to a User. E.g., 3456893265abf...849287c.
-
-
-   Issue: Why do we need the TA?  It doesn't directly appear in any sequence diagram so far.
-
+      
 
        :  <dfn>TA_USER_ISSUER</dfn>
        :: The <a>Issuer</a> specific <a>TA</a>, i.e. hash(<a>TA</a>, <a>ISSUER_ID</a>).
