@@ -220,4 +220,4 @@ The following diagram depicts a logical view of an entity in ADIA.
 
 ## Verifiable Credential Schema ## {#sctn-vc-schema}
 
-Issue: Description/ sequence diagram for Verifiable Credential Schema
+Refer to the W3C verifiable credential schema at https://www.w3.org/TR/vc-data-model/#data-schemas
