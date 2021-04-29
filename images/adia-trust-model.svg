@@ -1,32 +1,523 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generiert durch Microsoft Visio, SVG Export gadi-trust-model.svg Zeichenblatt-1 -->
+<!-- Generiert durch Microsoft Visio, SVG Export gadi-trust-model.svg Page-1 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
-		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="1.58175in" height="0.282535in"
-		viewBox="0 0 113.886 20.3425" xml:space="preserve" color-interpolation-filters="sRGB" class="st3">
-	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false"/>
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="11.6929in" height="8.26772in"
+		viewBox="0 0 841.89 595.276" xml:space="preserve" color-interpolation-filters="sRGB" class="st21">
+	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvSubprocessMaster" v:prompt="" v:val="VT4(Rectangle)"/>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+		</v:userDefs>
+	</v:documentProperties>
 
 	<style type="text/css">
 	<![CDATA[
-		.st1 {fill:#9cc3e5;stroke:none;stroke-width:0.25}
+		.st1 {fill:#deebf6;stroke:none;stroke-width:0.25}
 		.st2 {fill:#000000;font-family:Calibri;font-size:0.833336em}
-		.st3 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+		.st3 {fill:#9cc3e5;stroke:none;stroke-width:0.25}
+		.st4 {marker-end:url(#mrkr4-32);stroke:#5b9bd5;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st5 {fill:#5b9bd5;fill-opacity:1;stroke:#5b9bd5;stroke-opacity:1;stroke-width:0.28409090909091}
+		.st6 {stroke:#7b7b7b;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st7 {fill:#ededed;stroke:#7b7b7b;stroke-width:0.25}
+		.st8 {fill:#5b9bd5;font-family:Calibri;font-size:0.666664em}
+		.st9 {font-size:1em}
+		.st10 {marker-end:url(#mrkr4-32);stroke:#5b9bd5;stroke-dasharray:7,5;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st11 {fill:#ffffff;stroke:none;stroke-linecap:butt;stroke-width:7.2}
+		.st12 {fill:#4f87bb;font-family:Calibri;font-size:0.666664em}
+		.st13 {visibility:visible}
+		.st14 {fill:#5b9bd5;fill-opacity:0.22;filter:url(#filter_2);stroke:#5b9bd5;stroke-opacity:0.22}
+		.st15 {fill:#5b9bd5;stroke:#c8c8c8;stroke-width:0.25}
+		.st16 {fill:#5b9bd5;fill-opacity:0.22;filter:url(#filter_2);stroke:#5b9bd5;stroke-opacity:0.22;visibility:hidden}
+		.st17 {fill:#5b9bd5;stroke:#c8c8c8;stroke-width:0.25;visibility:hidden}
+		.st18 {fill:#2e75b5;stroke:none;stroke-linecap:butt;stroke-width:2.25}
+		.st19 {fill:none;stroke:none;stroke-width:0.25}
+		.st20 {fill:#5b9bd5;font-family:Calibri;font-size:0.583328em}
+		.st21 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
 	]]>
 	</style>
 
+	<defs id="Markers">
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-32" class="st5" v:arrowType="4" v:arrowSize="2" v:setback="7.04" refX="-7.04" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-3.52,-3.52) "/>
+		</marker>
+	</defs>
+	<defs id="Filters">
+		<filter id="filter_2">
+			<feGaussianBlur stdDeviation="2"/>
+		</filter>
+	</defs>
 	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<v:userDefs>
+			<v:ud v:nameU="msvThemeOrder" v:val="VT0(0):26"/>
+		</v:userDefs>
 		<title>Zeichenblatt-1</title>
 		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
 				v:shadowOffsetY="-8.50394"/>
-		<g id="shape44-1" v:mID="44" v:groupContext="shape" transform="translate(0.25,-0.25)">
-			<title>Rechteck.3</title>
-			<desc>ARD_ID_PK</desc>
+		<v:layer v:name="Verbinder" v:index="0"/>
+		<v:layer v:name="Flussdiagramm" v:index="1"/>
+		<g id="group5-1" transform="translate(141.732,-416.693)" v:mID="5" v:groupContext="group">
+			<title>Tabelle.5</title>
+			<g id="shape1-2" v:mID="1" v:groupContext="shape">
+				<title>Rechteck</title>
+				<desc>VP</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="548.504" width="113.39" height="93.5433"/>
+				<rect x="0" y="501.732" width="113.386" height="93.5433" class="st1"/>
+				<text x="51.27" y="514.73" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>VP</text>			</g>
+			<g id="shape2-5" v:mID="2" v:groupContext="shape" transform="translate(5.59552E-014,-45.3543)">
+				<title>Rechteck.2</title>
+				<desc>Nonce</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="43.6" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Nonce</text>			</g>
+			<g id="shape3-8" v:mID="3" v:groupContext="shape" transform="translate(1.59872E-014,-22.6772)">
+				<title>Rechteck.3</title>
+				<desc>VC</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="51.19" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>VC</text>			</g>
+			<g id="shape4-11" v:mID="4" v:groupContext="shape">
+				<title>Rechteck.4</title>
+				<desc>Signature</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="37.34" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Signature</text>			</g>
+		</g>
+		<g id="group6-14" transform="translate(346.907,-416.693)" v:mID="6" v:groupContext="group">
+			<title>Tabelle.6</title>
+			<g id="shape7-15" v:mID="7" v:groupContext="shape">
+				<title>Rechteck</title>
+				<desc>VC</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="548.504" width="113.39" height="93.5433"/>
+				<rect x="0" y="501.732" width="113.386" height="93.5433" class="st1"/>
+				<text x="51.19" y="514.73" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>VC</text>			</g>
+			<g id="shape8-18" v:mID="8" v:groupContext="shape" transform="translate(5.59552E-014,-45.3543)">
+				<title>Rechteck.2</title>
+				<desc>Issuer</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="44.66" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Issuer</text>			</g>
+			<g id="shape9-21" v:mID="9" v:groupContext="shape" transform="translate(1.59872E-014,-22.6772)">
+				<title>Rechteck.3</title>
+				<desc>Claim(s)</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="40.35" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Claim(s)</text>			</g>
+			<g id="shape10-24" v:mID="10" v:groupContext="shape">
+				<title>Rechteck.4</title>
+				<desc>Signature</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="37.34" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Signature</text>			</g>
+		</g>
+		<g id="shape11-27" v:mID="11" v:groupContext="shape" v:layerMember="0" transform="translate(255.118,-449.291)">
+			<title>Dynamischer Verbinder</title>
+			<path d="M0 595.28 L84.7 595.28 L84.7 520.16 L148.48 520.16 L148.48 527.29" class="st4"/>
+		</g>
+		<g id="group13-33" transform="translate(56.6929,-497.143)" v:mID="13" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<title>Beschriftung Rechteck</title>
+			<g id="shape14-34" v:mID="14" v:groupContext="shape" transform="translate(380.012,137.079) rotate(39.6711)">
+				<title>Tabelle.14</title>
+				<path d="M0 595.28 L110.48 595.28" class="st6"/>
+			</g>
+			<g id="shape15-37" v:mID="15" v:groupContext="shape" transform="translate(-34.0157,35.4331)">
+				<title>Tabelle.15</title>
+				<desc>Nonce and signature allow the verifier to understand what ent...</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="34.0157" cy="559.843" width="68.04" height="70.8661"/>
+				<rect x="0" y="524.409" width="68.0315" height="70.8661" class="st7"/>
+				<text x="4" y="538.24" class="st8" v:langID="1031"><v:paragraph/><v:tabList/>Nonce and <tspan x="4" dy="1.2em"
+							class="st9">signature allow </tspan><tspan x="4" dy="1.2em" class="st9">the verifier to </tspan><tspan
+							x="4" dy="1.2em" class="st9">understand what </tspan><tspan x="4" dy="1.2em" class="st9">entity presented </tspan><tspan
+							x="4" dy="1.2em" class="st9">this VP object</tspan></text>			</g>
+		</g>
+		<g id="group16-45" transform="translate(581.102,-416.693)" v:mID="16" v:groupContext="group">
+			<title>Tabelle.16</title>
+			<g id="shape17-46" v:mID="17" v:groupContext="shape">
+				<title>Rechteck</title>
+				<desc>DIDDoc-USER</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="548.504" width="113.39" height="93.5433"/>
+				<rect x="0" y="501.732" width="113.386" height="93.5433" class="st1"/>
+				<text x="29.26" y="514.73" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DIDDoc-USER</text>			</g>
+			<g id="shape18-49" v:mID="18" v:groupContext="shape" transform="translate(5.59552E-014,-45.3543)">
+				<title>Rechteck.2</title>
+				<desc>DAS_USER_ID</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="28.45" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DAS_USER_ID</text>			</g>
+			<g id="shape19-52" v:mID="19" v:groupContext="shape" transform="translate(1.59872E-014,-22.6772)">
+				<title>Rechteck.3</title>
+				<desc>DAS_USER_ID_PK</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="20.78" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DAS_USER_ID_PK</text>			</g>
+			<g id="shape20-55" v:mID="20" v:groupContext="shape">
+				<title>Rechteck.4</title>
+				<desc>Signature</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="37.34" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Signature</text>			</g>
+		</g>
+		<g id="shape21-58" v:mID="21" v:groupContext="shape" v:layerMember="0" transform="translate(460.292,-449.291)">
+			<title>Dynamischer Verbinder.21</title>
+			<desc>Might contain an Id</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="54.1957" cy="591.024" width="73.18" height="17.6036"/>
+			<path d="M0 595.28 L113.72 595.28 L113.72 518.79 L177.5 518.79 L177.5 527.29" class="st10"/>
+			<rect v:rectContext="textBkgnd" x="22.5165" y="586.224" width="63.3587" height="9.59985" class="st11"/>
+			<text x="22.52" y="593.42" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Might contain an Id</text>		</g>
+		<g id="group22-65" transform="translate(297.638,-501.395)" v:mID="22" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<title>Beschriftung Rechteck.22</title>
+			<g id="shape23-66" v:mID="23" v:groupContext="shape" transform="translate(497.086,267.773) rotate(56.6213)">
+				<title>Tabelle.23</title>
+				<path d="M0 595.28 L89.55 595.28" class="st6"/>
+			</g>
+			<g id="shape24-69" v:mID="24" v:groupContext="shape" transform="translate(-34.0157,35.4331)">
+				<title>Tabelle.24</title>
+				<desc>With the signature, the issuer assures that the claims are va...</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="34.0157" cy="559.843" width="68.04" height="70.8661"/>
+				<rect x="0" y="524.409" width="68.0315" height="70.8661" class="st7"/>
+				<text x="4" y="543.04" class="st8" v:langID="1031"><v:paragraph/><v:tabList/>With the <tspan x="4" dy="1.2em"
+							class="st9">signature</tspan>, the <tspan x="4" dy="1.2em" class="st9">issuer assures </tspan><tspan
+							x="4" dy="1.2em" class="st9">that the claims </tspan><tspan x="4" dy="1.2em" class="st9">are valid</tspan></text>			</g>
+		</g>
+		<g id="group25-76" transform="translate(517.66,-499.978)" v:mID="25" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<title>Beschriftung Rechteck.25</title>
+			<g id="shape26-77" v:mID="26" v:groupContext="shape" transform="translate(450.267,205.901) rotate(49.1479)">
+				<title>Tabelle.26</title>
+				<path d="M0 595.28 L96.99 595.28" class="st6"/>
+			</g>
+			<g id="shape27-80" v:mID="27" v:groupContext="shape" transform="translate(-34.0157,35.4331)">
+				<title>Tabelle.27</title>
+				<desc>With the signature, the issuer assures that the claims are va...</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="34.0157" cy="559.843" width="68.04" height="70.8661"/>
+				<rect x="0" y="524.409" width="68.0315" height="70.8661" class="st7"/>
+				<text x="4" y="543.04" class="st8" v:langID="1031"><v:paragraph/><v:tabList/>With the <tspan x="4" dy="1.2em"
+							class="st9">signature</tspan>, the <tspan x="4" dy="1.2em" class="st9">issuer assures </tspan><tspan
+							x="4" dy="1.2em" class="st9">that the claims </tspan><tspan x="4" dy="1.2em" class="st9">are valid</tspan></text>			</g>
+		</g>
+		<g id="shape28-87" v:mID="28" v:groupContext="shape" v:layerMember="0" transform="translate(694.488,-449.291)">
+			<title>Dynamischer Verbinder.28</title>
+			<path d="M0 595.28 L25.36 595.28 L25.36 649.95 L-205.98 649.95 A2.3622 2.3622 -180 0 0 -210.71 649.95 L-214.12 649.95
+						 A2.3622 2.3622 -180 0 0 -218.84 649.95 L-221.2 649.95 A2.3622 2.3622 -180 0 0 -225.93 649.95 L-496.06 649.95
+						 L-496.06 634.91" class="st4"/>
+		</g>
+		<g id="group29-92" transform="translate(346.907,-274.961)" v:mID="29" v:groupContext="group">
+			<title>Tabelle.29</title>
+			<g id="shape30-93" v:mID="30" v:groupContext="shape">
+				<title>Rechteck</title>
+				<desc>DIDDoc-ISSUER</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="548.504" width="113.39" height="93.5433"/>
+				<rect x="0" y="501.732" width="113.386" height="93.5433" class="st1"/>
+				<text x="25.7" y="514.73" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DIDDoc-ISSUER</text>			</g>
+			<g id="shape31-96" v:mID="31" v:groupContext="shape" transform="translate(5.59552E-014,-45.3543)">
+				<title>Rechteck.2</title>
+				<desc>ISSUER_ID</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="35.65" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>ISSUER_ID</text>			</g>
+			<g id="shape32-99" v:mID="32" v:groupContext="shape" transform="translate(1.59872E-014,-22.6772)">
+				<title>Rechteck.3</title>
+				<desc>ISSUER_ID_PK</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="27.98" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>ISSUER_ID_PK</text>			</g>
+			<g id="shape33-102" v:mID="33" v:groupContext="shape">
+				<title>Rechteck.4</title>
+				<desc>Signature</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="37.34" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Signature</text>			</g>
+		</g>
+		<g id="shape35-105" v:mID="35" v:groupContext="shape" v:layerMember="0" transform="translate(453.206,-307.559)">
+			<title>Dynamischer Verbinder.35</title>
+			<path d="M7.09 595.28 L17.72 595.28 L17.72 476.22 L14.13 476.22" class="st4"/>
+		</g>
+		<g id="group36-110" transform="translate(346.907,-151.654)" v:mID="36" v:groupContext="group">
+			<title>Tabelle.36</title>
+			<g id="shape37-111" v:mID="37" v:groupContext="shape">
+				<title>Rechteck</title>
+				<desc>DIDDoc-DAP</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="548.504" width="113.39" height="93.5433"/>
+				<rect x="0" y="501.732" width="113.386" height="93.5433" class="st1"/>
+				<text x="31.37" y="514.73" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DIDDoc-DAP</text>			</g>
+			<g id="shape38-114" v:mID="38" v:groupContext="shape" transform="translate(5.59552E-014,-45.3543)">
+				<title>Rechteck.2</title>
+				<desc>DAP_ID</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="41.31" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DAP_ID</text>			</g>
+			<g id="shape39-117" v:mID="39" v:groupContext="shape" transform="translate(1.59872E-014,-22.6772)">
+				<title>Rechteck.3</title>
+				<desc>DAP_ID_PK</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="33.64" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DAP_ID_PK</text>			</g>
+			<g id="shape40-120" v:mID="40" v:groupContext="shape">
+				<title>Rechteck.4</title>
+				<desc>Signature</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="37.34" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Signature</text>			</g>
+		</g>
+		<g id="group41-123" transform="translate(346.907,-28.3465)" v:mID="41" v:groupContext="group">
+			<title>Tabelle.41</title>
+			<g id="shape42-124" v:mID="42" v:groupContext="shape">
+				<title>Rechteck</title>
+				<desc>DIDDoc-ARD</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="548.504" width="113.39" height="93.5433"/>
+				<rect x="0" y="501.732" width="113.386" height="93.5433" class="st1"/>
+				<text x="31.24" y="514.73" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DIDDoc-ARD</text>			</g>
+			<g id="shape43-127" v:mID="43" v:groupContext="shape" transform="translate(5.59552E-014,-45.3543)">
+				<title>Rechteck.2</title>
+				<desc>ARD_ID</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="41.18" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>ARD_ID</text>			</g>
+			<g id="shape44-130" v:mID="44" v:groupContext="shape" transform="translate(1.59872E-014,-22.6772)">
+				<title>Rechteck.3</title>
+				<desc>ARD_ID_PK</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="33.51" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>ARD_ID_PK</text>			</g>
+			<g id="shape45-133" v:mID="45" v:groupContext="shape">
+				<title>Rechteck.4</title>
+				<desc>Signature</desc>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
+				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
+				<text x="37.34" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Signature</text>			</g>
+		</g>
+		<g id="shape46-136" v:mID="46" v:groupContext="shape" v:layerMember="0" transform="translate(453.206,-60.9449)">
+			<title>Dynamischer Verbinder.46</title>
+			<path d="M7.09 595.28 L17.72 595.28 L17.72 494.65 L14.13 494.65" class="st4"/>
+		</g>
+		<g id="shape48-141" v:mID="48" v:groupContext="shape" v:layerMember="0" transform="translate(467.379,-184.252)">
+			<title>Dynamischer Verbinder.48</title>
+			<path d="M-7.09 595.28 L3.54 595.28 L3.54 494.65 L-0.05 494.65" class="st4"/>
+		</g>
+		<g id="group49-146" transform="translate(261.867,-127.222)" v:mID="49" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<title>Beschriftung Rechteck.49</title>
+			<g id="shape50-147" v:mID="50" v:groupContext="shape" transform="translate(380.012,137.079) rotate(39.6711)">
+				<title>Tabelle.50</title>
+				<path d="M0 595.28 L110.48 595.28" class="st6"/>
+			</g>
+			<g id="shape51-150" v:mID="51" v:groupContext="shape" transform="translate(-34.0157,35.4331)">
+				<title>Tabelle.51</title>
+				<desc>All participants of GADI ecosystem trust the GADI_ID_PK</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="34.0157" cy="559.843" width="68.04" height="70.8661"/>
+				<rect x="0" y="524.409" width="68.0315" height="70.8661" class="st7"/>
+				<text x="4" y="547.84" class="st8" v:langID="1031"><v:paragraph/><v:tabList/>All participants of <tspan x="4"
+							dy="1.2em" class="st9">GADI ecosystem </tspan><tspan x="4" dy="1.2em" class="st9">trust the </tspan><tspan
+							x="4" dy="1.2em" class="st9">GADI</tspan>_ID_PK</text>			</g>
+		</g>
+		<g id="shape52-156" v:mID="52" v:groupContext="shape" v:layerMember="0" transform="translate(460.292,-184.252)">
+			<title>Dynamischer Verbinder.52</title>
+			<path d="M0 595.28 L17.72 595.28 L17.72 373.46 L23.49 373.46 A2.3622 2.3622 0 0 1 28.21 373.46 L244.83 373.46 L244.83
+						 352.91 L241.24 352.91" class="st4"/>
+		</g>
+		<g id="group53-161" transform="translate(602.362,-278.529)" v:mID="53" v:groupContext="group" v:layerMember="1">
+			<v:custProps>
+				<v:cp v:nameU="Cost" v:lbl="Kosten" v:type="7" v:format="@" v:langID="1031"/>
+				<v:cp v:nameU="Duration" v:lbl="Dauer" v:type="2" v:langID="1031"/>
+				<v:cp v:nameU="Resources" v:lbl="Ressourcen" v:langID="1031"/>
+			</v:custProps>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
-			<v:textRect cx="56.6929" cy="10.4213" width="113.39" height="19.8425"/>
-			<rect x="0" y="0.499999" width="113.386" height="19.8425" class="st1"/>
-			<text x="33.51" y="13.5" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>ARD_ID_PK</text>		</g>
+			<title>Person 1</title>
+			<g id="shape54-162" v:mID="54" v:groupContext="shape" v:layerMember="1"
+					transform="translate(14.8958,-34.0157) scale(-1,1)">
+				<title>Tabelle.54</title>
+				<g id="shadow54-163" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
+						transform="matrix(1,0,0,1,-0.345598,1.97279)" class="st13">
+					<path d="M0 591.02 A4.26589 4.25197 0 0 1 8.53 591.02 A4.26589 4.25197 0 1 1 -0 591.02 Z" class="st14"/>
+				</g>
+				<path d="M0 591.02 A4.26589 4.25197 0 0 1 8.53 591.02 A4.26589 4.25197 0 1 1 -0 591.02 Z" class="st15"/>
+			</g>
+			<g id="shape55-167" v:mID="55" v:groupContext="shape" v:layerMember="1">
+				<title>Tabelle.55</title>
+				<g id="shadow55-168" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
+						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st13">
+					<path d="M10.88 578.8 L15.82 595.28 L19.78 595.28 L15.82 576.14 L15.82 564.98 L18.79 574.02 L21.26 572.42 L17.8
+								 561.26 L10.88 561.79 L3.96 561.26 L0 572.95 L2.97 574.02 L5.93 564.98 L5.93 576.14 L1.98 595.28
+								 L5.93 595.28 L10.88 578.8 Z" class="st14"/>
+				</g>
+				<path d="M10.88 578.8 L15.82 595.28 L19.78 595.28 L15.82 576.14 L15.82 564.98 L18.79 574.02 L21.26 572.42 L17.8 561.26
+							 L10.88 561.79 L3.96 561.26 L0 572.95 L2.97 574.02 L5.93 564.98 L5.93 576.14 L1.98 595.28 L5.93 595.28
+							 L10.88 578.8 Z" class="st15"/>
+			</g>
+			<g id="shape56-172" v:mID="56" v:groupContext="shape" v:layerMember="1" transform="translate(0,21.2598)">
+				<title>Tabelle.56</title>
+				<desc>User</desc>
+				<v:userDefs>
+					<v:ud v:nameU="ScaleFactor" v:val="VT0(1):26"/>
+				</v:userDefs>
+				<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+				<v:textRect cx="10.6299" cy="584.646" width="21.26" height="21.2598"/>
+				<g id="shadow56-173" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
+						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st13">
+					<rect x="0" y="574.016" width="21.2598" height="21.2598" class="st16"/>
+				</g>
+				<rect x="0" y="574.016" width="21.2598" height="21.2598" class="st17"/>
+				<text x="3.11" y="587.05" class="st8" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>User</text>			</g>
+		</g>
+		<g id="shape63-178" v:mID="63" v:groupContext="shape" v:layerMember="0" transform="translate(460.292,-449.291)">
+			<title>Dynamischer Verbinder.63</title>
+			<desc>Might contain ID attributes backed by Picture ID</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="76.0489" cy="732.022" width="99.68" height="27.2035"/>
+			<path d="M0 595.28 L25.85 595.28 L25.85 744.78 L135.03 744.78" class="st10"/>
+			<rect v:rectContext="textBkgnd" x="32.0221" y="722.422" width="88.0535" height="19.1997" class="st11"/>
+			<text x="32.02" y="729.62" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Might contain ID attributes <v:lf/><tspan
+						x="42.83" dy="1.2em" class="st9">backed by Picture ID</tspan></text>		</g>
+		<g id="group68-186" transform="translate(637.795,-269.291)" v:mID="68" v:groupContext="group">
+			<title>Tabelle.68</title>
+			<g id="shape64-187" v:mID="64" v:groupContext="shape" transform="translate(4.19664E-014,-16.7671)">
+				<title>Tabelle.64</title>
+				<path d="M12.15 584.5 C13.38 583.38 14.12 581.44 14.12 579.58 C14.12 576.39 12.51 574.48 9.81 574.48 C7.11 574.48
+							 5.49 576.39 5.49 579.58 C5.49 581.44 6.24 583.38 7.47 584.5 C4.89 584.98 3.14 586.25 3.14 587.82 L3.14
+							 588.61 L16.48 588.61 L16.48 587.82 C16.48 586.25 14.72 584.98 12.15 584.5 ZM7.06 579.58 C7.06 577.97
+							 7.54 576.05 9.81 576.05 C12.08 576.05 12.55 577.97 12.55 579.58 C12.55 581.8 11.22 583.9 9.81 583.9
+							 C8.4 583.9 7.06 581.8 7.06 579.58 ZM5.23 587.04 C6.02 586.42 7.64 585.86 9.81 585.86 C11.98 585.86 13.6
+							 586.42 14.38 587.04 L5.23 587.04 ZM18.44 574.88 L31.38 574.88 L31.38 576.45 L18.44 576.45 L18.44 574.88
+							 ZM18.44 578.8 L31.38 578.8 L31.38 580.37 L18.44 580.37 L18.44 578.8 ZM18.44 582.72 L31.38 582.72 L31.38
+							 584.29 L18.44 584.29 L18.44 582.72 ZM18.44 586.64 L31.38 586.64 L31.38 588.21 L18.44 588.21 L18.44 586.64
+							 ZM31.78 567.81 L3.53 567.81 C1.58 567.81 0 569.4 0 571.35 L0 591.74 C0 593.69 1.58 595.28 3.53 595.28
+							 L31.78 595.28 C33.72 595.28 35.31 593.69 35.31 591.74 L35.31 571.35 C35.31 569.4 33.72 567.81 31.78
+							 567.81 ZM33.74 591.74 C33.74 592.83 32.86 593.71 31.78 593.71 L3.53 593.71 C2.45 593.71 1.57 592.83
+							 1.57 591.74 L1.57 571.35 C1.57 570.26 2.45 569.38 3.53 569.38 L31.78 569.38 C32.86 569.38 33.74 570.26
+							 33.74 571.35 L33.74 591.74 Z" class="st18"/>
+			</g>
+			<g id="shape66-189" v:mID="66" v:groupContext="shape">
+				<title>Tabelle.66</title>
+				<desc>PictureID</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="17.6536" cy="585.276" width="35.31" height="20"/>
+				<rect x="0" y="575.276" width="35.3072" height="20" class="st19"/>
+				<text x="4.55" y="587.38" class="st20" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>PictureID</text>			</g>
+		</g>
 	</g>
 </svg>
