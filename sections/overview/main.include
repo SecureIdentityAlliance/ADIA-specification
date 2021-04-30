@@ -42,7 +42,7 @@ These entities and their role in the ADIA ecosystem are described in [[#sctn-rol
 
 ## Trust Anchor ## {#sctn-trust-anchor}
 
-Trust Anchor is a Unique Key for a given entity in the ADIA ecosystem.
+<dfn>Trust Anchor</dfn> (<dfn>TA</dfn>) is a Unique Key for a given entity in the ADIA ecosystem.
 A Trust Anchor uniquely maps an entity's <a>Digital Address</a> and a DAS assigned DID.
 
 
@@ -223,7 +223,7 @@ During the exchange of the credential, the broker may also facilitate payment to
 
 #### Identity Escrow (Future) #### {#sctn-adia-role-identity-escrow}
 
-Privacy preserving accountability is provided by Identity Escrow Services. Identity data is presented to the Identity Escrow Service in a credential from an approved issuer. The Escrow Service stores the data and issues an escrow credential to the participant. Each escrow credential obtained by the participant contains a unique id.
+Privacy preserving accountability is provided by <dfn>Identity Escrow</dfn> Services. Identity data is presented to the Identity Escrow Service in a credential from an approved issuer. The Escrow Service stores the data and issues an escrow credential to the participant. Each escrow credential obtained by the participant contains a unique id.
 
 Upon connecting to a new service, the participant presents the escrow credential. The service validates the credential, and then retains the unique id. Should the participant violate the terms of service or otherwise require accountability for their actions, the service will present the request and evidence to the Escrow Service. The escrow service will evaluate the request and evidence against their policies. If policy indicates, the escrow service will notify the participant of the disclosure, disclose the identity data from escrow, and log the evidence and disclosure for independent audit. Disclosure logs are retained for a period set by policy.
 
@@ -372,12 +372,20 @@ Issue: Please check - Trust Anchor, <a>Digital Address</a>,
        : <a>ADIA Regional Directory</a> (<a>ARD</a>)
        :: See [[#sctn-adia-role-regional-directory]]
 
-       : <dfn>ADIA_ID</dfn>
-       :: The <a>ADIA</a> IDentity, i.e. the the W3C DID style identifier for the <a>ADIA</a>.
+       : <dfn>AGD_ID</dfn>
+       :: The <a>ADIA</a> Global Directory (AGD) IDentity, i.e. the the W3C DID style identifier for the <a>ADIA Global Directory</a>.
 
-       :  <a>ADIA_ID_PK</a>, <a>ADIA_ID_SK</a>
+       :  <a>AGD_ID_PK</a>, <a>AGD_ID_SK</a>
        :: Public Key (PK) and Private Key (SK) related to the
-           <a>ADIA_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           <a>AGD_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+           more details.
+
+       : <dfn>ARD_ID</dfn>
+       :: The <a>ADIA</a> Regional Directory (ARD) IDentity, i.e. the the W3C DID style identifier for the <a>ADIA Regional Directory</a>.
+
+       :  <a>ARD_ID_PK</a>, <a>ARD_ID_SK</a>
+       :: Public Key (PK) and Private Key (SK) related to the
+           <a>ARD_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
            more details.
 
        :  <dfn export=true>AVC</dfn>
@@ -559,9 +567,9 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
       </thead>
       <tbody>
         <tr>
-          <td><dfn>ADIA_ID_PK</dfn> / <dfn>ADIA_ID_SK</dfn></td>
-          <td><a>ADIA</a></td>
-          <td><a>ADIA</a></td>
+          <td><dfn>AGD_ID_PK</dfn> / <dfn>AGD_ID_SK</dfn></td>
+          <td><a>ADIA Global Directory</a></td>
+          <td><a>ADIA Global Directory</a></td>
           <td>ADIA setup.</td>
           <td>
             via a DIDDoc kept in the ADIA Global Directory.
@@ -575,7 +583,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
         </tr>
 
         <tr>
-          <td><dfn export=true>ADIA_REGIONAL_ID_PK</dfn> / <dfn export=true>ADIA_REGIONAL_ID_SK</dfn></td>
+          <td><dfn export=true>ARD_ID_PK</dfn> / <dfn export=true>ARD_ID_SK</dfn></td>
           <td><a>ADIA Regional Directory</a></td>
           <td><a>ADIA Regional Directory</a></td>
           <td>ADIA Regional setup.</td>

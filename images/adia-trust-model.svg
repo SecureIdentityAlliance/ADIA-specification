@@ -3,7 +3,7 @@
 <!-- Generiert durch Microsoft Visio, SVG Export gadi-trust-model.svg Page-1 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
 		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="11.6929in" height="8.26772in"
-		viewBox="0 0 841.89 595.276" xml:space="preserve" color-interpolation-filters="sRGB" class="st22">
+		viewBox="0 0 841.89 595.276" xml:space="preserve" color-interpolation-filters="sRGB" class="st21">
 	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false">
 		<v:userDefs>
 			<v:ud v:nameU="msvSubprocessMaster" v:prompt="" v:val="VT4(Rectangle)"/>
@@ -30,11 +30,10 @@
 		.st15 {fill:#5b9bd5;stroke:#c8c8c8;stroke-width:0.25}
 		.st16 {fill:#5b9bd5;fill-opacity:0.22;filter:url(#filter_2);stroke:#5b9bd5;stroke-opacity:0.22;visibility:hidden}
 		.st17 {fill:#5b9bd5;stroke:#c8c8c8;stroke-width:0.25;visibility:hidden}
-		.st18 {fill:#ffffff;stroke:none;stroke-linecap:butt}
-		.st19 {fill:#2e75b5;stroke:none;stroke-linecap:butt;stroke-width:2.25}
-		.st20 {fill:none;stroke:none;stroke-width:0.25}
-		.st21 {fill:#5b9bd5;font-family:Calibri;font-size:0.583328em}
-		.st22 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+		.st18 {fill:#2e75b5;stroke:none;stroke-linecap:butt;stroke-width:2.25}
+		.st19 {fill:none;stroke:none;stroke-width:0.25}
+		.st20 {fill:#5b9bd5;font-family:Calibri;font-size:0.583328em}
+		.st21 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
 	]]>
 	</style>
 
@@ -187,24 +186,24 @@
 				<text x="29.26" y="514.73" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DIDDoc-USER</text>			</g>
 			<g id="shape18-49" v:mID="18" v:groupContext="shape" transform="translate(5.59552E-014,-45.3543)">
 				<title>Rechteck.2</title>
-				<desc>DAP_USER_ID</desc>
+				<desc>DAS_USER_ID</desc>
 				<v:userDefs>
 					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 				</v:userDefs>
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
 				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
 				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
-				<text x="28.16" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DAP_USER_ID</text>			</g>
+				<text x="28.45" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DAS_USER_ID</text>			</g>
 			<g id="shape19-52" v:mID="19" v:groupContext="shape" transform="translate(1.59872E-014,-22.6772)">
 				<title>Rechteck.3</title>
-				<desc>DAP_USER_ID_PK</desc>
+				<desc>DAS_USER_ID_PK</desc>
 				<v:userDefs>
 					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 				</v:userDefs>
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
 				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
 				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
-				<text x="20.49" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DAP_USER_ID_PK</text>			</g>
+				<text x="20.78" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DAS_USER_ID_PK</text>			</g>
 			<g id="shape20-55" v:mID="20" v:groupContext="shape">
 				<title>Rechteck.4</title>
 				<desc>Signature</desc>
@@ -366,34 +365,34 @@
 			<title>Tabelle.41</title>
 			<g id="shape42-124" v:mID="42" v:groupContext="shape">
 				<title>Rechteck</title>
-				<desc>DIDDoc-GADI-Regional</desc>
+				<desc>DIDDoc-ARD</desc>
 				<v:userDefs>
 					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 				</v:userDefs>
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
 				<v:textRect cx="56.6929" cy="548.504" width="113.39" height="93.5433"/>
 				<rect x="0" y="501.732" width="113.386" height="93.5433" class="st1"/>
-				<text x="10.5" y="514.73" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DIDDoc-GADI-Regional</text>			</g>
+				<text x="31.24" y="514.73" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>DIDDoc-ARD</text>			</g>
 			<g id="shape43-127" v:mID="43" v:groupContext="shape" transform="translate(5.59552E-014,-45.3543)">
 				<title>Rechteck.2</title>
-				<desc>GADI_REGIONAL_ID</desc>
+				<desc>ARD_ID</desc>
 				<v:userDefs>
 					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 				</v:userDefs>
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
 				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
 				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
-				<text x="15.89" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>GADI_REGIONAL_ID</text>			</g>
+				<text x="41.18" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>ARD_ID</text>			</g>
 			<g id="shape44-130" v:mID="44" v:groupContext="shape" transform="translate(1.59872E-014,-22.6772)">
 				<title>Rechteck.3</title>
-				<desc>GADI_REGIONAL_ID_PK</desc>
+				<desc>ARD_ID_PK</desc>
 				<v:userDefs>
 					<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 				</v:userDefs>
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
 				<v:textRect cx="56.6929" cy="585.354" width="113.39" height="19.8425"/>
 				<rect x="0" y="575.433" width="113.386" height="19.8425" class="st3"/>
-				<text x="8.22" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>GADI_REGIONAL_ID_PK</text>			</g>
+				<text x="33.51" y="588.43" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>ARD_ID_PK</text>			</g>
 			<g id="shape45-133" v:mID="45" v:groupContext="shape">
 				<title>Rechteck.4</title>
 				<desc>Signature</desc>
@@ -491,7 +490,7 @@
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="76.0489" cy="732.022" width="99.68" height="27.2035"/>
 			<path d="M0 595.28 L25.85 595.28 L25.85 744.78 L135.03 744.78" class="st10"/>
-			<rect v:rectContext="textBkgnd" x="32.0221" y="722.422" width="88.0535" height="19.1997" class="st18"/>
+			<rect v:rectContext="textBkgnd" x="32.0221" y="722.422" width="88.0535" height="19.1997" class="st11"/>
 			<text x="32.02" y="729.62" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Might contain ID attributes <v:lf/><tspan
 						x="42.83" dy="1.2em" class="st9">backed by Picture ID</tspan></text>		</g>
 		<g id="group68-186" transform="translate(637.795,-269.291)" v:mID="68" v:groupContext="group">
@@ -510,15 +509,15 @@
 							 L31.78 595.28 C33.72 595.28 35.31 593.69 35.31 591.74 L35.31 571.35 C35.31 569.4 33.72 567.81 31.78
 							 567.81 ZM33.74 591.74 C33.74 592.83 32.86 593.71 31.78 593.71 L3.53 593.71 C2.45 593.71 1.57 592.83
 							 1.57 591.74 L1.57 571.35 C1.57 570.26 2.45 569.38 3.53 569.38 L31.78 569.38 C32.86 569.38 33.74 570.26
-							 33.74 571.35 L33.74 591.74 Z" class="st19"/>
+							 33.74 571.35 L33.74 591.74 Z" class="st18"/>
 			</g>
 			<g id="shape66-189" v:mID="66" v:groupContext="shape">
 				<title>Tabelle.66</title>
 				<desc>PictureID</desc>
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 				<v:textRect cx="17.6536" cy="585.276" width="35.31" height="20"/>
-				<rect x="0" y="575.276" width="35.3072" height="20" class="st20"/>
-				<text x="4.55" y="587.38" class="st21" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>PictureID</text>			</g>
+				<rect x="0" y="575.276" width="35.3072" height="20" class="st19"/>
+				<text x="4.55" y="587.38" class="st20" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>PictureID</text>			</g>
 		</g>
 	</g>
 </svg>
