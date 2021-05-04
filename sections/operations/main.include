@@ -101,7 +101,7 @@ The DAS may independently request the user to authenticate before upgrading the 
 ### Issue Verifiable Credential ### {#sctn-issue-vc}
 
 <figure id="fig-vc-issuance-option-1">
-  <img src="sequence-diagrams/VC-Issued-to-a-User-by-a-Issuer.svg"/>
+  <img src="sequence-diagrams/VC-Issued-to-a-User-by-an-Issuer.svg"/>
   <figcaption>VC Issued to a User by an Issuer</figcaption>
 </figure>
 

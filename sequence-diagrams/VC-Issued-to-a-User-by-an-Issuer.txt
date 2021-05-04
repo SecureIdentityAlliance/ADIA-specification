@@ -1,0 +1,29 @@
+title VC Issued to a User by an Issuer
+
+Actor User
+Participant DAA
+Participant Cloud Agent
+Participant Issuer
+Participant VC Store
+
+User <<->> Issuer: Authenticate
+User <<->> Issuer: request issue VC [DA or DAS_USER_ID]
+Note over Issuer, User, DAA
+Ask subject to give consent for issuing a VC
+end note
+
+Issuer -> Cloud Agent: Credential offer
+opt
+Cloud Agent -> DAA: Show user what is being offered
+DAA <-> User: FIDO Authentication
+DAA -> Cloud Agent: Agreed to details
+end
+Cloud Agent -> Issuer: Credential request (nonce included)
+
+Issuer -> Issuer: Create VC.\n (Sign with ISSUER_ID_SK)
+Issuer -> VC Store: Save VC in VC Store
+VC Store -> Issuer: Success
+Issuer -> Cloud Agent : publish VC metadata \n[DAS_USER_ID, CREDENTIAL_ID, \nCREDENTIAL_SCHEMA_ID, ISSUER_ID]
+Cloud Agent -> Cloud Agent : Store VC metadata
+Cloud Agent -> Issuer: VC metadata save success
+Cloud Agent-->>DAA: Notify User of VC issuance
