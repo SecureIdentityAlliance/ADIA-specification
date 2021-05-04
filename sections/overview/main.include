@@ -173,8 +173,6 @@ The protocols for querying users are summarized and linked below.
 The <dfn>Interchange</dfn> is composed of one or more the services that provide User Access services such as, <a>Digital Address</a> and Authentication to users, Agency services such as
 Issuer and Service Provider Agents and optional value-added services such as Identity Escrow, Credential Brokerage and Payment Brokerage services.
 
-Issue: Add details for Interchange
-
 
 #### DAS #### {#sctn-adia-role-das}
 
@@ -354,11 +352,6 @@ the identity of the <a>User</a> before rendering any services.
 <a>User</a>s may acquire a <a>Digital Address</a> with a lower level of assurance, e.g. start with lowest level identity assertion to join the ecosystem, but transition to a higher level of U-AL by either remotely proving their identity or approaching an <a>Issuer</a> in the ADIA ecosystem and presenting valid identity credentials.
 
 ## Identifiers ## {#sctn-adia-identifiers}
-
-Issue: Please check - Trust Anchor, <a>Digital Address</a>,
-   DAS Identifier, Home DAS Identifier, Issuer Identifier, Service Provider Identifier,
-   DAS Identifier, ADIA Regional Directory Identifier
-
 
    <dl>
        : <a>ADIA Global Directory</a> (<a>AGD</a>)
