@@ -3,14 +3,14 @@
 
 ## Directory enrollment ## {#sctn-directory-enrollment}
 
-### Enroll Regional Directory ### {#sctn-enroll-as-ADIA-regional}
+### Enroll a Regional Directory ### {#sctn-enroll-as-ADIA-regional}
 
 <figure id="fig-onboarding-regional-adia-to-gadi">
     <img src="sequence-diagrams/Enroll-ARD-to-AGD.svg"/>
     <figcaption>Enroll Regional Directory to Global Directory</figcaption>
 </figure>
 
-### Enroll DAS ### {#sctn-enroll-as-dap}
+### Enroll a DAS ### {#sctn-enroll-as-dap}
 
 <figure id="fig-onboarding-dap-to-regional-gadi">
     <img src="sequence-diagrams/Enroll-DAS-to-ARD.svg"/>
@@ -18,21 +18,54 @@
 </figure>
 
 
-### Enroll Issuer ### {#sctn-enroll-as-issuer}
+### Enroll an Issuer ### {#sctn-enroll-as-issuer}
+
+Issuers are onboarded into the ADIA Ecosystem by an Interchange. The process starts with the Interchange requiring the
+prospective Issuer to provide organizational details, a contact person for the organization and details to qualify the
+Issuer as a member in good business standing, financial status and criteria to meet the Certification process laid down by the ADIA Governance policies.
+
+The governing body within Interchange may approve or reject requests to enroll into the Interchange and the ADIA ecosystem. On successful approval of an Entity
+as an Issuer results in a Digital Address, a DID and a Credential to enroll into the Directory as an Issuer. The Interchange may also enforce
+additional policies to ensure that the Issuer can issue Digital Addresses to Users or issue <a>Verifiable Credentials</a> with a certain <a>Assurance Level</a>.
+Please see [[#sctn-assurance-level]] for more detail.
+
+In certain deployment models, an Interchange provider may provide the Issuer with an <a>Issuer Agent</a> and a <a>VC Storage</a>
+that comply to the ADIA Specification. Other deployments may provide agency services to provision the Issuer Agents in a hosted model.
+
+Regardless the variances in the deployment model, the Issuer Agent is responsible to create and manage their private key and DID (represented by the <a>DAS_ENTITY_ID</a>)
+and enroll with the Interchange. The Issuer's public information such as business name and their DIDDoc is published to the ADIA Global Directory for lookups
+by any entity in the ADIA ecosystem.
 
 <figure id="fig-onboarding-issuer-to-dap">
     <img src="sequence-diagrams/Enroll-Issuer-to-DAS.svg"/>
     <figcaption>Enroll Issuer to a DAS</figcaption>
 </figure>
 
-### Enroll Service Provider ### {#sctn-enroll-as-serviceprovider}
+
+
+
+### Enroll a Service Provider ### {#sctn-enroll-as-serviceprovider}
+
+Service Providers are onboarded into the ADIA Ecosystem by an Interchange. The process starts with the Interchange requiring the
+prospective Issuer to provide organizational details, a contact person for the organization and details to join the ecosystem.
+
+Service Provider enrolling into the ecosystem is a relatively simpler process as the services consume and verify participants
+in the ecosystem. The governing body within Interchange may approve or reject requests to enroll into the Interchange and the ADIA ecosystem. On successful approval of an Entity
+as an Issuer results in a Digital Address, a DID and a Credential to enroll into the Directory as an Issuer.
+
+The Interchange may provider API services or provide agency services to provision the Service Provider Agents in a hosted model to request
+and verify Verifiable Credentials from Users.
+
+Agent based deployments may require the Service Provider to manage their private key and DID (represented by the <a>DAS_ENTITY_ID</a>)
+and enroll with the Interchange. The Service Provider's public information such as business name and their DIDDoc is published to the ADIA Global Directory for lookups
+by any entity in the ADIA ecosystem.
 
 <figure id="fig-onboarding-sp-to-dap">
     <img src="sequence-diagrams/Enroll-SP-to-DAS.svg"/>
     <figcaption>Enroll an SP to DAS</figcaption>
 </figure>
 
-### Enroll User ### {#sctn-enroll-user}
+### Enroll a User ### {#sctn-enroll-user}
 
 Users may approach <a>Issuer</a>s to create a Digital Address or issuers may initiate the process of creating a Digital Address for a user prior to issuing a Verifiable Credential.
 A Digital Address creation starts with the collection of identity attributes from the User, creation of a unique trust anchor and ensuring that the Digital Address is unique
