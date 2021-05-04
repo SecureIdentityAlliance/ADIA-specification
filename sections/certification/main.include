@@ -13,7 +13,7 @@ A single user MAY have multiple digital addresses that all link to the same user
 
 ### Hashed Attributes ### {#sctn-adia-regional-hashed-attributes}
 
-Directories (MAY/MUST TBD) only store hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. This requires the issuance of a credential that contains hashed user attributes from the issuer, used for listing in a directory.
+Directories (MAY/MUST TBD) only store hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. 
 
 Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the ADIA regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
 

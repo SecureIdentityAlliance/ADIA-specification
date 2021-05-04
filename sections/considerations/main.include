@@ -5,16 +5,12 @@
 
 Issue: TODOs here: how to enforce that even recovery cannot be used to
     provide access to existing credentials via ID proofing of a lower
-    assurance level.  
+    assurance level.
 
 ### Storage of Trust Anchor and Digital Address### {#sctn-storage-ta-da}
 
 Issue: Details for Trust Anchor and Digital Address Storage
 
-
-### Recovery of Trust Anchor and Digital Address ### {#sctn-recovery-trust-anchor}
-
-Issue: Details for Trust Anchor Recovery
 
 ### Cryptographic Suites ### {#sctn-cryptographic-suite}
 
@@ -25,4 +21,3 @@ Issue: Details for Cryptographic Suites
 Issue: Items to cover: User consent for sharing data, Which entities
     can observe what users are doing, Anonymous claims, how do we
     handle the right to be forgotten,
-
