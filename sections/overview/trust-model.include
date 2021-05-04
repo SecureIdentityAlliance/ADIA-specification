@@ -1,0 +1,199 @@
+## Trust Model ## {#sctn-trust-model}
+
+Issue: Describe what is verified by whom, what kind of objects
+   ("credentials") are being created and what kind of identifiers they
+   bind together (e.g., public keys and digital addresses, ...).
+
+Issue: Distinguish Base/Peer-DIDDoc-USER and Pair-wise-Use
+    DIDDoc-USER.  All DIDDoc-USER are stored off-ledger.  We use ZKP
+    algs all over.
+
+
+<figure id="fig-adia-trust-model">
+    <img src="images/adia-trust-model.svg"/>
+    <figcaption>ADIA Trust Model</figcaption>
+</figure>
+
+Issue: Will have to specify the assurance level to which the claims
+    have been verified by the issuer.  Similarly for the other
+    entities (e.g., DAS, Issuer, ...). See ASSURANCE_LEVEL in
+    <a>DigitalAddress</a> and in <a href="#sctn-credential-metadata">Credential Metadata</a>.
+
+
+Issue: How to trust the issuer?  How to trust the SP?  How to trust DASs?
+
+
+When verifying a verifiable presentation of a verifiable credential,
+the following objects need to be verified:
+1. <a>Verifiable Presentation</a>, i.e. an object containing a
+    <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
+    or Derived Data (in the case of ZKP) (<a
+    href="(e.g., https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
+    and a signature by the subjects's DAS_USER_ID_PK/SK key.
+
+2. <a>Verifiable Credential</a>, i.e. an object containing a
+    <dfn export=true>CredentialSubject</dfn>, an issuer and a signature by the
+    issuer ISSUER_ID_PK/SK key.
+
+3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
+    via the <a>DIDDoc-ISSUER</a>.
+
+4. Subject DAS_USER_ID_PK/SK key. This key is linked to the user via
+    the <a>DIDDoc-USER</a>.
+
+
+In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), the
+   <a>DIDDoc-USER</a> is a pair-wise use object and the included
+   <a>DAS_USER_ID_PK</a> is a one-time use key.  Pair-wise use means it is not
+   shared with any other <a>SP</a> and it will typically not even be referenced by
+   another verifiable presentation to the same <a>SP</a> again to
+   maintain the user's privacy.
+
+
+<figure id="fig-key-material">
+ <table class="data longlastcol">
+   <thead>
+     <th>Key Name</th>
+     <th>Key Owner</th>
+     <th>Key Holder</th>
+     <th>When Generated</th>
+     <th>How is key tied to Key Owner?</th>
+     <th>How is security level of device maintaining the key attested?</th>
+   </thead>
+   <tbody>
+     <tr>
+       <td><dfn>AGD_ID_PK</dfn> / <dfn>AGD_ID_SK</dfn></td>
+       <td><a>ADIA Global Directory</a></td>
+       <td><a>ADIA Global Directory</a></td>
+       <td>ADIA setup.</td>
+       <td>
+         via a DIDDoc kept in the ADIA Global Directory.
+       </td>
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn export=true>ARD_ID_PK</dfn> / <dfn export=true>ARD_ID_SK</dfn></td>
+       <td><a>ADIA Regional Directory</a></td>
+       <td><a>ADIA Regional Directory</a></td>
+       <td>ADIA Regional setup.</td>
+       <td>
+         via a DIDDoc kept in the ADIA Global Directory.
+       </td>
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>DAS_ID_PK</dfn> / <dfn>DAS_ID_SK</dfn></td>
+       <td><a>DAS</a></td>
+       <td>
+         DAS Agent
+       </td>
+       <td><a href="#sctn-enroll-as-dap">Onboarding as DAS</a>
+ </td>
+       <td>
+         via a DIDDoc kept in the ADIA Global Directory.
+       </td>
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>ISSUER_ID_PK</dfn> / <dfn>ISSUER_ID_SK</dfn></td>
+       <td><a>Issuer</a></td>
+       <td>
+   <a>Issuer Agent</a>
+       </td>
+       <td><a href="#sctn-enroll-as-issuer">Onboarding as an
+            Issuer</a>
+ </td>
+       <td>
+         via a DIDDoc kept in the ADIA Global Directory.
+       </td>
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>SP_ID_PK</dfn> / <dfn>SP_ID_SK</dfn></td>
+       <td><a>Service Provider</a></td>
+       <td>
+         SP Agent
+       </td>
+       <td><a href="#sctn-enroll-as-serviceprovider">Onboarding as
+            Service Provider</a>
+
+Issue: Need to specify in the sequence diagram when exactly the key is
+   generated and by whom.
+
+ </td>
+       <td>
+         via a DIDDoc kept in the ADIA Global Directory.
+       </td>
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>DAS_USER_ID_PK</dfn> / <dfn>DAS_USER_ID_SK</dfn></td>
+       <td><a>User</a></td>
+       <td>Typically the Cloud Agent (potentially the DAA once we specify
+         the device migration)
+       </td>
+       <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
+           First Issuer</a></td>
+       <td>
+         via a DIDDoc kept in the HomeDAS.
+       </td>
+       <td>
+
+Issue: Need to clarify how the security characteristics of the
+    cryptographic device generating and using the key are attested.
+
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>USER_FIDO_PK</dfn> / <dfn>USER_FIDO_SK</dfn></td>
+       <td><a>User</a></td>
+       <td>The <a>User</a>'s FIDO Authenticator, e.g., SecurityKey or
+              platform authenticator on smartphone, tablet or PC.
+       </td>
+       <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
+           First Issuer</a></td>
+       <td>
+
+Issue: Need to clarify whether there is any signed object tying the
+    USER_FIDO_PK to the user's DA.
+
+       </td>
+       <td>
+         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].
+       </td>
+     </tr>
+   </tbody>
+ </table>
+ <figcaption>Cryptographic Key Material</figcaption>
+</figure>
