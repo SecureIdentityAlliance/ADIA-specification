@@ -5,7 +5,7 @@
 
 [NORMATIVE]
 
-## HIDA for Users ## {#sctn-hida-computation-users}
+### HIDA for Users ### {#sctn-hida-computation-users}
 
 The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
 <ol>
@@ -42,7 +42,7 @@ The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
  </li>
 </ol>
 
-## HIDA for Organizational Entities ## {#sctn-hida-computation-entities}
+### HIDA for Organizational Entities ### {#sctn-hida-computation-entities}
 
 
 The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
