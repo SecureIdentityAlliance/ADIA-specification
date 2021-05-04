@@ -107,7 +107,8 @@ Issue: Link the Governance Policies and procedures
 
 <a>ADIA Global Directory</a> ensure uniqueness of the listed organizational entities. This is done by ensuring a unique set of attributes for each organization.
 
-Issue: uniqueness properties are required for Business entities just like users
+Please see [[#sctn-hida-computation-entities]] for uniqueness properties for Issuers,Service Providers, DAS and ADIA Regional Directories.
+
 
 #### Directory Querying #### {#sctn-adia-global-ds-query}
 
@@ -156,8 +157,9 @@ Directories may use any datastore sufficient to the requirements of storing attr
 #### Uniqueness properties #### {#sctn-adia-regional-uniqueness}
 
 ADIA Directories ensure uniqueness of the listed users. This is done by ensuring a unique set of attributes for each user. If a new user matches an existing user, additional attributes must be requested for use in distinguishing between the matching users.
-
 Each directory MUST have a process to follow when users cannot be uniquely identified either during addition of a user to the directory or during lookup of a user within the directory.
+
+Please see [[#sctn-hida-computation-users]] for uniqueness properties for Users in the ADIA Regional Directories.
 
 #### Directory Querying #### {#sctn-adia-regional-directory-query}
 
