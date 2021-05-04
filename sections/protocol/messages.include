@@ -118,14 +118,6 @@
 
 ### DigitalAddress ### {#sctn-protocol-message-digital-address}
 
-<a>Digital Address</a> is an user friendly mnemonic that maps to a technical identifier, the DID for the user. The format is specified as follows:
-
-<pre class="highlight">
-  <code>
-    Alphanumeric@HomeDASIdentifier
-  </code>
-</pre>
-
 <a>Digital Address</a> prefix has the following constraints:
 
 * MUST contain a minimum of 8 alpha-numeric characters.
@@ -166,22 +158,10 @@ Example:
     <td>AGD,ARD, Issuer, SP,User</td>
   </tr>
   <tr>
-    <td>primaryHash
-
-Issue: If this is the entity that we call "HIDA", this field name is confusing.
-
+    <td>hida
     </td>
     <td>String</td>
-    <td>Hash from primary attributes</td>
-  </tr>
-  <tr>
-    <td>secondaryHash
-
-Issue: If this is an entity similar to "HIDA", this field name is confusing nd it needs to be officially introduced we we introduce HIDA, e.g. as HIDA2 or so.
-
-    </td>
-    <td>String</td>
-    <td>Hash from secondary attributes</td>
+    <td>Hash from ID attributes</td>
   </tr>
   <tr>
     <td>status</td>
@@ -273,7 +253,7 @@ Issue: If this is an entity similar to "HIDA", this field name is confusing nd i
   </tbody>
   </table>
 
-  
+
 
 
   ### TrustAnchor ### {#sctn-protocol-message-trust-anchor}

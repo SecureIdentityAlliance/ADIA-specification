@@ -64,6 +64,9 @@ The creation of a <a>Digital Address</a> is a crucial step in ensuring there is 
 To prevent the <a>Digital Address</a> from being misused as a correlating identifier, <a>Digital Address</a>es must not be retained by participating Service Providers after resolution.
 Their role is specifically limited to facilitating the participant-onboarding processes.
 
+
+### Digital Address Uniqueness ### {#sctn-digital-address-uniqueness}
+
 Entities in ADIA shall not have more than one <a>Digital Address</a>. To ensure this uniqueness, the identity-related traits for a user are verified and hashed by an <a>Issuer Agent</a>.
 This specification defines the attributes for all entities to create a <a>HIDA</a>, a cryptographic hash computed over the identifying attributes, such as:
 
@@ -76,6 +79,17 @@ The process of binding the <a>Digital Address</a> with the Trust Anchor notifyin
 
 Please see [[#sctn-hida-computation]] details for users and other Entities.
 
+### Digital Address Format ### {#sctn-digital-address-format}
+
+Digital Address is an user friendly mnemonic that maps to a technical identifier, the DID for the user or Entity. Participants
+may change the Digital Address at a later point in time.
+
+The format is specified as follows:
+<code>
+  <Alphanumeric>@HomeDASIdentifier
+</code>
+
+Please see [[#sctn-protocol-message-digital-address]] for the format for Users and Entities.
 
 
 
