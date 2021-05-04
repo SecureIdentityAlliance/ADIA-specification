@@ -1,4 +1,4 @@
-title: Delegated Recovery-Peer Mode
+title Delegated Recovery-Peer Mode
 Participant User
 participant User DAA
 participant User HomeDAP
@@ -11,16 +11,16 @@ Participant ARD
 
 
 opt User sets up Delegatee List
-User->User DAA: Set up Delegatees List
-User->User HomeDAP: Notify the Delegatees of nomination
-User HomeDAP->User HomeDAP: Resolve HomeDAP from DA
+User->User DAA: Set up Delegatees List [Delegatee DA]
+User DAA->>User HomeDAP: Notify the Delegatees of nomination
+User HomeDAP->>User HomeDAP: Resolve HomeDAP from DA
 User HomeDAP->ARD: Lookup HomeDAP for each Delegatee
 ARD-->Delegatee HomeDAP: Route to each HomeDAP
 Delegatee HomeDAP->Delegatee HomeDAP: Lookup DAP_USER_ID and Device Information
-Delegatee HomeDAP->Delegatee DAA: Push Notification to Device
-Delegated User->Delegatee DAA: View and Accept/Reject
-Delegatee DAA->Delegatee HomeDAP: Accept/Reject status
-Delegatee HomeDAP->User HomeDAP: Accept/Reject Status of each Delegatee
+Delegatee HomeDAP->>Delegatee DAA: Push Notification to Device
+Delegated User->>Delegatee DAA: View and Accept/Reject
+Delegatee DAA->>Delegatee HomeDAP: Accept/Reject status
+Delegatee HomeDAP-->>User HomeDAP: Accept/Reject Status of each Delegatee
 end
 
 opt Delegated DA Recovery (Single User - Trusted Peer mode)
@@ -31,11 +31,11 @@ User ->User HomeDAP: Resolve Delegated User
 User HomeDAP->ARD: Lookup HomeDAP for Delegatee
 ARD-->Delegatee HomeDAP: Route to HomeDAP
 Delegatee HomeDAP->Delegatee HomeDAP: Lookup DAP_USER_ID and Device Information
-Delegatee HomeDAP->Delegatee DAA: Push Notification to Device
-Delegated User->Delegatee DAA: View and Accept/Reject with FIDO
+Delegatee HomeDAP->>Delegatee DAA: Push Notification to Device
+Delegated User->>Delegatee DAA: View and Accept/Reject with FIDO
 Delegatee DAA->Delegatee HomeDAP: Accept/Reject Status
-Delegatee HomeDAP->User HomeDAP: Delegatee accept/Reject Status
+Delegatee HomeDAP->>User HomeDAP: Delegatee accept/Reject Status
 User HomeDAP->User DAA: Success/Failure
 User HomeDAP->User DAA: Sync Credential Metadata
-User DAA->User: Recovery Complete
+User DAA-->User: Recovery Complete
 end

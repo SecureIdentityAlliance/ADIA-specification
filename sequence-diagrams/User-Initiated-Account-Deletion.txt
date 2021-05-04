@@ -11,7 +11,7 @@ User -> DAA: I want to delete my Digital Address
 DAA -> DAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
 DAA-> DAS: Delete DA
 DAS -> ARD: Delete user account (DAS_USER_ID)
-ARD -> ARD: Add Delete entry to DLT\n(DAS_USER_ID) and delete corresponding HIDA
+ARD -> ARD: Update DLT\n(DAS_USER_ID) and delete corresponding HIDA
 ARD --> DAS: DA Deleted (DAS_USER_ID)
 DAS-->DAS: Search Credential Metadata \n(DAS_USER_ID)
 opt For each VC metadata, notify issuer of DA deletion
@@ -20,4 +20,4 @@ end
 DAS -> Cloud Agent: Delete all credential metadata
 Cloud Agent --> DAS: Deletion Success
 DAS -> DAS: Delete USER_FIDO_PK
-DAS --> DAA: DA deletion Success  
+DAS --> DAA: DA deletion Success
