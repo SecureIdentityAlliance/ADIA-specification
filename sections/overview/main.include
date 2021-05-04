@@ -3,10 +3,10 @@
 
 One of the greatest challenges in any digital identity system is connecting, or binding, a physical identity with a logical identity.
 
-Identity verification or proofing is one method in which a combination of trusted, normally government-issued, documents (passports, driving licenses 
-and national ID cards), biometric data, nominally face, and other identity information can be linked to verifiable digital identity credentials to form 
-effective binding between physical and digital identity. A major problem with the current approach is that there is no one source for a verified digital 
-identity, a unique digital address that acts a trust anchor. Users must repeat similar processes each time they are required to prove their identities. 
+Identity verification or proofing is one method in which a combination of trusted, normally government-issued, documents (passports, driving licenses
+and national ID cards), biometric data, nominally face, and other identity information can be linked to verifiable digital identity credentials to form
+effective binding between physical and digital identity. A major problem with the current approach is that there is no one source for a verified digital
+identity, a unique digital address that acts a trust anchor. Users must repeat similar processes each time they are required to prove their identities.
 This is inefficient, adds friction for users and is costly for service providers.
 
 The <dfn export=true>Accountable Digital Identity Architecture</dfn> (<dfn>ADIA</dfn>) allows users to
@@ -57,33 +57,26 @@ in many jurisdictions.  Regional and Global Directories MUST support on-ledger a
 ## Digital Address ## {#sctn-digital-address}
 
 DIDs are the foundational identifiers of the system but are not
-participant friendly. The <dfn>Digital Address</dfn> is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed.
-
-<a>Digital Address</a>es are designed to be human friendly and facilitate interaction with entities. When they present their Digital Address to a participating service, the service can contact the directory and receive a DID that represents the participant.
+participant friendly. The <dfn>Digital Address</dfn> is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed. <a>Digital Address</a>es are designed to be human friendly and facilitate interaction with entities. When they present their Digital Address to a participating service, the service can contact the directory and receive a DID that represents the participant.
 Further communication and cryptographic trust are then founded on the provided DID. <a>Digital Address</a>es contain a directory indicator that can be used to identify which directory has the associated listing.
 
+The creation of a <a>Digital Address</a> is a crucial step in ensuring there is both trust and accountability within the ADIA ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises; organizations that are central to the trust economy.
 To prevent the <a>Digital Address</a> from being misused as a correlating identifier, <a>Digital Address</a>es must not be retained by participating Service Providers after resolution.
 Their role is specifically limited to facilitating the participant-onboarding processes.
 
-The creation of a <a>Digital Address</a> is a crucial step in ensuring there is both trust and accountability within the ADIA ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises; organizations that are central to the trust economy.
+Entities in ADIA shall not have more than one <a>Digital Address</a>. To ensure this uniqueness, the identity-related traits for a user are verified and hashed by an <a>Issuer Agent</a>.
+This specification defines the attributes for all entities to create a <a>HIDA</a>, a cryptographic hash computed over the identifying attributes, such as:
 
+* Name of the User or Entity in the identifying document
+* Country, the type of document, a valid identifier on the identifying document
+* Dates such as Birth date or Date of Incorporation for the User or Entity
 
-
-### Only One Digital Address Per User ### {#sctn-da-uniqueness}
-
-A user shall not have more than one ADIA <a>Digital Address</a>.  To ensure
-this uniqueness, the identity-related traits for a user are verified and hashed by an <a>Issuer Agent</a>.
-This specification defines the following attributes for all human identities to create a <a>HIDA</a>,
-a cryptographic hash computed over the following identity attributes:
-
-1. First name
-2. Last name
-3. Date of Birth
-4. Country of Residence
-5. Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc.
-
-The <a>HIDA</a> is used to query the ADIA Regional Directory to determine uniqueness of the user based on the identity attributes provided.
+The <a>HIDA</a> is used to query the Directory to determine uniqueness of the User or Entity based on the identity attributes provided.
 The process of binding the <a>Digital Address</a> with the Trust Anchor notifying the user is described in [[#sctn-onboarding-1st-issuer]]
+
+Please see [[#sctn-hida-computation]] details for users and other Entities.
+
+
 
 
 ## Roles in ADIA ## {#sctn-roles-in-adia}
@@ -400,7 +393,7 @@ Issue: Please check - Trust Anchor, <a>Digital Address</a>,
        :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
             <a href="https://ec.europa.eu/digital-single-market/en/trust-services">eIDAS Trust Service Providers</a>.
 
-       
+
        : <dfn>DA</dfn>
        :: Human readabe <a>Digital Address</a> of the <a>User</a>
             (e.g., blackbird@issuer.dap.adia.org).
@@ -423,7 +416,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
        :: Digital Address Application, e.g., Android App or iOS App that
            knows how to talk to the <a>DAS</a> on behalf of the <a>User</a>.
 
-       :  DAS 
+       :  DAS
        :: Digital Address Service.  See DAS-API for the DAS
            Agency API.  Multiple DAS Agencies can exist in the ADIA "universe".
 
@@ -453,7 +446,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
        :  <dfn>ID Attributes</dfn>
        :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
 
-     
+
 
        :  <dfn>Issuer</dfn>
        :: Issuer of <a>VC</a>s to users.  ADIA supports multiple Issuers
@@ -482,7 +475,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
            <a>SP_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
            more details.
 
-      
+
 
        :  <dfn>TA_USER_ISSUER</dfn>
        :: The <a>Issuer</a> specific <a>TA</a>, i.e. hash(<a>TA</a>, <a>ISSUER_ID</a>).

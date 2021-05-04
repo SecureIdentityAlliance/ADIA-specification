@@ -1,6 +1,80 @@
 # ADIA Protocol # {#sctn-adia-protocol}
 [NORMATIVE]
 
+## HIDA Computation ## {#sctn-hida-computation}
+
+[NORMATIVE]
+
+## HIDA for Users ## {#sctn-hida-computation-users}
+
+The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
+<ol>
+ <li>Compute a JSON object [[!JSON]] containing the following fields:
+     <dl>
+        <dt>firstName</dt>
+        <dd>UTF8 encoded firstname of the <a>User</a> according to the ID document (all uppercase).</dd>
+
+        <dt>lastName</dt>
+        <dd>UTF8 encoded last name of the <a>User</a> according to the ID document (all uppercase).</dd>
+
+        <dt>birthDate</dt>
+        <dd>Date of birth of the <a>User</a> according to the ID document.  Encoding MUST be `full-date` as specified by [[!RFC3339]].</dd>
+
+        <dt>countryOfResidence</dt>
+        <dd>Country of residence of the <a>User</a> according to the ID document. Encoding MUST be `ALPHA-2` country code as specified by [[!ISO3166]].</dd>
+
+        <dt>sourceType</dt>
+        <dd>Type of the ID document. This is specified by ADIA Governance for each country.</dd>
+
+        <dt>identifier</dt>
+        <dd>Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc.</dd>
+     </dl>
+ </li>
+ <li>Canonicalize the resulting JSON structure according [[!RFC8785]].</li>
+ <li>Compute a hash value of the string that results from the previous step.</li>
+ <li>Construct the resulting `HIDA` JSON object with just two fields:
+   <dl>
+     <dt>alg</dt>
+     <dd>Name of the hash algorithm used (all uppercase, e.g. `SHA256`). Allowed hash algorithms are specified in the ADIA Governance and Certification rules.
+     <dt>hb64</dt>
+     <dd>The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.</dd>
+   </dl>
+ </li>
+</ol>
+
+## HIDA for Organizational Entities ## {#sctn-hida-computation-entities}
+
+
+The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
+<ol>
+ <li>Compute a JSON object [[!JSON]] containing the following fields:
+     <dl>
+        <dt>businessName</dt>
+        <dd>UTF8 encoded business name of the <a>Entity</a> according to the ID document (all uppercase).</dd>
+
+        <dt>countryOfIncorporation</dt>
+        <dd>Country of Incorporation of the <a>User</a> according to the ID document. Encoding MUST be `ALPHA-2` country code as specified by [[!ISO3166]].</dd>
+
+        <dt>sourceType</dt>
+        <dd>Type of the ID document. This is specified by ADIA Governance for each country.</dd>
+
+        <dt>identifier</dt>
+        <dd>Government Issued Identifier - Federal Tax ID Number/EIN, Taxpayer Identification Number (TIN), VAT Number, etc.</dd>
+     </dl>
+ </li>
+ <li>Canonicalize the resulting JSON structure according [[!RFC8785]].</li>
+ <li>Compute a hash value of the string that results from the previous step.</li>
+ <li>Construct the resulting `HIDA` JSON object with just two fields:
+   <dl>
+     <dt>alg</dt>
+     <dd>Name of the hash algorithm used (all uppercase, e.g. `SHA256`). Allowed hash algorithms are specified in the ADIA Governance and Certification rules.
+     <dt>hb64</dt>
+     <dd>The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.</dd>
+   </dl>
+ </li>
+</ol>
+
+
 ## Communication Protocol ## {#sctn-communication-protocol}
 In general, DIDcomm [[!didcomm-messaging]] is used for securing the communication. All interactions between entities is facilitated through agents and services in the entity's domain.
 Each entity’s Agent holds cryptographic keys and digital credentials on behalf of the entity.
