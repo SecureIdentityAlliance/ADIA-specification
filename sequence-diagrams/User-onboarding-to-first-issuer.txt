@@ -2,8 +2,8 @@ title User onboarding to first Issuer
 
 Participant User
 Participant DAA
-Participant Issuer
 Participant Cloud Agent
+Participant Issuer
 Participant DAS
 Participant ARD
 
@@ -19,29 +19,30 @@ alt TA not found
 ARD -> ARD: Generate TA = random
 end
 
-ARD --> DAS: No conflict with TA.\n Return TA_USER_ISSUER = hash (TA, ISSUER_ID)
+ARD --> DAS: No conflict with TA.\n Return TA_USER_ISSUER = hash (TA, ISSUER_ID), HomeDAS=DAS_ID
 DAS->DAS: Provision a Cloud Agent for User with HIDA
 DAS->Cloud Agent: Request to Create DAS_USER_ID for HIDA
-Cloud Agent ->Cloud Agent: Create DAS_USER_ID & DAS_USER_ID_PK/SK
-Cloud Agent->DAS: Send [DAS_USER_ID, DAS_USER_ID_PK] to DAS
-Cloud Agent->DAS: Create and Send DAS_USER_ID to DAS
-DAS -> DAS: Create DA. Store [DA, TA_USER_ISSUER, DAS_USER_ID, DAS_USER_ID_PK]
+Cloud Agent ->Cloud Agent: Create DAS_USER_ID & DAS_USER_ID_PK/SK\n Create DIDDoc
+Cloud Agent-->DAS: Send [DAS_USER_ID, DAS_USER_ID_PK] to DAS
+DAS->DAS: Store User DIDDoc
+DAS->>Cloud Agent: DID Doc save success
+DAS -> DAS: Create DA.\n Store [DA, TA_USER_ISSUER, DAS_USER_ID, DAS_USER_ID_PK]
 DAS -> ARD: Send [DAS_USER_ID, HIDA, HomeDAS_ID] to notify about DA
 ARD -> ARD: store [HIDA, TA]\n [TA, DAS_USER_ID, HomeDAS_ID=DAS_ID]
 ARD --> DAS: Success
 DAS --> Issuer: Return DAS_USER_ID
 Issuer -> Issuer: Remember DAS_USER_ID for user in Issuer DB
 Issuer -> Issuer: Creates QR code (DAS_USER_ID, IssuerConnectionURL)
-Issuer -> User: presents (Ex: Console) or sends the QR code (Ex: Email)
-User -> DAA: Scans the QR code and \nextracts DAS_USER_ID+ IssuerConnectionURL
-DAA -> DAS: ID proofing starts on the device \nand extracts the user info
+Issuer -> User: Present QR (Ex: Console) or send QR (Ex: Email)
+User -> DAA: Scan the QR code and \nextract [DAS_USER_ID, IssuerConnectionURL]
+DAA -> DAS: Start ID proofing on the device \nand extract the User info
 DAA->DAS: Send Verified User Attributes +\n DAS_USER_ID to IssuerConnectionURL
 DAS->Issuer: Verify User [DAS_USER_ID, User Attributes]
-Issuer -> Issuer: Verifies User Attributes against \nIssuer DB [DAS_USER_ID, User Attributes]
-Issuer->DAS: Verification Status [DAS_USER_ID, Success/Failure]
-DAS -> DAA: validation status [DAS_USER_ID, DA, Validation Success/Failure]
+Issuer -> Issuer: Verify User Attributes against \nIssuer DB [DAS_USER_ID, User Attributes]
+Issuer-->DAS: Verification Status [DAS_USER_ID, Success/Failure]
+DAS --> DAA: Verification status [DAS_USER_ID, DA, Validation Success/Failure]
 DAA -> DAA: If successful: Remember DAS_USER_ID, DA
 DAA -> DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
 DAS-> DAS: Remember (USER_FIDO_PK, DAS_USER_ID)
 DAS --> DAA: acknowledge successful FIDO registration
-DAA->User: Digital Address enrolled and ready for use 
+DAA-->User: Digital Address enrolled and ready for use
