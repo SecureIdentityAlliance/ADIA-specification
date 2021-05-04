@@ -260,23 +260,6 @@ Example:
 
   [NORMATIVE]
 
-  Trust Anchor is an opaque string with no logic embedded. It is a technical identifier to the <a>Digital Address</a> metadata. The format is specified as follows:
-
-  <pre class="highlight">
-    <code>
-      234345456AABCCC23456456456DSDS
-    </code>
-  </pre>
-
-  A Trust Anchor has the following constraints:
-
-  * MUST contain a minimum of 36 alpha-numeric characters.
-  * MUST be unique to a DAS.
-  * MAY NOT contain certain special characters
-
-Issue: what does *certain special characters* mean? We need to be specific in a spec!
-
-
   <table class="data longlastcol">
     <thead>
       <th>Attibute</th>

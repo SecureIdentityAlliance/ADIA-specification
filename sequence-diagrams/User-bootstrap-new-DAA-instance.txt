@@ -5,17 +5,17 @@ Participant DAA
 Participant Issuer
 Participant DAS
 
-User -> Issuer: Want to bootstrap new phone
+User -> Issuer: Bootstrap a new device
 Issuer -> Issuer: Lookup DAS_USER_ID for HIDA\nCreates QR code (DAS_USER_ID, IssuerConnectionURL)
-Issuer -> User: presents or sends \nthe QR code in Web interface/Issuer PC
-User -> DAA: Scans the QR code and \nextracts DAS_USER_ID+ IssuerConnectionURL
-DAA -> DAS: ID proofing starts on the device \nand extracts the user info
-DAA->DAS: Send Verified User Attributes +\n DAS_USER_ID to IssuerConnectionURL
+Issuer -> User: Present or Sends \nthe QR code in Web interface/Issuer PC
+User -> DAA: Scan the QR code and \nextracts DAS_USER_ID+ IssuerConnectionURL
+DAA -> DAA: Start ID proofing on the device \nand extract the user info
+DAA->DAS: Send verified User Attributes +\n DAS_USER_ID to IssuerConnectionURL
 DAS->Issuer: Verify User [DAS_USER_ID, User Attributes]
-Issuer -> DAS: Verifies User Attributes against \nIssuer DB [DAS_USER_ID, User Attributes]
-DAS -> DAA: validation status [DAS_USER_ID, DA, Validation Success/Failure]
+Issuer --> DAS: Verify User Attributes against \nIssuer DB [DAS_USER_ID, User Attributes]
+DAS --> DAA: Validation status [DAS_USER_ID, DA, Validation Success/Failure]
 DAA -> DAA: If successful: Remember DAS_USER_ID, DA
 DAA -> DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
 DAS-> DAS: Remember (USER_FIDO_PK, DAS_USER_ID)
 DAS --> DAA: acknowledge successful FIDO registration
-DAA->User: Digital Address enrolled  on new device and ready for use
+DAA-->User: Digital Address enrolled  on new device and ready for use
