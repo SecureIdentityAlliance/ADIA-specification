@@ -35,7 +35,7 @@ Issuer -> Issuer: Remember DAS_USER_ID for user in Issuer DB
 Issuer -> Issuer: Creates QR code (DAS_USER_ID, IssuerConnectionURL)
 Issuer -> User: Present QR (Ex: Console) or send QR (Ex: Email)
 User -> DAA: Scan the QR code and \nextract [DAS_USER_ID, IssuerConnectionURL]
-DAA -> DAS: Start ID proofing on the device \nand extract the User info
+DAA -> DAA: Start ID proofing on the device \nand extract the User info
 DAA->DAS: Send Verified User Attributes +\n DAS_USER_ID to IssuerConnectionURL
 DAS->Issuer: Verify User [DAS_USER_ID, User Attributes]
 Issuer -> Issuer: Verify User Attributes against \nIssuer DB [DAS_USER_ID, User Attributes]
