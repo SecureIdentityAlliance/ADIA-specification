@@ -45,13 +45,15 @@ These entities and their role in the ADIA ecosystem are described in [[#sctn-rol
 <dfn>Trust Anchor</dfn> (<dfn>TA</dfn>) is a Unique Key for a given entity in the ADIA ecosystem.
 A Trust Anchor uniquely maps an entity's <a>Digital Address</a> and a DAS assigned DID.
 
-
 The ADIA Directories, for regulatory purposes and user privacy, do not store any personal information about a user or an entity.
 Directories support a user’s right to be forgotten
 in many jurisdictions.  Regional and Global Directories MUST support on-ledger and off-ledger storages:
 
 * a privacy-preserving distributed database that holds the <a>HIDA</a>
 * a DLT holding the Trust Anchor and any metadata related to <a>Digital Addresses</a>
+
+Directories MAY use a Universally Unique Identifier (UUID), a Globally Unique Identifier (GUID) or an opaque
+128-character random character string to represent the Trust Anchor as specified by [[!RFC4122]]
 
 
 ## Digital Address ## {#sctn-digital-address}
@@ -65,7 +67,7 @@ To prevent the <a>Digital Address</a> from being misused as a correlating identi
 Their role is specifically limited to facilitating the participant-onboarding processes.
 
 
-### Digital Address Uniqueness ### {#sctn-digital-address-uniqueness}
+### Uniqueness ### {#sctn-digital-address-uniqueness}
 
 Entities in ADIA shall not have more than one <a>Digital Address</a>. To ensure this uniqueness, the identity-related traits for a user are verified and hashed by an <a>Issuer Agent</a>.
 This specification defines the attributes for all entities to create a <a>HIDA</a>, a cryptographic hash computed over the identifying attributes, such as:
@@ -79,7 +81,7 @@ The process of binding the <a>Digital Address</a> with the Trust Anchor notifyin
 
 Please see [[#sctn-hida-computation]] details for users and other Entities.
 
-### Digital Address Format ### {#sctn-digital-address-format}
+### Format ### {#sctn-digital-address-format}
 
 Digital Address is an user friendly mnemonic that maps to a technical identifier, the DID for the user or Entity. Participants
 may change the Digital Address at a later point in time.
