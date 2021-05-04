@@ -16,6 +16,7 @@ Editor: Ken Ebert, ken@indicio.tech
 Editor: Sam Curren, sam@indicio.tech
 Editor: Taejin Kim, tjkim1212@raoncorp.com
 Editor: Sunghoon Choi, shchoi@raoncorp.com
+Editor: Ajay Jadhav, ajay@ayanworks.com
 
 
 Abstract: The Accountable Digital Identity Association (ADIA) Specification establishes the foundational technology components to establish a Trustable Identity Framework by providing a unique <a>Digital Address</a> for Human Identities to empower them to distribute Identity information and reinforce Trust and Accountability in the Digital World.
