@@ -171,7 +171,7 @@
     </g>
     <g font-size="13px" stroke-linecap="butt" transform="matrix(1,0,0,1,-8,-113)" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" font-weight="bold" stroke-miterlimit="1.45">
       <text x="273.0844" xml:space="preserve" y="269.3184" clip-path="url(#clipPath8)" stroke="none">Party Contact Info</text>
-      <text x="269.098" xml:space="preserve" y="284.6289" clip-path="url(#clipPath8)" stroke="none">(Issuers/SP Admin)</text>
+      <text x="272.7733" xml:space="preserve" y="284.6289" clip-path="url(#clipPath8)" stroke="none">(Issuer/SP Admin)</text>
     </g>
     <g fill="rgb(153,204,255)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(0.8471,0,0,0.7351,308.8002,230.25)" stroke="rgb(153,204,255)">
       <g clip-path="url(#clipPath9)">
@@ -301,7 +301,7 @@
     </g>
     <g font-size="13px" stroke-linecap="butt" transform="matrix(1,0,0,1,-8,-113)" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" font-weight="bold" stroke-miterlimit="1.45">
       <text x="717.3344" xml:space="preserve" y="269.3184" clip-path="url(#clipPath10)" stroke="none">Party Contact Info</text>
-      <text x="755.2552" xml:space="preserve" y="284.6289" clip-path="url(#clipPath10)" stroke="none">(DAPs)</text>
+      <text x="759.2035" xml:space="preserve" y="284.6289" clip-path="url(#clipPath10)" stroke="none">(DAS)</text>
     </g>
     <g fill="rgb(153,204,255)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(0.8471,0,0,0.7351,753.0502,230.25)" stroke="rgb(153,204,255)">
       <g clip-path="url(#clipPath11)">
@@ -569,8 +569,8 @@
     </g>
     <g font-size="13px" stroke-linecap="butt" transform="matrix(1,0,0,1,-8,-113)" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" font-weight="bold" stroke-miterlimit="1.45">
       <text x="1365.8756" xml:space="preserve" y="217.3184" clip-path="url(#clipPath15)" stroke="none">Trust Anchor</text>
-      <text x="1347.0294" xml:space="preserve" y="232.6289" clip-path="url(#clipPath15)" stroke="none">(Issuers, SPs, DAS, </text>
-      <text x="1390.9362" xml:space="preserve" y="247.9395" clip-path="url(#clipPath15)" stroke="none">ARDI)</text>
+      <text x="1343.3541" xml:space="preserve" y="232.6289" clip-path="url(#clipPath15)" stroke="none">(Issuers, SPs, DASs, </text>
+      <text x="1389.4159" xml:space="preserve" y="247.9395" clip-path="url(#clipPath15)" stroke="none">ARDs)</text>
     </g>
     <g fill="rgb(153,204,255)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-8,-113)" stroke="rgb(153,204,255)">
       <rect x="1325" width="168" height="60" y="275" clip-path="url(#clipPath2)" stroke="none"/>
@@ -582,7 +582,7 @@
     <g font-size="13px" stroke-linecap="butt" transform="matrix(1,0,0,1,-8,-113)" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" font-weight="bold" stroke-miterlimit="1.45">
       <text x="1367.0944" xml:space="preserve" y="292.0684" clip-path="url(#clipPath16)" stroke="none">DA Metadata</text>
       <text x="1343.3541" xml:space="preserve" y="307.3789" clip-path="url(#clipPath16)" stroke="none">(Issuers, SPs, DASs, </text>
-      <text x="1393.0912" xml:space="preserve" y="322.6895" clip-path="url(#clipPath16)" stroke="none">ARD)</text>
+      <text x="1389.4159" xml:space="preserve" y="322.6895" clip-path="url(#clipPath16)" stroke="none">ARDs)</text>
       <text x="256.5248" font-size="12px" y="218.2852" clip-path="url(#clipPath2)" stroke="none" font-weight="normal" xml:space="preserve">Reference to Identity in Issuer</text>
       <text x="701.0648" font-size="12px" y="221.7852" clip-path="url(#clipPath2)" stroke="none" font-weight="normal" xml:space="preserve">Reference to Identity in a DAS</text>
       <text x="1135.3148" font-size="12px" y="190.2852" clip-path="url(#clipPath2)" stroke="none" font-weight="normal" xml:space="preserve">Reference to Identity in a DAS</text>
