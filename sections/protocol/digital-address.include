@@ -1,0 +1,19 @@
+## Digital Address Format ## {#sctn-digital-address-format}
+
+As described in section [[#sctn-digital-address]], a <a>Digital Address</a> is a user friendly mnemonic with a prefix and a suffix.
+
+The prefix has the following constraints:
+* MUST contain a minimum of 8 alpha-numeric characters.
+* MUST be no longer than 16 characters.
+* MUST be unique to a DAS.
+* MAY contain certain special characters (set to be defined)
+* SHOULD be human-readable and memorable.
+* The Separator MUST be an @ sign.
+
+The suffix:
+* MUST contain the HomeDAS identifier.
+
+Example:
+<code>
+  steve007@MRVL
+</code>

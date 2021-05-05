@@ -76,4 +76,4 @@ The format is specified as follows:
   <Alphanumeric>@HomeDASIdentifier
 </code>
 
-Please see [[#sctn-protocol-message-digital-address]] for the format for Users and Entities.
+Please see [[#sctn-digital-address-format]] for the format for Users and Entities.

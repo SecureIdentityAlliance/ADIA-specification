@@ -1,0 +1,505 @@
+## Protocol to Agent Mapping ## {#sctn-communication-protocol-agents}
+
+### Digital Address Protocol ### {#sctn-protocol-digital-address}
+The mapping below represents the protocol messages for the Digital Address Protocol and the agents that implement the handing of these messages.
+An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
+    <th>DAS Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/digital-address/1.0/create</td>
+      <td>Create a Digital Address</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/revoke</td>
+      <td>Revoke/Remove a Digital Address</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/share</td>
+      <td>Send or share the DA/DID of a given entity</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/resolve</td>
+      <td>Resolve the DA and DID. One to one mapping at a given point in time</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/rename</td>
+      <td>Rename a Digital Address</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/update</td>
+      <td>Update Digital Address Information</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/digital-address/1.0/import</td>
+      <td>Receive a Digital Address from an issuer</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/trust-anchor/1.0/create</td>
+      <td>Create a trust anchor and link it with the HIDA and save the relationship to the DLT and offledger storage</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/trust-anchor/1.0/search</td>
+      <td>Search a Trust anchor with its HIDA</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/trust-anchor/1.0/remove</td>
+      <td>Mark a Trust anchor inactive</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+
+  ### Directory Protocol ### {#sctn-protocol-directory}
+  The mapping below represents the protocol messages for the Directory Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
+    <th>DAS Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/directory/1.0/search</td>
+      <td>Search an entity with its DA or DID</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/search/regional-directories</td>
+      <td>Search Regional Directories with a criteria</td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/interchanges</td>
+      <td>Search Interchanges with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/issuers</td>
+      <td>Search Issuers with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/service-Providers</td>
+      <td>Search Service Providers with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/directory/1.0/users</td>
+      <td>Search Users with a criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+  </tbody>
+  </table>
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
+    <th>DAS Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/onboarding/1.0/regional-directory</td>
+      <td>Onboard a regional directory to the ecosystem</td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/interchange</td>
+      <td>Onboard an interchange to the ecosystem</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/issuer</td>
+      <td>Onboard an Issuer to the ecosystem</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/service-provider</td>
+      <td>Onboard a Service Provider to the ecosystem</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/status</td>
+      <td>Get the onboarding status</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/onboarding/1.0/update</td>
+      <td>Update the onboarding status</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+
+  ### Credential Schema Protocol ### {#sctn-protocol-credential-schema}
+  The mapping below represents the protocol messages for the Credential Schema Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
+    <th>DAS Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/credential-schema/1.0/search</td>
+      <td>Search Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential-schema/1.0/publish</td>
+      <td>Publish Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential-schema/1.0/update</td>
+      <td>Update Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential-schema/1.0/revoke</td>
+      <td>Revoke Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+  ### Credential Protocol ### {#sctn-protocol-credential}
+  The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
+    <th>DAS Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/credential/1.0/search</td>
+      <td>Search Credentials</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/issue</td>
+      <td>Issue a Verifiable Credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/revoke</td>
+      <td>Revoke a Verifiable Credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/expire</td>
+      <td>Expire a Verifiable Credential on a certain date</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/remove</td>
+      <td>Remove a Verifiable Credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/save-metadata</td>
+      <td>Save Credential Metadata</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/update-metadata</td>
+      <td>Update Credential Metadata</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/credential/1.0/remove-metadata</td>
+      <td>Remove Credential Metadata</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+  ### Verification Protocol ### {#sctn-protocol-verification}
+  The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Description</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
+    <th>DAS Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>/verification/1.0/request-proof</td>
+      <td>Request a proof from the user</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/check-credential-metadata</td>
+      <td>Check credential metadata for valid credentials </td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/request-consent</td>
+      <td>Request a User consent before routing to issuers</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/request-credential</td>
+      <td>Request an issuer for matching credential</td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td nowrap>/verification/1.0/send-presentation</td>
+      <td>Forward the collected proof responses to the user agent</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+  </tbody>
+  </table>

@@ -1,4 +1,4 @@
-### Entity ### {#sctn-protocol-message-entity}
+## Entity ## {#sctn-protocol-message-entity}
 
 <table class="data longlastcol">
   <thead>
@@ -43,7 +43,7 @@
   </tbody>
 </table>
 
-### EntityCriteria ### {#sctn-protocol-message-entity-criteria}
+## EntityCriteria ## {#sctn-protocol-message-entity-criteria}
 
 <table class="data longlastcol">
   <thead>
@@ -116,25 +116,7 @@
 </table>
 
 
-### DigitalAddress ### {#sctn-protocol-message-digital-address}
-
-<a>Digital Address</a> prefix has the following constraints:
-
-* MUST contain a minimum of 8 alpha-numeric characters.
-* MUST be no longer than 16 characters.
-* MUST be unique to a DAS.
-* MAY contain certain special characters (set to be defined)
-* SHOULD be human-readable and memorable.
-* The Separator MUST be an @ sign.
-
-The <a>Digital Address</a> postfix:
-* MUST contain the HomeDAS identifier.
-
-Example:
-<code>
-  steve007@MRVL
-</code>
-
+## DigitalAddress ## {#sctn-protocol-message-digital-address}
 <table class="data longlastcol">
   <thead>
     <th>Attibute</th>
@@ -181,7 +163,7 @@ Example:
   </tbody>
 </table>
 
-### DigitalAddressCriteria ### {#sctn-protocol-message-digital-address-criteria}
+## DigitalAddressCriteria ## {#sctn-protocol-message-digital-address-criteria}
 
 <table class="data longlastcol">
   <thead>
@@ -256,7 +238,7 @@ Example:
 
 
 
-  ### TrustAnchor ### {#sctn-protocol-message-trust-anchor}
+  ## TrustAnchor ## {#sctn-protocol-message-trust-anchor}
 
   [NORMATIVE]
 
@@ -295,7 +277,7 @@ Example:
   </tbody>
   </table>
 
-  ### CredentialSchema ### {#sctn-protocol-message-credential-schema}
+  ## CredentialSchema ## {#sctn-protocol-message-credential-schema}
 
   <table class="data longlastcol">
     <thead>
@@ -373,7 +355,7 @@ Example:
   </table>
 
 
-  ### CredentialSchemaCriteria ### {#sctn-protocol-message-credential-schema-criteria}
+  ## CredentialSchemaCriteria ## {#sctn-protocol-message-credential-schema-criteria}
 
   <table class="data longlastcol">
     <thead>
@@ -442,7 +424,7 @@ Example:
   </table>
 
 
-  ### CredentialMetadata ### {#sctn-protocol-message-credential-metadata}
+  ## CredentialMetadata ## {#sctn-protocol-message-credential-metadata}
 
   <table class="data longlastcol">
     <thead>
@@ -546,7 +528,7 @@ Example:
   </table>
 
 
-  ### CredentialMetadataCriteria ### {#sctn-protocol-message-credential-metadata-criteria}
+  ## CredentialMetadataCriteria ## {#sctn-protocol-message-credential-metadata-criteria}
 
   <table class="data longlastcol">
     <thead>
