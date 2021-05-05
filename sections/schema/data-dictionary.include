@@ -29,12 +29,7 @@
       </td>
     </tr>
     <tr>
-      <td>PRIMARY_HASH</td>
-      <td>String</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>SECONDARY_HASH</td>
+      <td>HIDA</td>
       <td>String</td>
       <td></td>
     </tr>
