@@ -1,3 +1,172 @@
 ## Digital Address Protocol ## {#sctn-digital-address-protocol}
 
-TODO: Protocol Detail
+This protocol is used during the user onboarding process to create a new & unique Digital Address for the user.
+
+<table class="data longlastcol">
+  <tbody>
+    <tr>
+      <td><strong>Endpoint</strong></td>
+      <td>/api/v1/digital-address</td>
+    </tr>
+    <tr>
+      <td><strong>Method</strong></td>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <td><strong>Headers</strong></td>
+      <td>
+       <ul>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Consumes</strong></td>
+      <td>Content-Type: application/json</td>
+    </tr>
+    <tr>
+      <td><strong>Request Body</strong></td>
+      <td>DigitalAddress (required)<br/>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Return Type</strong></td>
+      <td>DigitalAddress Object</td>
+    </tr>
+    <tr>
+      <td><strong>HTTP Status</strong></td>
+      <td>
+        <ul>
+          <li><strong>200</strong>: OK Returns DigitalAddress</li>
+          <li><strong>201</strong>: DigitalAddress Saved Successfully</li>
+          <li><strong>401</strong>: Unauthorized Access</li>
+          <li><strong>403</strong>: Forbidden Access</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+### Implemented by Agents:
+* User/Cloud Agent - requests creation of the Digital ADdress
+* Issuer Agent - creates a new Digital Address
+
+### Protocol Name & Version:
+`digital-address`, `1.0`
+
+### Motivation:
+The Digital Address is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed.
+
+Digital Address creation is requested by User's Agent in the cloud or elsewhere and fulfilled by the Issuer's Agent. Before creating the Digital Address, the Issuer Agents verifies the trust anchor uniqueness with ADIA Global Directory.
+
+### Roles:
+* User - Describe the role
+* Issuer - Describe the role
+* DAS - Describe the role
+
+### States (if any):
+
+```None```
+
+### Protocol Commands:
+
+```
+/digital-address/1.0/compute-hida
+/digital-address/1.0/hida-response
+/digital-address/1.0/lookup-trust-anchor
+/digital-address/1.0/provision-agent
+/digital-address/1.0/create-did
+/digital-address/1.0/create-digital-address
+```
+
+### Sub/Co -protocols used:
+This protocol uses following existing protocols -
+* ```/directory/1.0/enroll-entity``` - as a subprotocol to enroll an entity as User
+* ```/connection/1.0/request``` - as a subprotocol to establish a DID-based connection
+
+
+## Create Digital Address
+
+### DIDComm Messages:
+```
+create
+create-response
+revoke
+revoke-response
+```
+
+#### Request format of the `create-da` message:
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/create-da",
+    "@id": "<uuid-create-digital-address>",
+    "body":
+        {
+            "entityId" : "<DID of the entity>",
+            "entityDigitalAddress" : "<DA of the entity>",
+            "entityRole" : "<AGD, ARD, Issuer, SP, User>",
+            "primaryHash" : "<Hash from primary attributes>",
+            "secondaryHash" : "<Hash from secondary attributes>",
+        }
+}
+```
+
+#### Response format of the `create-da-response` message
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/create-da-response",
+    "@id": "<uuid-create-digital-address-response>",
+    "response":
+        {
+            "statusCode" : "<status of DA creation - success/failed>",
+            "message": "e.g. reason of failed DA creation"
+        }
+}
+```
+
+
+
+## Revoke Digital Address
+
+### DIDComm Messages:
+```
+revoke
+revoke-response
+```
+
+#### Format of the `revoke-da` request message
+
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/revoke-da",
+    "@id": "<uuid-revoke-digital-address>",
+    "comment": "some comment",
+    "body":
+        {
+            "entityId" : "<DID of the entity>",
+            "entityDigitalAddress" : "<DA of the entity>",
+        }
+}
+```
+
+#### Response for the `revoke-da` message
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/revoke-da-response",
+    "@id": "<uuid-revoke-digital-address-response>",
+    "response":
+        {
+            "statusCode" : "Revocation Status: success/failed",
+            "message": "e.g. reason of failed revocation"
+        }
+}
+```
