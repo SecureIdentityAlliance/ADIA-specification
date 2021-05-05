@@ -1,0 +1,109 @@
+## Data Residency ## {#sctn-data-schema-dataresidency}
+
+<table class="data longlastcol">
+  <thead>
+    <th>Issuer Agent</th>
+    <th>Issuer Tenant</th>
+    <th>DAS</th>
+    <th>ARD</th>
+    <th>AGD</th>
+  </thead>
+  <tbody>
+  <tr valign="top">
+    <td>
+      <ul>
+        <li><strong>VC Store</strong>
+          <ul>
+            <li>DAS_USER_ID</li>
+            <li>Encrypted Verifiable Credentials</li>
+            <li>Connection Details to other agents</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+    <td valign="top">
+      <ul>
+        <li><strong>Interchange/Hosted</strong>
+          <ul>
+            <li>User Attributes</li>
+            <li>DAS_USER_ID</li>
+            <li>VC in hosted VC Store</li>
+            <li>Credential Schema</li>
+            <li>Configuration Information</li>
+          </ul>
+        </li>
+        <li><strong>Issuer Hosted</strong>
+          <ul>
+            <li>DAS_USER_ID</li>
+            <li>Credential Schema</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><strong>DLT</strong>
+          <ul>
+            <li>DAS_USER_ID</li>
+            <li>Digital Address Metadata</li>
+            <li>Credential Metadata</li>
+            <li>Credential Schema</li>
+            <li>User DIDDoc</li>
+          </ul>
+        </li>
+        <li><strong>Off-Ledger</strong>
+          <ul>
+            <li>DAS_USER_ID</li>
+            <li>Digital Address</li>
+            <li>User FIDO Public Keys</li>
+            <li>Configuration Info</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><strong>DLT</strong>
+          <ul>
+            <li>TA</li>
+            <li>DAS_USER_ID</li>
+            <li>HOME_DAS_ID</li>
+            <li>DA Exists Indicator (Y/N)</li>
+          </ul>
+        </li>
+        <li><strong>Off-Ledger</strong>
+          <ul>
+            <li>TA</li>
+            <li>HIDA</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li><strong>DLT</strong>
+          <ul>
+            <li>TA</li>
+            <li>ENTITY_ID</li>
+              <li>ENTITY_TYPE (Issuer, SP, DAS, ARD)</li>
+              <li>Entity DIDDoc</li>
+            </ul>
+          </li>
+          <li><strong>Off-Ledger</strong>
+            <ul>
+              <li>TA</li>
+              <li>Organization Details</li>
+              <li>Entity Primary Contact</li>
+            </ul>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table
+
+
+<figure id="fig-data-schema-dataresidency">
+    <img src="images/data-residency.png"/>
+    <figcaption>Metadata Residency</figcaption>
+</figure>

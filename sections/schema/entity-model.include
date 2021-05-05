@@ -1,0 +1,14 @@
+## Entity Model ## {#sctn-data-schema-entitymodel}
+
+The following diagram depicts a logical view of an entity in ADIA.
+
+* An Entity are Organization, Person or a Device.
+* Entities are associated with other parties through relationships and a role.
+* <a>Digital Address</a> is associated with one Entity.
+* A <a>Digital Address</a> is associated with one and only one Trust Anchor
+
+
+<figure id="fig-data-schema-partymodel">
+    <img src="images/entity-data-model.png"/>
+    <figcaption>Entity Model</figcaption>
+</figure>
