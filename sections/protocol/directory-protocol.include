@@ -1,3 +1,74 @@
 ## Directory Protocol ## {#sctn-directory-protocol}
 
-TODO: Protocol Detail
+Directory enrollment is a process where entities such as ARD, DAS, Issuers, Service Providers & Users are enrolled onto the ecosystem. Enrollment has a pre-requisite creating a trust anchor first by providing the hashed identity attributes (HIDA). Hence `/trust-anchor/1.0/create` and `/digital-address/1.0/create` protocols are used as sub-protocols during the directory enrollment process.
+
+### Enroll Entity Protocol
+
+#### Implemented by Agents:
+* AGD Agent - to enrolls an ARD entity
+* ARD Agent - to enroll itself on AGD & to enroll a DAS entity
+* DAS Agent - enroll itself on ARD & enroll an Issuer & Service Provider entity
+* Issue Agent - to enroll itself on DAS & to enroll Users
+
+#### Protocol Name & Version: 
+`enroll-entity`, `1.0`
+
+#### Motivation:
+... describe ...
+
+#### Roles:
+* AGD Admin - 
+* ARD Admin - 
+* DAS Admin - 
+* Issuer Admin - 
+
+#### Protocol Commands:
+```
+/directory/1.0/enroll-entity
+```
+
+#### Sub/Co -protocols used:
+This protocol uses following existing protocols -
+
+* ```/trust-anchor/1.0/create``` - as a sub-protocol to create a TA
+* ```/digital-address/1.0/create``` - as a sub-protocol to create a DA
+
+
+#### DIDComm Messages:
+These DIDComm messages are exchanged between agents.
+```
+/directory/1.0/enroll-entity
+/directory/1.0/enroll-entity-response
+```
+
+#### States:
+Enrollment Request States: `NEW`, `APPROVED` 
+
+##### Request format of the `enroll-entity` message:
+
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
+    "@id": "<uuid-enroll-entity-req>",
+    "body": {
+        "requestId": "Request ID",
+        "entityId": "Identifier of the entity requesting",
+        "entityIdPk": "Public Key of the entity requesting"
+    }
+}
+```
+
+##### Response format of the `create-response` message
+
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
+    "@id": "<uuid-enroll-entity-response>",
+    "response":
+        {
+            "statusCode" : "<status enrollment - success/failed>",
+            "message": "e.g. reason of failed enrollment"
+        }
+}
+```
+

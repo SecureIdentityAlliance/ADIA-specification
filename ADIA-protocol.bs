@@ -1,6 +1,6 @@
 <!-- -*- mode: Text; eval: (auto-fill-mode 1); -*- -->
 <pre class='metadata'>
-Title: Accountable Digital Identity Association(ADIA) API
+Title: Accountable Digital Identity Association (ADIA) Protocols
 Shortname: adia-protocol
 Prepare for TR: true
 Level: 1
@@ -36,6 +36,13 @@ spec:webidl; type:interface; text:Promise
   the specification-maturity-appropriate boilerplate -->
 
 # ADIA Protocols # {#sctn-adia-protocol-detail}
+
+ADIA Protocols are broadly categorized into following:
+* Digital Address Protocols
+* Directory Protocols
+* Credential Schema Protocols
+* Credential Protocols
+* Verification Protocols
 
 <pre class=include>
 path: sections/protocol/digital-address-protocol.include
