@@ -24,20 +24,18 @@ This protocol is used during the user onboarding process to create a new & uniqu
 
 
 ### Implemented By
-* Cloud Agent
+* User/Cloud Agent
 * Issuer Agent
+* DAS Agent
 
-### Roles
-* Requesting Agent (ARD, DAS, Issuer) - Requests to create a TA
-* Responding Agent (AGD, ARD, DAS) - Receives TA requests from agents & creates a TA
 
 ### States (if any)
-```None```
+None
 
 ### Sub/Co-protocols
 This protocol uses following existing protocols -
-* ```/directory/1.0/enroll-entity``` - as a subprotocol to enroll an entity as User
-* ```/connection/1.0/request``` - as a subprotocol to establish a DID-based connection
+* ```/directory/1.0/enroll-entity``` - as a co-protocol to enroll an entity as User
+* ```/connection/1.0/request``` - as a co-protocol to establish a DID-based connection
 
 ### Protocol Commands
 
@@ -67,21 +65,158 @@ This protocol uses following existing protocols -
 {
     "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
     "@id": "<uuid-compute-hida-response>",
-    "status": "OK",
+    "status": "{OK | FAILED | PENDING}",
     "goal-code": "adia.hida.user",
     "~thread": {
-       "thid": "uuid-compute-hida-0123456789",
-        "hida": "computed-hida-string",
-        "statusCode" : "status of HIDA compute - success/failed",
-        "message": "e.g. reason of failed HIDA compute"
-    }
+        "thid": "uuid-compute-hida-0123456789",
+        "message": "e.g. comment or reason of failed requst"
+    },
+    "hida": "computed-hida-string",
 }
 ```
 
 #### lookup-trust-anchor
 
+<strong>Request</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/lookup-trust-anchor",
+    "@id": "<uuid-lookup-trust-anchor-0123456789>",
+    "goal-code": "adia.trust-anchor.user",
+    "body":
+        {
+            "hida": "hash generated of identity attributes",
+            "issuerId": "Issuer's DID"
+        }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/lookup-trust-anchor-response",
+    "@id": "<uuid-lookup-trust-anchor-response>",
+    "status": "{OK | FAILED | PENDING}",
+    "goal-code": "adia.trust-anchor.user",
+    "~thread": {
+        "thid": "uuid-lookup-trust-anchor-0123456789",
+        "message": "e.g. comment or reason of failed requst"
+    },
+    "taUserIssuer": "Hash of TA, ISSUER_ID",
+    "homeDAS": "DAS_ID",
+}
+```
+
 #### provision-agent
 
-#### create-did
+This protocol creates a DID for the user in Cloud Agent and kicks-in the `create-digital-address` co-protocol.
+
+<strong>Request</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/provision-agent",
+    "@id": "<uuid-provision-agent-0123456789>",
+    "goal-code": "adia.agent.user",
+    "body":
+        {
+            "hida": "hash generated of identity attributes",
+            "issuerId": "Issuer's DID"
+        }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/provision-agent-response",
+    "@id": "<uuid-provision-agent-response>",
+    "status": "{OK | FAILED | PENDING}",
+    "goal-code": "adia.agent.user",
+    "~thread": {
+        "thid": "uuid-provision-agent-response-0123456789",
+        "message": "e.g. comment or reason of failed requst"
+    },
+    "taUserIssuer": "Hash of TA, ISSUER_ID",
+    "homeDAS": "DAS_ID",
+    "didDocJson": "DIDDoc of the controller of the newly provisioned cloud agent's DID in Json format",
+}
+```
 
 #### create-digital-address
+This protocol creates a unique Digital Address for the user and kicks-in the `enroll-entity` co-protocol.
+
+<strong>Request</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address",
+    "@id": "<uuid-create-digital-address-0123456789>",
+    "goal-code": "adia.digital-address.user",
+    "body":
+        {
+            "hida": "hash generated of identity attributes",
+        }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address",
+    "@id": "<uuid-create-digital-address-response>",
+    "status": "{OK | FAILED | PENDING}",
+    "goal-code": "adia.digital-address.user",
+    "~thread": {
+        "thid": "uuid-create-digital-address-0123456789",
+        "message": "e.g. comment or reason of failed requst"
+    },
+    "digitalAddress": "digital address created",
+    "dasUserId": "User's DID",
+}
+```
+
+
+#### enroll-entity
+
+The `create-digital-address` message automatically kicks-in a co-protocol called `/directory/1.0/enroll-entity`
+
+<strong>Request for `enroll-entity` co-protocol</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
+    "@id": "<uuid-enroll-entity-0123456789>",
+    "goal-code": "adia.enroll.user",
+    "body":
+        {
+            "taUserIssuer": "Hash of TA, ISSUER_ID",
+            "dasUserId": "DID of the User",
+            "dasId": "Identifier of DAS",
+            "hida": "hash generated of identity attributes of user",
+        }
+}
+```
+
+<strong>Response for `enroll-entity` co-protocol</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
+    "@id": "<uuid-enroll-entity-response>",
+    "goal-code": "adia.enroll.user",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "uuid-enroll-entity-0123456789",
+        "message": "e.g. comment or reason of failed requst"
+    },
+    "requestID": "Enrollment Request identifier ",
+}
+```
+
+The `enroll-entity` co-protocol ends here.
+

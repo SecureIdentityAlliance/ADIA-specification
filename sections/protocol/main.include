@@ -1,6 +1,13 @@
 # ADIA Protocol # {#sctn-adia-protocol}
 [NORMATIVE]
 
+ADIA Protocols are broadly categorized into following:
+* Digital Address Protocols
+* Directory Protocols
+* Credential Schema Protocols
+* Credential Protocols
+* Verification Protocols
+
 Complete reference to the protocol can be found at <strong>[ADIA Protocol Reference](ADIA-protocol.html)</strong>
 
 
