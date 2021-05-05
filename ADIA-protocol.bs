@@ -63,9 +63,3 @@ path: sections/protocol/credential-protocol.include
 <pre class=include>
 path: sections/protocol/verification-protocol.include
 </pre>
-
-# Protocol Messages ## {#sctn-communication-protocol-messages}
-
-<pre class=include>
-path: sections/protocol/messages.include
-</pre>

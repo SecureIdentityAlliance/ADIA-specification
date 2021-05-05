@@ -1,74 +1,81 @@
 ## Directory Protocol ## {#sctn-directory-protocol}
 
-Directory enrollment is a process where entities such as ARD, DAS, Issuers, Service Providers & Users are enrolled onto the ecosystem. Enrollment has a pre-requisite creating a trust anchor first by providing the hashed identity attributes (HIDA). Hence `/trust-anchor/1.0/create` and `/digital-address/1.0/create` protocols are used as sub-protocols during the directory enrollment process.
+This protocol is used for ...
 
-### Enroll Entity Protocol
+<table class="data longlastcol">
+  <thead>
+    <th>Title</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td nowrap><strong>Protocol Name & Version</strong></td>
+    <td>`digital-address`, `1.0`</td>
+  </tr>
+    <tr>
+      <td nowrap><strong>Motivation</strong></td>
+      <td>
+      The Digital Address is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after
+      Know Your Customer (KYC) processes have been followed. Digital Address creation is requested by User's Agent in the cloud or elsewhere and fulfilled by the Issuer's Agent. Before creating the Digital Address, the Issuer Agents verifies the trust anchor uniqueness with ADIA Global Directory.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-#### Implemented by Agents:
-* AGD Agent - to enrolls an ARD entity
-* ARD Agent - to enroll itself on AGD & to enroll a DAS entity
-* DAS Agent - enroll itself on ARD & enroll an Issuer & Service Provider entity
-* Issue Agent - to enroll itself on DAS & to enroll Users
 
-#### Protocol Name & Version: 
-`enroll-entity`, `1.0`
+### Implemented By
+* Agent 1
+* Agent 2
 
-#### Motivation:
-... describe ...
+### Roles
+* Requesting Agent (ARD, DAS, Issuer) - Requests to create a TA
+* Responding Agent (AGD, ARD, DAS) - Receives TA requests from agents & creates a TA
 
-#### Roles:
-* AGD Admin - 
-* ARD Admin - 
-* DAS Admin - 
-* Issuer Admin - 
+### States (if any)
+```None```
 
-#### Protocol Commands:
-```
-/directory/1.0/enroll-entity
-```
-
-#### Sub/Co -protocols used:
+### Sub/Co-protocols
 This protocol uses following existing protocols -
+* ```/directory/1.0/enroll-entity``` - as a subprotocol to enroll an entity as User
+* ```/connection/1.0/request``` - as a subprotocol to establish a DID-based connection
 
-* ```/trust-anchor/1.0/create``` - as a sub-protocol to create a TA
-* ```/digital-address/1.0/create``` - as a sub-protocol to create a DA
+### Protocol Commands
 
-
-#### DIDComm Messages:
-These DIDComm messages are exchanged between agents.
-```
-/directory/1.0/enroll-entity
-/directory/1.0/enroll-entity-response
-```
-
-#### States:
-Enrollment Request States: `NEW`, `APPROVED` 
-
-##### Request format of the `enroll-entity` message:
+#### method 1
+<strong>Request</strong>
 
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
-    "@id": "<uuid-enroll-entity-req>",
-    "body": {
-        "requestId": "Request ID",
-        "entityId": "Identifier of the entity requesting",
-        "entityIdPk": "Public Key of the entity requesting"
-    }
-}
-```
-
-##### Response format of the `create-response` message
-
-```json
-{
-    "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
-    "@id": "<uuid-enroll-entity-response>",
-    "response":
+    "@type": "https://adiassociation.org/digital-address/1.0/compute-hida",
+    "@id": "<uuid-compute-hida-0123456789>",
+    "goal-code": "adia.hida.user",
+    "body":
         {
-            "statusCode" : "<status enrollment - success/failed>",
-            "message": "e.g. reason of failed enrollment"
+            "firstName" : "UTF8 encoded firstname of the User according to the ID document (all uppercase)",
+            "lastName" : "UTF8 encoded last name of the User according to the ID document (all uppercase)",
+            "birthDate" : "Date of birth of the User according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]",
+            "countryOfResidence" : "Country of residence of the User according to the ID document. Encoding MUST be ALPHA-2 country code as specified by [[!ISO3166]]",
+            "sourceType" : "Type of the ID document. This is specified by ADIA Governance for each country",
+            "identifier": "Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc.",
         }
 }
 ```
 
+<strong>Response</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
+    "@id": "<uuid-compute-hida-response>",
+    "status": "OK",
+    "goal-code": "adia.hida.user",
+    "~thread": {
+       "thid": "uuid-compute-hida-0123456789",
+        "hida": "computed-hida-string",
+        "statusCode" : "status of HIDA compute - success/failed",
+        "message": "e.g. reason of failed HIDA compute"
+    }
+}
+```
+
+#### method 2

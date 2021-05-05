@@ -1,177 +1,87 @@
 ## Digital Address Protocol ## {#sctn-digital-address-protocol}
 
-### Digital Address Protocol
-
 This protocol is used during the user onboarding process to create a new & unique Digital Address for the user.
 
-#### Implemented by Agents:
-* User/Cloud Agent - requests creation of the Digital ADdress
-* Issuer Agent - creates a new Digital Address
-
-#### Protocol Name & Version: 
-`digital-address`, `1.0`
-
-#### Motivation:
-The Digital Address is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed.
-
-Digital Address creation is requested by User's Agent in the cloud or elsewhere and fulfilled by the Issuer's Agent. Before creating the Digital Address, the Issuer Agents verifies the trust anchor uniqueness with ADIA Global Directory. 
-
-#### Roles:
-* User - Describe the role
-* Issuer - Describe the role
-* DAS - Describe the role
-
-#### States (if any):
-
-```None```
-
-#### Protocol Commands:
-
-```
-/digital-address/1.0/compute-hida
-/digital-address/1.0/hida-response
-/digital-address/1.0/lookup-trust-anchor
-/digital-address/1.0/provision-agent
-/digital-address/1.0/create-did
-/digital-address/1.0/create-digital-address
-```
-
-#### Sub/Co -protocols used:
-This protocol uses following existing protocols -
-* ```/directory/1.0/enroll-entity``` - as a subprotocol to enroll an entity as User 
-* ```/connection/1.0/request``` - as a subprotocol to establish a DID-based connection
+<table class="data longlastcol">
+  <thead>
+    <th>Title</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td nowrap><strong>Protocol Name & Version</strong></td>
+    <td>`digital-address`, `1.0`</td>
+  </tr>
+    <tr>
+      <td nowrap><strong>Motivation</strong></td>
+      <td>
+      The Digital Address is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed.
+      Digital Address creation is requested by User's Agent in the cloud or elsewhere and fulfilled by the Issuer's Agent. Before creating the Digital Address, the Issuer Agents verifies the trust anchor uniqueness with ADIA Global Directory.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
-### Create Digital Address
+### Implemented By
+* Cloud Agent
+* Issuer Agent
 
-
-#### DIDComm Messages:
-```
-compute-hida
-hida-response
-lookup-trust-anchor
-lookup-trust-anchor-response
-provision-agent
-provision-agent-response
-create-did
-create-digital-address
-create-da-response
-
-```
-
-##### Request format of the `create-da` message:
-
-```json
-{
-    "@type": "https://adiassociation.org/digital-address/1.0/create-da",
-    "@id": "<uuid-create-digital-address>",
-    "body":
-        {
-            "entityId" : "<DID of the entity>",
-            "entityDigitalAddress" : "<DA of the entity>",
-            "entityRole" : "<AGD, ARD, Issuer, SP, User>",
-            "primaryHash" : "<Hash from primary attributes>",
-            "secondaryHash" : "<Hash from secondary attributes>",
-        }
-}
-```
-
-##### Response format of the `create-da-response` message
-
-```json
-{
-    "@type": "https://adiassociation.org/digital-address/1.0/create-da-response",
-    "@id": "<uuid-create-digital-address-response>",
-    "response":
-        {
-            "statusCode" : "<status of DA creation - success/failed>",
-            "message": "e.g. reason of failed DA creation"
-        }
-}
-```
-
-### Trust Anchor Protocol
-
-Trust Anchor (TA) protocol is used to create a trust anchor for an entity and link it with the HIDA and save the relationship to the DLT and off-ledger storage.
-
-#### Implemented by Agents:
-Following agents implements this protocol to enroll the respective entities.
-
-* AGD Agent - to create TA for ARD entities
-* ARD Agent - to create TA for DAS entities
-* DAS Agent - to create TA for Issuers & Service Providers
-* Issuer Agent - to create TA for Users
-
-
-#### Protocol Name & Version: 
-`trust-anchor`, `1.0`
-
-#### Motivation:
-..Describe motivation...
-
-#### Roles:
+### Roles
 * Requesting Agent (ARD, DAS, Issuer) - Requests to create a TA
 * Responding Agent (AGD, ARD, DAS) - Receives TA requests from agents & creates a TA
 
-#### States (if any):
+### States (if any)
 ```None```
 
-#### Protocol Commands:
-```
-/trust-anchor/1.0/create-ta
-/trust-anchor/1.0/search-ta
-/trust-anchor/1.0/remove-ta
-```
+### Sub/Co-protocols
+This protocol uses following existing protocols -
+* ```/directory/1.0/enroll-entity``` - as a subprotocol to enroll an entity as User
+* ```/connection/1.0/request``` - as a subprotocol to establish a DID-based connection
 
-### Create Trust Anchor
+### Protocol Commands
 
-#### DIDComm Messages:
-```
-create-ta
-create-ta-response
-search-ta
-search-ta-response
-remove-ta
-remove-ta-response
-```
-
-##### Request format of the `create-ta` message:
+#### compute-hida
+<strong>Request</strong>
 
 ```json
 {
-    "@type": "https://adiassociation.org/trust-anchor/1.0/create-ta",
-    "@id": "<uuid-create-ta>",
-    "goal-code": "adia.hida.entity",
-    "body":
-        {
-            "businessName" : "Identity attributes of an entity in hashed format",
-        }
-}
-```
-
-##### for user:
-
-```json
-{
-    "@type": "https://adiassociation.org/trust-anchor/1.0/create-ta",
-    "@id": "<uuid-create-ta>",
+    "@type": "https://adiassociation.org/digital-address/1.0/compute-hida",
+    "@id": "<uuid-compute-hida-0123456789>",
     "goal-code": "adia.hida.user",
     "body":
         {
+            "firstName" : "UTF8 encoded firstname of the User according to the ID document (all uppercase)",
+            "lastName" : "UTF8 encoded last name of the User according to the ID document (all uppercase)",
+            "birthDate" : "Date of birth of the User according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]",
+            "countryOfResidence" : "Country of residence of the User according to the ID document. Encoding MUST be ALPHA-2 country code as specified by [[!ISO3166]]",
+            "sourceType" : "Type of the ID document. This is specified by ADIA Governance for each country",
+            "identifier": "Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc.",
         }
 }
 ```
 
-##### Response format of the `create-ta-response` message
+<strong>Response</strong>
 
 ```json
 {
-    "@type": "https://adiassociation.org/trust-anchor/1.0/create-ta-response",
-    "@id": "<uuid-create-ta-response>",
-    "response":
-        {
-            "statusCode" : "<status code - success/failed>",
-            "message": "e.g. reason of failed TA creation"
-        }
+    "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
+    "@id": "<uuid-compute-hida-response>",
+    "status": "OK",
+    "goal-code": "adia.hida.user",
+    "~thread": {
+       "thid": "uuid-compute-hida-0123456789",
+        "hida": "computed-hida-string",
+        "statusCode" : "status of HIDA compute - success/failed",
+        "message": "e.g. reason of failed HIDA compute"
+    }
 }
 ```
+
+#### lookup-trust-anchor
+
+#### provision-agent
+
+#### create-did
+
+#### create-digital-address
