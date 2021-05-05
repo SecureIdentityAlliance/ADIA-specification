@@ -1,24 +1,19 @@
 <!-- -*- mode: Text; eval: (auto-fill-mode 1); -*- -->
 <pre class='metadata'>
-Title: Accountable Digital Identity Association (ADIA) Specification
-Shortname: adia-specification
+Title: Accountable Digital Identity Association(ADIA) API
+Shortname: adia-protocol
 Prepare for TR: true
 Level: 1
 Status: ED
 Group: fido
 URL:
-Editor: Ramesh Kesanupalli, ramesh@digitaltrust.net
-Editor: Abbie Barbir, BarbirA@cvshealth.com
-Editor: Rolf Lindemann, rolf@noknok.com
-Editor: Suresh Batchu, suresh@digitaltrust.net
 Editor: Kiran Addepalli, kiran@digitaltrust.net
+Editor: Suresh Batchu, suresh@digitaltrust.net
 Editor: Ken Ebert, ken@indicio.tech
 Editor: Sam Curren, sam@indicio.tech
-Editor: Taejin Kim, tjkim1212@raoncorp.com
-Editor: Sunghoon Choi, shchoi@raoncorp.com
+Editor: Ajay Jadhav, ajay@ayanworks.com
 
-
-Abstract: The Accountable Digital Identity Association (ADIA) Specification establishes the foundational technology components to establish a Trustable Identity Framework by providing a unique <a>Digital Address</a> for Human Identities to empower them to distribute Identity information and reinforce Trust and Accountability in the Digital World.
+Abstract: ADIA protocols
 
 Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
@@ -40,30 +35,30 @@ spec:webidl; type:interface; text:Promise
 <!-- only put content here if you want a custom status of document not
   the specification-maturity-appropriate boilerplate -->
 
+# ADIA Protocols # {#sctn-adia-protocol-detail}
+
 <pre class=include>
-path: sections/overview/main.include
+path: sections/protocol/digital-address-protocol.include
 </pre>
 
 <pre class=include>
-path: sections/operations/main.include
+path: sections/protocol/directory-protocol.include
 </pre>
 
 <pre class=include>
-path: sections/schema/main.include
+path: sections/protocol/credential-schema-protocol.include
 </pre>
 
 <pre class=include>
-path: sections/protocol/main.include
+path: sections/protocol/credential-protocol.include
 </pre>
 
 <pre class=include>
-path: sections/considerations/main.include
+path: sections/protocol/verification-protocol.include
 </pre>
 
-<pre class=include>
-path: sections/certification/main.include
-</pre>
+# Protocol Messages ## {#sctn-communication-protocol-messages}
 
 <pre class=include>
-path: sections/appendix/main.include
+path: sections/protocol/messages.include
 </pre>

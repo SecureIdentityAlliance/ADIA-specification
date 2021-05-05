@@ -1,0 +1,82 @@
+## Agent Types ## {#sctn-agent-types}
+
+The agents for Issuers and Service Providers implement protocols for establishing connection and perform exchanging DIDs, Credentials and Proofs requests.
+
+There are six types of ADIA agents:
+1. ADIA Global Directory Agent (AGD Agent)
+2. ADIA Regional Directory Agent (ARD Agent)
+3. DAS Agent
+4. Issuer Agent
+5. Service Provider Agent (SP Agent)
+6. Cloud Agent/ User Agent
+
+In accordance with the overall ecosystem, ADIA agents are permitted to interactions with only certain entities. A two-way trust is mandatory to enable interactions between them. This is represented in the table below:
+
+<table class="data">
+  <thead>
+    <th>Agent/Agent</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
+    <th>DAS Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGD Agent</th>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>ARD Agent</th>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>DAS Agent</th>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <th>Issuer Agent</th>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <th>SP Agent</th>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr>
+      <th>Cloud Agent</th>
+      <td></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+    </tr>
+
+  </tbody>
+  </table>

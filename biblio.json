@@ -14,30 +14,40 @@
             ""
         ],
         "date": "5 January 2021",
-        "publisher": "DID Alliance",
+        "publisher": "ADI Association",
         "status": "Editor's Draft",
         "title": "Digital Address Provider (DAP) API",
-        "href": "https://www.didalliance.org/spec/DAP-API.html"
+        "href": "https://www.adiassociation.org/spec/DAP-API.html"
     },
-    "GADI-API": {
+    "ADIA-API": {
         "authors": [
             ""
         ],
         "date": "5 January 2021",
-        "publisher": "DID Alliance",
+        "publisher": "ADI Association",
         "status": "Editor's Draft",
-        "title": "Global Architecture for Digital IDentity (GADI) API",
-        "href": "https://www.didalliance.org/spec/GADI-API.html"
+        "title": "Global Architecture for Digital IDentity (ADIA) API",
+        "href": "https://www.adiassociation.org/spec/ADIA-API.html"
     },
-    "GADI-Overview": {
+    "ADIA-Overview": {
         "authors": [
             ""
         ],
         "date": "5 January 2021",
-        "publisher": "DID Alliance",
+        "publisher": "ADI Association",
         "status": "Editor's Draft",
-        "title": "GADI Overview",
-        "href": "https://www.didalliance.org/spec/GADI-overview.html"
+        "title": "ADIA Overview",
+        "href": "https://www.adiassociation.org/spec/ADIA-overview.html"
+    },
+    "ADIA-Protocol": {
+        "authors": [
+            ""
+        ],
+        "date": "5 January 2021",
+        "publisher": "ADI Association",
+        "status": "Editor's Draft",
+        "title": "ADIA Protocol",
+        "href": "https://www.adiassociation.org/spec/ADIA-protocol.html"
     },
     "FIDOCTAP": {
         "authors": [
@@ -150,7 +160,7 @@
             "R. Perlner",
             "A. Regenscheid",
             "W. Burr",
-            "J. Richer",    
+            "J. Richer",
             "N. Lefkovitz",
             "J. Danker",
             "Y. Choong",
