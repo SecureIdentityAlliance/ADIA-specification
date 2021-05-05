@@ -1,0 +1,90 @@
+## Verifiable Credential ## {#sctn-vc-operations}
+
+### Issue Verifiable Credential ### {#sctn-issue-vc}
+
+<figure id="fig-vc-issuance-option-1">
+  <img src="sequence-diagrams/VC-Issued-to-a-User-by-an-Issuer.svg"/>
+  <figcaption>VC Issued to a User by an Issuer</figcaption>
+</figure>
+
+<a>Issuer</a>s have access to <a>HIDA</a> and hence could ask ADIA via <a>DAS</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
+
+
+
+### Revoke a Verifiable Credential ### {#sctn-revoking-credential}
+
+<a>Issuer</a>s have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
+the Credential Metadata on the DAS. The DAS checks for constraints before allowing the revocation of an issued VC. Some of them are:
+1. <a>Issuer</a>s may revoke VCs only for the credentials issued by them.
+2. The Digital Address is valid and not in an invalid state.
+3. The Credential is valid and in a non-expired state.
+
+<figure id="fig-revoke-vc">
+   <img src="sequence-diagrams/Revoke-VC.svg"/>
+   <figcaption>Revoke a VC</figcaption>
+</figure>
+
+The User is notified of the revocation status but there is no expectation of an action from the User. Revoked VCs are no longer valid and hence not considered
+in any subsequent proof presentations.
+
+### Expire Verifiable Credential ### {#sctn-expire-vc}
+
+Most Verifiable Credentials are temporal in nature with an expiration date set on them. Expired credentials are not valid for any proof presentations.
+
+<figure id="fig-expire-vc">
+   <img src="sequence-diagrams/Expire-VC.svg"/>
+   <figcaption>Expire a VC</figcaption>
+</figure>
+
+
+
+
+## Present Proof/Verifiable Presentation ## {#sctn-vc-presentation-and-verification-1}
+
+Goal of this operation is to provide some identity attributes related to the user with the Service Provider (<a>SP</a>).
+  These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
+  We always use <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
+
+Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAS</a>).  And in the next step how to verify whether <a>DAS_ID_PK</a> is trustworthy or not.
+
+
+We distinguish 2 different types of <a>verifiable credential</a>s:
+1. Credentials that include sufficient personal identifiable
+    information to uniquely identify the user (identifying verifiable credentials) and
+2. Credentials that don't (<a>Anonymous Verifiable Credential</a>s). For example just stating that the user is older than 21.
+
+
+In both cases, a public key is typically linked to the <a>verifiable credential</a> via the subject's DID document (see example 2 in [[did-core]]).
+  It is used as a proxy for the user, meaning anyone that can proof access of the related private key is assumed to be the user.
+  Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
+  single-time use key, that is included in order to allow the
+  <a>SP</a> to recognize the subject the attributes relate to.
+
+
+### Present Identifying Credentials ### {#sctn-iden-creds}
+
+<figure id="fig-vc-presentation-and-verification-option-1">
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
+    <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
+</figure>
+
+
+### Present Anonymous Credentials ### {#sctn-anon-creds}
+
+<a>Anonymous Verifiable Credential</a>s don't intrinsically expose a link from the credential to a specific user.
+A key dedicated for this operation is created on-demand by the user's <a>Cloud Agent</a>.
+Presentations of the <a>Anonymous Verifiable Credential</a> to different <a>SP</a>s will trigger the use of different keys
+to avoid the exposure of a correlation handle.
+
+<figure id="fig-vc-presentation-and-verification-option-2">
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-2.svg"/>
+    <figcaption>Verifiable Presentation and Verification (Option 2: Anonymous)</figcaption>
+</figure>
+
+
+
+## User Consent ## {#sctn-user-consents}
+
+User consent for actions needs to be provided.  The consent is
+collected via the <a>Digital Address Application</a>.  Authentication
+is performed using FIDO.

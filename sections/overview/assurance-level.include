@@ -1,0 +1,29 @@
+## Assurance Level ## {#sctn-assurance-level}
+
+ADIA provides a Governance Framework to ensure that Trusted entities are deemed <a>Issuer</a>s in the overall ecosystem. This combines
+a set of policies and procedures to verify that Issuers are verified by a Registration Authority and entity issuing Verifiable Credentials
+is an organization with Good standing Rating, Financial Standing, Risk of Failure, Insurance and maturity of the processes in collecting, verifying, storage and access to Credentials
+for all its constituents is in accordance with the ADIA ecosystem standards and local jurisdiction.
+
+### Applicability ### {#sctn-assurance-level-applicability}
+There are types of Assurance Levels that may be addressed in the future version of the specification:
+- Issuer Assurance Level (I-AL) - The overall level of trust in an Issuer at the time on enrollment or recertification.
+- Verifiable Credential Assurance Level (VC-AL) - The strength and rigor of the processes in credential creation, issuance and storage
+- User Assurance Level (U-AL) - The maturity of the enrolment, activation and identity information verification processed of the user acquiring the Digital Address
+
+### User Assurance Level ### {#sctn-assurance-level-user}
+This specification deems the need for such levels but defers the definition of these levels to a future release. The current version of the
+specification aligns with the NIST 800-63A Digital Identity Guidelines to determine the Assurance of the User acquiring the Digital Address.
+There primarily apply to the identity proofing performed by the Issuers or the Users themselves at the time of issuing
+and/or importing the Digital Address.These levels are:
+
+- U-AL1 - Attributes, if any, are self-asserted or should be treated as self-asserted.
+- U-AL2 - Either remote or in-person identity proofing is required. IAL2 requires identifying attributes to have been verified in person or remotely using, at a minimum, the procedures given in [[!SP800-63A]]
+- U-AL3 - In-person identity proofing is required. Identifying attributes must be verified by an authorized CSP representative through examination of physical documentation as described in [[!SP800-63A]]
+
+### Usage ### {#sctn-assurance-level-usage}
+Service Providers may create complex criteria for requesting proofs from users, including the Assurance Level of any entity or the type of the <a>VC</a> to ensure
+the identity of the <a>User</a> before rendering any services.
+
+### Transitions ### {#sctn-assurance-level-transition}
+<a>User</a>s may acquire a <a>Digital Address</a> with a lower level of assurance, e.g. start with lowest level identity assertion to join the ecosystem, but transition to a higher level of U-AL by either remotely proving their identity or approaching an <a>Issuer</a> in the ADIA ecosystem and presenting valid identity credentials.
