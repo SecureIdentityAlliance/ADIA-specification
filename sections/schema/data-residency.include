@@ -1,5 +1,18 @@
 ## Data Residency ## {#sctn-data-schema-dataresidency}
 
+In ADIA ecosystem, User and Entity information resides at the source, i.e. at the Issuer systems. This is aligned with the core
+principle that the DAS and other relevant entities route information flows but the User and Issuers maintain control
+and access to information. This is represented by the diagram below:
+
+
+<figure id="fig-data-schema-dataresidency">
+    <img src="images/data-residency.svg"/>
+    <figcaption>Metadata Residency</figcaption>
+</figure>
+
+The table below represents the data elements that reside in a data store within ADIA systems.
+
+
 <table class="data longlastcol">
   <thead>
     <th>Issuer Agent</th>
@@ -101,9 +114,3 @@
     </tr>
   </tbody>
 </table
-
-
-<figure id="fig-data-schema-dataresidency">
-    <img src="images/data-residency.png"/>
-    <figcaption>Metadata Residency</figcaption>
-</figure>
