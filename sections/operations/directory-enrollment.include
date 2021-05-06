@@ -26,7 +26,7 @@ as an Issuer results in a Digital Address, a DID and a Credential to enroll into
 additional policies to ensure that the Issuer can issue Digital Addresses to Users or issue <a>Verifiable Credentials</a> with a certain <a>Assurance Level</a>.
 Please see [[#sctn-assurance-level]] for more detail.
 
-In certain deployment models, an Interchange provider may provide the Issuer with an <a>Issuer Agent</a> and a <a>VC Storage</a>
+In certain deployment models, an Interchange provider may provide the Issuer with an <a>Issuer Agent</a> and a <a>VC Store</a>
 that comply to the ADIA Specification. Other deployments may provide agency services to provision the Issuer Agents in a hosted model.
 
 Regardless the variances in the deployment model, the Issuer Agent is responsible to create and manage their private key and DID (represented by the <a>DAS_ENTITY_ID</a>)

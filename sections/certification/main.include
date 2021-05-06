@@ -66,7 +66,7 @@ An <a>Issuer</a> must:
 * Certify the KYC process for the entity and determine Assurance Levels for issued credential using an approved method or process.
 * Onboard users to issuer systems using a <a>Digital Address</a> with the holder’s consent.
 * Issue/reissue or revoke one or more Verifiable Credentials to the holder of a <a>Digital Address</a>
-* Persist Verifiable credential in a secure storage (VC Storage)
+* Persist Verifiable credential in a secure storage (<a>VC Store</a>)
 * Publish credential metadata to the <a>Digital Address</a> Provider and user of the <a>Digital Address</a>.
 * Verify proof requests from Service Providers or other entities for credentials of the holder with a <a>Digital Address</a>.
 
