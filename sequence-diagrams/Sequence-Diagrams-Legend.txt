@@ -19,7 +19,7 @@ note right of Bob
 Synchronous request/response
 end note
 
-Bob<-->Alice: Double filled arrow
+Bob<<-->>Alice: Double filled arrow
 note right of Bob
 Asynchronous request/response
 end note

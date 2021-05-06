@@ -4,11 +4,6 @@ Issue: Describe what is verified by whom, what kind of objects
    ("credentials") are being created and what kind of identifiers they
    bind together (e.g., public keys and digital addresses, ...).
 
-Issue: Distinguish Base/Peer-DIDDoc-USER and Pair-wise-Use
-    DIDDoc-USER.  All DIDDoc-USER are stored off-ledger.  We use ZKP
-    algs all over.
-
-
 <figure id="fig-adia-trust-model">
     <img src="images/adia-trust-model.svg"/>
     <figcaption>ADIA Trust Model</figcaption>
