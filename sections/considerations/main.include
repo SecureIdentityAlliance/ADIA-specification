@@ -9,12 +9,12 @@ All communications are authenticated and encrypted - either using TLS or [[didco
 
 Users are strongly authenticated by their <a>DAA</a> to their <a>Cloud Agent</a> using FIDO authentication.
 
-Ability to trace Identity theft and recovery
-
-HSM based key generation - recommendation
-
 Acceptable Cryptographic suites are defined for: computing the <a>HIDA</a>, DIDComm messages, signing <a>VC</a>s and FIDO authentication.
 
+
+Issue: To be addressed: Ability to trace Identity theft and recovery
+
+Issue: To be addressed: HSM based key generation - recommendation
 
 Issue: TODOs here: how to enforce that even recovery cannot be used to
     provide access to existing credentials via ID proofing of a lower
