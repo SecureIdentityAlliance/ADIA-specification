@@ -1,6 +1,6 @@
 ## Ecosystem Overview ## {#sctn-ecosystem-overview}
 
-Accountable Digital Identity Architecture (ADIA) is a decentralized network of networks integrating Regional Directories, Interchanges, Issuers, Service Providers and Users with unique Trust Anchors. All entities within the architecture are represented by DIDs.
+Accountable Digital Identity Architecture (<dfn>ADIA</dfn>) is a decentralized network of networks integrating Regional Directories, Interchanges, Issuers, Service Providers and Users with unique Trust Anchors. All entities within the architecture are represented by DIDs.
 Each DID is resolvable to a DID Document which contains cryptographic keys and service endpoints as specified in the DID Core Specification.
 
 Three main concerns addressed by the ecosystem are to:
@@ -66,10 +66,10 @@ The process of binding the <a>Digital Address</a> with the Trust Anchor notifyin
 
 Please see [[#sctn-hida-computation]] details for users and other Entities.
 
-### Format ### {#sctn-digital-address-format}
+### Format ### {#sctn-digital-address-format-overview}
 
-Digital Address is an user friendly mnemonic that maps to a technical identifier, the DID for the user or Entity. Participants
-may change the Digital Address at a later point in time.
+The <a>Digital Address</a> is a user friendly mnemonic that maps to a technical identifier, the DID for the user or Entity. Participants
+may change their <a>Digital Address</a> at a later point in time.
 
 The format is specified as follows:
 <code>

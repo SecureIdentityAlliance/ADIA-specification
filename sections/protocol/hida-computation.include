@@ -55,7 +55,7 @@ The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
  <li>Compute a JSON object [[!JSON]] containing the following fields:
      <dl>
         <dt>businessName</dt>
-        <dd>UTF8 encoded business name of the <a>Entity</a> according to the ID document (all uppercase).</dd>
+        <dd>UTF8 encoded business name of the Entity according to the ID document (all uppercase).</dd>
 
         <dt>countryOfIncorporation</dt>
         <dd>Country of Incorporation of the <a>User</a> according to the ID document. Encoding MUST be `ALPHA-2` country code as specified by [[!ISO3166]].</dd>
