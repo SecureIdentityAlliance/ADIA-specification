@@ -17,7 +17,7 @@ Issue: Distinguish Base/Peer-DIDDoc-USER and Pair-wise-Use
 Issue: Will have to specify the assurance level to which the claims
     have been verified by the issuer.  Similarly for the other
     entities (e.g., DAS, Issuer, ...). See ASSURANCE_LEVEL in
-    <a>DigitalAddress</a> and in <a href="#sctn-credential-metadata">Credential Metadata</a>.
+    <a>Digital Address</a> and in <a href="#sctn-credential-metadata">Credential Metadata</a>.
 
 
 Issue: How to trust the issuer?  How to trust the SP?  How to trust DASs?

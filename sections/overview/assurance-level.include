@@ -1,15 +1,14 @@
 ## Assurance Level ## {#sctn-assurance-level}
 
-ADIA provides a Governance Framework to ensure that Trusted entities are deemed <a>Issuer</a>s in the overall ecosystem. This combines
+<a>ADIA</a> provides a Governance Framework to ensure that Trusted entities are deemed <a>Issuer</a>s in the overall ecosystem. This combines
 a set of policies and procedures to verify that Issuers are verified by a Registration Authority and entity issuing Verifiable Credentials
-is an organization with Good standing Rating, Financial Standing, Risk of Failure, Insurance and maturity of the processes in collecting, verifying, storage and access to Credentials
-for all its constituents is in accordance with the ADIA ecosystem standards and local jurisdiction.
+is an organization with Good standing Rating, Financial Standing, Risk of Failure, Insurance and maturity of the processes in collecting, verifying, storage and access to Credentials for all its constituents is in accordance with the ADIA ecosystem standards and local jurisdiction.
 
 ### Applicability ### {#sctn-assurance-level-applicability}
-There are types of Assurance Levels that may be addressed in the future version of the specification:
-- Issuer Assurance Level (I-AL) - The overall level of trust in an Issuer at the time on enrollment or recertification.
-- Verifiable Credential Assurance Level (VC-AL) - The strength and rigor of the processes in credential creation, issuance and storage
-- User Assurance Level (U-AL) - The maturity of the enrolment, activation and identity information verification processed of the user acquiring the Digital Address
+There are types of <dfn>Assurance Level</dfn>s that may be addressed in the future version of the specification:
+- <dfn export=true>Issuer Assurance Level</dfn> (I-AL) - The overall level of trust in an Issuer at the time on enrollment or recertification.
+- <dfn export=true>Verifiable Credential Assurance Level</dfn> (VC-AL) - The strength and rigor of the processes in credential creation, issuance and storage
+- <dfn export=true>User Assurance Level</dfn> (U-AL) - The maturity of the enrolment, activation and identity information verification processed of the user acquiring the Digital Address
 
 ### User Assurance Level ### {#sctn-assurance-level-user}
 This specification deems the need for such levels but defers the definition of these levels to a future release. The current version of the
