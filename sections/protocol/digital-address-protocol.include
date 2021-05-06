@@ -39,13 +39,13 @@ This protocol uses following existing protocols -
 
 ### Protocol Commands
 
-#### compute-hida
+#### compute-hida (DA-001)
 <strong>Request</strong>
 
 ```json
 {
     "@type": "https://adiassociation.org/digital-address/1.0/compute-hida",
-    "@id": "<uuid-compute-hida-0123456789>",
+    "@id": "1190d09d-f685-47cf-acda-2dc1603abf71",
     "goal-code": "adia.hida.user",
     "body":
         {
@@ -64,29 +64,32 @@ This protocol uses following existing protocols -
 ```json
 {
     "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
-    "@id": "<uuid-compute-hida-response>",
+    "@id": "44714b18-250c-498d-9f0f-fd6d207f1d8c",
     "status": "{OK | FAILED | PENDING}",
     "goal-code": "adia.hida.user",
     "~thread": {
-        "thid": "uuid-compute-hida-0123456789",
+        "thid": "1190d09d-f685-47cf-acda-2dc1603abf71",
         "message": "e.g. comment or reason of failed requst"
     },
-    "hida": "computed-hida-string",
+    "hida": {
+        "alg": "Name of the hash algorithm used (all uppercase, e.g. SHA256). Allowed hash algorithms are specified in the ADIA Governance and Certification rules.",
+        "hb64": "The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.",
+    },
 }
 ```
 
-#### lookup-trust-anchor
+#### lookup-trust-anchor (DR-001)
 
 <strong>Request</strong>
 
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/lookup-trust-anchor",
-    "@id": "<uuid-lookup-trust-anchor-0123456789>",
+    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
+    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
     "goal-code": "adia.trust-anchor.user",
     "body":
         {
-            "hida": "hash generated of identity attributes",
+            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes.",
             "issuerId": "Issuer's DID"
         }
 }
@@ -96,12 +99,12 @@ This protocol uses following existing protocols -
 
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/lookup-trust-anchor-response",
-    "@id": "<uuid-lookup-trust-anchor-response>",
+    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
+    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
     "status": "{OK | FAILED | PENDING}",
     "goal-code": "adia.trust-anchor.user",
     "~thread": {
-        "thid": "uuid-lookup-trust-anchor-0123456789",
+        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
         "message": "e.g. comment or reason of failed requst"
     },
     "taUserIssuer": "Hash of TA, ISSUER_ID",
@@ -109,7 +112,7 @@ This protocol uses following existing protocols -
 }
 ```
 
-#### provision-agent
+#### provision-agent (DA-002)
 
 This protocol creates a DID for the user in Cloud Agent and kicks-in the `create-digital-address` co-protocol.
 
@@ -118,7 +121,7 @@ This protocol creates a DID for the user in Cloud Agent and kicks-in the `create
 ```json
 {
     "@type": "https://adiassociation.org/digital-address/1.0/provision-agent",
-    "@id": "<uuid-provision-agent-0123456789>",
+    "@id": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
     "goal-code": "adia.agent.user",
     "body":
         {
@@ -133,11 +136,11 @@ This protocol creates a DID for the user in Cloud Agent and kicks-in the `create
 ```json
 {
     "@type": "https://adiassociation.org/digital-address/1.0/provision-agent-response",
-    "@id": "<uuid-provision-agent-response>",
+    "@id": "fab45767-2dd2-4124-b185-24821d5b8f8c",
     "status": "{OK | FAILED | PENDING}",
     "goal-code": "adia.agent.user",
     "~thread": {
-        "thid": "uuid-provision-agent-response-0123456789",
+        "thid": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
         "message": "e.g. comment or reason of failed requst"
     },
     "taUserIssuer": "Hash of TA, ISSUER_ID",
@@ -146,7 +149,7 @@ This protocol creates a DID for the user in Cloud Agent and kicks-in the `create
 }
 ```
 
-#### create-digital-address
+#### create-digital-address (DA-003)
 This protocol creates a unique Digital Address for the user and kicks-in the `enroll-entity` co-protocol.
 
 <strong>Request</strong>
@@ -154,7 +157,7 @@ This protocol creates a unique Digital Address for the user and kicks-in the `en
 ```json
 {
     "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address",
-    "@id": "<uuid-create-digital-address-0123456789>",
+    "@id": "862be87d-2095-4cd3-87e8-23df6ad77f10",
     "goal-code": "adia.digital-address.user",
     "body":
         {
@@ -167,12 +170,12 @@ This protocol creates a unique Digital Address for the user and kicks-in the `en
 
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address",
-    "@id": "<uuid-create-digital-address-response>",
+    "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address-response",
+    "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
     "status": "{OK | FAILED | PENDING}",
     "goal-code": "adia.digital-address.user",
     "~thread": {
-        "thid": "uuid-create-digital-address-0123456789",
+        "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
         "message": "e.g. comment or reason of failed requst"
     },
     "digitalAddress": "digital address created",
@@ -181,7 +184,7 @@ This protocol creates a unique Digital Address for the user and kicks-in the `en
 ```
 
 
-#### enroll-entity
+#### enroll-entity (DR-002)
 
 The `create-digital-address` message automatically kicks-in a co-protocol called `/directory/1.0/enroll-entity`
 
@@ -190,7 +193,7 @@ The `create-digital-address` message automatically kicks-in a co-protocol called
 ```json
 {
     "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
-    "@id": "<uuid-enroll-entity-0123456789>",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
     "goal-code": "adia.enroll.user",
     "body":
         {
@@ -207,11 +210,11 @@ The `create-digital-address` message automatically kicks-in a co-protocol called
 ```json
 {
     "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
-    "@id": "<uuid-enroll-entity-response>",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
     "goal-code": "adia.enroll.user",
     "status": "{OK | FAILED | PENDING}",
     "~thread": {
-        "thid": "uuid-enroll-entity-0123456789",
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
         "message": "e.g. comment or reason of failed requst"
     },
     "requestID": "Enrollment Request identifier ",
