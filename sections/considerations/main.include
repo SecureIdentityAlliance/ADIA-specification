@@ -3,21 +3,48 @@
 
 ## Security Considerations ## {#sctn-security-considerations}
 
+All entities in the <a>ADIA</a> system have been verified at the time of enrollment, see [[#sctn-directory-enrollment]].
+
+All communications are authenticated and encrypted - either using TLS or [[didcomm-messaging]].
+
+Users are strongly authenticated by their <a>DAA</a> to their <a>Cloud Agent</a> using FIDO authentication.
+
+Acceptable Cryptographic suites are defined for: computing the <a>HIDA</a>, DIDComm messages, signing <a>VC</a>s and FIDO authentication.
+
+
+Issue: To be addressed: Ability to trace Identity theft and recovery
+
+Issue: To be addressed: HSM based key generation - recommendation
+
 Issue: TODOs here: how to enforce that even recovery cannot be used to
     provide access to existing credentials via ID proofing of a lower
     assurance level.
 
-### Storage of Trust Anchor and Digital Address### {#sctn-storage-ta-da}
-
-Issue: Details for Trust Anchor and Digital Address Storage
-
-
-### Cryptographic Suites ### {#sctn-cryptographic-suite}
-
-Issue: Details for Cryptographic Suites
 
 ## Privacy Considerations ## {#sctn-privacy-considerations}
 
-Issue: Items to cover: User consent for sharing data, Which entities
-    can observe what users are doing, Anonymous claims, how do we
-    handle the right to be forgotten,
+The <a>ADIA</a> system uses Hashed attributes to reduce the exposure of personal information to other entities
+   than the <a>Issuer</a> of the respective <a>VC</a>s.  The <a>Digital Address</a> is only stored in <a>DAS</a>.
+
+Before sharing data with a third party, user consent is required via the User's <a>DAA</a>.
+
+The <a>ADIA</a> system supports the "Right to be forgotten" that is part of several privacy regulations, e.g. GDPR.  This means Users can triggr the deletion of their data (see [[#sctn-user-account-deletion]]).
+
+Peer DIDs are begin used to avoid the exposure of correlation handles across <a>SP</a>s.  Additionally, the <a>Issuer</a>s don't learn
+   the <a>SP</a> to which a <a>VC</a> is being presented.
+
+Zero-Knowledge Proofs are used to support selective disclose of attributes in <a>VC</a>s and to allow a way
+    to effectively share anonymous attributes (e.g. over 21).
+
+Any data kept for audit and backups is according to legal requirements and for legally permitted time limits.
+
+
+Issue: To be addressed: Transaction tracking - who gets to see what
+
+Issue: To be addressed: Credential metadata
+
+
+
+
+
+
