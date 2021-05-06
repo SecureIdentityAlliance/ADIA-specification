@@ -1,0 +1,25 @@
+title Message types in sequence diagrams
+Alice->Bob: Filled arrow
+note right of Bob
+Synchronous messages
+end note
+
+Alice->>Bob: Open arrow
+note right of Bob
+Asynchronous messages
+end note
+
+Bob-->Alice: Dotted line
+note right of Bob
+Reply messages
+end note
+
+Alice<->Bob: Filled arrow both directions
+note right of Bob
+Synchronous request/response
+end note
+
+Bob<-->Alice: Double filled arrow
+note right of Bob
+Asynchronous request/response
+end note
