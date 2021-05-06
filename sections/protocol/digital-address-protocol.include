@@ -78,39 +78,6 @@ This protocol uses following existing protocols -
 }
 ```
 
-#### lookup-trust-anchor (DR-001)
-
-<strong>Request</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
-    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-    "goal-code": "adia.trust-anchor.user",
-    "body":
-        {
-            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes.",
-            "issuerId": "Issuer's DID"
-        }
-}
-```
-
-<strong>Response</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
-    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.trust-anchor.user",
-    "~thread": {
-        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-        "message": "e.g. comment or reason of failed requst"
-    },
-    "taUserIssuer": "Hash of TA, ISSUER_ID",
-    "homeDAS": "DAS_ID",
-}
-```
 
 #### provision-agent (DA-002)
 
@@ -182,44 +149,4 @@ This protocol creates a unique Digital Address for the user and kicks-in the `en
     "dasUserId": "User's DID",
 }
 ```
-
-
-#### enroll-entity (DR-002)
-
-The `create-digital-address` message automatically kicks-in a co-protocol called `/directory/1.0/enroll-entity`
-
-<strong>Request for `enroll-entity` co-protocol</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "goal-code": "adia.enroll.user",
-    "body":
-        {
-            "taUserIssuer": "Hash of TA, ISSUER_ID",
-            "dasUserId": "DID of the User",
-            "dasId": "Identifier of DAS",
-            "hida": "hash generated of identity attributes of user",
-        }
-}
-```
-
-<strong>Response for `enroll-entity` co-protocol</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "goal-code": "adia.enroll.user",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed requst"
-    },
-    "requestID": "Enrollment Request identifier ",
-}
-```
-
-The `enroll-entity` co-protocol ends here.
 

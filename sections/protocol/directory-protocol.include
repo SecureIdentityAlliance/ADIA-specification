@@ -36,48 +36,11 @@ Directory protocol used to interact with global & regional directories of ADIA.
 
 ### Sub/Co-protocols
 This protocol uses following existing protocols -
-* ```/directory/1.0/enroll-entity``` - as a subprotocol to enroll an entity as User
 * ```/connection/1.0/request``` - as a subprotocol to establish a DID-based connection
 
 ### Protocol Commands
 
-#### compute-hida (DA-001)
-<strong>Request</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/digital-address/1.0/compute-hida",
-    "@id": "b08d7498-f591-46c2-a86e-796b61e2f17b",
-    "goal-code": "adia.hida.ard",
-    "body":
-        {
-            "businessName" : "UTF8 encoded business name of the Entity according to the ID document (all uppercase).",
-            "countryOfIncorporation" : "Country of Incorporation of the User according to the ID document. Encoding MUST be ALPHA-2 country code as specified by [[!ISO3166]].",
-            "sourceType" : "Type of the ID document. This is specified by ADIA Governance for each country",
-            "identifier": "Government Issued Identifier - Federal Tax ID Number/EIN, Taxpayer Identification Number (TIN), VAT Number, etc.",
-        }
-}
-```
-
-<strong>Response</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
-    "@id": "44714b18-250c-498d-9f0f-fd6d207f1d8c",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.hida.ard",
-    "~thread": {
-        "thid": "b08d7498-f591-46c2-a86e-796b61e2f17b",
-        "message": "e.g. comment or reason of failed requst"
-    },
-    "hida": {
-        "alg": "Name of the hash algorithm used (all uppercase, e.g. SHA256). Allowed hash algorithms are specified in the ADIA Governance and Certification rules.",
-        "hb64": "The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.",
-    },
-}
-```
-
+<strong>For User</strong>
 #### lookup-trust-anchor (DR-001)
 
 <strong>Request</strong>
@@ -111,78 +74,6 @@ This protocol uses following existing protocols -
     "homeDAS": "DAS_ID",
 }
 ```
-
-#### provision-agent (DA-002)
-
-This protocol creates a DID for the user in Cloud Agent and kicks-in the `create-digital-address` co-protocol.
-
-<strong>Request</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/digital-address/1.0/provision-agent",
-    "@id": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
-    "goal-code": "adia.agent.user",
-    "body":
-        {
-            "hida": "hash generated of identity attributes",
-            "issuerId": "Issuer's DID"
-        }
-}
-```
-
-<strong>Response</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/digital-address/1.0/provision-agent-response",
-    "@id": "fab45767-2dd2-4124-b185-24821d5b8f8c",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.agent.user",
-    "~thread": {
-        "thid": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
-        "message": "e.g. comment or reason of failed requst"
-    },
-    "taUserIssuer": "Hash of TA, ISSUER_ID",
-    "homeDAS": "DAS_ID",
-    "didDocJson": "DIDDoc of the controller of the newly provisioned cloud agent's DID in Json format",
-}
-```
-
-#### create-digital-address (DA-003)
-This protocol creates a unique Digital Address for the user and kicks-in the `enroll-entity` co-protocol.
-
-<strong>Request</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address",
-    "@id": "862be87d-2095-4cd3-87e8-23df6ad77f10",
-    "goal-code": "adia.digital-address.user",
-    "body":
-        {
-            "hida": "hash generated of identity attributes",
-        }
-}
-```
-
-<strong>Response</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address-response",
-    "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.digital-address.user",
-    "~thread": {
-        "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
-        "message": "e.g. comment or reason of failed requst"
-    },
-    "digitalAddress": "digital address created",
-    "dasUserId": "User's DID",
-}
-```
-
 
 #### enroll-entity (DR-002)
 
