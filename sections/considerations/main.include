@@ -3,18 +3,22 @@
 
 ## Security Considerations ## {#sctn-security-considerations}
 
+All entities in the <a>ADIA</a> system have been verified at the time of enrollment, see [[#sctn-directory-enrollment]].
+
+All communications are authenticated and encrypted - either using TLS or [[didcomm-messaging]].
+
+Users are strongly authenticated by their <a>DAA</a> to their <a>Cloud Agent</a> using FIDO authentication.
+
+Ability to trace Identity theft and recovery
+
+HSM based key generation - recommendation
+
+Acceptable Cryptographic suites are defined for: computing the <a>HIDA</a>, DIDComm messages, signing <a>VC</a>s and FIDO authentication.
+
+
 Issue: TODOs here: how to enforce that even recovery cannot be used to
     provide access to existing credentials via ID proofing of a lower
     assurance level.
-
-### Storage of Trust Anchor and Digital Address ### {#sctn-storage-ta-da}
-
-Issue: Details for Trust Anchor and Digital Address Storage
-
-
-### Cryptographic Suites ### {#sctn-cryptographic-suite}
-
-Issue: Details for Cryptographic Suites
 
 
 ## Privacy Considerations ## {#sctn-privacy-considerations}
