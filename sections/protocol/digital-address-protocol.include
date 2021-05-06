@@ -188,7 +188,8 @@ This protocol resolves the DA and DID. One to one mapping at a given point in ti
     "goal-code": "adia.hida.user",
     "body":
         {
-            "digitalAddress": "digital address of the entity",
+            "digitalAddress": "digital address of the entity", // Optional
+            "dasUserId": "DID of the User",                    // Optional 
         }
 }
 ```
@@ -206,5 +207,6 @@ This protocol resolves the DA and DID. One to one mapping at a given point in ti
     },
     "digitalAddress": "digital address created",
     "dasUserId": "User's DID",
+    "homeDASId":"DID of the Home DAS"
 }
 ```
