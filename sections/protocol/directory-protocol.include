@@ -1,6 +1,6 @@
 ## Directory Protocol ## {#sctn-directory-protocol}
 
-Directory protocol used to interact with global & regional directories of ADIA. 
+Directory protocol used to interact with global & regional directories of ADIA.
 
 <table class="data longlastcol">
   <thead>
@@ -28,8 +28,8 @@ Directory protocol used to interact with global & regional directories of ADIA.
 * ARD Agent
 
 ### Roles
-* Requesting Agent (ARD) - 
-* Responding Agent (AGD) - 
+* Requesting Agent (ARD) -
+* Responding Agent (AGD) -
 
 ### States (if any)
 ```None```
@@ -40,11 +40,148 @@ This protocol uses following existing protocols -
 
 ### Protocol Commands
 
-<strong>For User</strong>
+
 #### lookup-trust-anchor (DR-001)
 
-<strong>Request</strong>
+This protocol supports multiple goal codes based on the entity looked up:
+* `adia.trust-anchor.ard` : TA lookups based on the ARD HIDA
+* `adia.trust-anchor.das` : TA lookups based on the DAS HIDA
+* `adia.trust-anchor.issuer` : TA lookups based on the Issuer HIDA
+* `adia.trust-anchor.service-provider` : TA lookups based on the SP HIDA
+* `adia.trust-anchor.user` : TA lookups based on the User HIDA
 
+Agents may implement additional actions based on the goal codes.
+
+<strong>1. ARD TA Lookup</strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
+    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "goal-code": "adia.trust-anchor.ard",
+    "body":
+        {
+            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes."
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
+    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+    "status": "{OK | FAILED | PENDING}",
+    "goal-code": "adia.trust-anchor.ard",
+    "~thread": {
+        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+        "message": "e.g. comment or reason of failed request"
+    },
+    "taDASARD": "Hash of TA, ARD_ID"
+}
+```
+
+<strong>2. DAS TA Lookup</strong>
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
+    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "goal-code": "adia.trust-anchor.das",
+    "body":
+        {
+            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes.",
+            "ardId": "DID of the Regional Directory"
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
+    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+    "status": "{OK | FAILED | PENDING}",
+    "goal-code": "adia.trust-anchor.das",
+    "~thread": {
+        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+        "message": "e.g. comment or reason of failed request"
+    },
+    "taDASARD": "Hash of TA, ARD_ID",
+    "homeARDId": "DID of the Home Regional Directory",
+}
+```
+
+
+<strong>3. Issuer TA Lookup</strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
+    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "goal-code": "adia.trust-anchor.issuer",
+    "body":
+        {
+            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes.",
+            "dasID": "DID of the DAS"
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
+    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+    "status": "{OK | FAILED | PENDING}",
+    "goal-code": "adia.trust-anchor.issuer",
+    "~thread": {
+        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+        "message": "e.g. comment or reason of failed request"
+    },
+    "taIssuerDAS": "Hash of TA, DAS_ID",
+    "homeDASId": "DID of the Home DAS",
+}
+```
+
+<strong>4. Service Provider TA Lookup </strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
+    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "goal-code": "adia.trust-anchor.service-provider",
+    "body":
+        {
+            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes.",
+            "dasID": "DID of the DAS"
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
+    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+    "status": "{OK | FAILED | PENDING}",
+    "goal-code": "adia.trust-anchor.service-provider",
+    "~thread": {
+        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+        "message": "e.g. comment or reason of failed request"
+    },
+    "taServiceProviderDAS": "Hash of TA, DAS_ID",
+    "homeDASId": "DID of the Home DAS",
+}
+```
+
+
+<strong>5. User TA Lookup</strong>
+
+<strong>Request</strong>
 ```json
 {
     "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
@@ -53,13 +190,12 @@ This protocol uses following existing protocols -
     "body":
         {
             "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes.",
-            "issuerId": "Issuer's DID"
+            "issuerId": "DID of the Issuer"
         }
 }
 ```
 
 <strong>Response</strong>
-
 ```json
 {
     "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
@@ -68,19 +204,159 @@ This protocol uses following existing protocols -
     "goal-code": "adia.trust-anchor.user",
     "~thread": {
         "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-        "message": "e.g. comment or reason of failed requst"
+        "message": "e.g. comment or reason of failed request"
     },
     "taUserIssuer": "Hash of TA, ISSUER_ID",
-    "homeDAS": "DAS_ID",
+    "homeDASId": "DID of the Home DAS",
 }
 ```
 
+
 #### enroll-entity (DR-002)
 
-The `create-digital-address` message automatically kicks-in a co-protocol called `/directory/1.0/enroll-entity`
+This protocol supports multiple goal codes based on the entity looked up:
+* `adia.enroll.user` : TA lookups based on the User HIDA
+* `adia.enroll.issuer` : TA lookups based on the Issuer HIDA
+* `adia.enroll.service-provider` : TA lookups based on the SP HIDA
+* `adia.enroll.das` : TA lookups based on the DAS HIDA
+* `adia.enroll.ard` : TA lookups based on the ARD HIDA
 
-<strong>Request for `enroll-entity` co-protocol</strong>
+Agents may implement additional actions based on the goal codes.
 
+<strong>1. Enroll a Regional Directory </strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.enroll.ard",
+    "body":
+        {
+            "ardId": "DID of the Regional Directory",
+            "taARDAGD": "Hash of TA, AGD_ID",
+            "hida": "Hash generated of ID-attributes of DAS",
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.enroll.ard",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+
+
+
+<strong>2. Enroll a DAS </strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.enroll.das",
+    "body":
+        {
+            "dasId": "DID of the DAS",
+            "homeARDId": "Identifier of Home ARD",
+            "taDASARD": "Hash of TA, ARD_ID",
+            "hida": "Hash generated of ID-attributes of DAS",
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.enroll.das",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+
+<strong>3. Enroll an Issuer</strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.enroll.issuer",
+    "body":
+        {
+            "issuerId": "DID of the Issuer",
+            "homeDASId": "Identifier of Home DAS",
+            "taIssuerDAS": "Hash of TA, DAS_ID",
+            "hida": "Hash generated of ID-attributes of Issuer",
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.enroll.issuer",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+<strong>4. Enroll an Service Provider</strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.enroll.service-provider",
+    "body":
+        {
+            "serviceProviderId": "DID of the Service Provider",
+            "homeDASId": "Identifier of Home DAS",
+            "taServiceProviderDAS": "Hash of TA, DAS_ID",
+            "hida": "Hash generated of ID-attributes of Service Provider",
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.enroll.service-provider",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+<strong>5. Enroll a User</strong>
+
+<strong>Request</strong>
 ```json
 {
     "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
@@ -88,15 +364,15 @@ The `create-digital-address` message automatically kicks-in a co-protocol called
     "goal-code": "adia.enroll.user",
     "body":
         {
-            "taUserIssuer": "Hash of TA, ISSUER_ID",
             "dasUserId": "DID of the User",
-            "dasId": "Identifier of DAS",
-            "hida": "hash generated of identity attributes of user",
+            "homeDASId": "Identifier of Home DAS",
+            "taUserIssuer": "Hash of TA, ISSUER_ID",
+            "hida": "Hash generated of ID-attributes of user",
         }
 }
 ```
 
-<strong>Response for `enroll-entity` co-protocol</strong>
+<strong>Response</strong>
 
 ```json
 {
@@ -106,10 +382,340 @@ The `create-digital-address` message automatically kicks-in a co-protocol called
     "status": "{OK | FAILED | PENDING}",
     "~thread": {
         "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed requst"
-    },
-    "requestID": "Enrollment Request identifier ",
+        "message": "e.g. comment or reason of failed request"
+    }
 }
 ```
 
-The `enroll-entity` co-protocol ends here.
+#### disenroll-entity (DR-003)
+
+This protocol supports multiple goal codes based on the entity looked up:
+* `adia.disenroll.user` : TA lookups based on the User HIDA
+* `adia.disenroll.issuer` : TA lookups based on the Issuer HIDA
+* `adia.disenroll.service-provider` : TA lookups based on the SP HIDA
+* `adia.disenroll.das` : TA lookups based on the DAS HIDA
+* `adia.disenroll.ard` : TA lookups based on the ARD HIDA
+
+Agents may implement additional actions based on the goal codes.
+
+<strong>1. Disenroll a Regional Directory </strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.disenroll.ard",
+    "body":
+        {
+            "ardId": "DID of the Regional Directory",
+            "taARDAGD": "Hash of TA, AGD_ID"
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.disenroll.ard",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+
+
+
+<strong>2. Disenroll a DAS </strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.disenroll.das",
+    "body":
+        {
+            "dasId": "DID of the DAS",
+            "homeARDId": "Identifier of Home ARD",
+            "taDASARD": "Hash of TA, ARD_ID"
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.disenroll.das",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+
+<strong>3. Disenroll an Issuer</strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.disenroll.issuer",
+    "body":
+        {
+            "issuerId": "DID of the Issuer",
+            "homeDASId": "Identifier of Home DAS",
+            "taIssuerDAS": "Hash of TA, DAS_ID"
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.disenroll.issuer",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+<strong>4. Disenroll an Service Provider</strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.disenroll.service-provider",
+    "body":
+        {
+            "serviceProviderId": "DID of the Service Provider",
+            "homeDASId": "Identifier of Home DAS",
+            "taServiceProviderDAS": "Hash of TA, DAS_ID"
+        }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.disenroll.service-provider",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+<strong>5. Disenroll a User</strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.disenroll.user",
+    "body":
+        {
+            "dasUserId": "DID of the User",
+            "homeDASId": "Identifier of Home DAS",
+            "taUserIssuer": "Hash of TA, ISSUER_ID"
+        }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.disenroll.user",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+
+#### search-entity (DR-004)
+
+This protocol supports multiple goal codes based on the entity looked up:
+* `adia.disenroll.user` : TA lookups based on the User HIDA
+* `adia.disenroll.issuer` : TA lookups based on the Issuer HIDA
+* `adia.disenroll.service-provider` : TA lookups based on the SP HIDA
+* `adia.disenroll.das` : TA lookups based on the DAS HIDA
+* `adia.disenroll.ard` : TA lookups based on the ARD HIDA
+
+Searching for entities may result in single or multi-match results depending
+on the query criteria. Parameters used for searching result in an "AND" operation.
+
+Single matched results are represented in the body of the response. Multi-matched results
+are returned as an array/list of objects.
+
+
+Agents may implement additional actions based on the goal codes.
+
+<strong>1. Search Regional Directory Message </strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/search-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.search-entity.ard",
+    "body":
+        {
+            "ardId": "DID of the Regional Directory",          // optional
+            "digitalAddress": "Digital Address of the Entity", // optional
+            "name": "Name of the entity",                      // optional
+            "status": "{ACTIVE | INACTIVE }"                     // optional
+        }
+}
+```
+
+<strong>Response (Exact Match)</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/search-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.search-entity.ard",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request",
+    },
+    "ardId": "DID of the Regional Directory",
+    "digitalAddress":"Digital Address of the Entity",
+    "name": "Name of the Organization",
+    "status": "{ACTIVE | INACTIVE }",
+    "createdDate": "ISO 8601 Date format",
+}
+```
+
+<strong>Response (Multi-Match)</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/search-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.search-entity.ard",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request",
+    },
+    "result"=[
+      {
+      "ardId": "DID of the Regional Directory",
+      "digitalAddress":"Digital Address of the Entity",
+      "name": "Name of the Organization",
+      "status": "{ACTIVE | INACTIVE }",
+      "createdDate": "ISO 8601 Date format"
+      },
+      {
+      "ardId": "DID of the Regional Directory",
+      "digitalAddress":"Digital Address of the Entity",
+      "name": "Name of the Organization",
+      "status": "{ACTIVE | INACTIVE }",
+      "createdDate": "ISO 8601 Date format"
+      }
+    ]
+}
+```
+
+<strong>2. Search DAS Message </strong>
+
+<strong>Request</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/search-entity",
+    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "goal-code": "adia.search-entity.das",
+    "body":
+        {
+            "dasId": "DID of the DAS",                         // optional
+            "digitalAddress": "Digital Address of the Entity", // optional
+            "name": "Name of the entity",                      // optional
+            "ardId": "DID of the Regional Directory",          // optional
+            "status": "{ACTIVE | INACTIVE }"                   // optional
+        }
+}
+```
+
+<strong>Response (Exact Match)</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/search-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.search-entity.ard",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request",
+    },
+    "dasId": "DID of the DAS"
+    "digitalAddress":"Digital Address of the Entity",
+    "name": "Name of the Organization",
+    "status": "{ACTIVE | INACTIVE }",
+    "ardId": "DID of the Regional Directory",
+    "ardDigitalAddress": "Digital Address of the Regional Directory",//optional
+    "ardName": "Name of the Regional Directory" // optional
+    "createdDate": "ISO 8601 Date format"
+}
+```
+
+<strong>Response (Multi-Match)</strong>
+```json
+{
+    "@type": "https://adiassociation.org/directory/1.0/search-entity-response",
+    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+    "goal-code": "adia.search-entity.ard",
+    "status": "{OK | FAILED | PENDING}",
+    "~thread": {
+        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+        "message": "e.g. comment or reason of failed request",
+    },
+    "result"=[
+      {
+      "dasId": "DID of the DAS"
+      "digitalAddress":"Digital Address of the Entity",
+      "name": "Name of the Organization",
+      "status": "{ACTIVE | INACTIVE }",
+      "ardId": "DID of the Regional Directory",
+      "ardDigitalAddress": "Digital Address of the Regional Directory",//optional
+      "ardName": "Name of the Regional Directory" // optional
+      "createdDate": "ISO 8601 Date format"
+      },
+      {
+      "dasId": "DID of the DAS"
+      "digitalAddress":"Digital Address of the Entity",
+      "name": "Name of the Organization",
+      "status": "{ACTIVE | INACTIVE }",
+      "ardId": "DID of the Regional Directory",
+      "ardDigitalAddress": "Digital Address of the Regional Directory",//optional
+      "ardName": "Name of the Regional Directory" // optional
+      "createdDate": "ISO 8601 Date format"
+      }
+    ]
+}
+```
