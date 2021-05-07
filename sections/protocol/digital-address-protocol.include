@@ -332,46 +332,67 @@ Note: Use the appropriate `goal-code` and `entityType` as defined in the Enum va
 
 #### resolve-digital-address (ADIA-DA-005)
 
-This protocol resolves the DA and DID. One to one mapping at a given point in time
-
-This protocol supports multiple goal codes based on the entity looked up:
-* `adia.digital-address.user` : HIDA for a User
-* `adia.digital-address.entity` : HIDA for an Entity
-
-Agents may implement additional actions based on the goal codes.
+This protocol resolves the DA to a DID.
 
 <strong>1. Resolve an Entity</strong>
-
 
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address",
-    "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
-    "goal-code": "adia.digital-address.entity",
-    "body":
-        {
-            "digitalAddress": "digital address of the entity", // Optional
-            "entityId": "DID of the entity",                    // Optional
-        }
+  "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address",
+  "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
+  "adia": {
+    "attributes": {
+      "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD| USER }",
+      "digitalAddress": "digital address of the entity"
+    }
+  }
 }
 ```
 
-<strong>Response</strong>
+Note: Response may be different depending upon the `entityType`
+
+<strong>a. Response (User)</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address-response",
-    "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.digital-address.entity",
-    "~thread": {
-        "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
-        "message": "e.g. comment or reason of failed request"
-    },
-    "digitalAddress": "digital address created",
-    "entityId": "DID of the entity",
-    "homeDASId": "DID of the DAS",   // If entity resolves to Issuer or Service provider
-    "homeARDId": "DID of the ARD"    // If entity resolves to a DAS
+  "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address-response",
+  "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "adia": {
+    "response": {
+      "entityId": "DID of the entity",
+      "entityType": "{ USER }",
+      "homeDASId": "{ HomeDAS_ID}",
+      "didDocJson": " { DIDDoc-ARD| DIDDoc-DAS | DIDDoc-ISSUER| DIDDoc-SP| DIDDoc-USER }"
+    }
+  }
+}
+```
+
+<strong>b. Response (Entities)</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address-response",
+  "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
+  "status": "{OK | FAILED | PENDING}",
+  "goal-code": "adia.digital-address.entity",
+  "~thread": {
+    "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "adia": {
+    "response": {
+      "entityId": "DID of the entity",
+      "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+      "homeDASId": "{ HomeDAS_ID}",   // Applicable to Issuers and Service Providers
+      "homeARDId": " {homeARD_ID}",
+      "didDocJson": " { DIDDoc-ARD| DIDDoc-DAS | DIDDoc-ISSUER| DIDDoc-SP }"
+    }
+  }
 }
 ```
 
