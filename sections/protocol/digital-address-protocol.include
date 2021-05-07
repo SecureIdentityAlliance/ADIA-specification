@@ -12,6 +12,10 @@ This protocol is used during the user onboarding process to create a new & uniqu
     <td nowrap><strong>Protocol Name & Version</strong></td>
     <td>`digital-address`, `1.0`</td>
   </tr>
+  <tr>
+    <td nowrap><strong>Protocol Code</strong></td>
+    <td>ADIA-DA</td>
+  </tr>
     <tr>
       <td nowrap><strong>Motivation</strong></td>
       <td>
@@ -39,7 +43,7 @@ This protocol uses following existing protocols -
 
 ### Protocol Commands
 
-#### compute-hida (DA-001)
+#### compute-hida (ADIA-DA-001)
 
 This protocol supports multiple goal codes based on the entity looked up:
 * `adia.trust-anchor.user` : HIDA for a User
@@ -53,7 +57,7 @@ Agents may implement additional actions based on the goal codes.
 ```json
 {
     "@type": "https://adiassociation.org/digital-address/1.0/compute-hida",
-    "@id": "1190d09d-f685-47cf-acda-2dc1603abf71",
+    "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
     "goal-code": "adia.hida.user",
     "body":
         {
@@ -70,12 +74,12 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
+    "@type": "https://adiassociation.org/digital-address/1.0/compute-hiADIA-DA-response",
     "@id": "44714b18-250c-498d-9f0f-fd6d207f1d8c",
     "status": "{OK | FAILED | PENDING}",
     "goal-code": "adia.hida.user",
     "~thread": {
-        "thid": "1190d09d-f685-47cf-acda-2dc1603abf71",
+        "thid": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
         "message": "e.g. comment or reason of failed request"
     },
     "hida": {
@@ -91,7 +95,7 @@ Agents may implement additional actions based on the goal codes.
 ```json
 {
     "@type": "https://adiassociation.org/digital-address/1.0/compute-hida",
-    "@id": "1190d09d-f685-47cf-acda-2dc1603abf71",
+    "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
     "goal-code": "adia.hida.entity",
     "body":
         {
@@ -107,12 +111,12 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
+    "@type": "https://adiassociation.org/digital-address/1.0/compute-hiADIA-DA-response",
     "@id": "44714b18-250c-498d-9f0f-fd6d207f1d8c",
     "status": "{OK | FAILED | PENDING}",
     "goal-code": "adia.hida.user",
     "~thread": {
-        "thid": "1190d09d-f685-47cf-acda-2dc1603abf71",
+        "thid": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
         "message": "e.g. comment or reason of failed request"
     },
     "hida": {
@@ -122,7 +126,7 @@ Agents may implement additional actions based on the goal codes.
 }
 ```
 
-#### provision-agent (DA-002)
+#### provision-agent (ADIA-DA-002)
 
 This protocol creates a DID for the user in Cloud Agent and kicks-in the `create-digital-address` co-protocol.
 
@@ -157,7 +161,7 @@ This protocol creates a DID for the user in Cloud Agent and kicks-in the `create
 }
 ```
 
-#### create-digital-address (DA-003)
+#### create-digital-address (ADIA-DA-003)
 This protocol creates a unique Digital Address for the user and kicks-in the `enroll-entity` co-protocol.
 This protocol supports multiple goal codes based on the entity looked up:
 
@@ -330,7 +334,7 @@ Agents may implement additional actions based on the goal codes.
 
 
 
-#### revoke-digital-address (DA-004)
+#### revoke-digital-address (ADIA-DA-004)
 
 This protocol revokes/removes a Digital Address and kicks-in the `remove-entity` co-protocol.
 
@@ -346,7 +350,7 @@ This protocol revokes/removes a Digital Address and kicks-in the `remove-entity`
 ```json
 {
     "@type": "https://adiassociation.org/digital-address/1.0/revoke-digital-address",
-    "@id": "1190d09d-f685-47cf-acda-2dc1603abf71",
+    "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
     "goal-code": "adia.digital-address.{ard | das| issuer| service-provider | user}",
     "body":
         {
@@ -369,7 +373,7 @@ This protocol revokes/removes a Digital Address and kicks-in the `remove-entity`
 }
 ```
 
-#### resolve-digital-address (DA-005)
+#### resolve-digital-address (ADIA-DA-005)
 
 This protocol resolves the DA and DID. One to one mapping at a given point in time
 
@@ -386,7 +390,7 @@ Agents may implement additional actions based on the goal codes.
 ```json
 {
     "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address",
-    "@id": "1190d09d-f685-47cf-acda-2dc1603abf71",
+    "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
     "goal-code": "adia.digital-address.entity",
     "body":
         {
@@ -420,7 +424,7 @@ Agents may implement additional actions based on the goal codes.
 ```json
 {
     "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address",
-    "@id": "1190d09d-f685-47cf-acda-2dc1603abf71",
+    "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
     "goal-code": "adia.digital-address.user",
     "body":
         {
