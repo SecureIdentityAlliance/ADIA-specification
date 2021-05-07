@@ -87,7 +87,7 @@ Agents may implement additional actions based on the goal codes.
    },
    "adia":{
       "response":{
-         "hida":"The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.",
+         "hida":"{HIDA} The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.",
          "alg":"Name of the hash algorithm used (all uppercase, e.g. SHA256). Allowed hash algorithms are specified in the ADIA Governance and Certification rules."
       }
    }
@@ -153,7 +153,7 @@ Agents may implement additional actions based on the goal codes.
   "goal-code": "adia.agent.{issuer| service-provider| user}",
   "adia": {
     "attributes": {
-      "hida": "hash generated of identity attributes",
+      "hida": " {HIDA} hash generated of identity attributes",
       "entityId": "DID of the agent",
       "entityType": "{ USER | ISSUER | SERVICEPROVIDER | DAS | ARD }"
     }
@@ -174,9 +174,11 @@ Agents may implement additional actions based on the goal codes.
   },
   "adia": {
     "response": {
-      "taUserIssuer": "Hash of TA, ISSUER_ID",
-      "homeDASId": "DID of the Home DAS",
-      "didDocJson": "DIDDoc of the controller of the newly provisioned cloud agent's DID in Json format"
+      "dasUserId": "{ DAS_USER_ID }",   // If goal-code = User
+      "issuerId": " {ISSUER_ID}",       // If goal-code = Issuer
+      "spId": " {SP_ID}",               // If goal-code = Service provider
+      "homeDASId": " {HomeDAS_ID} ",
+      "didDocJson": " { DIDDoc-USER | DIDDoc-ISSUER| DIDDoc-SP }"
     }
   }
 }
