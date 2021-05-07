@@ -12,6 +12,10 @@ Directory protocol used to interact with global & regional directories of ADIA.
     <td nowrap><strong>Protocol Name & Version</strong></td>
     <td>`directory`, `1.0`</td>
   </tr>
+  <tr>
+    <td nowrap><strong>Protocol Code</strong></td>
+    <td>ADIA-DR</td>
+  </tr>
     <tr>
       <td nowrap><strong>Motivation</strong></td>
       <td>
@@ -41,7 +45,7 @@ This protocol uses following existing protocols -
 ### Protocol Commands
 
 
-#### lookup-trust-anchor (DR-001)
+#### lookup-trust-anchor (ADIA-DR-001)
 
 This protocol supports multiple goal codes based on the entity looked up:
 * `adia.trust-anchor.ard` : TA lookups based on the ARD HIDA
@@ -212,7 +216,7 @@ Agents may implement additional actions based on the goal codes.
 ```
 
 
-#### enroll-entity (DR-002)
+#### enroll-entity (ADIA-DR-002)
 
 This protocol supports multiple goal codes based on the entity looked up:
 * `adia.enroll.user` : TA lookups based on the User HIDA
@@ -387,7 +391,7 @@ Agents may implement additional actions based on the goal codes.
 }
 ```
 
-#### disenroll-entity (DR-003)
+#### disenroll-entity (ADIA-DR-003)
 
 This protocol supports multiple goal codes based on the entity looked up:
 * `adia.disenroll.user` : TA lookups based on the User HIDA
@@ -558,7 +562,7 @@ Agents may implement additional actions based on the goal codes.
 ```
 
 
-#### search-entity (DR-004)
+#### search-entity (ADIA-DR-004)
 
 This protocol supports multiple goal codes based on the entity looked up:
 * `adia.disenroll.user` : TA lookups based on the User HIDA
