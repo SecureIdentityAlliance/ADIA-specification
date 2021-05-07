@@ -63,3 +63,7 @@ path: sections/protocol/credential-protocol.include
 <pre class=include>
 path: sections/protocol/verification-protocol.include
 </pre>
+
+<pre class=include>
+path: sections/protocol/messages.include
+</pre>
