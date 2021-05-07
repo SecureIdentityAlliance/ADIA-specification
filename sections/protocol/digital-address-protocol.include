@@ -28,13 +28,15 @@ This protocol is used during the user onboarding process to create a new & uniqu
 
 
 ### Implemented By
-* User/Cloud Agent
-* Issuer Agent
+* ARD Agent
 * DAS Agent
+* Issuer Agent
+* SP Agent
+* Cloud Agent
 
 
 ### States (if any)
-None
+* None
 
 ### Sub/Co-protocols
 This protocol uses following existing protocols -
@@ -60,7 +62,7 @@ Agents may implement additional actions based on the goal codes.
      "@id":"1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
      "goal-code":"adia.hida.user",
      "adia":{
-        "userAttributes":{
+        "attributes":{
            "firstName":"UTF8 encoded firstname of the User according to the ID document (all uppercase)",
            "lastName":"UTF8 encoded last name of the User according to the ID document (all uppercase)",
            "birthDate":"Date of birth of the User according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]",
@@ -84,9 +86,9 @@ Agents may implement additional actions based on the goal codes.
       "message":"e.g. comment or reason of failed request"
    },
    "adia":{
-      "hida":{
-         "alg":"Name of the hash algorithm used (all uppercase, e.g. SHA256). Allowed hash algorithms are specified in the ADIA Governance and Certification rules.",
-         "hb64":"The Base64 encoded [[!RFC4648]] hash value resulting from the previous step."
+      "response":{
+         "hida":"The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.",
+         "alg":"Name of the hash algorithm used (all uppercase, e.g. SHA256). Allowed hash algorithms are specified in the ADIA Governance and Certification rules."
       }
    }
 }
@@ -99,9 +101,9 @@ Agents may implement additional actions based on the goal codes.
 {
   "@type": "https://adiassociation.org/digital-address/1.0/compute-hida",
   "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
-  "goal-code": "adia.hida.entity",
+  "goal-code": "adia.hida.{ard | das| issuer| service-provider}",
   "adia": {
-    "entityAttributes": {
+    "attributes": {
       "businessName": "UTF8 encoded business name of the Organization according to the ID document (all uppercase)",
       "countryOfIncorporation": "Country of residence of the User according to the ID document. Encoding MUST be ALPHA-2 country code as specified by [[!ISO3166]]",
       "dateOfIncorporation": "Date of dateOfIncorporation of the Organization according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]",
@@ -115,7 +117,7 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/digital-address/1.0/compute-hiADIA-DA-response",
+  "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
   "@id": "44714b18-250c-498d-9f0f-fd6d207f1d8c",
   "status": "{OK | FAILED | PENDING}",
   "goal-code": "adia.hida.user",
@@ -124,9 +126,9 @@ Agents may implement additional actions based on the goal codes.
     "message": "e.g. comment or reason of failed request"
   },
   "adia": {
-    "hida": {
-      "alg": "Name of the hash algorithm used (all uppercase, e.g. SHA256). Allowed hash algorithms are specified in the ADIA Governance and Certification rules.",
-      "hb64": "The Base64 encoded [[!RFC4648]] hash value resulting from the previous step."
+    "response": {
+    "hida":"The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.",
+    "alg":"Name of the hash algorithm used (all uppercase, e.g. SHA256). Allowed hash algorithms are specified in the ADIA Governance and Certification rules."
     }
   }
 }
@@ -136,34 +138,47 @@ Agents may implement additional actions based on the goal codes.
 
 This protocol creates a DID for the user in Cloud Agent and kicks-in the `create-digital-address` co-protocol.
 
+This protocol supports multiple goal codes based on the entity looked up:
+* `adia.trust-anchor.user` : Provisioning User agents
+* `adia.trust-anchor.entity` : Provision agents for Entities (if available)
+
+Agents may implement additional actions based on the goal codes.
+
+
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/provision-agent",
-    "@id": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
-    "goal-code": "adia.agent.user",
-    "attributes":
-        {
-            "hida": "hash generated of identity attributes",
-            "issuerId": "Issuer's DID"
-        }
+  "@type": "https://adiassociation.org/digital-address/1.0/provision-agent",
+  "@id": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
+  "goal-code": "adia.agent.{issuer| service-provider| user}",
+  "adia": {
+    "attributes": {
+      "hida": "hash generated of identity attributes",
+      "entityId": "DID of the agent",
+      "entityType": "{ USER | ISSUER | SERVICEPROVIDER | DAS | ARD }"
+    }
+  }
 }
 ```
 
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/provision-agent-response",
-    "@id": "fab45767-2dd2-4124-b185-24821d5b8f8c",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.agent.user",
-    "~thread": {
-        "thid": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
-        "message": "e.g. comment or reason of failed request"
-    },
-    "taUserIssuer": "Hash of TA, ISSUER_ID",
-    "homeDASId": "DID of the Home DAS",
-    "didDocJson": "DIDDoc of the controller of the newly provisioned cloud agent's DID in Json format",
+  "@type": "https://adiassociation.org/digital-address/1.0/provision-agent-response",
+  "@id": "fab45767-2dd2-4124-b185-24821d5b8f8c",
+  "status": "{OK | FAILED | PENDING}",
+  "goal-code": "adia.agent.{ard | das| issuer| service-provider| user}",
+  "~thread": {
+    "thid": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "adia": {
+    "response": {
+      "taUserIssuer": "Hash of TA, ISSUER_ID",
+      "homeDASId": "DID of the Home DAS",
+      "didDocJson": "DIDDoc of the controller of the newly provisioned cloud agent's DID in Json format"
+    }
+  }
 }
 ```
 

@@ -41,7 +41,7 @@ The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
    <dl>
      <dt>alg</dt>
      <dd>Name of the hash algorithm used (all uppercase, e.g. `SHA256`). Allowed hash algorithms are specified in the ADIA Governance and Certification rules.
-     <dt>hb64</dt>
+     <dt>hida</dt>
      <dd>The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.</dd>
    </dl>
  </li>
@@ -76,7 +76,7 @@ The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
    <dl>
      <dt>alg</dt>
      <dd>Name of the hash algorithm used (all uppercase, e.g. `SHA256`). Allowed hash algorithms are specified in the ADIA Governance and Certification rules.
-     <dt>hb64</dt>
+     <dt>hida</dt>
      <dd>The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.</dd>
    </dl>
  </li>
