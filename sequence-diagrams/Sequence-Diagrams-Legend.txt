@@ -1,4 +1,4 @@
-title Message types in sequence diagrams
+title Sequence diagrams legend
 Alice->Bob: Filled arrow
 note right of Bob
 Synchronous messages
@@ -17,4 +17,9 @@ end note
 Alice<->Bob: Filled arrow both directions
 note right of Bob
 Synchronous request/response
+end note
+
+Alice->>Bob: ADIA-XX-XXX:
+note right of Bob
+Any arrow with Protocol Reference Id
 end note

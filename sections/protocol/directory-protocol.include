@@ -30,10 +30,12 @@ Directory protocol used to interact with global & regional directories of ADIA.
 ### Implemented By
 * AGD Agent
 * ARD Agent
+* DAS Agent
+* Issuer Agent
 
 ### Roles
-* Requesting Agent (ARD) -
-* Responding Agent (AGD) -
+
+Issue: Define the roles that are required
 
 ### States (if any)
 ```None```
@@ -48,172 +50,179 @@ This protocol uses following existing protocols -
 #### lookup-trust-anchor (ADIA-DR-001)
 
 This protocol supports multiple goal codes based on the entity looked up:
-* `adia.trust-anchor.ard` : TA lookups based on the ARD HIDA
-* `adia.trust-anchor.das` : TA lookups based on the DAS HIDA
-* `adia.trust-anchor.issuer` : TA lookups based on the Issuer HIDA
-* `adia.trust-anchor.service-provider` : TA lookups based on the SP HIDA
-* `adia.trust-anchor.user` : TA lookups based on the User HIDA
+* `adia.trust-anchor.user` : To compute HIDA for a User
+* `adia.trust-anchor.entity` : To compute HIDA for an Entity
 
 Agents may implement additional actions based on the goal codes.
 
-<strong>1. ARD TA Lookup</strong>
+<strong>1. User TA Lookup</strong>
 
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
+    "@type": "https://adiassociation.org/directory/1.0/lookup-user-ta",
     "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-    "goal-code": "adia.trust-anchor.ard",
-    "body":
-        {
-            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes."
+    "adia":
+      "attributes": {
+            "hida": "{HIDA}",
+            "issuerId": "{ISSUER_ID}"
         }
+      }
 }
 ```
 
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
-    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.trust-anchor.ard",
-    "~thread": {
-        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-        "message": "e.g. comment or reason of failed request"
-    },
-    "taDASARD": "Hash of TA, ARD_ID"
+  "@type": "https://adiassociation.org/directory/1.0/lookup-user-ta-response",
+  "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "adia": {
+    "response": {
+      "taUserIssuer": "{TA_USER_ISSUER}",
+      "homeDASId": "{HomeDAS_ID}"
+    }
+  }
 }
 ```
 
-<strong>2. DAS TA Lookup</strong>
+
+<strong>2. ARD TA Lookup</strong>
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
-    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-    "goal-code": "adia.trust-anchor.das",
-    "body":
-        {
-            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes.",
-            "ardId": "DID of the Regional Directory"
-        }
+  "@type": "https://adiassociation.org/directory/1.0/lookup-ard-ta",
+  "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+  "adia": {
+    "attributes": {
+      "hida": "{HIDA}"
+    }
+  }
 }
 ```
 
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
-    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.trust-anchor.das",
-    "~thread": {
-        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-        "message": "e.g. comment or reason of failed request"
-    },
-    "taDASARD": "Hash of TA, ARD_ID",
-    "homeARDId": "DID of the Home Regional Directory",
+  "@type": "https://adiassociation.org/directory/1.0/lookup-ard-ta-response",
+  "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "adia": {
+    "response": {
+      "taARDAGD": "{TA_ARD_AGD}"
+    }
+  }
 }
 ```
 
-
-<strong>3. Issuer TA Lookup</strong>
-
+<strong>3. DAS TA Lookup</strong>
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
-    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-    "goal-code": "adia.trust-anchor.issuer",
-    "body":
-        {
-            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes.",
-            "dasID": "DID of the DAS"
-        }
+  "@type": "https://adiassociation.org/directory/1.0/lookup-das-ta",
+  "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+  "adia": {
+    "attributes": {
+      "hida": "{HIDA}"
+    }
+  }
 }
 ```
 
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
-    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.trust-anchor.issuer",
-    "~thread": {
-        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-        "message": "e.g. comment or reason of failed request"
-    },
-    "taIssuerDAS": "Hash of TA, DAS_ID",
-    "homeDASId": "DID of the Home DAS",
+  "@type": "https://adiassociation.org/directory/1.0/lookup-das-ta-response",
+  "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "adia": {
+    "response": {
+      "taDASARD": "{TA_DAS_ARD}",
+      "homeARDId": "{homeARD_ID}",
+    }
+  }
 }
 ```
 
-<strong>4. Service Provider TA Lookup </strong>
-
+<strong>4. Issuers TA Lookup</strong>
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
-    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-    "goal-code": "adia.trust-anchor.service-provider",
-    "body":
-        {
-            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes.",
-            "dasID": "DID of the DAS"
-        }
+  "@type": "https://adiassociation.org/directory/1.0/lookup-issuer-ta",
+  "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+  "adia": {
+    "attributes": {
+      "hida": "{HIDA}"
+    }
+  }
 }
 ```
 
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
-    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.trust-anchor.service-provider",
-    "~thread": {
-        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-        "message": "e.g. comment or reason of failed request"
-    },
-    "taServiceProviderDAS": "Hash of TA, DAS_ID",
-    "homeDASId": "DID of the Home DAS",
+  "@type": "https://adiassociation.org/directory/1.0/lookup-issuer-ta-response",
+  "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "adia": {
+    "response": {
+      "taIssuerDAS": "{TA_ISSUER_DAS}",
+      "homeDASId": "{HomeDAS_ID}",
+    }
+  }
 }
 ```
 
-
-<strong>5. User TA Lookup</strong>
-
+<strong>5. Service Provider TA Lookup</strong>
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor",
-    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-    "goal-code": "adia.trust-anchor.user",
-    "body":
-        {
-            "hida": "The Base64 encoded [[!RFC4648]] hash value of identity attributes.",
-            "issuerId": "DID of the Issuer"
-        }
+  "@type": "https://adiassociation.org/directory/1.0/lookup-sp-ta",
+  "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+  "adia": {
+    "attributes": {
+      "hida": "{HIDA}"
+    }
+  }
 }
 ```
 
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-trust-anchor-response",
-    "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.trust-anchor.user",
-    "~thread": {
-        "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-        "message": "e.g. comment or reason of failed request"
-    },
-    "taUserIssuer": "Hash of TA, ISSUER_ID",
-    "homeDASId": "DID of the Home DAS",
+  "@type": "https://adiassociation.org/directory/1.0/lookup-sp-ta-response",
+  "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "adia": {
+    "response": {
+      "taServiceProviderDAS": "{TA_SP_DAS}",
+      "homeDASId": "{HomeDAS_ID}",
+    }
+  }
 }
 ```
+
+
 
 
 #### enroll-entity (ADIA-DR-002)

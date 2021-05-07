@@ -10,6 +10,9 @@
        : <dfn>AGD_ID</dfn>
        :: The <a>ADIA</a> Global Directory (AGD) IDentity, i.e. the the W3C DID style identifier for the <a>ADIA Global Directory</a>.
 
+       : <dfn>AGD_DA</dfn>
+       :: Human readable Digital Address of the ADIA Global Directory (e.g., adia@adia).
+
        :  <a>AGD_ID_PK</a>, <a>AGD_ID_SK</a>
        :: Public Key (PK) and Private Key (SK) related to the
            <a>AGD_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
@@ -17,6 +20,9 @@
 
        : <dfn>ARD_ID</dfn>
        :: The <a>ADIA</a> Regional Directory (ARD) IDentity, i.e. the the W3C DID style identifier for the <a>ADIA Regional Directory</a>.
+
+       : <dfn>ARD_DA</dfn>
+       :: Human readable Digital Address of the ADIA Regional Directory (e.g., acme.eu@adia).
 
        :  <a>ARD_ID_PK</a>, <a>ARD_ID_SK</a>
        :: Public Key (PK) and Private Key (SK) related to the
@@ -37,8 +43,8 @@
 
 
        : <dfn>DA</dfn>
-       :: Human readabe <a>Digital Address</a> of the <a>User</a>
-            (e.g., blackbird@issuer.dap.adia.org).
+       :: Human readable <a>Digital Address</a> of the <a>User</a>
+            (e.g., blackbird.us@dtx).
 
 Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
       name - "fun" names are allowed and recommended. However, real
@@ -70,11 +76,26 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
            <a>DAS_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
            more details.
 
-       : <dfn>DID</dfn>
+       : <dfn>DAS_DA</dfn>
+       :: Human readable Digital Address of the Digital Address Service (e.g., dtx@acme.eu).
+
+     : <dfn>DID</dfn>
        :: Decentralized Identifier according to [[!did-core]]
 
        : <dfn>DIDDoc-ISSUER</dfn>
-       :: DID document binding the issuer's public key to the <a>ISSUER_ID</a>.
+       :: DID document binding the Issuer's public key to the <a>ISSUER_ID</a>.
+
+       : <dfn>DIDDoc-SP</dfn>
+       :: DID document binding the Service Provider's public key to the <a>SP_ID</a>.
+
+       : <dfn>DIDDoc-DAS</dfn>
+       :: DID document binding the DAS's public key to the <a>DAS_ID</a>.
+
+       : <dfn>DIDDoc-ARD</dfn>
+       :: DID document binding the ADIA Regional Directory's public key to the <a>ARD_ID</a>.
+
+       : <dfn>DIDDoc-AGD</dfn>
+       :: DID document binding the ADIA Global Directory's public key to the <a>AGD_ID</a>.
 
        : <dfn>DIDDoc-USER</dfn>
        :: DID document binding the user's public key to the <a>DAS_USER_ID</a>.
@@ -86,8 +107,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
        :: DAS_ID of the <a>DAS</a> that user primarliy belongs to (i.e. <dfn>HomeDAS</dfn>).
 
        :  <dfn>ID Attributes</dfn>
-       :: Attributes identifying a user uniquely, i.e. firstname, last name, date of birth, country of birth, city of birth.
-
+       :: Attributes identifying a user uniquely defined by the ADIA Specification
 
 
        :  <dfn>Issuer</dfn>
@@ -97,6 +117,9 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
 
        :  <dfn>ISSUER_ID</dfn>
        :: Issuer IDentity, i.e. the <a>DID</a> style identifier for the <a>Issuer</a>.
+
+       : <dfn>ISSUER_DA</dfn>
+       :: Human readable Digital Address of the Issuer (e.g., dmv.us@dtx).
 
        :  <a>ISSUER_ID_PK</a>, <a>ISSUER_ID_SK</a>
        :: Public Key (PK) and Private Key (SK) related to the
@@ -111,6 +134,9 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
 
        :  <dfn>SP_ID</dfn>
        :: Service Provider IDentity, i.e. the <a>DID</a> style identifier for the <a>SP</a>.
+
+       : <dfn>SP_DA</dfn>
+       :: Human readable Digital Address of the Service Provider (e.g., start.industries.us@dtx).
 
        :  <a>SP_ID_PK</a>, <a>SP_ID_SK</a>
        :: Public Key (PK) and Private Key (SK) related to the
