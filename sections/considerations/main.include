@@ -30,12 +30,9 @@ Before sharing data with a third party, user consent is required via the User's 
 
 The <a>ADIA</a> system supports the "Right to be forgotten" that is part of several privacy regulations, e.g. GDPR.  This means Users can triggr the deletion of their data (see [[#sctn-user-account-deletion]]).
 
-Peer DIDs are begin used to avoid the exposure of correlation handles across <a>SP</a>s.  Additionally, the <a>Issuer</a>s don't learn
-   the <a>SP</a> to which a <a>VC</a> is being presented.
-
 Zero-Knowledge Proofs are used to support selective disclose of attributes in <a>VC</a>s and to allow a way
     to effectively share anonymous attributes (e.g. over 21). ZKPs will be supported in the subsequent versions of the specification
-    and not addressed in the current version.  
+    and not addressed in the current version.
 
 Any data kept for audit and backups is according to legal requirements and for legally permitted time limits.
 
