@@ -152,8 +152,8 @@ Agents may implement additional actions based on the goal codes.
   "goal-code": "adia.agent.{ issuer | service-provider | user }",
   "adia": {
     "attributes": {
-      "hida": " {HIDA} hash generated of identity attributes",
-      "entityId": "DID of the agent",
+      "hida": " {HIDA}",
+      "entityId": "{DAS_USER_ID| ISSUER_ID | SP_ID}",
       "entityType": "{ USER | ISSUER | SERVICEPROVIDER }"
     }
   }
