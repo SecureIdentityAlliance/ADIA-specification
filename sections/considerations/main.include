@@ -3,40 +3,40 @@
 
 ## Security Considerations ## {#sctn-security-considerations}
 
-All entities in the <a>ADIA</a> system have been verified at the time of enrollment, see [[#sctn-directory-enrollment]].
+* All entities in the <a>ADIA</a> system have been verified at the time of enrollment, see [[#sctn-directory-enrollment]].
 
-All communications are authenticated and encrypted - either using TLS or [[didcomm-messaging]].
+* All communications are authenticated and encrypted - either using TLS or [[didcomm-messaging]].
 
-Users are strongly authenticated by their <a>DAA</a> to their <a>Cloud Agent</a> using FIDO authentication.
+* Users are strongly authenticated by their <a>DAA</a> to their <a>Cloud Agent</a> using FIDO authentication.
 
-Acceptable Cryptographic suites are defined for: computing the <a>HIDA</a>, DIDComm messages, signing <a>VC</a>s and FIDO authentication.
+* Acceptable Cryptographic suites are defined for: computing the <a>HIDA</a>, DIDComm messages, signing <a>VC</a>s and FIDO authentication.
+
+* Clear audit trail to trace identity theft and facilitate recovery procedures.
+
+* Support software and hardware based (recommended) key generation and key protection mechanisms.
+
+* In case of recovered Digital Address, VCs cannot be presented unless the Digital Address is restored to the same Assurance Level as before.
 
 
-Issue: To be addressed: Ability to trace Identity theft and recovery
-
-Issue: To be addressed: HSM based key generation - recommendation
-
-Issue: TODOs here: how to enforce that even recovery cannot be used to
-    provide access to existing credentials via ID proofing of a lower
-    assurance level.
 
 
 ## Privacy Considerations ## {#sctn-privacy-considerations}
 
-The <a>ADIA</a> system uses Hashed attributes to reduce the exposure of personal information to other entities
-   than the <a>Issuer</a> of the respective <a>VC</a>s.  The <a>Digital Address</a> is only stored in <a>DAS</a>.
+* The <a>ADIA</a> system uses Hashed attributes to reduce the exposure of personal information to other entities than the <a>Issuer</a> of the respective <a>VC</a>s.  The <a>Digital Address</a> is only stored in <a>DAS</a>.
 
-Before sharing data with a third party, user consent is required via the User's <a>DAA</a>.
+* The <a>ADIA</a> system supports the "Right to be forgotten" that is part of several privacy regulations, e.g. GDPR.  This means Users can trigger the deletion of their data (see [[#sctn-user-account-deletion]]).
 
-The <a>ADIA</a> system supports the "Right to be forgotten" that is part of several privacy regulations, e.g. GDPR.  This means Users can triggr the deletion of their data (see [[#sctn-user-account-deletion]]).
+* The DAS does not have visibility into the details of a VC during issuance or presentation.
 
-Zero-Knowledge Proofs are used to support selective disclose of attributes in <a>VC</a>s and to allow a way
-    to effectively share anonymous attributes (e.g. over 21). ZKPs will be supported in the subsequent versions of the specification
-    and not addressed in the current version.
+* The Credential Metadata is hosted by the DAS but controlled by the User's Cloud Agent.
 
-Any data kept for audit and backups is according to legal requirements and for legally permitted time limits.
+* Before sharing data with a third party, user consent is required via the User's <a>DAA</a>. Please see (see [[#sctn-user-consents]])
+
+* Service Provider's details are hidden from the Issuers to avoid collusion between Issuers.
+
+* Peer-DIDs are used in transactions with different Service Providers to prevent collusion between Service Providers.
+
+* Zero-Knowledge Proofs are used to support selective disclose of attributes in <a>VC</a>s and to allow a way to effectively share anonymous attributes (e.g. over 21). ZKPs will be supported in the subsequent versions of the specification and not addressed in the current version.
 
 
-Issue: To be addressed: Transaction tracking - who gets to see what
-
-Issue: To be addressed: Credential metadata
+* Any data kept for audit and backups is according to legal requirements and for legally permitted time limits.
