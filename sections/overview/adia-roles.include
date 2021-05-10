@@ -20,8 +20,6 @@ between the <a>Digital Address</a>, the DID and Trust Anchor. The entities gover
 
 The <a>ADIA Global Directory</a> may provide Discovery and Routing services between one or more Regional Directories to facilitate identity verifications across one or more geographical regions.
 
-Issue: Link the Governance Policies and procedures
-
 #### Uniqueness properties #### {#sctn-adia-global-uniqueness}
 
 <a>ADIA Global Directory</a> ensure uniqueness of the listed organizational entities. This is done by ensuring a unique set of attributes for each organization.
