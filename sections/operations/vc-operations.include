@@ -44,9 +44,6 @@ Goal of this operation is to provide some identity attributes related to the use
   These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
   We always use <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
 
-Issue: Describe, how the <a>SP</a> can verify whether an <a>ISSUER_ID_PK</a> is trustworthy or not (introduced through the <a>DAS</a>).  And in the next step how to verify whether <a>DAS_ID_PK</a> is trustworthy or not.
-
-
 We distinguish 2 different types of <a>verifiable credential</a>s:
 1. Credentials that include sufficient personal identifiable
     information to uniquely identify the user (identifying verifiable credentials) and
@@ -59,6 +56,7 @@ In both cases, a public key is typically linked to the <a>verifiable credential<
   single-time use key, that is included in order to allow the
   <a>SP</a> to recognize the subject the attributes relate to.
 
+Please refer to the section on [[#sctn-trust-model]] for details on how the <a>ISSUER_ID_PK</a> is verified by the Service Provider.
 
 ### Present Identifying Credentials ### {#sctn-iden-creds}
 
@@ -71,7 +69,7 @@ In both cases, a public key is typically linked to the <a>verifiable credential<
 ### Present Anonymous Credentials ### {#sctn-anon-creds}
 
 Note: Presentation of anonymous credentials and Zero-knowledge proofs is work in progress and
-will be supported in the subsequent versions of the specification.  
+will be supported in the subsequent versions of the specification.
 
 
 <a>Anonymous Verifiable Credential</a>s don't intrinsically expose a link from the credential to a specific user.
