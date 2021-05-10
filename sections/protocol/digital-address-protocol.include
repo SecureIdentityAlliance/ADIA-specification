@@ -152,8 +152,8 @@ Agents may implement additional actions based on the goal codes.
   "goal-code": "adia.agent.{ issuer | service-provider | user }",
   "adia": {
     "attributes": {
-      "hida": " {HIDA} hash generated of identity attributes",
-      "entityId": "DID of the agent",
+      "hida": " {HIDA}",
+      "entityId": "{DAS_USER_ID | ISSUER_ID | SP_ID}",
       "entityType": "{ USER | ISSUER | SERVICEPROVIDER }"
     }
   }
@@ -335,7 +335,7 @@ Note: Use the appropriate `goal-code` and `entityType` as defined in the Enum va
 
 #### resolve-digital-address (ADIA-DA-005)
 
-This protocol resolves a digital address (DA) to it's corresponding DID. 
+This protocol resolves a digital address (DA) to it's corresponding DID.
 The resolution returns a full DIDDoc in Json format so that the requester can request for a DID-based connection or generate an invitation to connect.
 
 <strong>1. Resolve an Entity</strong>
@@ -347,7 +347,7 @@ The resolution returns a full DIDDoc in Json format so that the requester can re
   "@id": "6a2571a8-1746-4a0b-bdce-4c59c60fb4f9",
   "adia": {
     "attributes": {
-      "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD | USER}",
+      "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD | USER}", // Optional - only if looking for specific types
       "digitalAddress": "digital address of the user or entity"
     }
   }
