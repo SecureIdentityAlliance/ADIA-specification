@@ -59,7 +59,7 @@ Agents may implement additional actions based on the goal codes.
 ```json
   {
      "@type":"https://adiassociation.org/digital-address/1.0/compute-hida",
-     "@id":"1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
+     "@id":"fa04e522-d78d-4b50-a3c9-4ff73e34ffb4",
      "goal-code":"adia.hida.user",
      "adia":{
         "attributes":{
@@ -77,12 +77,12 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-   "@type":"https://adiassociation.org/digital-address/1.0/compute-hiADIA-DA-response",
+   "@type":"https://adiassociation.org/digital-address/1.0/compute-hida-response",
    "@id":"44714b18-250c-498d-9f0f-fd6d207f1d8c",
    "status":"{OK | FAILED | PENDING}",
    "goal-code":"adia.hida.user",
    "~thread":{
-      "thid":"1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
+      "thid":"fa04e522-d78d-4b50-a3c9-4ff73e34ffb4",
       "message":"e.g. comment or reason of failed request"
    },
    "adia":{
@@ -101,7 +101,7 @@ Agents may implement additional actions based on the goal codes.
 {
   "@type": "https://adiassociation.org/digital-address/1.0/compute-hida",
   "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
-  "goal-code": "adia.hida.{ard | das| issuer| service-provider}",
+  "goal-code": "adia.hida.{ ard | das | issuer | service-provider }",
   "adia": {
     "attributes": {
       "businessName": "UTF8 encoded business name of the Organization according to the ID document (all uppercase)",
@@ -119,7 +119,7 @@ Agents may implement additional actions based on the goal codes.
 {
   "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
   "@id": "44714b18-250c-498d-9f0f-fd6d207f1d8c",
-  "status": "{OK | FAILED | PENDING}",
+  "status": "{ OK | FAILED | PENDING }",
   "goal-code": "adia.hida.user",
   "~thread": {
     "thid": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
@@ -144,18 +144,17 @@ This protocol supports multiple goal codes based on the entity looked up:
 
 Agents may implement additional actions based on the goal codes.
 
-
 <strong>Request</strong>
 ```json
 {
   "@type": "https://adiassociation.org/digital-address/1.0/provision-agent",
   "@id": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
-  "goal-code": "adia.agent.{issuer| service-provider| user}",
+  "goal-code": "adia.agent.{ issuer | service-provider | user }",
   "adia": {
     "attributes": {
       "hida": " {HIDA} hash generated of identity attributes",
       "entityId": "DID of the agent",
-      "entityType": "{ USER | ISSUER | SERVICEPROVIDER}"
+      "entityType": "{ USER | ISSUER | SERVICEPROVIDER }"
     }
   }
 }
@@ -168,18 +167,18 @@ Note: Response may be different depending upon the `goal-code`
 {
   "@type": "https://adiassociation.org/digital-address/1.0/provision-agent-response",
   "@id": "fab45767-2dd2-4124-b185-24821d5b8f8c",
-  "status": "{OK | FAILED | PENDING}",
-  "goal-code": "adia.agent.{ard | das| issuer| service-provider| user}",
+  "status": "{ OK | FAILED | PENDING }",
+  "goal-code": "adia.agent.{ ard | das | issuer | service-provider | user }",
   "~thread": {
     "thid": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
     "message": "e.g. comment or reason of failed request"
   },
   "adia": {
     "response": {
-      "entityId": "{ ISSUER_ID| SP_ID}",
-      "entityType": " {ISSUER | SERVICEPROVIDER}",
+      "entityId": "{ISSUER_ID | SP_ID}",
+      "entityType": " {ISSUER | SERVICEPROVIDER }",
       "homeDASId": " {HomeDAS_ID} ",
-      "didDocJson": " { DIDDoc-ISSUER| DIDDoc-SP }"
+      "didDocJson": " {DIDDoc-ISSUER | DIDDoc-SP}"
     }
   }
 }
@@ -190,17 +189,17 @@ Note: Response may be different depending upon the `goal-code`
 {
   "@type": "https://adiassociation.org/digital-address/1.0/provision-agent-response",
   "@id": "fab45767-2dd2-4124-b185-24821d5b8f8c",
-  "status": "{OK | FAILED | PENDING}",
-  "goal-code": "adia.agent.{ard | das| issuer| service-provider| user}",
+  "status": "{ OK | FAILED | PENDING }",
+  "goal-code": "adia.agent.{ ard | das | issuer | service-provider | user }",
   "~thread": {
     "thid": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
     "message": "e.g. comment or reason of failed request"
   },
   "adia": {
     "response": {
-      "dasUserId": "{ DAS_USER_ID }",
+      "dasUserId": "{DAS_USER_ID}",
       "homeDASId": " {HomeDAS_ID} ",
-      "didDocJson": " { DIDDoc-USER }"
+      "didDocJson": " {DIDDoc-USER}"
     }
   }
 }
@@ -237,7 +236,7 @@ Agents may implement additional actions based on the goal codes.
 {
   "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address-response",
   "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
-  "status": "{OK | FAILED | PENDING}",
+  "status": "{ OK | FAILED | PENDING }",
   "goal-code": "adia.digital-address.user",
   "~thread": {
     "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
@@ -278,7 +277,7 @@ Note: Use the appropriate `entityType` and `entityId` as defined in the Enum val
 {
   "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address-response",
   "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
-  "status": "{OK | FAILED | PENDING}",
+  "status": "{ OK | FAILED | PENDING }",
   "goal-code": "adia.digital-address.entity",
   "~thread": {
     "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
@@ -287,13 +286,12 @@ Note: Use the appropriate `entityType` and `entityId` as defined in the Enum val
   "adia": {
     "response": {
       "digitalAddress": " {ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
-      "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
-      "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
+      "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD}",
+      "entityId": "{ISSUER_ID | SP_ID| DAS_ID | ARD_ID}"
     }
   }
 }
 ```
-
 
 #### revoke-digital-address (ADIA-DA-004)
 
@@ -311,11 +309,11 @@ Note: Use the appropriate `goal-code` and `entityType` as defined in the Enum va
 ```json
 {
   "@type": "https://adiassociation.org/digital-address/1.0/revoke-digital-address",
-  "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
-  "goal-code": "adia.digital-address.{ard | das| issuer| service-provider | user}",
+  "@id": "8a6d40d4-39f5-4a22-9f45-3fcb008e0d62",
+  "goal-code": "adia.digital-address.{ ard | das| issuer| service-provider | user }",
   "adia": {
     "attributes": {
-      "digitalAddress": "{ ARD_DA| DAS_DA| ISSUER_DA| SP_DA| USER_DA }"
+      "digitalAddress": "{ARD_DA | DAS_DA | ISSUER_DA | SP_DA | USER_DA}"
     }
   }
 }
@@ -326,10 +324,10 @@ Note: Use the appropriate `goal-code` and `entityType` as defined in the Enum va
 {
   "@type": "https://adiassociation.org/digital-address/1.0/revoke-digital-address-response",
   "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
-  "status": "{OK | FAILED | PENDING}",
-  "goal-code": "adia.digital-address.{ard | das| issuer| service-provider | user}",
+  "status": "{ OK | FAILED | PENDING }",
+  "goal-code": "adia.digital-address.{ ard | das | issuer | service-provider | user }",
   "~thread": {
-    "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+    "thid": "8a6d40d4-39f5-4a22-9f45-3fcb008e0d62",
     "message": "e.g. comment or reason of failed request"
   }
 }
@@ -337,7 +335,8 @@ Note: Use the appropriate `goal-code` and `entityType` as defined in the Enum va
 
 #### resolve-digital-address (ADIA-DA-005)
 
-This protocol resolves the DA to a DID.
+This protocol resolves a digital address (DA) to it's corresponding DID. 
+The resolution returns a full DIDDoc in Json format so that the requester can request for a DID-based connection or generate an invitation to connect.
 
 <strong>1. Resolve an Entity</strong>
 
@@ -345,34 +344,34 @@ This protocol resolves the DA to a DID.
 ```json
 {
   "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address",
-  "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
+  "@id": "6a2571a8-1746-4a0b-bdce-4c59c60fb4f9",
   "adia": {
     "attributes": {
-      "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD| USER }",
-      "digitalAddress": "digital address of the entity"
+      "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD | USER}",
+      "digitalAddress": "digital address of the user or entity"
     }
   }
 }
 ```
 
-Note: Response may be different depending upon the `entityType`
+Note: Response may be different depending upon the `entityType` provided in the `attributes` of the request.
 
 <strong>a. Response (User)</strong>
 ```json
 {
   "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address-response",
   "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
-  "status": "{OK | FAILED | PENDING}",
+  "status": "{ OK | FAILED | PENDING }",
   "~thread": {
-    "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+    "thid": "6a2571a8-1746-4a0b-bdce-4c59c60fb4f9",
     "message": "e.g. comment or reason of failed request"
   },
   "adia": {
     "response": {
       "entityId": "DID of the entity",
-      "entityType": "{ USER }",
-      "homeDASId": "{ HomeDAS_ID}",
-      "didDocJson": " { DIDDoc-ARD| DIDDoc-DAS | DIDDoc-ISSUER| DIDDoc-SP| DIDDoc-USER }"
+      "entityType": "{USER}",
+      "homeDASId": "{HomeDAS_ID}",
+      "didDocJson": " {DIDDoc-ARD| DIDDoc-DAS | DIDDoc-ISSUER| DIDDoc-SP| DIDDoc-USER}"
     }
   }
 }
@@ -383,53 +382,19 @@ Note: Response may be different depending upon the `entityType`
 {
   "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address-response",
   "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
-  "status": "{OK | FAILED | PENDING}",
-  "goal-code": "adia.digital-address.entity",
+  "status": "{ OK | FAILED | PENDING }",
   "~thread": {
-    "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+    "thid": "6a2571a8-1746-4a0b-bdce-4c59c60fb4f9",
     "message": "e.g. comment or reason of failed request"
   },
   "adia": {
     "response": {
       "entityId": "DID of the entity",
-      "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
-      "homeDASId": "{ HomeDAS_ID}",   // Applicable to Issuers and Service Providers
+      "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD}",
+      "homeDASId": "{HomeDAS_ID}",   // Applicable to Issuers and Service Providers
       "homeARDId": " {homeARD_ID}",
-      "didDocJson": " { DIDDoc-ARD| DIDDoc-DAS | DIDDoc-ISSUER| DIDDoc-SP }"
+      "didDocJson": "{DIDDoc-ARD| DIDDoc-DAS | DIDDoc-ISSUER| DIDDoc-SP}"
     }
   }
-}
-```
-
-<strong>2. Resolve User</strong>
-
-<strong>Request</strong>
-```json
-{
-    "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address",
-    "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
-    "goal-code": "adia.digital-address.user",
-    "body":
-        {
-            "digitalAddress": "Digital Address of the entity", // Optional
-            "dasUserId": "DID of the User",                    // Optional
-        }
-}
-```
-
-<strong>Response</strong>
-```json
-{
-    "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address-response",
-    "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
-    "status": "{OK | FAILED | PENDING}",
-    "goal-code": "adia.digital-address.user",
-    "~thread": {
-        "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
-        "message": "e.g. comment or reason of failed request"
-    },
-    "digitalAddress": "Digital Address of the User",
-    "dasUserId": "DID of the User",
-    "homeDASId":"DID of the Home DAS"
 }
 ```
