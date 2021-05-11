@@ -1,0 +1,16 @@
+## Terminology and Conventions
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in [[!RFC2119]] and indicate requirement levels for compliant ADIA implementations.
+
+### Sequence Diagrams
+A sequence diagram shows object interactions arranged in time sequence. It depicts the objects involved
+in the scenario and the sequence of messages exchanged between the objects needed to carry out the functionality
+of the scenario.
+
+The conventions used in these documents to represent interactions between participants is as follows:
+
+<figure id="fig-sequence-diagrams-legend">
+    <img src="sequence-diagrams/Sequence-Diagrams-Legend.svg"/>
+    <figcaption>Message types in sequence diagrams</figcaption>
+</figure>

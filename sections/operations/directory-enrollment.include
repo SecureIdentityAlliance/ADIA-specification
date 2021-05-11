@@ -2,6 +2,9 @@
 
 ### Enroll a Regional Directory ### {#sctn-enroll-as-ADIA-regional}
 
+Regional Directories are onboarding into the ADIA Ecosystem by the ADIA Global Directory. The process starts with the Regional Directory
+providing their organizational and contact person details to meet the certification criteria laid by the ADIA Governance process. 
+
 <figure id="fig-onboarding-regional-adia-to-gadi">
     <img src="sequence-diagrams/Enroll-ARD-to-AGD.svg"/>
     <figcaption>Enroll Regional Directory to Global Directory</figcaption>
