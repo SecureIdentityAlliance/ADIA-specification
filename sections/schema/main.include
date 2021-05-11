@@ -12,3 +12,56 @@ path: sections/schema/entity-model.include
 <pre class=include>
 path: sections/schema/data-dictionary.include
 </pre>
+
+## DIDDoc ## {#sctn-diddoc}
+
+Issue Elaborate on the DIDDoc , format, signing and encryption methods. 
+
+<strong>Format</strong>
+```json
+{
+    // JSON-LD context
+    "context": "https://www.w3.org/ns/did/v1",
+    // DID of the subject
+    "id": "did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf",
+    // entity that is authorized to make changes to a DID document
+    "controller": ["did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf"],
+    //
+    "verificationMethod": [{
+        "id": "did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf",
+        "controller": "did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf",
+        "type": "Ed25519VerificationKey2018",
+        "publicKeyBase58": "4kAGwP4i85sCTXLu1EqLdNisKoHX6kczQCUfkS4NQSbH"
+    }]
+}
+```
+
+
+Proposal to add some options to DIDDocs based on how the keys are generated and attested
+
+<ul>
+  <li><strong>KEY_PROTECTION_SOFTWARE 0x0001 "software"</strong>
+    <div>This flag must be set if the entity uses software-based key management. Exclusive in entity metadata with KEY_PROTECTION_HARDWARE, KEY_PROTECTION_TEE, KEY_PROTECTION_SECURE_ELEMENT
+    </div>
+  </li>
+  <li><strong>KEY_PROTECTION_HARDWARE 0x0002 "hardware"</strong>
+    <div>This flag should be set if the entity uses hardware-based key management. Exclusive in entity metadata with KEY_PROTECTION_SOFTWARE
+    </div>
+  </li>
+  <li><strong>KEY_PROTECTION_TEE 0x0004 "tee"</strong>
+    <div>This flag should be set if the entity uses the Trusted Execution Environment (TEE) for key management. In entity metadata, this flag should be set in conjunction with KEY_PROTECTION_HARDWARE. Mutually exclusive in entity metadata with KEY_PROTECTION_SOFTWARE, KEY_PROTECTION_SECURE_ELEMENT
+    </div>
+  </li>
+  <li><strong>KEY_PROTECTION_SECURE_ELEMENT 0x0008 "secure_element"</strong>
+    <div>This flag should be set if the entity uses a Secure Element [SecureElement] for key management. In entity metadata, this flag should be set in conjunction with KEY_PROTECTION_HARDWARE. Mutually exclusive in entity metadata with KEY_PROTECTION_TEE, KEY_PROTECTION_SOFTWARE
+    </div>
+  </li>
+  <li><strong>KEY_ATTESTATION_SELF 0x0101 “self-attestation”</strong>
+    <div>This flag SHOULD be set if the entity uses self-attested keys. Mutually exclusive with KEY_ATTESTATION_3RD_PARTY
+    </div>
+  </li>
+  <li><strong>KEY_ATTESTATION_3RD_PARTY 0x0102 “3rd party attestation”</strong>
+    <div>This flag SHOULD be set if the entity uses 3rd party to attest the keys. Mutually exclusive with KEY_ATTESTATION_SELF
+    </div>
+  </li>
+</ul>

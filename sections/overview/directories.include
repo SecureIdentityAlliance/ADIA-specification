@@ -1,0 +1,25 @@
+## Directories ## {#sctn-adia-directories}
+
+
+### Hashed Attributes ### {#sctn-adia-directory-hashed-attributes}
+
+Directories may be public or privacy preserving. Private directories MUST store hashed attributes and accept hashed attribute queries.
+This prevents the directory from directly knowing the attributes involved. Public directories on the other hand
+may use hashed attributes to uniquely identify a participant but the data is in clear text to enable search queries.
+
+For example, public directories are good for listing company information while private directories are good for users where the identity is not voluntarily disclosed.
+
+ADIA Global Directory is a public directory for Issuers, Service Providers, DAS and Regional Directories while the ADIA Regional Directory is a private directory for uniquely identifying Users.
+
+### Logging ### {#sctn-adia-directory-logging}
+
+* Directories MUST log the type of actions including enrollment, issuance of a VC, queries to the credential metadata, etc.
+* Elements of the log MAY include non-private information such as dates, access granted or denied status, states of agents, etc but not attribute values that may lead to disclosure of private information such as Digital Address, the DIDs of a user, etc.
+* The data retention policies in a given Regional Directory and the context in which Directories operate SHALL define the duration for which the logs may be retained by the Directory.
+
+### Storage ### {#sctn-adia-direectory-storage}
+
+* Directories MUST support a privacy preserving distributed database that holds the <a>HIDA</a> for the Users and Entities.
+* Directories MAY support a DLT persisting the Trust Anchor and any metadata relating to the <a>Digital Address</a>es.
+
+Whether it is on-chain or off-chain data, the regulatory obligations, for example, GDPR or CCPA, and the "Right to be forgotten" objectives must be met.

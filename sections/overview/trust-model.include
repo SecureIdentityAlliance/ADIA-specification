@@ -135,11 +135,7 @@ Issue: Need to clarify how the security characteristics of the
        </td>
        <td><a href="#sctn-enroll-as-serviceprovider">Onboarding as
             Service Provider</a>
-
-Issue: Need to specify in the sequence diagram when exactly the key is
-   generated and by whom.
-
- </td>
+      </td>
        <td>
          via a DIDDoc kept in the ADIA Global Directory.
        </td>
