@@ -210,168 +210,99 @@ An agent may implement the handler or delegate to another agent for handling via
   The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
   An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
 
-
-<table class="data longlastcol">
-  <thead>
-    <th>Endpoint</th>
-    <th>Description</th>
-    <th>AGD Agent</th>
-    <th>ARD Agent</th>
-    <th>DAS Agent</th>
-    <th>Issuer Agent</th>
-    <th>SP Agent</th>
-    <th>Cloud Agent</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td nowrap>/credential/1.0/search</td>
-      <td>Search Credentials</td>
-      <td></td>
-      <td></td>
+  <table class="data longlastcol">
+    <thead>
+      <th>Endpoint</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>AGD Agent</th>
+      <th>ARD Agent</th>
+      <th>DAS Agent</th>
+      <th>Issuer Agent</th>
+      <th>SP Agent</th>
+      <th>Cloud Agent</th>
+    </thead>
+    <tbody>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/request-signature](ADIA-protocol.html#request-signature-cr-001)</td>
+      <td nowrap>ADIA-CR-001</td>
+      <td nowrap>Send a VC and request signing</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/credential/1.0/issue</td>
-      <td>Issue a Verifiable Credential</td>
-      <td></td>
-      <td></td>
       <td><center>X</center></td>
       <td><center>X</center></td>
       <td></td>
       <td></td>
     </tr>
-    <tr>
-      <td nowrap>/credential/1.0/revoke</td>
-      <td>Revoke a Verifiable Credential</td>
-      <td></td>
-      <td></td>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/send-signed-vc](ADIA-protocol.html#send-signed-vc-cr-002)</td>
+      <td nowrap>ADIA-CR-002</td>
+      <td nowrap>Sign and send the VC to issuing agent</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
-      <td></td>
-      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
     </tr>
-    <tr>
-      <td nowrap>/credential/1.0/expire</td>
-      <td>Expire a Verifiable Credential on a certain date</td>
-      <td></td>
-      <td></td>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/save-metadata](ADIA-protocol.html#save-metadata-cr-003)</td>
+      <td nowrap>ADIA-CR-003</td>
+      <td nowrap>Save the Credential Metadata to a Directory</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/credential/1.0/remove</td>
-      <td>Remove a Verifiable Credential</td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/credential/1.0/save-metadata</td>
-      <td>Save Credential Metadata</td>
-      <td></td>
-      <td></td>
       <td><center>X</center></td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
-    <tr>
-      <td nowrap>/credential/1.0/update-metadata</td>
-      <td>Update Credential Metadata</td>
-      <td></td>
-      <td></td>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/update-metadata](ADIA-protocol.html#update-metadata-cr-004)</td>
+      <td nowrap>ADIA-CR-004</td>
+      <td nowrap>Update the Credential Metadata in a Directory</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
       <td><center>X</center></td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
-    <tr>
-      <td nowrap>/credential/1.0/remove-metadata</td>
-      <td>Remove Credential Metadata</td>
-      <td></td>
-      <td></td>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/search-metadata](ADIA-protocol.html#search-metadata-cr-005)</td>
+      <td nowrap>ADIA-CR-005</td>
+      <td nowrap>Search for Credential Metadata based on multiple criteria</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
       <td></td>
       <td></td>
     </tr>
-  </tbody>
-  </table>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/remove-metadata](ADIA-protocol.html#remove-metadata-cr-006)</td>
+      <td nowrap>ADIA-CR-006</td>
+      <td nowrap>Remove the Credential Metadata</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/expire-vc](ADIA-protocol.html#expire-vc-cr-007)</td>
+      <td nowrap>ADIA-CR-007</td>
+      <td nowrap>Watch and expire VCs and Credential Metadata</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </tbody>
+    </table>
 
   ### Verification Protocol ### {#sctn-protocol-verification}
   The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
   An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
-
-
-<table class="data longlastcol">
-  <thead>
-    <th>Endpoint</th>
-    <th>Description</th>
-    <th>AGD Agent</th>
-    <th>ARD Agent</th>
-    <th>DAS Agent</th>
-    <th>Issuer Agent</th>
-    <th>SP Agent</th>
-    <th>Cloud Agent</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td nowrap>/verification/1.0/request-proof</td>
-      <td>Request a proof from the user</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/verification/1.0/check-credential-metadata</td>
-      <td>Check credential metadata for valid credentials </td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/verification/1.0/request-consent</td>
-      <td>Request a User consent before routing to issuers</td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/verification/1.0/request-credential</td>
-      <td>Request an issuer for matching credential</td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/verification/1.0/send-presentation</td>
-      <td>Forward the collected proof responses to the user agent</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-    </tr>
-  </tbody>
-  </table>
