@@ -3,80 +3,40 @@
 
 ## Regional Directory Certification ## {#sctn-regional-dir-certification}
 
-### Digital address ### {#sctn-adia-regional-da}
-
-<a>Digital Address</a>es function as a human friendly identifier for end users to use in lieu of sharing attributes for directory lookup. The digital address contains a directory identifier in addition to the identifier linked to the user.
-
-<a>Digital Address</a>es may contain PII, but the user must be warned if they choose one containing PII and must be allowed to choose a digital address that does not contain PII.
-
-A single user MAY have multiple digital addresses that all link to the same user in the directory. Any of the linked digital addresses can be used to identify the user. Digital addresses do not function as a mechanism of uniqueness.
-
-### Hashed Attributes ### {#sctn-adia-regional-hashed-attributes}
-
-Directories (MAY/MUST TBD) only store hashed attributes and accept hashed attribute queries. This prevents the directory from directly knowing the attributes involved. 
-
-Issue: Discuss the tradeoffs between hashed/unhashed attributes within regional directories. For example, the ADIA regional directory for the EU may require hashed attributes, while a companies supporting solar energy directory may not require hashing of it's attributes.
-
-### Listing Modifications ### {#sctn-adia-regional-modifications}
-
-Users are listed in a directory by creating a DIDComm connection with the directory, then presenting credentials containing attributes issued by an acceptable issuer as determined by the governance framework.
-
-The user lists a digital address by communicating that intent over the DIDComm connection with the directory.
-
-When the user desires to be removed from the directory, they indicate that over the existing DIDComm connection.
-
-These interactions are all detailed in the associated protocols summarized and linked below.
-
-### Logging requirements ### {#sctn-adia-regional-logging}
-
-Directories MUST log all listing modifications and queries.
-
-Issue: logging all queries might lead to a privacy issue as data could be included that belongs to a Digital Address that will be deleted soon after.
-
-
-### Storage ### {#sctn-adia-regional-storage}
-
-ADIA Regional (<a>ARD</a>) and ADIA Global Directories (<a>AGD</a>) must support
-on-chain and off-ledger storages:
-* A privacy preserving distributed database that holds the <a>HIDA</a>
-* A DLT holding the Trust Anchor and any metadata relating to the <a>Digital Address</a>es
-
+* MUST support a Directory with hashed attributes in a given geographic region.
+* MUST provide discovery services to identify and connect DASs within the region security.
+* MUST meet regulatory and compliance requirements in various geography and jurisdiction.
 
 
 ## DAS Certification ## {#sctn-certification-dap}
 
-A <a>DAS</a> must:
-
-* Onboard Issuers and Service Providers to the system.
-* Assign identifiers to participating entities in the closed-ecosystem.
-* Enable storage and retrieval of credential metadata to issuers.
-* Provide a mechanism to create and publish a <a>Digital Address</a>.
-* Provide authentication services to users with their <a>Digital Address</a>es.
-* Provide discovery services to identify and connect issuers, service providers and users securely.
-* Meeting regulatory and compliance requirements in various geography and jurisdiction.
+* MUST onboard Issuers and Service Providers to the system.
+* MUST assign identifiers to participating entities in the closed-ecosystem.
+* MUST enable storage and retrieval of credential metadata to issuers.
+* MUST provide a mechanism to create and publish a <a>Digital Address</a>.
+* MUST provide authentication services to users with their <a>Digital Address</a>es.
+* MUST provide discovery services to identify and connect issuers, service providers and users securely.
+* MUST meet regulatory and compliance requirements in various geography and jurisdiction.
 
 
 ## Issuer Certification ## {#sctn-certification-da-issuer}
 
-An <a>Issuer</a> must:
-* Use an approved method or process to create a unique Trust Anchor based on Identity attributes for a new or existing user in a scope.
-* Detect the presence of a Trust Anchor in the ADIA ecosystem.
-* Use an approved method or process to Create and Lookup a unique <a>Digital Address</a> for the User.
-* Provide mechanism to link a <a>Digital Address</a> for existing users.
-* Certify the KYC process for the entity and determine Assurance Levels for issued credential using an approved method or process.
-* Onboard users to issuer systems using a <a>Digital Address</a> with the holder’s consent.
-* Issue/reissue or revoke one or more Verifiable Credentials to the holder of a <a>Digital Address</a>
-* Persist Verifiable credential in a secure storage (<a>VC Store</a>)
-* Publish credential metadata to the <a>Digital Address</a> Provider and user of the <a>Digital Address</a>.
-* Verify proof requests from Service Providers or other entities for credentials of the holder with a <a>Digital Address</a>.
+* MUST use an approved method or process to create a unique Trust Anchor based on Identity attributes for a new or existing user in a scope.
+* MUST detect the presence of a Trust Anchor in the ADIA ecosystem.
+* MUST use an approved method or process to Create and Lookup a unique <a>Digital Address</a> for the User.
+* MUST provide mechanism to link a <a>Digital Address</a> for existing users.
+* MUST certify the KYC process for the entity and determine Assurance Levels for issued credential using an approved method or process.
+* MUST onboard users to issuer systems using a <a>Digital Address</a> with the holder’s consent.
+* MAY issue/reissue or revoke one or more Verifiable Credentials to the holder of a <a>Digital Address</a>
+* MUST persist Verifiable credential in a secure storage (<a>VC Store</a>)
+* MUST publish credential metadata to the <a>Digital Address</a> Provider and user of the <a>Digital Address</a>.
+* MAY verify proof requests from Service Providers or other entities for credentials of the holder with a <a>Digital Address</a>.
 
 
 ## Service Provider Certification ## {#sctn-certification-sp}
 
-A <a>Service Provider</a> must:
-
-* Accept and verify a <a>Digital Address</a> for a user in multiple forms - QR code, a user friendly moniker or a smart card.
-* Request for proofs on one or more user claims using a credential schema.
-* Accept responses to proof requests from one or more <a>Issuer</a>s in the ecosystem.
-* Determine acceptable Assurance Levels for credentials and define policies based on risk tolerance of the organization.
-* Grant or deny services to a user based on risk-based policies.
+* MAY accept and verify a <a>Digital Address</a> for a user in multiple forms - QR code, a user friendly moniker or a smart card.
+* MAY request for proofs on one or more user claims using a credential schema.
+* MAY accept responses to proof requests from one or more <a>Issuer</a>s in the ecosystem.
+* MAY determine acceptable Assurance Levels for credentials and define policies based on risk tolerance of the organization.
+* MAY grant or deny services to a user based on risk-based policies.
