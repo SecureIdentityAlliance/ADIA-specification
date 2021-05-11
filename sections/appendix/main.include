@@ -1,9 +1,10 @@
 # Appendix # {#sctn-appendix}
 [INFORMATIVE]
 
-<pre class=include>
-path: sections/appendix/requirements.include
-</pre>
+## ADIA Requirements ## {#sctn-requirements}
+
+Please see <strong>[ADIA Requirements Documentation](ADIA-requirements.html)</strong> for core principles and requirements for this specification.
+
 
 ## Acknowledgments ## {#sctn-acknowledgments}
 
