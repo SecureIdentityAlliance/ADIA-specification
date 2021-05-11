@@ -224,7 +224,7 @@ An agent may implement the handler or delegate to another agent for handling via
     </thead>
     <tbody>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/request-signature](ADIA-protocol.html#request-signature-cr-001)</td>
+      <td nowrap>[/credential/1.0/request-signature](ADIA-protocol.html#request-signature-adia-cr-001)</td>
       <td nowrap>ADIA-CR-001</td>
       <td nowrap>Send a VC and request signing</td>
       <td><center>X</center></td>
@@ -235,7 +235,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/send-signed-vc](ADIA-protocol.html#send-signed-vc-cr-002)</td>
+      <td nowrap>[/credential/1.0/send-signed-vc](ADIA-protocol.html#send-signed-adia-vc-cr-002)</td>
       <td nowrap>ADIA-CR-002</td>
       <td nowrap>Sign and send the VC to issuing agent</td>
       <td><center>X</center></td>
@@ -246,7 +246,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td><center>X</center></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/save-metadata](ADIA-protocol.html#save-metadata-cr-003)</td>
+      <td nowrap>[/credential/1.0/save-metadata](ADIA-protocol.html#save-metadata-adia-cr-003)</td>
       <td nowrap>ADIA-CR-003</td>
       <td nowrap>Save the Credential Metadata to a Directory</td>
       <td><center>X</center></td>
@@ -257,7 +257,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/update-metadata](ADIA-protocol.html#update-metadata-cr-004)</td>
+      <td nowrap>[/credential/1.0/update-metadata](ADIA-protocol.html#update-metadata-adia-cr-004)</td>
       <td nowrap>ADIA-CR-004</td>
       <td nowrap>Update the Credential Metadata in a Directory</td>
       <td><center>X</center></td>
@@ -268,7 +268,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/search-metadata](ADIA-protocol.html#search-metadata-cr-005)</td>
+      <td nowrap>[/credential/1.0/search-metadata](ADIA-protocol.html#search-metadata-adia-cr-005)</td>
       <td nowrap>ADIA-CR-005</td>
       <td nowrap>Search for Credential Metadata based on multiple criteria</td>
       <td><center>X</center></td>
@@ -279,7 +279,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/remove-metadata](ADIA-protocol.html#remove-metadata-cr-006)</td>
+      <td nowrap>[/credential/1.0/remove-metadata](ADIA-protocol.html#remove-metadata-adia-cr-006)</td>
       <td nowrap>ADIA-CR-006</td>
       <td nowrap>Remove the Credential Metadata</td>
       <td><center>X</center></td>
@@ -290,7 +290,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/expire-vc](ADIA-protocol.html#expire-vc-cr-007)</td>
+      <td nowrap>[/credential/1.0/expire-vc](ADIA-protocol.html#expire-vc-adia-cr-007)</td>
       <td nowrap>ADIA-CR-007</td>
       <td nowrap>Watch and expire VCs and Credential Metadata</td>
       <td><center>X</center></td>
