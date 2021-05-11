@@ -18,6 +18,26 @@
 * In case of recovered Digital Address, VCs cannot be presented unless the Digital Address is restored to the same Assurance Level as before.
 
 
+### Security Algorithms ### {#sctn-security-algorithms}
+
+Issue: Need to fill in the details for security specific information
+
+<strong>Hashing Methods</strong>
+* SHA256
+* minimum requirements etc.
+
+<strong>Payload Signatures</strong>
+* CL
+* JWT
+* JSON-LD
+
+<strong>Key generation</strong>
+* ED25519 Signature algorithms
+* Curve25519
+
+<strong>Cryptographic suites</strong>
+· TBD
+
 
 
 ## Privacy Considerations ## {#sctn-privacy-considerations}
