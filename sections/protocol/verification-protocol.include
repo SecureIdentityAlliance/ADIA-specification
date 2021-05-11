@@ -1,7 +1,7 @@
 ## Verification Protocol ## {#sctn-verification-protocol}
 
-TODO: Protocol Detail
-This protocol is used for ...
+Defines ADIA-specific protocol extensions which are basically a companion to the Aries `1.0/present-proof` protocol RFC.
+It also describes steps for Proof Presentation by a User to the Service Provider.
 
 <table class="data longlastcol">
   <thead>
@@ -11,13 +11,14 @@ This protocol is used for ...
   <tbody>
   <tr>
     <td nowrap><strong>Protocol Name & Version</strong></td>
-    <td>`digital-address`, `1.0`</td>
+    <td>`verification`, `1.0`</td>
   </tr>
     <tr>
       <td nowrap><strong>Motivation</strong></td>
       <td>
-      The Digital Address is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after
-      Know Your Customer (KYC) processes have been followed. Digital Address creation is requested by User's Agent in the cloud or elsewhere and fulfilled by the Issuer's Agent. Before creating the Digital Address, the Issuer Agents verifies the trust anchor uniqueness with ADIA Global Directory.
+        In addition to the Aries `present-proof` (v1.0) protocol, there are several ADIA-specific operations 
+        that are required to be supported in the ADIA Ecosystem during the Proof Presentation. E.g. Lookup VC metadata, 
+        Retrieve VC from Issuer's VC Store. This extention protocol defines those ADIA-specific Verification operations.
       </td>
     </tr>
   </tbody>
@@ -25,39 +26,59 @@ This protocol is used for ...
 
 
 ### Implemented By
-* Agent 1
-* Agent 2
+* SP Agent
+* Cloud Agent
+* Issuer Agent
 
 ### Roles
-* Requesting Agent (ARD, DAS, Issuer) - Requests to create a TA
-* Responding Agent (AGD, ARD, DAS) - Receives TA requests from agents & creates a TA
-
-### States (if any)
-```None```
+* Service Provider - Requests a proof of VC possession
+* User - Responds to the proof presentation requests
+* Issuer - Retrieves VCs from VC Store based on User's requests
 
 ### Sub/Co-protocols
-This protocol uses following existing protocols -
-* ```/directory/1.0/enroll-entity``` - as a subprotocol to enroll an entity as User
+This protocol uses following standard Aries protocol messages defined in Aries-RFC <a href="https://github.com/hyperledger/aries-rfcs/blob/master/features/0037-present-proof">0037-present-proof</a>
 * ```/connection/1.0/request``` - as a subprotocol to establish a DID-based connection
+* ```/didcomm.org/1.0/present-proof``` - as a main protocol to request for & verify a Credential proof.
+
+
+### States
+<strong>States for Service Provider</strong>
+* `request-sent` <em>(standard)</em>
+* `proposal-received` <em>(standard)</em>
+* `request-received` <em>(standard)</em>
+* `presentation-received` <em>(standard)</em>
+* `verification-successful`
+* `verification-failed`
+* `done`
+
+<strong>States for User (Cloud Agent)</strong>
+* `request-received` <em>(standard)</em>
+* `proposal-sent` <em>(standard)</em>
+* `consent-requested`
+* `consent-received`
+* `vc-request-sent`
+* `vc-received`
+* `presentation-sent` <em>(standard)</em>
+* `reject-sent` <em>(standard)</em>
+* `done`
+
+<strong>States for Issuer</strong>
+* `vc-request-received`
+* `vc-sent`
+* `done`
 
 ### Protocol Commands
+- Following are the <em>companion protocols</em> to the standard `proof-presentation` (v1.0) protocol.
 
-#### method 1
+#### lookup-vc-metadata (ADIA-VP-001)
 <strong>Request</strong>
 
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/compute-hida",
-    "@id": "<uuid-compute-hida-0123456789>",
-    "goal-code": "adia.hida.user",
-    "body":
+    "@type": "https://adiassociation.org/verification/1.0/lookup-vc-metadata",
+    "@id": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+    "attributes":
         {
-            "firstName" : "UTF8 encoded firstname of the User according to the ID document (all uppercase)",
-            "lastName" : "UTF8 encoded last name of the User according to the ID document (all uppercase)",
-            "birthDate" : "Date of birth of the User according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]",
-            "countryOfResidence" : "Country of residence of the User according to the ID document. Encoding MUST be ALPHA-2 country code as specified by [[!ISO3166]]",
-            "sourceType" : "Type of the ID document. This is specified by ADIA Governance for each country",
-            "identifier": "Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc.",
         }
 }
 ```
@@ -66,17 +87,108 @@ This protocol uses following existing protocols -
 
 ```json
 {
-    "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
-    "@id": "<uuid-compute-hida-response>",
-    "status": "OK",
-    "goal-code": "adia.hida.user",
+    "@type": "https://adiassociation.org/verification/1.0/lookup-vc-metadata-response",
+    "@id": "7d221391-f454-4f54-a926-db77ef28d1c5",
+    "status": "{ OK | FAILED | PENDING }",
     "~thread": {
-       "thid": "uuid-compute-hida-0123456789",
-        "hida": "computed-hida-string",
-        "statusCode" : "status of HIDA compute - success/failed",
-        "message": "e.g. reason of failed HIDA compute"
+      "thid": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+      "message": "e.g. comment or reason of failed request"
     }
 }
 ```
 
-#### method 2
+#### request-consent (ADIA-VP-002)
+<strong>Request</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/verification/1.0/request-consent",
+    "@id": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+    "attributes":
+      {
+      }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/verification/1.0/request-consent-response",
+    "@id": "7d221391-f454-4f54-a926-db77ef28d1c5",
+    "status": "{ OK | FAILED | PENDING }",
+    "~thread": {
+      "thid": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+      "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+#### receive-consent (ADIA-VP-003)
+
+<strong>Request</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/verification/1.0/receive-consent",
+    "@id": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+    "attributes":
+      {
+      }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/verification/1.0/receive-consent-response",
+    "@id": "7d221391-f454-4f54-a926-db77ef28d1c5",
+    "status": "{ OK | FAILED | PENDING }",
+    "~thread": {
+      "thid": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+      "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+#### request-vc (ADIA-VP-004)
+
+<strong>Request</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/verification/1.0/request-vc",
+    "@id": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+    "attributes":
+      {
+      }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/verification/1.0/request-vc-response",
+    "@id": "7d221391-f454-4f54-a926-db77ef28d1c5",
+    "status": "{ OK | FAILED | PENDING }",
+    "~thread": {
+      "thid": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+      "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+#### verify-vc-claims (ADIA-VP-005)
+- A subprotocol to be implemented by the SP Agent to verify each claim in the VC.
+
+
+### Standard Protocol Commands
+
+Following standard protocol messages are used as defined in the Aries `present-proof` (v1.0).
+
+#### propose-presentation
+#### request-presentation
+#### presentation
+
