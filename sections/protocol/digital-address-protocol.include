@@ -398,7 +398,3 @@ Note: Response may be different depending upon the `entityType` provided in the 
   }
 }
 ```
-
-Issue: Add optional `comment` field for all messages types.
-
-Issue: Add `ack` & `problem-report` in messages wherever applicable.
