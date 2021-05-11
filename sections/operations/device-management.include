@@ -37,33 +37,22 @@ to provide Identity Attributes originally provided to generate the <a>HIDA</a>. 
 
 Please see [[#sctn-user-bootstraps-new-daa-instance]]
 
-#### Email based Recovery #### {#sctn-da-self-recovery-email}
-
-Issue: Original Text - Abbie.  Needs polishing & consistency check
-
-1. DAS has acquired information at registration time to enable the user to recover the DA from the original issuer at DAS enrolment time. So the assumption here is that the DAS does have an email or sms for the user to help in the recovery.
-2. user will do to dap and input email or number
-3. dap will validate email on record (yes i have seen this email of number with the user
-4. dap send a deep link email with user that will do the following
-5. user click on email, it is send back to the
-6. dap perform redirect to issuer
-7. issuer re-validate user (either through re-enrolment of other means such as Voice matching, other app access, MNO validation, DL matching, Login with a trusted partner etc.)
-8. <a>Issuer</a> direct back to DAS
-9. Dap and issuer use DIDcom to confirm the transaction
-10. DAS re-enrol user with FIDO
-
-With this approach, the DAS has the option of skipping the DL scanning etc since
-the issuer performs the identity vetting.
+#### Email-based Recovery #### {#sctn-da-self-recovery-email}
 
 
-if user does not remember email other options can be used
+* User selects recover Digital Address option in DAA and input email or phone number for recovering the Digital Address. Assumption: DAS acquires the user information for recovery (like email or phone number) at the time of Digital Address registration
+* DAS will lookup email or phone number and finds the record
+* DAS will send a deep link email to User that will contain the issuer information
+* User clicks on email, it is sent back to DAS
+* DAS redirects to Issuer
+* Issuer re-validates User (either through re-enrollment of other means such as Voice matching, other app access, MNO validation, DL matching, Login with a trusted partner etc.)
+* Issuer directs User back to DAS
+* DAS re-enrolls User with FIDO
 
-1. do the DL flow as provided now
-2. remind teh user of a list of possible issuer that may help it (aka see a drop list and see if any of the following issuers can help)
-3. <a>Issuer</a>s should implement a DAS recovery flow, basically re-enrol the user to the DAS (yes a DA exits but the flow will help the DAS to fido enable the user)
+Note: This is a method to recover Digital Addresses for users for Enterprise Issuers with additional capability in place to avoid ID proofing.
 
+Issue: Add a sequence diagram for this flow
 
-Issue: This seems to be a method to avoid ID Proofing with DAS.
 
 ### Delegated Recovery ### {#sctn-da-delegated-recovery}
 
