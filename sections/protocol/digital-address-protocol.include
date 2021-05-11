@@ -35,9 +35,6 @@ This protocol is used during the user onboarding process to create a new & uniqu
 * Cloud Agent
 
 
-### States (if any)
-* None
-
 ### Sub/Co-protocols
 This protocol uses following existing protocols -
 * ```/directory/1.0/enroll-entity``` - as a co-protocol to enroll an entity as User
