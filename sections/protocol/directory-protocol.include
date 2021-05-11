@@ -42,15 +42,11 @@ Directory protocol used to interact with global & regional directories of ADIA.
 
 Issue: Define the roles that are required
 
-### States (if any)
-```None```
-
 ### Sub/Co-protocols
 This protocol uses following existing protocols -
 * ```/connection/1.0/request``` - as a subprotocol to establish a DID-based connection
 
 ### Protocol Commands
-
 
 #### lookup-trust-anchor (ADIA-DR-001)
 
@@ -223,8 +219,6 @@ detail based on the type of entity.
   }
 }
 ```
-
-
 
 
 #### enroll-entity (ADIA-DR-002)
