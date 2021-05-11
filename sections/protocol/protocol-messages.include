@@ -146,31 +146,23 @@ An agent may implement the handler or delegate to another agent for handling via
   The mapping below represents the protocol messages for the Credential Schema Protocol and the agents that implement the handing of these messages.
   An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
 
-<table class="data longlastcol">
-  <thead>
-    <th>Endpoint</th>
-    <th>Description</th>
-    <th>AGD Agent</th>
-    <th>ARD Agent</th>
-    <th>DAS Agent</th>
-    <th>Issuer Agent</th>
-    <th>SP Agent</th>
-    <th>Cloud Agent</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td nowrap>/credential-schema/1.0/search</td>
-      <td>Search Credential Schema</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/credential-schema/1.0/publish</td>
-      <td>Publish Credential Schema</td>
+  <table class="data longlastcol">
+    <thead>
+      <th>Endpoint</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>AGD Agent</th>
+      <th>ARD Agent</th>
+      <th>DAS Agent</th>
+      <th>Issuer Agent</th>
+      <th>SP Agent</th>
+      <th>Cloud Agent</th>
+    </thead>
+    <tbody>
+    <tr valign="top">
+      <td nowrap>[/credential-schema/1.0/publish](ADIA-protocol.html#publish-adia-cs-001)</td>
+      <td nowrap>ADIA-CS-001</td>
+      <td nowrap>Publish a Credential Schema</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
       <td><center>X</center></td>
@@ -178,9 +170,10 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
       <td></td>
     </tr>
-    <tr>
-      <td nowrap>/credential-schema/1.0/update</td>
-      <td>Update Credential Schema</td>
+    <tr valign="top">
+      <td nowrap>[/credential-schema/1.0/update](ADIA-protocol.html#update-adia-cs-002)</td>
+      <td nowrap>ADIA-CS-002</td>
+      <td nowrap>Update a Credential Schema</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
       <td><center>X</center></td>
@@ -188,9 +181,10 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
       <td></td>
     </tr>
-    <tr>
-      <td nowrap>/credential-schema/1.0/revoke</td>
-      <td>Revoke Credential Schema</td>
+    <tr valign="top">
+      <td nowrap>[/credential-schema/1.0/search](ADIA-protocol.html#search-adia-cs-003)</td>
+      <td nowrap>ADIA-CS-003</td>
+      <td nowrap>Search for a Credential Schema based on multiple criteria</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
       <td><center>X</center></td>
@@ -198,8 +192,19 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
       <td></td>
     </tr>
-  </tbody>
-  </table>
+    <tr valign="top">
+      <td nowrap>[/credential-schema/1.0/archive](ADIA-protocol.html#archive-adia-cs-004)</td>
+      <td nowrap>ADIA-CS-004</td>
+      <td nowrap>Archive a Credential Schema/ Remove from active use</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </tbody>
+    </table>
 
   ### Credential Protocol ### {#sctn-protocol-credential}
   The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
