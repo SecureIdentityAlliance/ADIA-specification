@@ -1,4 +1,4 @@
-## Protocol to Agent Mapping ## {#sctn-communication-protocol-agents}
+## Protocol Messages ## {#sctn-communication-protocol-agents}
 
 ### Digital Address Protocol ### {#sctn-protocol-digital-address}
 The mapping below represents the protocol messages for the Digital Address Protocol and the agents that implement the handing of these messages.
@@ -7,6 +7,7 @@ An agent may implement the handler or delegate to another agent for handling via
 <table class="data longlastcol">
   <thead>
     <th>Endpoint</th>
+    <th>Code</th>
     <th>Description</th>
     <th>AGD Agent</th>
     <th>ARD Agent</th>
@@ -16,106 +17,61 @@ An agent may implement the handler or delegate to another agent for handling via
     <th>Cloud Agent</th>
   </thead>
   <tbody>
-    <tr>
-      <td nowrap>/digital-address/1.0/create</td>
-      <td>Create a Digital Address</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/digital-address/1.0/revoke</td>
-      <td>Revoke/Remove a Digital Address</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/digital-address/1.0/share</td>
-      <td>Send or share the DA/DID of a given entity</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/digital-address/1.0/resolve</td>
-      <td>Resolve the DA and DID. One to one mapping at a given point in time</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/digital-address/1.0/rename</td>
-      <td>Rename a Digital Address</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/digital-address/1.0/update</td>
-      <td>Update Digital Address Information</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/digital-address/1.0/import</td>
-      <td>Receive a Digital Address from an issuer</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/trust-anchor/1.0/create</td>
-      <td>Create a trust anchor and link it with the HIDA and save the relationship to the DLT and offledger storage</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/trust-anchor/1.0/search</td>
-      <td>Search a Trust anchor with its HIDA</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/trust-anchor/1.0/remove</td>
-      <td>Mark a Trust anchor inactive</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/compute-hida](ADIA-protocol.html#compute-hida-adia-da-001)</td>
+    <td nowrap>ADIA-DA-001</td>
+    <td nowrap>Compute the Hashed Attributes for Entities and Users</td>
+    <td></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/provision-agent](ADIA-protocol.html#provision-agent-adia-da-002)</td>
+    <td nowrap>ADIA-DA-002</td>
+    <td nowrap>Provision an agent for an Entity</td>
+    <td></td>
+    <td></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/create-digital-address](ADIA-protocol.html#create-digital-address-adia-da-003)</td>
+    <td nowrap>ADIA-DA-003</td>
+    <td nowrap>Create a Digital Address for an Entity or a User</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/revoke-digital-address](ADIA-protocol.html#revoke-digital-address-adia-da-004)</td>
+    <td nowrap>ADIA-DA-004</td>
+    <td nowrap>Revoke a Digital Address for an Entity or User</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td><center>X</center></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/resolve-digital-address](ADIA-protocol.html#resolve-digital-address-adia-da-005)</td>
+    <td nowrap>ADIA-DA-005</td>
+    <td nowrap>Resolve the DID for an Entity from its Digital Address and vice-versa</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+  </tr>
   </tbody>
   </table>
 
@@ -124,21 +80,56 @@ An agent may implement the handler or delegate to another agent for handling via
   The mapping below represents the protocol messages for the Directory Protocol and the agents that implement the handing of these messages.
   An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
 
-<table class="data longlastcol">
-  <thead>
-    <th>Endpoint</th>
-    <th>Description</th>
-    <th>AGD Agent</th>
-    <th>ARD Agent</th>
-    <th>DAS Agent</th>
-    <th>Issuer Agent</th>
-    <th>SP Agent</th>
-    <th>Cloud Agent</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td nowrap>/directory/1.0/search</td>
-      <td>Search an entity with its DA or DID</td>
+  <table class="data longlastcol">
+    <thead>
+      <th>Endpoint</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>AGD Agent</th>
+      <th>ARD Agent</th>
+      <th>DAS Agent</th>
+      <th>Issuer Agent</th>
+      <th>SP Agent</th>
+      <th>Cloud Agent</th>
+    </thead>
+    <tbody>
+    <tr valign="top">
+      <td nowrap>[/directory/1.0/lookup-trust-anchor](ADIA-protocol.html#lookup-trust-anchor-adia-dr-001)</td>
+      <td nowrap>ADIA-DR-001</td>
+      <td nowrap>Lookup an entity with its Hashed attributes</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/directory/1.0/enroll-entity](ADIA-protocol.html#enroll-entity-adia-dr-002)</td>
+      <td nowrap>ADIA-DR-002</td>
+      <td nowrap>Enroll an Entity into the Directory</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/directory/1.0/disenroll-entity](ADIA-protocol.html#disenroll-entity-adia-dr-003)</td>
+      <td nowrap>ADIA-DR-003</td>
+      <td nowrap>Remove an Entity from the Directory</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/directory/1.0/search-entity](ADIA-protocol.html#search-entity-adia-dr-004)</td>
+      <td nowrap>ADIA-DR-004</td>
+      <td nowrap>Search an Entity with multiple criteria</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
       <td><center>X</center></td>
@@ -146,133 +137,9 @@ An agent may implement the handler or delegate to another agent for handling via
       <td><center>X</center></td>
       <td><center>X</center></td>
     </tr>
-    <tr>
-      <td nowrap>/directory/1.0/search/regional-directories</td>
-      <td>Search Regional Directories with a criteria</td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/directory/1.0/interchanges</td>
-      <td>Search Interchanges with a criteria</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/directory/1.0/issuers</td>
-      <td>Search Issuers with a criteria</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/directory/1.0/service-Providers</td>
-      <td>Search Service Providers with a criteria</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-    </tr>
-    <tr>
-      <td nowrap>/directory/1.0/users</td>
-      <td>Search Users with a criteria</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-    </tr>
-  </tbody>
-  </table>
+    </tbody>
+    </table>
 
-<table class="data longlastcol">
-  <thead>
-    <th>Endpoint</th>
-    <th>Description</th>
-    <th>AGD Agent</th>
-    <th>ARD Agent</th>
-    <th>DAS Agent</th>
-    <th>Issuer Agent</th>
-    <th>SP Agent</th>
-    <th>Cloud Agent</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td nowrap>/onboarding/1.0/regional-directory</td>
-      <td>Onboard a regional directory to the ecosystem</td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/onboarding/1.0/interchange</td>
-      <td>Onboard an interchange to the ecosystem</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/onboarding/1.0/issuer</td>
-      <td>Onboard an Issuer to the ecosystem</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/onboarding/1.0/service-provider</td>
-      <td>Onboard a Service Provider to the ecosystem</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/onboarding/1.0/status</td>
-      <td>Get the onboarding status</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td nowrap>/onboarding/1.0/update</td>
-      <td>Update the onboarding status</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-  </table>
 
 
   ### Credential Schema Protocol ### {#sctn-protocol-credential-schema}
