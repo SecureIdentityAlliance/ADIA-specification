@@ -12,3 +12,7 @@ path: sections/operations/vc-operations.include
 <pre class=include>
 path: sections/operations/device-management.include
 </pre>
+
+<pre class=include>
+path: sections/operations/das-to-das-communication.include
+</pre>
