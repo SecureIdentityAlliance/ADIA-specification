@@ -16,8 +16,8 @@ It also describes steps for Proof Presentation by a User to the Service Provider
     <tr>
       <td nowrap><strong>Motivation</strong></td>
       <td>
-        In addition to the Aries `present-proof` (v1.0) protocol, there are several ADIA-specific operations 
-        that are required to be supported in the ADIA Ecosystem during the Proof Presentation. E.g. Lookup VC metadata, 
+        In addition to the Aries `present-proof` (v1.0) protocol, there are several ADIA-specific operations
+        that are required to be supported in the ADIA Ecosystem during the Proof Presentation. E.g. Lookup VC metadata,
         Retrieve VC from Issuer's VC Store. This extention protocol defines those ADIA-specific Verification operations.
       </td>
     </tr>
@@ -70,34 +70,7 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 ### Protocol Commands
 - Following are the <em>companion protocols</em> to the standard `proof-presentation` (v1.0) protocol.
 
-#### lookup-vc-metadata (ADIA-VP-001)
-<strong>Request</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/verification/1.0/lookup-vc-metadata",
-    "@id": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
-    "attributes":
-        {
-        }
-}
-```
-
-<strong>Response</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/verification/1.0/lookup-vc-metadata-response",
-    "@id": "7d221391-f454-4f54-a926-db77ef28d1c5",
-    "status": "{ OK | FAILED | PENDING }",
-    "~thread": {
-      "thid": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
-      "message": "e.g. comment or reason of failed request"
-    }
-}
-```
-
-#### request-consent (ADIA-VP-002)
+#### request-consent (ADIA-VP-001)
 <strong>Request</strong>
 
 ```json
@@ -124,7 +97,7 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 }
 ```
 
-#### receive-consent (ADIA-VP-003)
+#### receive-consent (ADIA-VP-002)
 
 <strong>Request</strong>
 
@@ -152,7 +125,7 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 }
 ```
 
-#### request-vc (ADIA-VP-004)
+#### request-vc (ADIA-VP-003)
 
 <strong>Request</strong>
 
@@ -180,8 +153,8 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 }
 ```
 
-#### verify-vc-claims (ADIA-VP-005)
-- A subprotocol to be implemented by the SP Agent to verify each claim in the VC.
+#### verify-vc-claims (ADIA-VP-004)
+- A subprotocol to be implemented by the SP Agent to verify each claim in the VP.
 
 
 ### Standard Protocol Commands
@@ -191,4 +164,3 @@ Following standard protocol messages are used as defined in the Aries `present-p
 #### propose-presentation
 #### request-presentation
 #### presentation
-

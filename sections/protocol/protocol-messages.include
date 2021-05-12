@@ -235,7 +235,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/send-signed-vc](ADIA-protocol.html#send-signed-adia-vc-cr-002)</td>
+      <td nowrap>[/credential/1.0/send-signed-vc](ADIA-protocol.html#send-signed-vc-adia-cr-002)</td>
       <td nowrap>ADIA-CR-002</td>
       <td nowrap>Sign and send the VC to issuing agent</td>
       <td><center>X</center></td>
@@ -306,3 +306,63 @@ An agent may implement the handler or delegate to another agent for handling via
   ### Verification Protocol ### {#sctn-protocol-verification}
   The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
   An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+  <table class="data longlastcol">
+    <thead>
+      <th>Endpoint</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>AGD Agent</th>
+      <th>ARD Agent</th>
+      <th>DAS Agent</th>
+      <th>Issuer Agent</th>
+      <th>SP Agent</th>
+      <th>Cloud Agent</th>
+    </thead>
+    <tbody>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/request-consent](ADIA-protocol.html#request-consent-adia-vp-001)</td>
+      <td nowrap>ADIA-VP-001</td>
+      <td nowrap>Request user for consent to verify a credential</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/receive-consent](ADIA-protocol.html#receive-consent-adia-vp-002)</td>
+      <td nowrap>ADIA-VP-002</td>
+      <td nowrap>Receive a consent from the User</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/request-vc](ADIA-protocol.html#request-vc-adia-vp-003)</td>
+      <td nowrap>ADIA-VP-003</td>
+      <td nowrap>Request a VC from an Issuer</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/verify-vc-claims](ADIA-protocol.html#verify-vc-claims-adia-vp-004)</td>
+      <td nowrap>ADIA-VP-004</td>
+      <td nowrap>Verify each claim within a Presentation</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    </tbody>
+    </table>
