@@ -399,7 +399,7 @@ This protocol message enables a responsible entity to deregister/ disenroll a su
 
 Agents may implement additional actions based on the goal codes.
 
-<strong>1. DisEnroll a User</strong>
+<strong>1. Disenroll a User</strong>
 
 <strong>Request</strong>
 ```json
@@ -409,7 +409,7 @@ Agents may implement additional actions based on the goal codes.
     "adia":{
       "attributes":{
           "dasUserId": "{DAS_USER_ID}",
-          "homeDASId": "{HomeDAS_ID}"
+          "homeDASId": "{HomeDAS_ID}",
           "hida": "{HIDA}"
       }
     }
