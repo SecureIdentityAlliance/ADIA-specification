@@ -5,6 +5,18 @@
 Regional Directories are onboarding into the ADIA Ecosystem by the ADIA Global Directory. The process starts with the Regional Directory
 providing their organizational and contact person details to meet the certification criteria laid by the ADIA Governance process.
 
+The governing body within the ADIA Global Directory may approve or reject requests to enroll into the ADIA ecosystem. On successful approval of an Entity
+as a Regional Directory, provisioning request is sent to the responsible party within the Regional Directory. The process to set up an
+Agent is beyond the scope of this document but is a necessary prerequisite to enroll the ADIA Regional Agent (ARD Agent).
+
+An ARD Agent generates the public/private key pair for the Entity and requests the Digital Address to be created by the ADIA Global Directory (AGD Agent).
+A DIDDoc for the ARD with endpoint details, public keys and any additional information is published published to the ADIA Global Directory.
+
+Enrollment into ADIA Global Directory is complete when the <a>ARD_ID</a> to the Hashed ID attributes of the entity are related in the ADIA Global Directory.
+The following sequence diagram depicts the details of the flow between entities and exchange of messages between agents.
+
+Note: Details of the agents and protocol messages are depicted below.
+
 <figure id="fig-onboarding-regional-adia-to-gadi">
     <img src="sequence-diagrams/Enroll-ARD-to-AGD.svg"/>
     <figcaption>Enroll Regional Directory to Global Directory</figcaption>
