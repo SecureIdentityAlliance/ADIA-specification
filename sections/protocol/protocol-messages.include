@@ -18,18 +18,18 @@ An agent may implement the handler or delegate to another agent for handling via
   </thead>
   <tbody>
   <tr valign="top">
-    <td nowrap>[/digital-address/1.0/provision-agent](ADIA-protocol.html#provision-agent-adia-da-001)</td>
+    <td nowrap>[/digital-address/1.0/create-digital-address](ADIA-protocol.html#create-digital-address-adia-da-001)</td>
     <td nowrap>ADIA-DA-001</td>
-    <td nowrap>Provision an agent for an Entity</td>
-    <td></td>
-    <td></td>
+    <td nowrap>Create a Digital Address for an Entity or a User</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
     <td><center>X</center></td>
     <td><center>X</center></td>
     <td></td>
-    <td></td>
+    <td><center>X</center></td>
   </tr>
   <tr valign="top">
-    <td nowrap>[/digital-address/1.0/create-digital-address](ADIA-protocol.html#create-digital-address-adia-da-002)</td>
+    <td nowrap>[/digital-address/1.0/verify-user](ADIA-protocol.html#verify-user-adia-da-002)</td>
     <td nowrap>ADIA-DA-002</td>
     <td nowrap>Create a Digital Address for an Entity or a User</td>
     <td><center>X</center></td>
@@ -61,6 +61,19 @@ An agent may implement the handler or delegate to another agent for handling via
     <td><center>X</center></td>
     <td><center>X</center></td>
   </tr>
+
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/provision-agent](ADIA-protocol.html#provision-agent-adia-da-005)</td>
+    <td nowrap>ADIA-DA-005</td>
+    <td nowrap>Provision an agent for an Entity</td>
+    <td></td>
+    <td></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+  </tr>
+
   </tbody>
   </table>
 
