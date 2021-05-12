@@ -3,10 +3,10 @@
 Accountable Digital Identity Architecture (<dfn>ADIA</dfn>) is a decentralized network of networks integrating Regional Directories, Interchanges, Issuers, Service Providers and Users with unique Trust Anchors. All entities within the architecture are represented by DIDs.
 Each DID is resolvable to a DID Document which contains cryptographic keys and service endpoints as specified in the DID Core Specification.
 
-Three main concerns addressed by the ecosystem are to:
-* provide a Look up at the time of initial onboarding to make sure there no duplications
-* provide the Trust Framework and a source of truth should there be any fraud to facilitate the accountability.
-* facilitate the value settlements across different Identity System
+The focus of the ecosystem is to:
+* provide a look up at the time of initial onboarding to make sure there no duplications of identity
+* provide the Trust Framework and a source of truth should there be any fraud to facilitate accountability
+* facilitate value settlements across different Identity Systems
 
 <figure id="fig-adia-overview">
     <img src="images/adia_overview.svg"/>
