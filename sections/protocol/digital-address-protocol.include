@@ -42,96 +42,7 @@ This protocol uses following existing protocols -
 
 ### Protocol Commands
 
-#### compute-hida (ADIA-DA-001)
-
-This protocol supports multiple goal codes based on the entity looked up:
-* `adia.trust-anchor.user` : To compute HIDA for a User
-* `adia.trust-anchor.entity` : To compute HIDA for an Entity
-
-Agents may implement additional actions based on the goal codes.
-
-<strong>1. User HIDA Computation</strong>
-
-<strong>Request</strong>
-```json
-  {
-     "@type":"https://adiassociation.org/digital-address/1.0/compute-hida",
-     "@id":"fa04e522-d78d-4b50-a3c9-4ff73e34ffb4",
-     "goal-code":"adia.hida.user",
-     "adia":{
-        "attributes":{
-           "firstName":"UTF8 encoded firstname of the User according to the ID document (all uppercase)",
-           "lastName":"UTF8 encoded last name of the User according to the ID document (all uppercase)",
-           "birthDate":"Date of birth of the User according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]",
-           "countryOfResidence":"Country of residence of the User according to the ID document. Encoding MUST be ALPHA-2 country code as specified by [[!ISO3166]]",
-           "sourceType":"Type of the ID document. This is specified by ADIA Governance for each country",
-           "identifier":"Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc."
-        }
-     }
-  }
-```
-
-<strong>Response</strong>
-```json
-{
-   "@type":"https://adiassociation.org/digital-address/1.0/compute-hida-response",
-   "@id":"44714b18-250c-498d-9f0f-fd6d207f1d8c",
-   "status":"{OK | FAILED | PENDING}",
-   "goal-code":"adia.hida.user",
-   "~thread":{
-      "thid":"fa04e522-d78d-4b50-a3c9-4ff73e34ffb4",
-      "message":"e.g. comment or reason of failed request"
-   },
-   "adia":{
-      "response":{
-         "hida":"{HIDA} The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.",
-         "alg":"Name of the hash algorithm used (all uppercase, e.g. SHA256). Allowed hash algorithms are specified in the ADIA Governance and Certification rules."
-      }
-   }
-}
-```
-
-<strong>2. Entity HIDA Computation</strong>
-
-<strong>Request</strong>
-```json
-{
-  "@type": "https://adiassociation.org/digital-address/1.0/compute-hida",
-  "@id": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
-  "goal-code": "adia.hida.{ ard | das | issuer | service-provider }",
-  "adia": {
-    "attributes": {
-      "businessName": "UTF8 encoded business name of the Organization according to the ID document (all uppercase)",
-      "countryOfIncorporation": "Country of residence of the User according to the ID document. Encoding MUST be ALPHA-2 country code as specified by [[!ISO3166]]",
-      "dateOfIncorporation": "Date of dateOfIncorporation of the Organization according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]",
-      "sourceType": "Type of the ID document. This is specified by ADIA Governance for each country",
-      "identifier": "Government Issued Identifier - Federal Tax ID Number/EIN, Taxpayer Identification Number (TIN), VAT Number, etc."
-    }
-  }
-}
-```
-
-<strong>Response</strong>
-```json
-{
-  "@type": "https://adiassociation.org/digital-address/1.0/compute-hida-response",
-  "@id": "44714b18-250c-498d-9f0f-fd6d207f1d8c",
-  "status": "{ OK | FAILED | PENDING }",
-  "goal-code": "adia.hida.user",
-  "~thread": {
-    "thid": "1190d09d-f685-47cf-acADIA-DA-2dc1603abf71",
-    "message": "e.g. comment or reason of failed request"
-  },
-  "adia": {
-    "response": {
-    "hida":"The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.",
-    "alg":"Name of the hash algorithm used (all uppercase, e.g. SHA256). Allowed hash algorithms are specified in the ADIA Governance and Certification rules."
-    }
-  }
-}
-```
-
-#### provision-agent (ADIA-DA-002)
+#### provision-agent (ADIA-DA-001)
 
 This protocol creates a DID for the user in Cloud Agent and kicks-in the `create-digital-address` co-protocol.
 
@@ -202,7 +113,7 @@ Note: Response may be different depending upon the `goal-code`
 }
 ```
 
-#### create-digital-address (ADIA-DA-003)
+#### create-digital-address (ADIA-DA-002)
 This protocol creates a unique Digital Address for the user and kicks-in the `enroll-entity` co-protocol.
 This protocol supports multiple goal codes based on the entity looked up:
 
@@ -290,7 +201,7 @@ Note: Use the appropriate `entityType` and `entityId` as defined in the Enum val
 }
 ```
 
-#### revoke-digital-address (ADIA-DA-004)
+#### revoke-digital-address (ADIA-DA-003)
 
 This protocol revokes/removes a Digital Address and kicks-in the `remove-entity` co-protocol.
 This protocol supports multiple goal codes based on the entity looked up:
@@ -330,7 +241,7 @@ Note: Use the appropriate `goal-code` and `entityType` as defined in the Enum va
 }
 ```
 
-#### resolve-digital-address (ADIA-DA-005)
+#### resolve-digital-address (ADIA-DA-004)
 
 This protocol resolves a digital address (DA) to it's corresponding DID.
 The resolution returns a full DIDDoc in Json format so that the requester can request for a DID-based connection or generate an invitation to connect.
