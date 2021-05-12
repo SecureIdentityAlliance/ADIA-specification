@@ -18,19 +18,8 @@ An agent may implement the handler or delegate to another agent for handling via
   </thead>
   <tbody>
   <tr valign="top">
-    <td nowrap>[/digital-address/1.0/compute-hida](ADIA-protocol.html#compute-hida-adia-da-001)</td>
+    <td nowrap>[/digital-address/1.0/provision-agent](ADIA-protocol.html#provision-agent-adia-da-001)</td>
     <td nowrap>ADIA-DA-001</td>
-    <td nowrap>Compute the Hashed Attributes for Entities and Users</td>
-    <td></td>
-    <td><center>X</center></td>
-    <td><center>X</center></td>
-    <td><center>X</center></td>
-    <td><center>X</center></td>
-    <td></td>
-  </tr>
-  <tr valign="top">
-    <td nowrap>[/digital-address/1.0/provision-agent](ADIA-protocol.html#provision-agent-adia-da-002)</td>
-    <td nowrap>ADIA-DA-002</td>
     <td nowrap>Provision an agent for an Entity</td>
     <td></td>
     <td></td>
@@ -40,8 +29,8 @@ An agent may implement the handler or delegate to another agent for handling via
     <td></td>
   </tr>
   <tr valign="top">
-    <td nowrap>[/digital-address/1.0/create-digital-address](ADIA-protocol.html#create-digital-address-adia-da-003)</td>
-    <td nowrap>ADIA-DA-003</td>
+    <td nowrap>[/digital-address/1.0/create-digital-address](ADIA-protocol.html#create-digital-address-adia-da-002)</td>
+    <td nowrap>ADIA-DA-002</td>
     <td nowrap>Create a Digital Address for an Entity or a User</td>
     <td><center>X</center></td>
     <td><center>X</center></td>
@@ -51,8 +40,8 @@ An agent may implement the handler or delegate to another agent for handling via
     <td></td>
   </tr>
   <tr valign="top">
-    <td nowrap>[/digital-address/1.0/revoke-digital-address](ADIA-protocol.html#revoke-digital-address-adia-da-004)</td>
-    <td nowrap>ADIA-DA-004</td>
+    <td nowrap>[/digital-address/1.0/revoke-digital-address](ADIA-protocol.html#revoke-digital-address-adia-da-003)</td>
+    <td nowrap>ADIA-DA-003</td>
     <td nowrap>Revoke a Digital Address for an Entity or User</td>
     <td><center>X</center></td>
     <td><center>X</center></td>
@@ -62,8 +51,8 @@ An agent may implement the handler or delegate to another agent for handling via
     <td><center>X</center></td>
   </tr>
   <tr valign="top">
-    <td nowrap>[/digital-address/1.0/resolve-digital-address](ADIA-protocol.html#resolve-digital-address-adia-da-005)</td>
-    <td nowrap>ADIA-DA-005</td>
+    <td nowrap>[/digital-address/1.0/resolve-digital-address](ADIA-protocol.html#resolve-digital-address-adia-da-004)</td>
+    <td nowrap>ADIA-DA-004</td>
     <td nowrap>Resolve the DID for an Entity from its Digital Address and vice-versa</td>
     <td><center>X</center></td>
     <td><center>X</center></td>
@@ -195,7 +184,7 @@ An agent may implement the handler or delegate to another agent for handling via
     <tr valign="top">
       <td nowrap>[/credential-schema/1.0/archive](ADIA-protocol.html#archive-adia-cs-004)</td>
       <td nowrap>ADIA-CS-004</td>
-      <td nowrap>Archive a Credential Schema/ Remove from active use</td>
+      <td nowrap>Archive a Credential Schema from active issuance of credentials</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
       <td><center>X</center></td>
