@@ -1,9 +1,9 @@
 # Certification # {#sctn-certification}
 [INFORMATIVE]
 
-## <a>Regional Directory</a> Certification ## {#sctn-regional-dir-certification}
+## <a>ADIA Regional Directory</a> Certification ## {#sctn-regional-dir-certification}
 
-A <a>Regional Directory</a> MUST:
+An <a>ADIA Regional Directory</a> MUST:
 
 * Support a Directory with hashed attributes for Users in a given region.
 * Provide discovery services to identify and connect DASs within the region security.

@@ -44,6 +44,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), 
    another verifiable presentation to the same <a>SP</a> again to
    maintain the user's privacy.
 
+<dfn>Key Holder</dfn> denotes the entity that technically controls the use of the key. <dfn export="true">Key Owner</dfn> is the entity the key is attributed to.
 
 <figure id="fig-key-material">
  <table class="data longlastcol">

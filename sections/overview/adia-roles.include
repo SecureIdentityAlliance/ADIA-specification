@@ -24,7 +24,7 @@ The <a>ADIA Global Directory</a> may provide Discovery and Routing services betw
 
 <a>ADIA Global Directory</a> ensure uniqueness of the listed organizational entities. This is done by ensuring a unique set of attributes for each organization.
 
-Please see [[#sctn-hida-computation-entities]] for uniqueness properties for Issuers,Service Providers, DAS and ADIA Regional Directories.
+Please see [[#sctn-hida-computation-org-entities]] for uniqueness properties for Issuers,Service Providers, DAS and ADIA Regional Directories.
 
 
 #### Directory Querying #### {#sctn-adia-global-ds-query}

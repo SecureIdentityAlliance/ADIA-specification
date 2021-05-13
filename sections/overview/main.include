@@ -13,6 +13,35 @@ path: sections/overview/adia-roles.include
 path: sections/overview/assurance-level.include
 </pre>
 
+## Key Protection Level ## {#sctn-key-protection-level}
+
+There are multiple different cryptographic keys involved in the <a>ADIA</a> system. The degree to which entities want to trust the claims typically
+is impacted by theprotection of those keys.  In other words, if cryptographic keys get extracted or used without proper permissions, malicious claims could be generated.
+
+The <a>ADIA</a> system provides transparency about the key protection levels.
+
+### Key Protection Against Extraction ### {#sctn-key-protection-extraction}
+
+The following <dfn>Key Extraction Protection</dfn> levels are defined:
+<dl>
+ <dt>Software</dt>
+ <dd>For an attacker to extract the private cryptographic key material in the clear, it is sufficient to break the Rich Operating System of the <a>Key Holder</a>.</dd>
+ <dt>Trusted Execution Environment</dt>
+ <dd>For an attacker to extract the private cryptographic key material in the clear, it is sufficient to break the Trusted Execution Environment of the <a>Key Holder</a>.</dd>
+ <dt>Secure Element</dt>
+ <dd>For an attacker to extract the private cryptographic key material in the clear, it is sufficient to break the Secure Element of the <a>Key Holder</a>.</dd>
+</dl>
+
+Additionally, the <a>ADIA</a> system tracks the entity that asserted the <a>Key Extraction Protection</a> level as follows:
+<dl>
+ <dt>Self-asserted</dt>
+ <dd>The entity running the <a>Key Holder</a> systems self asserted the <a>Key Extraction Protection</a> level.</dd>
+ <dt>Third-party asserted</dt>
+ <dd>A third party that performed the security audit of the entity running the <a>Key Holder</a> systems asserted the <a>Key Extraction Protection</a> level.</dd>
+ <dt>Device level attestation</dt>
+ <dd>The device used as <a>Key Holder</a> asserted the <a>Key Extraction Protection</a> level.</dd>
+</dl>
+
 <pre class=include>
 path: sections/overview/adia-identifiers.include
 </pre>
