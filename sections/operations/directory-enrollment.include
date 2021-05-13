@@ -74,7 +74,7 @@ by any entity in the ADIA ecosystem.
 ### Enroll a Service Provider ### {#sctn-enroll-as-serviceprovider}
 
 Service Providers are onboarded into the ADIA Ecosystem by an Interchange. The process starts with the Interchange requiring the
-prospective Issuer to provide organizational details, a contact person for the organization and details to join the ecosystem.
+prospective Service Provider to provide organizational details, a contact person for the organization and details to join the ecosystem.
 
 Service Provider enrolling into the ecosystem is a relatively simpler process as the services consume and verify participants
 in the ecosystem. The governing body within Interchange may approve or reject requests to enroll into the Interchange and the ADIA ecosystem. On successful approval of an Entity
