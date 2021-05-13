@@ -5,3 +5,4 @@ dist/**
 *.lock
 *.log
 ADIA-overview.html
+.DS_Store
