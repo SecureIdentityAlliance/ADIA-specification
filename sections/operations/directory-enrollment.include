@@ -125,11 +125,18 @@ Note: Please see section on the [[#sctn-user-account-deletion]] to disenroll fro
 
 #### Enroll a User with existing Digital Address #### {#sctn-onboarding-2nd-issuer}
 
+A User with an existing Digital Address, intentionally or unintentionally may request another Digital Address.
+The request may be initiated by an Issuer in the same DAS or an Issuer in any other DAS within the
+User's Regional Directory. Within the same Regional Directory, the HIDA for the user results in a collision within the ARD. In such cases, the User is not
+be permitted to request a new Digital Address but instead notified of the existence of an existing one.
+
 <figure id="fig-onboarding-2nd-issuer">
     <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg"/>
     <figcaption>User Onboarding to Second Issuer</figcaption>
 </figure>
 
+Note: The User may choose to recover their forgotten Digital Address using approved methods. Please see section
+on [[#sctn-recover-digital-address]] or [[#sctn-da-delegated-recovery]].
 
 Note: It is possible for there to be multiple Digital Addresses for the same user in multiple regions.
 
