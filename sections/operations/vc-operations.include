@@ -36,12 +36,17 @@ in any subsequent proof presentations.
 
 ### Expire Verifiable Credential ### {#sctn-expire-vc}
 
-Most Verifiable Credentials are temporal in nature with an expiration date set on them. Expired credentials are not valid for any proof presentations.
+Verifiable Credentials are temporal in nature. Expired credentials are not valid for any proof presentations. DAS may provide
+scheduled jobs to scan the Credential Metadata and mark the expired Credential Metadata inactive. Expired Credentials  may not be
+used for Proof Presentation by a User or Cloud Agent.
 
 <figure id="fig-expire-vc">
    <img src="sequence-diagrams/Expire-VC.svg"/>
    <figcaption>Expire a VC</figcaption>
 </figure>
+
+Note: The Issuer of the Verifiable Credential is notified of the expiration. Issuer's may follow procedures to deprecate
+or void the credentials issued by them based on their local juristiction policies.
 
 
 

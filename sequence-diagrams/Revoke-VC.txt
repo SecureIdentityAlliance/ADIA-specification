@@ -6,8 +6,8 @@ Participant Cloud Agent
 participant DAA
 
 Issuer->>Cloud Agent: ADIA-CR-007: Revoke VC [DAS_USER_ID, CREDENTIAL_ID]
-Cloud Agent->Cloud Agent: Check Credential Metadata for validity
-Cloud Agent->Cloud Agent: Update Credential Metadata \n[Revocation Status, Revocation Date]
+Cloud Agent->Cloud Agent: ADIA-CR-004: Check Credential Metadata for validity
+Cloud Agent->Cloud Agent: ADIA-CR-003: Update Credential Metadata \n[Revocation Status, Revocation Date]
 Cloud Agent--> DAA: Send Notification of Revoked Status
 Cloud Agent-->>Issuer: Credential Metadata updated
 opt

@@ -259,18 +259,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/update-metadata](ADIA-protocol.html#update-metadata-adia-cr-004)</td>
-      <td nowrap>ADIA-CR-004</td>
-      <td nowrap>Update the Credential Metadata in a Directory</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr valign="top">
-      <td nowrap>[/credential/1.0/search-metadata](ADIA-protocol.html#search-metadata-adia-cr-005)</td>
+      <td nowrap>[/credential/1.0/search-metadata](ADIA-protocol.html#search-metadata-adia-cr-004)</td>
       <td nowrap>ADIA-CR-005</td>
       <td nowrap>Search for Credential Metadata based on multiple criteria</td>
       <td><center>X</center></td>
@@ -281,7 +270,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/remove-metadata](ADIA-protocol.html#remove-metadata-adia-cr-006)</td>
+      <td nowrap>[/credential/1.0/remove-metadata](ADIA-protocol.html#remove-metadata-adia-cr-005)</td>
       <td nowrap>ADIA-CR-006</td>
       <td nowrap>Remove the Credential Metadata</td>
       <td><center>X</center></td>
@@ -292,7 +281,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/revoke-vc](ADIA-protocol.html#revoke-vc-adia-cr-007)</td>
+      <td nowrap>[/credential/1.0/revoke-vc](ADIA-protocol.html#revoke-vc-adia-cr-006)</td>
       <td nowrap>ADIA-CR-007</td>
       <td nowrap>Revoke a VC</td>
       <td><center>X</center></td>
@@ -303,7 +292,7 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/expire-vc](ADIA-protocol.html#expire-vc-adia-cr-008)</td>
+      <td nowrap>[/credential/1.0/expire-vc](ADIA-protocol.html#expire-vc-adia-cr-007)</td>
       <td nowrap>ADIA-CR-008</td>
       <td nowrap>Expire Credential Metadata and Notify User</td>
       <td><center>X</center></td>
