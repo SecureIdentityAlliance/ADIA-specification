@@ -170,17 +170,21 @@ provided by a Digital Address <a>Issuer</a>. The <a>Issuer</a>'s service MUST fo
 in-person creation by request the Identity attributes from the User, generating the hashed attributes and verifying against
 the ADIA Regional Directory.
 
-The online service of the <a>Issuer</a> must present the user with a QR code either online on its website or offline via an email or alternate service,
+The online service of the <a>Issuer</a> presents the user with a QR code either online on its website or offline via an email or alternate service,
 such that the User is capable of scanning the QR code containing their Digital Address information and initiating an Authenticating Binding processes
 with the <a>HomeDAS</a>.
-
-A successful authentication and binding to the HomeDAS's services should allow the user to use the <a>Digital Address</a> at the level of Assurance determined by the onboarding process.
-
 
 <figure id="fig-user-initiated-da">
     <img src="sequence-diagrams/User-initiated-DA-with-daa.svg"/>
     <figcaption>User Initiated Digital Address Creation with DAA</figcaption>
 </figure>
+
+A successful authentication and binding to the HomeDAS's services allow the user to use the <a>Digital Address</a>
+at the level of Assurance determined by the onboarding process. Please see the section on [[#sctn-assurance-level]] for more information.
+
+Though it may be adequate for some purposes, some Service Providers in the ecosystem may require the
+User to have a higher <a>Assurance Level</a>. Issuer's in ADIA may provide verification services for Users to upgrade their
+Assurance Level assigned by remote methods. This is described in the section [[#sctn-verify-user-da-in-person]]. 
 
 #### Issuer Assisted Verification of Digital Address #### {#sctn-verify-user-da-in-person}
 
