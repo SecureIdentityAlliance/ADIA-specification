@@ -94,22 +94,34 @@ by any entity in the ADIA ecosystem.
 
 ### Enroll a User ### {#sctn-enroll-user}
 
-Users may approach <a>Issuer</a>s to create a Digital Address or issuers may initiate the process of creating a Digital Address for a user prior to issuing a Verifiable Credential.
-A Digital Address creation starts with the collection of identity attributes from the User, creation of a unique trust anchor and ensuring that the Digital Address is unique
-to in the given scope.
+Users may approach <a>Issuer</a>s to create a Digital Address or Issuers may initiate the process of creating a Digital Address for a user prior to issuing a Verifiable Credential.
+A Digital Address creation starts with the collection of identity attributes from the User, comparing to check User is `known` with the same <a>HIDA</a>.
 
-Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details.
+A lookup of the <a>Trust Anchor</a> results in letting the User know of the possibility of an existing Digital Address. The User may be
+request to link the existing Digital Address instead of creating a new one. ADIA Governance policies and technical constraints within this specification enforce that the uniqueness of the HIDA for a given User is
+maintained within the same Regional Directory.
+
+The <a>DAS</a> related to the first <a>Digital Address</a> <a>Issuer</a> is called <a>HomeDAS</a>. The HomeDAS also provides services to
+persist and search the <a>Credential Metadata</a> associated with the VCs issued to the User.
 
 #### Issuer Initiated New User Enrollment #### {#sctn-onboarding-1st-issuer}
 
-The <a>DAS</a> related to the first <a>Digital Address</a> <a>Issuer</a> is called <a>HomeDAS</a>.
+The diagram below represents the `new` User requesting a Digital Address from an Issuer. The DAS providing the Agency services, provisions
+a <a>Cloud Agent</a> for the User to create public/private key pair and a DID for the User. The identifier (<a>DAS_USER_ID</a>), along with the
+HomeDAS identifier (<a>HomeDASId</a>) are persisted on the DAS to associate their identifiers with the newly created Digital Address.
+Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details on the representation and usage of the Digital Address.
+
+The Issuer may share the Digital Address with the User through any of the secure channels. For simplicity, the diagram refers to sharing the DA information
+encoded in a QR code that can be scanned using the <a>DAA</a> or a method endorsed by ADIA Specification.
 
 <figure id="fig-onboarding-1st-issuer">
     <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg"/>
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
-Note: <a>HIDA</a> is PII and needs to be erased on account deletion (see User <a>DAS</a> Account Deletion)
+The process of importing or binding the Digital Address is complete when the User consents to the usage of the Digital Address. Please see the section on [[#sctn-user-consents]] for details.
+
+Note: Please see section on the [[#sctn-user-account-deletion]] to disenroll from the ADIA ecosystem.
 
 #### Enroll a User with existing Digital Address #### {#sctn-onboarding-2nd-issuer}
 
