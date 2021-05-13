@@ -9,11 +9,11 @@ participant DAS
 User->Issuer-Verification Center: I want to Verify DA
 Issuer Representative->User: Request acceptable ID verifiation documents
 User->Issuer Representative:Identity Documents for manual review
-Issuer Representative->DAS: Verified-In-Person Indicator (DA)
+Issuer Representative->+DAS: Verified-In-Person Indicator (DA)
 DAS->DAS: Lookup and Store \n(DA, DAS_USER_ID, Verified-In-Person=true)
-DAS->DAA: Notify User of AL upgrade process
-User->DAA: Biometric Authentication
-DAA->DAS: Authentication Success (Approve/Reject)
+DAS-->>DAA: Notify User of AL upgrade process
+User<<->>DAA: Biometric Authentication
+DAA->>DAS: Authentication Success (Approve/Reject)
 DAS->DAS: Upgrade User Assurance Level (U-AL3)
-DAS->DAA: Success notification
-DAS->Issuer Representative : In-person Verification Complete
+DAS-->>DAA: Success notification
+DAS->-Issuer Representative : In-person Verification Complete
