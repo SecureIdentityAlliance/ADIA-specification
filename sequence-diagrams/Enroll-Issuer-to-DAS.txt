@@ -6,37 +6,63 @@ actor DAS Admin
 participant ARD
 participant AGD
 
-Issuer Admin -> DAS: Primary contact and Org details
+Issuer Admin -> +DAS: Entity details (HIDA Attibutes) and Primary contact
 DAS->DAS: Save Request [Status=NEW]. Generate REQUEST_ID
-DAS->Issuer Admin:Request Reference\n[REQUEST_ID, Status=New]
+DAS-> -Issuer Admin: Send Request Reference\n[REQUEST_ID, Status=New]
+
 DAS Admin->DAS: Review Pending Request [REQUEST_ID]
-DAS->DAS: lookup ID-attributes for the entity \nand compute HIDA = hash (ID-attributes)
-DAS->ARD: securely send \n[HIDA,DAS_ID, CorrelationId=REQUEST_ID] \nand request DA
-ARD->AGD: lookup TA_ENTITY_DAS for [HIDA, DAS_ID]
+DAS->DAS: ADIA-FN-001: Compute HIDA = hash (ID-attributes)
+DAS->>+ARD: ADIA-DR-001: Lookup TA_ISSUER_DAS for [HIDA, DAS_ID]
+ARD->>AGD: ADIA-DR-001: Lookup TA_ISSUER_DAS for [HIDA, DAS_ID]
 AGD->AGD: lookup TA for HIDA
-alt
+
+
+alt TA not found
 AGD->AGD: Generate TA = random
+AGD-->>ARD: ADIA-DR-001:No conflict with TA\nReturn TA_ISSUER_DAS = hash[TA,DAS_ID]
+ARD-->>-DAS: ADIA-DR-001:No conflict with TA
+else TA found
+note over Issuer,DAS
+Enroll an Issuer with existing Digital Address
+end note
 end
-AGD->ARD: No conflict with TA\nReturn TA_ENTITY_DAS = hash[TA,DAS_ID]
-ARD->DAS: Approve [REQUEST_ID]
-DAS->DAS: Create [DAS_ENTITY_ID, ENTITY_TYPE]
-DAS->DAS: Provision Issuer Agent for Issuer\n with HIDA [CorrelationId=REQUEST_ID]
-alt DAS provides agency services
-DAS->Issuer: Generate DAS_ENTITY_ID_PK/SK for [DAS_ENTITY_ID]
-Issuer->DAS: Send [DAS_ENTITY_ID,ENTITY_TYPE, DAS_ENTITY_ID_PK/SK]
-else Issuer hosts agent
-DAS->Issuer Admin: Generate Keys and enroll
-Issuer Admin->Issuer: Generate DAS_ENTITY_ID_PK/SK for DAS_ENTITY_ID
-Issuer->DAS: Send [DAS_ENTITY_ID,DAS_ENTITY_ID_PK]
+
+
+DAS Admin->DAS: Approve [REQUEST_ID]
+alt DAS provides Agency Services
+DAS->DAS: Provision Isser Agent with HIDA [CorrelationId=REQUEST_ID]
+else
+DAS->>Issuer Admin: Provision Issuer Agent with HIDA [CorrelationId=REQUEST_ID]
+Issuer Admin->>DAS: Setup Issuer Agent and Register with DAS [REQUEST_ID]
 end
-DAS->DAS: Create DA and \nStore [DAS_ENTITY_ID,ENTITY_TYPE, DA, DAS_ENTITY_ID_PK,REQUEST_ID]
-opt Approve Request [REQUEST_ID]
-DAS Admin->DAS: Approve Request [REQUEST_ID]
-DAS->ARD: Send [DAS_ENTITY_ID,ENTITY_TYPE, DAS_ENTITY_ID_PK,CorrelationId=REQUEST_ID]
-ARD->AGD: Forward Request [DAS_ENTITY_ID,ENTITY_TYPE, DAS_ENTITY_ID_PK]
-AGD->AGD: Store [TA,DAS_ENTITY_ID, ENTITY_TYPE, HomeDAS_ID=DAS_ID] \nand [DAS_ENTITY_ID,DAS_ENTITY_ID_PK]
-AGD-->ARD: Success
+DAS->>+Issuer: ADIA-DA-001: Request to create ISSUER_ID and ISSUER_DA for HIDA
+Issuer->>Issuer: Create ISSUER_ID & ISSUER_ID_PK/SK. \nCreate DIDDoc-Issuer
+Issuer->Issuer:  Create ISSUER_DA
+Issuer-->>-DAS: ADIA-DA-001: Send [ISSUER_DA, ISSUER_ID, DIDDoc-Issuer, REQUEST_ID]
+DAS->DAS: Store [REQUEST_ID, DAS_DA, DAS_ID]
+DAS->DAS: Sign DIDDoc-Issuer with DAS_ID_SK
+
+DAS-->>+ARD: ADIA-DA-001: Send [ISSUER_DA, ISSUER_ID, DAS_ID, DIDDoc-Issuer]
+ARD->ARD: Sign DIDDoc-DAS with ARD_ID_SK
+ARD->>AGD: ADIA-DA-001: Send [ISSUER_DA, ISSUER_ID, DAS_ID, DIDDoc-Issuer]
+AGD->AGD: Sign DIDDoc-Issuer with AGD_ID_SK & \nstore in Directory
+AGD-->>ARD: ADIA-DA-001:DIDDoc save success
+ARD-->>DAS: ADIA-DA-001:DIDDoc save success
+DAS-->>-Issuer: ADIA-DA-001:DIDDoc save success
+
+
+Issuer->>+DAS: ADIA-DR-002: Request to Enroll
+alt Approve Request [REQUEST_ID]
+DAS->>ARD: ADIA-DR-002: Enroll Request [ISSUER_ID,ISSUER_DA, HomeDASId=DAS_ID]
+
+ARD->>AGD: ADIA-DR-002: Enroll Request [DAS_ID,DAS_DA, HomeARDId=ARD_ID]
+AGD->AGD: Store [TA,ISSUER_ID,ISSUER_DA, HomeDASId=DAS_ID] \nand [TA,ISSUER_ID]
+AGD-->>ARD: ADIA-DR-002: Enrollment Complete
+ARD-->>DAS: ADIA-DR-002: Enrollment Complete
+DAS-->>Issuer: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
+else Reject Request [REQUEST_ID]
+DAS-->>Issuer: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=REJECTED]
+
 end
-ARD-->DAS:Store [REQUEST_ID,DAS_ENTITY_ID,ENTITY_TYPE, DA]
-DAS->DAS: Request Complete [REQUEST_ID, Status=APPROVED]
-DAS-->Issuer: Issuer provisioning complete [REQUEST_ID, Status=APPROVED]
+DAS->DAS: Update Request [REQUEST_ID, Status]
+DAS-->-Issuer: Request Complete [REQUEST_ID, Status]
