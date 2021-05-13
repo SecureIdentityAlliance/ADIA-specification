@@ -58,14 +58,14 @@ detail based on the type of entity.
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/lookup-user-ta",
-    "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-    "adia":
-      "attributes": {
-            "hida": "{HIDA}",
-            "issuerId": "{ISSUER_ID}"
-        }
-      }
+  "@type": "https://adiassociation.org/directory/1.0/lookup-user-ta",
+  "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+  "adia": {
+    "attributes": {
+      "hida": "{HIDA}",
+      "issuerId": "{ISSUER_ID}"
+    }
+  }
 }
 ```
 
@@ -233,16 +233,16 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-user",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia":{
-      "attributes":{
-          "dasUserId": "{DAS_USER_ID}",
-          "homeDASId": "{HomeDAS_ID}",
-          "taUserIssuer": "{TA_USER_ISSUER}",
-          "hida": "{HIDA}"
-      }
+  "@type": "https://adiassociation.org/directory/1.0/enroll-user",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "adia": {
+    "attributes":{
+      "dasUserId": "{DAS_USER_ID}",
+      "homeDASId": "{HomeDAS_ID}",
+      "taUserIssuer": "{TA_USER_ISSUER}",
+      "hida": "{HIDA}"
     }
+  }
 }
 ```
 
@@ -266,15 +266,15 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-ard",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia":{
-      "attributes":{
-          "ardId": "{ ARD_ID }",
-          "taARDAGD": "{TA_ARD_AGD}",
-          "hida": "{HIDA}"
-      }
-      }
+  "@type": "https://adiassociation.org/directory/1.0/enroll-ard",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "adia": {
+    "attributes":{
+        "ardId": "{ ARD_ID }",
+        "taARDAGD": "{TA_ARD_AGD}",
+        "hida": "{HIDA}"
+    }
+  }
 }
 ```
 
@@ -301,7 +301,7 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 {
     "@type": "https://adiassociation.org/directory/1.0/enroll-das",
     "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia":{
+    "adia": {
       "attributes":{
         "dasId": "{DAS_ID}",
         "homeARDId": "{homeARD_ID}",
@@ -333,7 +333,7 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 {
     "@type": "https://adiassociation.org/directory/1.0/enroll-issuer",
     "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia":{
+    "adia": {
       "attributes":{
             "issuerId": "{ISSUER_ID}",
             "homeDASId": "{HomeDAS_ID}",
@@ -362,16 +362,16 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-sp",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia":{
-      "attributes":{
-            "serviceProviderId": "{SP_ID}",
-            "homeDASId": "{HomeDAS_ID}",
-            "taServiceProviderDAS": "{TA_SP_DAS}",
-            "hida": "{HIDA}"
-        }
-      }
+  "@type": "https://adiassociation.org/directory/1.0/enroll-sp",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "adia": {
+    "attributes": {
+      "serviceProviderId": "{SP_ID}",
+      "homeDASId": "{HomeDAS_ID}",
+      "taServiceProviderDAS": "{TA_SP_DAS}",
+      "hida": "{HIDA}"
+    }
+  }
 }
 ```
 
@@ -404,15 +404,15 @@ Agents may implement additional actions based on the goal codes.
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/disenroll-user",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia":{
-      "attributes":{
-          "dasUserId": "{DAS_USER_ID}",
-          "homeDASId": "{HomeDAS_ID}",
-          "hida": "{HIDA}"
-      }
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-user",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "adia": {
+    "attributes": {
+      "dasUserId": "{DAS_USER_ID}",
+      "homeDASId": "{HomeDAS_ID}",
+      "hida": "{HIDA}"
     }
+  }
 }
 ```
 
@@ -436,14 +436,14 @@ Agents may implement additional actions based on the goal codes.
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/disenroll-ard",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia":{
-      "attributes":{
-          "ardId": "{ ARD_ID }",
-          "hida": "{HIDA}"
-      }
-      }
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-ard",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "adia": {
+    "attributes": {
+      "ardId": "{ ARD_ID }",
+      "hida": "{HIDA}"
+    }
+  }
 }
 ```
 
@@ -468,15 +468,15 @@ Agents may implement additional actions based on the goal codes.
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/disenroll-das",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia":{
-      "attributes":{
-        "dasId": "{DAS_ID}",
-        "homeARDId": "{homeARD_ID}",
-        "hida": "{HIDA}"
-      }
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-das",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "adia":{
+    "attributes": {
+      "dasId": "{DAS_ID}",
+      "homeARDId": "{homeARD_ID}",
+      "hida": "{HIDA}"
     }
+  }
 }
 ```
 
@@ -499,15 +499,15 @@ Agents may implement additional actions based on the goal codes.
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/disenroll-issuer",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia":{
-      "attributes":{
-            "issuerId": "{ISSUER_ID}",
-            "homeDASId": "{HomeDAS_ID}",
-            "hida": "{HIDA}"
-        }
-      }
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-issuer",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "adia": {
+    "attributes": {
+      "issuerId": "{ISSUER_ID}",
+      "homeDASId": "{HomeDAS_ID}",
+      "hida": "{HIDA}"
+    }
+  }
 }
 ```
 
@@ -529,15 +529,15 @@ Agents may implement additional actions based on the goal codes.
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/disenroll-sp",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia":{
-      "attributes":{
-            "serviceProviderId": "{SP_ID}",
-            "homeDASId": "{HomeDAS_ID}",
-            "hida": "{HIDA}"
-        }
-      }
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-sp",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "adia": {
+    "attributes": {
+      "serviceProviderId": "{SP_ID}",
+      "homeDASId": "{HomeDAS_ID}",
+      "hida": "{HIDA}"
+    }
+  }
 }
 ```
 
@@ -589,29 +589,29 @@ Note: Parameters used for searching result in an "AND" operation. Avoid queries 
 <strong>Response (Exact Match)</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/search-entity-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    },
-    "adia": {
-      "attributes":{
-        "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
-        "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
-        "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
-        "name": "Name of the entity",
-        "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
-        "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
-        "homeDASName": "Name of DAS",   // For Issuers, SPs and users
-        "homeARDId": "{HomeARD_ID}",    // For DAS
-        "homeARDDA": "{ARD_DA}",        // For DAS
-        "homeARDName": "Name of the ARD", // For DAS
-        "status": "{ACTIVE | INACTIVE }",
-        "createdDate": "ISO 8601 Date format"
-      }
+  "@type": "https://adiassociation.org/directory/1.0/search-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+      "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+      "message": "e.g. comment or reason of failed request"
+  },
+  "adia": {
+    "attributes": {
+      "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+      "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
+      "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
+      "name": "Name of the entity",
+      "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
+      "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
+      "homeDASName": "Name of DAS",   // For Issuers, SPs and users
+      "homeARDId": "{HomeARD_ID}",    // For DAS
+      "homeARDDA": "{ARD_DA}",        // For DAS
+      "homeARDName": "Name of the ARD", // For DAS
+      "status": "{ACTIVE | INACTIVE }",
+      "createdDate": "ISO 8601 Date format"
     }
+  }
 }
 ```
 
@@ -628,36 +628,34 @@ Note: Parameters used for searching result in an "AND" operation. Avoid queries 
     },
     "adia":{
       "response":{
-        "result":[
-          {
-          "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
-          "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
-          "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
-          "name": "Name of the entity",
-          "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
-          "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
-          "homeDASName": "Name of DAS",   // For Issuers, SPs and users
-          "homeARDId": "{HomeARD_ID}",    // For DAS
-          "homeARDDA": "{ARD_DA}",        // For DAS
-          "homeARDName": "Name of the ARD", // For DAS
-          "status": "{ACTIVE | INACTIVE }",
-          "createdDate": "ISO 8601 Date format"
+        "result":[{
+            "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+            "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
+            "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
+            "name": "Name of the entity",
+            "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
+            "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
+            "homeDASName": "Name of DAS",   // For Issuers, SPs and users
+            "homeARDId": "{HomeARD_ID}",    // For DAS
+            "homeARDDA": "{ARD_DA}",        // For DAS
+            "homeARDName": "Name of the ARD", // For DAS
+            "status": "{ACTIVE | INACTIVE }",
+            "createdDate": "ISO 8601 Date format"
           },
           {
-          "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
-          "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
-          "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
-          "name": "Name of the entity",
-          "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
-          "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
-          "homeDASName": "Name of DAS",   // For Issuers, SPs and users
-          "homeARDId": "{HomeARD_ID}",    // For DAS
-          "homeARDDA": "{ARD_DA}",        // For DAS
-          "homeARDName": "Name of the ARD", // For DAS
-          "status": "{ACTIVE | INACTIVE }",
-          "createdDate": "ISO 8601 Date format"
-          }
-        ]
+            "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+            "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
+            "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
+            "name": "Name of the entity",
+            "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
+            "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
+            "homeDASName": "Name of DAS",   // For Issuers, SPs and users
+            "homeARDId": "{HomeARD_ID}",    // For DAS
+            "homeARDDA": "{ARD_DA}",        // For DAS
+            "homeARDName": "Name of the ARD", // For DAS
+            "status": "{ACTIVE | INACTIVE }",
+            "createdDate": "ISO 8601 Date format"
+          }]
       }
     }
 }
