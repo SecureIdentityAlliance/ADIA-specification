@@ -9,7 +9,7 @@ DAS Admin -> +ARD: Entity details (HIDA Attibutes) and Primary contact
 ARD->ARD: Save Request [Status=NEW]. Generate REQUEST_ID
 ARD-> -DAS Admin:Send Request Reference\n[REQUEST_ID, Status=New]
 ARD Admin->ARD: Review Pending Request [REQUEST_ID]
-ARD->ARD: ADIA-FN-001: Cmpute HIDA = hash (ID-attributes)
+ARD->ARD: ADIA-FN-001: Compute HIDA = hash (ID-attributes)
 ARD->>+AGD: ADIA-DR-001: Lookup TA_DAS_ARD for [HIDA, ARD_ID]
 AGD->AGD: Lookup TA for HIDA
 
@@ -22,7 +22,7 @@ Enroll an DAS with existing Digital Address
 end note
 end
 
-ARD->ARD: Approve [REQUEST_ID]
+ARD Admin->ARD: Approve [REQUEST_ID]
 ARD->>DAS Admin: Provision DAS Agent with HIDA [CorrelationId=REQUEST_ID]
 DAS Admin->>ARD: Setup DAS Agent and Register with ARD [REQUEST_ID]
 
@@ -32,20 +32,19 @@ DAS->>DAS: Create DAS_ID & DAS_ID_PK/SK. \nCreate DIDDoc-DAS
 DAS->DAS:  Create DAS_DA
 DAS-->>-ARD: ADIA-DA-001: Send [DAS_DA, DAS_ID, DIDDoc-DAS, REQUEST_ID]
 ARD->ARD: Store [REQUEST_ID, DAS_DA, DAS_ID]
-ARD->ARD: Sign DIDDoc-DAS with ARD_SK
+ARD->ARD: Sign DIDDoc-DAS with ARD_ID_SK
 ARD->>+AGD: ADIA-DA-001: Send [DAS_DA, DAS_ID, ARD_ID, DIDDoc-DAS]
-AGD->AGD: Sign DIDDoc-DAS with AGD_SK & \nstore in Directory
+AGD->AGD: Sign DIDDoc-DAS with AGD_ID_SK & \nstore in Directory
 AGD-->>-ARD: ADIA-DA-001:DIDDoc save success
 ARD-->>DAS: ADIA-DA-001:DIDDoc save success
 
 DAS->>+ARD: ADIA-DR-002: Request to Enroll
 
 alt Approve Request [REQUEST_ID]
-ARD Admin->ARD: Approve Request [REQUEST_ID]
 ARD->>AGD: ADIA-DR-002: Forward Request [DAS_ID,DAS_DA, HomeARDId=ARD_ID]
 AGD->AGD: Store [TA,DAS_ID,DAS_DA, HomeARDId=ARD_ID] \nand [TA,DAS_ID]
 AGD-->>ARD: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
-else
+else Reject Request [REQUEST_ID]
 AGD-->>ARD: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=REJECTED]
 
 end

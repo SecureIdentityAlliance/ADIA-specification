@@ -1,4 +1,4 @@
-title Enroll an SP to DAS
+title Enroll a SP to DAS
 actor SP Admin
 participant SP
 participant DAS
@@ -6,37 +6,63 @@ actor DAS Admin
 participant ARD
 participant AGD
 
-SP Admin -> DAS: Primary contact and Org details
+SP Admin -> +DAS: Entity details (HIDA Attibutes) and Primary contact
 DAS->DAS: Save Request [Status=NEW]. Generate REQUEST_ID
-DAS->SP Admin:Request Reference\n[REQUEST_ID, Status=New]
+DAS-> -SP Admin: Send Request Reference\n[REQUEST_ID, Status=New]
+
 DAS Admin->DAS: Review Pending Request [REQUEST_ID]
-DAS->DAS: lookup ID-attributes for the entity \nand compute HIDA = hash (ID-attributes)
-DAS->ARD: securely send \n[HIDA,DAS_ID, CorrelationId=REQUEST_ID] \nand request DA
-ARD->AGD: lookup TA_ENTITY_DAS for [HIDA, DAS_ID]
+DAS->DAS: ADIA-FN-001: Compute HIDA = hash (ID-attributes)
+DAS->>+ARD: ADIA-DR-001: Lookup TA_SP_DAS for [HIDA, DAS_ID]
+ARD->>AGD: ADIA-DR-001: Lookup TA_SP_DAS for [HIDA, DAS_ID]
 AGD->AGD: lookup TA for HIDA
-alt
+
+
+alt TA not found
 AGD->AGD: Generate TA = random
+AGD-->>ARD: ADIA-DR-001:No conflict with TA\nReturn TA_SP_DAS = hash[TA,DAS_ID]
+ARD-->>-DAS: ADIA-DR-001:No conflict with TA
+else TA found
+note over SP,DAS
+Enroll an SP with existing Digital Address
+end note
 end
-AGD->ARD: No conflict with TA\nReturn TA_ENTITY_DAS = hash[TA,DAS_ID]
-ARD->DAS: Approve [REQUEST_ID]
-DAS->DAS: Create [DAS_ENTITY_ID, ENTITY_TYPE]
-DAS->DAS: Provision SP Agent for SP\n with HIDA [CorrelationId=REQUEST_ID]
-alt DAS provides agency services
-DAS->SP: Generate DAS_ENTITY_ID_PK/SK for [DAS_ENTITY_ID]
-SP->DAS: Send [DAS_ENTITY_ID,ENTITY_TYPE, DAS_ENTITY_ID_PK/SK]
-else SP hosts agent
-DAS->SP Admin: Generate Keys and enroll
-SP Admin->SP: Generate DAS_ENTITY_ID_PK/SK for DAS_ENTITY_ID
-SP->DAS: Send [DAS_ENTITY_ID,DAS_ENTITY_ID_PK]
+
+
+DAS Admin->DAS: Approve [REQUEST_ID]
+alt DAS provides Agency Services
+DAS->DAS: Provision Isser Agent with HIDA [CorrelationId=REQUEST_ID]
+else
+DAS->>SP Admin: Provision SP Agent with HIDA [CorrelationId=REQUEST_ID]
+SP Admin->>DAS: Setup SP Agent and Register with DAS [REQUEST_ID]
 end
-DAS->DAS: Create DA and \nStore [DAS_ENTITY_ID,ENTITY_TYPE, DA, DAS_ENTITY_ID_PK,REQUEST_ID]
-opt Approve Request [REQUEST_ID]
-DAS Admin->DAS: Approve Request [REQUEST_ID]
-DAS->ARD: Send [DAS_ENTITY_ID,ENTITY_TYPE, DAS_ENTITY_ID_PK,CorrelationId=REQUEST_ID]
-ARD->AGD: Forward Request [DAS_ENTITY_ID,ENTITY_TYPE, DAS_ENTITY_ID_PK]
-AGD->AGD: Store [TA,DAS_ENTITY_ID, ENTITY_TYPE, HomeDAS_ID=DAS_ID] \nand [DAS_ENTITY_ID,DAS_ENTITY_ID_PK]
-AGD-->ARD: Success
+DAS->>+SP: ADIA-DA-001: Request to create SP_ID and SP_DA for HIDA
+SP->>SP: Create SP_ID & SP_ID_PK/SK. \nCreate DIDDoc-SP
+SP->SP:  Create SP_DA
+SP-->>-DAS: ADIA-DA-001: Send [SP_DA, SP_ID, DIDDoc-SP, REQUEST_ID]
+DAS->DAS: Store [REQUEST_ID, DAS_DA, DAS_ID]
+DAS->DAS: Sign DIDDoc-SP with DAS_ID_SK
+
+DAS-->>+ARD: ADIA-DA-001: Send [SP_DA, SP_ID, DAS_ID, DIDDoc-SP]
+ARD->ARD: Sign DIDDoc-DAS with ARD_ID_SK
+ARD->>AGD: ADIA-DA-001: Send [SP_DA, SP_ID, DAS_ID, DIDDoc-SP]
+AGD->AGD: Sign DIDDoc-SP with AGD_ID_SK & \nstore in Directory
+AGD-->>ARD: ADIA-DA-001:DIDDoc save success
+ARD-->>DAS: ADIA-DA-001:DIDDoc save success
+DAS-->>-SP: ADIA-DA-001:DIDDoc save success
+
+
+SP->>+DAS: ADIA-DR-002: Request to Enroll
+alt Approve Request [REQUEST_ID]
+DAS->>ARD: ADIA-DR-002: Enroll Request [SP_ID,SP_DA, HomeDASId=DAS_ID]
+
+ARD->>AGD: ADIA-DR-002: Enroll Request [DAS_ID,DAS_DA, HomeARDId=ARD_ID]
+AGD->AGD: Store [TA,SP_ID,SP_DA, HomeDASId=DAS_ID] \nand [TA,SP_ID]
+AGD-->>ARD: ADIA-DR-002: Enrollment Complete
+ARD-->>DAS: ADIA-DR-002: Enrollment Complete
+DAS-->>SP: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
+else Reject Request [REQUEST_ID]
+DAS-->>SP: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=REJECTED]
+
 end
-ARD-->DAS:Store [REQUEST_ID,DAS_ENTITY_ID,ENTITY_TYPE, DA]
-DAS->DAS: Request Complete [REQUEST_ID, Status=APPROVED]
-DAS-->SP: SP provisioning complete [REQUEST_ID, Status=APPROVED]
+DAS->DAS: Update Request [REQUEST_ID, Status]
+DAS-->-SP: Request Complete [REQUEST_ID, Status]
