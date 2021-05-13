@@ -119,9 +119,35 @@ encoded in a QR code that can be scanned using the <a>DAA</a> or a method endors
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
-The process of importing or binding the Digital Address is complete when the User consents to the usage of the Digital Address. Please see the section on [[#sctn-user-consents]] for details.
+There are some important steps before the User is allowed to import the Digital Address:
+<ol>
+<li><strong>Verifying the User's Identity</strong>
+  <ul>
+    <li>The DAA may enforce ID Proofing using the same identity document used during the Digital Address creation. The ID attributes are sent to the Issuer of the DA for verification</li>
+    <li>The Issuer may provide an in-person verification service to manually verify the User's identity. Please see [[#sctn-verify-user-da-in-person]].
+  </ul>
+</li>
+<li><strong>Authenticate the User with the Digital Address</strong>
+  <ul>
+    <li>The DAS may request the User to register their DAA using FIDO. FIDO UAF provides a strong password-less authentication for operations such as Presenting proof and other
+    operations that require the User's consent using biometric or possession based verification mechanism before unlocking the private key for signing functions. Please
+    see the section on [[#sctn-adia-role-daa]] for more details.
+    </li>
+  </ul>
+</li>
+<li><strong>User Consent</strong>
+  <ul>
+    <li>The process of importing the Digital Address is complete when the User consents to the usage of the Digital Address. Please see the section on [[#sctn-user-consents]] for details.
+    </li>
+  </ul>
+</li>
 
-Note: Please see section on the [[#sctn-user-account-deletion]] to disenroll from the ADIA ecosystem.
+</ol>
+
+Once a Digital Address is acquired by the User, subsequent steps may be:
+* The User may choose to recover their forgotten Digital Address using approved methods. Please see sections on [[#sctn-recover-digital-address]] or [[#sctn-da-delegated-recovery]].
+* The User may disenroll from the ADIA ecosystem. Please see section on the [[#sctn-user-account-deletion]] for details.
+
 
 #### Enroll a User with existing Digital Address #### {#sctn-onboarding-2nd-issuer}
 
@@ -134,9 +160,6 @@ be permitted to request a new Digital Address but instead notified of the existe
     <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg"/>
     <figcaption>User Onboarding to Second Issuer</figcaption>
 </figure>
-
-Note: The User may choose to recover their forgotten Digital Address using approved methods. Please see section
-on [[#sctn-recover-digital-address]] or [[#sctn-da-delegated-recovery]].
 
 Note: It is possible for there to be multiple Digital Addresses for the same user in multiple regions.
 
