@@ -292,9 +292,20 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/expire-vc](ADIA-protocol.html#expire-vc-adia-cr-007)</td>
+      <td nowrap>[/credential/1.0/revoke-vc](ADIA-protocol.html#revoke-vc-adia-cr-007)</td>
       <td nowrap>ADIA-CR-007</td>
-      <td nowrap>Watch and expire VCs and Credential Metadata</td>
+      <td nowrap>Revoke a VC</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/expire-vc](ADIA-protocol.html#expire-vc-adia-cr-008)</td>
+      <td nowrap>ADIA-CR-008</td>
+      <td nowrap>Expire Credential Metadata and Notify User</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
       <td><center>X</center></td>

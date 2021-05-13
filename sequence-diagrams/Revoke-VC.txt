@@ -2,14 +2,14 @@ title Revoke a VC
 
 participant Issuer
 participant VC Store
-Participant DAS
+Participant Cloud Agent
 participant DAA
 
-Issuer->DAS: Revoke VC (DAS_USER_ID, CREDENTIAL_ID)
-DAS->DAS: Check Credential Metadata for validity
-DAS->DAS: Update Revocation Status, Revocation Date
-DAS--> DAA: Send Notification of Revoked Status
-DAS->Issuer: Credential Metadata updated
+Issuer->>Cloud Agent: ADIA-CR-007: Revoke VC [DAS_USER_ID, CREDENTIAL_ID]
+Cloud Agent->Cloud Agent: Check Credential Metadata for validity
+Cloud Agent->Cloud Agent: Update Credential Metadata \n[Revocation Status, Revocation Date]
+Cloud Agent--> DAA: Send Notification of Revoked Status
+Cloud Agent-->>Issuer: Credential Metadata updated
 opt
 Issuer ->VC Store: Remove VC from VC Store
-End
+end
