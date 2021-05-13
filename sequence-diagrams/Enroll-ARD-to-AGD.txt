@@ -8,19 +8,18 @@ ARD Admin -> +AGD: Entity details (HIDA Attibutes) and Primary contact
 AGD->AGD: Save Request [Status=NEW]. Generate REQUEST_ID
 AGD-> -ARD Admin: Send Request Reference\n[REQUEST_ID, Status=New]
 AGD Admin->AGD: Review Pending Request [REQUEST_ID]
-AGD->AGD: ADIA-FN-001: Compute HIDA = hash (ID-attributes)
+AGD->>+AGD: ADIA-FN-001: Compute HIDA = hash (ID-attributes)
 AGD->AGD: Lookup TA for HIDA
-
 
 alt TA not found
 AGD->AGD: Generate TA = random
-AGD-->ARD: ADIA-DR-001:No conflict with TA\nReturn TA_ARD_AGD = hash[TA,AGD_ID]
+AGD-->>-ARD: ADIA-DR-001:No conflict with TA\nReturn TA_ARD_AGD = hash[TA,AGD_ID]
 else TA found
 note over ARD,AGD
-Enroll an AGD with existing Digital Address
+Enroll an ARD with existing Digital Address
 end note
 end
-AGD->AGD: Approve [REQUEST_ID] and \nCreate [ARD_ID]
+AGD->AGD: Approve [REQUEST_ID]
 AGD->>ARD Admin: Provision ARD Agent\n with HIDA [CorrelationId=REQUEST_ID]
 ARD Admin->>ARD: Setup ARD Agent and Register with AGD [REQUEST_ID]
 AGD->>+ARD: ADIA-DA-001: Request to create ARD_ID and ARD_DA for HIDA
@@ -37,8 +36,8 @@ alt Approve Request[REQUEST_ID]
 AGD Admin->AGD: Approve [REQUEST_ID]
 AGD->AGD: ADIA-DR-002: Enroll [ARD_ID, HIDA]
 AGD->AGD: Store [TA,HIDA] \nand [TA, ARD_ID]
-AGD-->>ARD: ADIA-DR-002: Request Complete [REQUEST_ID, Status=APPROVED]
+AGD-->>ARD: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
 else
-AGD-->>-ARD: ADIA-DR-002:Request Complete [REQUEST_ID, Status=REJECTED]
+AGD-->>-ARD: ADIA-DR-002:Enrollment Complete [REQUEST_ID, Status=REJECTED]
 end
-ARD-->ARD: ARD provisioning complete [REQUEST_ID, Status=APPROVED]
+ARD-->ARD: ARD Request Complete [REQUEST_ID, Status]

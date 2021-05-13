@@ -5,29 +5,49 @@ participant ARD
 actor ARD Admin
 participant AGD
 
-DAS Admin -> ARD: Primary contact and Org details
+DAS Admin -> +ARD: Entity details (HIDA Attibutes) and Primary contact
 ARD->ARD: Save Request [Status=NEW]. Generate REQUEST_ID
-ARD->DAS Admin:Request Reference\n[REQUEST_ID, Status=New]
+ARD-> -DAS Admin:Send Request Reference\n[REQUEST_ID, Status=New]
 ARD Admin->ARD: Review Pending Request [REQUEST_ID]
-ARD->ARD: lookup ID-attributes for the entity \nand compute HIDA = hash (ID-attributes)
-ARD->ARD: securely send \n[HIDA,ARD_ID, CorrelationId=REQUEST_ID] \nand request DA
-ARD->AGD: lookup TA_ENTITY_ARD for [HIDA, ARD_ID]
-AGD->AGD: lookup TA for HIDA
-alt
+ARD->ARD: ADIA-FN-001: Cmpute HIDA = hash (ID-attributes)
+ARD->>+AGD: ADIA-DR-001: Lookup TA_DAS_ARD for [HIDA, ARD_ID]
+AGD->AGD: Lookup TA for HIDA
+
+alt TA not found
 AGD->AGD: Generate TA = random
+AGD-->>-ARD: ADIA-DR-001:No conflict with TA\nReturn TA_DAS_ARD = hash[TA,ARD_ID]
+else TA found
+note over DAS,ARD
+Enroll an DAS with existing Digital Address
+end note
 end
-AGD->ARD: No conflict with TA\nReturn TA_ENTITY_ARD = hash[TA,ARD_ID]
-ARD->ARD: Approve [REQUEST_ID] and\nCreate [ARD_ENTITY_ID, ENTITY_TYPE]
-ARD->DAS Admin: Provision DAS Agent for DAS\n with HIDA [CorrelationId=REQUEST_ID]
-DAS Admin->DAS: Generate ARD_ENTITY_ID_PK/SK for ARD_ENTITY_ID
-DAS->ARD: Send [ARD_ENTITY_ID,ARD_ENTITY_ID_PK]
-ARD->ARD: CREATE DA. \nStore [ARD_ENTITY_ID,ENTITY_TYPE, DA, ARD_ENTITY_ID_PK,REQUEST_ID]
-opt Approve Request [REQUEST_ID]
+
+ARD->ARD: Approve [REQUEST_ID]
+ARD->>DAS Admin: Provision DAS Agent with HIDA [CorrelationId=REQUEST_ID]
+DAS Admin->>ARD: Setup DAS Agent and Register with ARD [REQUEST_ID]
+
+
+ARD->>+DAS: ADIA-DA-001: Request to create DAS_ID and DAS_DA for HIDA
+DAS->>DAS: Create DAS_ID & DAS_ID_PK/SK. \nCreate DIDDoc-DAS
+DAS->DAS:  Create DAS_DA
+DAS-->>-ARD: ADIA-DA-001: Send [DAS_DA, DAS_ID, DIDDoc-DAS, REQUEST_ID]
+ARD->ARD: Store [REQUEST_ID, DAS_DA, DAS_ID]
+ARD->ARD: Sign DIDDoc-DAS with ARD_SK
+ARD->>+AGD: ADIA-DA-001: Send [DAS_DA, DAS_ID, ARD_ID, DIDDoc-DAS]
+AGD->AGD: Sign DIDDoc-DAS with AGD_SK & \nstore in Directory
+AGD-->>-ARD: ADIA-DA-001:DIDDoc save success
+ARD-->>DAS: ADIA-DA-001:DIDDoc save success
+
+DAS->>+ARD: ADIA-DR-002: Request to Enroll
+
+alt Approve Request [REQUEST_ID]
 ARD Admin->ARD: Approve Request [REQUEST_ID]
-ARD->AGD: Forward Request [ARD_ENTITY_ID,ENTITY_TYPE, ARD_ENTITY_ID_PK]
-AGD->AGD: Store [TA,ARD_ENTITY_ID, ENTITY_TYPE, HomeARD_ID=ARD_ID] \nand [ARD_ENTITY_ID,ARD_ENTITY_ID_PK]
-AGD-->ARD: Success
+ARD->>AGD: ADIA-DR-002: Forward Request [DAS_ID,DAS_DA, HomeARDId=ARD_ID]
+AGD->AGD: Store [TA,DAS_ID,DAS_DA, HomeARDId=ARD_ID] \nand [TA,DAS_ID]
+AGD-->>ARD: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
+else
+AGD-->>ARD: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=REJECTED]
+
 end
-ARD-->ARD:Store [REQUEST_ID,ARD_ENTITY_ID,ENTITY_TYPE, DA]
-ARD->ARD: Request Complete [REQUEST_ID, Status=APPROVED]
-ARD-->DAS: DAS provisioning complete [REQUEST_ID, Status=APPROVED]
+ARD->ARD: Update Request [REQUEST_ID, Status]
+ARD-->-DAS: Request Complete [REQUEST_ID, Status]

@@ -24,6 +24,21 @@ Note: Details of the agents and protocol messages are depicted below.
 
 ### Enroll a DAS ### {#sctn-enroll-as-dap}
 
+Digital Address Serviceses (DAS) are onboarding into the ADIA Ecosystem by the ADIA Interchanges. The process starts with the Interchange
+providing their organizational and contact person details to meet the certification criteria laid by the ADIA Governance process.
+
+The governing body within the ADIA Regional Directory may approve or reject requests to enroll into the ADIA ecosystem. On successful approval of an Entity
+as a DAS, provisioning request is sent to the responsible party in the Interchange. The process to set up an
+Agent is beyond the scope of this document but is a necessary prerequisite to enroll the DAS Agent to the Regional Directory.
+
+A DAS Agent generates the public/private key pair for the Entity and requests the Digital Address to be created by the ADIA Regional Directory (ARD Agent).
+A DIDDoc for the DAS with endpoint details, public keys and any additional information is published published to the ADIA Global Directory.
+
+Enrollment into ADIA Global Directory is complete when the <a>DAS_ID</a> to the Hashed ID attributes of the entity are related in the ADIA Global Directory.
+The following sequence diagram depicts the details of the flow between entities and exchange of messages between agents.
+
+Note: Details of the agents and protocol messages are depicted below.
+
 <figure id="fig-onboarding-dap-to-regional-gadi">
     <img src="sequence-diagrams/Enroll-DAS-to-ARD.svg"/>
     <figcaption>Enroll DAS to Regional Directory</figcaption>
