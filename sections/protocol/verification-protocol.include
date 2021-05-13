@@ -159,7 +159,7 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 
 ### Standard Protocol Commands
 
-Following standard protocol messages are used as defined in the Aries `present-proof` (v1.0).
+Following standard messages are used as defined in the Aries `present-proof` (v1.0) protocol.
 
 #### propose-presentation
 #### request-presentation
