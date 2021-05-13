@@ -16,15 +16,15 @@ and notifies the Cloud Agent to persist the VC metadata in the DAS.
 
 Note: An important pre-requisite is that the Credential Schema must be published by an authorized Entity in the Ecosystem. Credential Schema
 may be published by ADIA Global Directory, ADIA Regional Directory or an Issuer. Protocols described in the [Credential Schema Protocol](ADIA-protocol#sctn-credential-schema-protocol)
-have more details on the supported commands and messages. 
+have more details on the supported commands and messages.
 
 ### Revoke a Verifiable Credential ### {#sctn-revoking-credential}
 
-<a>Issuer</a>s have the ability to revoke Verifiable Credentials issued to a User. Revocation status of a VC results in the update of
+<a>Issuer</a>s make revoke VCs issued to a User. Revocation status of a VC results in the update of
 the Credential Metadata on the DAS. The DAS checks for constraints before allowing the revocation of an issued VC. Some of them are:
-1. <a>Issuer</a>s may revoke VCs only for the credentials issued by them.
+1. Issuers may revoke VCs only for the credentials issued by them.
 2. The Digital Address is valid and not in an invalid state.
-3. The Credential is valid and in a non-expired state.
+3. The VC is valid and in a non-expired state.
 
 <figure id="fig-revoke-vc">
    <img src="sequence-diagrams/Revoke-VC.svg"/>
