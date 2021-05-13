@@ -1,6 +1,49 @@
 # Certification # {#sctn-certification}
 [INFORMATIVE]
 
+## Cryptographic Algorithms ## {#sctn-crypto-algs}
+
+The <a>ADIA</a> system makes use of various cryptographic functions.  The following crptographic algorithms are relevant. 
+
+<figure id="fig-crypto-algs">
+ <table class="data longlastcol">
+   <thead>
+     <th>Algorithm</th>
+     <th>Relevance</th>
+     <th>Purposes</th>
+   </thead>
+   <tbody>
+     <tr>
+       <td>SHA-256 [[!fips-180-4]]</td>
+       <td>Required</td>
+       <td>Compute <a>HIDA</a>, part of cryptographic signature computation and verification</td>
+     </tr>
+     <tr>
+       <td>SHA-512 [[!fips-180-4]]</td>
+       <td>Recommended</td>
+       <td>Compute <a>HIDA</a>, part of cryptographic signature computation and verification</td>
+     </tr>
+     <tr>
+       <td>ES256 [[!rfc8152]]</td>
+       <td>Required</td>
+       <td>Compute and verify cryptographic signatures</td>
+     </tr>
+     <tr>
+       <td>Ed255196 [[!rfc8032]]</td>
+       <td>Required</td>
+       <td>Compute and verify cryptographic signatures</td>
+     </tr>
+     <tr>
+       <td>Ed448 [[!rfc8032]]</td>
+       <td>Recommended</td>
+       <td>Compute and verify cryptographic signatures</td>
+     </tr>
+   </tbody>
+ </table>
+ <figcaption>Cryptographic Algorithms</figcaption>
+</figure>
+
+
 ## <a>Regional Directory</a> Certification ## {#sctn-regional-dir-certification}
 
 A <a>Regional Directory</a> MUST:
