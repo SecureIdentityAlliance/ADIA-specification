@@ -7,7 +7,7 @@ actor Issuer Representative
 participant DAS
 
 User->Issuer-Verification Center: I want to Verify DA
-Issuer Representative->User: Request acceptable ID verifiation documents
+Issuer Representative->User: Request acceptable ID verification documents
 User->Issuer Representative:Identity Documents for manual review
 Issuer Representative->+DAS: Verified-In-Person Indicator (DA)
 DAS->DAS: Lookup and Store \n(DA, DAS_USER_ID, Verified-In-Person=true)
