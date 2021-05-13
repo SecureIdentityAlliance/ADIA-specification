@@ -2,20 +2,20 @@
 
 ### Enroll a Regional Directory ### {#sctn-enroll-as-ADIA-regional}
 
-Regional Directories are onboarding into the ADIA Ecosystem by the ADIA Global Directory. The process starts with the Regional Directory
-providing their organizational and contact person details to meet the certification criteria laid by the ADIA Governance process.
+Regional Directories are onboarded into the ADIA Ecosystem by the ADIA Global Directory. The process starts with the Regional Directory
+providing their organizational and contact person details to meet the certification criteria established by the ADIA Governance process.
 
 The governing body within the ADIA Global Directory may approve or reject requests to enroll into the ADIA ecosystem. On successful approval of an Entity
-as a Regional Directory, provisioning request is sent to the responsible party within the Regional Directory. The process to set up an
+as a Regional Directory, a provisioning request is sent to the responsible party within the Regional Directory. The process to set up an
 Agent is beyond the scope of this document but is a necessary prerequisite to enroll the ADIA Regional Agent (ARD Agent).
 
-An ARD Agent generates the public/private key pair for the Entity and requests the Digital Address to be created by the ADIA Global Directory (AGD Agent).
-A DIDDoc for the ARD with endpoint details, public keys and any additional information is published published to the ADIA Global Directory.
+An ARD Agent generates the public/private key pair for the Entity and requests a Digital Address to be created by the ADIA Global Directory (AGD Agent).
+A DIDDoc for the ARD with its endpoint details, public keys and any additional information is published to the ADIA Global Directory.
 
-Enrollment into ADIA Global Directory is complete when the <a>ARD_ID</a> to the Hashed ID attributes of the entity are related in the ADIA Global Directory.
-The following sequence diagram depicts the details of the flow between entities and exchange of messages between agents.
+Enrollment into the ADIA Global Directory is complete when the <a>ARD_ID</a> to the Hashed ID attributes (HIDA) of the entity are related in the ADIA Global Directory.
+The following sequence diagram depicts the details of the flow between entities and exchange of messages between Agents.
 
-Note: Details of the agents and protocol messages are depicted below.
+Note: Details of the Agents and protocol messages are depicted below.
 
 <figure id="fig-onboarding-regional-adia-to-gadi">
     <img src="sequence-diagrams/Enroll-ARD-to-AGD.svg"/>
@@ -24,17 +24,17 @@ Note: Details of the agents and protocol messages are depicted below.
 
 ### Enroll a DAS ### {#sctn-enroll-as-dap}
 
-Digital Address Serviceses (DAS) are onboarding into the ADIA Ecosystem by the ADIA Interchanges. The process starts with the Interchange
-providing their organizational and contact person details to meet the certification criteria laid by the ADIA Governance process.
+Digital Address Services (DAS) are onboarded into the ADIA Ecosystem by the ADIA Regional Directory. The process starts with the DAS
+providing their organizational and contact person details to meet the certification criteria established by the ADIA Governance process.
 
 The governing body within the ADIA Regional Directory may approve or reject requests to enroll into the ADIA ecosystem. On successful approval of an Entity
-as a DAS, provisioning request is sent to the responsible party in the Interchange. The process to set up an
+as a DAS, provisioning request is sent to the responsible party at the DAS. The process to set up an
 Agent is beyond the scope of this document but is a necessary prerequisite to enroll the DAS Agent to the Regional Directory.
 
-A DAS Agent generates the public/private key pair for the Entity and requests the Digital Address to be created by the ADIA Regional Directory (ARD Agent).
-A DIDDoc for the DAS with endpoint details, public keys and any additional information is published published to the ADIA Global Directory.
+A DAS Agent generates the public/private key pair for the Entity and requests a Digital Address to be created by the ADIA Regional Directory (ARD Agent).
+A DIDDoc for the DAS with endpoint details, public keys and any additional information is published to the ADIA Global Directory.
 
-Enrollment into ADIA Global Directory is complete when the <a>DAS_ID</a> to the Hashed ID attributes of the entity are related in the ADIA Global Directory.
+Enrollment into ADIA Global Directory is complete when the <a>DAS_ID</a> to the Hashed ID attributes (HIDA) of the entity are related in the ADIA Global Directory.
 The following sequence diagram depicts the details of the flow between entities and exchange of messages between agents.
 
 Note: Details of the agents and protocol messages are depicted below.
@@ -47,20 +47,20 @@ Note: Details of the agents and protocol messages are depicted below.
 
 ### Enroll an Issuer ### {#sctn-enroll-as-issuer}
 
-Issuers are onboarded into the ADIA Ecosystem by an Interchange. The process starts with the Interchange requiring the
+Issuers are onboarded into the ADIA Ecosystem by an DAS. The process starts with the DAS requiring the
 prospective Issuer to provide organizational details, a contact person for the organization and details to qualify the
-Issuer as a member in good business standing, financial status and criteria to meet the Certification process laid down by the ADIA Governance policies.
+Issuer as a member in good business standing, financial status and criteria to meet the Certification process established by the ADIA Governance policies.
 
-The governing body within Interchange may approve or reject requests to enroll into the Interchange and the ADIA ecosystem. On successful approval of an Entity
-as an Issuer results in a Digital Address, a DID and a Credential to enroll into the Directory as an Issuer. The Interchange may also enforce
+The governing body within the DAS may approve or reject requests to enroll into the DAS and the ADIA ecosystem. On successful approval of an Entity
+as an Issuer results in a Digital Address, a DID and a Credential to enroll into the Directory as an Issuer. The DAS may also enforce
 additional policies to ensure that the Issuer can issue Digital Addresses to Users or issue <a>Verifiable Credentials</a> with a certain <a>Assurance Level</a>.
 Please see [[#sctn-assurance-level]] for more detail.
 
-In certain deployment models, an Interchange provider may provide the Issuer with an <a>Issuer Agent</a> and a <a>VC Store</a>
+In certain deployment models, a DAS provider may provide the Issuer with an <a>Issuer Agent</a> and a <a>VC Store</a>
 that comply to the ADIA Specification. Other deployments may provide agency services to provision the Issuer Agents in a hosted model.
 
-Regardless the variances in the deployment model, the Issuer Agent is responsible to create and manage their private key and DID (represented by the <a>DAS_ID</a>)
-and enroll with the Interchange. The Issuer's public information such as business name and their DIDDoc is published to the ADIA Global Directory for lookups
+Regardless the variances in the deployment model, the Issuer Agent is responsible for creating and managing their private key and DID (represented by the <a>DAS_ID</a>)
+and enroll with the DAS. The Issuer's public information such as business name and their DIDDoc is published to the ADIA Global Directory for lookups
 by any entity in the ADIA ecosystem.
 
 <figure id="fig-onboarding-issuer-to-dap">
