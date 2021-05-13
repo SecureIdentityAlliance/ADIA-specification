@@ -69,57 +69,56 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 
 ### Protocol Commands
 - Following are the <em>companion protocols</em> to the standard `proof-presentation` (v1.0) protocol.
+- The connection between the `SP Agent` and User's `Cloud Agent` is already established using the standard DIDComm `connection` protocol.
 
 #### request-consent (ADIA-VP-001)
 <strong>Request</strong>
+- User consent is obtained using DAA.
 
 ```json
 {
     "@type": "https://adiassociation.org/verification/1.0/request-consent",
-    "@id": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
-    "attributes":
-      {
+    "@id": "<uuid-request-consent-12345>",
+    "comment": null,
+    "attributes": {
+        "schemaId": "<unique-identifier-of-the-vc-schema>",
+        "credentialId": "<unique-identifier-of-the-vc>",
+        "issuerId": "{ISSUER_ID}",
+        "requestedAttributes": "{ALL | ARRAY_OF_SPECIFIC_ATTRBUTES}"
       }
 }
 ```
 
-<strong>Response</strong>
+<strong>Response - ACK</strong>
 
 ```json
 {
-    "@type": "https://adiassociation.org/verification/1.0/request-consent-response",
-    "@id": "7d221391-f454-4f54-a926-db77ef28d1c5",
+    "@type": "https://adiassociation.org/verification/1.0/request-consent-ack",
+    "@id": "<uuid-request-consent-ack-12345>",
     "status": "{ OK | FAILED | PENDING }",
     "~thread": {
-      "thid": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+      "thid": "<uuid-request-consent-12345>",
       "message": "e.g. comment or reason of failed request"
     }
 }
 ```
 
-#### receive-consent (ADIA-VP-002)
+#### submit-consent (ADIA-VP-002)
+- The consent is submitted to the previous `request-consent` message.
 
-<strong>Request</strong>
-
-```json
-{
-    "@type": "https://adiassociation.org/verification/1.0/receive-consent",
-    "@id": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
-    "attributes":
-      {
-      }
-}
-```
-
-<strong>Response</strong>
+<strong>Request - From DAA to Cloud Agent</strong>
+- The User's consent is obtained using the `DAA` and submitted to the `Cloud Agent`
 
 ```json
 {
-    "@type": "https://adiassociation.org/verification/1.0/receive-consent-response",
-    "@id": "7d221391-f454-4f54-a926-db77ef28d1c5",
-    "status": "{ OK | FAILED | PENDING }",
+    "@type": "https://adiassociation.org/verification/1.0/submit-consent",
+    "@id": "<uuid-submit-consent-12345>",
+    "attributes": {
+        "consent": "{ APPROVE | REJECT }"
+    },
+    "comment": null,
     "~thread": {
-      "thid": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+      "thid": "<uuid-request-consent-response-12345>",      //Thread of the previous message where consent was requested.
       "message": "e.g. comment or reason of failed request"
     }
 }
@@ -129,37 +128,63 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 
 <strong>Request</strong>
 
+- After obtaining the user's consent, `Cloud Agent` requests the original VC to the Issuer. 
+
 ```json
 {
     "@type": "https://adiassociation.org/verification/1.0/request-vc",
-    "@id": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
-    "attributes":
-      {
-      }
+    "@id": "<uuid-request-vc-12345>",
+    "attributes": {
+      "schemaId": "<unique-identifier-of-the-vc-schema>",
+      "credentialId": "<unique-identifier-of-the-vc>",
+      "userId": "{DAS_USER_ID}"
+    }
+}
+```
+<strong>Response - ACK</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/verification/1.0/request-vc-ack",
+    "@id": "<uuid-request-vc-ack-12345>",
+    "status": "{ OK | FAILED | PENDING }",
+    "~thread": {
+      "thid": "uuid-request-vc-12345",
+      "message": "e.g. comment or reason of failed request"
+    }
 }
 ```
 
-<strong>Response</strong>
+<strong>Response - with the original VC</strong>
 
 ```json
 {
     "@type": "https://adiassociation.org/verification/1.0/request-vc-response",
-    "@id": "7d221391-f454-4f54-a926-db77ef28d1c5",
-    "status": "{ OK | FAILED | PENDING }",
+    "@id": "<uuid-request-vc-response-12345>",
+    "attributes": {
+      "credentials~attach": [{            // The original VC retrieved from the VC Store
+          "@id": "libindy-cred-0",
+          "mime-type": "application/json",
+          "data": {
+              "base64": "eyJzY2hlbWFfaWQiOiJkaWQ6ZHR4Ono...(clipped)...hIZG85V2JBYUVhcmlFTTI4In0="
+          },
+          "signature": "59nTycBn22T648daQW8U149eP9bKXX3BoXAWV1aj7R2wfqpjWYBymn8WTHfkfDbCaMscSpitjyRAupon19Nxui3V"
+        }]
+    }
     "~thread": {
-      "thid": "be4f19f7-d7d6-4ace-aca9-194d8a8a661d",
+      "thid": "uuid-request-vc-12345",
       "message": "e.g. comment or reason of failed request"
     }
 }
 ```
 
 #### verify-vc-claims (ADIA-VP-004)
-- A subprotocol to be implemented by the SP Agent to verify each claim in the VP.
+- A local function to be implemented by the SP Agent to verify each claim in the presentation along with all the keys & signatures.
 
 
 ### Standard Protocol Commands
 
-Following standard protocol messages are used as defined in the Aries `present-proof` (v1.0).
+Following standard messages are used as defined in the Aries `present-proof` (v1.0) protocol.
 
 #### propose-presentation
 #### request-presentation

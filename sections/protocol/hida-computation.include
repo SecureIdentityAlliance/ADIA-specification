@@ -2,10 +2,11 @@
 
 [NORMATIVE]
 
-A HIDA is a cryptographic hash computed over the ID Attributes of a User or an Entity. The HIDA is a key driver for performing
+The <a>HIDA</a> is a cryptographic hash computed over the ID Attributes of a User or an <dfn>Organizational Entity</dfn> such as the <a>AGD</a>, an <a>ARD</a>,
+an <a>Issuer</a>, or a <a>SP</a>. The <a>HIDA</a> is a key driver for performing
 lookup operations to ensure that no two participants have the same Digital Address. Agents that compute the HIDA are typically
 the ones that have access to the participant's ID attribute, either through a data entry, scan operation or a connector to the system
-of record. Agents MUST discard the HIDA after completion of a user operation to ensure that the identifying attributes are not
+of record. Agents MUST discard the <a>HIDA</a> after completion of a user operation to ensure that the identifying attributes are not
 exposed to any kind of attack or correlation to the actual participant.
 
 Please see section [[#sctn-data-schema-dataresidency]] to understand where the HIDA is stored and its linkage to other identifiers in the ecosystem.
@@ -48,7 +49,7 @@ The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
 </ol>
 
 
-### HIDA for Organizational Entities  ### {#sctn-hida-computation-entities}
+### HIDA for Organizational Entities  ### {#sctn-hida-computation-org-entities}
 
 
 The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
@@ -62,7 +63,7 @@ The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
         <dd>Country of Incorporation of the <a>User</a> according to the ID document. Encoding MUST be `ALPHA-2` country code as specified by [[!ISO3166]].</dd>
 
         <dt>dateOfIncorporation</dt>
-        <dd>Date of Incorporation of the <a>Entity</a> according to the ID document.  Encoding MUST be `full-date` as specified by [[!RFC3339]].</dd>
+        <dd>Date of Incorporation of the <a>Organizational Entity</a> according to the ID document.  Encoding MUST be `full-date` as specified by [[!RFC3339]].</dd>
 
         <dt>sourceType</dt>
         <dd>Type of the ID document. This is specified by ADIA Governance for each country.</dd>
@@ -126,7 +127,7 @@ The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
 ```
 
 
-#### Entity HIDA Function (ADIA-FN-002) #### {#sctn-hida-function-users}
+#### Organizaional Entity HIDA Function (ADIA-FN-002) #### {#sctn-hida-function-org-entities}
 
 <strong>Request</strong>
 ```json
