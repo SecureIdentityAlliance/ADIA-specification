@@ -2,14 +2,21 @@
 
 ### Issue Verifiable Credential ### {#sctn-issue-vc}
 
+Issuers may issue one or more VCs to a User with a Digital Address. A VC contains claim attributes related to the
+User (Identity VCs) or Data Credentials that hold attributes defined against a well defined and approved Credential Schema.
+Issuing a VC starts with a credential offer presented to the User and the User approving the information in the VC.
+
+The User signs with their private key and sends the signed VC to the Issuer. The Issuer's agent persists the VC in the VC Store
+and notifies the Cloud Agent to persist the VC metadata in the DAS.
+
 <figure id="fig-vc-issuance-option-1">
   <img src="sequence-diagrams/VC-Issued-to-a-User-by-an-Issuer.svg"/>
   <figcaption>VC Issued to a User by an Issuer</figcaption>
 </figure>
 
-<a>Issuer</a>s have access to <a>HIDA</a> and hence could ask ADIA via <a>DAS</a> to lookup <a>TA_USER_ISSUER</a> by <a>HIDA</a>.
-
-
+Note: An important pre-requisite is that the Credential Schema must be published by an authorized Entity in the Ecosystem. Credential Schema
+may be published by ADIA Global Directory, ADIA Regional Directory or an Issuer. Protocols described in the [Credential Schema Protocol](ADIA-protocol#sctn-credential-schema-protocol)
+have more details on the supported commands and messages. 
 
 ### Revoke a Verifiable Credential ### {#sctn-revoking-credential}
 
