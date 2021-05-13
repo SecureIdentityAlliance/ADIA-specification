@@ -1,7 +1,7 @@
 # ADIA Protocol # {#sctn-adia-protocol}
 [NORMATIVE]
 
-## Complete Protocol Reference
+## Complete Protocol Reference ## {#sctn-complete-protocol-ref}
 
 Please see <strong>[ADIA Protocol Reference Documentation](ADIA-protocol.html)</strong> for the detail on protocol commands and sample messages.
 
