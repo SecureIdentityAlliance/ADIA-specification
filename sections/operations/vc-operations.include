@@ -2,11 +2,11 @@
 
 ### Issue Verifiable Credential ### {#sctn-issue-vc}
 
-Issuers may issue one or more VCs to a User with a Digital Address. A VC contains claim attributes related to the
-User (Identity VCs) or Data Credentials that hold attributes defined against a well defined and approved Credential Schema.
-Issuing a VC starts with a credential offer presented to the User and the User approving the information in the VC.
+Issuers may issue one or more Verifiable Credentials (VC) to a User who has a Digital Address. A VC contains claim attributes related to the
+User (Identity VCs) or Data Credentials that hold attributes contained within a well-defined and approved Credential Schema.
+Issuing a VC starts with a credential offer presented to the User and the User's approving the information contained in the VC.
 
-The User signs with their private key and sends the signed VC to the Issuer. The Issuer's agent persists the VC in the VC Store
+The User signs the VC with their private key and sends the signed VC to the Issuer. The Issuer's agent persists the VC in its VC Store
 and notifies the Cloud Agent to persist the VC metadata in the DAS.
 
 <figure id="fig-vc-issuance-option-1">
@@ -14,16 +14,16 @@ and notifies the Cloud Agent to persist the VC metadata in the DAS.
   <figcaption>VC Issued to a User by an Issuer</figcaption>
 </figure>
 
-Note: An important pre-requisite is that the Credential Schema must be published by an authorized Entity in the Ecosystem. Credential Schema
+Note: An important pre-requisite to this process is that the Credential Schema must be published by an authorized Entity in the Ecosystem. Credential Schema
 may be published by ADIA Global Directory, ADIA Regional Directory or an Issuer. Protocols described in the [Credential Schema Protocol](ADIA-protocol#sctn-credential-schema-protocol)
 have more details on the supported commands and messages.
 
 ### Revoke a Verifiable Credential ### {#sctn-revoking-credential}
 
-<a>Issuer</a>s make revoke VCs issued to a User. Revocation status of a VC results in the update of
+<a>Issuer</a>s may revoke VCs issued to a User. Revoking a VC results in the update of
 the Credential Metadata on the DAS. The DAS checks for constraints before allowing the revocation of an issued VC. Some of them are:
-1. Issuers may revoke VCs only for the credentials issued by them.
-2. The Digital Address is valid and not in an invalid state.
+1. Issuers may revoke only the VCs issued by them.
+2. The Digital Address of the VC's subject is valid and not in an invalid state.
 3. The VC is valid and in a non-expired state.
 
 <figure id="fig-revoke-vc">
@@ -31,39 +31,39 @@ the Credential Metadata on the DAS. The DAS checks for constraints before allowi
    <figcaption>Revoke a VC</figcaption>
 </figure>
 
-The User is notified of the revocation status but there is no expectation of an action from the User. Revoked VCs are no longer valid and hence not considered
-in any subsequent proof presentations.
+The User is notified of the revocation but there is no expectation of an action from the User. Revoked VCs are no longer valid and hence not considered
+for subsequent proof presentations.
 
 ### Expire Verifiable Credential ### {#sctn-expire-vc}
 
-Verifiable Credentials are temporal in nature. Expired credentials are not valid for any proof presentations. DAS may provide
-scheduled jobs to scan the Credential Metadata and mark the expired Credential Metadata inactive. Expired Credentials  may not be
-used for Proof Presentation by a User or Cloud Agent.
+Verifiable Credentials are temporal in nature. Expired credentials are not valid for any proof presentations. A DAS may employ
+scheduled jobs to scan its Credential Metadata and mark expired Credential Metadata as inactive. Expired Credentials may not be
+used for Proof Presentations by a User or Cloud Agent.
 
 <figure id="fig-expire-vc">
    <img src="sequence-diagrams/Expire-VC.svg"/>
    <figcaption>Expire a VC</figcaption>
 </figure>
 
-Note: The Issuer of the Verifiable Credential is notified of the expiration. Issuer's may follow procedures to deprecate
-or void the credentials issued by them based on their local juristiction policies.
+Note: The Issuer of the Verifiable Credential must be notified of the expiration. Issuers may follow procedures to deprecate
+or void credentials issued by them based on local regulatory requirements or policies.
 
 
 
 ## Present Proof/Verifiable Presentation ## {#sctn-vc-presentation-and-verification-1}
 
-Goal of this operation is to provide some identity attributes related to the user with the Service Provider (<a>SP</a>).
-  These attributes are include in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
-  We always use <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
+The goal of this operation is to provide some identity attributes related to the user to a Service Provider (<a>SP</a>).
+  These attributes are included in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
+  ADIA employs <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
 
-We distinguish 2 different types of <a>verifiable credential</a>s:
+ADIA distinguishes two different types of <a>Verifiable Credential</a>s:
 1. Credentials that include sufficient personal identifiable
     information to uniquely identify the user (identifying verifiable credentials) and
-2. Credentials that don't (<a>Anonymous Verifiable Credential</a>s). For example just stating that the user is older than 21.
+2. Credentials that don't (<a>Anonymous Verifiable Credential</a>s). For example a credential that just states the user is older than 21.
 
 
-In both cases, a public key is typically linked to the <a>verifiable credential</a> via the subject's DID document (see example 2 in [[did-core]]).
-  It is used as a proxy for the user, meaning anyone that can proof access of the related private key is assumed to be the user.
+In both cases, a public key is typically linked to the <a>verifiable credential</a> via the subject's DID document (see Example #2 in [[did-core]]).
+  It is used as a proxy for the user, meaning anyone that can prove access to the related private key is assumed to be the user.
   Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
   single-time use key, that is included in order to allow the
   <a>SP</a> to recognize the subject the attributes relate to.
@@ -80,8 +80,8 @@ Please refer to the section on [[#sctn-trust-model]] for details on how the <a>I
 
 ### Present Anonymous Credentials ### {#sctn-anon-creds}
 
-Note: Presentation of anonymous credentials and Zero-knowledge proofs is work in progress and
-will be supported in the subsequent versions of the specification.
+Note: Presentation of anonymous credentials and Zero-knowledge proofs is a work in progress and
+will be supported in subsequent versions of this Specification.
 
 
 <a>Anonymous Verifiable Credential</a>s don't intrinsically expose a link from the credential to a specific user.
@@ -98,6 +98,6 @@ to avoid the exposure of a correlation handle.
 
 ## User Consent ## {#sctn-user-consents}
 
-User consent for actions needs to be provided.  The consent is
+User consent for actions must be accomodated.  The consent should be
 collected via the <a>Digital Address Application</a>.  Authentication
-is performed using FIDO.
+should be performed using FIDO.
