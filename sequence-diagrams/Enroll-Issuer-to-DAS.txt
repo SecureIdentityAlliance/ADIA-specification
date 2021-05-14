@@ -30,7 +30,7 @@ end
 
 DAS Admin->DAS: Approve [REQUEST_ID]
 alt DAS provides Agency Services
-DAS->DAS: Provision Isser Agent with HIDA [CorrelationId=REQUEST_ID]
+DAS->DAS: Provision SP Agent with HIDA [CorrelationId=REQUEST_ID]
 else
 DAS->>Issuer Admin: Provision Issuer Agent with HIDA [CorrelationId=REQUEST_ID]
 Issuer Admin->>DAS: Setup Issuer Agent and Register with DAS [REQUEST_ID]
