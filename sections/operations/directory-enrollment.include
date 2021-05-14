@@ -94,25 +94,26 @@ by any entity in the ADIA ecosystem.
 
 ### Enroll a User ### {#sctn-enroll-user}
 
-Users may approach <a>Issuer</a>s to create a Digital Address or Issuers may initiate the process of creating a Digital Address for a user prior to issuing a Verifiable Credential.
-A Digital Address creation starts with the collection of identity attributes from the User, comparing to check User is `known` with the same <a>HIDA</a>.
+Users may approach <a>Issuer</a>s to create a Digital Address or Issuers may create a Digital Address for a user prior to issuing a Verifiable Credential to that user.
+Creating a Digital Address starts with the issuer collecting identity attributes of the User and checking the <a>HIDA</a> resulting from the HIDA hashing process against the 
+existing <a>HIDA</a> registry to see if the User is `known` to the system.
 
-A lookup of the <a>Trust Anchor</a> results in letting the User know of the possibility of an existing Digital Address. The User may be
-request to link the existing Digital Address instead of creating a new one. ADIA Governance policies and technical constraints within this specification enforce that the uniqueness of the HIDA for a given User is
+A lookup of the <a>HIDA</a> may result in the possibility of an existing Digital Address for that User. The User may request to link the existing Digital Address 
+instead of creating a new one. ADIA Governance policies and technical constraints within this specification enforce that the uniqueness of the HIDA for a given User is
 maintained within the same Regional Directory.
 
 The <a>DAS</a> related to the first <a>Digital Address</a> <a>Issuer</a> is called <a>HomeDAS</a>. The HomeDAS also provides services to
-persist and search the <a>Credential Metadata</a> associated with the VCs issued to the User.
+persist and search the <a>Credential Metadata</a> associated with the Verifiable Credentials issued to the User.
 
 #### Issuer Initiated New User Enrollment #### {#sctn-onboarding-1st-issuer}
 
-The diagram below represents the `new` User requesting a Digital Address from an Issuer. The DAS providing the Agency services, provisions
-a <a>Cloud Agent</a> for the User to create public/private key pair and a DID for the User. The identifier (<a>DAS_USER_ID</a>), along with the
+The diagram below represents a `new` User requesting a Digital Address from an Issuer. The DAS providing the Agency services, provisions
+a <a>Cloud Agent</a> for the User to create a public/private key pair and a DID for the User. The identifier (<a>DAS_USER_ID</a>), along with the
 HomeDAS identifier (<a>HomeDASId</a>) are persisted on the DAS to associate their identifiers with the newly created Digital Address.
 Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details on the representation and usage of the Digital Address.
 
-The Issuer may share the Digital Address with the User through any of the secure channels. For simplicity, the diagram refers to sharing the DA information
-encoded in a QR code that can be scanned using the <a>DAA</a> or a method endorsed by ADIA Specification.
+The Issuer may share the Digital Address with the User through any secure channel. For simplicity, the diagram shows the sharing of Digital Address information
+encoded in a QR code that can be scanned using the <a>DAA</a> or another method endorsed by ADIA Specification.
 
 <figure id="fig-onboarding-1st-issuer">
     <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg"/>
@@ -129,22 +130,22 @@ There are some important steps before the User is allowed to import the Digital 
 </li>
 <li><strong>Authenticate the User with the Digital Address</strong>
   <ul>
-    <li>The DAS may request the User to register their DAA using FIDO. FIDO UAF provides a strong password-less authentication for operations such as Presenting proof and other
-    operations that require the User's consent using biometric or possession based verification mechanism before unlocking the private key for signing functions. Please
+    <li>The DAS may request the User to register their DAA using FIDO. FIDO UAF provides a strong passwordless authentication for operations such as resenting proof or other
+    operations that require the User's consent using a biometric or possession based verification mechanism before unlocking the private key for signing functions. Please
     see the section on [[#sctn-adia-role-daa]] for more details.
     </li>
   </ul>
 </li>
 <li><strong>User Consent</strong>
   <ul>
-    <li>The process of importing the Digital Address is complete when the User consents to the usage of the Digital Address. Please see the section on [[#sctn-user-consents]] for details.
+    <li>The process of importing the Digital Address is complete when the User consents to the import of the Digital Address. Please see the section on [[#sctn-user-consents]] for details.
     </li>
   </ul>
 </li>
 
 </ol>
 
-Once a Digital Address is acquired by the User, subsequent steps may be:
+Once a Digital Address is acquired by the User, possible subsequent steps are:
 * The User may choose to recover their forgotten Digital Address using approved methods. Please see sections on [[#sctn-recover-digital-address]] or [[#sctn-da-delegated-recovery]].
 * The User may disenroll from the ADIA ecosystem. Please see section on the [[#sctn-user-account-deletion]] for details.
 
@@ -152,26 +153,26 @@ Once a Digital Address is acquired by the User, subsequent steps may be:
 #### Enroll a User with existing Digital Address #### {#sctn-onboarding-2nd-issuer}
 
 A User with an existing Digital Address, intentionally or unintentionally may request another Digital Address.
-The request may be initiated by an Issuer in the same DAS or an Issuer in any other DAS within the
-User's Regional Directory. Within the same Regional Directory, the HIDA for the user results in a collision within the ARD. In such cases, the User is not
-be permitted to request a new Digital Address but instead notified of the existence of an existing one.
+The request may be initiated by an Issuer on the same DAS or an Issuer on another DAS within the same Regional Directory. 
+Within a single Regional Directory, if the HIDA for the user results in a collision, the User may not
+request a new Digital Address but instead is notified of the existing one.
 
 <figure id="fig-onboarding-2nd-issuer">
     <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg"/>
     <figcaption>User Onboarding to Second Issuer</figcaption>
 </figure>
 
-Note: It is possible for there to be multiple Digital Addresses for the same user in multiple regions.
+Note: It is possible for a user to have a different Digital Address in another Regional Directory.
 
 #### User Initiated New User Enrollment (using DAA) #### {#sctn-user-initiated-da-with-daa}
 
 A user may initiate the creation of a Digital Address remotely, via an online service
 provided by a Digital Address <a>Issuer</a>. The <a>Issuer</a>'s service MUST follow procedures similar to the
-in-person creation by request the Identity attributes from the User, generating the hashed attributes and verifying against
+in-person creation by requesting the identity attributes of the User, generating the hashed attributes (HIDA) and verifying against
 the ADIA Regional Directory.
 
-The online service of the <a>Issuer</a> presents the user with a QR code either online on its website or offline via an email or alternate service,
-such that the User is capable of scanning the QR code containing their Digital Address information and initiating an Authenticating Binding processes
+The online service of the <a>Issuer</a> presents the user with a QR code either online on its website or offline via an email or alternate service channel,
+such that the User is able to scan the QR code containing their Digital Address information and initiate an Authenticator Binding processes
 with the <a>HomeDAS</a>.
 
 <figure id="fig-user-initiated-da">
@@ -179,7 +180,7 @@ with the <a>HomeDAS</a>.
     <figcaption>User Initiated Digital Address Creation with DAA</figcaption>
 </figure>
 
-A successful authentication and binding to the HomeDAS's services allow the user to use the <a>Digital Address</a>
+A successful authentication and binding to the HomeDAS's services allows the user to use the <a>Digital Address</a>
 at the level of Assurance determined by the onboarding process. Please see the section on [[#sctn-assurance-level]] for more information.
 
 Though it may be adequate for some purposes, some Service Providers in the ecosystem may require the
@@ -189,8 +190,8 @@ Assurance Level assigned by remote methods. This is described in the section [[#
 #### Issuer Assisted Verification of Digital Address #### {#sctn-verify-user-da-in-person}
 
 The user may choose to visit a Verification Center in person to upgrade the Assurance Level
-initially assigned by the system. An in-person verification may include a manual review/ verification
-of the identity documents by a certified operator before indicating to the DAS about the genuineness of the subject.
+initially assigned by the system. An in-person verification may include a manual review and verification
+of their identity documents by a certified operator before reporting to the DAS about the genuineness of the subject.
 
 The DAS may independently request the user to authenticate before upgrading the User's Assurance Level.
 
