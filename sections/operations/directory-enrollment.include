@@ -47,7 +47,7 @@ Note: Details of the agents and protocol messages are depicted below.
 
 ### Enroll an Issuer ### {#sctn-enroll-as-issuer}
 
-Issuers are onboarded into the ADIA Ecosystem by an DAS. The process starts with the DAS requiring the
+Issuers are onboarded into the ADIA Ecosystem by a DAS. The process starts with the DAS requiring the
 prospective Issuer to provide organizational details, a contact person for the organization and details to qualify the
 Issuer as a member in good business standing, financial status and criteria to meet the Certification process established by the ADIA Governance policies.
 
@@ -73,18 +73,18 @@ by any entity in the ADIA ecosystem.
 
 ### Enroll a Service Provider ### {#sctn-enroll-as-serviceprovider}
 
-Service Providers are onboarded into the ADIA Ecosystem by an Interchange. The process starts with the Interchange requiring the
+Service Providers are onboarded into the ADIA Ecosystem by a DAS. The process starts with the DAS requiring the
 prospective Service Provider to provide organizational details, a contact person for the organization and details to join the ecosystem.
 
-Service Provider enrolling into the ecosystem is a relatively simpler process as the services consume and verify participants
-in the ecosystem. The governing body within Interchange may approve or reject requests to enroll into the Interchange and the ADIA ecosystem. On successful approval of an Entity
-as an Issuer results in a Digital Address, a DID and a Credential to enroll into the Directory as an Issuer.
+Service Provider enrolling into the ecosystem is a relatively simpler process as the services consume and verify credentials of participants
+in the ecosystem. The governing body within DAS may approve or reject requests to enroll into the DAS and the ADIA ecosystem. On successful approval of an Entity
+as a Service Provider results in a Digital Address, a DID and a Credential to enroll into the Directory as a Service Provider.
 
-The Interchange may provider API services or provide agency services to provision the Service Provider Agents in a hosted model to request
-and verify Verifiable Credentials from Users.
+The DAS may provide API services or provide agency services to provision the Service Provider Agents in a hosted model to request
+and verify the Verifiable Credentials of Users.
 
-Agent based deployments may require the Service Provider to manage their private key and DID (represented by the <a>DAS_ID</a>)
-and enroll with the Interchange. The Service Provider's public information such as business name and their DIDDoc is published to the ADIA Global Directory for lookups
+Agent-based deployments may require the Service Provider to manage their private key and DID (represented by the <a>DAS_ID</a>)
+and enroll with the DAS. The Service Provider's public information such as business name and their DIDDoc is published to the ADIA Global Directory for lookups
 by any entity in the ADIA ecosystem.
 
 <figure id="fig-onboarding-sp-to-dap">
