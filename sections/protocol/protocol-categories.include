@@ -1,9 +1,8 @@
 ## Protocols Categories ## {#sctn-protocol-categories}
-DIDcomm [[!didcomm-messaging]] is used for securing the communication. All interactions between entities is facilitated through agents and services in the entity's domain.
-Each entity’s Agent holds cryptographic keys and digital credentials on behalf of the entity.
+All interactions between entities is facilitated through agents and services in the entity's domain.
 
-Agents also manages the participant’s connections with services by implementing protocols to establish connections, perform DID exchanges, issue credentials and present proofs.
-The ADIA Messaging Specification is an extension of the DIDComm protocol. These protocols are:
+Agents manage the participant’s connections with services by implementing protocols to establish connections, perform DID exchanges, issue credentials and present proofs.
+The ADIA protocols are:
 
 <table class="data longlastcol">
   <thead>
@@ -45,3 +44,4 @@ The ADIA Messaging Specification is an extension of the DIDComm protocol. These 
     </tr>
   </tbody>
   <table>
+
