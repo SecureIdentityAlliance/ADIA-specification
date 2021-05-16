@@ -83,6 +83,9 @@ Please refer to the section on [[#sctn-trust-model]] for details on how the <a>I
 Note: Presentation of anonymous credentials and Zero-knowledge proofs is a work in progress and
 will be supported in subsequent versions of this Specification.
 
+Note: In this case, the message to present the <a>Verifiable Credential</a> that is sent from the <a>Cloud Agent</a> to the <a>SP</a> is signed with a dedicated signing key
+as opposed to being signed with <a>DAS_USER_ID_SK</a> in order to avoid a correlation handle in this operation.
+This is a deviation from the default use of [[didcomm-messaging]] that we specify in [[##sctn-communication-protocol-msgs]].
 
 <a>Anonymous Verifiable Credential</a>s don't intrinsically expose a link from the credential to a specific user.
 A key dedicated for this operation is created on-demand by the user's <a>Cloud Agent</a>.

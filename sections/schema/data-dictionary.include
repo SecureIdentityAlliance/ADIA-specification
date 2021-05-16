@@ -99,6 +99,8 @@
 
 ## Credential Metadata ## {#sctn-credential-metadata}
 
+The <a>ADIA</a> system maintains the following fields as <dfn>Credential Metadata</dfn>.
+
 <table class="data longlastcol">
   <thead>
     <th>Name</th>

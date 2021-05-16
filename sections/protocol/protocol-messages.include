@@ -1,4 +1,4 @@
-## Protocol Messages ## {#sctn-communication-protocol-agents}
+## Protocol Messages ## {#sctn-communication-protocol-msgs}
 
 The ADIA Protocol messages are an extension of the DIDComm messages [[!didcomm-messaging]].
 
