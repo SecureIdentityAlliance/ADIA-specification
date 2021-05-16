@@ -14,7 +14,7 @@
   <tr>
     <td>ENTITY_DIGITAL_ADDRESS</td>
     <td>String</td>
-    <td>Digital Address aka the user friendly mnemonic</td>
+    <td><a>Digital Address</a></td>
   </tr>
     <tr>
       <td>ENTITY_ROLE</td>
@@ -116,7 +116,7 @@ The <a>ADIA</a> system maintains the following fields as <dfn>Credential Metadat
   <tr>
     <td>ENTITY_DIGITAL_ADDRESS</td>
     <td>String</td>
-    <td><a>Digital Address</a> aka the user friendly mnemonic</td>
+    <td><a>Digital Address</a></td>
   </tr>
     <tr>
       <td>ISSUER_ID</td>
@@ -147,6 +147,9 @@ The <a>ADIA</a> system maintains the following fields as <dfn>Credential Metadat
           <li>Data Credential</li>
           <li>...</li>
         </ul>
+
+Issue: We need to be specific about the strings that we use today in this spec!
+
       </td>
     </tr>
     <tr>

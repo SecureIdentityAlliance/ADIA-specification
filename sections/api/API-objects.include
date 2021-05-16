@@ -16,7 +16,7 @@
   <tr>
     <td>entityDigitalAddress</td>
     <td>String</td>
-    <td>Digital Address aka the user friendly mnemonic</td>
+    <td><a>Digital Address</a></td>
   </tr>
   <tr>
     <td>entityRole</td>
@@ -71,7 +71,7 @@
     <tr>
       <td>entityDigitalAddress</td>
       <td>String</td>
-      <td>Digital Address aka the user friendly mnemonic</td>
+      <td><a>Digital Address</a></td>
     </tr>
       <tr>
         <td>entityRole</td>
@@ -130,7 +130,7 @@
   <tr>
     <td>entityDigitalAddress</td>
     <td>String</td>
-    <td>Digital Address aka the user friendly mnemonic</td>
+    <td><a>Digital Address</a></td>
   </tr>
     <tr>
       <td>entityRole</td>
@@ -193,7 +193,7 @@
     <tr>
       <td>entityDigitalAddress</td>
       <td>String</td>
-      <td>Digital Address aka the user friendly mnemonic</td>
+      <td><a>Digital Address</a></td>
     </tr>
       </tr>
       <tr>
