@@ -8,16 +8,18 @@ participant Issuer
 Participant ARD
 
 User -> DAA: I want to delete my Digital Address
-DAA -> DAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
-DAA-> DAS: Delete DA
-DAS -> ARD: Delete user account (DAS_USER_ID)
+DAA <-> DAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
+DAA->> DAS: ADIA-DA-003: Delete DA
+DAS -> +ARD: ADIA-DA-003: Delete user account (DAS_USER_ID)
 ARD -> ARD: Update DLT\n(DAS_USER_ID) and delete corresponding HIDA
-ARD --> DAS: DA Deleted (DAS_USER_ID)
-DAS-->DAS: Search Credential Metadata \n(DAS_USER_ID)
-opt For each VC metadata, notify issuer of DA deletion
-DAS-->Issuer: Notify of DA deletion \n(DAS_USER_ID, CREDENTIAL_ID)
+ARD -->> -DAS: ADIA-DA-003: DA Deleted (DAS_USER_ID)
+DAS-->DAS: ADIA-CR-004: Search Credential Metadata \n(DAS_USER_ID)
+opt Notify issuer of DA deletion
+loop For each VC metadata
+DAS-->Issuer: ADIA-CR-006: Notify of DA deletion \n(DAS_USER_ID, CREDENTIAL_ID)
 end
-DAS -> Cloud Agent: Delete all credential metadata
-Cloud Agent --> DAS: Deletion Success
+end
+DAS ->> Cloud Agent: ADIA-CR-005: Delete all credential metadata
+Cloud Agent --> DAS: ADIA-CR-005: Deletion Success
 DAS -> DAS: Delete USER_FIDO_PK
 DAS --> DAA: DA deletion Success

@@ -3,15 +3,18 @@ title User Bootstraps Additional DAA Instance
 Participant User
 Participant DAA
 Participant New DAA
-Participant Cloud Agent
 Participant DAS
 
-User -> DAA: I want to use my Digital Address on an additional device
-DAA -> New DAA: Send DA along with bootstrapping command
-New DAA -> DAS: Register DA on New DAA
-DAS -> DAA: Authenticate user to allow DA to be registered on new DAA
-User -> DAA: Authenticate and Approve request
-DAA -> DAS: Send approval
-DAS -> New DAA: Approve DA on New DAA
-New DAA -> DAS : Register FIDO Authenticator for this DA to the DAS (FIDO_USER_PK)
-New DAA -> User: Device is ready for use
+User -> DAA: I want to use my Digital Address\non an additional device
+DAA->DAA: Generate QR with \nBootstrapping command
+DAA->> +New DAA: Present QR [DA, Bootstrapping command]
+New DAA-->> -DAA: Scan the QR Code
+New DAA ->> DAS: Register DA on New DAA
+DAS->>DAS: ADIA-DA-004: Resolve DA.
+DAS->DAS: Retrieve DAA device information.
+DAS -> +DAA: Notify new DAA request. Authenticate User [DAS_USER_ID]
+User <-> DAA: Approve Request. \nAuthenticate with FIDO.
+DAA -->> DAS: Approve new DAA
+DAS -> New DAA: Initiate FIDO Registration
+New DAA <-> DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
+New DAA-->User: Digital Address enrolled and ready for use on new device
