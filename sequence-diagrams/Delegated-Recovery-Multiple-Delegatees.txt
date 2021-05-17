@@ -1,46 +1,61 @@
 title Delegated Recovery-Multiple Delegatees
-Participant User
+actor User
 participant User DAA
-participant User HomeDAP
-Participant Delegated User
-participant Delegatee DAA
-participant Delegatee HomeDAP
-Participant Cloud Agent
-Participant DAS
+participant User HomeDAS
 Participant ARD
+participant Delegatee HomeDAS
+participant Delegatee DAA
+actor Delegated User
 
 
-opt User sets up Delegatee List
-User->User DAA: Set up Delegatees List
-User->User HomeDAP: Notify the Delegatees of nomination
-User HomeDAP->User HomeDAP: Resolve HomeDAP from DA
-User HomeDAP->ARD: Lookup HomeDAP for each Delegatee
-ARD-->Delegatee HomeDAP: Route to each HomeDAP
-Delegatee HomeDAP->Delegatee HomeDAP: Lookup DAP_USER_ID and Device Information
-Delegatee HomeDAP->Delegatee DAA: Push Notification to Device
-Delegated User->Delegatee DAA: View and Accept/Reject
-Delegatee DAA->Delegatee HomeDAP: Accept/Reject status
-Delegatee HomeDAP->User HomeDAP: Accept/Reject Status of each Delegatee
+opt Delegatee Setup
+User->User DAA: Set up Delegatees List [Delegatee DA]
+User DAA->>User HomeDAS: Notify the Delegatees of nomination
+User HomeDAS->>User HomeDAS: Resolve HomeDAS from DA
+
+loop For each Delegatee
+alt Delegatee in same HomeDAS
+User HomeDAS->>Delegatee DAA: Notify Delegatee
+else Delegatee in Different DAS
+User HomeDAS->>ARD: ADIA-DR-004: Lookup HomeDAS Delegatee.
+ARD-->>User HomeDAS: ADIA-DR-004: DAS_ID for Delegatee HomeDAS
+User HomeDAS->>Delegatee HomeDAS: Route to Delegatee HomeDAS [DAS_ID]
+Delegatee HomeDAS->Delegatee HomeDAS: Lookup DAS_USER_ID and Device Information
+Delegatee HomeDAS->>Delegatee DAA: Notify Delegatee
 end
 
-opt Delegated DA Recovery (Multiple Users)
-User->User DAA: I need to recover my access
-User DAA->User HomeDAP: Initiate Recovery Process
-User HomeDAP->User HomeDAP: Generate a recovery code, TRANSACTION_ID
-User HomeDAP->User DAA: Send Recovery Code
-User->Delegated User: Provide Recovery Code (Manual)
-Delegated User->Delegatee DAA: Select User DA + Enter Recovery Code
-Delegatee DAA->Delegatee HomeDAP: Send User DA + Recovery Code
-
-opt User in Different DAP
-Delegatee HomeDAP->Delegatee HomeDAP: Resolve User HomeDAP from DA
-Delegatee HomeDAP-->ARD: Route to User HomeDAP
-ARD->User HomeDAP: Route Respose
+Delegated User-->>Delegatee DAA: View and Accept/Reject
+Delegatee DAA-->>Delegatee HomeDAS: Accept/Reject status
+Delegatee HomeDAS-->>User HomeDAS: Delegatee Accept/Reject Status
+User HomeDAS-->>User DAA: Delegatee Accept/Reject Status [Delegatee DAS_USER_ID]
 end
-User HomeDAP->User HomeDAP: Lookup Recovery Code, TRANSACTION_ID
-User HomeDAP->User HomeDAP: Minimum criteria met (Delegatee Count>3)
-User HomeDAP->User HomeDAP: Recovery Success/Failure
-User HomeDAP->User DAA: Push Notification with Success/Failure
-User HomeDAP->User DAA: Sync Credential Metadata
+end
+
+
+opt DA Recovery (Multiple Users)
+User->User DAA: I need to recover my access (New Device)
+User DAA->User HomeDAS: Provide DA and Select Delegatees
+User HomeDAS->User HomeDAS: Generate a recovery code, TRANSACTION_ID
+User HomeDAS-->User DAA: Send Recovery Code
+User->>Delegated User: Provide Recovery Code (Manual)
+Delegated User->>Delegatee DAA: Select User DA + Enter Recovery Code
+Delegatee DAA->Delegatee HomeDAS: Send User DA + Recovery Code
+
+
+alt Recovery Request - Delegatee in same HomeDAS
+Delegatee HomeDAS->>Delegatee HomeDAS: ADIA-DR-004: Resolve User DA
+Delegatee HomeDAS-->>User HomeDAS: Accept/Reject Status [TRANSACTION_ID, Recovery Code,DAS_USER_ID, Status]
+else Recovery Request - Delegatee in Different DAS
+Delegatee HomeDAS->>ARD: ADIA-DR-004:Lookup User HomeDAS
+ARD-->>Delegatee HomeDAS: ADIA-DR-004:: DAS_ID for User HomeDAS
+Delegatee HomeDAS-->>User HomeDAS: Accept/Reject Status [TRANSACTION_ID, Recovery Code,DAS_USER_ID, Status]
+end
+
+
+User HomeDAS->User HomeDAS: Lookup Recovery Code, TRANSACTION_ID
+User HomeDAS->User HomeDAS: Minimum criteria met (Delegatee Count>3)
+User HomeDAS->User HomeDAS: Delegatee Accept/Reject Status
+User HomeDAS-->>User DAA: Notify with Success/Failure
+User HomeDAS->User DAA: Recover DA and Sync Credential Metadata
 User DAA->User: Recovery Complete
 end
