@@ -52,21 +52,21 @@ or void credentials issued by them based on local regulatory requirements or pol
 
 ## Present Proof/Verifiable Presentation ## {#sctn-vc-presentation-and-verification-1}
 
-The goal of this operation is to provide some identity attributes related to the user to a Service Provider (<a>SP</a>).
-  These attributes are included in the <a>verifiable credential</a> and have been verified by the <a>Issuer</a>.
+The goal of this operation is to allow a user to present identity attributes for themselves to a Service Provider (<a>SP</a>).
+  These attributes are included in the <a>verifiable credential</a> and have been verified by the VC's <a>Issuer</a>.
   ADIA employs <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
 
-ADIA distinguishes two different types of <a>Verifiable Credential</a>s:
+ADIA distinguishes two types of <a>Verifiable Credential</a>s:
 1. Credentials that include sufficient personal identifiable
-    information to uniquely identify the user (identifying verifiable credentials) and
-2. Credentials that don't (<a>Anonymous Verifiable Credential</a>s). For example a credential that just states the user is older than 21.
+    information (PII) to uniquely identify the user (identifying verifiable credentials) and
+2. Credentials that don't include PII (<a>Anonymous Verifiable Credential</a>s). For example a credential that just states the user is older than 21.
 
 
-In both cases, a public key is typically linked to the <a>verifiable credential</a> via the subject's DID document (see Example #2 in [[did-core]]).
+In both cases, a public key is linked to the <a>verifiable credential</a> via the subject's DID document (see Example #2 in [[did-core]]).
   It is used as a proxy for the user, meaning anyone that can prove access to the related private key is assumed to be the user.
   Consequently, in case (2), the public key - if it is included - will never appear publicly with a link to the user record. Instead, it will be a
   single-time use key, that is included in order to allow the
-  <a>SP</a> to recognize the subject the attributes relate to.
+  <a>SP</a> to recognize the subject (user) the attributes relate to.
 
 Please refer to the section on [[#sctn-trust-model]] for details on how the <a>ISSUER_ID_PK</a> is verified by the Service Provider.
 
