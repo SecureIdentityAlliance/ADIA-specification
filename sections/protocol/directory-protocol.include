@@ -60,11 +60,9 @@ detail based on the type of entity.
 {
   "@type": "https://adiassociation.org/directory/1.0/lookup-user-ta",
   "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-  "adia": {
-    "attributes": {
-      "hida": "{HIDA}",
-      "issuerId": "{ISSUER_ID}"
-    }
+  "body": {
+    "hida": "{HIDA}",
+    "issuerId": "{ISSUER_ID}"
   }
 }
 ```
@@ -79,11 +77,9 @@ detail based on the type of entity.
     "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
     "message": "e.g. comment or reason of failed request"
   },
-  "adia": {
-    "response": {
-      "taUserIssuer": "{TA_USER_ISSUER}",
-      "homeDASId": "{HomeDAS_ID}"
-    }
+  "body": {
+    "taUserIssuer": "{TA_USER_ISSUER}",
+    "homeDASId": "{HomeDAS_ID}"
   }
 }
 ```
@@ -95,10 +91,8 @@ detail based on the type of entity.
 {
   "@type": "https://adiassociation.org/directory/1.0/lookup-ard-ta",
   "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-  "adia": {
-    "attributes": {
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -113,10 +107,8 @@ detail based on the type of entity.
     "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
     "message": "e.g. comment or reason of failed request"
   },
-  "adia": {
-    "response": {
-      "taARDAGD": "{TA_ARD_AGD}"
-    }
+  "body": {
+    "taARDAGD": "{TA_ARD_AGD}"
   }
 }
 ```
@@ -127,10 +119,8 @@ detail based on the type of entity.
 {
   "@type": "https://adiassociation.org/directory/1.0/lookup-das-ta",
   "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-  "adia": {
-    "attributes": {
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -145,11 +135,9 @@ detail based on the type of entity.
     "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
     "message": "e.g. comment or reason of failed request"
   },
-  "adia": {
-    "response": {
-      "taDASARD": "{TA_DAS_ARD}",
-      "homeARDId": "{homeARD_ID}"
-    }
+  "body": {
+    "taDASARD": "{TA_DAS_ARD}",
+    "homeARDId": "{homeARD_ID}"
   }
 }
 ```
@@ -160,10 +148,8 @@ detail based on the type of entity.
 {
   "@type": "https://adiassociation.org/directory/1.0/lookup-issuer-ta",
   "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-  "adia": {
-    "attributes": {
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -178,11 +164,9 @@ detail based on the type of entity.
     "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
     "message": "e.g. comment or reason of failed request"
   },
-  "adia": {
-    "response": {
-      "taIssuerDAS": "{TA_ISSUER_DAS}",
-      "homeDASId": "{HomeDAS_ID}"
-    }
+  "body": {
+    "taIssuerDAS": "{TA_ISSUER_DAS}",
+    "homeDASId": "{HomeDAS_ID}"
   }
 }
 ```
@@ -193,10 +177,8 @@ detail based on the type of entity.
 {
   "@type": "https://adiassociation.org/directory/1.0/lookup-sp-ta",
   "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
-  "adia": {
-    "attributes": {
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -211,11 +193,9 @@ detail based on the type of entity.
     "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
     "message": "e.g. comment or reason of failed request"
   },
-  "adia": {
-    "response": {
-      "taServiceProviderDAS": "{TA_SP_DAS}",
-      "homeDASId": "{HomeDAS_ID}"
-    }
+  "body": {
+    "taServiceProviderDAS": "{TA_SP_DAS}",
+    "homeDASId": "{HomeDAS_ID}"
   }
 }
 ```
@@ -235,13 +215,11 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 {
   "@type": "https://adiassociation.org/directory/1.0/enroll-user",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-  "adia": {
-    "attributes":{
-      "dasUserId": "{DAS_USER_ID}",
-      "homeDASId": "{HomeDAS_ID}",
-      "taUserIssuer": "{TA_USER_ISSUER}",
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "dasUserId": "{DAS_USER_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "taUserIssuer": "{TA_USER_ISSUER}",
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -250,13 +228,13 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-user-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/directory/1.0/enroll-user-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
 
@@ -268,12 +246,10 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 {
   "@type": "https://adiassociation.org/directory/1.0/enroll-ard",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-  "adia": {
-    "attributes":{
-        "ardId": "{ ARD_ID }",
-        "taARDAGD": "{TA_ARD_AGD}",
-        "hida": "{HIDA}"
-    }
+  "body": {
+    "ardId": "{ ARD_ID }",
+    "taARDAGD": "{TA_ARD_AGD}",
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -281,17 +257,15 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-ard-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/directory/1.0/enroll-ard-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
-
-
 
 
 <strong>3. Enroll a DAS </strong>
@@ -299,61 +273,56 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-das",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia": {
-      "attributes":{
-        "dasId": "{DAS_ID}",
-        "homeARDId": "{homeARD_ID}",
-        "taDASARD": "{TA_DAS_ARD}",
-        "hida": "{HIDA}"
-      }
-    }
+  "@type": "https://adiassociation.org/directory/1.0/enroll-das",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "body": {
+    "dasId": "{DAS_ID}",
+    "homeARDId": "{homeARD_ID}",
+    "taDASARD": "{TA_DAS_ARD}",
+    "hida": "{HIDA}"
+  }
 }
 ```
 
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-das-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/directory/1.0/enroll-das-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
-
 
 <strong>4. Enroll an Issuer</strong>
 
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-issuer",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "adia": {
-      "attributes":{
-            "issuerId": "{ISSUER_ID}",
-            "homeDASId": "{HomeDAS_ID}",
-            "taIssuerDAS": "{TA_ISSUER_DAS}",
-            "hida": "{HIDA}"
-        }
-      }
+  "@type": "https://adiassociation.org/directory/1.0/enroll-issuer",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "body": {
+    "issuerId": "{ISSUER_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "taIssuerDAS": "{TA_ISSUER_DAS}",
+    "hida": "{HIDA}"
+  }
 }
 ```
 
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-issuer-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/directory/1.0/enroll-issuer-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
 
@@ -364,13 +333,11 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 {
   "@type": "https://adiassociation.org/directory/1.0/enroll-sp",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-  "adia": {
-    "attributes": {
-      "serviceProviderId": "{SP_ID}",
-      "homeDASId": "{HomeDAS_ID}",
-      "taServiceProviderDAS": "{TA_SP_DAS}",
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "serviceProviderId": "{SP_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "taServiceProviderDAS": "{TA_SP_DAS}",
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -378,16 +345,15 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/enroll-sp-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/directory/1.0/enroll-sp-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
-
 
 
 #### disenroll-entity (ADIA-DR-003)
@@ -406,12 +372,10 @@ Agents may implement additional actions based on the goal codes.
 {
   "@type": "https://adiassociation.org/directory/1.0/disenroll-user",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-  "adia": {
-    "attributes": {
-      "dasUserId": "{DAS_USER_ID}",
-      "homeDASId": "{HomeDAS_ID}",
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "dasUserId": "{DAS_USER_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -420,13 +384,13 @@ Agents may implement additional actions based on the goal codes.
 
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/disenroll-user-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-user-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
 
@@ -438,11 +402,9 @@ Agents may implement additional actions based on the goal codes.
 {
   "@type": "https://adiassociation.org/directory/1.0/disenroll-ard",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-  "adia": {
-    "attributes": {
-      "ardId": "{ ARD_ID }",
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "ardId": "{ ARD_ID }",
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -450,17 +412,15 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/disenroll-ard-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-ard-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
-
-
 
 
 <strong>3. DisEnroll a DAS </strong>
@@ -470,12 +430,10 @@ Agents may implement additional actions based on the goal codes.
 {
   "@type": "https://adiassociation.org/directory/1.0/disenroll-das",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-  "adia":{
-    "attributes": {
-      "dasId": "{DAS_ID}",
-      "homeARDId": "{homeARD_ID}",
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "dasId": "{DAS_ID}",
+    "homeARDId": "{homeARD_ID}",
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -483,13 +441,13 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/disenroll-das-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-das-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
 
@@ -501,12 +459,10 @@ Agents may implement additional actions based on the goal codes.
 {
   "@type": "https://adiassociation.org/directory/1.0/disenroll-issuer",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-  "adia": {
-    "attributes": {
-      "issuerId": "{ISSUER_ID}",
-      "homeDASId": "{HomeDAS_ID}",
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "issuerId": "{ISSUER_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -514,13 +470,13 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/disenroll-issuer-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-issuer-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
 
@@ -531,12 +487,10 @@ Agents may implement additional actions based on the goal codes.
 {
   "@type": "https://adiassociation.org/directory/1.0/disenroll-sp",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-  "adia": {
-    "attributes": {
-      "serviceProviderId": "{SP_ID}",
-      "homeDASId": "{HomeDAS_ID}",
-      "hida": "{HIDA}"
-    }
+  "body": {
+    "serviceProviderId": "{SP_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "hida": "{HIDA}"
   }
 }
 ```
@@ -544,16 +498,15 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/disenroll-sp-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-sp-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
-
 
 
 #### search-entity (ADIA-DR-004)
@@ -573,16 +526,15 @@ Note: Parameters used for searching result in an "AND" operation. Avoid queries 
 <strong>Request</strong>
 ```json
 {
-    "@type": "https://adiassociation.org/directory/1.0/search-entity",
-    "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
-    "body":
-        {
-          "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
-          "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
-          "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}", // optional
-          "name": "Name of the entity",                      // optional
-          "status": "{ACTIVE | INACTIVE }"                     // optional
-        }
+  "@type": "https://adiassociation.org/directory/1.0/search-entity",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "body": {
+    "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+    "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
+    "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}", // optional
+    "name": "Name of the entity",                             // optional
+    "status": "{ACTIVE | INACTIVE }"                          // optional
+  }
 }
 ```
 
@@ -596,8 +548,50 @@ Note: Parameters used for searching result in an "AND" operation. Avoid queries 
       "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
       "message": "e.g. comment or reason of failed request"
   },
-  "adia": {
-    "attributes": {
+  "body": {
+    "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+    "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
+    "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
+    "name": "Name of the entity",
+    "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
+    "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
+    "homeDASName": "Name of DAS",   // For Issuers, SPs and users
+    "homeARDId": "{HomeARD_ID}",    // For DAS
+    "homeARDDA": "{ARD_DA}",        // For DAS
+    "homeARDName": "Name of the ARD", // For DAS
+    "status": "{ACTIVE | INACTIVE }",
+    "createdDate": "ISO 8601 Date format"
+  }
+}
+```
+
+<strong>Response (Multi-Match)</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/search-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "goal-code": "adia.search-entity.ard",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+      "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+      "message": "e.g. comment or reason of failed request"
+  },
+  "body": {
+    "result":[{
+      "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+      "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
+      "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
+      "name": "Name of the entity",
+      "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
+      "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
+      "homeDASName": "Name of DAS",   // For Issuers, SPs and users
+      "homeARDId": "{HomeARD_ID}",    // For DAS
+      "homeARDDA": "{ARD_DA}",        // For DAS
+      "homeARDName": "Name of the ARD", // For DAS
+      "status": "{ACTIVE | INACTIVE }",
+      "createdDate": "ISO 8601 Date format"
+    },
+    {
       "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
       "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
       "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
@@ -610,53 +604,7 @@ Note: Parameters used for searching result in an "AND" operation. Avoid queries 
       "homeARDName": "Name of the ARD", // For DAS
       "status": "{ACTIVE | INACTIVE }",
       "createdDate": "ISO 8601 Date format"
-    }
+    }]
   }
-}
-```
-
-<strong>Response (Multi-Match)</strong>
-```json
-{
-    "@type": "https://adiassociation.org/directory/1.0/search-entity-response",
-    "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
-    "goal-code": "adia.search-entity.ard",
-    "status": "{OK | FAILED | PENDING}",
-    "~thread": {
-        "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
-        "message": "e.g. comment or reason of failed request"
-    },
-    "adia":{
-      "response":{
-        "result":[{
-            "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
-            "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
-            "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
-            "name": "Name of the entity",
-            "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
-            "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
-            "homeDASName": "Name of DAS",   // For Issuers, SPs and users
-            "homeARDId": "{HomeARD_ID}",    // For DAS
-            "homeARDDA": "{ARD_DA}",        // For DAS
-            "homeARDName": "Name of the ARD", // For DAS
-            "status": "{ACTIVE | INACTIVE }",
-            "createdDate": "ISO 8601 Date format"
-          },
-          {
-            "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
-            "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
-            "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
-            "name": "Name of the entity",
-            "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
-            "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
-            "homeDASName": "Name of DAS",   // For Issuers, SPs and users
-            "homeARDId": "{HomeARD_ID}",    // For DAS
-            "homeARDDA": "{ARD_DA}",        // For DAS
-            "homeARDName": "Name of the ARD", // For DAS
-            "status": "{ACTIVE | INACTIVE }",
-            "createdDate": "ISO 8601 Date format"
-          }]
-      }
-    }
 }
 ```

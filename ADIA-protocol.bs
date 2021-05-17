@@ -68,9 +68,4 @@ path: sections/protocol/verification-protocol.include
 path: sections/protocol/messages.include
 </pre>
 
-
-Issue: Add optional `comment` field for all messages types
-
 Issue: Add `ack` & `problem-report` in messages wherever applicable
-
-Issue: Wrap `"adia"` message block into a valid DIDComm v1.0 style `"attributes"` section to avoid protocol upgrade issues
