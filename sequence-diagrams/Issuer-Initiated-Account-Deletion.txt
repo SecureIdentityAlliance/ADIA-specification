@@ -5,11 +5,11 @@ participant User
 Participant DAS
 Participant ARD
 
-Issuer->User: Accept the created Digital Address.
-User->Issuer: Reject
-Issuer-> DAS: Delete Unclaimed DA \n(DA, DAS_USER_ID,ISSUER_INITIATED=Yes)
-DAS -> ARD: Delete DAS_USER_ID
-ARD -> ARD: Lookup DAS_USER_ID and delete HIDA entry
-ARD -> DAS: Delete success
+Issuer->>User: Do you Accept the created Digital Address.
+User-->>Issuer: Reject
+Issuer->> DAS: ADIA-DR-003: Delete Unclaimed DA \n(DA, DAS_USER_ID,ISSUER_INITIATED=Yes)
+DAS ->> +ARD: ADIA-DR-003: Delete DAS_USER_ID
+ARD -> ARD: ADIA-DR-004: Lookup DAS_USER_ID and delete HIDA entry
+ARD -->> -DAS: ADIA-DR-003:Delete success
 DAS -> DAS: Lookup and delete DAS_USER_ID and delete any corresponding credentials
-DAS-->Issuer: Deletion Success
+DAS-->Issuer: ADIA-DR-003:Deletion Success
