@@ -80,13 +80,11 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
   "@type": "https://adiassociation.org/verification/1.0/request-consent",
   "@id": "<uuid-request-consent-12345>",
   "comment": "some comment",
-  "adia": {
-    "attributes": {
-      "schemaId": "<unique-identifier-of-the-vc-schema>",
-      "credentialId": "<unique-identifier-of-the-vc>",
-      "issuerId": "{ISSUER_ID}",
-      "requestedAttributes": "{ALL | ARRAY_OF_SPECIFIC_ATTRBUTES}"
-    }
+  "body": {
+    "schemaId": "<unique-identifier-of-the-vc-schema>",
+    "credentialId": "<unique-identifier-of-the-vc>",
+    "issuerId": "{ISSUER_ID}",
+    "requestedAttributes": "{ALL | ARRAY_OF_SPECIFIC_ATTRBUTES}"
   }
 }
 ```
@@ -113,18 +111,16 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 
 ```json
 {
-    "@type": "https://adiassociation.org/verification/1.0/submit-consent",
-    "@id": "<uuid-submit-consent-12345>",
-    "adia": {
-      "attributes": {
-        "consent": "{ APPROVE | REJECT }"
-      }
-    },
-    "comment": "some comment",
-    "~thread": {
-      "thid": "<uuid-request-consent-response-12345>",      //Thread of the previous message where consent was requested.
-      "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/verification/1.0/submit-consent",
+  "@id": "<uuid-submit-consent-12345>",
+  "body": {
+    "consent": "{ APPROVE | REJECT }"
+  },
+  "comment": "some comment",
+  "~thread": {
+    "thid": "<uuid-request-consent-response-12345>",      //Thread of the previous message where consent was requested.
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
 
@@ -138,12 +134,10 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 {
   "@type": "https://adiassociation.org/verification/1.0/request-vc",
   "@id": "<uuid-request-vc-12345>",
-  "adia": {
-    "attributes": {
-      "schemaId": "<unique-identifier-of-the-vc-schema>",
-      "credentialId": "<unique-identifier-of-the-vc>",
-      "userId": "{DAS_USER_ID}"
-    }
+  "body": {
+    "schemaId": "<unique-identifier-of-the-vc-schema>",
+    "credentialId": "<unique-identifier-of-the-vc>",
+    "userId": "{DAS_USER_ID}"
   }
 }
 ```
@@ -151,13 +145,13 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 
 ```json
 {
-    "@type": "https://adiassociation.org/verification/1.0/request-vc-ack",
-    "@id": "<uuid-request-vc-ack-12345>",
-    "status": "{ OK | FAILED | PENDING }",
-    "~thread": {
-      "thid": "uuid-request-vc-12345",
-      "message": "e.g. comment or reason of failed request"
-    }
+  "@type": "https://adiassociation.org/verification/1.0/request-vc-ack",
+  "@id": "<uuid-request-vc-ack-12345>",
+  "status": "{ OK | FAILED | PENDING }",
+  "~thread": {
+    "thid": "uuid-request-vc-12345",
+    "message": "e.g. comment or reason of failed request"
+  }
 }
 ```
 
@@ -167,17 +161,15 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 {
   "@type": "https://adiassociation.org/verification/1.0/request-vc-response",
   "@id": "<uuid-request-vc-response-12345>",
-  "adia": {
-    "attributes": {
-      "credentialsAttach": [{            // The original VC retrieved from the VC Store
-          "@id": "libindy-cred-0",
-          "mime-type": "application/json",
-          "data": {
-              "base64": "eyJzY2hlbWFfaWQiOiJkaWQ6ZHR4Ono...(clipped)...hIZG85V2JBYUVhcmlFTTI4In0="
-          },
-          "signature": "59nTycBn22T648daQW8U149eP9bKXX3BoXAWV1aj7R2wfqpjWYBymn8WTHfkfDbCaMscSpitjyRAupon19Nxui3V"
-        }]
-    }
+  "body": {
+    "credentials~attach": [{            // The original VC retrieved from the VC Store
+      "@id": "libindy-cred-0",
+      "mime-type": "application/json",
+      "data": {
+          "base64": "eyJzY2hlbWFfaWQiOiJkaWQ6ZHR4Ono...(clipped)...hIZG85V2JBYUVhcmlFTTI4In0="
+      },
+      "signature": "59nTycBn22T648daQW8U149eP9bKXX3BoXAWV1aj7R2wfqpjWYBymn8WTHfkfDbCaMscSpitjyRAupon19Nxui3V"
+    }]
   },
   "~thread": {
     "thid": "uuid-request-vc-12345",
@@ -229,7 +221,7 @@ Following standard messages are used as defined in the [Aries RFC 0037: Present 
 }
 ```
 
-- From the above `presentation-request` payload, when the `data/base64` value is decoded, it may look something like:
+From the above `request-presentation` payload, when the `data/base64` value is decoded, it may look something like:
 
 ```json
 {
