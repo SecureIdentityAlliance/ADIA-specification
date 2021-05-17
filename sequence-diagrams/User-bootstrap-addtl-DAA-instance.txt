@@ -7,14 +7,14 @@ Participant DAS
 
 User -> DAA: I want to use my Digital Address\non an additional device
 DAA->DAA: Generate QR with \nBootstrapping command
-DAA->>New DAA: Present QR [DA, Bootstrapping command]
-New DAA-->>DAA: Scan the QR Code
+DAA->> +New DAA: Present QR [DA, Bootstrapping command]
+New DAA-->> -DAA: Scan the QR Code
 New DAA ->> DAS: Register DA on New DAA
 DAS->>DAS: ADIA-DA-004: Resolve DA.
 DAS->DAS: Retrieve DAA device information.
-DAS -> DAA: Notify new DAA request. Authenticate User [DAS_USER_ID]
+DAS -> +DAA: Notify new DAA request. Authenticate User [DAS_USER_ID]
 User <-> DAA: Approve Request. \nAuthenticate with FIDO.
 DAA -->> DAS: Approve new DAA
 DAS -> New DAA: Initiate FIDO Registration
-New DAA <-> +DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
+New DAA <-> DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
 New DAA-->User: Digital Address enrolled and ready for use on new device
