@@ -210,7 +210,7 @@ Following standard messages are used as defined in the [Aries RFC 0037: Present 
     "@id": "request-presentation-0",
     "mime-type": "application/json",
     "data": { 
-      "base64": "eyJuYW1lIjoidmVyaWZ5RGlhZ25vc2lzUmVjb3JkI ... (clipped) ... pEaWFnbm9zaXNSZWNvcmRDdnM6MS4wIn1dfX19"
+      "base64": "eyJuYW1lIjoidmVyaWZ5RGlhZ25vc2lzUmVjb3JkI...(clipped)...pEaWFnbm9zaXNSZWNvcmRDdnM6MS4wIn1dfX19"
       }
   }],
   "~thread": {
@@ -268,7 +268,7 @@ From the above `request-presentation` payload, when the `data/base64` value is d
       "@id": "libindy-presentation-0",
       "mime-type": "application/json",
       "data": {
-        "base64": "eyJwcm9vZiI6eyJwcm9vZnMiOnsiYXR0cmlidXRlIjp7In ... (clipped) ... ZzOjEuMDpEaWFnbm9zaXNSZWNvcmRDVlMifV19"
+        "base64": "eyJwcm9vZiI6eyJwcm9vZnMiOnsiYXR0cmlidXRlIjp7In...(clipped)...ZzOjEuMDpEaWFnbm9zaXNSZWNvcmRDVlMifV19"
       }
     }
   ],
