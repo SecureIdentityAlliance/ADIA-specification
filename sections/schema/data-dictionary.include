@@ -46,7 +46,7 @@
     <tr>
       <td>CONSENT_IND</td>
       <td>Boolean</td>
-      <td>Indicator whether the Digital Address creation was consented</td>
+      <td>Indicator whether the entity provided consent to create this Digital Address</td>
     </tr>
     <tr>
       <td>CONSENTED_BY</td>
@@ -96,6 +96,7 @@
     </tr>
   </tbody>
 </table>
+
 
 ## Credential Metadata ## {#sctn-credential-metadata}
 
