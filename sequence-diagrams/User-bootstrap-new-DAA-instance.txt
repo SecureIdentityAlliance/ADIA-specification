@@ -5,17 +5,22 @@ Participant DAA
 Participant Issuer
 Participant DAS
 
-User -> Issuer: Bootstrap a new device
-Issuer -> Issuer: Lookup DAS_USER_ID for HIDA\nCreates QR code (DAS_USER_ID, IssuerConnectionURL)
-Issuer -> User: Present or Sends \nthe QR code in Web interface/Issuer PC
-User -> DAA: Scan the QR code and \nextracts DAS_USER_ID+ IssuerConnectionURL
-DAA -> DAA: Start ID proofing on the device \nand extract the user info
-DAA->DAS: Send verified User Attributes +\n DAS_USER_ID to IssuerConnectionURL
-DAS->Issuer: Verify User [DAS_USER_ID, User Attributes]
-Issuer --> DAS: Verify User Attributes against \nIssuer DB [DAS_USER_ID, User Attributes]
-DAS --> DAA: Validation status [DAS_USER_ID, DA, Validation Success/Failure]
+User -> +Issuer: Bootstrap a new device [ID-Attributes]
+Issuer->Issuer: ADIA-FN-001: Compute HIDA = hash(ID-Attributes)
+Issuer -> -Issuer: Lookup DAS_USER_ID for HIDA\nCreate QR code (DAS_USER_ID, IssuerConnectionURL)
+
+Issuer ->>User: Present QR (Ex: Console) or send QR (Ex: Email)
+opt User scans the QR code
+User -> DAA: Scan and Extract [DAS_USER_ID, IssuerConnectionURL]
+DAA -> DAA: Start ID proofing on the device \nand extract the User info
+DAA-> +DAS: Send Verified User Attributes +\n DAS_USER_ID to IssuerConnectionURL
+DAS->>Issuer: ADIA-DA-002:Verify User [DAS_USER_ID, User Attributes]
+Issuer ->> Issuer: Verify User Attributes against \nIssuer DB [DAS_USER_ID, User Attributes]
+Issuer-->> DAS: ADIA-DA-002: User Verified Status [DAS_USER_ID, Success/Failure]
+DAS --> -DAA: ADIA-DA-002: User Verified Status [DAS_USER_ID, DA, Validation Success/Failure]
 DAA -> DAA: If successful: Remember DAS_USER_ID, DA
-DAA -> DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
+DAA <-> +DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
 DAS-> DAS: Remember (USER_FIDO_PK, DAS_USER_ID)
-DAS --> DAA: acknowledge successful FIDO registration
-DAA-->User: Digital Address enrolled  on new device and ready for use
+DAS --> -DAA: Acknowledge successful FIDO registration
+DAA-->User: Digital Address enrolled and ready for use
+end
