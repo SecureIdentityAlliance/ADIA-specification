@@ -79,7 +79,7 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 {
   "@type": "https://adiassociation.org/verification/1.0/request-consent",
   "@id": "<uuid-request-consent-12345>",
-  "comment": null,
+  "comment": "some comment",
   "adia": {
     "attributes": {
       "schemaId": "<unique-identifier-of-the-vc-schema>",
@@ -120,7 +120,7 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
         "consent": "{ APPROVE | REJECT }"
       }
     },
-    "comment": null,
+    "comment": "some comment",
     "~thread": {
       "thid": "<uuid-request-consent-response-12345>",      //Thread of the previous message where consent was requested.
       "message": "e.g. comment or reason of failed request"
@@ -192,8 +192,98 @@ This protocol uses following standard Aries protocol messages defined in Aries-R
 
 ### Standard Protocol Commands
 
-Following standard messages are used as defined in the Aries `present-proof` (v1.0) protocol.
+Following standard messages are used as defined in the [Aries RFC 0037: Present Proof Protocol 1.0](https://github.com/hyperledger/aries-rfcs/blob/527849ec3a/features/0037-present-proof).
 
 #### propose-presentation
+- A sample payload of the `propose-presentation` mesasge may look like this.
+
+```json
+{
+  "@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/present-proof/1.0/propose-presentation",
+  "@id": "<uuid-propose-presentation>",
+  "comment": "some comment",
+  "presentation_proposal": "<json-ld object of the proposed presentation>"
+}
+```
+
 #### request-presentation
+- A sample payload of the `request-presentation` mesasge may look like this.
+
+```json
+{
+  "@id": "04f37b27-07dd-4bfe-b3d0-8a21777f91ea",
+  "@type": "https://didcomm.org/present-proof/1.0/request-presentation",
+  "comment": "some comment",
+  "request_presentations~attach": [{
+    "@id": "request-presentation-0",
+    "mime-type": "application/json",
+    "data": { 
+      "base64": "eyJuYW1lIjoidmVyaWZ5RGlhZ25vc2lzUmVjb3JkI ... (clipped) ... pEaWFnbm9zaXNSZWNvcmRDdnM6MS4wIn1dfX19"
+      }
+  }],
+  "~thread": {
+    "thid": "04f37b27-07dd-4bfe-b3d0-8a21777f91ea",
+    "sender_order": 0,
+    "received_orders": {}
+  }
+}
+```
+
+- From the above `presentation-request` payload, when the `data/base64` value is decoded, it may look something like:
+
+```json
+{
+  "name": "verifyDiagnosisRecord",
+  "version": "3.0",
+  "nonce": "1234",
+  "requested_attributes": {
+    "attribute": {
+      "names": [
+        "firstName",
+        "diagnosisMethods"
+      ],
+      "restrictions": [
+        {
+          "schema_id": "did:dtx:z6MknKF7ddVhLKtpob4g1Qw22wF2cHAyyEtfaXQMnHRBaEms:DiagnosisRecordCvs:1.0"
+        }
+      ]
+    }
+  },
+  "requested_predicates": {
+    "predicate": {
+      "p_type": "<",
+      "p_value": "2000",
+      "name": "yearOfBirth",
+      "restrictions": [
+        {
+          "schema_id": "did:dtx:z6MknKF7ddVhLKtpob4g1Qw22wF2cHAyyEtfaXQMnHRBaEms:DiagnosisRecordCvs:1.0"
+        }
+      ]
+    }
+  }
+}
+```
+
 #### presentation
+- A sample payload of the `presentation` mesasge may look like this.
+
+```json
+{
+  "@id": "7158a81a-66ff-493d-9470-3b40d887ffdc",
+  "@type": "https://didcomm.org/present-proof/1.0/presentation",
+  "presentations~attach": [
+    {
+      "@id": "libindy-presentation-0",
+      "mime-type": "application/json",
+      "data": {
+        "base64": "eyJwcm9vZiI6eyJwcm9vZnMiOnsiYXR0cmlidXRlIjp7In ... (clipped) ... ZzOjEuMDpEaWFnbm9zaXNSZWNvcmRDVlMifV19"
+      }
+    }
+  ],
+  "~thread": {
+    "thid": "04f37b27-07dd-4bfe-b3d0-8a21777f91ea",
+    "sender_order": 0,
+    "received_orders": {}
+  }
+}
+```
