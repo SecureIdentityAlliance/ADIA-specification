@@ -9,7 +9,7 @@
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-1-issue-vc}
 
-This is standard flow and same as [[#sctn-enroll-user]]
+This is the same as [[#sctn-issue-vc]]
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-1-verify-vc}
 <figure id="fig-das-to-das-scenario-1-verify-vc">
