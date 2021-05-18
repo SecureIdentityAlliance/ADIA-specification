@@ -144,7 +144,7 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
 
 
 
-       :  <dfn>TA_USER_ISSUER</dfn>
+       :  <dfn export="true">TA_USER_ISSUER</dfn>
        :: The <a>Issuer</a> specific <a>TA</a>, i.e. hash(<a>TA</a>, <a>ISSUER_ID</a>).
 
        :  <dfn>User</dfn>

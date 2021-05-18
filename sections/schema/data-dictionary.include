@@ -14,7 +14,7 @@
   <tr>
     <td>ENTITY_DIGITAL_ADDRESS</td>
     <td>String</td>
-    <td>Digital Address aka the user friendly mnemonic</td>
+    <td><a>Digital Address</a></td>
   </tr>
     <tr>
       <td>ENTITY_ROLE</td>
@@ -46,7 +46,7 @@
     <tr>
       <td>CONSENT_IND</td>
       <td>Boolean</td>
-      <td>Indicator whether the Digital Address creation was consented</td>
+      <td>Indicator whether the entity provided consent to create this Digital Address</td>
     </tr>
     <tr>
       <td>CONSENTED_BY</td>
@@ -97,7 +97,10 @@
   </tbody>
 </table>
 
+
 ## Credential Metadata ## {#sctn-credential-metadata}
+
+The <a>ADIA</a> system maintains the following fields as <dfn>Credential Metadata</dfn>.
 
 <table class="data longlastcol">
   <thead>
@@ -114,7 +117,7 @@
   <tr>
     <td>ENTITY_DIGITAL_ADDRESS</td>
     <td>String</td>
-    <td><a>Digital Address</a> aka the user friendly mnemonic</td>
+    <td><a>Digital Address</a></td>
   </tr>
     <tr>
       <td>ISSUER_ID</td>
@@ -145,6 +148,9 @@
           <li>Data Credential</li>
           <li>...</li>
         </ul>
+
+Issue: We need to be specific about the strings that we use today in this spec!
+
       </td>
     </tr>
     <tr>

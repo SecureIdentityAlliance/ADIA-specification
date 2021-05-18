@@ -107,13 +107,13 @@ persist and search the <a>Credential Metadata</a> associated with the Verifiable
 
 #### Issuer Initiated New User Enrollment #### {#sctn-onboarding-1st-issuer}
 
-The diagram below represents a `new` User requesting a Digital Address from an Issuer. The DAS providing the Agency services, provisions
-a <a>Cloud Agent</a> for the User to create a public/private key pair and a DID for the User. The identifier (<a>DAS_USER_ID</a>), along with the
-HomeDAS identifier (<a>HomeDASId</a>) are persisted on the DAS to associate their identifiers with the newly created Digital Address.
-Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details on the representation and usage of the Digital Address.
+The diagram below represents a `new` User requesting a <a>Digital Address</a> from an <a>Issuer</a>. The </a>DAS</a> providing the Agency services, provisions
+a <a>Cloud Agent</a> for the <a>User</a> to create a public/private key pair and a <a>DID</a> for the <a>User</a>. The identifier (<a>DAS_USER_ID</a>), along with the
+<a>HomeDAS</a> identifier (<a>HomeDAS_ID</a>) are persisted on the <a>DAS</a> to associate their identifiers with the newly created Digital Address.
+Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details on the representation and usage of the <a>Digital Address</a>.
 
-The Issuer may share the Digital Address with the User through any secure channel. For simplicity, the diagram shows the sharing of Digital Address information
-encoded in a QR code that can be scanned using the <a>DAA</a> or another method endorsed by ADIA Specification.
+The <a>Issuer</a> may share the <a>Digital Address</a> with the <a>User</a> through any secure channel. For simplicity, the diagram shows the sharing of <a>Digital Address</a> information
+encoded in a QR code that can be scanned using the <a>DAA</a> or another method endorsed by this <a>ADIA</a> Specification.
 
 <figure id="fig-onboarding-1st-issuer">
     <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg"/>
