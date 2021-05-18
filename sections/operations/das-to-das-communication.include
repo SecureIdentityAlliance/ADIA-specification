@@ -1,22 +1,37 @@
 ## DAS-to-DAS Communication ## {#sctn-das-to-das-communication}
 
-### Case 1 ### {#sctn-das-to-das-case-1}
+### Scenario 1 ### {#sctn-das-to-das-scenario-1}
 
-TBD
+<figure id="fig-das-to-das-scenario-1-image">
+    <img src="sequence-diagrams/das-to-das-scenario-1-image.png"/>
+    <figcaption>Users and Issuers in the Same DAS. Service Provider in a Different DAS</figcaption>
+</figure>
 
 
-### Case 2 ### {#sctn-das-to-das-case-2}
+<figure id="fig-das-to-das-scenario-1">
+    <img src="sequence-diagrams/das-to-das-scenario-1.svg"/>
+    <figcaption>Scenario-1: DAS-to-DAS communication</figcaption>
+</figure>
 
-TBD
 
-### Case 3 ### {#sctn-das-to-das-case-3}
+### Scenario 2### {#sctn-das-to-das-scenario-2}
 
-TBD
+<figure id="fig-das-to-das-scenario-2-image">
+    <img src="sequence-diagrams/das-to-das-scenario-2-image.png"/>
+    <figcaption>Users and Service Provider in the same DAS. Issuers in a Different DAS</figcaption>
+</figure>
 
-### Case 4 ### {#sctn-das-to-das-case-4}
+### Scenario 3 ### {#sctn-das-to-das-scenario-3}
 
-TBD
+<figure id="fig-das-to-das-scenario-3-image">
+    <img src="sequence-diagrams/das-to-das-scenario-3-image.png"/>
+    <figcaption>Users in One DAS. Issuers and Service Provider in a Different DAS</figcaption>
+</figure>
 
-### Case 5 ### {#sctn-das-to-das-case-5}
 
-TBD
+### Scenario 4 ### {#sctn-das-to-das-scenario-4}
+
+<figure id="fig-das-to-das-scenario-4-image">
+    <img src="sequence-diagrams/das-to-das-scenario-4-image.png"/>
+    <figcaption>Users, Issuers and Service Provider in Different DASs</figcaption>
+</figure>
