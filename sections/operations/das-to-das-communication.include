@@ -48,10 +48,7 @@ Issue: Scenario 1 Issue Credential Use case is missing
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-3-issue-vc}
 
-<figure id="fig-das-to-das-scenario-1-issue-vc">
-    <img src="sequence-diagrams/das-to-das-scenario-3-issue-vc.svg"/>
-    <figcaption>Issue VC: Users in One DAS. Issuers and Service Provider in a Different DAS</figcaption>
-</figure>
+Same as [[#sctn-das-to-das-scenario-2-issue-vc]]
 
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-3-verify-vc}
@@ -65,15 +62,12 @@ Issue: Scenario 1 Issue Credential Use case is missing
 
 <figure id="fig-das-to-das-scenario-4-image">
     <img src="sequence-diagrams/das-to-das-scenario-4-image.png"/>
-    <figcaption>Users, Issuers and Service Provider in Different DASs</figcaption>
+    <figcaption>Users in One DAS. Issuers and Service Provider in a Different DAS</figcaption>
 </figure>
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-4-issue-vc}
 
-<figure id="fig-das-to-das-scenario-4-issue-vc">
-    <img src="sequence-diagrams/das-to-das-scenario-4-issue-vc.svg"/>
-    <figcaption>Issue VC: Users, Issuers and Service Provider in Different DASs</figcaption>
-</figure>
+Same as [[#sctn-das-to-das-scenario-2-issue-vc]]
 
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-4-verify-vc}
