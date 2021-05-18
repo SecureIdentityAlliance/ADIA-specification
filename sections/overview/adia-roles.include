@@ -2,18 +2,18 @@
 
 ### ADIA Global Directory ### {#sctn-adia-role-global-directory}
 
-The <dfn>ADIA Global Directory</dfn> (<dfn>AGD</dfn>) serves as a Root of Trust to all entities in the ecosystem except the Users. The Directory ensures interoperability between multiple Regional Directories and Interchanges.
+The <dfn>ADIA Global Directory</dfn> (<dfn>AGD</dfn>) serves as a Root of Trust for all entities in the ecosystem except the Users. The Directory ensures interoperability between multiple Regional Directories and Interchanges.
 Uniqueness of the entities is defined by the relationship of identifiers -  the Entity's <a>Digital Address</a>, the DID and the Trust Anchors and binding them to
 organizational entities at a global level.
 
 #### Directory Scope #### {#sctn-adia-global-directory-scope}
 
-The ADIA Governance Framework, described in a separate document, defines onboarding policies and procedures for organizational entities and establishing the relationships
+The ADIA Governance Framework, described in a separate document, defines onboarding policies and procedures for organizational entities and establishes the relationships
 between the <a>Digital Address</a>, the DID and Trust Anchor. The entities governed by the <a>ADIA Global Directory</a> are:
-  * <a>ADIA Regional Directory</a>
-  * <a>Digital Address Service</a>
-  * <a>Issuer</a>
-  * <a>Service Provider</a>
+  * <a>ADIA Regional Directory</a>(ies)
+  * <a>Digital Address Service</a>(s)
+  * <a>Issuer</a>(s)
+  * <a>Service Provider</a>(s)
   * Identity Escrow (Future)
   * Credential Broker (Future)
   * Payment Broker (Future)
@@ -22,7 +22,7 @@ The <a>ADIA Global Directory</a> may provide Discovery and Routing services betw
 
 #### Uniqueness properties #### {#sctn-adia-global-uniqueness}
 
-<a>ADIA Global Directory</a> ensure uniqueness of the listed organizational entities. This is done by ensuring a unique set of attributes for each organization.
+<a>ADIA Global Directory</a> ensures uniqueness of the listed organizational entities. This is done by ensuring a unique set of attributes for each organization.
 
 Please see [[#sctn-hida-computation-org-entities]] for uniqueness properties for Issuers,Service Providers, DAS and ADIA Regional Directories.
 
@@ -34,7 +34,7 @@ The <a>ADIA Global Directory</a> has several components that enable saving Trust
 
 * **ADIA Ledger**: Distributed Ledger (DLT) to maintain immutable entity relationships between <a>Digital Address</a>es and Trust Anchors. Ledger APIs abstract details of the underlying storage and interaction with the ledger.
 * **ADIA Console**: An administrative interface to view and manage metadata of the entities.
-* **ADIA Agent**: A communications agent to integrate identity transactions between an the <a>ADIA Global Directory</a> and Regional Directories.
+* **ADIA Agent**: A communications agent to enable identity transactions between the <a>ADIA Global Directory</a> and Regional Directories.
 * **API Services**: REST endpoints to provide lookup and discover services.
 
 #### Roles #### {#sctn-adia-global-ds-roles}
@@ -48,7 +48,7 @@ The types of actors that interact with ADIA are described below:
 
 ### ADIA Regional Directory ### {#sctn-adia-role-regional-directory}
 
-The <dfn>ADIA Regional Directory</dfn> (<dfn>ARD</dfn>) is a directory that serves to identify participants with an ecosystem. This can make it easier for users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
+The <dfn>ADIA Regional Directory</dfn> (<dfn>ARD</dfn>) is a directory that serves to identify participants within an ecosystem. This can make it easier for users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
 
 #### Directory Scope  #### {#sctn-adia-regional-directory-scope}
 
@@ -61,9 +61,9 @@ A ADIA Regional Directory shall:
 * provide a distributed ledger for maintaining relationships between Trust Anchors and <a>Digital Address</a>es and bindings to human identities.
 * onboard trusted <a>Digital Address Service</a>s to the ecosystem.
 * maintain a relationship of identifiers - A Trust Anchor, user’s <a>Digital Address</a>, DID and Issuer Identifier.
-* detect collisions in Trust Anchor and/or <a>Digital Address</a>.
+* detect collisions for Trust Anchor and/or <a>Digital Address</a>.
 
-Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by ADIA to seed the ecosystem. Other entities may operate directories in conformance with the governance structure and APIs.
+Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by ADIA to seed the ecosystem. Other entities may operate directories in conformance with the ADIA governance structure and APIs.
 
 #### Attribute selection and management #### {#sctn-adia-regional-attribute}
 
@@ -87,7 +87,7 @@ The protocols for querying users are summarized and linked below.
 
 ### Interchange ### {#sctn-adia-role-interchange}
 
-The <dfn>Interchange</dfn> is composed of one or more the services that provide User Access services such as, <a>Digital Address</a> and Authentication to users, Agency services such as
+The <dfn>Interchange</dfn> is composed of one or more the services that provide User Access services such as, <a>Digital Address</a> and Authentication for users, Agency services such as
 Issuer and Service Provider Agents and optional value-added services such as Identity Escrow, Credential Brokerage and Payment Brokerage services.
 
 
@@ -155,7 +155,7 @@ the Service Providers (verifiers of a credentials) with a level of trust. Issuer
 #### Components #### {#sctn-issuer-components}
 
 The core components of an Issuer are:
-* Issuer Console: An administrative interface to view Users, Identity information and Credential information. Administrators issue Verifiable Credential from the console to holders.
+* Issuer Console: An administrative interface to view Users, Identity information and Credential information. Administrators issue Verifiable Credentials from the console to holders.
 * <a>Issuer Agent</a>: A communications agent to integrate identity transactions between an Issuer network and the DAS
 * <dfn>VC Store</dfn>: A secure storage area for issuers to persist issued <a>Verifiable Credential</a>s.
 * API Services: REST endpoints to abstract interactions with the communication and transformation agents.
@@ -164,13 +164,13 @@ The core components of an Issuer are:
 #### Roles #### {#sctn-issuer-roles}
 
 * *Issuer Admin*: Requests onboarding to the DAS via the DAS Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAS.
-* *DAS Admin*: Role to approve or reject onboarding of a <a>Issuer</a>s in the system. This may be an automated process or a service agent acting on behalf of a DAS.
+* *DAS Admin*: Role to approve or reject onboarding of <a>Issuer</a>s in the system. This may be an automated process or a service agent acting on behalf of a DAS.
 * *User*: A subject or holder requesting a credential to be issued. The credential may be requested in person or online. Users must have a <a>Digital Address</a> before receiving a credential issued to them.
 
 
 ### Service Provider ### {#sctn-adia-role-serviceprovider}
 
-Service Providers are relying parties in the ecosystem. Credential verification are requested from the user to identity the user reliably before providing services. The proof requests are
+Service Providers are relying parties in the ecosystem. Credential verification is requested from a user to identify the user reliably before providing services. The proof requests are
 defined by Service Providers from one or more Credential Schema published by <a>Issuers</a> in the ADIA ecosystem. The verification rulesets may be defined based on a combination of criteria:
 * Claim information in the credential
 * Assurance Level of a credential type
@@ -185,26 +185,26 @@ Service Providers take a risk-based approach based on their enterprise needs and
 
 The core components of a Service Provider are:
 * **Service Provider Console**: An administrative interface to create rule definitions for a certain service.
-* **Service Provider Agent**: A communications agent to integrate identity transactions between an Service Provider network and the DAS
+* **Service Provider Agent**: A communications agent to enable identity transactions between a Service Provider network and the DAS
 * **API Services**: REST endpoints to abstract interactions with the communication and transformation agents.
 
 
 #### Roles #### {#sctn-serviceprovider-roles}
-* *Service Provider Admin*: Requests onboarding to the DAS via the DAS Console and define new rulesets
+* *Service Provider Admin*: Requests onboarding to the DAS via the DAS Console and defines new rulesets
 * *DAS Admin*: Role to approve or reject onboarding of <a>Service Provider</a>s in the system. This may be an automated process or a service agent acting on behalf of a DAS.
-* *User*: A subject or holder verifying a credential. Users must have a <a>Digital Address</a> and consented before verifying a credential issued to them.
+* *User*: A subject or holder verifying a credential. Users must have a <a>Digital Address</a> and provide consent before verifying a credential issued to them.
 
 
 
 ### User ### {#sctn-adia-role-user}
 
-A User is a holder of a unique <a>Digital Address</a> and receives it from a Trust Issuer after the KYC Process is completed.
-The user can then use their <a>Digital Address</a> for various purposes like, for example, receiving Verifiable Credentials such as an Identity Credential, or credentials that prove Educational qualifications, Health records, Employment, etc.
+A User is a holder of a unique <a>Digital Address</a> and receives it from an Issuer after a KYC Process is completed.
+The user can then use their <a>Digital Address</a> for various purposes; for example, receiving Verifiable Credentials such as an Identity Credential, or credentials that prove Educational qualifications, Health records, Employment, etc.
 
 #### Scope #### {#sctn-user-scope}
 
 * Obtain a <a>Digital Address</a> from an <a>Issuer</a> in the ADIA ecosystem.
-* Receive one or more Identity Credentials by complying to KYC processes from Identity <a>Issuer</a>s.
+* Receive one or more Identity Credentials by complying with KYC processes from Identity <a>Issuer</a>s.
 * Receive one or more User Credentials such as Employment Credential, Medical Record etc.  from one or more Credential Issuers.
 * Present issued credentials as proof to Service Providers.
 * Grant consent for verification requests from Service Providers.
@@ -212,18 +212,18 @@ The user can then use their <a>Digital Address</a> for various purposes like, fo
 
 ### Digital Address Application (DAA) ### {#sctn-adia-role-daa}
 
-For users to be part of the ADIA ecosystem, they must be in control of a <a>Digital Address</a>. The <a>Digital Address</a> may be acquired in many forms, primarily a QR code over various channels such as an Authenticator App,
+For users to be part of the ADIA ecosystem, they must be in control of a <a>Digital Address</a>. The <a>Digital Address</a> may be acquired via many forms, but primarily via a QR code over some channel such as an Authenticator App,
 Email, SmartCard or directly from an <a>Issuer</a>.
 
 
-The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind <a>Digital Address</a> with the DAS and consent for verification requests.
+The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind the <a>Digital Address</a> to the DAS and enable the receipt of and provide consent for verification requests.
 
 #### Components #### {#sctn-daa-components}
 
 The core components of a <a>Digital Address Application</a> are:
 
 * **DAS Mobile SDK**: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAS services.
-* **FIDO Client**: OnePass Client SDK to provide register and authenticate with a <a>Digital Address</a>.
+* **FIDO Client**: Mobile client SDK to provide FIDO registration and authentication for a <a>Digital Address</a>.
 * **Identity Verification SDK**: An Identity Verification client SDK to ID proof a government-issued identification document such as Driver’s License or Passport
 * **Credential Metadata**: On-device store of the credential metadata issued to the digital address. Interacts with the DAS services to lookup and retrieve actual credentials from the issuer.
 * **Push Notification Service**: External service to push notifications to the user for events such as credential issuance, revocation, proof requests, and consent
@@ -231,6 +231,6 @@ The core components of a <a>Digital Address Application</a> are:
 #### Roles #### {#sctn-daa-roles}
 
 The types of actors that interact with the Mobile App are described below:
-* *User*: A subject or holder of the credential. Authenticates to the DAS with the <a>Digital Address</a>.
-* *Issuer Admin*: Issues a <a>Digital Address</a>, Issues and revokes credentials issued to the user.
-* *Service Provider Admin*: Configures rules to evaluate one or more credentials based on the available credential schema. Requests proofs and verifies the credentials.
+* *User*: A subject or holder of a Digital Address. Authenticates to the DAS with the <a>Digital Address</a>.
+* *Issuer Admin*: Issues a <a>Digital Address</a>, Issues and revokes credentials to a user.
+* *Service Provider Admin*: Configures rules to evaluate one or more credentials based on the available credential schema. Requests proofs and verifies the credential proofs.
