@@ -15,7 +15,7 @@ path: sections/schema/data-dictionary.include
 
 ## DIDDoc ## {#sctn-diddoc}
 
-Issue Elaborate on the DIDDoc , format, signing and encryption methods. 
+Issue: Elaborate on the DIDDoc, format, signing and encryption methods. 
 
 <strong>Format</strong>
 ```json

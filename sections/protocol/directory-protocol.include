@@ -593,7 +593,7 @@ Note: Parameters used for searching result in an "AND" operation. Avoid queries 
     },
     {
       "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
-      "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
+      "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
       "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
       "name": "Name of the entity",
       "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
