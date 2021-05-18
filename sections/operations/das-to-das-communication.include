@@ -7,10 +7,14 @@
     <figcaption>Users and Issuers in the Same DAS. Service Provider in a Different DAS</figcaption>
 </figure>
 
+#### Issue Credential #### {#sctn-das-to-das-scenario-1-issue-vc}
 
-<figure id="fig-das-to-das-scenario-1">
-    <img src="sequence-diagrams/das-to-das-scenario-1.svg"/>
-    <figcaption>Scenario-1: DAS-to-DAS communication</figcaption>
+Issue: Scenario 1 Issue Credential Use case is missing
+
+#### Verify Credential #### {#sctn-das-to-das-scenario-1-verify-vc}
+<figure id="fig-das-to-das-scenario-1-verify-vc">
+    <img src="sequence-diagrams/das-to-das-scenario-1-verify-vc.svg"/>
+    <figcaption>Verify VC: Users and Issuers in the Same DAS. Service Provider in a Different DAS</figcaption>
 </figure>
 
 
@@ -21,6 +25,20 @@
     <figcaption>Users and Service Provider in the same DAS. Issuers in a Different DAS</figcaption>
 </figure>
 
+#### Issue Credential #### {#sctn-das-to-das-scenario-2-issue-vc}
+<figure id="fig-das-to-das-scenario-1-issue-vc">
+    <img src="sequence-diagrams/das-to-das-scenario-2-issue-vc.svg"/>
+    <figcaption>Issue VC: Users and Service Provider in the same DAS. Issuers in a Different DAS</figcaption>
+</figure>
+
+#### Verify Credential #### {#sctn-das-to-das-scenario-2-issue-vc}
+
+<figure id="fig-das-to-das-scenario-2-verify-vc">
+    <img src="sequence-diagrams/das-to-das-scenario-2-verify-vc.svg"/>
+    <figcaption>Verify VC: Users and Service Provider in the same DAS. Issuers in a Different DAS</figcaption>
+</figure>
+
+
 ### Scenario 3 ### {#sctn-das-to-das-scenario-3}
 
 <figure id="fig-das-to-das-scenario-3-image">
@@ -28,10 +46,33 @@
     <figcaption>Users in One DAS. Issuers and Service Provider in a Different DAS</figcaption>
 </figure>
 
+#### Issue Credential #### {#sctn-das-to-das-scenario-3-issue-vc}
+
+Same as [[#sctn-das-to-das-scenario-2-issue-vc]]
+
+
+#### Verify Credential #### {#sctn-das-to-das-scenario-3-verify-vc}
+
+<figure id="fig-das-to-das-scenario-3-verify-vc">
+    <img src="sequence-diagrams/das-to-das-scenario-3-verify-vc.svg"/>
+    <figcaption>Verify VC: Users in One DAS. Issuers and Service Provider in a Different DAS</figcaption>
+</figure>
 
 ### Scenario 4 ### {#sctn-das-to-das-scenario-4}
 
 <figure id="fig-das-to-das-scenario-4-image">
     <img src="sequence-diagrams/das-to-das-scenario-4-image.png"/>
-    <figcaption>Users, Issuers and Service Provider in Different DASs</figcaption>
+    <figcaption>Users in One DAS. Issuers and Service Provider in a Different DAS</figcaption>
+</figure>
+
+#### Issue Credential #### {#sctn-das-to-das-scenario-4-issue-vc}
+
+Same as [[#sctn-das-to-das-scenario-2-issue-vc]]
+
+
+#### Verify Credential #### {#sctn-das-to-das-scenario-4-verify-vc}
+
+<figure id="fig-das-to-das-scenario-1-verify-vc">
+    <img src="sequence-diagrams/das-to-das-scenario-4-verify-vc.svg"/>
+    <figcaption>Verify VC: Users, Issuers and Service Provider in Different DASs</figcaption>
 </figure>
