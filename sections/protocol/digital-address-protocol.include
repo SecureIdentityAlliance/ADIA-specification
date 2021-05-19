@@ -61,7 +61,7 @@ Agents may implement additional actions based on the goal codes.
   "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address",
   "@id": "862be87d-2095-4cd3-87e8-23df6ad77f10",
   "goal-code": "adia.digital-address.user",
-  "body": {
+  "attributes": {
     "dasUserId": "DAS_USER_ID"
   }
 }
@@ -78,7 +78,7 @@ Agents may implement additional actions based on the goal codes.
     "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
     "message": "e.g. comment or reason of failed request"
   },
-  "body": {
+  "result": {
     "digitalAddress": "{USER_DA}",
     "dasUserId": "{DAS_USER_ID}",
     "homeDASId": "{HomeDAS_ID}"
@@ -97,7 +97,7 @@ Note: Use the appropriate `entityType` and `entityId` as defined in the Enum val
   "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address",
   "@id": "862be87d-2095-4cd3-87e8-23df6ad77f10",
   "goal-code": "adia.digital-address.entity",
-  "body": {
+  "attributes": {
     "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
     "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
   }
@@ -115,7 +115,7 @@ Note: Use the appropriate `entityType` and `entityId` as defined in the Enum val
     "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
     "message": "e.g. comment or reason of failed request"
   },
-  "body": {
+  "result": {
     "digitalAddress": " {ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
     "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD}",
     "entityId": "{ISSUER_ID | SP_ID| DAS_ID | ARD_ID}"
@@ -133,7 +133,7 @@ receives the attributes from the extracted ID document and requests this verific
 {
   "@type": "https://adiassociation.org/digital-address/1.0/verify-user",
   "@id": "862be87d-2095-4cd3-87e8-23df6ad77f10",
-  "body": {
+  "attributes": {
     "firstName":"UTF8 encoded firstname of the User according to the ID document (all uppercase)",
     "lastName":"UTF8 encoded last name of the User according to the ID document (all uppercase)",
     "birthDate":"Date of birth of the User according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]",
@@ -175,7 +175,7 @@ Note: Use the appropriate `goal-code` and `entityType` as defined in the Enum va
   "@type": "https://adiassociation.org/digital-address/1.0/revoke-digital-address",
   "@id": "8a6d40d4-39f5-4a22-9f45-3fcb008e0d62",
   "goal-code": "adia.digital-address.{ ard | das| issuer| service-provider | user }",
-  "body": {
+  "attributes": {
     "digitalAddress": "{ARD_DA | DAS_DA | ISSUER_DA | SP_DA | USER_DA}"
   }
 }
@@ -207,7 +207,7 @@ The resolution returns a full DIDDoc in Json format so that the requester can re
 {
   "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address",
   "@id": "6a2571a8-1746-4a0b-bdce-4c59c60fb4f9",
-  "body": {
+  "attributes": {
     "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD | USER}", // Optional - only if looking for specific types
     "digitalAddress": "digital address of the user or entity"
   }
@@ -226,7 +226,7 @@ Note: Response may be different depending upon the `entityType` provided in the 
     "thid": "6a2571a8-1746-4a0b-bdce-4c59c60fb4f9",
     "message": "e.g. comment or reason of failed request"
   },
-  "body": {
+  "result": {
     "entityId": "DID of the entity",
     "entityType": "{USER}",
     "homeDASId": "{HomeDAS_ID}",
@@ -245,7 +245,7 @@ Note: Response may be different depending upon the `entityType` provided in the 
     "thid": "6a2571a8-1746-4a0b-bdce-4c59c60fb4f9",
     "message": "e.g. comment or reason of failed request"
   },
-  "body": {
+  "result": {
     "entityId": "DID of the entity",
     "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD}",
     "homeDASId": "{HomeDAS_ID}",   // Applicable to Issuers and Service Providers
@@ -271,7 +271,7 @@ Agents may implement additional actions based on the goal codes.
   "@type": "https://adiassociation.org/digital-address/1.0/provision-agent",
   "@id": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
   "goal-code": "adia.agent.{ issuer | service-provider | user }",
-  "body": {
+  "attributes": {
     "hida": " {HIDA}",
     "entityId": "{DAS_USER_ID | ISSUER_ID | SP_ID}",
     "entityType": "{ USER | ISSUER | SERVICEPROVIDER }"
@@ -292,7 +292,7 @@ Note: Response may be different depending upon the `goal-code`
     "thid": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
     "message": "e.g. comment or reason of failed request"
   },
-  "body": {
+  "result": {
     "entityId": "{ISSUER_ID | SP_ID}",
     "entityType": " {ISSUER | SERVICEPROVIDER }",
     "homeDASId": " {HomeDAS_ID} ",
@@ -312,7 +312,7 @@ Note: Response may be different depending upon the `goal-code`
     "thid": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
     "message": "e.g. comment or reason of failed request"
   },
-  "body": {
+  "result": {
     "dasUserId": "{DAS_USER_ID}",
     "homeDASId": " {HomeDAS_ID} ",
     "didDocJson": " {DIDDoc-USER}"
