@@ -32,7 +32,7 @@ Please see [[#sctn-hida-computation-org-entities]] for uniqueness properties for
 A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the entity identified.
 The <a>ADIA Global Directory</a> has several components that enable saving Trust Anchors and relationships:
 
-* **ADIA Ledger**: Distributed Ledger (DLT) to maintain immutable entity relationships between <a>Digital Address</a>es and Trust Anchors. Ledger APIs abstract details of the underlying storage and interaction with the ledger.
+* **ADIA Directory**: A Distributed Ledger (DLT) to maintain immutable entity relationships between <a>Digital Address</a>es and Trust Anchors.
 * **ADIA Console**: An administrative interface to view and manage metadata of the entities.
 * **ADIA Agent**: A communications agent to enable identity transactions between the <a>ADIA Global Directory</a> and Regional Directories.
 * **API Services**: REST endpoints to provide lookup and discover services.
@@ -103,12 +103,11 @@ All interactions through the agent are logged and available for inspection by th
 ##### Components ##### {#sctn-das-components}
 
 The core components of a DAS are:
-* **DAS Ledger**: DLT to maintain immutable entity relationships and transactions related to the identity verifications. Ledger APIs abstract details of the underlying storage and interaction with the ledger.
+* **DAS Directory**: A distributed data store or a Distributed Ledger to maintain immutable entity relationships and transactions related to the identity verifications.
 * **DAS Console**: An administrative interface to manage issuers, service providers and system settings.
 * **DAS Agent**: A communications agent to integrate identity transactions between an Issuer network and the DAS
 * **FIDO Service**: A FIDO server providing authentication services and authenticator policy management to users with a <a>Digital Address</a>.
 * **API Services**: REST endpoints to provide credential issuance, verification, routing and discovery services for identity transactions.
-* **Mediator**: Service to facilitate interactions with the user device with an SDK. For example notifications, consent, etc.
 
 ##### Roles ##### {#sctn-das-roles}
 

@@ -17,9 +17,9 @@ ADIA Global Directory is a public directory for Issuers, Service Providers, DAS 
 * Elements of the log MAY include non-private information such as dates, access granted or denied status, states of agents, etc but not attribute values that may lead to disclosure of private information such as Digital Address, the DIDs of a user, etc.
 * The data retention policies in a given Regional Directory and the context in which Directories operate SHALL define the duration for which the logs may be retained by the Directory.
 
-### Storage ### {#sctn-adia-direectory-storage}
+### Storage ### {#sctn-adia-directory-storage}
 
 * Directories MUST support a privacy preserving distributed database that holds the <a>HIDA</a> for the Users and Entities.
-* Directories MAY support a DLT persisting the Trust Anchor and any metadata relating to the <a>Digital Address</a>es.
+* Directories MAY support a distributed database or a Distributed Ledger to persist the Trust Anchor and any metadata related to the <a>Digital Address</a>es.
 
 Whether it is on-chain or off-chain data, the regulatory obligations, for example, GDPR or CCPA, and the "Right to be forgotten" objectives must be met.

@@ -1,12 +1,19 @@
 ## Data Residency ## {#sctn-data-schema-dataresidency}
 
 In ADIA ecosystem, User and Entity information resides at the respective sources, for example, User's identity information resides in the Issuer's system,
-Digital Address metadata resides at the DAS, and so on. This is aligned with the core
-principle that the DAS and other relevant entities route information flows but the User and Issuers maintain control
+Digital Address metadata resides at the DAS, and so on. This is aligned with the core principle that the DAS
+and other relevant entities route information flows but the User and Issuers maintain control
 and access to information. This is represented by the diagram below:
-
 
 <figure id="fig-data-schema-dataresidency">
     <img src="images/data-residency.svg"/>
     <figcaption>Data Residency</figcaption>
 </figure>
+
+Regional and Global Directories MUST support:
+* a privacy-preserving distributed database to persist the <a>HIDA</a> in an off-ledger data. Request to delete a Digital Address MUST delete the HIDA and any other Personally Identifiable Information (PII) in accordance with GDPR and CCPA regulatory requirements.
+* a Distributed Ledger (DLT) to manage the Trust Anchor and any metadata related to <a>Digital Addresses</a> , FIDO public keys, etc.
+
+DAS Directories MUST support:
+* a privacy-preserving distributed database to persist the any off-ledger data. Request to delete a Digital Address MUST delete any Personally Identifiable Information (PII) according to GDPR and CCPA regulatory requirements.
+* a Distributed Ledger (DLT) to manage the <a>Credential Metadata</a> issued to a <a>Digital Addresses</a>. Since immutability and tamper resistance is critical, a DLT is recommended, but can be replaced with a distributed database, a NOSQL or alternate data stores.
