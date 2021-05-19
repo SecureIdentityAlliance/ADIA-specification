@@ -45,6 +45,10 @@ ADIA Protocols are broadly categorized into following:
 * Verification Protocols
 
 <pre class=include>
+path: sections/protocol/adia-function.include
+</pre>
+
+<pre class=include>
 path: sections/protocol/digital-address-protocol.include
 </pre>
 
