@@ -60,7 +60,7 @@ TBD
 
 * Any data kept for audit and backups is according to legal requirements and for legally permitted time limits.
 
-* We store the <a>DAS_USER_ID</a> in the DLT of the <a>ARD</a> and in the DB of the <a>DAS</a>.  The <a>DAS_USER_ID</a> is a randomly generated number that
+* The <a>DAS_USER_ID</a> is stored in the DLT of the <a>ARD</a> and in the DB of the <a>DAS</a>.  The <a>DAS_USER_ID</a> is a randomly generated number that
     is linked to a specific user indirectly via the <a>TA</a> that is another randomly generated number which in turn is linked to the <a>HIDA</a> via a record stored in a DB.
     The <a>HIDA</a> is a cryptographic hash computed over identity attributes of the user.
     This linking record will be deleted if the user asks to be forgotten.
