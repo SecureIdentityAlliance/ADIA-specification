@@ -4,31 +4,31 @@ Accountable Digital Identity Architecture (<dfn>ADIA</dfn>) is a decentralized n
 Each DID is resolvable to a DID Document which contains cryptographic keys and service endpoints as specified in the DID Core Specification.
 
 The focus of the ecosystem is to:
-* provide a look up at the time of initial onboarding to make sure there no duplications of identity
-* provide the Trust Framework and a source of truth should there be any fraud to facilitate accountability
-* facilitate value settlements across different Identity Systems
+* provide a look up at the time of initial onboarding to make sure there are no duplications of identity
+* provide the trust framework and a source of truth to facilitate accountability in the event of fraud
+* facilitate value settlements across different identity Systems
 
 <figure id="fig-adia-overview">
     <img src="images/adia_overview.svg"/>
     <figcaption>ADIA Overview</figcaption>
 </figure>
 
-The ecosystem consists of several entities that are involved in the Trust framework. These are:
+The ecosystem consists of entities that are involved in the trust framework. They are:
 
 * <a>ADIA Global Directory</a> (AGD): One primary Root of Trust system with one or more distributed or delegated shared instances.
-* <a>ADIA Regional Directory</a> (ARD): One or more Directory Services serving a scope, such as, a geopolitical region or a country. Each directory serves to uniquely identify each participant via a digital address or a collection of attributes.
-* <a>Interchange</a>: A loose composition of services providing foundational services such as <a>Digital Address Service</a>, Identity Escrow, Credential Broker, and Payment Broker functionality for the entities in the ecosystem.
-* <a>Digital Address Service</a> (<a>DAS</a>): An agency providing services to entities within its domain. All interactions between entities are facilitated through agents and services provided by the Agency.
-* <a>Issuer</a>: One or more Issuers representing both Identity (e.g., DMV, Passport Office, etc.) or Non-Identity Credential Issuers (e.g., University, Enterprise, Healthcare Provider, etc.)
+* <a>ADIA Regional Directory</a> (ARD): One or more Directory Services serving a scope, such as a geopolitical region or a country. Each directory serves to uniquely identify each participant via a <a>Digital Address</a> or a collection of attributes.
+* <a>Interchange</a>: A composition of services providing foundational functionality such as <a>Digital Address Service</a>, Identity Escrow, Credential Broker, and Payment Broker for the entities in the ecosystem.
+* <a>Digital Address Service</a> (<a>DAS</a>): An agency providing services to entities within its domain. All interactions between entities are facilitated through agents and services provided by the agency.
+* <a>Issuer</a>: An entity representing both Identity (e.g., DMV, Passport Office, etc.) or Non-Identity Credential Issuers (e.g., University, Enterprise, Healthcare Provider, etc.)
 * <a>Service Provider</a>: One or more service providers acting as relying parties. E.g., E-commerce site, Retailer, etc.
-* <a>User</a>: Holder and usually Subject of the <a>Digital Address</a> - One per human identity in a region.
+* <a>User</a>: Holder and usually Subject of a <a>Digital Address</a> - one per human identity in a region.
 
 These entities and their role in the ADIA ecosystem are described in [[#sctn-roles-in-adia]].
 
 ## Trust Anchor ## {#sctn-trust-anchor}
 
-<dfn export="true">Trust Anchor</dfn> (<dfn>TA</dfn>) is a Unique Key for a given entity in the ADIA ecosystem.
-A Trust Anchor uniquely maps an entity's <a>Digital Address</a> and a DAS assigned DID.
+<dfn export="true">Trust Anchor</dfn> (<dfn>TA</dfn>) is a unique key for a given entity in the ADIA ecosystem and is registered in an ADIA Directory.
+A Trust Anchor uniquely maps an entity's <a>Digital Address</a> and a DAS-assigned DID.
 
 The ADIA Directories, for regulatory purposes and user privacy, do not store any personal information about a user or an entity.
 Directories support a user’s right to be forgotten
@@ -42,7 +42,7 @@ Directories MAY use a Universally Unique Identifier (UUID), a Globally Unique Id
 
 DIDs are the foundational identifiers of the system but are not
 participant friendly. The <dfn>Digital Address</dfn> is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed. <a>Digital Address</a>es are designed to be human friendly and facilitate interaction with entities. When they present their Digital Address to a participating service, the service can contact the directory and receive a DID that represents the participant.
-Further communication and cryptographic trust are then founded on the provided DID. <a>Digital Address</a>es contain a directory indicator that can be used to identify which directory has the associated listing.
+Further communication and cryptographic trust are then founded on the provided DID. <a>Digital Address</a>es contain a DAS indicator that can be used to identify which DAS is the Home DAS of the Digital Address.
 
 The creation of a <a>Digital Address</a> is a crucial step in ensuring there is both trust and accountability within the ADIA ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises; organizations that are central to the trust economy.
 To prevent the <a>Digital Address</a> from being misused as a correlating identifier, <a>Digital Address</a>es must not be retained by participating Service Providers after resolution.
