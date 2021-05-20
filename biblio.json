@@ -1,5 +1,5 @@
 {    
-    "didcomm-messagingv1": {
+    "didcomm-messaging-v1": {
         "authors": [
             ""
         ],
@@ -9,7 +9,7 @@
         "title": "DIDComm Messaging",
         "href": "https://github.com/hyperledger/aries-rfcs/blob/master/concepts/0005-didcomm/README.md"
     },
-    "didcomm-messaging": {
+    "didcomm-messaging-v2": {
         "authors": [
             ""
         ],
