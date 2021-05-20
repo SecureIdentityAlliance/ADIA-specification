@@ -30,7 +30,7 @@ As represented in the figure below,
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-1-issue-vc}
 
-This is the same as [[#sctn-issue-vc]]
+Since the Issuer and User are in the same network, this is a the same operation as [[#sctn-issue-vc]].
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-1-verify-vc}
 
@@ -104,7 +104,7 @@ As represented in the figure below,
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-3-issue-vc}
 
-same as [[#sctn-das-to-das-scenario-2-issue-vc]]
+Since the Issuer and User are in different networks, the flow is the same as [[#sctn-das-to-das-scenario-2-issue-vc]].
 
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-3-verify-vc}
@@ -132,7 +132,7 @@ The Cloud Agent routes the Presentation to the SP via the SP's HomeDAS. Further 
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-4-issue-vc}
 
-same as [[#sctn-das-to-das-scenario-2-issue-vc]]
+Since the Issuer and User are in different networks, the flow is the same as [[#sctn-das-to-das-scenario-2-issue-vc]].
 
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-4-verify-vc}
