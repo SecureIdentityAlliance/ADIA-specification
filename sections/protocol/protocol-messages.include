@@ -1,15 +1,10 @@
 ## Protocol Messages ## {#sctn-communication-protocol-msgs}
 
-The ADIA Protocol messages are an extension of the DIDComm messages [[!didcomm-messaging]].
+The ADIA Protocol messages are an extension of the DIDComm messages [[!didcomm-messaging-v1]].
 
 Each entity's Agent holds cryptographic keys and digital credentials on behalf of the entity.
 
-Issue: This doesn't seem to be true at this stage. DIDComm messages would requires us to use the header fields as described here: https://identity.foundation/didcomm-messaging/spec/#plaintext-message-structure - but we use "@id" etc.  Additionally, our payload would have to be included in "body" - not in "adia".
-
-Unless mentioned otherwise, each of the protocol messages is signed and encrypted, i.e.
-    DIDComm signed messages ("dcsm") with MIME Type "application/didcomm-signed+json" [[!didcomm-messaging]] are used
-    and an encrypted envelope is added to such "dcsm". That envelope is then a DIDComm encrypted message ("dcem") with MIME Type "application/didcomm-encrypted+json"
-    [[!didcomm-messaging]].
+Unless mentioned otherwise, each of the protocol messages uses the "Encrypted" envelope level using the "Signed and encrypted" option [[!didcomm-messaging-v1]].
 
 <table class="data">
   <thead>
