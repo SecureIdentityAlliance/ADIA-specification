@@ -95,7 +95,7 @@ Issuer and Service Provider Agents and optional value-added services such as Ide
 
 <dfn export=true>Digital Address Service</dfn> (<dfn>DAS</dfn>) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
 
-The DAS may host a set of user-focused wallet storage and secure communication agents. When any interaction with a participant happens, it happens through their Agent via services.
+The DAS may host a set of user-focused <a>Cloud Agent</a> and secure communication agents with other agents in the ecosytem. When any interaction with a participant happens, it happens through their Agent via services.
 Each entity's Agent holds cryptographic keys and digital credentials on behalf of the participant. The agent also manages the participant’s connections with services in the ecosystem. It maintains the participant’s directory listings and requests for unique DIDs when a new connection is made.
 The Agent is configured with and uses machine-readable governance framework documents as policy for automatically accepting or rejecting credential interactions. When necessary, the agent will communicate with the participant through a secure channel and obtain consent. Participants authenticate to the Agent via FIDO when consent is required.
 All interactions through the agent are logged and available for inspection by the entity.
