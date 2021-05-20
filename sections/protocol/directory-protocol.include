@@ -244,9 +244,10 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Request</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/enroll-ard",
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
+    "entityType": "ard",
     "ardId": "{ ARD_ID }",
     "taARDAGD": "{TA_ARD_AGD}",
     "hida": "{HIDA}"
@@ -257,7 +258,7 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Response</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/enroll-ard-response",
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
   "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
   "status": "{OK | FAILED | PENDING}",
   "~thread": {
@@ -273,9 +274,10 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Request</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/enroll-das",
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
+    "entityType": "das",
     "dasId": "{DAS_ID}",
     "homeARDId": "{homeARD_ID}",
     "taDASARD": "{TA_DAS_ARD}",
@@ -287,7 +289,7 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Response</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/enroll-das-response",
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
   "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
   "status": "{OK | FAILED | PENDING}",
   "~thread": {
@@ -302,9 +304,10 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Request</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/enroll-issuer",
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
+    "entityType": "issuer",
     "issuerId": "{ISSUER_ID}",
     "homeDASId": "{HomeDAS_ID}",
     "taIssuerDAS": "{TA_ISSUER_DAS}",
@@ -316,7 +319,7 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Response</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/enroll-issuer-response",
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
   "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
   "status": "{OK | FAILED | PENDING}",
   "~thread": {
@@ -331,9 +334,10 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Request</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/enroll-sp",
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
+    "entityType": "sp",
     "serviceProviderId": "{SP_ID}",
     "homeDASId": "{HomeDAS_ID}",
     "taServiceProviderDAS": "{TA_SP_DAS}",
@@ -345,7 +349,7 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
 <strong>Response</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/enroll-sp-response",
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
   "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
   "status": "{OK | FAILED | PENDING}",
   "~thread": {
@@ -400,9 +404,10 @@ Agents may implement additional actions based on the goal codes.
 <strong>Request</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/disenroll-ard",
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
+    "entityType": "ard",
     "ardId": "{ ARD_ID }",
     "hida": "{HIDA}"
   }
@@ -412,7 +417,7 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/disenroll-ard-response",
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
   "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
   "status": "{OK | FAILED | PENDING}",
   "~thread": {
@@ -428,9 +433,10 @@ Agents may implement additional actions based on the goal codes.
 <strong>Request</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/disenroll-das",
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
+    "entityType": "das",
     "dasId": "{DAS_ID}",
     "homeARDId": "{homeARD_ID}",
     "hida": "{HIDA}"
@@ -441,7 +447,7 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/disenroll-das-response",
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
   "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
   "status": "{OK | FAILED | PENDING}",
   "~thread": {
@@ -457,9 +463,10 @@ Agents may implement additional actions based on the goal codes.
 <strong>Request</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/disenroll-issuer",
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
+    "entityType": "issuer",
     "issuerId": "{ISSUER_ID}",
     "homeDASId": "{HomeDAS_ID}",
     "hida": "{HIDA}"
@@ -470,7 +477,7 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/disenroll-issuer-response",
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
   "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
   "status": "{OK | FAILED | PENDING}",
   "~thread": {
@@ -485,9 +492,10 @@ Agents may implement additional actions based on the goal codes.
 <strong>Request</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/disenroll-sp",
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
+    "entityType": "sp",
     "serviceProviderId": "{SP_ID}",
     "homeDASId": "{HomeDAS_ID}",
     "hida": "{HIDA}"
@@ -498,7 +506,7 @@ Agents may implement additional actions based on the goal codes.
 <strong>Response</strong>
 ```json
 {
-  "@type": "https://adiassociation.org/directory/1.0/disenroll-sp-response",
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
   "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
   "status": "{OK | FAILED | PENDING}",
   "~thread": {
