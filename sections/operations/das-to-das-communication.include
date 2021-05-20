@@ -26,12 +26,12 @@ This is the same as [[#sctn-issue-vc]]
 </figure>
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-2-issue-vc}
-<figure id="fig-das-to-das-scenario-1-issue-vc">
+<figure id="fig-das-to-das-scenario-2-issue-vc">
     <img src="sequence-diagrams/das-to-das-scenario-2-issue-vc.svg"/>
     <figcaption>Issue VC: Users and Service Provider in the same DAS. Issuers in a Different DAS</figcaption>
 </figure>
 
-#### Verify Credential #### {#sctn-das-to-das-scenario-2-issue-vc}
+#### Verify Credential #### {#sctn-das-to-das-scenario-2-verify-vc}
 
 <figure id="fig-das-to-das-scenario-2-verify-vc">
     <img src="sequence-diagrams/das-to-das-scenario-2-verify-vc.svg"/>
@@ -72,7 +72,7 @@ Same as [[#sctn-das-to-das-scenario-2-issue-vc]]
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-4-verify-vc}
 
-<figure id="fig-das-to-das-scenario-1-verify-vc">
+<figure id="fig-das-to-das-scenario-4-verify-vc">
     <img src="sequence-diagrams/das-to-das-scenario-4-verify-vc.svg"/>
     <figcaption>Verify VC: Users, Issuers and Service Provider in Different DASs</figcaption>
 </figure>

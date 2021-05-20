@@ -36,7 +36,7 @@ Issue: Need to fill in the details for security specific information
 * Curve25519
 
 <strong>Cryptographic suites</strong>
-· TBD
+TBD
 
 
 
@@ -45,18 +45,24 @@ Issue: Need to fill in the details for security specific information
 * The <a>ADIA</a> system uses Hashed attributes to reduce the exposure of personal information to other entities than the <a>Issuer</a> of the respective <a>VC</a>s.  The <a>Digital Address</a> is only stored in <a>DAS</a>.
 
 * The <a>ADIA</a> system supports the "Right to be forgotten" that is part of several privacy regulations, e.g. GDPR.  This means Users can trigger the deletion of their data (see [[#sctn-user-account-deletion]]).
+    The <a>DAS_USER_ID</a> is stored in the DLT of the <a>ARD</a> and in the DB of the <a>DAS</a>.  The <a>DAS_USER_ID</a> is a randomly generated number that
+    is linked to a specific user indirectly via the <a>TA</a> that is another randomly generated number which in turn is linked to the <a>HIDA</a> via a record stored in a DB.
+    The <a>HIDA</a> is a cryptographic hash computed over identity attributes of the user.
+    This linking record will be deleted if the user asks to be forgotten.
+    Additionally, the <a>ARD</a> operates a permissioned DLT, i.e. only a limited number of entities have access to it.
 
 * The DAS does not have visibility into the details of a VC during issuance or presentation.
 
 * The Credential Metadata is hosted by the DAS but controlled by the User's Cloud Agent.
 
-* Before sharing data with a third party, user consent is required via the User's <a>DAA</a>. Please see (see [[#sctn-user-consents]])
+* Before sharing data with a third party, user consent is required via the User's <a>DAA</a> [[#sctn-user-consents]].
 
 * Service Provider's details are hidden from the Issuers to avoid collusion between Issuers.
 
 * Peer-DIDs are used in transactions with different Service Providers to prevent collusion between Service Providers.
 
-* Zero-Knowledge Proofs are used to support selective disclose of attributes in <a>VC</a>s and to allow a way to effectively share anonymous attributes (e.g. over 21). ZKPs will be supported in the subsequent versions of the specification and not addressed in the current version.
-
+* Zero-Knowledge Proofs are used to support selective disclose of attributes in <a>VC</a>s and to allow a way to effectively share anonymous attributes (e.g. over 21).
+    ZKPs will be supported in the subsequent versions of the specification and not addressed in the current version.
 
 * Any data kept for audit and backups is according to legal requirements and for legally permitted time limits.
+

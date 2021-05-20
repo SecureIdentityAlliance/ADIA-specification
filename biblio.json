@@ -1,4 +1,14 @@
-{
+{    
+    "didcomm-messagingv1": {
+        "authors": [
+            ""
+        ],
+        "date": "",
+        "publisher": "Decentralized Identity Foundation",
+        "status": "Accepted",
+        "title": "DIDComm Messaging",
+        "href": "https://github.com/hyperledger/aries-rfcs/blob/master/concepts/0005-didcomm/README.md"
+    },
     "didcomm-messaging": {
         "authors": [
             ""
