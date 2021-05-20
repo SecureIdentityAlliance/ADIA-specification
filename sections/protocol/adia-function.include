@@ -37,7 +37,6 @@
 }
 ```
 
-
 #### Entity HIDA (ADIA-FN-002) #### {#sctn-hida-function-org-entities}
 
 <strong>Request</strong>
@@ -70,6 +69,131 @@
   "body": {
     "hida":"The Base64 encoded [[!RFC4648]] hash value resulting from the previous step.",
     "alg":"Name of the hash algorithm used (all uppercase, e.g. SHA256). Allowed hash algorithms are specified in the ADIA Governance and Certification rules."
+  }
+}
+```
+
+### Credential Metadata Functions  ### {#sctn-credential-metadata-function}
+
+#### save-metadata (ADIA-FN-003)
+- This message may be implemented as a local function by the `Cloud Agent` or `DAS Agent` and not really a Agent-to-Agent protocol message.
+
+<strong>Request</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/credential/1.0/save-metadata",
+  "@id": "<uuid-save-metadata-12345>",
+  "attributes": {
+    "schemaId": "<unique-id-of-vc-schema>",
+    "credentialId": "<unique-id-of-vc>",
+    "issuerId": "{ISSUER_ID}",
+    "dasUserId": "{DAS_USER_ID}",
+    "issuanceDate": "ISO 8601 format",
+    "expirationDate": "ISO 8601 format"    //Optional - based on the credential type.
+  }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/credential/1.0/save-metadata-response",
+  "@id": "<uuid-save-metadata-response>",
+  "status": "{ OK | FAILED | PENDING }",
+  "comment": "Metadata Saved/Failed",
+  "~thread": {
+    "thid": "<uuid-save-metadata-12345>",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+#### search-metadata (ADIA-FN-004)
+
+<strong>Request</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/credential/1.0/search-metadata",
+  "@id": "<uuid-search-metadata-12345>",
+  "attributes": {
+    "issuerId": "{ISSUER_ID}",                //Mandatory - to narrow the search on a specific Issuer
+    "dasUserId": "{DAS_USER_ID}",             //Mandatory - to narrow the search on a specific User
+    "schemaId": "<unique-id-of-vc-schema>",   //Optional - if available, otherwise will result in all schemas
+    "credentialId": "<unique-id-of-vc>"       //Optional - if available, otherwise will result in all credential metadata
+  }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/credential/1.0/search-metadata-response",
+  "@id": "<uuid-search-metadata-response>",
+  "status": "{ OK | FAILED | PENDING }",
+  "~thread": {
+    "thid": "<uuid-search-metadata-12345>",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "searchResult": [{
+    "schemaId": "<unique-id-of-vc-schema>",
+    "credentialId": "<1-unique-id-of-vc>",
+    "issuerId": "{ISSUER_ID}",
+    "dasUserId": "{DAS_USER_ID}",
+    "issuanceDate": "ISO 8601 format",
+    "expirationDate": "ISO 8601 format"
+  },
+  {
+    "schemaId": "<unique-id-of-vc-schema>",
+    "credentialId": "<2-unique-id-of-vc>",
+    "issuerId": "{ISSUER_ID}",
+    "dasUserId": "{DAS_USER_ID}",
+    "issuanceDate": "ISO 8601 format",
+    "expirationDate": "ISO 8601 format"
+  },
+  {
+    "schemaId": "<unique-id-of-vc-schema>",
+    "credentialId": "<3-unique-id-of-vc>",
+    "issuerId": "{ISSUER_ID}",
+    "dasUserId": "{DAS_USER_ID}",
+    "issuanceDate": "ISO 8601 format",
+    "expirationDate": "ISO 8601 format"
+  }]
+}
+```
+
+#### remove-metadata (ADIA-FN-005)
+- This message may be implemented as a local function by the `Cloud Agent` or `DAS Agent` and not really a Agent-to-Agent protocol message.
+
+<strong>Request</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/credential/1.0/remove-metadata",
+  "@id": "<uuid-remove-metadata-12345>",
+  "attributes": {
+    "schemaId": "<unique-id-of-vc-schema>",
+    "credentialId": "<unique-id-of-vc>",
+    "issuerId": "{ISSUER_ID}",
+    "dasUserId": "{DAS_USER_ID}",
+    "issuanceDate": "ISO 8601 format"
+  }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/credential/1.0/remove-metadata-response",
+  "@id": "<uuid-remove-metadata-response>",
+  "status": "{ OK | FAILED | PENDING }",
+  "~thread": {
+    "thid": "<uuid-remove-metadata-12345>",
+    "message": "e.g. comment or reason of failed request"
   }
 }
 ```
