@@ -576,8 +576,8 @@ Note: Parameters used for searching result in an "AND" operation. Avoid queries 
       "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
       "message": "e.g. comment or reason of failed request"
   },
-  "results": {
-    "result":[{
+  "results": [
+    {
       "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
       "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
       "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
@@ -604,7 +604,7 @@ Note: Parameters used for searching result in an "AND" operation. Avoid queries 
       "homeARDName": "Name of the ARD", // For DAS
       "status": "{ACTIVE | INACTIVE }",
       "createdDate": "ISO 8601 Date format"
-    }]
-  }
+    }
+  ]
 }
 ```
