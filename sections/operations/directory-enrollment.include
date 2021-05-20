@@ -22,7 +22,7 @@ Note: Details of the Agents and protocol messages are depicted below.
     <figcaption>Enroll Regional Directory to Global Directory</figcaption>
 </figure>
 
-### Enroll a DAS ### {#sctn-enroll-as-dap}
+### Enroll a DAS ### {#sctn-enroll-as-das}
 
 Digital Address Services (DAS) are onboarded into the ADIA Ecosystem by the ADIA Regional Directory. The process starts with the DAS
 providing their organizational and contact person details to meet the certification criteria established by the ADIA Governance process.
@@ -95,10 +95,10 @@ by any entity in the ADIA ecosystem.
 ### Enroll a User ### {#sctn-enroll-user}
 
 Users may approach <a>Issuer</a>s to create a Digital Address or Issuers may create a Digital Address for a user prior to issuing a Verifiable Credential to that user.
-Creating a Digital Address starts with the issuer collecting identity attributes of the User and checking the <a>HIDA</a> resulting from the HIDA hashing process against the 
+Creating a Digital Address starts with the issuer collecting identity attributes of the User and checking the <a>HIDA</a> resulting from the HIDA hashing process against the
 existing <a>HIDA</a> registry to see if the User is `known` to the system.
 
-A lookup of the <a>HIDA</a> may result in the possibility of an existing Digital Address for that User. The User may request to link the existing Digital Address 
+A lookup of the <a>HIDA</a> may result in the possibility of an existing Digital Address for that User. The User may request to link the existing Digital Address
 instead of creating a new one. ADIA Governance policies and technical constraints within this specification enforce that the uniqueness of the HIDA for a given User is
 maintained within the same Regional Directory.
 
@@ -153,7 +153,7 @@ Once a Digital Address is acquired by the User, possible subsequent steps are:
 #### Enroll a User with existing Digital Address #### {#sctn-onboarding-2nd-issuer}
 
 A User with an existing Digital Address, intentionally or unintentionally may request another Digital Address.
-The request may be initiated by an Issuer on the same DAS or an Issuer on another DAS within the same Regional Directory. 
+The request may be initiated by an Issuer on the same DAS or an Issuer on another DAS within the same Regional Directory.
 Within a single Regional Directory, if the HIDA for the user results in a collision, the User may not
 request a new Digital Address but instead is notified of the existing one.
 
@@ -185,7 +185,7 @@ at the level of Assurance determined by the onboarding process. Please see the s
 
 Though it may be adequate for some purposes, some Service Providers in the ecosystem may require the
 User to have a higher <a>Assurance Level</a>. Issuer's in ADIA may provide verification services for Users to upgrade their
-Assurance Level assigned by remote methods. This is described in the section [[#sctn-verify-user-da-in-person]]. 
+Assurance Level assigned by remote methods. This is described in the section [[#sctn-verify-user-da-in-person]].
 
 #### Issuer Assisted Verification of Digital Address #### {#sctn-verify-user-da-in-person}
 
