@@ -24,6 +24,7 @@ Cloud Agent -->> -Issuer: Aries-RFC-0036-3: Credential request (nonce included)
 Issuer ->> +Cloud Agent: ADIA-CR-001: Request to Sign VC\n [Sign with ISSUER_ID_SK]
 Cloud Agent -> Cloud Agent: Sign VC \n[DAS_USER_ID_SK]
 Cloud Agent ->> -Issuer: ADIA-CR-002:Send Signed VC
+Issuer->VC Store: Save VC
 VC Store --> Issuer: Save VC Success
 
 Issuer -->> +Cloud Agent : ADIA-CR-003: Save VC metadata \n[DAS_USER_ID, CREDENTIAL_ID, \nCREDENTIAL_SCHEMA_ID, ISSUER_ID]
