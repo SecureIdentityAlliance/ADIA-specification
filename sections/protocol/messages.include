@@ -1,6 +1,6 @@
 # Enumerations # {#sctn-protocol-enumerations}
 
-## Entity Names
+## Entity Names ## {#sctn-enum-entity-names}
 * AGD
 * DAS
 * ISSUER
@@ -8,9 +8,25 @@
 * USER
 
 
-## Goal Codes (WIP)
-* adia.trust-anchor.ard
-* adia.trust-anchor.das
-* adia.trust-anchor.issuer
-* adia.trust-anchor.service-provider
-* adia.trust-anchor.user
+## Goal Codes ## {#sctn-goal-codes}
+
+### HIDA ### {#sctn-goal-code-hida}
+* adia.hida.ard
+* adia.hida.das
+* adia.hida.issuer
+* adia.hida.service-provider
+
+### Digital Address ### {#sctn-goal-code-da}
+* adia.digital-address.user
+* adia.digital-address.ard
+* adia.digital-address.das
+* adia.digital-address.issuer
+* adia.digital-address.service-provider
+* adia.digital-address.entity
+
+### Provisioning Agent ### {#sctn-goal-code-agent-provisioning}
+* adia.agent.user
+* adia.agent.ard
+* adia.agent.das
+* adia.agent.issuer
+* adia.agent.service-provider
