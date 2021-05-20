@@ -95,7 +95,7 @@ Issue: Need to clarify how the security characteristics of the
        <td>
          DAS Agent
        </td>
-       <td><a href="#sctn-enroll-as-dap">Onboarding as DAS</a>
+       <td><a href="#sctn-enroll-as-das">Onboarding as DAS</a>
  </td>
        <td>
          via a DIDDoc kept in the ADIA Global Directory.

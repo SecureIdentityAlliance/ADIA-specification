@@ -1,78 +1,143 @@
 ## DAS-to-DAS Communication ## {#sctn-das-to-das-communication}
 
+ADIA ecosystem is a network of networks comprising of many DASs connecting Issuers, Service Providers and Users
+to seamlessly issue VCs and verify VCs issued by Issuers. This however means thatt these entities may be within the same network or
+enrolled in different DASs.
+
+The protocol discusses discovery of the User's HomeDAS to look up the Credential Metadata, resolve the appropriate Issuers, and securely respond to the Service Provider with the Verifiable
+Presentation. DAS-to-DAS protocols are specifically designed to enable interoperability between DAS that may choose to implement their internal agent-to-agent communication in
+a different style, but rely on the DAS to form a mesh of services that abstract the details of external communication.
+
+To facilitate routing, it is assumed that the enrollment of the DAS results in a network broadcast to all other DASs in the ecosystem, or alternatively,
+access to route tables that enable one DAS to resolve the location of another DAS. The implementation of the route tables is not discussed in this specification.
+Please see the section on [[#sctn-enroll-as-das]] for more details.
+
+The sections below presents variants in the communication flows and how these entities exchange VCs using DIDComm.
+
+
 ### Scenario 1 ### {#sctn-das-to-das-scenario-1}
+
+As represented in the figure below,
+* Issuers and Users are enrolled by the same DAS, DAS1.
+* A Service Provider verifying the proofs is enrolled by a different DAS, DAS2.
+* The User's credential metadata resides with the DAS1.
+
 
 <figure id="fig-das-to-das-scenario-1-image">
     <img src="sequence-diagrams/das-to-das-scenario-1-image.png"/>
-    <figcaption>Users and Issuers in the Same DAS. Service Provider in a Different DAS</figcaption>
+    <figcaption>Users and Issuers in the same DAS. Service Provider in a different DAS</figcaption>
 </figure>
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-1-issue-vc}
 
-This is the same as [[#sctn-issue-vc]]
+Since the Issuer and User are in the same network, this is a the same operation as [[#sctn-issue-vc]].
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-1-verify-vc}
+
+To verify a VC, the Service Provider resolves the User's HomeDAS from the Digital Address or the User's DID. The Service Provider must
+then discover the endpoint for the HomeDAS so that Credential Metadata lookups can be made. The SP's HomeDAS establishes a DIDComm connection
+with the User's HomeDAS. The HomeDAS or the Cloud Agent of the User retrieves the VC from the Issuer (also see [[#sctn-vc-presentation-and-verification-1]]).
+
+The User's Cloud Agent routes the Presentation to the SP via the SP's HomeDAS. Further detail on the encryption, discovery and routing of the messages is represented below.
+
+
 <figure id="fig-das-to-das-scenario-1-verify-vc">
     <img src="sequence-diagrams/das-to-das-scenario-1-verify-vc.svg"/>
-    <figcaption>Verify VC: Users and Issuers in the Same DAS. Service Provider in a Different DAS</figcaption>
+    <figcaption>Verify VC: Users and Issuers in the same DAS. Service Provider in a different DAS</figcaption>
 </figure>
 
 
 ### Scenario 2### {#sctn-das-to-das-scenario-2}
 
+As represented in the figure below,
+* Service Providers and Users are enrolled by the same DAS, DAS1
+* An Issuer issuing a VC to the User is enrolled by a different DAS, DAS2.
+* The User's credential metadata resides with the DAS1.
+
+
 <figure id="fig-das-to-das-scenario-2-image">
     <img src="sequence-diagrams/das-to-das-scenario-2-image.png"/>
-    <figcaption>Users and Service Provider in the same DAS. Issuers in a Different DAS</figcaption>
+    <figcaption>Users and Service Provider in the same DAS. Issuers in a different DAS</figcaption>
 </figure>
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-2-issue-vc}
+
+To issue a VC, the Issuer resolves the User's HomeDAS from the Digital Address or the User's DID. The Issuer must
+then discover the endpoint for the HomeDAS so that Credential Metadata lookups can be published. The Issuer's HomeDAS establishes a DIDComm connection
+with the User's HomeDAS. The the Cloud Agent of the User saves the VC metadata from the Issuer (also see [[#sctn-issue-vc]]).
+
+The User's Cloud Agent routes the response via the Issuer's HomeDAS. Further detail on the encryption, discovery and routing of the messages is represented below.
+
 <figure id="fig-das-to-das-scenario-2-issue-vc">
     <img src="sequence-diagrams/das-to-das-scenario-2-issue-vc.svg"/>
-    <figcaption>Issue VC: Users and Service Provider in the same DAS. Issuers in a Different DAS</figcaption>
+    <figcaption>Issue VC: Users and Service Provider in the same DAS. Issuers in a different DAS</figcaption>
 </figure>
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-2-verify-vc}
 
+To verify a VC, the Service Provider resolves the User's HomeDAS, which is the same, DAS1, from the Digital Address or the User's DID. The Service Provider must
+then discover the endpoint for the HomeDAS so that Credential Metadata lookups can be made. The SP's HomeDAS establishes a DIDComm connection
+with the User's HomeDAS.
+
+For VCs issued by an Issuer in a different network, the User's HomeDAS establishes a DIDComm connection with the Issuer's DAS. For VCs issued
+by Issuer's in the User's HomeDAS, a discovery is not required. The HomeDAS or the Cloud Agent of the User retrieves the VC from the Issuer (also see [[#sctn-vc-presentation-and-verification-1]]).
+
+The Cloud Agent routes the Presentation to the SP via the SP's HomeDAS. Further detail on the encryption, discovery and routing of the messages is represented below.
+
 <figure id="fig-das-to-das-scenario-2-verify-vc">
     <img src="sequence-diagrams/das-to-das-scenario-2-verify-vc.svg"/>
-    <figcaption>Verify VC: Users and Service Provider in the same DAS. Issuers in a Different DAS</figcaption>
+    <figcaption>Verify VC: Users and Service Provider in the same DAS. Issuers in a different DAS</figcaption>
 </figure>
 
 
 ### Scenario 3 ### {#sctn-das-to-das-scenario-3}
 
+As represented in the figure below,
+* Users are enrolled by a DAS, DAS1
+* Issuers and Service Providers are enrolled by a different DAS, DAS2.
+* The User's credential metadata resides with the DAS1.
+
 <figure id="fig-das-to-das-scenario-3-image">
     <img src="sequence-diagrams/das-to-das-scenario-3-image.png"/>
-    <figcaption>Users in One DAS. Issuers and Service Provider in a Different DAS</figcaption>
+    <figcaption>Users in One DAS. Issuers and Service Provider in a different DAS</figcaption>
 </figure>
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-3-issue-vc}
 
-Same as [[#sctn-das-to-das-scenario-2-issue-vc]]
+Since the Issuer and User are in different networks, the flow is the same as [[#sctn-das-to-das-scenario-2-issue-vc]].
 
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-3-verify-vc}
 
+To verify a VC, the Service Provider resolves the User's HomeDAS, in this case, DAS1, from the Digital Address or the User's DID. The Service Provider must
+then discover the endpoint for the HomeDAS so that Credential Metadata lookups can be made. The SP's HomeDAS establishes a DIDComm connection
+with the User's HomeDAS.
+
+For VCs issued by an Issuer in a different network, the User's HomeDAS establishes a DIDComm connection with the Issuer's DAS. For VCs issued
+by Issuer's in the User's HomeDAS, a discovery is not required. The HomeDAS or the Cloud Agent of the User retrieves the VC from the Issuer (also see [[#sctn-vc-presentation-and-verification-1]]).
+
+The Cloud Agent routes the Presentation to the SP via the SP's HomeDAS. Further detail on the encryption, discovery and routing of the messages is represented below.
+
 <figure id="fig-das-to-das-scenario-3-verify-vc">
     <img src="sequence-diagrams/das-to-das-scenario-3-verify-vc.svg"/>
-    <figcaption>Verify VC: Users in One DAS. Issuers and Service Provider in a Different DAS</figcaption>
+    <figcaption>Verify VC: Users in One DAS. Issuers and Service Provider in a different DAS</figcaption>
 </figure>
 
 ### Scenario 4 ### {#sctn-das-to-das-scenario-4}
 
 <figure id="fig-das-to-das-scenario-4-image">
     <img src="sequence-diagrams/das-to-das-scenario-4-image.png"/>
-    <figcaption>Users in One DAS. Issuers and Service Provider in a Different DAS</figcaption>
+    <figcaption>Users in One DAS. Issuers and Service Provider in a different DAS</figcaption>
 </figure>
 
 #### Issue Credential #### {#sctn-das-to-das-scenario-4-issue-vc}
 
-Same as [[#sctn-das-to-das-scenario-2-issue-vc]]
+Since the Issuer and User are in different networks, the flow is the same as [[#sctn-das-to-das-scenario-2-issue-vc]].
 
 
 #### Verify Credential #### {#sctn-das-to-das-scenario-4-verify-vc}
 
 <figure id="fig-das-to-das-scenario-4-verify-vc">
     <img src="sequence-diagrams/das-to-das-scenario-4-verify-vc.svg"/>
-    <figcaption>Verify VC: Users, Issuers and Service Provider in Different DASs</figcaption>
+    <figcaption>Verify VC: Users, Issuers and Service Provider in different DASs</figcaption>
 </figure>
