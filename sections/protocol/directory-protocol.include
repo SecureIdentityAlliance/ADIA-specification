@@ -247,7 +247,7 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
   "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
-    "entityType": "ard",
+    "entityType": "ARD",
     "ardId": "{ ARD_ID }",
     "taARDAGD": "{TA_ARD_AGD}",
     "hida": "{HIDA}"
@@ -277,7 +277,7 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
   "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
-    "entityType": "das",
+    "entityType": "DAS",
     "dasId": "{DAS_ID}",
     "homeARDId": "{homeARD_ID}",
     "taDASARD": "{TA_DAS_ARD}",
@@ -307,7 +307,7 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
   "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
-    "entityType": "issuer",
+    "entityType": "ISSUER",
     "issuerId": "{ISSUER_ID}",
     "homeDASId": "{HomeDAS_ID}",
     "taIssuerDAS": "{TA_ISSUER_DAS}",
@@ -337,7 +337,7 @@ This protocol message enables a responsible entity to register/ enroll a sub-ent
   "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
-    "entityType": "sp",
+    "entityType": "SERVICEPROVIDER",
     "serviceProviderId": "{SP_ID}",
     "homeDASId": "{HomeDAS_ID}",
     "taServiceProviderDAS": "{TA_SP_DAS}",
@@ -407,7 +407,7 @@ Agents may implement additional actions based on the goal codes.
   "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
-    "entityType": "ard",
+    "entityType": "ARD",
     "ardId": "{ ARD_ID }",
     "hida": "{HIDA}"
   }
@@ -436,7 +436,7 @@ Agents may implement additional actions based on the goal codes.
   "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
-    "entityType": "das",
+    "entityType": "DAS",
     "dasId": "{DAS_ID}",
     "homeARDId": "{homeARD_ID}",
     "hida": "{HIDA}"
@@ -466,7 +466,7 @@ Agents may implement additional actions based on the goal codes.
   "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
-    "entityType": "issuer",
+    "entityType": "ISSUER",
     "issuerId": "{ISSUER_ID}",
     "homeDASId": "{HomeDAS_ID}",
     "hida": "{HIDA}"
@@ -495,7 +495,7 @@ Agents may implement additional actions based on the goal codes.
   "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
   "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
   "attributes": {
-    "entityType": "sp",
+    "entityType": "SERVICEPROVIDER",
     "serviceProviderId": "{SP_ID}",
     "homeDASId": "{HomeDAS_ID}",
     "hida": "{HIDA}"

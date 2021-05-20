@@ -47,6 +47,81 @@ Unless mentioned otherwise, each of the protocol messages uses the "Encrypted" e
 </table>
 
 
+### ADIA Functions  ### {#sctn-protocol-function}
+The mapping below represents the functions implemented by agents as part of a standard DIDComm protocol. These functions may be
+used as co-protocols to perform ADIA specific operations.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Code</th>
+    <th>Description</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
+    <th>DAS Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+  <tr valign="top">
+    <td nowrap>[/credential/1.0/user-hida](ADIA-protocol.html#sctn-hida-function-users)</td>
+    <td nowrap>ADIA-FN-001</td>
+    <td nowrap>A computation of a Hash of ID attributes for a User</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td><center>X</center></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/credential/1.0/entity-hida](ADIA-protocol.html#sctn-hida-function-org-entities)</td>
+    <td nowrap>ADIA-FN-002</td>
+    <td nowrap>A computation of a Hash of ID attributes for an Entity</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/credential/1.0/save-metadata](ADIA-protocol.html#save-metadata-adia-fn-003)</td>
+    <td nowrap>ADIA-FN-003</td>
+    <td nowrap>Save the Credential Metadata to a Directory</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/credential/1.0/search-metadata](ADIA-protocol.html#search-metadata-adia-fn-004)</td>
+    <td nowrap>ADIA-FN-005</td>
+    <td nowrap>Search for Credential Metadata based on multiple criteria</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/credential/1.0/remove-metadata](ADIA-protocol.html#remove-metadata-adia-fn-005)</td>
+    <td nowrap>ADIA-FN-006</td>
+    <td nowrap>Remove the Credential Metadata</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+  </table>
+
 
 ### Digital Address Protocol ### {#sctn-protocol-digital-address}
 The mapping below represents the protocol messages for the Digital Address Protocol and the agents that implement the handing of these messages.
@@ -296,41 +371,8 @@ An agent may implement the handler or delegate to another agent for handling via
       <td><center>X</center></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/save-metadata](ADIA-protocol.html#save-metadata-adia-cr-003)</td>
+      <td nowrap>[/credential/1.0/revoke-vc](ADIA-protocol.html#revoke-vc-adia-cr-003)</td>
       <td nowrap>ADIA-CR-003</td>
-      <td nowrap>Save the Credential Metadata to a Directory</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr valign="top">
-      <td nowrap>[/credential/1.0/search-metadata](ADIA-protocol.html#search-metadata-adia-cr-004)</td>
-      <td nowrap>ADIA-CR-005</td>
-      <td nowrap>Search for Credential Metadata based on multiple criteria</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr valign="top">
-      <td nowrap>[/credential/1.0/remove-metadata](ADIA-protocol.html#remove-metadata-adia-cr-005)</td>
-      <td nowrap>ADIA-CR-006</td>
-      <td nowrap>Remove the Credential Metadata</td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td><center>X</center></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr valign="top">
-      <td nowrap>[/credential/1.0/revoke-vc](ADIA-protocol.html#revoke-vc-adia-cr-006)</td>
-      <td nowrap>ADIA-CR-007</td>
       <td nowrap>Revoke a VC</td>
       <td><center>X</center></td>
       <td><center>X</center></td>
@@ -340,8 +382,8 @@ An agent may implement the handler or delegate to another agent for handling via
       <td></td>
     </tr>
     <tr valign="top">
-      <td nowrap>[/credential/1.0/expire-vc](ADIA-protocol.html#expire-vc-adia-cr-007)</td>
-      <td nowrap>ADIA-CR-008</td>
+      <td nowrap>[/credential/1.0/expire-vc](ADIA-protocol.html#expire-vc-adia-cr-004)</td>
+      <td nowrap>ADIA-CR-004</td>
       <td nowrap>Expire Credential Metadata and Notify User</td>
       <td><center>X</center></td>
       <td><center>X</center></td>

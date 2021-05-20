@@ -27,7 +27,7 @@ Cloud Agent ->> -Issuer: ADIA-CR-002:Send Signed VC
 Issuer->VC Store: Save VC
 VC Store --> Issuer: Save VC Success
 
-Issuer -->> +Cloud Agent : ADIA-CR-003: Save VC metadata \n[DAS_USER_ID, CREDENTIAL_ID, \nCREDENTIAL_SCHEMA_ID, ISSUER_ID]
+Issuer -->> +Cloud Agent : ADIA-FN-003: Save VC metadata \n[DAS_USER_ID, CREDENTIAL_ID, \nCREDENTIAL_SCHEMA_ID, ISSUER_ID]
 Cloud Agent -> Cloud Agent : Store VC metadata
-Cloud Agent -->> -Issuer: ADIA-CR-003:VC metadata save success
+Cloud Agent -->> -Issuer: ADIA-FN-003:VC metadata save success
 Cloud Agent->>DAA: Notify User of VC issuance

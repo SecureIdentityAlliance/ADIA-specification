@@ -48,6 +48,8 @@ The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
  </li>
 </ol>
 
+Please see [HIDA for Users](ADIA-protocol.html#sctn-hida-function-users) for more details.
+
 
 ### HIDA for Organizational Entities  ### {#sctn-hida-computation-org-entities}
 
@@ -83,3 +85,5 @@ The Hash over Identity Attributes (<a>HIDA</a>) is computed as follows:
    </dl>
  </li>
 </ol>
+
+Please see [HIDA for organizational entities](ADIA-protocol.html#sctn-hida-function-org-entities) for more details.

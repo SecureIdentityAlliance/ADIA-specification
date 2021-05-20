@@ -6,10 +6,10 @@ participant VC Store
 participant DAA
 
 
-DAS->DAS: ADIA-CR-004:Check Credential Metadata\n for Validity
-DAS->DAS: ADIA-CR-003: Update \n[Expiration Status, Expiration Date]
+DAS->DAS: ADIA-FN-004:Check Credential Metadata\n for Validity
+DAS->DAS: ADIA-FN-003: Update \n[Expiration Status, Expiration Date]
 DAS--> DAA: Send Notification of Expired Status
 opt
-DAS-> Issuer: ADIA-CR-007: Notify credential expiration status
+DAS-> Issuer: ADIA-CR-004: Notify credential expiration status
 Issuer ->VC Store: Update/Remove VC from VC Store
 End
