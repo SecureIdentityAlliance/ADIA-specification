@@ -48,10 +48,7 @@ TBD
 
 * <a>Service Provider</a>'s details are hidden from the <a>Issuer</a>s when sharing <a>verifiable claims</a> to preserve <a>user</a> privacy.
 
-* The Credential Metadata is hosted by the <a>DAS</a> but controlled by the User's Cloud Agent.
-
-Issue: That doesn't seem to be right - in figure 13 the VC Metadata is sotred by the Cloud Agent!
-
+* The Credential Metadata is stored by the <a>user</a>'s <a>Cloud Agent</a>.
 
 * The <a>ADIA</a> system uses Hashed attributes to reduce the exposure of personal information (like names, addresses, etc.)
     to other entities than the <a>Issuer</a> of the respective <a>VC</a>s.  The <a>Digital Address</a> is only stored in <a>DAS</a>.
