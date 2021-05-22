@@ -33,7 +33,7 @@ A Trust Anchor uniquely maps an entity's <a>Digital Address</a> and a DAS-assign
 The ADIA Directories (<a>AGD</a> and <a>ARD</a>s), for regulatory purposes and user privacy, do not store any personal information about a user or an entity.
 Directories support a user’s right to be forgotten that is defined in many jurisdictions.
 
-Directories MAY use a Universally Unique Identifier (<dfn>UUID</dfn>), a Globally Unique Identifier (<dfn>GUID</dfn>)
+Directories MAY use a Universally Unique Identifier (<dfn export=true>UUID</dfn>), a Globally Unique Identifier (<dfn export=true>GUID</dfn>)
     as specified by [[!RFC4122]] or an opaque 128-character random character string to represent the Trust Anchor.
 
 

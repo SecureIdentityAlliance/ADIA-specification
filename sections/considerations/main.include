@@ -46,7 +46,7 @@ TBD
 
 * The <a>DAS</a> does not have visibility into the details of a VC during issuance or presentation.
 
-* <a>Service Provider</a>'s details are hidden from the <a>Issuer</a>s when sharing <a>verifiable claims</a> to preserve <a>user</a> privacy.
+* <a>Service Provider</a>'s details are hidden from the <a>Issuer</a>s when sharing <a>Verifiable Credential</a>s to preserve <a>user</a> privacy.
 
 * The Credential Metadata is stored by the <a>user</a>'s <a>Cloud Agent</a>.
 
@@ -55,7 +55,7 @@ TBD
 
 * The <a>ADIA</a> system limits the use of correlation handles across entities to the cases in which such correlation is required.
     It also supports the use pseudonymous credential sharing using dedicated identifiers in "Peer-DIDs" to allow a privacy preserving way to share
-    <a>verifiable claims</a> that do not intrinsically include enough information to uniquely identity a specific user (e.g. minimum age).
+    <a>Verifiable Credential</a>s that do not intrinsically include enough information to uniquely identity a specific user (e.g. minimum age).
     The following identifiers could be used as correlation handles and need to be handled with care:
     * <a>Digital Address</a>
     * <a>Trust Anchor</a>
