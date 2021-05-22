@@ -3,8 +3,7 @@
 ### ADIA Global Directory ### {#sctn-adia-role-global-directory}
 
 The <dfn>ADIA Global Directory</dfn> (<dfn>AGD</dfn>) serves as a Root of Trust for all non-User entities in the ecosystem. The Directory ensures interoperability between multiple Regional Directories and Interchanges.
-Uniqueness of the entities is defined by the relationship of identifiers -  the Entity's <a>Digital Address</a>, the DID and the Trust Anchors and binding them to
-organizational entities at a global level.
+Uniqueness of the entities is defined by the relationship of identifiers -  the Entity's <a>Digital Address</a>, the DID and the <a>Trust Anchor</a>s and binding them to organizational entities at a global level.
 
 #### Directory Scope #### {#sctn-adia-global-directory-scope}
 
@@ -18,13 +17,14 @@ between the <a>Digital Address</a>, the DID and Trust Anchor. The entities gover
   * Credential Broker (Future)
   * Payment Broker (Future)
 
-The <a>ADIA Global Directory</a> may provide Discovery and Routing services between one or more Regional Directories to facilitate identity verifications across one or more geographical regions.
+The <a>ADIA Global Directory</a> may provide Discovery and Routing services between one or more Regional Directories (<a>ARD</a>) to facilitate identity verifications across one or more geographical regions.
 
 #### Uniqueness properties #### {#sctn-adia-global-uniqueness}
 
 <a>ADIA Global Directory</a> ensures uniqueness of the listed organizational entities. This is done by ensuring a unique set of attributes for each organization.
 
-Please see [[#sctn-hida-computation-org-entities]] for uniqueness properties for Issuers,Service Providers, DAS and ADIA Regional Directories.
+Please see [[#sctn-hida-computation-org-entities]] for uniqueness properties for <a>Issuer</a>s, <a>Service Provider</a>s, <a>DAS</a>
+    and Regional Directories (<a>ARD</a>s).
 
 
 #### Directory Querying #### {#sctn-adia-global-ds-query}
