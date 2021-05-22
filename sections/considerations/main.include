@@ -48,7 +48,7 @@ TBD
 
 * <a>Service Provider</a>'s details are hidden from the <a>Issuer</a>s when sharing <a>Verifiable Credential</a>s to preserve <a>user</a> privacy.
 
-* The Credential Metadata is stored by the <a>user</a>'s <a>Cloud Agent</a>.
+* The Credential Metadata (<a>VC_METADATA</a>) is stored by the <a>user</a>'s <a>Cloud Agent</a>.
 
 * The <a>ADIA</a> system uses Hashed attributes to reduce the exposure of personal information (like names, addresses, etc.)
     to other entities than the <a>Issuer</a> of the respective <a>VC</a>s.  The <a>Digital Address</a> is only stored in <a>DAS</a>.
@@ -66,7 +66,7 @@ TBD
     ZKPs will be supported in the subsequent versions of the specification and not addressed in the current version.
 
 * The <a>ADIA</a> system supports the "Right to be forgotten" that is part of several privacy regulations, e.g. GDPR.  This means Users can trigger the deletion of their data (see [[#sctn-user-account-deletion]]).
-    The <a>DAS_USER_ID</a> is stored in the DLT of the <a>ARD</a> and in the DB of the <a>DAS</a>.  The <a>DAS_USER_ID</a> is a randomly generated number that
+    The <a>DAS_USER_ID</a> is stored in the DLT of the <a>ARD</a> and in the DB of the <a>DAS</a>.  Entries in a DB can be deleted if needed, whereas entires in DLTs cannot be deleted.  The <a>DAS_USER_ID</a> is a randomly generated number that
     is linked to a specific user indirectly via the <a>TA</a> that is another randomly generated number which in turn is linked to the <a>HIDA</a> via a record stored in a DB.
     The <a>HIDA</a> is a cryptographic hash computed over identity attributes of the user.
     This linking record will be deleted if the user asks to be forgotten.
