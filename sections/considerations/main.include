@@ -72,5 +72,6 @@ TBD
     This linking record will be deleted if the user asks to be forgotten.
     Additionally, the <a>ARD</a> operates a permissioned DLT, i.e. only a limited number of entities have access to it.
 
-* Any data kept for audit and backups is according to legal requirements and for legally permitted time limits.
+* It is a requirements for the certified entities to keep data required for audit puroses and backups in according
+    to legal requirements and for legally permitted time limits.
 
