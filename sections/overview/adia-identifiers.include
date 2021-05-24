@@ -64,10 +64,6 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
        :: Digital Address Application, e.g., Android App or iOS App that
            knows how to talk to the <a>DAS</a> on behalf of the <a>User</a>.
 
-       :  DAS
-       :: Digital Address Service.  See DAS-API for the DAS
-           Agency API.  Multiple DAS Agencies can exist in the ADIA "universe".
-
        :  <dfn>DAS_ID</dfn>
        :: <a>DAS</a> IDentity, i.e. the W3C DID style identifier for the <a>DAS</a>.
 
@@ -109,11 +105,6 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
        :  <dfn>ID Attributes</dfn>
        :: Attributes identifying a user uniquely defined by the ADIA Specification
 
-       :  <dfn>Issuer</dfn>
-       :: Issuer of <a>VC</a>s to users.  ADIA supports multiple Issuers
-           per <a>User</a>.  Issuers use an <dfn>Issuer Agent</dfn> to
-           connect to the <a>DAS</a>.
-
        :  <dfn>ISSUER_ID</dfn>
        :: Issuer IDentity, i.e. the <a>DID</a> style identifier for the <a>Issuer</a>.
 
@@ -124,12 +115,6 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
        :: Public Key (PK) and Private Key (SK) related to the
            <a>ISSUER_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
            more details.
-
-       :  <dfn>SP</dfn>
-       :: <dfn>Service Provider</dfn> that verifies <a>VC</a>s.  In the
-            Decentralized Identity community it is typically called
-            Verifier. <a>Service Providers</a> use a <dfn export=true>Service Provider Agent</dfn> to
-            connect to the <a>DAS</a>, the <a>Credential Broker</a> and the <a>Identity Escrow</a>.
 
        :  <dfn>SP_ID</dfn>
        :: Service Provider IDentity, i.e. the <a>DID</a> style identifier for the <a>SP</a>.
@@ -142,13 +127,8 @@ Note: The <a>DA</a> doesn't <i>have</i> to include the user's real
            <a>SP_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
            more details.
 
-
-
        :  <dfn export="true">TA_USER_ISSUER</dfn>
        :: The <a>Issuer</a> specific <a>TA</a>, i.e. hash(<a>TA</a>, <a>ISSUER_ID</a>).
-
-       :  <dfn>User</dfn>
-       :: The User and owner of the <a>DA</a> and holder of the <a>VC</a>s.
 
        : <a>USER_FIDO_PK</a>, <a>USER_FIDO_SK</a>
        :: The FIDO credential owned by the user's authenticator and used
