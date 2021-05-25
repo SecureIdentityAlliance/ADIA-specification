@@ -43,7 +43,7 @@ DIDs are the foundational identifiers of the system but are not participant frie
 Further communication and cryptographic trust are then founded on the provided DID. <a>Digital Address</a>es contain a DAS indicator that can be used to identify which DAS is the Home DAS of the Digital Address.
 
 The creation of a <a>Digital Address</a> is a crucial step in ensuring there is both trust and accountability within the ADIA ecosystem. Digital Address Issuers could be financial service providers, government agencies, education providers and enterprises; organizations that are central to the trust economy.
-To prevent the <a>Digital Address</a> from being misused as a correlating handle, <a>Digital Address</a>es must not be retained by
+To prevent the <a>Digital Address</a> from being misused as a correlation handle, <a>Digital Address</a>es must not be retained by
 participating <a>Service Provider</a>s after resolution.
 Their role is specifically limited to facilitating the participant-onboarding processes.
 
