@@ -1,11 +1,13 @@
 ## Directories ## {#sctn-adia-directories}
 
+Issue: Move to section Certification
 
 ### Hashed Attributes ### {#sctn-adia-directory-hashed-attributes}
 
-Directories may be public or privacy preserving. Private directories must store hashed attributes and accept hashed attribute queries.
+Directories may be public or privacy preserving. Privacy preserving directories must store hashed attributes and
+    accept hashed attribute queries (as opposed to storing attributes in the clear).
 This prevents the directory from directly knowing the attributes involved. Public directories on the other hand
-may use hashed attributes to uniquely identify a participant but the data is in clear text to enable search queries.
+may use hashed attributes to uniquely identify a participant but they also store data in clear text to enable search queries.
 
 For example, public directories are good for listing company information while private directories are good for users where the identity is not voluntarily disclosed.
 
