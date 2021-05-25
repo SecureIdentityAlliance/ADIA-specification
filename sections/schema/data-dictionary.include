@@ -132,12 +132,12 @@ The <a>ADIA</a> system maintains the following fields as <dfn>Credential Metadat
     <tr>
       <td>CREDENTIAL_SCHEMA_ID</td>
       <td>String</td>
-      <td>Identifier of the Credential Schema against which the VC was issued</td>
+      <td>Identifier of the <dfn export=true">Credential Schema</dfn> against which the <a>VC</a> was issued</td>
     </tr>
     <tr>
       <td>CREDENTIAL_SCHEMA_VERSION</td>
       <td>String</td>
-      <td>Version of the Credential Schema against which the VC was issued</td>
+      <td>Version of the <a>Credential Schema</a> against which the <a>VC</a> was issued</td>
     </tr>
     <tr>
       <td>CREDENTIAL_TYPE</td>

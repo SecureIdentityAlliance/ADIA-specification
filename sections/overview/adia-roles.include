@@ -13,9 +13,9 @@ between the <a>Digital Address</a>, the DID and Trust Anchor. The entities gover
   * <a>Digital Address Service</a>(s)
   * <a>Issuer</a>(s)
   * <a>Service Provider</a>(s)
-  * Identity Escrow (Future)
-  * Credential Broker (Future)
-  * Payment Broker (Future)
+  * <a>Identity Escrow</a> services (Future)
+  * <a>Credential Broker</a> (Future)
+  * <a>Payment Broker</a> (Future)
 
 The <a>ADIA Global Directory</a> may provide Discovery and Routing services between one or more Regional Directories (<a>ARD</a>) to facilitate identity verifications across one or more geographical regions.
 
@@ -32,18 +32,18 @@ Please see [[#sctn-hida-computation-org-entities]] for uniqueness properties for
 A qualified party may query the directory by providing attributes or a digital address. The directory will either return a ‘None Found’ response, or a DID of the entity identified.
 The <a>ADIA Global Directory</a> has several components that enable saving Trust Anchors and relationships:
 
-* **ADIA Directory**: A Distributed Ledger (DLT) to maintain immutable entity relationships between <a>Digital Address</a>es and Trust Anchors.
-* **ADIA Console**: An administrative interface to view and manage metadata of the entities.
-* **ADIA Agent**: A communications agent to enable identity transactions between the <a>ADIA Global Directory</a> and Regional Directories.
-* **API Services**: REST endpoints to provide lookup and discover services.
+* <dfn export="true">ADIA Directory</dfn>: A Distributed Ledger (DLT) to maintain immutable entity relationships between <a>Digital Address</a>es and Trust Anchors.
+* <dfn export="true">ADIA Console</dfn>: An administrative interface to view and manage metadata of the entities.
+* <dfn export="true">ADIA Agent</dfn>: A communications agent to enable identity transactions between the <a>ADIA Global Directory</a> and Regional Directories.
+* <dfn export="true">ADIA API Services</dfn>: REST endpoints to provide lookup and discover services.
 
 #### Roles #### {#sctn-adia-global-ds-roles}
 
 The types of actors that interact with ADIA are described below:
 
-* *Admin*: Role to configure the ADIA with system level information.
-* *Approver*: Role to approve or reject onboarding of a DAS or Interchange Services.
-* *ADIA Regional Directory Admin*: Requests onboarding to ADIA via the ADIA Console. Requests changes to Assurance Levels and policy changes.
+* <dfn export="true">ADIA Admin</dfn>: Role to configure the ADIA with system level information.
+* <dfn export="true">ADIA Approver</dfn>: Role to approve or reject onboarding of a DAS or Interchange Services.
+* <dfn export="true">ADIA Regional Directory Admin</dfn>: Requests onboarding to <a>ADIA</a> via the <a>ADIA Console</a>. Requests changes to Assurance Levels and policy changes.
 
 
 ### ADIA Regional Directory ### {#sctn-adia-role-regional-directory}
@@ -76,7 +76,7 @@ Directories may use any datastore sufficient to the requirements of storing attr
 ADIA Directories ensure uniqueness of the listed users. This is done by ensuring a unique set of attributes for each user. If a new user matches an existing user, additional attributes must be requested for use in distinguishing between the matching users.
 Each directory MUST have a process to follow when users cannot be uniquely identified either during addition of a user to the directory or during lookup of a user within the directory.
 
-Please see [[#sctn-hida-computation-users]] for uniqueness properties for Users in the ADIA Regional Directories.
+Please see [[#sctn-hida-computation-users]] for uniqueness properties for Users in the ADIA Regional Directories (<a>ARD</a>s).
 
 #### Directory Querying #### {#sctn-adia-regional-directory-query}
 
@@ -93,7 +93,7 @@ Issuer and Service Provider Agents and optional value-added services such as Ide
 
 #### DAS #### {#sctn-adia-role-das}
 
-<dfn export=true>Digital Address Service</dfn> (<dfn>DAS</dfn>) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
+<dfn export="true">Digital Address Service</dfn> (<dfn>DAS</dfn>) plays a major role of enabling the identity and business transactions between issuers, service providers and users. The DAS uses a combination of on-Ledger and off-Ledger services to facilitate the capabilities of verifying credentials for relying parties.
 
 The DAS may host a set of user-focused <a>Cloud Agent</a> and secure communication agents with other agents in the ecosytem. When any interaction with a participant happens, it happens through their Agent via services.
 Each entity's Agent holds cryptographic keys and digital credentials on behalf of the participant. The agent also manages the participant’s connections with services in the ecosystem. It maintains the participant’s directory listings and requests for unique DIDs when a new connection is made.
@@ -103,25 +103,25 @@ All interactions through the agent are logged and available for inspection by th
 ##### Components ##### {#sctn-das-components}
 
 The core components of a DAS are:
-* **DAS Directory**: A distributed data store or a Distributed Ledger to maintain immutable entity relationships and transactions related to the identity verifications.
-* **DAS Console**: An administrative interface to manage issuers, service providers and system settings.
-* **DAS Agent**: A communications agent to integrate identity transactions between an Issuer network and the DAS
-* **FIDO Service**: A FIDO server providing authentication services and authenticator policy management to users with a <a>Digital Address</a>.
-* **API Services**: REST endpoints to provide credential issuance, verification, routing and discovery services for identity transactions.
+* <dfn export="true">DAS Directory</dfn>: A distributed data store or a Distributed Ledger to maintain immutable entity relationships and transactions related to the identity verifications.
+* <dfn export="true">DAS Console</dfn>: An administrative interface to manage issuers, service providers and system settings.
+* <dfn export="true">DAS Agent</dfn>: A communications agent to integrate identity transactions between an Issuer network and the DAS
+* <dfn export="true">FIDO Service</dfn>: A FIDO server providing authentication services and authenticator policy management to users with a <a>Digital Address</a>.
+* <dfn export="true">DAS API Services</dfn>: REST endpoints to provide credential issuance, verification, routing and discovery services for identity transactions.
 
 ##### Roles ##### {#sctn-das-roles}
 
 The types of actors that interact with the DAS are described below:
-* *Admin*: Role to configure the DAS with system and issuer level properties
-* *Approver*: Role to approve or reject onboarding of <a>Issuer</a>s in the system
-* *Issuer Admin*: Requests onboarding to the DAS via the DAS Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAS.
-* *Service Provider Admin*: Configures rules to evaluate one or more credentials based on the available credential schema
-* *User*: A subject or holder of the credential. Authenticates to the DAS with the <a>Digital Address</a>.
+* <dfn export="true">DAS Admin</dfn>: Role to configure the DAS with system and issuer level properties
+* <dfn export="true">DAS Approver</dfn>: Role to approve or reject onboarding of <a>Issuer</a>s in the system
+* <a>Issuer Admin</a>: Requests onboarding to the <a>DAS</a> via the <a>DAS Console</a>, configures connectors to identity and credential stores in systems of record and publishes <a>credential metadata</a> to the <a>DAS</a>.
+* <a>Service Provider Admin</a>: Configures rules to evaluate one or more credentials based on the available <a>credential schema</a>
+* <a>User</a>: A subject or holder of the credential. Authenticates to the DAS with the <a>Digital Address</a>.
 
 
 #### Credential Broker (Future) #### {#sctn-adia-role-credential-broker}
 
-The process of receiving credential presentations can be complicated. Verifiers and participants may enlist the use of a <dfn>Credential Broker</dfn>.
+The process of receiving credential presentations can be complicated. Verifiers and participants may enlist the use of a <dfn export="true">Credential Broker</dfn>.
 The broker can serve several functions in the process of aiding a credential presentation. The credential may be translated between formats, verifying one format and creating another that is readable by the verifier.
 
 The broker can do the legwork of applying governance frameworks and checking the credential issuer for validity. This is particularly helpful when interacting with an interchange provider not previously known to the verifier.
@@ -132,7 +132,7 @@ During the exchange of the credential, the broker may also facilitate payment to
 
 #### Identity Escrow (Future) #### {#sctn-adia-role-identity-escrow}
 
-Privacy preserving accountability is provided by <dfn>Identity Escrow</dfn> Services. Identity data is presented to the Identity Escrow Service in a credential from an approved issuer. The Escrow Service stores the data and issues an escrow credential to the participant. Each escrow credential obtained by the participant contains a unique id.
+Privacy preserving accountability is provided by <dfn export="true">Identity Escrow</dfn> Services. Identity data is presented to the Identity Escrow Service in a credential from an approved issuer. The Escrow Service stores the data and issues an escrow credential to the participant. Each escrow credential obtained by the participant contains a unique id.
 
 Upon connecting to a new service, the participant presents the escrow credential. The service validates the credential, and then retains the unique id. Should the participant violate the terms of service or otherwise require accountability for their actions, the service will present the request and evidence to the Escrow Service. The escrow service will evaluate the request and evidence against their policies. If policy indicates, the escrow service will notify the participant of the disclosure, disclose the identity data from escrow, and log the evidence and disclosure for independent audit. Disclosure logs are retained for a period set by policy.
 
@@ -142,94 +142,101 @@ Both the service and the participant must agree on the terms and policy of the I
 
 #### Payment Broker (Future) #### {#sctn-adia-role-payment-broker}
 
-Financial transactions are another area that can benefit from the involvement of a broker. The broker can perform currency conversions to the benefit of both parties. The broker will also communicate with all parties in the payment flow. When required by law, the broker can log the transaction sufficiently to satisfy regulation such as Anti-Money Laundering (AML) laws.
+Financial transactions are another area that can benefit from the involvement of a broker. The <dfn export="true">Payment Broker</dfn> may perform currency conversions to the benefit of both parties. The broker will also communicate with all parties in the payment flow. When required by law, the broker can log the transaction sufficiently to satisfy regulation such as Anti-Money Laundering (AML) laws.
 Payment flows can be used for credentials but may also be used for general purpose payment. In the future, payment can also involve verifying goods delivery prior to releasing payment.
 
 
 ### Issuer ### {#sctn-adia-role-issuer}
 
-ADIA Architecture trust between entities is brokered by the DAS. Issuers of a Verified Credential are separated from
-the Service Providers (verifiers of a credentials) with a level of trust. Issuers are also custodians of an issued credentials but owned by the user it is issued to.
+In the <a>ADIA</a> system trust between entities is brokered by the <a>DAS</a>. <dfn>Issuer</dfn>s of a <a>Verifiable Credential</a> are separated from
+the <a>Service Provider</a>s (i.e. verifiers of <a>Verifiable Credential</a>). <a>Issuer</a>s are also custodians of a <a>Verifiable Credential</a>
+owned by the <a>User</a> it is issued to.  <a>ADIA</a> supports multiple <a>Issuer</a>s per <a>User</a>.  <a>Issuer</a>s use an <a>Issuer Agent</a> to
+connect to the <a>DAS</a>.
 
 #### Components #### {#sctn-issuer-components}
 
 The core components of an Issuer are:
-* Issuer Console: An administrative interface to view Users, Identity information and Credential information. Administrators issue Verifiable Credentials from the console to holders.
-* <a>Issuer Agent</a>: A communications agent to integrate identity transactions between an Issuer network and the DAS
-* <dfn>VC Store</dfn>: A secure storage area for issuers to persist issued <a>Verifiable Credential</a>s.
-* API Services: REST endpoints to abstract interactions with the communication and transformation agents.
-* Connectors: Adapters that connect to Identity and Credential datastores, perform scheduled transfers, transform content for the Issuers to view and issue Credentials to users.
+* <dfn export="true">Issuer Console</dfn>: An administrative interface to view <a>User</a> details, Identity information and <a>Verifiable Credential</a>
+     details.  Administrators may trigger the issuance of <a>Verifiable Credential</a>s from the console to <a>user</a>s.
+* <dfn export="true">Issuer Agent</dfn>: A communications agent to integrate identity transactions between an Issuer network and the <a>DAS</a>.
+* <dfn export="true">VC Store</dfn>: A secure storage area for issuers to store issued <a>Verifiable Credential</a>s.
+* <dfn export="true">Issuer API Service</dfn>s: REST endpoints to abstract interactions with the communication and transformation agents.
+* <dfn export="true">Issuer Connector</dfn>s: Adapters that connect to Identity and Credential datastores, perform scheduled transfers, transform content for the Issuers to view and issue <a>Verifiable Credential</a>s to <a>User</a>s.
 
 #### Roles #### {#sctn-issuer-roles}
 
-* *Issuer Admin*: Requests onboarding to the DAS via the DAS Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAS.
-* *DAS Admin*: Role to approve or reject onboarding of <a>Issuer</a>s in the system. This may be an automated process or a service agent acting on behalf of a DAS.
-* *User*: A subject or holder requesting a credential to be issued. The credential may be requested in person or online. Users must have a <a>Digital Address</a> before receiving a credential issued to them.
+* <dfn export="true">Issuer Admin</dfn>: Requests onboarding to the DAS via the DAS Console, configures connectors to identity and credential stores in systems of record and publishes credential metadata to the DAS.
+* <a>DAS Approver</a>: Role to approve or reject onboarding of <a>Issuer</a>s in the system. This may be an automated process or
+    a service agent acting on behalf of the <a>DAS</a>.
+* <a>User</a>: A subject or holder requesting a credential to be issued. The credential may be requested in person or online. Users must have a <a>Digital Address</a> before receiving a credential issued to them.
 
 
 ### Service Provider ### {#sctn-adia-role-serviceprovider}
 
-Service Providers are relying parties in the ecosystem. Credential verification is requested from a user to identify the user reliably before providing services. The proof requests are
-defined by Service Providers from one or more Credential Schema published by <a>Issuers</a> in the ADIA ecosystem. The verification rulesets may be defined based on a combination of criteria:
+<dfn>Service Provider</dfn>s (<dfn>SP</dfn>s) are relying parties in the ecosystem. Credential verification is requested from a <a>User</a> to identify the user reliably before providing services.  In the Decentralized Identity community this role is typically called Verifier. 
+
+The proof requests are
+defined by <a>Service Provider</a>s from one or more <a>Credential Schema</a> published by <a>Issuer</a>s in the <a>ADIA</a> ecosystem. The verification rulesets may be defined based on a combination of criteria:
 * Claim information in the credential
 * Assurance Level of a credential type
 * Assurance Level of the Issuers in the system
 * Whitelisted set of Issuers that the Service Provider trusts
 * and so on...
 
-Service Providers take a risk-based approach based on their enterprise needs and risk management policies before accepting the Verifiable Presentations made by the User.
+<a>Service Provider</a>s may take a risk-based approach based on their enterprise needs and risk management policies before accepting
+    the <a>Verifiable Presentation</a>s made by a <a>User</a>.
 
 
 #### Components #### {#sctn-serviceprovider-components}
 
 The core components of a Service Provider are:
-* **Service Provider Console**: An administrative interface to create rule definitions for a certain service.
-* **Service Provider Agent**: A communications agent to enable identity transactions between a Service Provider network and the DAS
-* **API Services**: REST endpoints to abstract interactions with the communication and transformation agents.
+* <dfn export="true">Service Provider Console</dfn>: An administrative interface to create rule definitions for a certain service.
+* <dfn export="true">Service Provider Agent</dfn>: A communications agent to enable identity transactions between a
+    <a>Service Provider</a> network and the <a>DAS</a>.
+* <dfn export="true">API Services</dfn>: REST endpoints to abstract interactions with the communication and transformation agents.
 
 
 #### Roles #### {#sctn-serviceprovider-roles}
-* *Service Provider Admin*: Requests onboarding to the DAS via the DAS Console and defines new rulesets
-* *DAS Admin*: Role to approve or reject onboarding of <a>Service Provider</a>s in the system. This may be an automated process or a service agent acting on behalf of a DAS.
-* *User*: A subject or holder verifying a credential. Users must have a <a>Digital Address</a> and provide consent before verifying a credential issued to them.
-
+* <dfn export="true">Service Provider Admin</dfn>: Requests onboarding to the <a>DAS</a> via the <a>DAS Console</a> and defines new rulesets
+* <a>DAS Approver</a>: Role to approve or reject onboarding of <a>Service Provider</a>s in the system. This may be an automated process or a service agent acting on behalf of a DAS.
+* <a>User</a>: The subject or holder of a <a>Verifiable Credential</a>. <a>User</a>s must have a <a>Digital Address</a> and provide consent
+    before a <a>Verifiable Credential</a> is issued to them.
 
 
 ### User ### {#sctn-adia-role-user}
 
-A User is a holder of a unique <a>Digital Address</a> and receives it from an Issuer after a KYC Process is completed.
-The user can then use their <a>Digital Address</a> for various purposes; for example, receiving Verifiable Credentials such as an Identity Credential, or credentials that prove Educational qualifications, Health records, Employment, etc.
+A <dfn>User</dfn> is a holder of a unique <a>Digital Address</a> and receives it from an <a>Issuer</a> after the respective ID Proofing process is completed.
+The <a>User</a> can then use their <a>Digital Address</a> for various purposes; for example, receiving <a>Verifiable Credential</a>s such as an Identity Credential, or credentials that prove Educational qualifications, Health records, Employment proofs, etc.
 
 #### Scope #### {#sctn-user-scope}
 
 * Obtain a <a>Digital Address</a> from an <a>Issuer</a> in the ADIA ecosystem.
 * Receive one or more Identity Credentials by complying with KYC processes from Identity <a>Issuer</a>s.
-* Receive one or more User Credentials such as Employment Credential, Medical Record etc.  from one or more Credential Issuers.
-* Present issued credentials as proof to Service Providers.
-* Grant consent for verification requests from Service Providers.
+* Receive one or more User Credentials such as Employment Credential, Medical Record etc. from one or more Credential <a>Issuer</a>s.
+* Present <a>Verifiable Credential</a>s that were issued to them as a proof to <a>Service Provider</a>s.
+* Grant consent for verification requests from <a>Service Provider</a>s.
 
 
 ### Digital Address Application (DAA) ### {#sctn-adia-role-daa}
 
-For users to be part of the ADIA ecosystem, they must be in control of a <a>Digital Address</a>. The <a>Digital Address</a> may be acquired via many forms, but primarily via a QR code over some channel such as an Authenticator App,
-Email, SmartCard or directly from an <a>Issuer</a>.
+For <a>User</a>s to be part of the ADIA ecosystem, they must be in control of a <a>Digital Address</a>. The <a>Digital Address</a> may
+be acquired via many forms - often via a QR code over some channel such as an Authenticator App, Email, SmartCard or directly from an <a>Issuer</a>.
 
-
-The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind the <a>Digital Address</a> to the DAS and enable the receipt of and provide consent for verification requests.
+The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind the <a>Digital Address</a> to the <a>DAS</a> and enable the receipt of and provide consent for verification requests.
 
 #### Components #### {#sctn-daa-components}
 
 The core components of a <a>Digital Address Application</a> are:
 
-* **DAS Mobile SDK**: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAS services.
-* **FIDO Client**: Mobile client SDK to provide FIDO registration and authentication for a <a>Digital Address</a>.
-* **Identity Verification SDK**: An Identity Verification client SDK to ID proof a government-issued identification document such as Driver’s License or Passport
-* **Credential Metadata**: On-device store of the credential metadata issued to the digital address. Interacts with the DAS services to lookup and retrieve actual credentials from the issuer.
-* **Push Notification Service**: External service to push notifications to the user for events such as credential issuance, revocation, proof requests, and consent
+* <dfn export="true">DAS Mobile SDK</dfn>: SDK to abstract interaction of the mobile application with the ecosystem services. All interactions with the issuers and service providers are brokered by the DAS services.
+* <dfn export="true">FIDO Client</dfn>: The FIDO subsystem required to perform FIDO registration and authentication for a <a>Digital Address</a>.
+* <dfn export="true">Identity Verification SDK</dfn>: An Identity Verification client SDK to ID proof a government-issued identification document such as Driver’s License or Passport
+* <a>Credential Metadata</a>: On-device store of the credential metadata issued to the digital address. Interacts with the DAS services to lookup and retrieve actual credentials from the issuer.
+* <dfn export="true">Push Notification Service</dfn>: External service to push notifications to the user for events such as credential issuance, revocation, proof requests, and consent
 
 #### Roles #### {#sctn-daa-roles}
 
 The types of actors that interact with the Mobile App are described below:
-* *User*: A subject or holder of a Digital Address. Authenticates to the DAS with the <a>Digital Address</a>.
-* *Issuer Admin*: Issues a <a>Digital Address</a>, Issues and revokes credentials to a user.
-* *Service Provider Admin*: Configures rules to evaluate one or more credentials based on the available credential schema. Requests proofs and verifies the credential proofs.
+* <a>User</a>: A subject or holder of a Digital Address. Authenticates to the DAS with the <a>Digital Address</a>.
+* <a>Issuer Admin</a>: Issues a <a>Digital Address</a>, Issues and revokes credentials to a user.
+* <a>Service Provider Admin</a>: Configures rules to evaluate one or more credentials based on the available <a>credential schema</a>. Requests proofs and verifies the credential proofs.

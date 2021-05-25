@@ -48,8 +48,8 @@ Unless mentioned otherwise, each of the protocol messages uses the "Encrypted" e
 
 
 ### ADIA Functions  ### {#sctn-protocol-function}
-The mapping below represents the functions implemented by agents as part of a standard DIDComm protocol. These functions may be
-used as co-protocols to perform ADIA specific operations.
+The mapping below represents the functions implemented by agents as part of a standard DIDComm protocol [[!DIDCOMM-MESSAGING-V1]}. These functions may be
+used as co-protocols to perform <a>ADIA</a> specific operations.
 
 <table class="data longlastcol">
   <thead>
