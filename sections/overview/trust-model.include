@@ -1,9 +1,5 @@
 ## Trust Model ## {#sctn-trust-model}
 
-Issue: Describe what is verified by whom, what kind of objects
-   ("credentials") are being created and what kind of identifiers they
-   bind together (e.g., public keys and digital addresses, ...).
-
 <figure id="fig-adia-trust-model">
     <img src="images/adia-trust-model.svg"/>
     <figcaption>ADIA Trust Model</figcaption>
@@ -11,11 +7,7 @@ Issue: Describe what is verified by whom, what kind of objects
 
 Issue: Will have to specify the assurance level to which the claims
     have been verified by the issuer.  Similarly for the other
-    entities (e.g., DAS, Issuer, ...). See ASSURANCE_LEVEL in
-    <a>Digital Address</a> and in <a href="#sctn-credential-metadata">Credential Metadata</a>.
-
-
-Issue: How to trust the issuer?  How to trust the SP?  How to trust DASs?
+    entities (e.g., DAS, Issuer, ...). 
 
 
 When verifying a verifiable presentation of a verifiable credential,
@@ -31,11 +23,18 @@ the following objects need to be verified:
     issuer ISSUER_ID_PK/SK key.
 
 3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
-    via the <a>DIDDoc-ISSUER</a>.
+    via the <a>DIDDoc-ISSUER</a> which is signed by the <a>DAS</a>.
+    1. Verify the trustworthiness of the <a>DAS</a> by retrieving and verifying the <a>DIDDoc-DAS</a> that was issued by the <a>ARD</a>.
+    2. Verify the trustworthiness of the <a>ARD</a> by retrieving and verifying the <a>DIDDoc-ARD</a> that was issued by the <a>AGD</a>.
+    3. Verify the trustworthiness of the <a>AGD</a> by retrieving and verifying the <a>DIDDoc-AGD</a> that was issued by the <a>AGD</a>.
+    4. As a participant of the <a>ADIA</a> system, you implicitly trust the <a>AGD</a>'s public key <a>AGD_ID_PK</a>.
 
 4. Subject DAS_USER_ID_PK/SK key. This key is linked to the user via
-    the <a>DIDDoc-USER</a>.
+    the <a>DIDDoc-USER</a> which is signed by the <a>DAS</a>.
+    1. Verify the trustworthiness of the <a>DAS</a> by retrieving and verifying the <a>DIDDoc-DAS</a> that was issued by the <a>ARD</a>.
 
+Note: The assurance level to which the various entities have been verified is maintained in field ASSURANCE_LEVEL in
+    the respective <a>Digital Address</a> and in the <a href="#sctn-credential-metadata">Credential Metadata</a>.
 
 In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), the
    <a>DIDDoc-USER</a> is a pair-wise use object and the included
@@ -66,10 +65,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), 
          via a DIDDoc kept in the ADIA Global Directory.
        </td>
        <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
        </td>
      </tr>
 
@@ -82,10 +78,7 @@ Issue: Need to clarify how the security characteristics of the
          via a DIDDoc kept in the ADIA Global Directory.
        </td>
        <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
        </td>
      </tr>
 
@@ -96,15 +89,12 @@ Issue: Need to clarify how the security characteristics of the
          DAS Agent
        </td>
        <td><a href="#sctn-enroll-as-das">Onboarding as DAS</a>
- </td>
+        </td>
        <td>
          via a DIDDoc kept in the ADIA Global Directory.
        </td>
        <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
        </td>
      </tr>
 
@@ -112,19 +102,16 @@ Issue: Need to clarify how the security characteristics of the
        <td><dfn>ISSUER_ID_PK</dfn> / <dfn>ISSUER_ID_SK</dfn></td>
        <td><a>Issuer</a></td>
        <td>
-   <a>Issuer Agent</a>
+          <a>Issuer Agent</a>
        </td>
        <td><a href="#sctn-enroll-as-issuer">Onboarding as an
             Issuer</a>
- </td>
+       </td>
        <td>
          via a DIDDoc kept in the ADIA Global Directory.
        </td>
        <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
        </td>
      </tr>
 
@@ -141,10 +128,7 @@ Issue: Need to clarify how the security characteristics of the
          via a DIDDoc kept in the ADIA Global Directory.
        </td>
        <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
        </td>
      </tr>
 
@@ -160,10 +144,7 @@ Issue: Need to clarify how the security characteristics of the
          via a DIDDoc kept in the HomeDAS.
        </td>
        <td>
-
-Issue: Need to clarify how the security characteristics of the
-    cryptographic device generating and using the key are attested.
-
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
        </td>
      </tr>
 

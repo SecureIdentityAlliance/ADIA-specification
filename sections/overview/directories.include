@@ -16,13 +16,15 @@ Issue: What is the difference between Regional Directories and ADIA Regional Dir
 ### Logging ### {#sctn-adia-directory-logging}
 
 * Directories must log the type of actions including enrollment, issuance of a <a>VC</a>, queries to the <a>Credential Metadata</a>, etc.
-* Elements of the log may include non-private information such as dates, access granted or denied status, states of agents, etc but not attribute values that may lead to disclosure of private information such as <a>Digital Address</a>, the <a>DID</a>s of a user, etc.
-* The data retention policies in a given Regional Directory and the context in which Directories operate SHALL define the duration for which the logs may be retained by the Directory.
+* Elements of the log may include non-private information such as dates, access granted or denied status, states of agents, etc.
+    but not attribute values that may lead to disclosure of private information such as <a>Digital Address</a>, the <a>DID</a>s of a user, etc.
+* The data retention policies in a given Regional Directory and the context in which Directories operate shall define the
+    duration for which the logs may be retained by the Directory.
 
 ### Storage ### {#sctn-adia-directory-storage}
 
 * Directories must support a privacy preserving distributed database that holds the <a>HIDA</a> for the <a>User</a>s and other Entities.
 * Directories may support a distributed database or a Distributed Ledger (DLT) to persist the <a>Trust Anchor</a>
-   and any metadata related to the <a>Digital Address</a>es.
+    and any metadata related to the <a>Digital Address</a>es.
 
 Whether it is on-chain or off-chain data, the regulatory obligations, for example, GDPR or CCPA, and the "Right to be forgotten" objectives must be met.
