@@ -11,6 +11,8 @@ For example, public directories are good for listing company information while p
 
 <a>ADIA Global Directory</a> is a public directory for <a>Issuer</a>s, <a>Service Provider</a>s, <a>DAS</a> and Regional Directories while the <a>ADIA Regional Directory</a> is a private directory for uniquely identifying <a>User</a>s.
 
+Issue: What is the difference between Regional Directories and ADIA Regional Directory?
+
 ### Logging ### {#sctn-adia-directory-logging}
 
 * Directories must log the type of actions including enrollment, issuance of a <a>VC</a>, queries to the <a>Credential Metadata</a>, etc.
