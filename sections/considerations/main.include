@@ -26,17 +26,16 @@ Issue: Need to fill in the details for security specific information
 * SHA256
 * minimum requirements etc.
 
-<strong>Payload Signatures</strong>
-* CL
-* JWT
-* JSON-LD
-
 <strong>Key generation</strong>
-* ED25519 Signature algorithms
-* Curve25519
+* Ed25519 Signature Scheme
+* X25519 Key Agreement Scheme
 
-<strong>Cryptographic suites</strong>
-TBD
+<strong>Payload Signatures</strong>
+* Ed25519
+
+<strong>Cryptographic Libraries</strong>
+* libsodium
+* NSec
 
 
 
