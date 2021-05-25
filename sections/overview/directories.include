@@ -25,7 +25,7 @@ Issue: What is the difference between Regional Directories and ADIA Regional Dir
 
 ### Storage ### {#sctn-adia-directory-storage}
 
-* Directories must support a privacy preserving distributed database that holds the <a>HIDA</a> for the <a>User</a>s and other Entities.
+* Directories must support a privacy preserving distributed database that holds the <a>HIDA</a> for <a>User</a> and <a>Organizational Entity</a>.
 * Directories may support a distributed database or a Distributed Ledger (DLT) to persist the <a>Trust Anchor</a>
     and any metadata related to the <a>Digital Address</a>es.
 
