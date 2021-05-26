@@ -44,6 +44,11 @@ The <a>ADIA</a> system makes use of various cryptographic functions.  The follow
 </figure>
 
 
+<pre class=include>
+path: sections/certification/directories.include
+</pre>
+
+
 ## <a>ADIA Regional Directory</a> Certification ## {#sctn-regional-dir-certification}
 
 An <a>ADIA Regional Directory</a> MUST:
@@ -51,7 +56,8 @@ An <a>ADIA Regional Directory</a> MUST:
 * Support a Directory with hashed attributes for Users in a given region.
 * Provide discovery services to identify and connect DASs within the region security.
 * Meet regulatory and compliance requirements in a given geography and/or jurisdiction.
-* Support the required cryptographic algorithms [[#sctn-crypto-algs]]
+* Support the required cryptographic algorithms as specified in [[#sctn-crypto-algs]]
+* Meet the requirements specified in [[#sctn-adia-directories]]
 
 
 ## DAS Certification ## {#sctn-certification-dap}
@@ -65,7 +71,7 @@ A <a>DAS</a> MUST:
 * Provide authentication services to users with their <a>Digital Address</a>es.
 * Provide discovery services to identify and connect issuers, service providers and users securely.
 * Meet regulatory and compliance requirements in a given geography and/or jurisdiction.
-* Support the required cryptographic algorithms [[#sctn-crypto-algs]]
+* Support the required cryptographic algorithms as specified in [[#sctn-crypto-algs]]
 
 
 ## <a>Issuer</a> Certification ## {#sctn-certification-da-issuer}
@@ -77,13 +83,13 @@ An <a>Issuer</a> MUST:
 * Provide mechanism to link a <a>Digital Address</a> for existing users.
 * Certify the KYC process for the entity and determine Assurance Levels for issued credential using an approved method or process.
 * Onboard users to issuer systems using a <a>Digital Address</a> with the holder’s consent.
-* Persist Verifiable credential in a secure storage (<a>VC Store</a>)
+* Persist <a>Verifiable Credential</a>s in a secure storage (<a>VC Store</a>)
 * Publish credential metadata to the <a>Digital Address</a> Provider and user of the <a>Digital Address</a>.
 * Verify proof requests from Service Providers or other entities for credentials of the holder with a <a>Digital Address</a>.
-* Support the required cryptographic algorithms [[#sctn-crypto-algs]]
+* Support the required cryptographic algorithms as specified in [[#sctn-crypto-algs]]
 
 An <a>Issuer</a> MAY:
-* Issue/reissue or revoke one or more Verifiable Credentials to the holder of a <a>Digital Address</a>
+* Issue/reissue or revoke one or more <a>Verifiable Credential</a>s to the holder of a <a>Digital Address</a>
 
 ## Service Provider Certification ## {#sctn-certification-sp}
 
@@ -92,6 +98,6 @@ A <a>Service Provider</a> MUST:
 * Accept and verify a <a>Digital Address</a> for a user in multiple forms - QR code, a user friendly moniker or a smart card.
 * Request for proofs on one or more user claims using a credential schema.
 * Accept responses to proof requests from one or more <a>Issuer</a>s in the ecosystem.
-* Determine acceptable Assurance Levels for credentials and define policies based on risk tolerance of the organization.
-* Grant or deny services to a user based on risk-based policies.
-* Support the required cryptographic algorithms [[#sctn-crypto-algs]]
+* Determine acceptable <a>Assurance Level</a>s for <a>Verifiable Credential</a>s and define policies based on risk tolerance of the organization.
+* Grant or deny services to <a>User</a>s based on risk-based policies.
+* Support the required cryptographic algorithms as specified in [[#sctn-crypto-algs]]
