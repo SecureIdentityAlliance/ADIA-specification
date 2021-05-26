@@ -10,9 +10,8 @@ may use hashed attributes to uniquely identify a participant but they also store
 
 For example, public directories are good for listing company information while private directories are good for users where the identity is not voluntarily disclosed.
 
-<a>ADIA Global Directory</a> is a public directory for <a>Issuer</a>s, <a>Service Provider</a>s, <a>DAS</a> and Regional Directories while the <a>ADIA Regional Directory</a> is a private directory for uniquely identifying <a>User</a>s.
-
-Issue: What is the difference between Regional Directories and ADIA Regional Directory?
+<a>ADIA Global Directory</a> is a public directory for <a>Issuer</a>s, <a>Service Provider</a>s, <a>DAS</a> and <a>ADIA Regional Directories</a>.
+The <a>ADIA Regional Directory</a> is a private directory for uniquely identifying <a>User</a>s.
 
 ### Logging ### {#sctn-adia-directory-logging}
 
