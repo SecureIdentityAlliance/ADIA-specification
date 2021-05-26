@@ -51,9 +51,5 @@ path: sections/overview/trust-model.include
 </pre>
 
 <pre class=include>
-path: sections/overview/directories.include
-</pre>
-
-<pre class=include>
 path: sections/overview/terminology.include
 </pre>

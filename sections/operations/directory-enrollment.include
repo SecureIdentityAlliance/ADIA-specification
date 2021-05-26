@@ -2,17 +2,19 @@
 
 ### Enroll a Regional Directory ### {#sctn-enroll-as-ADIA-regional}
 
-Regional Directories are onboarded into the ADIA Ecosystem by the ADIA Global Directory. The process starts with the Regional Directory
+Regional Directories are onboarded into the <a>ADIA</a> Ecosystem by the <a>ADIA Global Directory</a>. The process starts with the Regional Directory
 providing their organizational and contact person details to meet the certification criteria established by the ADIA Governance process.
 
-The governing body within the ADIA Global Directory may approve or reject requests to enroll into the ADIA ecosystem. On successful approval of an Entity
-as a Regional Directory, a provisioning request is sent to the responsible party within the Regional Directory. The process to set up an
-Agent is beyond the scope of this document but is a necessary prerequisite to enroll the ADIA Regional Agent (ARD Agent).
+The governing body within the <a>ADIA Global Directory</a> may approve or reject requests to enroll into the <a>ADIA</a> ecosystem.
+On successful approval of an Entity as a Regional Directory, a provisioning request is sent to the responsible party within
+the Regional Directory. The process to set up an Agent is beyond the scope of this document but is a necessary
+prerequisite to enroll the ADIA Regional Agent (ARD Agent).
 
-An ARD Agent generates the public/private key pair for the Entity and requests a Digital Address to be created by the ADIA Global Directory (AGD Agent).
-A DIDDoc for the ARD with its endpoint details, public keys and any additional information is published to the ADIA Global Directory.
+An ARD Agent generates the public/private key pair for the Entity and requests a Digital Address to be created by the <a>ADIA Global Directory</a> (AGD Agent).
+A <a>DIDDoc</a> for the ARD with its endpoint details, public keys and any additional information is published to the <a>ADIA Global Directory</a>.
 
-Enrollment into the ADIA Global Directory is complete when the <a>ARD_ID</a> to the Hashed ID attributes (HIDA) of the entity are related in the ADIA Global Directory.
+Enrollment into the <a>ADIA Global Directory</a> is complete when the <a>ARD_ID</a> to the Hashed ID attributes (<a>HIDA</a>) of the entity are
+related in the <a>ADIA Global Directory</a>.
 The following sequence diagram depicts the details of the flow between entities and exchange of messages between Agents.
 
 Note: Details of the Agents and protocol messages are depicted below.
@@ -22,19 +24,21 @@ Note: Details of the Agents and protocol messages are depicted below.
     <figcaption>Enroll Regional Directory to Global Directory</figcaption>
 </figure>
 
+
 ### Enroll a DAS ### {#sctn-enroll-as-das}
 
-Digital Address Services (DAS) are onboarded into the ADIA Ecosystem by the ADIA Regional Directory. The process starts with the DAS
+<a>Digital Address Service</a>s (<a>DAS</a>s) are onboarded into the <a>ADIA</a> Ecosystem by the <a>ADIA Regional Directory</a>. The process starts with the DAS
 providing their organizational and contact person details to meet the certification criteria established by the ADIA Governance process.
 
-The governing body within the ADIA Regional Directory may approve or reject requests to enroll into the ADIA ecosystem. On successful approval of an Entity
-as a DAS, provisioning request is sent to the responsible party at the DAS. The process to set up an
-Agent is beyond the scope of this document but is a necessary prerequisite to enroll the DAS Agent to the Regional Directory.
+The governing body within the <a>ADIA Regional Directory</a> may approve or reject requests to enroll into the <a>ADIA</a> ecosystem.
+On successful approval of an Entity as a <a>DAS</a>, provisioning request is sent to the responsible party at the DAS. The process to set up an
+Agent is beyond the scope of this document but is a necessary prerequisite to enroll the <a>DAS Agent</a> to the <a>ADIA Regional Directory</a>.
 
-A DAS Agent generates the public/private key pair for the Entity and requests a Digital Address to be created by the ADIA Regional Directory (ARD Agent).
-A DIDDoc for the DAS with endpoint details, public keys and any additional information is published to the ADIA Global Directory.
+A <a>DAS Agent</a> generates the public/private key pair for the Entity and requests a <a>Digital Address</a> to be created
+by the <a>ADIA Regional Directory</a> (ARD Agent).
+A <a>DIDDoc</a> for the DAS with endpoint details, public keys and any additional information is published to the <a>ADIA Global Directory</a>.
 
-Enrollment into ADIA Global Directory is complete when the <a>DAS_ID</a> to the Hashed ID attributes (HIDA) of the entity are related in the ADIA Global Directory.
+Enrollment into <a>ADIA Global Directory</a> is complete when the <a>DAS_ID</a> to the Hashed ID attributes (<a>HIDA</a>) of the entity are related in the <a>ADIA Global Directory</a>.
 The following sequence diagram depicts the details of the flow between entities and exchange of messages between agents.
 
 Note: Details of the agents and protocol messages are depicted below.
@@ -60,7 +64,7 @@ In certain deployment models, a DAS provider may provide the Issuer with an <a>I
 that comply to the ADIA Specification. Other deployments may provide agency services to provision the Issuer Agents in a hosted model.
 
 Regardless the variances in the deployment model, the Issuer Agent is responsible for creating and managing their private key and DID (represented by the <a>DAS_ID</a>)
-and enroll with the DAS. The Issuer's public information such as business name and their DIDDoc is published to the ADIA Global Directory for lookups
+and enroll with the DAS. The Issuer's public information such as business name and their <a>DIDDoc</a> is published to the <a>ADIA Global Directory</a> for lookups
 by any entity in the ADIA ecosystem.
 
 <figure id="fig-onboarding-issuer-to-dap">
@@ -73,106 +77,119 @@ by any entity in the ADIA ecosystem.
 
 ### Enroll a Service Provider ### {#sctn-enroll-as-serviceprovider}
 
-Service Providers are onboarded into the ADIA Ecosystem by an Interchange. The process starts with the Interchange requiring the
-prospective Service Provider to provide organizational details, a contact person for the organization and details to join the ecosystem.
+<a>Service Provider</a>s are onboarded into the <a>ADIA</a> Ecosystem by an <a>Interchange</a>. The process starts with the <a>Interchange</a> requiring the
+prospective <a>Service Provider</a> to provide organizational details, a contact person for the organization and details to join the ecosystem.
 
-Service Provider enrolling into the ecosystem is a relatively simpler process as the services consume and verify participants
-in the ecosystem. The governing body within Interchange may approve or reject requests to enroll into the Interchange and the ADIA ecosystem. On successful approval of an Entity
-as an Issuer results in a Digital Address, a DID and a Credential to enroll into the Directory as an Issuer.
+Issue: Really an interchange?  When I look at our definition of <a>Interchange</a> (which is a composition of multiple entities), I think <a>DAS</a> would be the right name here!
 
-The Interchange may provider API services or provide agency services to provision the Service Provider Agents in a hosted model to request
+The governing body within the <a>Interchange</a> may approve or reject requests to enroll into the <a>Interchange</a> and the ADIA ecosystem.
+On successful approval of an Entity as an <a>Issuer</a> results in a <a>Digital Address</a>, a <a>DID</a> and a Credential to enroll into the Directory as an <a>Issuer</a>.
+
+The <a>Interchange</a> may provider API services or provide agency services to provision the <a>Service Provider</a> Agents in a hosted model to request
 and verify Verifiable Credentials from Users.
 
-Agent based deployments may require the Service Provider to manage their private key and DID (represented by the <a>DAS_ID</a>)
-and enroll with the Interchange. The Service Provider's public information such as business name and their DIDDoc is published to the ADIA Global Directory for lookups
-by any entity in the ADIA ecosystem.
+Agent based deployments may require the <a>Service Provider</a> to manage their private key and DID (represented by the <a>DAS_ID</a>)
+and enroll with the <a>Interchange</a>. The <a>Service Provider</a>'s public information such as business name and their <a>DIDDoc</a>
+is published to the <a>ADIA Global Directory</a> for lookups by any entity in the <a>ADIA</a> ecosystem.
 
 <figure id="fig-onboarding-sp-to-dap">
     <img src="sequence-diagrams/Enroll-SP-to-DAS.svg"/>
     <figcaption>Enroll an SP to DAS</figcaption>
 </figure>
 
+
 ### Enroll a User ### {#sctn-enroll-user}
 
-Users may approach <a>Issuer</a>s to create a Digital Address or Issuers may create a Digital Address for a user prior to issuing a Verifiable Credential to that user.
-Creating a Digital Address starts with the issuer collecting identity attributes of the User and checking the <a>HIDA</a> resulting from the HIDA hashing process against the
-existing <a>HIDA</a> registry to see if the User is `known` to the system.
+Users may approach <a>Issuer</a>s to create a <a>Digital Address</a> or <a>Issuer</a>s may create a <a>Digital Address</a> for a user prior
+to issuing a <a>Verifiable Credential</a> to that <a>User</a>.
+Creating a <a>Digital Address</a> starts with the issuer collecting identity attributes of the <a>User</a> and checking
+the <a>HIDA</a> resulting from the <a>HIDA</a> hashing process against the
+existing <a>HIDA</a> registry to see if the <a>User</a> is already `known` to the system.
 
-A lookup of the <a>HIDA</a> may result in the possibility of an existing Digital Address for that User. The User may request to link the existing Digital Address
-instead of creating a new one. ADIA Governance policies and technical constraints within this specification enforce that the uniqueness of the HIDA for a given User is
-maintained within the same Regional Directory.
+A lookup of the <a>HIDA</a> may result in the possibility of an existing <a>Digital Address</a> for that <a>User</a>. The <a>User</a> may request
+to link the existing <a>Digital Address</a> instead of creating a new one. ADIA Governance policies and technical constraints
+within this specification enforce that the uniqueness of the <a>HIDA</a> for a given <a>User</a> is
+maintained within the same <a>ADIA Regional Directory</a>.
 
-The <a>DAS</a> related to the first <a>Digital Address</a> <a>Issuer</a> is called <a>HomeDAS</a>. The HomeDAS also provides services to
-persist and search the <a>Credential Metadata</a> associated with the Verifiable Credentials issued to the User.
+The <a>DAS</a> related to the first <a>Digital Address</a> provided by an <a>Issuer</a> is called <a>HomeDAS</a>. The <a>HomeDAS</a> also
+provides services to persist and search the <a>Credential Metadata</a> associated with the <a>Verifiable Credential</a>s issued to the <a>User</a>.
+
 
 #### Issuer Initiated New User Enrollment #### {#sctn-onboarding-1st-issuer}
 
-The diagram below represents a `new` User requesting a <a>Digital Address</a> from an <a>Issuer</a>. The </a>DAS</a> providing the Agency services, provisions
-a <a>Cloud Agent</a> for the <a>User</a> to create a public/private key pair and a <a>DID</a> for the <a>User</a>. The identifier (<a>DAS_USER_ID</a>), along with the
-<a>HomeDAS</a> identifier (<a>HomeDAS_ID</a>) are persisted on the <a>DAS</a> to associate their identifiers with the newly created Digital Address.
+The diagram below represents a `new` <a>User</a> requesting a <a>Digital Address</a> from an <a>Issuer</a>.
+The </a>DAS</a> providing the Agency services, provisions a <a>Cloud Agent</a> for the <a>User</a> to create
+a public/private key pair and a <a>DID</a> for the <a>User</a>. The identifier (<a>DAS_USER_ID</a>), along with the
+<a>HomeDAS</a> identifier (<a>HomeDAS_ID</a>) are persisted on the <a>DAS</a> to associate their identifiers with the newly created <a>Digital Address</a>.
 Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details on the representation and usage of the <a>Digital Address</a>.
 
-The <a>Issuer</a> may share the <a>Digital Address</a> with the <a>User</a> through any secure channel. For simplicity, the diagram shows the sharing of <a>Digital Address</a> information
-encoded in a QR code that can be scanned using the <a>DAA</a> or another method endorsed by this <a>ADIA</a> Specification.
+The <a>Issuer</a> may share the <a>Digital Address</a> with the <a>User</a> through any secure channel. For simplicity, the diagram
+shows the sharing of <a>Digital Address</a> information encoded in a QR code that can be scanned using the <a>DAA</a> or
+another method endorsed by this <a>ADIA</a> Specification.
 
 <figure id="fig-onboarding-1st-issuer">
     <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg"/>
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
-There are some important steps before the User is allowed to import the Digital Address:
+There are some important steps before the <a>User</a> is allowed to import the <a>Digital Address</a>:
 <ol>
-<li><strong>Verifying the User's Identity</strong>
+<li><strong>Verifying the <a>User</a>'s Identity</strong>
   <ul>
-    <li>The DAA may enforce ID Proofing using the same identity document used during the Digital Address creation. The ID attributes are sent to the Issuer of the DA for verification</li>
-    <li>The Issuer may provide an in-person verification service to manually verify the User's identity. Please see [[#sctn-verify-user-da-in-person]].
+    <li>The <a>DAA</a> may enforce ID Proofing using the same identity document used during the <a>Digital Address</a> creation. The
+    ID attributes are sent to the <a>Issuer</a> of the <a>DA</a> for verification</li>
+    <li>The <a>Issuer</a> may provide an in-person verification service to manually verify the <a>User</a>'s identity.
+    Please see [[#sctn-verify-user-da-in-person]].
   </ul>
 </li>
-<li><strong>Authenticate the User with the Digital Address</strong>
+<li><strong>Authenticate the <a>User</a> given the <a>Digital Address</a></strong>
   <ul>
-    <li>The DAS may request the User to register their DAA using FIDO. FIDO UAF provides a strong passwordless authentication for operations such as resenting proof or other
-    operations that require the User's consent using a biometric or possession based verification mechanism before unlocking the private key for signing functions. Please
+    <li>The <a>DAS</a> may request the <a>User</a> to register their <a>DAA</a> using FIDO. FIDO provides a
+     strong passwordless authentication for operations such as resenting proof or other operations that require the <a>User</a>'s
+     consent using a biometric or possession based verification mechanism before unlocking the private key for signing functions. Please
     see the section on [[#sctn-adia-role-daa]] for more details.
     </li>
   </ul>
 </li>
 <li><strong>User Consent</strong>
   <ul>
-    <li>The process of importing the Digital Address is complete when the User consents to the import of the Digital Address. Please see the section on [[#sctn-user-consents]] for details.
+    <li>The process of importing the <a>Digital Address</a> is complete when the <a>User</a> consents to its import.
+    Please see the section on [[#sctn-user-consents]] for details.
     </li>
   </ul>
 </li>
 
 </ol>
 
-Once a Digital Address is acquired by the User, possible subsequent steps are:
-* The User may choose to recover their forgotten Digital Address using approved methods. Please see sections on [[#sctn-recover-digital-address]] or [[#sctn-da-delegated-recovery]].
-* The User may disenroll from the ADIA ecosystem. Please see section on the [[#sctn-user-account-deletion]] for details.
+Once a <a>Digital Address</a> is acquired by the <a>User</a>, possible subsequent steps are:
+* The <a>User</a> may choose to recover their forgotten <a>Digital Address</a> using approved methods. Please see sections on [[#sctn-recover-digital-address]] or [[#sctn-da-delegated-recovery]].
+* The <a>User</a> may disenroll from the ADIA ecosystem. Please see section on the [[#sctn-user-account-deletion]] for details.
 
 
 #### Enroll a User with existing Digital Address #### {#sctn-onboarding-2nd-issuer}
 
-A User with an existing Digital Address, intentionally or unintentionally may request another Digital Address.
-The request may be initiated by an Issuer on the same DAS or an Issuer on another DAS within the same Regional Directory.
-Within a single Regional Directory, if the HIDA for the user results in a collision, the User may not
-request a new Digital Address but instead is notified of the existing one.
+A <a>User</a> with an existing <a>Digital Address</a>, intentionally or unintentionally may request another <a>Digital Address</a>.
+The request may be initiated by an <a>Issuer</a> on the same <a>DAS</a> or an <a>Issuer</a> on another <a>DAS</a> within the
+same <a>ADIA Regional Directory</a>.
+Within a single <a>ADIA Regional Directory</a>, if the <a>HIDA</a> for the <a>User</a> results in a collision, the <a>User</a> may not
+request a new <a>Digital Address</a> but instead is notified of the existing one.
 
 <figure id="fig-onboarding-2nd-issuer">
     <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg"/>
     <figcaption>User Onboarding to Second Issuer</figcaption>
 </figure>
 
-Note: It is possible for a user to have a different Digital Address in another Regional Directory.
+Note: It is possible for a <a>User</a> to have a different <a>Digital Address</a> in another <a>ADIA Regional Directory</a>.
 
 #### User Initiated New User Enrollment (using DAA) #### {#sctn-user-initiated-da-with-daa}
 
-A user may initiate the creation of a Digital Address remotely, via an online service
-provided by a Digital Address <a>Issuer</a>. The <a>Issuer</a>'s service MUST follow procedures similar to the
-in-person creation by requesting the identity attributes of the User, generating the hashed attributes (HIDA) and verifying against
-the ADIA Regional Directory.
+A <a>User</a> may initiate the creation of a <a>Digital Address</a> remotely, via an online service
+provided by a <a>Digital Address</a> <a>Issuer</a>. The <a>Issuer</a>'s service must follow procedures similar to the
+in-person creation by requesting the identity attributes of the <a>User</a>, generating the hashed attributes (<a>HIDA</a>) and verifying against
+the <a>ADIA Regional Directory</a>.
 
 The online service of the <a>Issuer</a> presents the user with a QR code either online on its website or offline via an email or alternate service channel,
-such that the User is able to scan the QR code containing their Digital Address information and initiate an Authenticator Binding processes
+such that the <a>User</a> is able to scan the QR code containing their <a>Digital Address</a> information and initiate an Authenticator Binding processes
 with the <a>HomeDAS</a>.
 
 <figure id="fig-user-initiated-da">
@@ -180,20 +197,21 @@ with the <a>HomeDAS</a>.
     <figcaption>User Initiated Digital Address Creation with DAA</figcaption>
 </figure>
 
-A successful authentication and binding to the HomeDAS's services allows the user to use the <a>Digital Address</a>
-at the level of Assurance determined by the onboarding process. Please see the section on [[#sctn-assurance-level]] for more information.
+A successful authentication and binding to the <a>HomeDAS</a>'s services allows the user to use the <a>Digital Address</a>
+at the <a>Assurance Level</a> determined by the onboarding process. Please see the section on [[#sctn-assurance-level]] for more information.
 
-Though it may be adequate for some purposes, some Service Providers in the ecosystem may require the
-User to have a higher <a>Assurance Level</a>. Issuer's in ADIA may provide verification services for Users to upgrade their
-Assurance Level assigned by remote methods. This is described in the section [[#sctn-verify-user-da-in-person]].
+Though it may be adequate for some purposes, some <a>Service Provider</a>s in the ecosystem may require the
+<a>User</a> to have a higher <a>Assurance Level</a>. <a>Issuer</a>'s in ADIA may provide verification services for <a>Users</a> to upgrade their
+<a>Assurance Level</a> assigned by remote methods. This is described in the section [[#sctn-verify-user-da-in-person]].
+
 
 #### Issuer Assisted Verification of Digital Address #### {#sctn-verify-user-da-in-person}
 
-The user may choose to visit a Verification Center in person to upgrade the Assurance Level
+The <a>User</a> may choose to visit a Verification Center in person to upgrade the <a>Assurance Level</a>
 initially assigned by the system. An in-person verification may include a manual review and verification
-of their identity documents by a certified operator before reporting to the DAS about the genuineness of the subject.
+of their identity documents by a certified operator before reporting to the <a>DAS</a> about the genuineness of the subject.
 
-The DAS may independently request the user to authenticate before upgrading the User's Assurance Level.
+The <a>DAS</a> may independently request the <a>User</a> to authenticate before upgrading the <a>User</a>'s <a>Assurance Level</a>.
 
 <figure id="fig-verify-user-initiated-da">
     <img src="sequence-diagrams/Verify-user-initiated-DA.svg"/>
