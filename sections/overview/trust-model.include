@@ -81,7 +81,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), 
        <td><dfn>DAS_ID_PK</dfn> / <dfn>DAS_ID_SK</dfn></td>
        <td><a>DAS</a></td>
        <td>
-         DAS Agent
+         <a>DAS Agent</a>
        </td>
        <td><a href="#sctn-enroll-as-das">Onboarding as DAS</a>
         </td>

@@ -5,10 +5,10 @@ The agents for Issuers and Service Providers implement protocols for establishin
 There are six types of ADIA agents:
 1. ADIA Global Directory Agent (AGD Agent)
 2. ADIA Regional Directory Agent (ARD Agent)
-3. DAS Agent
-4. Issuer Agent
+3. <a>DAS Agent</a>
+4. <a>Issuer Agent</a>
 5. Service Provider Agent (SP Agent)
-6. Cloud Agent/ User Agent
+6. <a>Cloud Agent</a>/ User Agent
 
 In accordance with the overall ecosystem, ADIA agents are permitted to interactions with only certain entities. A two-way trust is mandatory to enable interactions between them. This is represented in the table below:
 
