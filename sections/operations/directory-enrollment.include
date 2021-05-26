@@ -15,6 +15,8 @@ A <a>DIDDoc</a> for the ARD with its endpoint details, public keys and any addit
 
 Enrollment into the <a>ADIA Global Directory</a> is complete when the <a>ARD_ID</a> to the Hashed ID attributes (<a>HIDA</a>) of the entity are
 related in the <a>ADIA Global Directory</a>.
+A VC is issued by the <a>AGD</a> using information used to verify the <a>ARD</a>.
+
 The following sequence diagram depicts the details of the flow between entities and exchange of messages between Agents.
 
 Note: Details of the Agents and protocol messages are depicted below.
@@ -39,6 +41,8 @@ by the <a>ADIA Regional Directory</a> (ARD Agent).
 A <a>DIDDoc</a> for the DAS with endpoint details, public keys and any additional information is published to the <a>ADIA Global Directory</a>.
 
 Enrollment into <a>ADIA Global Directory</a> is complete when the <a>DAS_ID</a> to the Hashed ID attributes (<a>HIDA</a>) of the entity are related in the <a>ADIA Global Directory</a>.
+A VC is issued by the <a>ARD</a> using information used to verify the <a>DAS</a>.
+
 The following sequence diagram depicts the details of the flow between entities and exchange of messages between agents.
 
 Note: Details of the agents and protocol messages are depicted below.
@@ -56,13 +60,12 @@ prospective <a>Issuer</a> to provide organizational details, a contact person fo
 <a>Issuer</a> as a member in good business standing, financial status and criteria to meet the Certification process established
 by the ADIA Governance policies.
 
-The governing body within the <a>DAS</a> may approve or reject requests to enroll into the <a>DAS</a> and the <a>ADIA</a> ecosystem. On
-successful approval of an Entity as an <a>Issuer</a> results in a <a>Digital Address</a>, a <a>DID</a> and a Credential to enroll into the Directory as an <a>Issuer</a>.
+The governing body within the <a>DAS</a> may approve or reject requests to enroll into the <a>DAS</a> and the <a>ADIA</a>
+ecosystem. Successful approval of an Entity as an <a>Issuer</a> results in a <a>Digital Address</a> and a <a>DID</a> being created.
+A VC is issued by the <a>DAS</a> using information used to verify the <a>Issuer</a>.
 The <a>DAS</a> may also enforce additional policies to ensure that the <a>Issuer</a> can issue <a>Digital Address</a>es to <a>Users</a> or
 issue <a>Verifiable Credentials</a> with a certain <a>Assurance Level</a>.
 Please see [[#sctn-assurance-level]] for more detail.
-
-Issue: What do we mean with "Credential to enroll into the Directory as an <a>Issuer</a>."?  We need to be specific here!
 
 In certain deployment models, a <a>DAS</a> may provide the <a>Issuer</a> with an <a>Issuer Agent</a> and a <a>VC Store</a>
 that comply to the ADIA Specification. Other deployments may provide agency services to provision the <a>Issuer Agent</a>s in a hosted model.
@@ -85,8 +88,9 @@ is published to the <a>ADIA Global Directory</a> for lookups by any entity in th
 Service Providers are onboarded into the ADIA Ecosystem by a <a>DAS</a>. The process starts with the <a>DAS</a> requiring the
 prospective <a>Service Provider</a> to provide organizational details, a contact person for the organization and details to join the ecosystem.
 
-The governing body within <a>DAS</a> may approve or reject requests to enroll into the <a>DAS</a> and the <a>ADIA</a> ecosystem. On successful approval of an Entity
-as a <a>Service Provider</a> results in a <a>Digital Address</a>, a <a>DID</a> and a Credential to enroll into the Directory as an <a>Service Provider</a>.
+The governing body within <a>DAS</a> may approve or reject requests to enroll into the <a>DAS</a> and the <a>ADIA</a> ecosystem.
+Successful approval of an Entity as an <a>Service Provider</a> results in a <a>Digital Address</a> and a <a>DID</a> being created.
+A VC is issued by the <a>DAS</a> using information used to verify the <a>Service Provider</a>.
 
 The <a>DAS</a> may provide API services or provide agency services to provision the <a>Service Provider Agent</a> in a hosted model to request
 and verify <a>Verifiable Credential</a>s of <a>User</a>s.

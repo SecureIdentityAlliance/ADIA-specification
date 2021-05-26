@@ -20,10 +20,7 @@ DAA -> Cloud Agent: Agree to details
 end
 
 Cloud Agent -->> -Issuer: Aries-RFC-0036-3: Credential request (nonce included)
-
-Issuer ->> +Cloud Agent: ADIA-CR-001: Request to Sign VC\n [Sign with ISSUER_ID_SK]
-Cloud Agent -> Cloud Agent: Sign VC \n[DAS_USER_ID_SK]
-Cloud Agent ->> -Issuer: ADIA-CR-002:Send Signed VC
+Issuer -> Issuer: Sign VC \n[ISSUER_ID_SK]
 Issuer->VC Store: Save VC
 VC Store --> Issuer: Save VC Success
 
