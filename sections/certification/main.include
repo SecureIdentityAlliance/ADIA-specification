@@ -29,7 +29,7 @@ The <a>ADIA</a> system makes use of various cryptographic functions.  The follow
        <td>Compute and verify cryptographic signatures</td>
      </tr>
      <tr>
-       <td>Ed255196 [[!rfc8032]]</td>
+       <td>Ed25519 [[!rfc8032]]</td>
        <td>Required</td>
        <td>Compute and verify cryptographic signatures</td>
      </tr>
@@ -37,6 +37,11 @@ The <a>ADIA</a> system makes use of various cryptographic functions.  The follow
        <td>Ed448 [[!rfc8032]]</td>
        <td>Recommended</td>
        <td>Compute and verify cryptographic signatures</td>
+     </tr>
+     <tr>
+       <td>X25519 [[!rfc8418]]</td>
+       <td>Required</td>
+       <td>Key agreement</td>
      </tr>
    </tbody>
  </table>
