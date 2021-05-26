@@ -53,10 +53,10 @@ DAS-->>-SP: ADIA-DA-001:DIDDoc save success
 
 SP->>+DAS: ADIA-DR-002: Request to Enroll
 alt Approve Request [REQUEST_ID]
-DAS->>ARD: ADIA-DR-002: Enroll Request [SP_ID,SP_DA, HomeDASId=DAS_ID]
+DAS->>ARD: ADIA-DR-002: Enroll Request [SP_ID,SP_DA, HomeDAS_ID=DAS_ID]
 
-ARD->>AGD: ADIA-DR-002: Enroll Request [DAS_ID,DAS_DA, HomeARDId=ARD_ID]
-AGD->AGD: Store [TA,SP_ID,SP_DA, HomeDASId=DAS_ID] \nand [TA,SP_ID]
+ARD->>AGD: ADIA-DR-002: Enroll Request [DAS_ID,DAS_DA, HomeARD_ID=ARD_ID]
+AGD->AGD: Store [TA,SP_ID,SP_DA, HomeDAS_ID=DAS_ID] \nand [TA,SP_ID]
 AGD-->>ARD: ADIA-DR-002: Enrollment Complete
 ARD-->>DAS: ADIA-DR-002: Enrollment Complete
 DAS-->>SP: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
