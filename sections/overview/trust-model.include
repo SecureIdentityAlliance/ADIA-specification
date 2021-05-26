@@ -5,35 +5,30 @@
     <figcaption>ADIA Trust Model</figcaption>
 </figure>
 
-Issue: Will have to specify the assurance level to which the claims
-    have been verified by the issuer.  Similarly for the other
-    entities (e.g., DAS, Issuer, ...). 
-
-
 When verifying a verifiable presentation of a verifiable credential,
 the following objects need to be verified:
 1. <a>Verifiable Presentation</a>, i.e. an object containing a
-    <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>)
+    <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>) [[vc-data-model]]
     or Derived Data (in the case of ZKP) (<a
     href="(e.g., https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
-    and a signature by the subjects's DAS_USER_ID_PK/SK key.
+    and a signature by the subjects's <a>DAS_USER_ID_PK</a>/<a>DAS_USER_ID_SK</a> key.
 
 2. <a>Verifiable Credential</a>, i.e. an object containing a
     <dfn export=true>CredentialSubject</dfn>, an issuer and a signature by the
-    issuer ISSUER_ID_PK/SK key.
+    <a>Issuer</a>'s <a>ISSUER_ID_PK</a>/<a>ISSUER_ID_SK</a> key.
 
-3. Issuer ISSUER_ID_PK/SK key.  This key is linked to the issuer
+3. <a>Issuer</a> <a>ISSUER_ID_PK</a>/<a>ISSUER_ID_SK</a> key.  This key is linked to the <a>Issuer</a>
     via the <a>DIDDoc-ISSUER</a> which is signed by the <a>DAS</a>.
     1. Verify the trustworthiness of the <a>DAS</a> by retrieving and verifying the <a>DIDDoc-DAS</a> that was issued by the <a>ARD</a>.
     2. Verify the trustworthiness of the <a>ARD</a> by retrieving and verifying the <a>DIDDoc-ARD</a> that was issued by the <a>AGD</a>.
     3. Verify the trustworthiness of the <a>AGD</a> by retrieving and verifying the <a>DIDDoc-AGD</a> that was issued by the <a>AGD</a>.
     4. As a participant of the <a>ADIA</a> system, you implicitly trust the <a>AGD</a>'s public key <a>AGD_ID_PK</a>.
 
-4. Subject DAS_USER_ID_PK/SK key. This key is linked to the user via
+4. Subject <a>DAS_USER_ID_PK</a> <a>DAS_USER_ID_SK</a> key. This key is linked to the <a>User</a> via
     the <a>DIDDoc-USER</a> which is signed by the <a>DAS</a>.
     1. Verify the trustworthiness of the <a>DAS</a> by retrieving and verifying the <a>DIDDoc-DAS</a> that was issued by the <a>ARD</a>.
 
-Note: The assurance level to which the various entities have been verified is maintained in field ASSURANCE_LEVEL in
+Note: The <a>Assurance Level</a> to which the various entities have been verified is maintained in field ASSURANCE_LEVEL in
     the respective <a>Digital Address</a> and in the <a href="#sctn-credential-metadata">Credential Metadata</a>.
 
 In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), the
