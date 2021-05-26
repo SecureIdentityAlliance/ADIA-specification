@@ -8,12 +8,12 @@ providing their organizational and contact person details to meet the certificat
 The governing body within the <a>ADIA Global Directory</a> may approve or reject requests to enroll into the <a>ADIA</a> ecosystem.
 On successful approval of an Entity as a Regional Directory, a provisioning request is sent to the responsible party within
 the Regional Directory. The process to set up an Agent is beyond the scope of this document but is a necessary
-prerequisite to enroll the <a>ADIA Regional Agent</a> (<a>ARD Agent</a>).
+prerequisite to enroll the ADIA Regional Agent (ARD Agent).
 
-An ARD Agent generates the public/private key pair for the Entity and requests a Digital Address to be created by the ADIA Global Directory (AGD Agent).
-A <a>DIDDoc</a> for the ARD with its endpoint details, public keys and any additional information is published to the ADIA Global Directory.
+An ARD Agent generates the public/private key pair for the Entity and requests a Digital Address to be created by the <a>ADIA Global Directory</a> (AGD Agent).
+A <a>DIDDoc</a> for the ARD with its endpoint details, public keys and any additional information is published to the <a>ADIA Global Directory</a>.
 
-Enrollment into the ADIA Global Directory is complete when the <a>ARD_ID</a> to the Hashed ID attributes (<a>HIDA</a>) of the entity are
+Enrollment into the <a>ADIA Global Directory</a> is complete when the <a>ARD_ID</a> to the Hashed ID attributes (<a>HIDA</a>) of the entity are
 related in the <a>ADIA Global Directory</a>.
 The following sequence diagram depicts the details of the flow between entities and exchange of messages between Agents.
 
@@ -36,9 +36,9 @@ Agent is beyond the scope of this document but is a necessary prerequisite to en
 
 A <a>DAS Agent</a> generates the public/private key pair for the Entity and requests a <a>Digital Address</a> to be created
 by the <a>ADIA Regional Directory</a> (ARD Agent).
-A <a>DIDDoc</a> for the DAS with endpoint details, public keys and any additional information is published to the ADIA Global Directory.
+A <a>DIDDoc</a> for the DAS with endpoint details, public keys and any additional information is published to the <a>ADIA Global Directory</a>.
 
-Enrollment into ADIA Global Directory is complete when the <a>DAS_ID</a> to the Hashed ID attributes (<a>HIDA</a>) of the entity are related in the ADIA Global Directory.
+Enrollment into <a>ADIA Global Directory</a> is complete when the <a>DAS_ID</a> to the Hashed ID attributes (<a>HIDA</a>) of the entity are related in the <a>ADIA Global Directory</a>.
 The following sequence diagram depicts the details of the flow between entities and exchange of messages between agents.
 
 Note: Details of the agents and protocol messages are depicted below.
@@ -64,7 +64,7 @@ In certain deployment models, a DAS provider may provide the Issuer with an <a>I
 that comply to the ADIA Specification. Other deployments may provide agency services to provision the Issuer Agents in a hosted model.
 
 Regardless the variances in the deployment model, the Issuer Agent is responsible for creating and managing their private key and DID (represented by the <a>DAS_ID</a>)
-and enroll with the DAS. The Issuer's public information such as business name and their <a>DIDDoc</a> is published to the ADIA Global Directory for lookups
+and enroll with the DAS. The Issuer's public information such as business name and their <a>DIDDoc</a> is published to the <a>ADIA Global Directory</a> for lookups
 by any entity in the ADIA ecosystem.
 
 <figure id="fig-onboarding-issuer-to-dap">
@@ -107,7 +107,7 @@ the <a>HIDA</a> resulting from the <a>HIDA</a> hashing process against the
 existing <a>HIDA</a> registry to see if the <a>User</a> is already `known` to the system.
 
 A lookup of the <a>HIDA</a> may result in the possibility of an existing <a>Digital Address</a> for that <a>User</a>. The <a>User</a> may request
-to link the existing <a>Digital Address</a> instead of creating a new one. <a>ADIA Governance</a> policies and technical constraints
+to link the existing <a>Digital Address</a> instead of creating a new one. ADIA Governance policies and technical constraints
 within this specification enforce that the uniqueness of the <a>HIDA</a> for a given <a>User</a> is
 maintained within the same <a>ADIA Regional Directory</a>.
 

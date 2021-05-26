@@ -57,7 +57,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), 
        <td><a>ADIA Global Directory</a></td>
        <td>ADIA setup.</td>
        <td>
-         via a DIDDoc kept in the ADIA Global Directory.
+         via a <a>DIDDoc</a> kept in the <a>ADIA Global Directory</a>.
        </td>
        <td>
          as described in the respective key protection level field [[#sctn-key-protection-level]].
@@ -70,7 +70,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), 
        <td><a>ADIA Regional Directory</a></td>
        <td>ADIA Regional setup.</td>
        <td>
-         via a DIDDoc kept in the ADIA Global Directory.
+         via a <a>DIDDoc</a> kept in the <a>ADIA Global Directory</a>.
        </td>
        <td>
          as described in the respective key protection level field [[#sctn-key-protection-level]].
@@ -86,7 +86,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), 
        <td><a href="#sctn-enroll-as-das">Onboarding as DAS</a>
         </td>
        <td>
-         via a DIDDoc kept in the ADIA Global Directory.
+         via a <a>DIDDoc</a> kept in the <a>ADIA Global Directory</a>.
        </td>
        <td>
          as described in the respective key protection level field [[#sctn-key-protection-level]].
@@ -103,7 +103,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), 
             Issuer</a>
        </td>
        <td>
-         via a DIDDoc kept in the ADIA Global Directory.
+         via a <a>DIDDoc</a> kept in the <a>ADIA Global Directory</a>.
        </td>
        <td>
          as described in the respective key protection level field [[#sctn-key-protection-level]].
@@ -120,7 +120,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), 
             Service Provider</a>
       </td>
        <td>
-         via a DIDDoc kept in the ADIA Global Directory.
+         via a <a>DIDDoc</a> kept in the <a>ADIA Global Directory</a>.
        </td>
        <td>
          as described in the respective key protection level field [[#sctn-key-protection-level]].
@@ -136,7 +136,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), 
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
-         via a DIDDoc kept in the HomeDAS.
+         via a <a>DIDDoc</a> kept in the <a>HomeDAS</a>.
        </td>
        <td>
          as described in the respective key protection level field [[#sctn-key-protection-level]].
