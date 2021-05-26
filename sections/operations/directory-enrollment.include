@@ -51,21 +51,26 @@ Note: Details of the agents and protocol messages are depicted below.
 
 ### Enroll an Issuer ### {#sctn-enroll-as-issuer}
 
-Issuers are onboarded into the ADIA Ecosystem by an DAS. The process starts with the DAS requiring the
-prospective Issuer to provide organizational details, a contact person for the organization and details to qualify the
-Issuer as a member in good business standing, financial status and criteria to meet the Certification process established by the ADIA Governance policies.
+Issuers are onboarded into the <a>ADIA</a> Ecosystem by a <a>DAS</a>. The process starts with the <a>DAS</a> requiring the
+prospective <a>Issuer</a> to provide organizational details, a contact person for the organization and details to qualify the
+<a>Issuer</a> as a member in good business standing, financial status and criteria to meet the Certification process established
+by the ADIA Governance policies.
 
-The governing body within the DAS may approve or reject requests to enroll into the DAS and the ADIA ecosystem. On successful approval of an Entity
-as an Issuer results in a Digital Address, a DID and a Credential to enroll into the Directory as an Issuer. The DAS may also enforce
-additional policies to ensure that the Issuer can issue Digital Addresses to Users or issue <a>Verifiable Credentials</a> with a certain <a>Assurance Level</a>.
+The governing body within the <a>DAS</a> may approve or reject requests to enroll into the <a>DAS</a> and the <a>ADIA</a> ecosystem. On
+successful approval of an Entity as an <a>Issuer</a> results in a <a>Digital Address</a>, a <a>DID</a> and a Credential to enroll into the Directory as an <a>Issuer</a>.
+The <a>DAS</a> may also enforce additional policies to ensure that the <a>Issuer</a> can issue <a>Digital Address</a>es to <a>Users</a> or
+issue <a>Verifiable Credentials</a> with a certain <a>Assurance Level</a>.
 Please see [[#sctn-assurance-level]] for more detail.
 
-In certain deployment models, a DAS provider may provide the Issuer with an <a>Issuer Agent</a> and a <a>VC Store</a>
-that comply to the ADIA Specification. Other deployments may provide agency services to provision the Issuer Agents in a hosted model.
+Issue: What do we mean with "Credential to enroll into the Directory as an <a>Issuer</a>."?  We need to be specific here!
 
-Regardless the variances in the deployment model, the Issuer Agent is responsible for creating and managing their private key and DID (represented by the <a>DAS_ID</a>)
-and enroll with the DAS. The Issuer's public information such as business name and their <a>DIDDoc</a> is published to the <a>ADIA Global Directory</a> for lookups
-by any entity in the ADIA ecosystem.
+In certain deployment models, a <a>DAS</a> may provide the <a>Issuer</a> with an <a>Issuer Agent</a> and a <a>VC Store</a>
+that comply to the ADIA Specification. Other deployments may provide agency services to provision the <a>Issuer Agent</a>s in a hosted model.
+
+Regardless the variances in the deployment model, the <a>Issuer Agent</a> is responsible for creating and managing their private key (<a>ISSUER_ID_SK</a>)
+and <a>DID</a> (represented by the <a>ISSUER_ID</a>) and enroll with the <a>DAS</a>. The <a>Issuer</a>'s public information such as business name and the <a>DIDDoc-Issuer</a>
+is published to the <a>ADIA Global Directory</a> for lookups by any entity in the <a>ADIA</a> ecosystem.
+
 
 <figure id="fig-onboarding-issuer-to-dap">
     <img src="sequence-diagrams/Enroll-Issuer-to-DAS.svg"/>
@@ -77,20 +82,18 @@ by any entity in the ADIA ecosystem.
 
 ### Enroll a Service Provider ### {#sctn-enroll-as-serviceprovider}
 
-<a>Service Provider</a>s are onboarded into the <a>ADIA</a> Ecosystem by an <a>Interchange</a>. The process starts with the <a>Interchange</a> requiring the
+Service Providers are onboarded into the ADIA Ecosystem by a <a>DAS</a>. The process starts with the <a>DAS</a> requiring the
 prospective <a>Service Provider</a> to provide organizational details, a contact person for the organization and details to join the ecosystem.
 
-Issue: Really an interchange?  When I look at our definition of <a>Interchange</a> (which is a composition of multiple entities), I think <a>DAS</a> would be the right name here!
+The governing body within <a>DAS</a> may approve or reject requests to enroll into the <a>DAS</a> and the <a>ADIA</a> ecosystem. On successful approval of an Entity
+as a <a>Service Provider</a> results in a <a>Digital Address</a>, a <a>DID</a> and a Credential to enroll into the Directory as an <a>Service Provider</a>.
 
-The governing body within the <a>Interchange</a> may approve or reject requests to enroll into the <a>Interchange</a> and the ADIA ecosystem.
-On successful approval of an Entity as an <a>Issuer</a> results in a <a>Digital Address</a>, a <a>DID</a> and a Credential to enroll into the Directory as an <a>Issuer</a>.
+The <a>DAS</a> may provide API services or provide agency services to provision the <a>Service Provider Agent</a> in a hosted model to request
+and verify <a>Verifiable Credential</a>s of <a>User</a>s.
 
-The <a>Interchange</a> may provider API services or provide agency services to provision the <a>Service Provider</a> Agents in a hosted model to request
-and verify Verifiable Credentials from Users.
-
-Agent based deployments may require the <a>Service Provider</a> to manage their private key and DID (represented by the <a>DAS_ID</a>)
-and enroll with the <a>Interchange</a>. The <a>Service Provider</a>'s public information such as business name and their <a>DIDDoc</a>
-is published to the <a>ADIA Global Directory</a> for lookups by any entity in the <a>ADIA</a> ecosystem.
+Agent based deployments may require the <a>Service Provider</a> to manage their private key (<a>SP_ID_SK</a>) and <a>DID</a> (represented by the <a>SP_ID</a>)
+and enroll with the <a>DAS</a>. The <a>Service Provider</a>'s public information such as business name and their <a>DIDDoc-SP</a> is published to the <a>ADIA Global Directory</a> for lookups
+by any entity in the <a>ADIA</a> ecosystem.
 
 <figure id="fig-onboarding-sp-to-dap">
     <img src="sequence-diagrams/Enroll-SP-to-DAS.svg"/>
