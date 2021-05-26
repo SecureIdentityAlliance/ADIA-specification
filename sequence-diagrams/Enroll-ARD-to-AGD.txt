@@ -30,11 +30,14 @@ AGD->AGD: Store [REQUEST_ID, ARD_DA, ARD_ID]
 AGD->AGD: Sign DIDDoc-ARD with AGD_ID_SK & \nstore in Directory
 AGD-->>ARD: ADIA-DA-001:DIDDoc save success
 
+
 ARD->>+AGD: ADIA-DR-002: Request to Enroll
 
 alt Approve Request[REQUEST_ID]
 AGD->AGD: ADIA-DR-002: Enroll [ARD_ID, HIDA]
 AGD->AGD: Store [TA,HIDA] \nand [TA, ARD_ID]
+AGD->>ARD: Aries-RFC-0036-4:Issue VC
+ARD-->>AGD: Aries-RFC-0036-4:ACK
 AGD-->>ARD: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
 else Reject Request [REQUEST_ID]
 AGD-->>-ARD: ADIA-DR-002:Enrollment Complete [REQUEST_ID, Status=REJECTED]

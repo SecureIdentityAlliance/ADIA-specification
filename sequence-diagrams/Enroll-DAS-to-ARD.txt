@@ -43,6 +43,8 @@ DAS->>+ARD: ADIA-DR-002: Request to Enroll
 alt Approve Request [REQUEST_ID]
 ARD->>AGD: ADIA-DR-002: Forward Request [DAS_ID,DAS_DA, HomeARDId=ARD_ID]
 AGD->AGD: Store [TA,DAS_ID,DAS_DA, HomeARDId=ARD_ID] \nand [TA,DAS_ID]
+ARD->>DAS: Aries-RFC-0036-4:Issue VC
+DAS-->>ARD: Aries-RFC-0036-4:ACK
 AGD-->>ARD: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
 else Reject Request [REQUEST_ID]
 AGD-->>ARD: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=REJECTED]

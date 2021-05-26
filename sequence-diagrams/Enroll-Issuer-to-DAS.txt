@@ -50,6 +50,8 @@ AGD-->>ARD: ADIA-DA-001:DIDDoc save success
 ARD-->>DAS: ADIA-DA-001:DIDDoc save success
 DAS-->>-Issuer: ADIA-DA-001:DIDDoc save success
 
+DAS->>Issuer: Aries-RFC-0036-4:Issue VC
+Issuer-->>DAS: Aries-RFC-0036-4:ACK
 
 Issuer->>+DAS: ADIA-DR-002: Request to Enroll
 alt Approve Request [REQUEST_ID]

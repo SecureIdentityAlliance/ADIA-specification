@@ -11,8 +11,6 @@ Issuers may issue one or more <a>Verifiable Credential</a>s (<dfn export="true">
 The <a>User</a> signs the VC with their private key and sends the signed VC to the Issuer. The Issuer's agent persists the VC in its VC Store
 and notifies the Cloud Agent to persist the VC metadata in the DAS.
 
-Issue: This is wrong, if users could sign the VC they would be worthless. The isser signs the VC.  The sequence diagram is wrong as well!
-
 <figure id="fig-vc-issuance-option-1">
   <img src="sequence-diagrams/VC-Issued-to-a-User-by-an-Issuer.svg"/>
   <figcaption>VC Issued to a User by an Issuer</figcaption>

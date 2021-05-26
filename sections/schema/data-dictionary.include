@@ -141,16 +141,13 @@ The <a>ADIA</a> system maintains the following fields as <dfn>Credential Metadat
     </tr>
     <tr>
       <td>CREDENTIAL_TYPE</td>
-      <td>String</td>
+      <td>Enum</td>
       <td>
         <ul>
-          <li>Identity Credential</li>
-          <li>Data Credential</li>
-          <li>...</li>
+          <li>IDENTITY_VC</li>
+          <li>DATA_VC</li>
+          <li>CUSTOM_VC</li>
         </ul>
-
-Issue: We need to be specific about the strings that we use today in this spec!
-
       </td>
     </tr>
     <tr>
