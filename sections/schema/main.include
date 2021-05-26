@@ -13,9 +13,13 @@ path: sections/schema/entity-model.include
 path: sections/schema/data-dictionary.include
 </pre>
 
+
 ## DIDDoc ## {#sctn-diddoc}
 
-Issue: Elaborate on the DIDDoc, format, signing and encryption methods. 
+<dfn export="true">DID document</dfn>s (<dfn export="true">DIDDoc</dfn>s) bind attributes to a DID [[!did-core]].
+<a>DIDDoc</a>s are signed objects.  See [[#sctn-trust-model]] for an overview of the <a>DIDDoc</a>s.
+
+See [[#sctn-crypto-algs]] for details on suitable cryptographic algorithms.
 
 <strong>Format</strong>
 ```json

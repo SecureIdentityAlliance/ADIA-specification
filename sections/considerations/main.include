@@ -7,36 +7,16 @@
 
 * All communications are authenticated and encrypted - either using TLS or [[didcomm-messaging-v1]].
 
-* Users are strongly authenticated by their <a>DAA</a> to their <a>Cloud Agent</a> using FIDO authentication.
+* Users are strongly authenticated via their <a>DAA</a> to their <a>Cloud Agent</a> using FIDO authentication [[UAFProtocol]] [[WebAuthn]].
 
-* Acceptable Cryptographic suites are defined for: computing the <a>HIDA</a>, DIDComm messages, signing <a>VC</a>s and FIDO authentication.
+* Acceptable Cryptographic suites are defined in [[#sctn-crypto-algs]] for: computing the <a>HIDA</a>, protecting DIDComm messages [[didcomm-messaging-v1]], signing <a>VC</a>s and FIDO authentication [[UAFProtocol]] [[WebAuthn]].
+
+* Support software and hardware based (recommended) key generation and key protection mechanisms [[#sctn-key-protection-level]].
+
+* In case of recovered <a>Digital Address</a>es, <a>VC</a>s cannot be presented unless the <a>Digital Address</a> is restored to
+    at least the original <a>Assurance Level</a>.
 
 * Clear audit trail to trace identity theft and facilitate recovery procedures.
-
-* Support software and hardware based (recommended) key generation and key protection mechanisms.
-
-* In case of recovered Digital Address, VCs cannot be presented unless the Digital Address is restored to the same Assurance Level as before.
-
-
-### Security Algorithms ### {#sctn-security-algorithms}
-
-Issue: Need to fill in the details for security specific information
-
-<strong>Hashing Methods</strong>
-* SHA256
-* minimum requirements etc.
-
-<strong>Payload Signatures</strong>
-* CL
-* JWT
-* JSON-LD
-
-<strong>Key generation</strong>
-* ED25519 Signature algorithms
-* Curve25519
-
-<strong>Cryptographic suites</strong>
-TBD
 
 
 
@@ -44,7 +24,7 @@ TBD
 
 * Before sharing data with a third party, user consent is required via the User's <a>DAA</a> [[#sctn-user-consents]].
 
-* The <a>DAS</a> does not have visibility into the details of a VC during issuance or presentation.
+* The <a>DAS</a> does not have visibility into the details of a <a>VC</a> during <a>VC Issuance</a> or <a>VC Presentation</a>.
 
 * <a>Service Provider</a>'s details are hidden from the <a>Issuer</a>s when sharing <a>Verifiable Credential</a>s to preserve <a>user</a> privacy.
 

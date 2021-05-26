@@ -2,21 +2,25 @@
 
 ### Issue Verifiable Credential ### {#sctn-issue-vc}
 
-Issuers may issue one or more Verifiable Credentials (VC) to a User who has a Digital Address. A VC contains claim attributes related to the
-User (Identity VCs) or Data Credentials that hold attributes contained within a well-defined and approved Credential Schema.
-Issuing a VC starts with a credential offer presented to the User and the User's approving the information contained in the VC.
+Issuers may issue one or more <a>Verifiable Credential</a>s (<dfn export="true">VC Issuance</dfn>) to a <a>User</a> who has a <a>Digital Address</a>.
+    A <a>VC</a> contains claim attributes related to the <a>User</a> (<dfn export="true">Identity VC</dfn>s) or <dfn export="true">Data VC</dfn>s that hold
+    attributes contained within a well-defined and approved Credential Schema.
+    <a>VC Issuance</a> starts with a credential offer presented to the <a>User</a> and the <a>User</a>'s approving
+    the information contained in the <a>VC</a>.
 
-The User signs the VC with their private key and sends the signed VC to the Issuer. The Issuer's agent persists the VC in its VC Store
+The <a>User</a> signs the VC with their private key and sends the signed VC to the Issuer. The Issuer's agent persists the VC in its VC Store
 and notifies the Cloud Agent to persist the VC metadata in the DAS.
+
+Issue: This is wrong, if users could sign the VC they would be worthless. The isser signs the VC.  The sequence diagram is wrong as well!
 
 <figure id="fig-vc-issuance-option-1">
   <img src="sequence-diagrams/VC-Issued-to-a-User-by-an-Issuer.svg"/>
   <figcaption>VC Issued to a User by an Issuer</figcaption>
 </figure>
 
-Note: An important pre-requisite to this process is that the Credential Schema must be published by an authorized Entity in the Ecosystem. Credential Schema
-may be published by ADIA Global Directory, ADIA Regional Directory or an Issuer. Protocols described in the [Credential Schema Protocol](ADIA-protocol#sctn-credential-schema-protocol)
-have more details on the supported commands and messages.
+Note: An important pre-requisite to this process is that the <a>Credential Schema</a> must be published by an authorized
+    Entity in the Ecosystem. the <a>Credential Schema</a> may be published by the <a>ADIA Global Directory</a>, an <a>ADIA Regional Directory</a>
+    or an <a>Issuer</a>. Protocols described in the Credential Schema Protocol (ADIA-protocol#sctn-credential-schema-protocol) have more details on the supported commands and messages.
 
 ### Revoke a Verifiable Credential ### {#sctn-revoking-credential}
 
@@ -52,7 +56,7 @@ or void credentials issued by them based on local regulatory requirements or pol
 
 ## Present Proof/Verifiable Presentation ## {#sctn-vc-presentation-and-verification-1}
 
-The goal of this operation is to allow a user to present identity attributes for themselves to a Service Provider (<a>SP</a>).
+The goal of the <dfn export="true">VC Presentation</dfn> operation is to allow a user to present identity attributes for themselves to a Service Provider (<a>SP</a>).
   These attributes are included in the <a>verifiable credential</a> and have been verified by the VC's <a>Issuer</a>.
   ADIA employs <dfn>Verifiable Presentations</dfn> as defined by [[!vc-data-model]] (https://www.w3.org/TR/vc-data-model/#dfn-verifiable-presentations).
 

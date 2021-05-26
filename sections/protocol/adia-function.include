@@ -76,7 +76,7 @@
 ### Credential Metadata Functions  ### {#sctn-credential-metadata-function}
 
 #### save-metadata (ADIA-FN-003)
-- This message may be implemented as a local function by the `Cloud Agent` or `DAS Agent` and not really a Agent-to-Agent protocol message.
+- This message may be implemented as a local function by the `<a>Cloud Agent</a>` or `<a>DAS Agent</a>` and not really a Agent-to-Agent protocol message.
 
 <strong>Request</strong>
 
@@ -166,7 +166,7 @@
 ```
 
 #### remove-metadata (ADIA-FN-005)
-- This message may be implemented as a local function by the `Cloud Agent` or `DAS Agent` and not really a Agent-to-Agent protocol message.
+- This message may be implemented as a local function by the `<a>Cloud Agent</a>` or `<a>DAS Agent</a>` and not really a Agent-to-Agent protocol message.
 
 <strong>Request</strong>
 
