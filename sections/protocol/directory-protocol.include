@@ -39,8 +39,9 @@ Directory protocol used to interact with global & regional directories of ADIA.
 * Issuer Agent
 
 ### Roles
-
-Issue: Define the roles that are required
+* DAS: Enrolls/disenrolls and searches entities 
+* ARD: Enrolls/disenrolls TA for users
+* AGD: Enrolls/disenrolls entities across the ecosystem
 
 ### Sub/Co-protocols
 This protocol uses following existing protocols -
