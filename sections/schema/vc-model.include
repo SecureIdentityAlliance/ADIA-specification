@@ -1,0 +1,230 @@
+## Verifiable Credentials  ## {#sctn-data-schema-vcs}
+
+ADIA messaging relies on the W3C Standards, especially the [Verifiable Credentials Data Model](https://www.w3.org/TR/vc-data-model/#core-data-model).
+Some of the data elements from W3C and there relevance is mentioned below:
+
+
+### Credential Schema ### {#sctn-data-schema-vc-credential-schema}
+
+Note: Please see [Verifiable Credentials JSON Schema Specification](https://w3c-ccg.github.io/vc-json-schemas/#overview) for the information on Credential Schema.
+
+In ADIA, Verifiable Credentials maybe issued by an <a>Issuer</a>, a <a>DAS</a>, an <a>ARD</a> or the <a>AGD</a>. By adhering to schemas such as an Identity Schema or
+a Data Schema, the structure of the claims within a Verifiable Credential may be packaged, signed and verified by an <a>Agent</a> within the ecosystem.
+For the version of this specification, as described in the [[#sctn-crypto-algs]], agents may use Ed25519 signature algorithm for VC payload signing.
+
+Please see [[#sctn-data-schema-credentialschema]] and [[#sctn-data-schema-credentialschema-attribute]] for detailed description of the schema.
+
+
+### DIDDoc ### {#sctn-data-schema-diddoc}
+
+<dfn export="true">DID document</dfn>s (<dfn export="true">DIDDoc</dfn>s) bind attributes to a DID [[!did-core]].
+<a>DIDDoc</a>s are signed objects.  See [[#sctn-trust-model]] for an overview of the <a>DIDDoc</a>s.
+
+See [[#sctn-crypto-algs]] for details on suitable cryptographic algorithms.
+
+<strong>Format</strong>
+```json
+{
+    // JSON-LD context
+    "context": "https://www.w3.org/ns/did/v1",
+    // DID of the subject
+    "id": "did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf",
+    // entity that is authorized to make changes to a DID document
+    "controller": ["did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf"],
+    //
+    "verificationMethod": [{
+        "id": "did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf",
+        "controller": "did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf",
+        "type": "Ed25519VerificationKey2018",
+        "publicKeyBase58": "4kAGwP4i85sCTXLu1EqLdNisKoHX6kczQCUfkS4NQSbH"
+    }]
+}
+```
+
+### Sample - VC Issuance Payload ### {#sctn-data-schema-vc-sample-issuance}
+
+A sample VC issued by an <a>Issuer Agent</a> during the [[#sctn-issue-vc]].
+
+```json
+{
+    "schema_id": "did:key:z6MkpD8tURngJVkoiU9fXQWVRC1LPGJ67pWUTQkBfnPZnVRw:Verified Person:1.5",
+    "cred_def_id": "did:key:z6MkpD8tURngJVkoiU9fXQWVRC1LPGJ67pWUTQkBfnPZnVRw:jws:key:z6MkpD8tURngJVkoiU9fXQWVRC1LPGJ67pWUTQkBfnPZnVRw:Verified Person",
+    "values": {
+        "phoneNumber": {
+            "raw": "+1-(251)-6767536",
+            "encoded": "66122917157518585820719936268683653982832887950323503352856352801433954245924"
+        },
+        "dateExpiresEpoch": {
+            "raw": "null",
+            "encoded": "52530672535577884712458350945238153986666188697374769927409463847120313432331"
+        },
+        "issuedByName": {
+            "raw": "DMV",
+            "encoded": "96340665277998983134151122749808737025595883296486667198623365285732970452973"
+        },
+        "photo": {
+            "raw": "null",
+            "encoded": "52530672535577884712458350945238153986666188697374769927409463847120313432331"
+        },
+        "yearOfBirth": {
+            "raw": "1994",
+            "encoded": "1994"
+        },
+        "issuedOnBehalfOfName": {
+            "raw": "null",
+            "encoded": "52530672535577884712458350945238153986666188697374769927409463847120313432331"
+        },
+        "firstName": {
+            "raw": "Chloe",
+            "encoded": "54559560339387537378060888887716436642580080746776003585710034788279861161925"
+        },
+        "verificationSource": {
+            "raw": "null",
+            "encoded": "52530672535577884712458350945238153986666188697374769927409463847120313432331"
+        },
+        "dateExpiresISO": {
+            "raw": "null",
+            "encoded": "52530672535577884712458350945238153986666188697374769927409463847120313432331"
+        },
+        "lastName": {
+            "raw": "Decker",
+            "encoded": "10969738818260575036430793428023405595845093806132614190152400232269276501766"
+        },
+        "email": {
+            "raw": "cdecker@hotmail.com",
+            "encoded": "111585715190769330326636706969269166508187306508177711136065347571445486183356"
+        },
+        "dateOfBirth": {
+            "raw": "05-05-1994",
+            "encoded": "50273734281068575874107310736992418159758183436835273349941361953901111346023"
+        },
+        "dateIssuedISO": {
+            "raw": "03/16/2021 16:26:22",
+            "encoded": "4599023557180409009204137715890338923578032198311607639399286188405630050920"
+        },
+        "dateIssuedEpoch": {
+            "raw": "1615892182",
+            "encoded": "1615892182"
+        }
+    },
+    "signature": "59nTycBn22T648daQW8U149eP9bKXX3BoXAWV1aj7R2wfqpjWYBymn8WTHfkfDbCaMscSpitjyRAupon19Nxui3V "
+}
+```
+
+### Sample - Proof Request Payload### {#sctn-data-schema-vc-sample-proof-request}
+
+A sample of the Proof request requested from the <a>SP</a> Agent to the <a>Cloud Agent</a>
+
+```json
+"requestJson": {
+    "name": "verifyVerifiedPerson",
+    "version": "1.0",
+    "nonce": "7824654321",
+    "requested_attributes": {
+        "one": {
+            "names": ["firstName", "lastName"],
+            "restrictions": [{
+                "schema_id": "did:key:z6MkpD8tURngJVkoiU9fXQWVRC1LPGJ67pWUTQkBfnPZnVRw:Verified Person:1.5",
+            }]
+        },
+    },
+    "requested_predicates": {
+    "additionalProp2": {
+      "name": "yearOfBirth",
+      "p_type": "<",
+      "p_value": "2000",
+      "restrictions": [{
+        "cred_def_id": "did:dtx:z6Mkq2oarKt4J261eD1DPqXMnTp9SHVQmqtMHerhAww2xBVu:jws:Covid-19 report:1.0:Covid19"
+      }]
+    }
+  }
+}
+
+```
+
+
+
+### Sample - Proof Verification Payload ### {#sctn-data-schema-vc-sample-proof-verification}
+
+A sample of the Verifiable Presentation generated by the <a>Cloud Agent</a> and presented to the Service Provider.
+* Each Proof identifies the <a>Issuer</a> using cred_def_id,
+* <a>ISSUER_ID</a> is resolved from the DIDDoc and containing the Issuer’s public key (ISSUER_ID_PK).
+
+The SP Agent may then verify the signed VC and the Issuer's public key.
+
+```json
+{
+    "proof ": {
+        "proofs": {
+            "one": {
+                "schema_id": "did:key:z6MkpD8tURngJVkoiU9fXQWVRC1LPGJ67pWUTQkBfnPZnVRw:Verified Person:1.5",
+                "cred_def_id": "did:key:z6MkpD8tURngJVkoiU9fXQWVRC1LPGJ67pWUTQkBfnPZnVRw:jws:key:z6MkpD8tURngJVkoiU9fXQWVRC1LPGJ67pWUTQkBfnPZnVRw:Verified Person",
+                "values": {
+                    "phoneNumber": {
+                        "raw": "+1-(251)-6767536",
+                        "encoded": "66122917157518585820719936268683653982832887950323503352856352801433954245924"
+                    },
+                    "dateExpiresEpoch": {
+                        "raw": "null",
+                        "encoded": "52530672535577884712458350945238153986666188697374769927409463847120313432331"
+                    },
+                    "issuedByName": {
+                        "raw": "DMV",
+                        "encoded": "96340665277998983134151122749808737025595883296486667198623365285732970452973"
+                    },
+                    "photo": {
+                        "raw": "null",
+                        "encoded": "52530672535577884712458350945238153986666188697374769927409463847120313432331"
+                    },
+                    "yearOfBirth": {
+                        "raw": "1994",
+                        "encoded": "1994"
+                    },
+                    "issuedOnBehalfOfName": {
+                        "raw": "null",
+                        "encoded": "52530672535577884712458350945238153986666188697374769927409463847120313432331"
+                    },
+                    "firstName": {
+                        "raw": "Chloe",
+                        "encoded": "54559560339387537378060888887716436642580080746776003585710034788279861161925"
+                    },
+                    "verificationSource": {
+                        "raw": "null",
+                        "encoded": "52530672535577884712458350945238153986666188697374769927409463847120313432331"
+                    },
+                    "dateExpiresISO": {
+                        "raw": "null",
+                        "encoded": "52530672535577884712458350945238153986666188697374769927409463847120313432331"
+                    },
+                    "lastName": {
+                        "raw": "Decker",
+                        "encoded": "10969738818260575036430793428023405595845093806132614190152400232269276501766"
+                    },
+                    "email": {
+                        "raw": "cdecker@hotmail.com",
+                        "encoded": "111585715190769330326636706969269166508187306508177711136065347571445486183356"
+                    },
+                    "dateOfBirth": {
+                        "raw": "05-05-1994",
+                        "encoded": "50273734281068575874107310736992418159758183436835273349941361953901111346023"
+                    },
+                    "dateIssuedISO": {
+                        "raw": "03/16/2021 16:26:22",
+                        "encoded": "4599023557180409009204137715890338923578032198311607639399286188405630050920"
+                    },
+                    "dateIssuedEpoch": {
+                        "raw": "1615892182",
+                        "encoded": "1615892182"
+                    }
+                },
+                "signature": "59nTycBn22T648daQW8U149eP9bKXX3BoXAWV1aj7R2wfqpjWYBymn8WTHfkfDbCaMscSpitjyRAupon19Nxui3V"
+            }
+        }
+    },
+    "identifiers": [{
+        "schema_id": "did:key:z6MkpD8tURngJVkoiU9fXQWVRC1LPGJ67pWUTQkBfnPZnVRw:Verified Person:1.5",
+        "cred_def_id": "did:key:z6MkpD8tURngJVkoiU9fXQWVRC1LPGJ67pWUTQkBfnPZnVRw:jws:key:z6MkpD8tURngJVkoiU9fXQWVRC1LPGJ67pWUTQkBfnPZnVRw:Verified Person"
+    }]
+}
+
+```

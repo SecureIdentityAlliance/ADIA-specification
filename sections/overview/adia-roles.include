@@ -7,7 +7,7 @@ Uniqueness of the entities is defined by the relationship of identifiers -  the 
 
 #### Directory Scope #### {#sctn-adia-global-directory-scope}
 
-The ADIA Governance Framework, described in a separate document, defines onboarding policies and procedures for organizational entities and establishes the relationships
+The [[!ADIA-Specification-Governance]], defines onboarding policies and procedures for organizational entities and establishes the relationships
 between the <a>Digital Address</a>, the DID and Trust Anchor. The entities governed by the <a>ADIA Global Directory</a> are:
   * <a>ADIA Regional Directory</a>(ies)
   * <a>Digital Address Service</a>(s)
@@ -63,11 +63,11 @@ A ADIA Regional Directory shall:
 * maintain a relationship of identifiers - A Trust Anchor, user’s <a>Digital Address</a>, DID and Issuer Identifier.
 * detect collisions for Trust Anchor and/or <a>Digital Address</a>.
 
-Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by ADIA to seed the ecosystem. Other entities may operate directories in conformance with the ADIA governance structure and APIs.
+Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by ADIA to seed the ecosystem. Other entities may operate directories in conformance with the [[!ADIA-Specification-Governance]] and APIs.
 
 #### Attribute selection and management #### {#sctn-adia-regional-attribute}
 
-Each directory has a set of attributes used to list users in the directory. These attributes are received via credentials from issuers authorized by the appropriate governance framework. When necessary for uniqueness (described in the next section), the directory may request additional attributes from a user, also supplied via credentials.
+Each directory has a set of attributes used to list users in the directory. These attributes are received via credentials from issuers authorized by the appropriate [[!ADIA-Specification-Governance]]. When necessary for uniqueness (described in the next section), the directory may request additional attributes from a user, also supplied via credentials.
 
 Directories may use any datastore sufficient to the requirements of storing attributes. Datastores must be able to remove listed records at the request of the user.
 
@@ -173,7 +173,7 @@ The core components of an Issuer are:
 
 ### Service Provider ### {#sctn-adia-role-serviceprovider}
 
-<dfn>Service Provider</dfn>s (<dfn>SP</dfn>s) are relying parties in the ecosystem. Credential verification is requested from a <a>User</a> to identify the user reliably before providing services.  In the Decentralized Identity community this role is typically called Verifier. 
+<dfn>Service Provider</dfn>s (<dfn>SP</dfn>s) are relying parties in the ecosystem. Credential verification is requested from a <a>User</a> to identify the user reliably before providing services.  In the Decentralized Identity community this role is typically called Verifier.
 
 The proof requests are
 defined by <a>Service Provider</a>s from one or more <a>Credential Schema</a> published by <a>Issuer</a>s in the <a>ADIA</a> ecosystem. The verification rulesets may be defined based on a combination of criteria:

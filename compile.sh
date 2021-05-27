@@ -39,3 +39,7 @@ fi
 if [ -d images ]; then
   cp -R images dist
 fi
+
+if [ -d references ]; then
+  cp -R references dist
+fi
