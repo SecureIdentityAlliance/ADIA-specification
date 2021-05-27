@@ -3,11 +3,12 @@ title VC Issued to a User by an Issuer
 Actor User
 Participant DAA
 Participant Cloud Agent
+participant DAS
 Participant Issuer
 Participant VC Store
 
 User <<->> Issuer: Authenticate
-User <<->> Issuer: Request issuing a VC [DA or DAS_USER_ID]
+User <<->> Issuer: Request issue VC [DA or DAS_USER_ID]
 Note over Issuer, User, DAA
 Ask subject to give consent for issuing a VC
 end note
@@ -16,7 +17,8 @@ Issuer -> +Cloud Agent: Aries-RFC-0036-2: Credential offer
 opt
 Cloud Agent -> DAA: Show user what is being offered
 DAA <-> User: FIDO Authentication
-DAA -> Cloud Agent: Agree to details
+DAA <->DAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
+DAA -> Cloud Agent: If Authentication Success, accept credential offer
 end
 
 Cloud Agent -->> -Issuer: Aries-RFC-0036-3: Credential request (nonce included)

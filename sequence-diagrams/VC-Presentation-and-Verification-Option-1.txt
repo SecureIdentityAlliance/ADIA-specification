@@ -22,6 +22,7 @@ opt
 Cloud Agent -> DAA: Let user select the VC to be presented to SP
 DAA -> User: show selectable VCs
 User --> DAA: user selects & approves VC to be presented
+DAA <-> DAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
 DAA -> Cloud Agent: Send the selected VC & authenticate for providing consent
 end
 
@@ -37,7 +38,7 @@ ARD ->> AGD: Request DID Doc
 AGD -->> ARD: Send DID Doc for Issuer
 ARD -->> DAS: send DID Doc for Issuer
 DAS -->> SP: send DID Doc
-SP -> SP: Verify DAS's signature on the DIDDoc
+SP -> SP: Verify DAS's signature on the Issuer's DIDDoc
 SP -> SP: Verify VC \n by using Issuer \n public keys (ISSUER_ID_PK)
 SP -->> Cloud Agent: Success
 Cloud Agent -> Cloud Agent: Erases the VC from local agent storage

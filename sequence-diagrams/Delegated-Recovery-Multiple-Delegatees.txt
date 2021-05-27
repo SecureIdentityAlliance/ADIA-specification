@@ -10,7 +10,8 @@ actor Delegated User
 
 opt Delegatee Setup
 User->User DAA: Set up Delegatees List [Delegatee DA]
-User DAA->>User HomeDAS: Notify the Delegatees of nomination
+User DAA <-> User HomeDAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
+User DAA->>User HomeDAS: If Authentication Success, Notify the Delegatees of nomination
 User HomeDAS->>User HomeDAS: Resolve HomeDAS from DA
 
 loop For each Delegatee
@@ -25,7 +26,8 @@ Delegatee HomeDAS->>Delegatee DAA: Notify Delegatee
 end
 
 Delegated User-->>Delegatee DAA: View and Accept/Reject
-Delegatee DAA-->>Delegatee HomeDAS: Accept/Reject status
+Delegatee DAA <-> Delegatee HomeDAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
+Delegatee DAA-->>Delegatee HomeDAS: If Authentication Success, Accept/Reject status
 Delegatee HomeDAS-->>User HomeDAS: Delegatee Accept/Reject Status
 User HomeDAS-->>User DAA: Delegatee Accept/Reject Status [Delegatee DAS_USER_ID]
 end
@@ -39,6 +41,7 @@ User HomeDAS->User HomeDAS: Generate a recovery code, TRANSACTION_ID
 User HomeDAS-->User DAA: Send Recovery Code
 User->>Delegated User: Provide Recovery Code (Manual)
 Delegated User->>Delegatee DAA: Select User DA + Enter Recovery Code
+Delegatee DAA <-> Delegatee HomeDAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
 Delegatee DAA->Delegatee HomeDAS: Send User DA + Recovery Code
 
 
