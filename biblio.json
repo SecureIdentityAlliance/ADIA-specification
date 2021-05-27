@@ -1,4 +1,4 @@
-{    
+{
     "didcomm-messaging-v1": {
         "authors": [
             ""
@@ -58,6 +58,26 @@
         "status": "Editor's Draft",
         "title": "ADIA Protocol",
         "href": "https://www.adiassociation.org/spec/ADIA-protocol.html"
+    },
+    "ADIA-Specification-Governance": {
+        "authors": [
+            ""
+        ],
+        "date": "5 January 2021",
+        "publisher": "ADI Association",
+        "status": "Editor's Draft",
+        "title": "ADIA Specification Governance",
+        "href": "references/adia-governance/ADIA%20Specification%20Governance.pdf"
+    },
+    "ADIA-Corporate-Governance": {
+        "authors": [
+            ""
+        ],
+        "date": "5 January 2021",
+        "publisher": "ADI Association",
+        "status": "Editor's Draft",
+        "title": "ADIA Corporate Governance",
+        "href": "references/adia-governance/ADIA%Corporate%20Governance.pdf"
     },
     "FIDOCTAP": {
         "authors": [

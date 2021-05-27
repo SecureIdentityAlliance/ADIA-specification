@@ -10,34 +10,5 @@ path: sections/schema/entity-model.include
 </pre>
 
 <pre class=include>
-path: sections/schema/data-dictionary.include
+path: sections/schema/vc-model.include
 </pre>
-
-
-## DIDDoc ## {#sctn-diddoc}
-
-<dfn export="true">DID document</dfn>s (<dfn export="true">DIDDoc</dfn>s) bind attributes to a DID [[!did-core]].
-<a>DIDDoc</a>s are signed objects.  See [[#sctn-trust-model]] for an overview of the <a>DIDDoc</a>s.
-
-See [[#sctn-crypto-algs]] for details on suitable cryptographic algorithms.
-
-<strong>Format</strong>
-```json
-{
-    // JSON-LD context
-    "context": "https://www.w3.org/ns/did/v1",
-    // DID of the subject
-    "id": "did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf",
-    // entity that is authorized to make changes to a DID document
-    "controller": ["did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf"],
-    //
-    "verificationMethod": [{
-        "id": "did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf",
-        "controller": "did:dtx:z6MkiCRKXdK9TdMfa2BbgooBUUGs9NZNWdsM6DPbai2PKfNf",
-        "type": "Ed25519VerificationKey2018",
-        "publicKeyBase58": "4kAGwP4i85sCTXLu1EqLdNisKoHX6kczQCUfkS4NQSbH"
-    }]
-}
-```
-
-
