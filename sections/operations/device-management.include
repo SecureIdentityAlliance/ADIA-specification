@@ -39,6 +39,13 @@ Please see [[#sctn-user-bootstraps-new-daa-instance]]
 
 #### Email-based Recovery #### {#sctn-da-self-recovery-email}
 
+In some enterprise use cases,  an Issuer may provide services for Users to recover
+Digital Addresses and provide existing identity proofing methods within their enterprise versus the DAS. This  may be more
+relevant in cases of recovering a Digital Address.
+
+Note: Email based recovery may expose additional attributes to the DAS to enable convenience as a tradeoff over
+privacy considerations.
+
 
 * User selects recover Digital Address option in DAA and input email or phone number for recovering the Digital Address. Assumption: DAS acquires the user information for recovery (like email or phone number) at the time of Digital Address registration
 * DAS will lookup email or phone number and finds the record
@@ -49,9 +56,12 @@ Please see [[#sctn-user-bootstraps-new-daa-instance]]
 * Issuer directs User back to DAS
 * DAS re-enrolls User with FIDO
 
-Note: This is a method to recover Digital Addresses for users for Enterprise Issuers with additional capability in place to avoid ID proofing.
+<figure id="fig-email-based-da-recovery">
+    <img src="sequence-diagrams/Email-based-da-recovery.svg"/>
+    <figcaption>Email based recovery</figcaption>
+</figure>
 
-Issue: Add a sequence diagram for this flow
+
 
 
 ### Delegated Recovery ### {#sctn-da-delegated-recovery}

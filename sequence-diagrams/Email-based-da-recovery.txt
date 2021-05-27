@@ -1,0 +1,31 @@
+title Email-based DA Recovery
+
+actor User
+participant DAA
+participant DAS
+participant Issuer
+participant VC Store
+
+User->DAA: Recover my DA using Email/ Phone
+DAA-->User: Prompt for Email/ Phone
+DAA->DAS: Send Lookup criteria [Email/ Phone]
+DAS->DAS: Lookup DA using DA Metadata/\nCredential Metadata
+alt Found DA
+DAS->DAS: Extract Issuer (ISSUER_ID)
+DAS->>User: Send Email with deep link [TRANSACTION_ID]
+User-->>DAS: Click link to recover [TRANSACTION_ID]
+DAS->DAS: Lookup [ISSUER_ID, DA, DAS_USER_ID, CREDENTIAL_ID]
+DAS->>Issuer: Verify User
+Issuer->VC Store: Get VC
+Issuer->Issuer: Match VC with Source Type\n (see New User Enrollment)
+Issuer-->> DAS: ADIA-DA-002: User Verified Status [DAS_USER_ID, Success/Failure]
+DAS --> DAA: ADIA-DA-002: User Verified Status [DAS_USER_ID, DA, Validation Success/Failure]
+DAA -> DAA: If successful: Remember DAS_USER_ID, DA
+DAA <-> +DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
+DAS-> DAS: Remember (USER_FIDO_PK, DAS_USER_ID)
+DAS --> -DAA: Acknowledge successful FIDO registration
+DAA-->User: Digital Address ready for use
+else No Matching DA
+DAS-->DAA: No DA for User
+DAA-->User: Cannot recover DA
+end
