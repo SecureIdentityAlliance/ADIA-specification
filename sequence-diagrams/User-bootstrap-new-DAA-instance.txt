@@ -9,7 +9,7 @@ User -> +Issuer: Bootstrap a new device [ID-Attributes]
 Issuer->Issuer: ADIA-FN-001: Compute HIDA = hash(ID-Attributes)
 Issuer -> -Issuer: Lookup DAS_USER_ID for HIDA\nCreate QR code (DAS_USER_ID, IssuerConnectionURL)
 
-Issuer ->>User: Present QR (Ex: Console) or send QR (Ex: Email)
+Issuer ->>User: Present QR (e.g.: Console) or send QR (e.g.: Email)
 opt User scans the QR code
 User -> DAA: Scan and Extract [DAS_USER_ID, IssuerConnectionURL]
 DAA -> DAA: Start ID proofing on the device \nand extract the User info

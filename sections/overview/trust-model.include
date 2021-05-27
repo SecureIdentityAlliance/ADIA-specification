@@ -152,10 +152,7 @@ In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), 
        <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
            First Issuer</a></td>
        <td>
-
-Issue: Need to clarify whether there is any signed object tying the
-    USER_FIDO_PK to the user's DA.
-
+         via a DB record stored by the respective <a>HomeDAS</a>.
        </td>
        <td>
          FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].

@@ -7,7 +7,7 @@ Participant Issuer
 Participant VC Store
 
 User <<->> Issuer: Authenticate
-User <<->> Issuer: Request issue VC [DA or DAS_USER_ID]
+User <<->> Issuer: Request issuing a VC [DA or DAS_USER_ID]
 Note over Issuer, User, DAA
 Ask subject to give consent for issuing a VC
 end note
