@@ -1,3 +1,40 @@
+## Trust Anchor ## {#sctn-data-schema-trustanchor}
+<table class="data longlastcol">
+  <thead>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>TA</td>
+    <td>String</td>
+    <td>Unique and Opaque string (UUID). See [[#sctn-trust-anchor]]</td>
+  </tr>
+  <tr>
+    <td>ENTITY_ID</td>
+    <td>String</td>
+    <td>DID of the entity</td>
+  </tr>
+  <tr>
+    <td>ENTITY_PARENT_ID</td>
+    <td>String</td>
+    <td>DID of the either HomeDAS (HomeDAS_ID) or Home ARD (HomeARD_ID)</td>
+  </tr>
+    <tr>
+      <td>CREATED_BY</td>
+      <td>String</td>
+      <td>DID of the creator - person or entity</td>
+    </tr>
+    <tr>
+      <td>CREATE_DATE</td>
+      <td>DateTime</td>
+      <td>ISO 8601 format</td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## Digital Address ## {#sctn-data-schema-digitaladdress}
 <table class="data longlastcol">
   <thead>
@@ -6,6 +43,11 @@
     <th>Description</th>
   </thead>
   <tbody>
+  <tr>
+    <td>TA</td>
+    <td>String</td>
+    <td>Trust Anchor Reference. See [[#sctn-data-schema-dataresidency]]</td>
+  </tr>
   <tr>
     <td>ENTITY_ID</td>
     <td>String</td>
