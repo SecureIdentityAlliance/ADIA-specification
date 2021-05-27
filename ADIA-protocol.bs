@@ -71,5 +71,3 @@ path: sections/protocol/verification-protocol.include
 <pre class=include>
 path: sections/protocol/messages.include
 </pre>
-
-Issue: Add `ack` & `problem-report` in messages wherever applicable
