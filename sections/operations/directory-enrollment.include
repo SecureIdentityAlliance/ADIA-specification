@@ -15,7 +15,7 @@ A <a>DIDDoc</a> for the ARD with its endpoint details, public keys and any addit
 
 Enrollment into the <a>ADIA Global Directory</a> is complete when the <a>ARD_ID</a> to the Hashed ID attributes (<a>HIDA</a>) of the entity are
 related in the <a>ADIA Global Directory</a>.
-A VC is issued by the <a>AGD</a> using information used to verify the <a>ARD</a>.
+A <a>VC</a> is issued by the <a>AGD</a> using information used to verify the <a>ARD</a>.
 
 The following sequence diagram depicts the details of the flow between entities and exchange of messages between Agents.
 
@@ -29,7 +29,7 @@ Note: Details of the Agents and protocol messages are depicted below.
 
 ### Enroll a DAS ### {#sctn-enroll-as-das}
 
-<a>Digital Address Service</a>s (<a>DAS</a>s) are onboarded into the <a>ADIA</a> Ecosystem by the <a>ADIA Regional Directory</a>. The process starts with the DAS
+<a>Digital Address Service</a>s (<a>DAS</a>s) are onboarded into the <a>ADIA</a> Ecosystem by the <a>ADIA Regional Directory</a>. The process starts with the <a>DAS</a>
 providing their organizational and contact person details to meet the certification criteria established by the ADIA Governance process.
 
 The governing body within the <a>ADIA Regional Directory</a> may approve or reject requests to enroll into the <a>ADIA</a> ecosystem.
@@ -41,7 +41,7 @@ by the <a>ADIA Regional Directory</a> (ARD Agent).
 A <a>DIDDoc</a> for the DAS with endpoint details, public keys and any additional information is published to the <a>ADIA Global Directory</a>.
 
 Enrollment into <a>ADIA Global Directory</a> is complete when the <a>DAS_ID</a> to the Hashed ID attributes (<a>HIDA</a>) of the entity are related in the <a>ADIA Global Directory</a>.
-A VC is issued by the <a>ARD</a> using information used to verify the <a>DAS</a>.
+A <a>VC</a> is issued by the <a>ARD</a> using information used to verify the <a>DAS</a>.
 
 The following sequence diagram depicts the details of the flow between entities and exchange of messages between agents.
 
@@ -61,8 +61,8 @@ prospective <a>Issuer</a> to provide organizational details, a contact person fo
 by the ADIA Governance policies.
 
 The governing body within the <a>DAS</a> may approve or reject requests to enroll into the <a>DAS</a> and the <a>ADIA</a>
-ecosystem. Successful approval of an Entity as an <a>Issuer</a> results in a <a>Digital Address</a> and a <a>DID</a> being created.
-A VC is issued by the <a>DAS</a> using information used to verify the <a>Issuer</a>.
+ecosystem. Successful approval of an Entity as an <a>Issuer</a> results in a <a>Digital Address</a> and a <a>DID</a> (i.e. <a>ISSUER_ID</a>) being created.
+A <a>VC</a> is issued by the <a>DAS</a> using information used to verify the <a>Issuer</a>.
 The <a>DAS</a> may also enforce additional policies to ensure that the <a>Issuer</a> can issue <a>Digital Address</a>es to <a>Users</a> or
 issue <a>Verifiable Credentials</a> with a certain <a>Assurance Level</a>.
 Please see [[#sctn-assurance-level]] for more detail.
@@ -71,7 +71,7 @@ In certain deployment models, a <a>DAS</a> may provide the <a>Issuer</a> with an
 that comply to the ADIA Specification. Other deployments may provide agency services to provision the <a>Issuer Agent</a>s in a hosted model.
 
 Regardless the variances in the deployment model, the <a>Issuer Agent</a> is responsible for creating and managing their private key (<a>ISSUER_ID_SK</a>)
-and <a>DID</a> (represented by the <a>ISSUER_ID</a>) and enroll with the <a>DAS</a>. The <a>Issuer</a>'s public information such as business name and the <a>DIDDoc-Issuer</a>
+and <a>DID</a> (i.e. <a>ISSUER_ID</a>) and enroll with the <a>DAS</a>. The <a>Issuer</a>'s public information such as business name and the <a>DIDDoc-Issuer</a>
 is published to the <a>ADIA Global Directory</a> for lookups by any entity in the <a>ADIA</a> ecosystem.
 
 
@@ -89,15 +89,15 @@ Service Providers are onboarded into the ADIA Ecosystem by a <a>DAS</a>. The pro
 prospective <a>Service Provider</a> to provide organizational details, a contact person for the organization and details to join the ecosystem.
 
 The governing body within <a>DAS</a> may approve or reject requests to enroll into the <a>DAS</a> and the <a>ADIA</a> ecosystem.
-Successful approval of an Entity as an <a>Service Provider</a> results in a <a>Digital Address</a> and a <a>DID</a> being created.
-A VC is issued by the <a>DAS</a> using information used to verify the <a>Service Provider</a>.
+Successful approval of an Entity as an <a>Service Provider</a> results in a <a>Digital Address</a> and a <a>DID</a> (i.e. <a>SP_ID</a>) being created.
+A <a>VC</a> is issued by the <a>DAS</a> using information used to verify the <a>Service Provider</a>.
 
 The <a>DAS</a> may provide API services or provide agency services to provision the <a>Service Provider Agent</a> in a hosted model to request
 and verify <a>Verifiable Credential</a>s of <a>User</a>s.
 
-Agent based deployments may require the <a>Service Provider</a> to manage their private key (<a>SP_ID_SK</a>) and <a>DID</a> (represented by the <a>SP_ID</a>)
-and enroll with the <a>DAS</a>. The <a>Service Provider</a>'s public information such as business name and their <a>DIDDoc-SP</a> is published to the <a>ADIA Global Directory</a> for lookups
-by any entity in the <a>ADIA</a> ecosystem.
+Agent based deployments may require the <a>Service Provider</a> to manage their private key (<a>SP_ID_SK</a>) and <a>DID</a> (i.e. <a>SP_ID</a>)
+and enroll with the <a>DAS</a>. The <a>Service Provider</a>'s public information such as business name and their <a>DIDDoc-SP</a> is published to
+the <a>ADIA Global Directory</a> for lookups by any entity in the <a>ADIA</a> ecosystem.
 
 <figure id="fig-onboarding-sp-to-dap">
     <img src="sequence-diagrams/Enroll-SP-to-DAS.svg"/>
@@ -126,7 +126,7 @@ provides services to persist and search the <a>Credential Metadata</a> associate
 
 The diagram below represents a `new` <a>User</a> requesting a <a>Digital Address</a> from an <a>Issuer</a>.
 The </a>DAS</a> providing the Agency services, provisions a <a>Cloud Agent</a> for the <a>User</a> to create
-a public/private key pair and a <a>DID</a> for the <a>User</a>. The identifier (<a>DAS_USER_ID</a>), along with the
+a public/private key pair and a <a>DID</a> (i.e. <a>DAS_usER_ID</a>) for the <a>User</a>. The identifier (<a>DAS_USER_ID</a>), along with the
 <a>HomeDAS</a> identifier (<a>HomeDAS_ID</a>) are persisted on the <a>DAS</a> to associate their identifiers with the newly created <a>Digital Address</a>.
 Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details on the representation and usage of the <a>Digital Address</a>.
 
