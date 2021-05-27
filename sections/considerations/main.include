@@ -43,7 +43,7 @@
     * <a>DAS_USER_ID_PK</a>
 
 * Zero-Knowledge Proofs are used to support selective disclose of attributes in <a>VC</a>s and to allow a way to effectively share anonymous attributes (e.g. over 21).
-    ZKPs will be supported in the subsequent versions of the specification and not addressed in the current version.
+    ZKPs and multiple <a>DID</a>s (e.g. <a>DAS_USER_ID</a>s) per <a>User</a>-<a>Issuer</a> relaton will be supported in the subsequent versions of the specification and not fully addressed in the current version.
 
 * The <a>ADIA</a> system supports the "Right to be forgotten" that is part of several privacy regulations, e.g. GDPR.  This means Users can trigger the deletion of their data (see [[#sctn-user-account-deletion]]).
     The <a>DAS_USER_ID</a> is stored in the DLT of the <a>ARD</a> and in the DB of the <a>DAS</a>.  Entries in a DB can be deleted if needed,
