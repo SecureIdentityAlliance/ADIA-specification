@@ -10,7 +10,8 @@ actor Delegated User
 
 opt Delegatee Setup
 User->User DAA: Set up Delegatees List [Delegatee DA]
-User DAA->>User HomeDAS: Notify the Delegatees of nomination
+User DAA <-> User HomeDAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
+User DAA->>User HomeDAS: If Authentication Success, Notify the Delegatees of nomination
 User HomeDAS->>User HomeDAS: Resolve HomeDAS from DA
 
 alt Delegatee in same HomeDAS
@@ -24,7 +25,8 @@ Delegatee HomeDAS->>Delegatee DAA: Notify Delegatee
 end
 
 Delegated User-->>Delegatee DAA: View and Accept/Reject
-Delegatee DAA-->>Delegatee HomeDAS: Accept/Reject status
+Delegatee DAA <-> Delegatee HomeDAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
+Delegatee DAA-->>Delegatee HomeDAS: If Authentication Success, Accept/Reject status
 Delegatee HomeDAS-->>User HomeDAS: Delegatee Accept/Reject Status
 User HomeDAS-->>User DAA: Delegatee Accept/Reject Status [Delegatee DAS_USER_ID]
 end
@@ -40,10 +42,12 @@ User HomeDAS->>ARD: ADIA-DR-004: Lookup HomeDAS Delegatee.
 ARD-->>User HomeDAS: ADIA-DR-004: DAS_ID for Delegatee HomeDAS
 User HomeDAS->>Delegatee HomeDAS: Route to Delegatee HomeDAS [DAS_ID]
 Delegatee HomeDAS->Delegatee HomeDAS: Lookup DAS_USER_ID and Device Information
+
 Delegatee HomeDAS->>Delegatee DAA: Notify Recovery Request [DAS_USER_ID]
+Delegated User-->>Delegatee DAA: View Recovery Request and Generate QR
+Delegatee DAA <-> Delegatee HomeDAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
 end
 
-Delegated User->Delegatee DAA: Click to generate QR for User
 Delegatee DAA-->User: Present Recovery QR [Delegatee DAS_USER_ID]
 User->User DAA: Scan using DAA
 User DAA->Delegatee DAA: Scan Recovery QR
@@ -54,7 +58,8 @@ User HomeDAS->ARD: Lookup HomeDAS for Delegatee
 ARD-->Delegatee HomeDAS: Route to HomeDAS
 Delegatee HomeDAS->Delegatee HomeDAS: Lookup DAS_USER_ID and Device Information
 Delegatee HomeDAS->>Delegatee DAA: Push Notification to Device
-Delegated User-->>Delegatee DAA: View and Accept/Reject with FIDO
+Delegated User-->>Delegatee DAA: View and Accept/Reject
+Delegatee DAA <-> Delegatee HomeDAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
 Delegatee DAA-->>Delegatee HomeDAS: Accept/Reject Status
 Delegatee HomeDAS-->>User HomeDAS: Delegatee accept/Reject Status
 User HomeDAS-->>User DAA: Success/Failure
