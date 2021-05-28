@@ -48,7 +48,7 @@ The types of actors that interact with ADIA are described below:
 
 ### ADIA Regional Directory ### {#sctn-adia-role-regional-directory}
 
-The <dfn>ADIA Regional Directory</dfn> (<dfn>ARD</dfn>) is a directory that serves to identify participants within an ecosystem. This can make it easier for users without a digital device or knowledge of how to use one. Users can be looked up by attributes or a digital address, both of which are discussed in this spec.
+The <dfn>ADIA Regional Directory</dfn> (<dfn>ARD</dfn>) is a directory that serves to identify participants within an ecosystem. This can make it easier for <a>User</a>s without a digital device or knowledge of how to use one. <a>Users</a> can be looked up by attributes or a digital address, both of which are discussed in this spec.
 
 #### Directory Scope  #### {#sctn-adia-regional-directory-scope}
 
@@ -60,7 +60,7 @@ A ADIA Regional Directory shall:
 * provide discovery and routing services between one or more <a>Digital Address Service</a>s.
 * provide a distributed ledger for maintaining relationships between Trust Anchors and <a>Digital Address</a>es and bindings to human identities.
 * onboard trusted <a>Digital Address Service</a>s to the ecosystem.
-* maintain a relationship of identifiers - A Trust Anchor, user’s <a>Digital Address</a>, DID and Issuer Identifier.
+* maintain a relationship of identifiers - A Trust Anchor, <a>User</a>’s <a>Digital Address</a>, DID and Issuer Identifier.
 * detect collisions for Trust Anchor and/or <a>Digital Address</a>.
 
 Directory scopes can and will overlap. A university may run a directory for students and faculty in a country where a directory is run for the country. People may be listed in multiple directories without conflict. Initial directories will be run by ADIA to seed the ecosystem. Other entities may operate directories in conformance with the [[!ADIA-Specification-Governance]] and APIs.
@@ -216,13 +216,22 @@ The <a>User</a> can then use their <a>Digital Address</a> for various purposes; 
 * Present <a>Verifiable Credential</a>s that were issued to them as a proof to <a>Service Provider</a>s.
 * Grant consent for verification requests from <a>Service Provider</a>s.
 
+The <a>User</a> is cryptographically represented by the <dfn export="true">Cloud Agent</dfn>.  The <a>Cloud Agent</a> is a cloud accessible entity
+that acts on behalf of the user.  More specifically this entity reliably maintains the cryptographic material (e.g. <a>DAS_USER_ID_SK</a>) 
+that is required for the interaction with the other entities. <a>Users</a> may select a <a>Cloud Agent</a> of their choice.
+The <a>User</a> uses its <a>DAA</a> to securely communicate with the (remote) <a>Cloud Agent</a>.
+
+This <a>Cloud Agent</a> role has some similarity to the <a href="https://ec.europa.eu/digital-single-market/en/trust-services">eIDAS Trust Service Providers</a>,
+which may also maintain cryptographic material - in this case for creating legally binding electronic signatures - on behalf of the <a>User</a>.
+
 
 ### Digital Address Application (DAA) ### {#sctn-adia-role-daa}
 
 For <a>User</a>s to be part of the ADIA ecosystem, they must be in control of a <a>Digital Address</a>. The <a>Digital Address</a> may
 be acquired via many forms - often via a QR code over some channel such as an Authenticator App, Email, SmartCard or directly from an <a>Issuer</a>.
 
-The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>, bind the <a>Digital Address</a> to the <a>DAS</a> and enable the receipt of and provide consent for verification requests.
+The <dfn>Digital Address Application</dfn> (<a>DAA</a>) is an "Authenticator App" that lets users scan a <a>Digital Address</a>,
+bind the <a>Digital Address</a> to the <a>DAS</a> and enable the receipt of and provide consent for verification requests.
 
 #### Components #### {#sctn-daa-components}
 
@@ -232,7 +241,7 @@ The core components of a <a>Digital Address Application</a> are:
 * <dfn export="true">FIDO Client</dfn>: The FIDO subsystem required to perform FIDO registration and authentication for a <a>Digital Address</a>.
 * <dfn export="true">Identity Verification SDK</dfn>: An Identity Verification client SDK to ID proof a government-issued identification document such as Driver’s License or Passport
 * <a>Credential Metadata</a>: On-device store of the credential metadata issued to the digital address. Interacts with the DAS services to lookup and retrieve actual credentials from the issuer.
-* <dfn export="true">Push Notification Service</dfn>: External service to push notifications to the user for events such as credential issuance, revocation, proof requests, and consent
+* <dfn export="true">Push Notification Service</dfn>: External service to push notifications to the user for events such as credential issuance, revocation, proof requests, and to ask for consent
 
 #### Roles #### {#sctn-daa-roles}
 
