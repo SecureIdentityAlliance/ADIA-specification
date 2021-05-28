@@ -190,7 +190,7 @@ The <a>ADIA</a> system maintains the following fields as <dfn>Credential Metadat
     <tr>
       <td>CREDENTIAL_SCHEMA_ID</td>
       <td>String</td>
-      <td>Identifier of the <dfn export=true">Credential Schema</dfn> against which the <a>VC</a> was issued</td>
+      <td>Identifier of the <a>Credential Schema</a> against which the <a>VC</a> was issued</td>
     </tr>
     <tr>
       <td>CREDENTIAL_SCHEMA_VERSION</td>
@@ -258,17 +258,17 @@ The <a>ADIA</a> system maintains the following fields as <dfn>Credential Metadat
   <tr>
     <td>SCHEMA_NAME</td>
     <td>String</td>
-    <td>Name of the Schema</td>
+    <td>Name of the <dfn export="true">Credential Schema</dfn></td>
   </tr>
   <tr>
     <td>VERSION</td>
     <td>String</td>
-    <td>Version of the Schema</td>
+    <td>Version of the <a>Credential Schema</a></td>
   </tr>
   <tr>
     <td>DESCRIPTION</td>
     <td>String</td>
-    <td>Usability and applicability of the schema</td>
+    <td>Usability and applicability of the <a>Credential Schema</a></td>
   </tr>
   <tr>
     <td>PUBLISHED</td>
@@ -283,12 +283,12 @@ The <a>ADIA</a> system maintains the following fields as <dfn>Credential Metadat
   <tr>
     <td>PUBLISHED_BY</td>
     <td>String</td>
-    <td>DID of the Entity publishing the schema</td>
+    <td>DID of the Entity publishing the <a>Credential Schema</a></td>
   </tr>
   <tr>
     <td>SCHEMA_LEDGER_ID</td>
     <td>String</td>
-    <td>Id of the credential schema on the Ledger</td>
+    <td>Id of the <a>Credential Schema</a> on the Ledger</td>
   </tr>
   <tr>
       <td>CREATED_BY</td>
