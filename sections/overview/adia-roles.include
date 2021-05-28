@@ -210,11 +210,11 @@ The <a>User</a> can then use their <a>Digital Address</a> for various purposes; 
 
 #### Scope #### {#sctn-user-scope}
 
-* Obtain a <a>Digital Address</a> from an <a>Issuer</a> in the ADIA ecosystem.
-* Receive one or more Identity Credentials by complying with KYC processes from Identity <a>Issuer</a>s.
-* Receive one or more User Credentials such as Employment Credential, Medical Record etc. from one or more Credential <a>Issuer</a>s.
-* Present <a>Verifiable Credential</a>s that were issued to them as a proof to <a>Service Provider</a>s.
-* Grant consent for verification requests from <a>Service Provider</a>s.
+* Obtain a <a>Digital Address</a> from an <a>Issuer</a> in the ADIA ecosystem ([[#sctn-onboarding-1st-issuer]]).
+* Receive one or more <a>Identity VCs</a> by complying with KYC processes from Identity <a>Issuers</a> ([[#sctn-issue-vc]]).
+* Receive one or more User Credentials such as Employment Credential, Medical Record etc. from one or more Credential <a>Issuers</a> .
+* Present <a>Verifiable Credential</a>s that were issued to them as a proof to <a>Service Providers</a> ([[#sctn-vc-presentation-and-verification-1]]).
+* Grant consent for verification requests from <a>Service Provider</a>s ([[#sctn-vc-presentation-and-verification-1]]).
 
 The <a>User</a> is cryptographically represented by the <dfn export="true">Cloud Agent</dfn>.  The <a>Cloud Agent</a> is a cloud accessible entity
 that acts on behalf of the user.  More specifically this entity reliably maintains the cryptographic material (e.g. <a>DAS_USER_ID_SK</a>) 
