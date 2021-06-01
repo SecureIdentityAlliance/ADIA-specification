@@ -1,12 +1,6 @@
 ## Identifiers ## {#sctn-adia-identifiers}
 
    <dl>
-       : <a>ADIA Global Directory</a> (<a>AGD</a>)
-       :: See [[#sctn-adia-role-global-directory]]
-
-       : <a>ADIA Regional Directory</a> (<a>ARD</a>)
-       :: See [[#sctn-adia-role-regional-directory]]
-
        : <dfn>AGD_ID</dfn>
        :: The <a>ADIA</a> Global Directory (AGD) IDentity, i.e. the the W3C DID style identifier for the <a>ADIA Global Directory</a>.
 
@@ -35,12 +29,6 @@
             included claims to not uniquely identify any specific
             user.  For example a credential that just proof the user
             is older than 21.
-
-
-       : <dfn>Cloud Agent</dfn>
-       :: A cloud accessible entity that acts on behalf of the user. It has some similarity to the
-            <a href="https://ec.europa.eu/digital-single-market/en/trust-services">eIDAS Trust Service Providers</a>.
-
 
        : <dfn>DA</dfn>
        :: Human readable <a>Digital Address</a> of the <a>User</a>

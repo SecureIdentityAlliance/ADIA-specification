@@ -9,7 +9,8 @@ Some of the data elements from W3C and there relevance is mentioned below:
 Note: Please see [Verifiable Credentials JSON Schema Specification](https://w3c-ccg.github.io/vc-json-schemas/#overview) for the information on Credential Schema.
 
 In ADIA, Verifiable Credentials maybe issued by an <a>Issuer</a>, a <a>DAS</a>, an <a>ARD</a> or the <a>AGD</a>. By adhering to schemas such as an Identity Schema or
-a Data Schema, the structure of the claims within a Verifiable Credential may be packaged, signed and verified by an <a>Agent</a> within the ecosystem.
+a Data Schema, the structure of the claims within a <a>Verifiable Credential</a> may be packaged, signed and verified by an
+Agent (e.g. <a>Issuer Agent</a> or <a>Service Provider Agent</a>) within the ecosystem.
 For the version of this specification, as described in the [[#sctn-crypto-algs]], agents may use Ed25519 signature algorithm for VC payload signing.
 
 Please see [[#sctn-data-schema-credentialschema]] and [[#sctn-data-schema-credentialschema-attribute]] for detailed description of the schema.
