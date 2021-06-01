@@ -3,6 +3,9 @@ README.txt
 
     perl -le 'print crypt("password", "didalliance-salt")'
 
+ For PERL on Windows:
+    perl -le "print crypt(\"password\", \"didalliance-salt\")"
+
  Then modify the htpasswd file adding the new user using this structure:
 
   {user_name}:{generated_password}
