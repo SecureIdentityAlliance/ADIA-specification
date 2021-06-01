@@ -8,9 +8,6 @@ Status: ED
 Group: fido
 URL:
 Editor: Kiran Addepalli, kiran@digitaltrust.net
-Editor: Suresh Batchu, suresh@digitaltrust.net
-Editor: Ken Ebert, ken@indicio.tech
-Editor: Sam Curren, sam@indicio.tech
 Editor: Ajay Jadhav, ajay@ayanworks.com
 
 Abstract: ADIA protocols
@@ -71,3 +68,17 @@ path: sections/protocol/verification-protocol.include
 <pre class=include>
 path: sections/protocol/messages.include
 </pre>
+
+## Acknowledgments ## {#sctn-acknowledgments}
+
+### Major Contributors ### {#sctn-acknowledgments-contributors}
+
+* Suresh Batchu, suresh@digitaltrust.net
+* Sam Curren, sam@indicio.tech
+
+### Reviewers ### {#sctn-acknowledgments-Reviewers}
+
+* Rolf Lindemann, rolf@noknok.com
+* Ken Ebert, ken@indicio.tech
+
+If a credit is missing from the credit list below, please log a ticket at GitHub to be recognized in future updates.
