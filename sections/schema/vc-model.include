@@ -15,9 +15,9 @@ For the version of this specification, as described in the [[#sctn-crypto-algs]]
 Please see [[#sctn-data-schema-credentialschema]] and [[#sctn-data-schema-credentialschema-attribute]] for detailed description of the schema.
 
 
-### DIDDoc ### {#sctn-data-schema-diddoc}
+### DID Document ### {#sctn-data-schema-diddoc}
 
-<dfn export="true">DID document</dfn>s (<dfn export="true">DIDDoc</dfn>s) bind attributes to a DID [[!did-core]].
+<dfn export="true">DID Document</dfn>s (<dfn export="true">DIDDoc</dfn>s) bind attributes to a DID [[!did-core]].
 <a>DIDDoc</a>s are signed objects.  See [[#sctn-trust-model]] for an overview of the <a>DIDDoc</a>s.
 
 See [[#sctn-crypto-algs]] for details on suitable cryptographic algorithms.
@@ -40,6 +40,13 @@ See [[#sctn-crypto-algs]] for details on suitable cryptographic algorithms.
     }]
 }
 ```
+
+In ADIA, the controller represents the Entity that can modify the DIDDoc and an authoritative source
+that created the DID for an Entity. To maintain the trust relationships in ADIA, the following is recommended:
+* ARD DIDDoc MUST have the AGD_ID as the controller
+* DAS DIDDoc MUST have ARD_ID as the controller
+* Issuer, Service Providers MUST have the DAS_ID as the controller
+
 
 ### Sample - VC Issuance Payload ### {#sctn-data-schema-vc-sample-issuance}
 
