@@ -71,7 +71,7 @@ path: sections/protocol/messages.include
 
 ## Acknowledgments ## {#sctn-acknowledgments}
 
-### Major Contributors ### {#sctn-acknowledgments-contributors}
+### Contributors ### {#sctn-acknowledgments-contributors}
 
 * Suresh Batchu, suresh@digitaltrust.net
 * Sam Curren, sam@indicio.tech
