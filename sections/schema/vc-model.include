@@ -53,8 +53,8 @@ In addition, there are a few custom attributes that assert the protection and co
 * Entity that asserted the public Key (If a conroller is not used)
 * Source of verification: Self-asssessment, Thirdparty review
 
-Issue: To support interoperability with other DID methods, custom attributes need to be registered with the DID Specification Registry. Details of the
-process can be found at [DID Specification Registration Process](https://w3c.github.io/did-spec-registries/#the-registration-process).
+Note: To support interoperability with other DID methods, custom attributes need to be registered with the DID Specification Registry. 
+Details of the process can be found at [DID Specification Registration Process](https://w3c.github.io/did-spec-registries/#the-registration-process).
 
 
 ### Sample - VC Issuance Payload ### {#sctn-data-schema-vc-sample-issuance}
