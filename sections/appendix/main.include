@@ -12,15 +12,14 @@ The DID Alliance (DIDA) is an open industry association created to drive the dev
 
 ### Contributors ### {#sctn-acknowledgments-contributors}
 
-* Alan Bachmann, AABachmann@aetna.com
-* Jason Burnett, jason@digitaltrust.net
-* Ken Ebert, ken@indicio.tech
-* Sam Curren, sam@indicio.tech
-* Taejin Kim, tjkim1212@raoncorp.com
-* Sunghoon Choi, shchoi@raoncorp.com
-* Tina Srivastava, tinaps@badgeinc.com
+* [Alan Bachmann](mailto:AABachmann@aetna.com), [Jason Burnett](mailto:jason@digitaltrust.net), [Tina Srivastava](mailto:tinaps@badgeinc.com)
+* [Cisa Kurian](mailto:KurianC@cvshealth.com), [Brian Lucas](mailto:Brian.Lucas@CVSHealth.com), [Paul Millicker](mailto:MillickerP@cvshealth.com), [Corey Todaro](mailto:corey.todaro@digitalasset.com)
+* [Amy Ulrich](mailto:aculrich@aetna.com), Byron Arnao, [Deokyeon Kang](mailto:dykang@raoncorp.com), [Kyle Kilcoyne](mailto:kylek@badgeinc.com), [Perraju Nadakuduty](mailto:perraju.nadakuduty@capitalone.com), [Changsoo Kim](mailto:cskim@digitaltrust.net)
+* [Chuck Moore](mailto:Chuck.Moore@earlywarning.com), [Greg Keegstra](mailto:greg.keegstra@onfido.com), [Hyunwoo Park](mailto:hwpark@raoncorp.com), [Erick Verry](mailto:emverry@cvshealth.com), [Gordon Gray](mailto:Gggray@cvshealth.com)
 
 ### Reviewers ### {#sctn-acknowledgments-Reviewers}
-
+Charlie Hart, Nicko Van Someren, Khaja Ahmed, Dean Saxe, Shrisha Radhakrishna, Sunpreet Arora, Kim Wagner,
+Joe Pennisi, Eve Maler, Phil Shoemaker, James Greaves, Jaechul Ryu, Hangbae Jang, Kumardas Karunakaran, Corey Segall,
+David Henstock
 
 If a credit is missing from the credit list below, please log a ticket at GitHub to be recognized in future updates.
