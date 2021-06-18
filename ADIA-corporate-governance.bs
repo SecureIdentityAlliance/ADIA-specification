@@ -1,0 +1,209 @@
+  <!-- -*- mode: Text; eval: (auto-fill-mode 1); -*- -->
+<pre class='metadata'>
+Title: ADIA Corporate Governance
+Shortname: adia-corporate-governance
+Prepare for TR: true
+Level: 1
+Status: ED
+Group: fido
+URL:
+Editor: Ramesh Kesanupalli, ramesh@digitaltrust.net
+Editor: Abbie Barbir, BarbirA@cvshealth.com
+Editor: Ken Ebert, ken@indicio.tech
+Editor: Sam Curren, sam@indicio.tech
+Editor: Trevor Butterworth, trevor@indicio.tech
+
+Abstract: ADIA Corporate Governance
+
+Issue Tracking: GitHub https://github.com/DIDAlliance/DID-specification
+Text Macro: INFORMATIVE <em>This section is not normative.</em>
+Text Macro: NORMATIVE <em>This section is normative.</em>
+Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Local Boilerplate: header yes, footer yes, logo yes, copyright yes
+Markup Shorthands: css off, markdown on
+</pre>
+
+<pre class="link-defaults">
+spec:html; type:dfn; for:environment settings object; text:global object
+spec:infra; type:dfn; text:list
+spec:url; type:dfn; text:domain
+spec:url; type:dfn; text:valid domain;
+spec:webappsec-credential-management-1; type:dictionary; for:/; text:CredentialRequestOptions
+spec:webidl; type:interface; text:Promise
+</pre>
+
+<!-- only put content here if you want a custom status of document not
+  the specification-maturity-appropriate boilerplate -->
+
+# Vision # {#sctn-adia-corporate-governance-vision}
+
+The ADI Association is committed to developing an inclusive, interoperable ecosystem for digital identity that empowers people by giving them control of their digital identity data in a privacy-preserving, distributed, secure, and verifiable way.
+
+# Mission # {#sctn-adia-corporate-governance-mission}
+
+The ADI Association is a nonprofit mutual benefit corporation dedicated to solving the most pressing issues around the operation and adoption of decentralized identity systems.
+
+The Association will achieve this through bringing together a coalition of public and private organizations to advance a new interoperable specification for digital identity, the ADIA Specification.
+
+The ADIA Specification is built on privacy-by-design principles while providing strong authentication, secure data sharing, and a range of identity services, including the capacity for consent-based participant accountability.
+
+The ADIA Specification is easy to incorporate into existing identity management systems, incorporates KYC and FIDO processes, is interoperable with other decentralized identity systems, and, above all, be easy to adopt and use by participants, including those without access to data-enabled devices.
+
+The ADIA Association is committed to developing this inclusive, interoperable ecosystem for digital identity, one that empowers people by giving them control of their digital identity data in a way that is accountable and privacy-preserving, distributed, secure, and verifiable.
+
+# Core Principles # {#sctn-adia-corporate-governance-core-principles}
+
+<dl>
+  <dt>User Privacy</dt>
+  <dd>End-users hold and control their own data.</dd>
+
+  <dt>No Data Consolidation</dt>
+  <dd>Identity data is never centralized, and is under the control of users and their trusted issuers.</dd>
+
+  <dt>Data Disclosures</dt>
+  <dd>Data is only released with the Individual consent of the end-user.</dd>
+
+  <dt>Inclusivity</dt>
+  <dd>Serving everyone, regardless of technology limitations.</dd>
+
+  <dt>Trust and Accountability</dt>
+  <dd>Trust and accountability are fundamental necessities for a functioning business and society. These can be generated within a distributed ecosystem through consent- based identity escrow services</dd>
+
+  <dt>Interoperability</dt>
+  <dd>The ADI Association recognizes the critical importance of interoperability to the success of its specification and to the widespread adoption of verifiable credentials.</dd>
+
+  <dt>Trusted Onboarding</dt>
+  <dd>The ADI Association believes that the users should be onboarded by a trusted issuer after robust identity verification, providing the strong assurance needed by businesses and organizations.</dd>
+
+  <dt>Inclusion</dt>
+  <dd>ADI Association is working to close the digital identity divide between those with the means to access digital identity and those without. Technologies, processes, and governance must enable the fullest possible participation by everyone.</dd>
+
+  <dt>Community Driven</dt>
+  <dd>The ADI Association is committed to supporting the work of the identity community and its standards organizations wherever possible. The ADI Association Specification is open for the community to adopt and expand.</dd>
+
+  <dt>Diversity</dt>
+  <dd>The ADI Association is committed to reflecting the universality of identity by developing and recruiting a diverse organization and board, as well as nurturing an environment in which diversity can flourish.</dd>
+
+  <dt>Organizational Culture</dt>
+  <dd>The ADI Association is committed to creating a collaborative, consultative, and inclusive work culture that respects and reflects the diversity of its membership.</dd>
+
+  <dt>Advocacy and Education</dt>
+  <dd>The ADI Association is committed to advocating for decentralized identity and educating people about its benefits.</dd>
+</dl>
+
+
+# Board Governance Guidelines # {#sctn-adia-board-gov-guidelines}
+
+## Board Responsibilities ## {#sctn-adia-board-responsibility}
+
+The Board of Directors is responsible for managing the business and affairs of the ADI Association in accordance with the Association’s status as a California Mutual Benefit Corporation and for ensuring the integrity of the ADIA Specification. The Board represents and is accountable only to the board-level membership of the ADI Association.
+
+The Board is collectively responsible for ensuring the success of the ADIA ecosystem for accountable, privacy preserving digital identity through the ADI Association’s growth and its continued development, expansion, and governance of the ADIA Specification.
+
+Other important responsibilities of the Board include:
+    1. Ensuring high standards of corporate governance are observed at all times
+    2. Determining and establishing the strategic direction of the Association
+    3. Overseeing the delivery of planned results by monitoring performance against agreed strategic and other objectives and targets
+    4. Establishing such committees as it considers appropriate to conduct its business
+
+## Board composition and membership ## {#sctn-adia-board-composition}
+
+Each Member of the ADI Association with board-level membership has the right
+to appoint an individual to be a Director. The Board shall consist of the Directors appointed by the Members that possess a Board level membership of the Association. The Board of Directors may designate one of the Directors as the Chair of the Board of Directors (the “Chair”).
+
+## Board officers ## {#sctn-adia-board-officers}
+
+The Board will appoint an Executive Director, Marketing Director, and a Certification Director as officers of the Association to oversee the administration and business functions. These positions will either be concurrently occupied by Directors of the Association or by filled by executive staff.
+
+## Code of business conduct and ethics ## {#sctn-adia-business-conduct}
+
+Directors and officers must abide by the relevant provisions of the Association’s Code of Business Conduct and Ethics.
+
+## Board Performance ## {#sctn-adia-board-performance}
+
+Issue: Board Performance - The contents need to be created and added by the ADI Association Board
+
+
+## Officer performance and compensation ## {#sctn-adia-officer-performance}
+
+Issue: Officer performance and compensation - The contents need to be created and added by the ADI Association Board
+
+## Board terms ## {#sctn-adia-board-terms}
+
+Issue: Board terms - The contents need to be created and added by the ADI Association Board
+
+## Board session ## {#sctn-adia-board-session}
+
+Issue: Board session - The contents need to be created and added by the ADI Association Board
+
+## Board committees ## {#sctn-adia-board-committees}
+
+Issue: Board committees  - The contents need to be created and added by the ADI Association Board
+
+## Board interaction with outside parties ## {#sctn-adia-board-interaction}
+
+Issue: Board interaction with outside parties - The contents need to be created and added by the ADI Association Board
+
+
+## Compliance with laws, rules, and regulations ## {#sctn-adia-board-compliance}
+
+Officers and Employees of the ADI Association must follow applicable laws, rules and regulations at all times. Employees with questions about the applicability or interpretation of any law, rule or regulation, should contact the Association’s legal representative.
+
+## Conflict of interest ## {#sctn-adia-conflict-of-interest}
+
+In performing their job duties, officers and employees are expected to use their judgment to act, at all times and in all ways, in the best interests of the ADI Association. A conflict of interest exists in any situation where the personal or other interest of a Director, officer, or staff member or a connected party or organization might in any way affect the discharge by a Director, officer, or staff member of their duties or deliberations in a situation where a Director or, officer, or staff member or a connected party or organization could benefit. A Director, officer, or staff member, or their relatives, friends, associates or associated organizations must not under any circumstances obtain any such benefit.
+
+## Bribery, payments to government ## {#sctn-adia-bribery}
+
+Officers and Employees may not bribe anyone for any reason, whether in dealings with governments or the private sector. The U.S. Foreign Corrupt Practices Act, and similar laws in other countries, prohibit offering or giving anything of value, directly or indirectly, to government officials in order to obtain or retain business. Employees may not make illegal payments to government officials themselves or through a third party.
+
+
+## Discrimination and harassment ## {#sctn-adia-discrimination}
+
+The ADI Association is an equal opportunity employer and will not tolerate any illegal discrimination or harassment of any kind.
+
+## Health and safety ## {#sctn-adia-health-safety}
+
+The ADI Association is committed to providing a safe and healthy work environment. Each employee is responsible for maintaining a safe and healthy workplace by following safety and health rules and practices and reporting any accidents, injuries and unsafe conditions, procedures, or behaviors.
+Violence and threatening behavior are not permitted. Employees must report to work in a condition to perform their duties, free from the influence of illegal drugs or alcohol.
+
+## Record keeping and reporting ## {#sctn-adia-record-keeping}
+
+The ADI Association’s books, records, accounts and financial statements must be maintained in appropriate detail, must accurately reflect the Company’s transactions, and must conform to applicable law.
+
+## Whistleblower policy ## {#sctn-Whistleblower}
+
+The ADI Association is committed to providing all staff with the chance to speak anonymously should they feel that the values of the ADI Association are not being adhered to or if they wish to report misconduct. See the ADI Association’s Whistleblower Policy.
+
+Issue: [Link to whistleblower document] [THIS DOCUMENT NEEDS TO BE REVIEWED BY COUNSEL]
+
+## Board of Directors ## {#sctn-board-directors}
+
+The Board of Directors of the ADI Association must comply with the relevant sections of this Code of Conduct document, including conflicts of interest, insider trading and compliance with all applicable laws, rules and regulations.
+
+
+# Bylaws # {#sctn-adia-gov-bylaws}
+
+Issue: Need to link to Bylaws versions of these documents.
+
+# Certificate of Incorporation # {#sctn-adia-gov-cert-incorporation}
+
+Issue: Need to link to Certificate of Incorporation
+
+
+
+## Acknowledgments ## {#sctn-acknowledgments}
+
+### Contributors ### {#sctn-acknowledgments-contributors}
+
+* [Suresh Batchu](suresh@digitaltrust.net)
+* [Kiran Addepalli](mailto:kiran@digitaltrust.net)
+* [Jason Burnett](mailto:jason@digitaltrust.net)
+* [Tina Srivastava](mailto:tinaps@badgeinc.com)
+* [Rolf Lindemann](rolf@noknok.com)
+
+### Reviewers ### {#sctn-acknowledgments-Reviewers}
+
+* Rolf Lindemann, rolf@noknok.com
+
+If a credit is missing from the credit list below, please log a ticket at GitHub to be recognized in future updates.
