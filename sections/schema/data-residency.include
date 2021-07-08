@@ -15,5 +15,5 @@ Regional and Global Directories MUST support:
 * a Distributed Ledger (DLT) to manage the Trust Anchor and any metadata related to <a>Digital Addresses</a> , FIDO public keys, etc.
 
 DAS Directories MUST support:
-* a privacy-preserving distributed database to persist the any off-ledger data. Request to delete a Digital Address MUST delete any Personally Identifiable Information (PII) according to GDPR and CCPA regulatory requirements.
+* a privacy-preserving distributed database to persist the any off-ledger data. Request to delete a Digital Address MUST delete any Personally Identifiable Information (PII) in accordance with GDPR, CCPA or other applicable data regulations requirements.
 * a Distributed Ledger (DLT) to manage the <a>Credential Metadata</a> issued to a <a>Digital Addresses</a>. Since immutability and tamper resistance is critical, a DLT is recommended, but can be replaced with a distributed database, a NOSQL or alternate data stores.
