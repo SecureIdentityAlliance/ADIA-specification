@@ -1,7 +1,7 @@
 ## Verifiable Credentials  ## {#sctn-data-schema-vcs}
 
 ADIA messaging relies on the W3C Standards, especially the [Verifiable Credentials Data Model](https://www.w3.org/TR/vc-data-model/#core-data-model).
-Some of the data elements from W3C and there relevance is mentioned below:
+Some of the data elements from W3C and their relevance is mentioned below:
 
 
 ### Credential Schema ### {#sctn-data-schema-vc-credential-schema}
