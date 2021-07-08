@@ -16,7 +16,7 @@ path: sections/overview/assurance-level.include
 ## Key Protection Level ## {#sctn-key-protection-level}
 
 There are multiple different cryptographic keys involved in the <a>ADIA</a> system. The degree to which entities want to trust the claims typically
-is impacted by theprotection of those keys.  In other words, if cryptographic keys get extracted or used without proper permissions, malicious claims could be generated.
+is impacted by the protection of those keys.  In other words, if cryptographic keys get extracted or used without proper permissions, malicious claims could be generated.
 
 The <a>ADIA</a> system provides transparency about the key protection levels.
 
