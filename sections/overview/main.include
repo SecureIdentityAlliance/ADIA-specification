@@ -2,6 +2,10 @@
 [INFORMATIVE]
 
 <pre class=include>
+path: sections/overview/introduction.include
+</pre>
+
+<pre class=include>
 path: sections/overview/ecosystem.include
 </pre>
 
