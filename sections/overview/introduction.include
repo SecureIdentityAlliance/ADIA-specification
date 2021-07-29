@@ -1,0 +1,38 @@
+## Introduction ## {#sctn-adia-introduction}
+
+Establishing an effective model for digital identity is a priority that spans industries. The traditional identity model for the digital world has been an account with a password. Service Providers give each of their customers an account and assume that those accounts can be secured. However, accounts are breached, and data are compromised. Service Providers do not often even know if the person who created the account was legitimate.
+
+In the physical world, individuals can prove who they are by presenting formal documents like a driver’s license, passport, or birth certificate. In the digital world, individuals cannot definitively prove who they are, and the malicious can easily masquerade as someone they are not.
+
+This gap between physical and digital identity has led to an exponential increase in online fraud as more interactions and financial transactions have gone digital. It has also led to a rapid rise in misinformation and disinformation propagating through online social media.
+
+ADI Association agrees with industry experts, standards bodies, governments, and global companies that addressing these issues is a priority. ADI Association believes:
+
+- An innovative approach to digital identity is needed to bring the digital world as close to the physical world as possible.
+- User accountability is essential for a functioning society, but it is missing from the digital world.
+- Privacy is a fundamental right of every user and must be preserved in a system of accountability.
+- Providing a straightforward way to check a user’s digital identity and asserted credentials can also reduce fraud in the physical world.
+- Any approach must support the 20% of the global population without a digital identity today.
+
+Using these insights, ADI Association designed an architecture for Accountable Digital Identity (ADI). Its goal is to define a global digital identity framework that establishes trust and accountability across all participants. This framework must be open, interoperable, trustable across borders, and equitable across participants.
+
+In the physical world, identities are created at birth by a trusted group of people. Parents choose names; hospitals record birth events; and governments create birth records, which are then used by individuals to register at schools, employers, banks, medical facilities, and so on. Everything an individual does in life is tied to that identity, and that identity becomes the accountable party. ADI Association has defined a similar concept for the digital world, called the “Digital Address.”
+
+A Digital Address is created when a User is onboarded by a trusted Issuer who has an existing, vetted relationship with that User. Educational institutions, employers, financial institutions, medical facilities, and government entities like the DMV and Passport Office can play this role. A unique cryptographic representation of the User is created with attributes that are unique to the User. The User binds to this representation using FIDO. The representation is then given a user-friendly name, called the Digital Address. The Digital Address is the human-readable representation of the unique cryptographic key created for the User by a trusted identity source.
+
+Once the Digital Address is created and bound with FIDO credentials, the User can request their personal data to be linked to that Digital Address. The personal data stays at the original source in a W3C Verifiable Credential format. Only metadata, using decentralized identifiers, is stored at the ADI Interchange, which is the service point that connects Users, Issuers, and Service Providers. This allows Users to share their personal data with Service Providers of their choice, disclosing only the information relevant to the requestor. Privacy is preserved because data is not shared without the consent of the User.
+
+Service Providers can trust the system because data verification comes directly from the Issuers. The Interchange keeps track of all interactions using one-time identifiers attached to the Digital Address. If there is ever a need to get details of any User for any interaction, the Interchange can provide the Service Provider with the issuing information for that Digital Address. This brings accountability into the system, which can then be leveraged under appropriate legal and governance frameworks to provide accountability across borders.
+
+An ADI Interchange onboards Users, Issuers, and Service Providers in a trusted manner and enables them to interact with each other. They can verify identity to mitigate fraud, and they can preserve privacy and consent to improve regulatory compliance. Interchanges in different regions of the world work independently of each other but communicate and interoperate as described in this specification.
+
+The principles underlying the design of the ADI architecture and the definition of the specification are:
+
+1. Make creating and using a Digital Address simple for Users
+2. Make deployment simple for Issuers and Service Providers.
+3. Integrate with existing identity infrastructure and data stores.
+4. Support existing applications and infrastructure without requiring changes.
+5. Provide interoperability across different ADI Interchanges.
+6. Support cross-border and cross-region identity, including issuance and verification of data credentials.
+7. Encourage cross-network value settlements.
+8. Support all Users, including those without a smart device. 
