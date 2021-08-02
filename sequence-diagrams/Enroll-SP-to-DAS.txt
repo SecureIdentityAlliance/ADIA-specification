@@ -1,0 +1,71 @@
+title Enroll a SP to DAS
+actor SP Admin
+participant SP
+participant DAS
+actor DAS Admin
+participant ARD
+participant AGD
+
+SP Admin -> +DAS: Entity details (HIDA Attibutes) and Primary contact
+DAS->DAS: Save Request [Status=NEW]. Generate REQUEST_ID
+DAS-> -SP Admin: Send Request Reference\n[REQUEST_ID, Status=New]
+
+DAS Admin->DAS: Review Pending Request [REQUEST_ID]
+DAS->DAS: ADIA-FN-001: Compute HIDA = hash (ID-attributes)
+DAS->>+ARD: ADIA-DR-001: Lookup TA_SP_DAS for [HIDA, DAS_ID]
+ARD->>AGD: ADIA-DR-001: Lookup TA_SP_DAS for [HIDA, DAS_ID]
+AGD->AGD: lookup TA for HIDA
+
+
+alt TA not found
+AGD->AGD: Generate TA = random
+AGD-->>ARD: ADIA-DR-001:No conflict with TA\nReturn TA_SP_DAS = hash[TA,DAS_ID]
+ARD-->>-DAS: ADIA-DR-001:No conflict with TA
+else TA found
+note over SP,DAS
+Enroll an SP with existing Digital Address
+end note
+end
+
+
+DAS Admin->DAS: Approve [REQUEST_ID]
+alt DAS provides Agency Services
+DAS->DAS: Provision SP Agent with HIDA [CorrelationId=REQUEST_ID]
+else
+DAS->>SP Admin: Provision SP Agent with HIDA [CorrelationId=REQUEST_ID]
+SP Admin->>DAS: Setup SP Agent and Register with DAS [REQUEST_ID]
+end
+DAS->>+SP: ADIA-DA-001: Request to create SP_ID and SP_DA for HIDA
+SP->>SP: Create SP_ID & SP_ID_PK/SK. \nCreate DIDDoc-SP
+SP->SP:  Create SP_DA
+SP-->>-DAS: ADIA-DA-001: Send [SP_DA, SP_ID, DIDDoc-SP, REQUEST_ID]
+DAS->DAS: Store [REQUEST_ID, DAS_DA, DAS_ID]
+DAS->DAS: Sign DIDDoc-SP with DAS_ID_SK
+
+DAS-->>+ARD: ADIA-DA-001: Send [SP_DA, SP_ID, DAS_ID, DIDDoc-SP]
+ARD->ARD: Sign DIDDoc-DAS with ARD_ID_SK
+ARD->>AGD: ADIA-DA-001: Send [SP_DA, SP_ID, DAS_ID, DIDDoc-SP]
+AGD->AGD: Sign DIDDoc-SP with AGD_ID_SK & \nstore in Directory
+AGD-->>ARD: ADIA-DA-001:DIDDoc save success
+ARD-->>DAS: ADIA-DA-001:DIDDoc save success
+DAS-->>-SP: ADIA-DA-001:DIDDoc save success
+
+DAS->>SP: Aries-RFC-0036-4:Issue VC
+SP-->>DAS: Aries-RFC-0036-4:ACK
+
+
+SP->>+DAS: ADIA-DR-002: Request to Enroll
+alt Approve Request [REQUEST_ID]
+DAS->>ARD: ADIA-DR-002: Enroll Request [SP_ID,SP_DA, HomeDASId=DAS_ID]
+
+ARD->>AGD: ADIA-DR-002: Enroll Request [DAS_ID,DAS_DA, HomeARDId=ARD_ID]
+AGD->AGD: Store [TA,SP_ID,SP_DA, HomeDASId=DAS_ID] \nand [TA,SP_ID]
+AGD-->>ARD: ADIA-DR-002: Enrollment Complete
+ARD-->>DAS: ADIA-DR-002: Enrollment Complete
+DAS-->>SP: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
+else Reject Request [REQUEST_ID]
+DAS-->>SP: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=REJECTED]
+
+end
+DAS->DAS: Update Request [REQUEST_ID, Status]
+DAS-->-SP: Request Complete [REQUEST_ID, Status]

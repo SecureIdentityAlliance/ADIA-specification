@@ -1,0 +1,32 @@
+title VC Issued to a User by an Issuer
+
+Actor User
+Participant DAA
+Participant Cloud Agent
+participant DAS
+Participant Issuer
+Participant VC Store
+
+User <<->> Issuer: Authenticate
+User <<->> Issuer: Request issue VC [DA or DAS_USER_ID]
+Note over Issuer, User, DAA
+Ask subject to give consent for issuing a VC
+end note
+
+Issuer -> +Cloud Agent: Aries-RFC-0036-2: Credential offer
+opt
+Cloud Agent -> DAA: Show user what is being offered
+DAA <-> User: FIDO Authentication
+DAA <->DAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
+DAA -> Cloud Agent: If Authentication Success, accept credential offer
+end
+
+Cloud Agent -->> -Issuer: Aries-RFC-0036-3: Credential request (nonce included)
+Issuer -> Issuer: Sign VC \n[ISSUER_ID_SK]
+Issuer->VC Store: Save VC
+VC Store --> Issuer: Save VC Success
+
+Issuer -->> +Cloud Agent : ADIA-FN-003: Save VC metadata \n[DAS_USER_ID, CREDENTIAL_ID, \nCREDENTIAL_SCHEMA_ID, ISSUER_ID]
+Cloud Agent -> Cloud Agent : Store VC metadata
+Cloud Agent -->> -Issuer: ADIA-FN-003:VC metadata save success
+Cloud Agent->>DAA: Notify User of VC issuance
