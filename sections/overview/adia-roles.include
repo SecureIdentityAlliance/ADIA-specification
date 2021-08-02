@@ -54,7 +54,7 @@ The <dfn>ADIA Regional Directory</dfn> (<dfn>ARD</dfn>) is a directory that serv
 
 Each directory serves a particular scope. Scopes can be geopolitical, like a country, or organizational, such as a multi-national medical organization or a university. Each directory serves to uniquely identify each participant via digital address or a collection of attributes.
 
-A ADIA Regional Directory shall:
+An ADIA Regional Directory shall:
 * prevent a person from intentionally or unintentionally creating more than one Trust Anchor within a given scope.
 * provide interoperability between multiple <a>Digital Address Service</a>s within its scope.
 * provide discovery and routing services between one or more <a>Digital Address Service</a>s.
@@ -217,7 +217,7 @@ The <a>User</a> can then use their <a>Digital Address</a> for various purposes; 
 * Grant consent for verification requests from <a>Service Provider</a>s ([[#sctn-vc-presentation-and-verification-1]]).
 
 The <a>User</a> is cryptographically represented by the <dfn export="true">Cloud Agent</dfn>.  The <a>Cloud Agent</a> is a cloud accessible entity
-that acts on behalf of the user.  More specifically this entity reliably maintains the cryptographic material (e.g. <a>DAS_USER_ID_SK</a>) 
+that acts on behalf of the user.  More specifically this entity reliably maintains the cryptographic material (e.g. <a>DAS_USER_ID_SK</a>)
 that is required for the interaction with the other entities. <a>Users</a> may select a <a>Cloud Agent</a> of their choice.
 The <a>User</a> uses its <a>DAA</a> to securely communicate with the (remote) <a>Cloud Agent</a>.
 
