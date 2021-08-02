@@ -38,7 +38,7 @@ There is an installation wizard that will guide you to connect GitHub Desktop to
 # Generating HTML version
 
 There are three scripts:
-## Compile all bileshed files to HTML
+## Compile all bikeshed files to HTML
   ```
    > ./compile.sh
   ```
