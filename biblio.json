@@ -67,7 +67,7 @@
         "publisher": "ADI Association",
         "status": "Editor's Draft",
         "title": "ADIA Specification Governance",
-        "href": "references/adia-governance/ADIA%20Specification%20Governance.pdf"
+        "href": "https://adiassociation.github.io/ADIA-specification/ADIA-spec-governance.html"
     },
     "ADIA-Corporate-Governance": {
         "authors": [
@@ -77,7 +77,7 @@
         "publisher": "ADI Association",
         "status": "Editor's Draft",
         "title": "ADIA Corporate Governance",
-        "href": "references/adia-governance/ADIA%Corporate%20Governance.pdf"
+        "href": "https://adiassociation.github.io/ADIA-specification/ADIA-corporate-governance.html"
     },
     "FIDOCTAP": {
         "authors": [
