@@ -36,3 +36,10 @@ The principles underlying the design of the ADI architecture and the definition 
 6. Support cross-border and cross-region identity, including issuance and verification of data credentials.
 7. Encourage cross-network value settlements.
 8. Support all Users, including those without a smart device.
+
+
+The ADIA specification comprises of:
+- [[!ADIA-Overview]] (This Document)
+- [[!ADIA-Protocol]]
+- [[!ADIA-Specification-Governance]]
+- [[!ADIA-Corporate-Governance]]
