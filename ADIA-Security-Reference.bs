@@ -1,0 +1,75 @@
+<!-- -*- mode: Text; eval: (auto-fill-mode 1); -*- -->
+<pre class='metadata'>
+Title: Accountable Digital Identity Association (ADIA) Security Reference
+Shortname: adia-secref
+Prepare for TR: true
+Level: 1
+Status: ED
+Group: fido
+URL:
+Editor: Rolf Lindemann, rolf@noknok.com
+
+Abstract: The ADIA Security Reference describes the ADIA security goals, assets to be protected, the security measures and the relation between security measures and goals.
+
+Issue Tracking: GitHub https://github.com/ADIAssociation/ADIA-specification/issues
+Text Macro: INFORMATIVE <em>This section is not normative.</em>
+Text Macro: NORMATIVE <em>This section is normative.</em>
+Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Local Boilerplate: header yes, footer yes, logo yes, copyright yes
+Markup Shorthands: css off, markdown on
+</pre>
+
+<pre class="link-defaults">
+spec:html; type:dfn; for:environment settings object; text:global object
+spec:infra; type:dfn; text:list
+spec:url; type:dfn; text:domain
+spec:url; type:dfn; text:valid domain;
+spec:webappsec-credential-management-1; type:dictionary; for:/; text:CredentialRequestOptions
+spec:webidl; type:interface; text:Promise
+</pre>
+
+<!-- only put content here if you want a custom status of document not
+  the specification-maturity-appropriate boilerplate -->
+
+# ADIA Security and Privacy Goals # {#sctn-adia-secref-goals}
+1. Allow Users to present a claim to the service provider, where
+    1. SG-1: the service provider can verify that the shared claim was issued by an Issuer belonging to the ADIA ecosystem (and the assurance level this issuer was vetted at) and    
+    2. SG-2: the service provider can verify that the entity presenting the claim is the subject of that claim    
+2. SG-3: Ensure that the user needs to consent with the action of sharing the claim(s)
+3. SG-4: Ensure that the user can select the claims to be shared (not only all claims or none).
+4. SG-5: Ensure the issuer doesn't learn who the service provider is (Note: the service provider will learn who the issuer is)
+5. SG-6: Ensure that a service provider that receives two claims doesn't learn whether the two claims belong to the same user *beyond* the degree of overlapping claims, i.e. We don't introduce another correlation handle.  For example, if a service provider receives two claims that the respective subject is older than 21, there is no way for the service provider to know whether the two claims belong to the same or two different users.  In the case the full name, birthdate etc. are included in the claims the service provider will learn that two claims containing the same attributes will likely or even certainly relate to the same users.
+6. SG-7: Assessable level of assurance - throughout the system (IAL and AAL)
+7. SG-8: Robust minimum assurance level with
+    1. Credential guessing resilience, i.e. provide robust protection against eavesdroppers, e.g. be resilient to physical observation, resilient to targeted impersonation, resilient to throttled and unthrottled guessing
+    2. Credential Disclosure Resilience: Be resilient to phishing attacks and real-time phishing attack, including resilience to online attacks by adversaries able to actively manipulate network traffic
+    3. Verifier Leak Resilience: Be resilient to leaks from other relying parties. I.e., nothing that a verifier could possibly leak can help an attacker impersonate a user to another relying party (e.g. claim's subject to service provider or user to issuer).
+    4. Credential Leak Resilience: Be resilient to leaks from other credentials. I.e., nothing that a particular credential could possibly leak can help an attacker to impersonate a user
+    5. Forgery Resistance: Be resilient to Forgery Attacks (Impersonation Attacks). I.e. prevent attackers from attempting to modify intercepted communications in order to masquerade as a legitimate user and/or provide invalid claims.
+    6. Parallel Session Resistance: Be resilient to Parallel Session Attacks. Without knowing a user's credential, an attacker can masquerade as the legitimate user by creating a valid message out of some eavesdropped communication between the user and an issuer or service provider.
+    7. Forwarding Resistance: Be resilient to Forwarding and Replay Attacks. Having intercepted previous communications, an attacker can impersonate the legitimate user or provide invalid claims to the system. The attacker can replay or forward the intercepted messages.
+    
+
+# ADIA Assets to be Protected # {#sctn-adia-secref-assets}
+See section "Trust Model" of the ADIA specification.
+
+1. Private keys of:
+    1. ADIA Global Directory
+    1. ADIA Regional Directory
+    1. Digital Address Service (DAS), key maintained by the DAS agent.
+    1. Issuer, key maintained by the Issuer Agent.    
+    1. Service Provider, key maintained by the Service Provider Agent.    
+    1. User
+        1. DAS User ID key, maintained by the DAS User Agent	
+        2. FIDO keys, maintained by the user's FIDO Authenticator(s), and all other FIDO related assets that need protection, see https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html#assets-to-be-protected 
+
+
+# ADIA Security Measures # {#sctn-adia-secref-measures}
+
+Issue: TODO
+
+## Relation between Measures and Goals ## {#sctn-adia-secref-measgoals}
+
+Issue: TODO
+
+
