@@ -1,7 +1,7 @@
 <!doctype html><html lang="en">
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  <title>ADIA Corporate Governance</title>
+  <title>Accountable Digital Identity Association (ADIA) Security Reference</title>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 <style data-fill-with="stylesheet">/******************************************************************************
  *                   Style sheet for the W3C specifications                   *
@@ -1668,18 +1668,14 @@ dfn > a.self-link::before      { content: "#"; }
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.didalliance.org/"> <img alt="ADI Association" height="48" src="resources/logo.svg" width="157"> </a> </p>
-   <h1 class="p-name no-ref" id="title">ADIA Corporate Governance</h1>
+   <h1 class="p-name no-ref" id="title">Accountable Digital Identity Association (ADIA) Security Reference</h1>
    <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-10-19">19 October 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>Issue Tracking:
-     <dd><a href="https://github.com/DIDAlliance/DID-specification">GitHub</a>
-     <dt class="editor">Editors:
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:ramesh@digitaltrust.net">Ramesh Kesanupalli</a>
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:BarbirA@cvshealth.com">Abbie Barbir</a>
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:ken@indicio.tech">Ken Ebert</a>
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:sam@indicio.tech">Sam Curren</a>
-     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:trevor@indicio.tech">Trevor Butterworth</a>
+     <dd><a href="https://github.com/ADIAssociation/ADIA-specification/issues">GitHub</a>
+     <dt class="editor">Editor:
+     <dd class="editor p-author h-card vcard"><a class="p-name fn u-email email" href="mailto:rolf@noknok.com">Rolf Lindemann</a>
     </dl>
    </div>
    <div data-fill-with="warning"></div>
@@ -1688,159 +1684,92 @@ dfn > a.self-link::before      { content: "#"; }
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>ADIA Corporate Governance</p>
+   <p>The ADIA Security Reference describes the ADIA security goals, assets to be protected, the security measures and the relation between security measures and goals.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
    <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
    <ol class="toc" role="directory">
-    <li><a href="#sctn-adia-corporate-governance-vision"><span class="secno">1</span> <span class="content">Vision</span></a>
-    <li><a href="#sctn-adia-corporate-governance-mission"><span class="secno">2</span> <span class="content">Mission</span></a>
-    <li><a href="#sctn-adia-corporate-governance-core-principles"><span class="secno">3</span> <span class="content">Core Principles</span></a>
+    <li><a href="#sctn-adia-secref-goals"><span class="secno">1</span> <span class="content">ADIA Security and Privacy Goals</span></a>
+    <li><a href="#sctn-adia-secref-assets"><span class="secno">2</span> <span class="content">ADIA Assets to be Protected</span></a>
     <li>
-     <a href="#sctn-adia-board-gov-guidelines"><span class="secno">4</span> <span class="content">Board Governance Guidelines</span></a>
+     <a href="#sctn-adia-secref-measures"><span class="secno">3</span> <span class="content">ADIA Security Measures</span></a>
      <ol class="toc">
-      <li><a href="#sctn-adia-board-responsibility"><span class="secno">4.1</span> <span class="content">Board Responsibilities</span></a>
-      <li><a href="#sctn-adia-board-composition"><span class="secno">4.2</span> <span class="content">Board composition and membership</span></a>
-      <li><a href="#sctn-adia-board-officers"><span class="secno">4.3</span> <span class="content">Board officers</span></a>
-      <li><a href="#sctn-adia-business-conduct"><span class="secno">4.4</span> <span class="content">Code of business conduct and ethics</span></a>
-      <li><a href="#sctn-adia-board-performance"><span class="secno">4.5</span> <span class="content">Board Performance</span></a>
-      <li><a href="#sctn-adia-officer-performance"><span class="secno">4.6</span> <span class="content">Officer performance and compensation</span></a>
-      <li><a href="#sctn-adia-board-terms"><span class="secno">4.7</span> <span class="content">Board terms</span></a>
-      <li><a href="#sctn-adia-board-session"><span class="secno">4.8</span> <span class="content">Board session</span></a>
-      <li><a href="#sctn-adia-board-committees"><span class="secno">4.9</span> <span class="content">Board committees</span></a>
-      <li><a href="#sctn-adia-board-interaction"><span class="secno">4.10</span> <span class="content">Board interaction with outside parties</span></a>
-      <li><a href="#sctn-adia-board-compliance"><span class="secno">4.11</span> <span class="content">Compliance with laws, rules, and regulations</span></a>
-      <li><a href="#sctn-adia-conflict-of-interest"><span class="secno">4.12</span> <span class="content">Conflict of interest</span></a>
-      <li><a href="#sctn-adia-bribery"><span class="secno">4.13</span> <span class="content">Bribery, payments to government</span></a>
-      <li><a href="#sctn-adia-discrimination"><span class="secno">4.14</span> <span class="content">Discrimination and harassment</span></a>
-      <li><a href="#sctn-adia-health-safety"><span class="secno">4.15</span> <span class="content">Health and safety</span></a>
-      <li><a href="#sctn-adia-record-keeping"><span class="secno">4.16</span> <span class="content">Record keeping and reporting</span></a>
-      <li><a href="#sctn-Whistleblower"><span class="secno">4.17</span> <span class="content">Whistleblower policy</span></a>
-      <li><a href="#sctn-board-directors"><span class="secno">4.18</span> <span class="content">Board of Directors</span></a>
-     </ol>
-    <li><a href="#sctn-adia-gov-bylaws"><span class="secno">5</span> <span class="content">Bylaws</span></a>
-    <li>
-     <a href="#sctn-adia-gov-cert-incorporation"><span class="secno">6</span> <span class="content">Certificate of Incorporation</span></a>
-     <ol class="toc">
-      <li>
-       <a href="#sctn-acknowledgments"><span class="secno">6.1</span> <span class="content">Acknowledgments</span></a>
-       <ol class="toc">
-        <li><a href="#sctn-acknowledgments-contributors"><span class="secno">6.1.1</span> <span class="content">Contributors</span></a>
-        <li><a href="#sctn-acknowledgments-Reviewers"><span class="secno">6.1.2</span> <span class="content">Reviewers</span></a>
-       </ol>
+      <li><a href="#sctn-adia-secref-measgoals"><span class="secno">3.1</span> <span class="content">Relation between Measures and Goals</span></a>
      </ol>
     <li><a href="#issues-index"><span class="secno"></span> <span class="content">Issues Index</span></a>
    </ol>
   </nav>
   <main>
-   <h2 class="heading settled" data-level="1" id="sctn-adia-corporate-governance-vision"><span class="secno">1. </span><span class="content">Vision</span><a class="self-link" href="#sctn-adia-corporate-governance-vision"></a></h2>
-   <p>The ADI Association is committed to developing an inclusive, interoperable ecosystem for digital identity that empowers people by giving them control of their digital identity data in a privacy-preserving, distributed, secure, and verifiable way.</p>
-   <h2 class="heading settled" data-level="2" id="sctn-adia-corporate-governance-mission"><span class="secno">2. </span><span class="content">Mission</span><a class="self-link" href="#sctn-adia-corporate-governance-mission"></a></h2>
-   <p>The ADI Association is a nonprofit mutual benefit corporation dedicated to solving the most pressing issues around the operation and adoption of decentralized identity systems.</p>
-   <p>The Association will achieve this through bringing together a coalition of public and private organizations to advance a new interoperable specification for digital identity, the ADIA Specification.</p>
-   <p>The ADIA Specification is built on privacy-by-design principles while providing strong authentication, secure data sharing, and a range of identity services, including the capacity for consent-based participant accountability.</p>
-   <p>The ADIA Specification is easy to incorporate into existing identity management systems, incorporates KYC and FIDO processes, is interoperable with other decentralized identity systems, and, above all, be easy to adopt and use by participants, including those without access to data-enabled devices.</p>
-   <p>The ADIA Association is committed to developing this inclusive, interoperable ecosystem for digital identity, one that empowers people by giving them control of their digital identity data in a way that is accountable and privacy-preserving, distributed, secure, and verifiable.</p>
-   <h2 class="heading settled" data-level="3" id="sctn-adia-corporate-governance-core-principles"><span class="secno">3. </span><span class="content">Core Principles</span><a class="self-link" href="#sctn-adia-corporate-governance-core-principles"></a></h2>
-   <dl>
-    <dt>User Privacy
-    <dd>End-users hold and control their own data.
-    <dt>No Data Consolidation
-    <dd>Identity data is never centralized, and is under the control of users and their trusted issuers.
-    <dt>Data Disclosures
-    <dd>Data is only released with the Individual consent of the end-user.
-    <dt>Inclusivity
-    <dd>Serving everyone, regardless of technology limitations.
-    <dt>Trust and Accountability
-    <dd>Trust and accountability are fundamental necessities for a functioning business and society. These can be generated within a distributed ecosystem through consent- based identity escrow services
-    <dt>Interoperability
-    <dd>The ADI Association recognizes the critical importance of interoperability to the success of its specification and to the widespread adoption of verifiable credentials.
-    <dt>Trusted Onboarding
-    <dd>The ADI Association believes that the users should be onboarded by a trusted issuer after robust identity verification, providing the strong assurance needed by businesses and organizations.
-    <dt>Inclusion
-    <dd>ADI Association is working to close the digital identity divide between those with the means to access digital identity and those without. Technologies, processes, and governance must enable the fullest possible participation by everyone.
-    <dt>Community Driven
-    <dd>The ADI Association is committed to supporting the work of the identity community and its standards organizations wherever possible. The ADI Association Specification is open for the community to adopt and expand.
-    <dt>Diversity
-    <dd>The ADI Association is committed to reflecting the universality of identity by developing and recruiting a diverse organization and board, as well as nurturing an environment in which diversity can flourish.
-    <dt>Organizational Culture
-    <dd>The ADI Association is committed to creating a collaborative, consultative, and inclusive work culture that respects and reflects the diversity of its membership.
-    <dt>Advocacy and Education
-    <dd>The ADI Association is committed to advocating for decentralized identity and educating people about its benefits.
-   </dl>
-   <h2 class="heading settled" data-level="4" id="sctn-adia-board-gov-guidelines"><span class="secno">4. </span><span class="content">Board Governance Guidelines</span><a class="self-link" href="#sctn-adia-board-gov-guidelines"></a></h2>
-   <h3 class="heading settled" data-level="4.1" id="sctn-adia-board-responsibility"><span class="secno">4.1. </span><span class="content">Board Responsibilities</span><a class="self-link" href="#sctn-adia-board-responsibility"></a></h3>
-   <p>The Board of Directors is responsible for managing the business and affairs of the ADI Association in accordance with the Association’s status as a California Mutual Benefit Corporation and for ensuring the integrity of the ADIA Specification. The Board represents and is accountable only to the board-level membership of the ADI Association.</p>
-   <p>The Board is collectively responsible for ensuring the success of the ADIA ecosystem for accountable, privacy preserving digital identity through the ADI Association’s growth and its continued development, expansion, and governance of the ADIA Specification.</p>
-   <p>Other important responsibilities of the Board include:</p>
+   <h2 class="heading settled" data-level="1" id="sctn-adia-secref-goals"><span class="secno">1. </span><span class="content">ADIA Security and Privacy Goals</span><a class="self-link" href="#sctn-adia-secref-goals"></a></h2>
    <ol>
     <li data-md>
-     <p>Ensuring high standards of corporate governance are observed at all times</p>
+     <p>Allow Users to present a claim to the service provider, where</p>
+     <ol>
+      <li data-md>
+       <p>SG-1: the service provider can verify that the shared claim was issued by an Issuer belonging to the ADIA ecosystem (and the assurance level this issuer was vetted at) and</p>
+      <li data-md>
+       <p>SG-2: the service provider can verify that the entity presenting the claim is the subject of that claim</p>
+     </ol>
     <li data-md>
-     <p>Determining and establishing the strategic direction of the Association</p>
+     <p>SG-3: Ensure that the user needs to consent with the action of sharing the claim(s)</p>
     <li data-md>
-     <p>Overseeing the delivery of planned results by monitoring performance against agreed strategic and other objectives and targets</p>
+     <p>SG-4: Ensure that the user can select the claims to be shared (not only all claims or none).</p>
     <li data-md>
-     <p>Establishing such committees as it considers appropriate to conduct its business</p>
+     <p>SG-5: Ensure the issuer doesn’t learn who the service provider is (Note: the service provider will learn who the issuer is)</p>
+    <li data-md>
+     <p>SG-6: Ensure that a service provider that receives two claims doesn’t learn whether the two claims belong to the same user <em>beyond</em> the degree of overlapping claims, i.e. We don’t introduce another correlation handle.  For example, if a service provider receives two claims that the respective subject is older than 21, there is no way for the service provider to know whether the two claims belong to the same or two different users.  In the case the full name, birthdate etc. are included in the claims the service provider will learn that two claims containing the same attributes will likely or even certainly relate to the same users.</p>
+    <li data-md>
+     <p>SG-7: Assessable level of assurance - throughout the system (IAL and AAL)</p>
+    <li data-md>
+     <p>SG-8: Robust minimum assurance level with</p>
+     <ol>
+      <li data-md>
+       <p>Credential guessing resilience, i.e. provide robust protection against eavesdroppers, e.g. be resilient to physical observation, resilient to targeted impersonation, resilient to throttled and unthrottled guessing</p>
+      <li data-md>
+       <p>Credential Disclosure Resilience: Be resilient to phishing attacks and real-time phishing attack, including resilience to online attacks by adversaries able to actively manipulate network traffic</p>
+      <li data-md>
+       <p>Verifier Leak Resilience: Be resilient to leaks from other relying parties. I.e., nothing that a verifier could possibly leak can help an attacker impersonate a user to another relying party (e.g. claim’s subject to service provider or user to issuer).</p>
+      <li data-md>
+       <p>Credential Leak Resilience: Be resilient to leaks from other credentials. I.e., nothing that a particular credential could possibly leak can help an attacker to impersonate a user</p>
+      <li data-md>
+       <p>Forgery Resistance: Be resilient to Forgery Attacks (Impersonation Attacks). I.e. prevent attackers from attempting to modify intercepted communications in order to masquerade as a legitimate user and/or provide invalid claims.</p>
+      <li data-md>
+       <p>Parallel Session Resistance: Be resilient to Parallel Session Attacks. Without knowing a user’s credential, an attacker can masquerade as the legitimate user by creating a valid message out of some eavesdropped communication between the user and an issuer or service provider.</p>
+      <li data-md>
+       <p>Forwarding Resistance: Be resilient to Forwarding and Replay Attacks. Having intercepted previous communications, an attacker can impersonate the legitimate user or provide invalid claims to the system. The attacker can replay or forward the intercepted messages.</p>
+     </ol>
    </ol>
-   <h3 class="heading settled" data-level="4.2" id="sctn-adia-board-composition"><span class="secno">4.2. </span><span class="content">Board composition and membership</span><a class="self-link" href="#sctn-adia-board-composition"></a></h3>
-   <p>Each Member of the ADI Association with board-level membership has the right
-to appoint an individual to be a Director. The Board shall consist of the Directors appointed by the Members that possess a Board level membership of the Association. The Board of Directors may designate one of the Directors as the Chair of the Board of Directors (the “Chair”).</p>
-   <h3 class="heading settled" data-level="4.3" id="sctn-adia-board-officers"><span class="secno">4.3. </span><span class="content">Board officers</span><a class="self-link" href="#sctn-adia-board-officers"></a></h3>
-   <p>The Board will appoint an Executive Director, Marketing Director, and a Certification Director as officers of the Association to oversee the administration and business functions. These positions will either be concurrently occupied by Directors of the Association or by filled by executive staff.</p>
-   <h3 class="heading settled" data-level="4.4" id="sctn-adia-business-conduct"><span class="secno">4.4. </span><span class="content">Code of business conduct and ethics</span><a class="self-link" href="#sctn-adia-business-conduct"></a></h3>
-   <p>Directors and officers must abide by the relevant provisions of the Association’s Code of Business Conduct and Ethics.</p>
-   <h3 class="heading settled" data-level="4.5" id="sctn-adia-board-performance"><span class="secno">4.5. </span><span class="content">Board Performance</span><a class="self-link" href="#sctn-adia-board-performance"></a></h3>
-   <p class="issue" id="issue-004b5d6a"><a class="self-link" href="#issue-004b5d6a"></a> Board Performance - The contents need to be created and added by the ADI Association Board</p>
-   <h3 class="heading settled" data-level="4.6" id="sctn-adia-officer-performance"><span class="secno">4.6. </span><span class="content">Officer performance and compensation</span><a class="self-link" href="#sctn-adia-officer-performance"></a></h3>
-   <p class="issue" id="issue-ab76eead"><a class="self-link" href="#issue-ab76eead"></a> Officer performance and compensation - The contents need to be created and added by the ADI Association Board</p>
-   <h3 class="heading settled" data-level="4.7" id="sctn-adia-board-terms"><span class="secno">4.7. </span><span class="content">Board terms</span><a class="self-link" href="#sctn-adia-board-terms"></a></h3>
-   <p class="issue" id="issue-3de44f97"><a class="self-link" href="#issue-3de44f97"></a> Board terms - The contents need to be created and added by the ADI Association Board</p>
-   <h3 class="heading settled" data-level="4.8" id="sctn-adia-board-session"><span class="secno">4.8. </span><span class="content">Board session</span><a class="self-link" href="#sctn-adia-board-session"></a></h3>
-   <p class="issue" id="issue-6502f138"><a class="self-link" href="#issue-6502f138"></a> Board session - The contents need to be created and added by the ADI Association Board</p>
-   <h3 class="heading settled" data-level="4.9" id="sctn-adia-board-committees"><span class="secno">4.9. </span><span class="content">Board committees</span><a class="self-link" href="#sctn-adia-board-committees"></a></h3>
-   <p class="issue" id="issue-cc694e14"><a class="self-link" href="#issue-cc694e14"></a> Board committees  - The contents need to be created and added by the ADI Association Board</p>
-   <h3 class="heading settled" data-level="4.10" id="sctn-adia-board-interaction"><span class="secno">4.10. </span><span class="content">Board interaction with outside parties</span><a class="self-link" href="#sctn-adia-board-interaction"></a></h3>
-   <p class="issue" id="issue-f1317864"><a class="self-link" href="#issue-f1317864"></a> Board interaction with outside parties - The contents need to be created and added by the ADI Association Board</p>
-   <h3 class="heading settled" data-level="4.11" id="sctn-adia-board-compliance"><span class="secno">4.11. </span><span class="content">Compliance with laws, rules, and regulations</span><a class="self-link" href="#sctn-adia-board-compliance"></a></h3>
-   <p>Officers and Employees of the ADI Association must follow applicable laws, rules and regulations at all times. Employees with questions about the applicability or interpretation of any law, rule or regulation, should contact the Association’s legal representative.</p>
-   <h3 class="heading settled" data-level="4.12" id="sctn-adia-conflict-of-interest"><span class="secno">4.12. </span><span class="content">Conflict of interest</span><a class="self-link" href="#sctn-adia-conflict-of-interest"></a></h3>
-   <p>In performing their job duties, officers and employees are expected to use their judgment to act, at all times and in all ways, in the best interests of the ADI Association. A conflict of interest exists in any situation where the personal or other interest of a Director, officer, or staff member or a connected party or organization might in any way affect the discharge by a Director, officer, or staff member of their duties or deliberations in a situation where a Director or, officer, or staff member or a connected party or organization could benefit. A Director, officer, or staff member, or their relatives, friends, associates or associated organizations must not under any circumstances obtain any such benefit.</p>
-   <h3 class="heading settled" data-level="4.13" id="sctn-adia-bribery"><span class="secno">4.13. </span><span class="content">Bribery, payments to government</span><a class="self-link" href="#sctn-adia-bribery"></a></h3>
-   <p>Officers and Employees may not bribe anyone for any reason, whether in dealings with governments or the private sector. The U.S. Foreign Corrupt Practices Act, and similar laws in other countries, prohibit offering or giving anything of value, directly or indirectly, to government officials in order to obtain or retain business. Employees may not make illegal payments to government officials themselves or through a third party.</p>
-   <h3 class="heading settled" data-level="4.14" id="sctn-adia-discrimination"><span class="secno">4.14. </span><span class="content">Discrimination and harassment</span><a class="self-link" href="#sctn-adia-discrimination"></a></h3>
-   <p>The ADI Association is an equal opportunity employer and will not tolerate any illegal discrimination or harassment of any kind.</p>
-   <h3 class="heading settled" data-level="4.15" id="sctn-adia-health-safety"><span class="secno">4.15. </span><span class="content">Health and safety</span><a class="self-link" href="#sctn-adia-health-safety"></a></h3>
-   <p>The ADI Association is committed to providing a safe and healthy work environment. Each employee is responsible for maintaining a safe and healthy workplace by following safety and health rules and practices and reporting any accidents, injuries and unsafe conditions, procedures, or behaviors.
-Violence and threatening behavior are not permitted. Employees must report to work in a condition to perform their duties, free from the influence of illegal drugs or alcohol.</p>
-   <h3 class="heading settled" data-level="4.16" id="sctn-adia-record-keeping"><span class="secno">4.16. </span><span class="content">Record keeping and reporting</span><a class="self-link" href="#sctn-adia-record-keeping"></a></h3>
-   <p>The ADI Association’s books, records, accounts and financial statements must be maintained in appropriate detail, must accurately reflect the Company’s transactions, and must conform to applicable law.</p>
-   <h3 class="heading settled" data-level="4.17" id="sctn-Whistleblower"><span class="secno">4.17. </span><span class="content">Whistleblower policy</span><a class="self-link" href="#sctn-Whistleblower"></a></h3>
-   <p>The ADI Association is committed to providing all staff with the chance to speak anonymously should they feel that the values of the ADI Association are not being adhered to or if they wish to report misconduct. See the ADI Association’s Whistleblower Policy.</p>
-   <p class="issue" id="issue-43b186ad"><a class="self-link" href="#issue-43b186ad"></a> [Link to whistleblower document] [THIS DOCUMENT NEEDS TO BE REVIEWED BY COUNSEL]</p>
-   <h3 class="heading settled" data-level="4.18" id="sctn-board-directors"><span class="secno">4.18. </span><span class="content">Board of Directors</span><a class="self-link" href="#sctn-board-directors"></a></h3>
-   <p>The Board of Directors of the ADI Association must comply with the relevant sections of this Code of Conduct document, including conflicts of interest, insider trading and compliance with all applicable laws, rules and regulations.</p>
-   <h2 class="heading settled" data-level="5" id="sctn-adia-gov-bylaws"><span class="secno">5. </span><span class="content">Bylaws</span><a class="self-link" href="#sctn-adia-gov-bylaws"></a></h2>
-   <p class="issue" id="issue-73dd781c"><a class="self-link" href="#issue-73dd781c"></a> Need to link to Bylaws versions of these documents.</p>
-   <h2 class="heading settled" data-level="6" id="sctn-adia-gov-cert-incorporation"><span class="secno">6. </span><span class="content">Certificate of Incorporation</span><a class="self-link" href="#sctn-adia-gov-cert-incorporation"></a></h2>
-   <p class="issue" id="issue-8687ec86"><a class="self-link" href="#issue-8687ec86"></a> Need to link to Certificate of Incorporation</p>
-   <h3 class="heading settled" data-level="6.1" id="sctn-acknowledgments"><span class="secno">6.1. </span><span class="content">Acknowledgments</span><a class="self-link" href="#sctn-acknowledgments"></a></h3>
-   <h4 class="heading settled" data-level="6.1.1" id="sctn-acknowledgments-contributors"><span class="secno">6.1.1. </span><span class="content">Contributors</span><a class="self-link" href="#sctn-acknowledgments-contributors"></a></h4>
-   <ul>
+   <h2 class="heading settled" data-level="2" id="sctn-adia-secref-assets"><span class="secno">2. </span><span class="content">ADIA Assets to be Protected</span><a class="self-link" href="#sctn-adia-secref-assets"></a></h2>
+    See section "Trust Model" of the ADIA specification. 
+   <ol>
     <li data-md>
-     <p><a href="suresh@digitaltrust.net">Suresh Batchu</a></p>
-    <li data-md>
-     <p><a href="mailto:kiran@digitaltrust.net">Kiran Addepalli</a></p>
-    <li data-md>
-     <p><a href="mailto:jason@digitaltrust.net">Jason Burnett</a></p>
-    <li data-md>
-     <p><a href="mailto:tinaps@badgeinc.com">Tina Srivastava</a></p>
-    <li data-md>
-     <p><a href="rolf@noknok.com">Rolf Lindemann</a></p>
-   </ul>
-   <h4 class="heading settled" data-level="6.1.2" id="sctn-acknowledgments-Reviewers"><span class="secno">6.1.2. </span><span class="content">Reviewers</span><a class="self-link" href="#sctn-acknowledgments-Reviewers"></a></h4>
-   <p>If a credit is missing from the credit list below, please log a ticket at GitHub to be recognized in future updates.</p>
+     <p>Private keys of:</p>
+     <ol>
+      <li data-md>
+       <p>ADIA Global Directory</p>
+      <li data-md>
+       <p>ADIA Regional Directory</p>
+      <li data-md>
+       <p>Digital Address Service (DAS), key maintained by the DAS agent.</p>
+      <li data-md>
+       <p>Issuer, key maintained by the Issuer Agent.</p>
+      <li data-md>
+       <p>Service Provider, key maintained by the Service Provider Agent.</p>
+      <li data-md>
+       <p>User</p>
+       <ol>
+        <li data-md>
+         <p>DAS User ID key, maintained by the DAS User Agent</p>
+        <li data-md>
+         <p>FIDO keys, maintained by the user’s FIDO Authenticator(s), and all other FIDO related assets that need protection, see https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html#assets-to-be-protected</p>
+       </ol>
+     </ol>
+   </ol>
+   <h2 class="heading settled" data-level="3" id="sctn-adia-secref-measures"><span class="secno">3. </span><span class="content">ADIA Security Measures</span><a class="self-link" href="#sctn-adia-secref-measures"></a></h2>
+   <p class="issue" id="issue-b7b1e314"><a class="self-link" href="#issue-b7b1e314"></a> TODO</p>
+   <h3 class="heading settled" data-level="3.1" id="sctn-adia-secref-measgoals"><span class="secno">3.1. </span><span class="content">Relation between Measures and Goals</span><a class="self-link" href="#sctn-adia-secref-measgoals"></a></h3>
+   <p class="issue" id="issue-b7b1e314①"><a class="self-link" href="#issue-b7b1e314①"></a> TODO</p>
   </main>
 <script>
 (function() {
@@ -1973,13 +1902,6 @@ Violence and threatening behavior are not permitted. Employees must report to wo
 </script>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
-   <div class="issue"> Board Performance - The contents need to be created and added by the ADI Association Board <a class="issue-return" href="#issue-004b5d6a" title="Jump to section">↵</a></div>
-   <div class="issue"> Officer performance and compensation - The contents need to be created and added by the ADI Association Board <a class="issue-return" href="#issue-ab76eead" title="Jump to section">↵</a></div>
-   <div class="issue"> Board terms - The contents need to be created and added by the ADI Association Board <a class="issue-return" href="#issue-3de44f97" title="Jump to section">↵</a></div>
-   <div class="issue"> Board session - The contents need to be created and added by the ADI Association Board <a class="issue-return" href="#issue-6502f138" title="Jump to section">↵</a></div>
-   <div class="issue"> Board committees  - The contents need to be created and added by the ADI Association Board <a class="issue-return" href="#issue-cc694e14" title="Jump to section">↵</a></div>
-   <div class="issue"> Board interaction with outside parties - The contents need to be created and added by the ADI Association Board <a class="issue-return" href="#issue-f1317864" title="Jump to section">↵</a></div>
-   <div class="issue"> [Link to whistleblower document] [THIS DOCUMENT NEEDS TO BE REVIEWED BY COUNSEL] <a class="issue-return" href="#issue-43b186ad" title="Jump to section">↵</a></div>
-   <div class="issue"> Need to link to Bylaws versions of these documents. <a class="issue-return" href="#issue-73dd781c" title="Jump to section">↵</a></div>
-   <div class="issue"> Need to link to Certificate of Incorporation <a class="issue-return" href="#issue-8687ec86" title="Jump to section">↵</a></div>
+   <div class="issue"> TODO <a class="issue-return" href="#issue-b7b1e314" title="Jump to section">↵</a></div>
+   <div class="issue"> TODO <a class="issue-return" href="#issue-b7b1e314①" title="Jump to section">↵</a></div>
   </div>
