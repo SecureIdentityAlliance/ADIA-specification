@@ -49,6 +49,8 @@ spec:webidl; type:interface; text:Promise
     6. Parallel Session Resistance: Be resilient to Parallel Session Attacks. Without knowing a user's credential, an attacker can masquerade as the legitimate user by creating a valid message out of some eavesdropped communication between the user and an issuer or service provider.
     7. Forwarding Resistance: Be resilient to Forwarding and Replay Attacks. Having intercepted previous communications, an attacker can impersonate the legitimate user or provide invalid claims to the system. The attacker can replay or forward the intercepted messages.
     
+Issue: The DAS will learn whenever claims are presented - this needs
+    to be discussed somewhere.
 
 # ADIA Assets to be Protected # {#sctn-adia-secref-assets}
 See section "Trust Model" of the ADIA specification.
@@ -74,4 +76,11 @@ Issue: TODO
 
 Issue: TODO
 
+# ADIA Security Assumptions # {#sctn-adia-security-assumptions}
+
+Issue: TODO
+
+# Threat Analysis # {#sctn-adia-threat-analysis}
+
+Issue: TODO
 
