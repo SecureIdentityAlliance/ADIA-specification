@@ -61,7 +61,9 @@ See section "Trust Model" of the ADIA specification.
     1. Service Provider, key maintained by the Service Provider Agent.    
     1. User
         1. DAS User ID key, maintained by the DAS User Agent	
-        2. FIDO keys, maintained by the user's FIDO Authenticator(s), and all other FIDO related assets that need protection, see https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html#assets-to-be-protected 
+        2. FIDO keys, maintained by the user's FIDO Authenticator(s), and all other FIDO related assets that need protection, see
+            <a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html#assets-to-be-protected">FIDO
+            Security Reference</a>.
 
 
 # ADIA Security Measures # {#sctn-adia-secref-measures}
