@@ -93,7 +93,9 @@ Issue: TODO
 	        <td></td>
 		<td>
 		  The Digital Address Application used by the user
-     	          is corrupted.
+     	          is corrupted (e.g. user installed and uses a
+	          malicious version or the original DAA was modified
+  	          by malware).
 		  
 		  <p><b>Consequences:</b>
 		    The USER_FIDO_PK/SK might be weakley protected
@@ -115,8 +117,11 @@ Issue: TODO
 		    malicious in User Initiated Digital Address Creation
 		    with DAA.
 
-		    The DAA might maliciousl disclose the DAS_USER_ID
+		    The DAA might maliciously disclose the DAS_USER_ID
 		    and/or the DA.
+
+		    The DAA might maliciously disclose the SP_ID
+		    to the issuer.
 
 		    The DAA might display a malicious set of
 		    attributes to be included in a verifiable claim in VC
@@ -142,7 +147,7 @@ Issue: TODO
 		        the iOS equivalent in order to allow the server to
 		        verify that the original DAA is being used.
 		  </p></td>
-		<td>[=SG-1=], [=SG-3=], [=SG-4=], [=SG-6=]</td>
+		<td>[=SG-1=], [=SG-3=], [=SG-4=], [=SG-5=], [=SG-6=]</td>
 	      </tr>
 	    </tbody>
 	  </table>
