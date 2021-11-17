@@ -137,6 +137,10 @@ Issue: TODO
 		    server to verify whether USER_FIDO_PK was
 		    generated in an authenticator with acceptable
 		    security characteristics.
+
+ 		    Issue: Should add a need to using SafetyNet and
+		        the iOS equivalent in order to allow the server to
+		        verify that the original DAA is being used.
 		  </p></td>
 		<td>[=SG-1=], [=SG-3=], [=SG-4=], [=SG-6=]</td>
 	      </tr>
