@@ -33,14 +33,14 @@ spec:webidl; type:interface; text:Promise
 
 # ADIA Security and Privacy Goals # {#sctn-adia-secref-goals}
 1. Allow Users to present a claim to the service provider, where
-    1. SG-1: the service provider can verify that the shared claim was issued by an Issuer belonging to the ADIA ecosystem (and the assurance level this issuer was vetted at) and    
-    2. SG-2: the service provider can verify that the entity presenting the claim is the subject of that claim    
-2. SG-3: Ensure that the user needs to consent with the action of sharing the claim(s)
-3. SG-4: Ensure that the user can select the claims to be shared (not only all claims or none).
-4. SG-5: Ensure the issuer doesn't learn who the service provider is (Note: the service provider will learn who the issuer is)
-5. SG-6: Ensure that a service provider that receives two claims doesn't learn whether the two claims belong to the same user *beyond* the degree of overlapping claims, i.e. We don't introduce another correlation handle.  For example, if a service provider receives two claims that the respective subject is older than 21, there is no way for the service provider to know whether the two claims belong to the same or two different users.  In the case the full name, birthdate etc. are included in the claims the service provider will learn that two claims containing the same attributes will likely or even certainly relate to the same users.
-6. SG-7: Assessable level of assurance - throughout the system (IAL and AAL)
-7. SG-8: Robust minimum assurance level with
+    1. <dfn>SG-1</dfn>: the service provider can verify that the shared claim was issued by an Issuer belonging to the ADIA ecosystem (and the assurance level this issuer was vetted at) and    
+    2. <dfn>SG-2</dfn>: the service provider can verify that the entity presenting the claim is the subject of that claim    
+2. <dfn>SG-3</dfn>: Ensure that the user needs to consent with the action of sharing the claim(s)
+3. <dfn>SG-4</dfn>: Ensure that the user can select the claims to be shared (not only all claims or none).
+4. <dfn>SG-5</dfn>: Ensure the issuer doesn't learn who the service provider is (Note: the service provider will learn who the issuer is)
+5. <dfn>SG-6</dfn>: Ensure that a service provider that receives two claims doesn't learn whether the two claims belong to the same user *beyond* the degree of overlapping claims, i.e. We don't introduce another correlation handle.  For example, if a service provider receives two claims that the respective subject is older than 21, there is no way for the service provider to know whether the two claims belong to the same or two different users.  In the case the full name, birthdate etc. are included in the claims the service provider will learn that two claims containing the same attributes will likely or even certainly relate to the same users.
+6. <dfn>SG-7</dfn>: Assessable level of assurance - throughout the system (IAL and AAL)
+7. <dfn>SG-8</dfn>: Robust minimum assurance level with
     1. Credential guessing resilience, i.e. provide robust protection against eavesdroppers, e.g. be resilient to physical observation, resilient to targeted impersonation, resilient to throttled and unthrottled guessing
     2. Credential Disclosure Resilience: Be resilient to phishing attacks and real-time phishing attack, including resilience to online attacks by adversaries able to actively manipulate network traffic
     3. Verifier Leak Resilience: Be resilient to leaks from other relying parties. I.e., nothing that a verifier could possibly leak can help an attacker impersonate a user to another relying party (e.g. claim's subject to service provider or user to issuer).
@@ -82,5 +82,66 @@ Issue: TODO
 
 # Threat Analysis # {#sctn-adia-threat-analysis}
 
-Issue: TODO
+## Threats to the User Environment ## {#sctn-ta-user}
+
+	  <table class='threats'><COLGROUP width="100%"><COL width="5em"><COL><COL width="5em"></COLGROUP>
+	    <thead>
+	      <tr><th><dfn>T-1.1.1</dfn></th><th>DAA Corruption</th><th>Violates</th></tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td></td>
+		<td>
+		  The Digital Address Application used by the user
+     	          is corrupted.
+		  
+		  <p><b>Consequences:</b>
+		    The USER_FIDO_PK/SK might be weakley protected
+		    (e.g. generated in SW rather than TEE, or
+		    generated such that it could be used without a
+		    user gesture, or generated such that export is allowed).
+
+		    The USER_FIDO_PK might be misused for unexpected
+		    purposes.
+
+		    QR-code scanned at "User Onboarding to First
+		    Issuer" might be misinterpreted.
+
+ 		    Data for remote ID Proofing might be taken from a
+		    source other than the device's live camera (e.g. a
+		    recording).
+
+		    ID-Attributes for HIDA computation might be
+		    malicious in User Initiated Digital Address Creation
+		    with DAA.
+
+		    The DAA might maliciousl disclose the DAS_USER_ID
+		    and/or the DA.
+
+		    The DAA might display a malicious set of
+		    attributes to be included in a verifiable claim in VC
+		    Issued to a User by an Issuer.
+
+		    The DAA might display a malicious set of
+		    attributes to be included in a verifiable claim to
+		    be presented to a service provider or a malicious
+		    service provider name in Verifiable Presentation and
+		    Verification.
+
+ 		    The DAA might maliciously chose Option 1 instead
+		    of Option 2 in Verifiable Presentation and
+		    Verification.
+		  </p>
+		  <p><b>Mitigations:</b>
+		    Attestation of FIDO Authenticator allows the
+		    server to verify whether USER_FIDO_PK was
+		    generated in an authenticator with acceptable
+		    security characteristics.
+		  </p></td>
+		<td>[=SG-1=], [=SG-3=], [=SG-4=], [=SG-6=]</td>
+	      </tr>
+	    </tbody>
+	  </table>
+
+## Threats to the Issuer ## {#sctn-ta-issuer}
 
