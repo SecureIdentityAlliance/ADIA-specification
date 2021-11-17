@@ -82,11 +82,21 @@ Issue: TODO
 
 # Threat Analysis # {#sctn-adia-threat-analysis}
 
+## Threats to the Global Directory ## {#sctn-ta-agd}
+
+## Threats to a Regional Directory ## {#sctn-ta-ard}
+
+## Threats to the DAS ## {#sctn-ta-das}
+
+## Threats to the Issuer ## {#sctn-ta-issuer}
+
+## Threats to the Service Provider ## {#sctn-ta-sp}
+
 ## Threats to the User Environment ## {#sctn-ta-user}
 
 	  <table class='threats'><COLGROUP width="100%"><COL width="5em"><COL><COL width="5em"></COLGROUP>
 	    <thead>
-	      <tr><th><dfn>T-1.1.1</dfn></th><th>DAA Corruption</th><th>Violates</th></tr>
+	      <tr><th><dfn>T-6.1.1</dfn></th><th>DAA Corruption</th><th>Violates</th></tr>
 	    </thead>
 	    <tbody>
 	      <tr>
@@ -98,7 +108,7 @@ Issue: TODO
   	          by malware).
 		  
 		  <p><b>Consequences:</b>
-		    The USER_FIDO_PK/SK might be weakley protected
+		    The USER_FIDO_PK/SK might be weakly protected
 		    (e.g. generated in SW rather than TEE, or
 		    generated such that it could be used without a
 		    user gesture, or generated such that export is allowed).
@@ -152,5 +162,36 @@ Issue: TODO
 	    </tbody>
 	  </table>
 
-## Threats to the Issuer ## {#sctn-ta-issuer}
+	  <table class='threats'><COLGROUP width="100%"><COL width="5em"><COL><COL width="5em"></COLGROUP>
+	    <thead>
+	      <tr><th><dfn>T-6.1.2</dfn></th><th>Cloud Agent Corruption</th><th>Violates</th></tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td></td>
+		<td>
+		  The Cloud Agent that acts on behalf of the user is
+		  attacked.
+		  
+		  <p><b>Consequences:</b>
+		   The attacker might try to extract the DAS_USER_ID_SK.
+
+		   The attacker might try to misuse the DAS_USER_ID_SK
+		   (e.g. to sign or decrypt messages withouh approval
+		   of the user).
+
+		   Issue: Should consider renaming DAS_USER_ID_PK to
+		       CA_USER_ID_PK (for cloud agent)
+		   </p>
+		  <p><b>Mitigations:</b>
+		  
+		   Issue: TODO
+		  
+		  </p></td>
+		<td>[=SG-1=], [=SG-2=], [=SG-3=], [=SG-4=], [=SG-5=], [=SG-6=]</td>
+	      </tr>
+	    </tbody>
+	  </table>
+
+
 
