@@ -90,6 +90,32 @@ Issue: TODO
 
 ## Threats to the Issuer ## {#sctn-ta-issuer}
 
+	  <table class='threats'><COLGROUP width="100%"><COL width="5em"><COL><COL width="5em"></COLGROUP>
+	    <thead>
+	      <tr><th><dfn>T-6.1.2</dfn></th><th>Malicious Emploee</th><th>Violates</th></tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td></td>
+		<td>
+		  A malicious employee forges an ID Verification.
+		  
+		  <p><b>Consequences:</b>
+
+		  Issue: TODO
+
+		  </p>
+		  <p><b>Mitigations:</b>
+		  
+		   Issue: TODO
+		  
+		  </p></td>
+		<td>[=SG-1=]</td>
+	      </tr>
+	    </tbody>
+	  </table>
+
+
 ## Threats to the Service Provider ## {#sctn-ta-sp}
 
 ## Threats to the User Environment ## {#sctn-ta-user}
@@ -185,10 +211,11 @@ Issue: TODO
 		   </p>
 		  <p><b>Mitigations:</b>
 		  
-		   Issue: TODO
+		   Issue: TODO, e.g. let Cloud Agent use HSMs and
+		       tight coupling of the HSM to the User's FIDO Key(s).
 		  
 		  </p></td>
-		<td>[=SG-1=], [=SG-2=], [=SG-3=], [=SG-4=], [=SG-5=], [=SG-6=]</td>
+		<td>[=SG-2=], [=SG-3=], [=SG-4=], [=SG-5=], [=SG-6=]</td>
 	      </tr>
 	    </tbody>
 	  </table>
