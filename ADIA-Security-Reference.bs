@@ -123,6 +123,9 @@ Issue: For each item above, describe what methods are in place to protect these
     assets. E.g. we use signed DIDDocs for integrity protection of the
     *_PK to *_ID relations, etc.
 
+
+Note: This is a note.
+
 # ADIA Security Measures # {#sctn-adia-secref-measures}
 
 Issue: TODO
