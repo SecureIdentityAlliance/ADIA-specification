@@ -53,20 +53,75 @@ Issue: The DAS will learn whenever claims are presented - this needs
     to be discussed somewhere.
 
 # ADIA Assets to be Protected # {#sctn-adia-secref-assets}
-See section "Trust Model" of the ADIA specification.
+See section "Trust Model" of the ADIA specification for an overview.
 
-1. Private keys of:
-    1. ADIA Global Directory
-    1. ADIA Regional Directory
-    1. Digital Address Service (DAS), key maintained by the DAS agent.
-    1. Issuer, key maintained by the Issuer Agent.    
-    1. Service Provider, key maintained by the Service Provider Agent.    
-    1. User
-        1. DAS User ID key, maintained by the DAS User Agent	
-        2. FIDO keys, maintained by the user's FIDO Authenticator(s), and all other FIDO related assets that need protection, see
-            <a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html#assets-to-be-protected">FIDO
-            Security Reference</a>.
+## Private Key Assets ## {#sctn-adia-secref-assets-sk}
+The following private keys need to be protected against disclosure ("confidentiality protection"):
 
+<figure id="fig-privkey-asset-protection">
+ <table><COLGROUP width="100%"><COL width="60%"><COL width="40%"></COLGROUP>
+  <thead>
+   <tr><th>Asset</th><th>Protection Method</tr>
+  </thead>
+  <tbody>
+   <tr> <td>AGD_ID_SK</td> <td>TODO</td> </tr>
+   <tr> <td>ARD_ID_SK</td> <td>TODO</td> </tr>  
+   <tr> <td>DAS_USER_ID_SK</td> <td>TODO</td> </tr>  
+   <tr> <td>USER_FIDO_SK</td> <td>maintained by the user's FIDO Authenticator(s), and all other FIDO related assets that need protection, see
+        <a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html#assets-to-be-protected">FIDO
+        Security Reference</a>.
+	</td>
+   </tr>  
+   <tr> <td>DAS_ID_SK</td> <td>TODO</td> </tr>  
+   <tr> <td>ISSUER_ID_SK</td> <td>TODO</td> </tr>  
+   <tr> <td>SP_ID_SK</td> <td>TODO</td> </tr>  
+  </tbody>
+ </table>
+ <figcaption>Protection of Private Keys</figcaption>
+</figure>
+
+
+## Data Relation Assets ## {#sctn-adia-secref-assets-relations}
+
+<figure id="fig-data-asset-protection">
+ <table><COLGROUP width="100%"><COL width="60%"><COL width="40%"></COLGROUP>
+  <thead>
+   <tr><th>Asset</th><th>Protection Method</tr>
+  </thead>
+  <tbody>
+   <tr> <td>Issuer stored identity proofing records and their relation to the User's DA</td> <td>TODO</td> </tr>
+   <tr> <td>Relation of the Digital Address to a Trust Anchor</td> <td>TODO</td> </tr>  
+
+   <tr> <td>AGD_ID to AGD_DA relation</td> <td>TODO</td> </tr>
+   <tr> <td>ARD_ID to ARD_DA relation</td> <td>TODO</td> </tr>
+   <tr> <td>DAS_USER_ID to User's DA relation</td> <td>TODO</td> </tr>
+   <tr> <td>DAS_ID to DAS_DA relation</td> <td>TODO</td> </tr>
+   <tr> <td>ISSUER_ID to ISSUER_DA relation</td> <td>TODO</td> </tr>
+   <tr> <td>SP_ID to SP_DA relation</td> <td>TODO</td> </tr>
+
+   <tr> <td>DAS_USER_ID_PK to DAS_USER_ID relation</td> <td>signed DIDDoc-USER</td> </tr>
+   <tr> <td>ISSUER_ID_PK to ISSUER_ID relation</td> <td>signed DIDDoc-ISSUER</td> </tr>
+   <tr> <td>DAS_ID_PK to DAS_ID relation</td> <td>signed DIDDoc-DAS</td> </tr>
+   <tr> <td>ARD_ID_PK to ARD_ID relation</td> <td>signed DIDDoc-ARD</td> </tr>
+   <tr> <td>AGD_ID_PK to AGD_ID relation</td> <td>signed DIDDoc-AGD</td> </tr>
+
+   <tr> <td>Relation of the various Claims in a VC to the
+         Claim identifying the (Credential) Subject (see ADIA Trust Model).</td>
+        <td>signed DIDDoc-AGD</td>
+   </tr>
+   <tr> <td>Relation of a VC to the VP and to the respective public key
+         that is used to the presentation.</td>
+        <td>signed DIDDoc-AGD</td>
+   </tr>
+  </tbody>
+ </table>
+ <figcaption>Protection of Data Relation Assets</figcaption>
+</figure>
+
+
+Issue: For each item above, describe what methods are in place to protect these
+    assets. E.g. we use signed DIDDocs for integrity protection of the
+    *_PK to *_ID relations, etc.
 
 # ADIA Security Measures # {#sctn-adia-secref-measures}
 
@@ -92,7 +147,7 @@ Issue: TODO
 
 	  <table class='threats'><COLGROUP width="100%"><COL width="5em"><COL><COL width="5em"></COLGROUP>
 	    <thead>
-	      <tr><th><dfn>T-6.1.2</dfn></th><th>Malicious Emploee</th><th>Violates</th></tr>
+	      <tr><th><dfn>T-4.1.1</dfn></th><th>Malicious Employee</th><th>Violates</th></tr>
 	    </thead>
 	    <tbody>
 	      <tr>
