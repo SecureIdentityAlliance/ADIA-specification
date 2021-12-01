@@ -107,11 +107,11 @@ The following private keys need to be protected against disclosure ("confidentia
 
    <tr> <td>Relation of the various Claims in a VC to the
          Claim identifying the (Credential) Subject (see ADIA Trust Model).</td>
-        <td>signed DIDDoc-AGD</td>
+        <td>signed VC object</td>
    </tr>
    <tr> <td>Relation of a VC to the VP and to the respective public key
          that is used to the presentation.</td>
-        <td>signed DIDDoc-AGD</td>
+        <td>signed VP object</td>
    </tr>
   </tbody>
  </table>
