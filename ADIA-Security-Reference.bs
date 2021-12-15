@@ -155,6 +155,25 @@ Issue: TODO
 
 ## Relation between Measures and Goals ## {#sctn-adia-secref-measgoals}
 
+<figure id="fig-sm-to-sg">
+ <table><COLGROUP width="100%"><COL width="30%"><COL width="70%"></COLGROUP>
+  <thead>
+   <tr><th>Security Goal</th><th>Supporting Security Measures</tr>
+  </thead>
+  <tbody>
+   <tr> <td><a>SG-1</a></td> <td><a>SM-1</a></td> </tr>
+   <tr> <td><a>SG-2</a></td> <td>TODO</td> </tr>
+   <tr> <td><a>SG-3</a></td> <td>TODO</td> </tr>
+   <tr> <td><a>SG-4</a></td> <td>TODO</td> </tr>
+   <tr> <td><a>SG-5</a></td> <td>TODO</td> </tr>
+   <tr> <td><a>SG-6</a></td> <td>TODO</td> </tr>
+   <tr> <td><a>SG-7</a></td> <td>TODO</td> </tr>
+   <tr> <td><a>SG-8</a></td> <td>TODO</td> </tr>
+  </tbody>
+ </table>
+ <figcaption>Relation between Security Measures and Goals</figcaption>
+</figure>
+
 Issue: TODO
 
 # ADIA Security Assumptions # {#sctn-adia-security-assumptions}
