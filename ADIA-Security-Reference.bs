@@ -124,9 +124,32 @@ Issue: For each item above, describe what methods are in place to protect these
     *_PK to *_ID relations, etc.
 
 
-Note: This is a note.
-
 # ADIA Security Measures # {#sctn-adia-secref-measures}
+1. <dfn>SM-1</dfn>: Tamper-Evidence through digitally signed data:
+    1. <a>User</a>s digitally sign the <a>VP</a>s to provide evidence
+        that the credential subject is presenting the <a>VC</a>.
+    1. <a>Issuer</a>s digitally sign the <a>VC</a>s based on information the <a>Issuer</a>s have verified.
+    1. <a>DAS</a> digitally signs the DIDDoc-USER, i.e. the relation
+        between the <A>DAS_USER_ID_PK</a> and the <a>DAS_USER_ID</a>.
+    1. <a>DAS</a> digitally signs the DIDDoc-ISSUER, i.e. the relation
+        between the <A>ISSUER_ID_PK</a> and the <a>ISSUER_ID</a>.
+    1. <a>ARD</a> digitally signs the DIDDoc-DAS, i.e. the relation
+        between the <A>DAS_ID_PK</a> and the <a>DAS_ID</a>.
+    1. <a>AGD</a> digitally signs the DIDDoc-ARD, i.e. the relation
+        between the <A>ARD_ID_PK</a> and the <a>ARD_ID</a>.
+
+1. <dfn>SM-2</dfn>: secure communication between the entities (except the User) using DIDComm [[DIDCOMM-MESSAGING-V1]]
+
+1. <dfn>SM-3</dfn>: secure communication between the <a>User</a>'s DAA
+    and <a>Issuer</a> using TLS and Issuer specific methods to verify
+    the user's identity (e.g. remote ID Proofing).
+
+1. <dfn>SM-4</dfn>: secure communication between the <a>User</a>'s DAA and the
+    1. <a>Cloud Agent</a> using FIDO authenticated TLS.
+    2. <a>SP</a> using TLS and TODO! Not yet clear how a session
+        initiated by the User would be tied to a <a>VP</a> in order to
+        know whether the User at the end of the line is the
+        <a>VP</a>'s subject.
 
 Issue: TODO
 
