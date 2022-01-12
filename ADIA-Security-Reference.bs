@@ -89,19 +89,40 @@ The following private keys need to be protected against disclosure ("confidentia
    <tr><th>Asset</th><th>Protection Method</tr>
   </thead>
   <tbody>
-   <tr> <td>Issuer stored identity proofing records and their relation to the User's DA</td> <td>TODO</td> </tr>
-   <tr> <td>Relation of the Digital Address to a Trust Anchor</td> <td>TODO</td> </tr>  
+   <tr> <td>Issuer stored identity proofing records and their relation to the User's DA</td> <td>Stored in Issuer DB
 
-   <tr> <td>AGD_ID to AGD_DA relation</td> <td>TODO</td> </tr>
-   <tr> <td>ARD_ID to ARD_DA relation</td> <td>TODO</td> </tr>
-   <tr> <td>DAS_USER_ID to User's DA relation</td> <td>TODO</td> </tr>
-   <tr> <td>DAS_ID to DAS_DA relation</td> <td>TODO</td> </tr>
-   <tr> <td>ISSUER_ID to ISSUER_DA relation</td> <td>Stored in AGD
+Issue: Is this proprietary to the Issuer?  Do we have minimum security requirements for that?
+    </td> </tr>
+   <tr> <td>Relation of a Digital Address to a Trust Anchor in
+          general</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
 
 Issue: What is the protection method?  How can that be audited?
+     </td> </tr>  
 
+   <tr> <td>AGD_ID to AGD_DA relation</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+     </td> </tr>
+   <tr> <td>ARD_ID to ARD_DA relation</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+     </td> </tr>
+   <tr> <td>DAS_USER_ID to User's DA relation</td> <td>Stored in ARD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+    </td> </tr>
+   <tr> <td>DAS_ID to DAS_DA relation</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+    </td> </tr>
+   <tr> <td>ISSUER_ID to ISSUER_DA relation</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
       </td> </tr>
-   <tr> <td>SP_ID to SP_DA relation</td> <td>TODO</td> </tr>
+   <tr> <td>SP_ID to SP_DA relation</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+      </td> </tr>
 
    <tr> <td>DAS_USER_ID_PK to DAS_USER_ID relation</td> <td>signed DIDDoc-USER</td> </tr>
    <tr> <td>ISSUER_ID_PK to ISSUER_ID relation</td> <td>signed DIDDoc-ISSUER</td> </tr>
