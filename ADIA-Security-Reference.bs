@@ -96,11 +96,16 @@ The following private keys need to be protected against disclosure ("confidentia
    <tr> <td>ARD_ID to ARD_DA relation</td> <td>TODO</td> </tr>
    <tr> <td>DAS_USER_ID to User's DA relation</td> <td>TODO</td> </tr>
    <tr> <td>DAS_ID to DAS_DA relation</td> <td>TODO</td> </tr>
-   <tr> <td>ISSUER_ID to ISSUER_DA relation</td> <td>TODO</td> </tr>
+   <tr> <td>ISSUER_ID to ISSUER_DA relation</td> <td>Stored in AGD
+
+Issue: What is the protection method?  How can that be audited?
+
+      </td> </tr>
    <tr> <td>SP_ID to SP_DA relation</td> <td>TODO</td> </tr>
 
    <tr> <td>DAS_USER_ID_PK to DAS_USER_ID relation</td> <td>signed DIDDoc-USER</td> </tr>
    <tr> <td>ISSUER_ID_PK to ISSUER_ID relation</td> <td>signed DIDDoc-ISSUER</td> </tr>
+   <tr> <td>SP_ID_PK to SP_ID relation</td> <td>signed DIDDoc-SP</td> </tr>
    <tr> <td>DAS_ID_PK to DAS_ID relation</td> <td>signed DIDDoc-DAS</td> </tr>
    <tr> <td>ARD_ID_PK to ARD_ID relation</td> <td>signed DIDDoc-ARD</td> </tr>
    <tr> <td>AGD_ID_PK to AGD_ID relation</td> <td>signed DIDDoc-AGD</td> </tr>
@@ -162,7 +167,7 @@ Issue: TODO
   </thead>
   <tbody>
    <tr> <td><a>SG-1</a></td> <td><a>SM-1</a></td> </tr>
-   <tr> <td><a>SG-2</a></td> <td>TODO</td> </tr>
+   <tr> <td><a>SG-2</a></td> <td>TODO: Seems unclear at this stage!</td> </tr>
    <tr> <td><a>SG-3</a></td> <td>TODO</td> </tr>
    <tr> <td><a>SG-4</a></td> <td>TODO</td> </tr>
    <tr> <td><a>SG-5</a></td> <td>TODO</td> </tr>
