@@ -199,11 +199,28 @@ Issue: TODO
      know whether this communication relates to the session initiated
      from some user in the beginning.
  </td> </tr>
-   <tr> <td><a>SG-3</a></td> <td>TODO</td> </tr>
-   <tr> <td><a>SG-4</a></td> <td>TODO</td> </tr>
-   <tr> <td><a>SG-5</a></td> <td>TODO</td> </tr>
+   <tr> <td><a>SG-3</a></td> <td>User consent is enforced by the User's <a>Cloud
+                                 Agent</a> via the <a>DAA</a>.
+			     </td> </tr>
+   <tr> <td><a>SG-4</a></td> <td>Claim selection is performed by
+                                 User's <a>Cloud Agent</a> via the
+                                <a>DAA</a>.  A VC structure is being
+                                  used that supports fine grained
+                                  claim selection (TODO add reference).
+                             </td> </tr>
+   <tr> <td><a>SG-5</a></td> <td>TODO: Ensure that step "Request for
+      VC along with sending User's consent" in "VC
+      Presentation and Verification" doesn't include any SP specific
+      hints.  Since this communication with the Issuer is synchronous,
+      the Issuer at least learns the time when the user wants to share
+      the VC.  That could statistically disclose some information
+      about the SP.  The Issuer learns how often a user shares a
+      VC. Ideally, ADIA would "hide" that information and "cache" the VC.
+                             </td> </tr>
    <tr> <td><a>SG-6</a></td> <td>TODO</td> </tr>
-   <tr> <td><a>SG-7</a></td> <td>TODO</td> </tr>
+   <tr> <td><a>SG-7</a></td> <td>TODO: We need to track IAL and AAL
+     throughout the system.  We also need to avoid unexpected attack
+     points that might reduce the IAL/AAL. </td> </tr>
    <tr> <td><a>SG-8</a></td> <td>TODO</td> </tr>
   </tbody>
  </table>
