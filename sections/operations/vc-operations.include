@@ -79,6 +79,11 @@ Please refer to the section on [[#sctn-trust-model]] for details on how the <a>I
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
 
+Issue: The third arrow ("Provide SP_ID to DAA") seems wrong: The SP cannot directly connect to the DAA. I think this arrow should start a User (meaning user's Browser) and then do to DAA.
+
+Issue: We should rename user to User's Browser to be more precise.
+
+Issue: Need to add more steps to the end that show how the User's Browser would continue interacting with the SP.  Essentially the SP has established an authenticated session a known user and now needs to return an authorization token to the user's browser.  ADIA spec should be open to what type of token is used, but we need to show how that could be done.
 
 ### Present Anonymous Credentials ### {#sctn-anon-creds}
 
@@ -99,6 +104,7 @@ to avoid the exposure of a correlation handle.
     <figcaption>Verifiable Presentation and Verification (Option 2: Anonymous)</figcaption>
 </figure>
 
+Issue: Need to add more steps to the end that show how the User's Browser would continue interacting with the SP.  Essentially the SP has established an authenticated session a known user and now needs to return an authorization token to the user's browser.  ADIA spec should be open to what type of token is used, but we need to show how that could be done.
 
 
 ## User Consent ## {#sctn-user-consents}
