@@ -33,8 +33,8 @@ spec:webidl; type:interface; text:Promise
 
 # ADIA Security and Privacy Goals # {#sctn-adia-secref-goals}
 1. Allow Users to present a claim to the service provider, where
-    1. <dfn>SG-0</dfn>: the claims accurately reflect the subject of
-         the <a>VC</a>
+    1. <dfn>SG-0</dfn>: the claims accurately reflect the subject and
+         owner of the <a>VC</a>
     2. <dfn>SG-1</dfn>: the service provider can verify that the shared claim was issued by an Issuer belonging to the ADIA ecosystem (and the assurance level this issuer was vetted at) and    
     3. <dfn>SG-2</dfn>: the service provider can verify that the entity presenting the claim is the subject of that claim    
 2. <dfn>SG-3</dfn>: Ensure that the user needs to consent with the action of sharing the claim(s)
