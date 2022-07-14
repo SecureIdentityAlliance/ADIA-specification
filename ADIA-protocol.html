@@ -1269,7 +1269,7 @@ Possible extra rowspan handling
 	ul.index ul,
 	ul.index dl { font-size: smaller; }
 	@media not print {
-		ul.index li span:not(.dfn-paneled) {
+		ul.index li a + span {
 			white-space: nowrap;
 			color: transparent; }
 		ul.index li a:hover + span,
@@ -1500,8 +1500,8 @@ Possible extra rowspan handling
   }
 
   </style>
-  <meta content="Bikeshed version d7036035b, updated Fri Oct 8 17:07:11 2021 -0700" name="generator">
-  <meta content="5d01df03fb6e3ccc32a50a5807d616a5027a82a3" name="document-revision">
+  <meta content="Bikeshed version 37b7e7e68, updated Fri May 27 15:08:11 2022 -0700" name="generator">
+  <meta content="88ff81979d79c944c96c97339740bca2570ca051" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -1728,7 +1728,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.didalliance.org/"> <img alt="ADI Association" height="48" src="resources/logo.svg" width="157"> </a> </p>
    <h1 class="p-name no-ref" id="title">Accountable Digital Identity Association (ADIA) Protocols</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-11-03">3 November 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2022-07-14">14 July 2022</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>Issue Tracking:
@@ -1739,7 +1739,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright">Copyright © 2021 <a href="https://www.didalliance.org">ADI Association</a>. All Rights Reserved. </p>
+   <p class="copyright" data-fill-with="copyright">Copyright © 2022 <a href="https://www.didalliance.org">ADI Association</a>. All Rights Reserved. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -1901,18 +1901,18 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h4 class="heading settled" data-level="1.1.1" id="sctn-hida-function"><span class="secno">1.1.1. </span><span class="content">HIDA Functions</span><a class="self-link" href="#sctn-hida-function"></a></h4>
    <h5 class="heading settled" data-level="1.1.1.1" id="sctn-hida-function-users"><span class="secno">1.1.1.1. </span><span class="content">User HIDA (ADIA-FN-001)</span><a class="self-link" href="#sctn-hida-function-users"></a></h5>
    <p><strong>Request</strong></p>
-<pre class="language-json highlight">  <c- p>{</c->
-    <c- f>"@type"</c-><c- p>:</c-><c- u>"https://adiassociation.org/digital-address/1.0/compute-hida-users"</c-><c- p>,</c->
-    <c- f>"@id"</c-><c- p>:</c-><c- u>"fa04e522-d78d-4b50-a3c9-4ff73e34ffb4"</c-><c- p>,</c->
-    <c- f>"body"</c-><c- p>:</c-> <c- p>{</c->
-      <c- f>"firstName"</c-><c- p>:</c-><c- u>"UTF8 encoded firstname of the User according to the ID document (all uppercase)"</c-><c- p>,</c->
-      <c- f>"lastName"</c-><c- p>:</c-><c- u>"UTF8 encoded last name of the User according to the ID document (all uppercase)"</c-><c- p>,</c->
-      <c- f>"birthDate"</c-><c- p>:</c-><c- u>"Date of birth of the User according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]"</c-><c- p>,</c->
-      <c- f>"countryOfResidence"</c-><c- p>:</c-><c- u>"Country of residence of the User according to the ID document. Encoding MUST be ALPHA-2 country code as specified by [[!ISO3166]]"</c-><c- p>,</c->
-      <c- f>"sourceType"</c-><c- p>:</c-><c- u>"Type of the ID document. This is specified by ADIA Governance for each country"</c-><c- p>,</c->
-      <c- f>"identifier"</c-><c- p>:</c-><c- u>"Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc."</c->
-    <c- p>}</c->
+<pre class="language-json highlight"><c- p>{</c->
+  <c- f>"@type"</c-><c- p>:</c-><c- u>"https://adiassociation.org/digital-address/1.0/compute-hida-users"</c-><c- p>,</c->
+  <c- f>"@id"</c-><c- p>:</c-><c- u>"fa04e522-d78d-4b50-a3c9-4ff73e34ffb4"</c-><c- p>,</c->
+  <c- f>"body"</c-><c- p>:</c-> <c- p>{</c->
+    <c- f>"firstName"</c-><c- p>:</c-><c- u>"UTF8 encoded firstname of the User according to the ID document (all uppercase)"</c-><c- p>,</c->
+    <c- f>"lastName"</c-><c- p>:</c-><c- u>"UTF8 encoded last name of the User according to the ID document (all uppercase)"</c-><c- p>,</c->
+    <c- f>"birthDate"</c-><c- p>:</c-><c- u>"Date of birth of the User according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]"</c-><c- p>,</c->
+    <c- f>"countryOfResidence"</c-><c- p>:</c-><c- u>"Country of residence of the User according to the ID document. Encoding MUST be ALPHA-2 country code as specified by [[!ISO3166]]"</c-><c- p>,</c->
+    <c- f>"sourceType"</c-><c- p>:</c-><c- u>"Type of the ID document. This is specified by ADIA Governance for each country"</c-><c- p>,</c->
+    <c- f>"identifier"</c-><c- p>:</c-><c- u>"Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc."</c->
   <c- p>}</c->
+<c- p>}</c->
 </pre>
    <p><strong>Response</strong></p>
 <pre class="language-json highlight"><c- p>{</c->

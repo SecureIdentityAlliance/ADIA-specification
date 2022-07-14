@@ -1269,7 +1269,7 @@ Possible extra rowspan handling
 	ul.index ul,
 	ul.index dl { font-size: smaller; }
 	@media not print {
-		ul.index li span:not(.dfn-paneled) {
+		ul.index li a + span {
 			white-space: nowrap;
 			color: transparent; }
 		ul.index li a:hover + span,
@@ -1500,8 +1500,8 @@ Possible extra rowspan handling
   }
 
   </style>
-  <meta content="Bikeshed version d7036035b, updated Fri Oct 8 17:07:11 2021 -0700" name="generator">
-  <meta content="5d01df03fb6e3ccc32a50a5807d616a5027a82a3" name="document-revision">
+  <meta content="Bikeshed version 37b7e7e68, updated Fri May 27 15:08:11 2022 -0700" name="generator">
+  <meta content="88ff81979d79c944c96c97339740bca2570ca051" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -1769,7 +1769,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.didalliance.org/"> <img alt="ADI Association" height="48" src="resources/logo.svg" width="157"> </a> </p>
    <h1 class="p-name no-ref" id="title">Accountable Digital Identity Association (ADIA) Specification</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-11-03">3 November 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2022-07-14">14 July 2022</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>Issue Tracking:
@@ -1787,7 +1787,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright">Copyright © 2021 <a href="https://www.didalliance.org">ADI Association</a>. All Rights Reserved. </p>
+   <p class="copyright" data-fill-with="copyright">Copyright © 2022 <a href="https://www.didalliance.org">ADI Association</a>. All Rights Reserved. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -2495,129 +2495,126 @@ is impacted by the protection of those keys.  In other words, if cryptographic k
    </dl>
    <h3 class="heading settled" data-level="1.8" id="sctn-adia-identifiers"><span class="secno">1.8. </span><span class="content">Identifiers</span><a class="self-link" href="#sctn-adia-identifiers"></a></h3>
    <dl>
-    <dl>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="agd_id">AGD_ID</dfn>
-     <dd data-md>
-      <p>The <a data-link-type="dfn" href="#adia" id="ref-for-adia⑧">ADIA</a> Global Directory (AGD) IDentity, i.e. the the W3C DID style identifier for the <a data-link-type="dfn" href="#adia-global-directory" id="ref-for-adia-global-directory⑥">ADIA Global Directory</a>.</p>
-     <dt data-md><dfn data-dfn-type="dfn" data-export id="agd_da">AGD_DA<a class="self-link" href="#agd_da"></a></dfn>
-     <dd data-md>
-      <p>Human readable Digital Address of the ADIA Global Directory (e.g., adia@adia).</p>
-     <dt data-md><a data-link-type="dfn" href="#agd_id_pk" id="ref-for-agd_id_pk">AGD_ID_PK</a>, <a data-link-type="dfn" href="#agd_id_sk" id="ref-for-agd_id_sk">AGD_ID_SK</a>
-     <dd data-md>
-      <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#agd_id" id="ref-for-agd_id">AGD_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="agd_id">AGD_ID</dfn>
+    <dd data-md>
+     <p>The <a data-link-type="dfn" href="#adia" id="ref-for-adia⑧">ADIA</a> Global Directory (AGD) IDentity, i.e. the the W3C DID style identifier for the <a data-link-type="dfn" href="#adia-global-directory" id="ref-for-adia-global-directory⑥">ADIA Global Directory</a>.</p>
+    <dt data-md><dfn data-dfn-type="dfn" data-export id="agd_da">AGD_DA<a class="self-link" href="#agd_da"></a></dfn>
+    <dd data-md>
+     <p>Human readable Digital Address of the ADIA Global Directory (e.g., adia@adia).</p>
+    <dt data-md><a data-link-type="dfn" href="#agd_id_pk" id="ref-for-agd_id_pk">AGD_ID_PK</a>, <a data-link-type="dfn" href="#agd_id_sk" id="ref-for-agd_id_sk">AGD_ID_SK</a>
+    <dd data-md>
+     <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#agd_id" id="ref-for-agd_id">AGD_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
    more details.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ard_id">ARD_ID</dfn>
-     <dd data-md>
-      <p>The <a data-link-type="dfn" href="#adia" id="ref-for-adia⑨">ADIA</a> Regional Directory (ARD) IDentity, i.e. the the W3C DID style identifier for the <a data-link-type="dfn" href="#adia-regional-directory" id="ref-for-adia-regional-directory②">ADIA Regional Directory</a>.</p>
-     <dt data-md><dfn data-dfn-type="dfn" data-export id="ard_da">ARD_DA<a class="self-link" href="#ard_da"></a></dfn>
-     <dd data-md>
-      <p>Human readable Digital Address of the ADIA Regional Directory (e.g., acme.eu@adia).</p>
-     <dt data-md><a data-link-type="dfn" href="#ard_id_pk" id="ref-for-ard_id_pk">ARD_ID_PK</a>, <a data-link-type="dfn" href="#ard_id_sk" id="ref-for-ard_id_sk">ARD_ID_SK</a>
-     <dd data-md>
-      <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#ard_id" id="ref-for-ard_id">ARD_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ard_id">ARD_ID</dfn>
+    <dd data-md>
+     <p>The <a data-link-type="dfn" href="#adia" id="ref-for-adia⑨">ADIA</a> Regional Directory (ARD) IDentity, i.e. the the W3C DID style identifier for the <a data-link-type="dfn" href="#adia-regional-directory" id="ref-for-adia-regional-directory②">ADIA Regional Directory</a>.</p>
+    <dt data-md><dfn data-dfn-type="dfn" data-export id="ard_da">ARD_DA<a class="self-link" href="#ard_da"></a></dfn>
+    <dd data-md>
+     <p>Human readable Digital Address of the ADIA Regional Directory (e.g., acme.eu@adia).</p>
+    <dt data-md><a data-link-type="dfn" href="#ard_id_pk" id="ref-for-ard_id_pk">ARD_ID_PK</a>, <a data-link-type="dfn" href="#ard_id_sk" id="ref-for-ard_id_sk">ARD_ID_SK</a>
+    <dd data-md>
+     <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#ard_id" id="ref-for-ard_id">ARD_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
    more details.</p>
-     <dt data-md><dfn data-dfn-type="dfn" data-export id="avc">AVC<a class="self-link" href="#avc"></a></dfn>
-     <dd data-md>
-      <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="anonymous-verifiable-credential">Anonymous Verifiable Credential</dfn>.  This is a
+    <dt data-md><dfn data-dfn-type="dfn" data-export id="avc">AVC<a class="self-link" href="#avc"></a></dfn>
+    <dd data-md>
+     <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="anonymous-verifiable-credential">Anonymous Verifiable Credential</dfn>.  This is a
     special case of a <a data-link-type="dfn" href="#verifiable-credential" id="ref-for-verifiable-credential①①">Verifiable Credential</a> when the
     included claims to not uniquely identify any specific
     user.  For example a credential that just proof the user
     is older than 21.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="da">DA</dfn>
-     <dd data-md>
-      <p>Human readable <a data-link-type="dfn" href="#digital-address" id="ref-for-digital-address④①">Digital Address</a> of the <a data-link-type="dfn" href="#user" id="ref-for-user②⑧">User</a> (e.g., blackbird.us@dtx).</p>
-    </dl>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="da">DA</dfn>
+    <dd data-md>
+     <p>Human readable <a data-link-type="dfn" href="#digital-address" id="ref-for-digital-address④①">Digital Address</a> of the <a data-link-type="dfn" href="#user" id="ref-for-user②⑧">User</a> (e.g., blackbird.us@dtx).</p>
+    </dd>
     <p class="note" role="note"><span>Note:</span> The <a data-link-type="dfn" href="#da" id="ref-for-da">DA</a> doesn’t <i>have</i> to include the user’s real
       name - "fun" names are allowed and recommended. However, real
       names are still allowed and the ADIA system doesn’t check
       whether users use them.</p>
-    <dl>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="das_user_id">DAS_USER_ID</dfn>
-     <dd data-md>
-      <p>The DAS specific Decentralized Identifier (DID) related to the <a data-link-type="dfn" href="#da" id="ref-for-da①">DA</a>, e.g., did:example:123456789abcdefghi</p>
-     <dt data-md><a data-link-type="dfn" href="#das_user_id_pk" id="ref-for-das_user_id_pk">DAS_USER_ID_PK</a>, <a data-link-type="dfn" href="#das_user_id_sk" id="ref-for-das_user_id_sk①">DAS_USER_ID_SK</a>
-     <dd data-md>
-      <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#das_user_id" id="ref-for-das_user_id">DAS_USER_ID</a>.  See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="das_user_id">DAS_USER_ID</dfn>
+    <dd data-md>
+     <p>The DAS specific Decentralized Identifier (DID) related to the <a data-link-type="dfn" href="#da" id="ref-for-da①">DA</a>, e.g., did:example:123456789abcdefghi</p>
+    <dt data-md><a data-link-type="dfn" href="#das_user_id_pk" id="ref-for-das_user_id_pk">DAS_USER_ID_PK</a>, <a data-link-type="dfn" href="#das_user_id_sk" id="ref-for-das_user_id_sk①">DAS_USER_ID_SK</a>
+    <dd data-md>
+     <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#das_user_id" id="ref-for-das_user_id">DAS_USER_ID</a>.  See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
    more details.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="daa">DAA</dfn>
-     <dd data-md>
-      <p>Digital Address Application, e.g., Android App or iOS App that
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="daa">DAA</dfn>
+    <dd data-md>
+     <p>Digital Address Application, e.g., Android App or iOS App that
    knows how to talk to the <a data-link-type="dfn" href="#das" id="ref-for-das①①">DAS</a> on behalf of the <a data-link-type="dfn" href="#user" id="ref-for-user②⑨">User</a>.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="das_id">DAS_ID</dfn>
-     <dd data-md>
-      <p><a data-link-type="dfn" href="#das" id="ref-for-das①②">DAS</a> IDentity, i.e. the W3C DID style identifier for the <a data-link-type="dfn" href="#das" id="ref-for-das①③">DAS</a>.</p>
-     <dt data-md><a data-link-type="dfn" href="#das_id_pk" id="ref-for-das_id_pk">DAS_ID_PK</a>, <a data-link-type="dfn" href="#das_id_sk" id="ref-for-das_id_sk">DAS_ID_SK</a>
-     <dd data-md>
-      <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#das_id" id="ref-for-das_id">DAS_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="das_id">DAS_ID</dfn>
+    <dd data-md>
+     <p><a data-link-type="dfn" href="#das" id="ref-for-das①②">DAS</a> IDentity, i.e. the W3C DID style identifier for the <a data-link-type="dfn" href="#das" id="ref-for-das①③">DAS</a>.</p>
+    <dt data-md><a data-link-type="dfn" href="#das_id_pk" id="ref-for-das_id_pk">DAS_ID_PK</a>, <a data-link-type="dfn" href="#das_id_sk" id="ref-for-das_id_sk">DAS_ID_SK</a>
+    <dd data-md>
+     <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#das_id" id="ref-for-das_id">DAS_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
    more details.</p>
-     <dt data-md><dfn data-dfn-type="dfn" data-export id="das_da">DAS_DA<a class="self-link" href="#das_da"></a></dfn>
-     <dd data-md>
-      <p>Human readable Digital Address of the Digital Address Service (e.g., dtx@acme.eu).</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="did">DID</dfn>
-     <dd data-md>
-      <p>Decentralized Identifier according to <a data-link-type="biblio" href="#biblio-did-core">[did-core]</a></p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-issuer">DIDDoc-ISSUER</dfn>
-     <dd data-md>
-      <p>DID document binding the Issuer’s public key to the <a data-link-type="dfn" href="#issuer_id" id="ref-for-issuer_id">ISSUER_ID</a>.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-sp">DIDDoc-SP</dfn>
-     <dd data-md>
-      <p>DID document binding the Service Provider’s public key to the <a data-link-type="dfn" href="#sp_id" id="ref-for-sp_id">SP_ID</a>.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-das">DIDDoc-DAS</dfn>
-     <dd data-md>
-      <p>DID document binding the DAS’s public key to the <a data-link-type="dfn" href="#das_id" id="ref-for-das_id①">DAS_ID</a>.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-ard">DIDDoc-ARD</dfn>
-     <dd data-md>
-      <p>DID document binding the ADIA Regional Directory’s public key to the <a data-link-type="dfn" href="#ard_id" id="ref-for-ard_id①">ARD_ID</a>.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-agd">DIDDoc-AGD</dfn>
-     <dd data-md>
-      <p>DID document binding the ADIA Global Directory’s public key to the <a data-link-type="dfn" href="#agd_id" id="ref-for-agd_id①">AGD_ID</a>.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-user">DIDDoc-USER</dfn>
-     <dd data-md>
-      <p>DID document binding the user’s public key to the <a data-link-type="dfn" href="#das_user_id" id="ref-for-das_user_id①">DAS_USER_ID</a>.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="hida">HIDA</dfn>
-     <dd data-md>
-      <p>Cryptographic hash computed over the <a data-link-type="dfn" href="#id-attributes" id="ref-for-id-attributes">ID Attributes</a></p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="homedas_id">HomeDAS_ID</dfn>
-     <dd data-md>
-      <p>DAS_ID of the <a data-link-type="dfn" href="#das" id="ref-for-das①④">DAS</a> that user primarily belongs to (i.e. <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="homedas">HomeDAS</dfn>).</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="id-attributes">ID Attributes</dfn>
-     <dd data-md>
-      <p>Attributes identifying a user uniquely defined by the ADIA Specification</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="issuer_id">ISSUER_ID</dfn>
-     <dd data-md>
-      <p>Issuer IDentity, i.e. the <a data-link-type="dfn" href="#did" id="ref-for-did">DID</a> style identifier for the <a data-link-type="dfn" href="#issuer" id="ref-for-issuer①⑨">Issuer</a>.</p>
-     <dt data-md><dfn data-dfn-type="dfn" data-export id="issuer_da">ISSUER_DA<a class="self-link" href="#issuer_da"></a></dfn>
-     <dd data-md>
-      <p>Human readable Digital Address of the Issuer (e.g., dmv.us@dtx).</p>
-     <dt data-md><a data-link-type="dfn" href="#issuer_id_pk" id="ref-for-issuer_id_pk">ISSUER_ID_PK</a>, <a data-link-type="dfn" href="#issuer_id_sk" id="ref-for-issuer_id_sk">ISSUER_ID_SK</a>
-     <dd data-md>
-      <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#issuer_id" id="ref-for-issuer_id①">ISSUER_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+    <dt data-md><dfn data-dfn-type="dfn" data-export id="das_da">DAS_DA<a class="self-link" href="#das_da"></a></dfn>
+    <dd data-md>
+     <p>Human readable Digital Address of the Digital Address Service (e.g., dtx@acme.eu).</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="did">DID</dfn>
+    <dd data-md>
+     <p>Decentralized Identifier according to <a data-link-type="biblio" href="#biblio-did-core">[did-core]</a></p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-issuer">DIDDoc-ISSUER</dfn>
+    <dd data-md>
+     <p>DID document binding the Issuer’s public key to the <a data-link-type="dfn" href="#issuer_id" id="ref-for-issuer_id">ISSUER_ID</a>.</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-sp">DIDDoc-SP</dfn>
+    <dd data-md>
+     <p>DID document binding the Service Provider’s public key to the <a data-link-type="dfn" href="#sp_id" id="ref-for-sp_id">SP_ID</a>.</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-das">DIDDoc-DAS</dfn>
+    <dd data-md>
+     <p>DID document binding the DAS’s public key to the <a data-link-type="dfn" href="#das_id" id="ref-for-das_id①">DAS_ID</a>.</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-ard">DIDDoc-ARD</dfn>
+    <dd data-md>
+     <p>DID document binding the ADIA Regional Directory’s public key to the <a data-link-type="dfn" href="#ard_id" id="ref-for-ard_id①">ARD_ID</a>.</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-agd">DIDDoc-AGD</dfn>
+    <dd data-md>
+     <p>DID document binding the ADIA Global Directory’s public key to the <a data-link-type="dfn" href="#agd_id" id="ref-for-agd_id①">AGD_ID</a>.</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="diddoc-user">DIDDoc-USER</dfn>
+    <dd data-md>
+     <p>DID document binding the user’s public key to the <a data-link-type="dfn" href="#das_user_id" id="ref-for-das_user_id①">DAS_USER_ID</a>.</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="hida">HIDA</dfn>
+    <dd data-md>
+     <p>Cryptographic hash computed over the <a data-link-type="dfn" href="#id-attributes" id="ref-for-id-attributes">ID Attributes</a></p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="homedas_id">HomeDAS_ID</dfn>
+    <dd data-md>
+     <p>DAS_ID of the <a data-link-type="dfn" href="#das" id="ref-for-das①④">DAS</a> that user primarily belongs to (i.e. <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="homedas">HomeDAS</dfn>).</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="id-attributes">ID Attributes</dfn>
+    <dd data-md>
+     <p>Attributes identifying a user uniquely defined by the ADIA Specification</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="issuer_id">ISSUER_ID</dfn>
+    <dd data-md>
+     <p>Issuer IDentity, i.e. the <a data-link-type="dfn" href="#did" id="ref-for-did">DID</a> style identifier for the <a data-link-type="dfn" href="#issuer" id="ref-for-issuer①⑨">Issuer</a>.</p>
+    <dt data-md><dfn data-dfn-type="dfn" data-export id="issuer_da">ISSUER_DA<a class="self-link" href="#issuer_da"></a></dfn>
+    <dd data-md>
+     <p>Human readable Digital Address of the Issuer (e.g., dmv.us@dtx).</p>
+    <dt data-md><a data-link-type="dfn" href="#issuer_id_pk" id="ref-for-issuer_id_pk">ISSUER_ID_PK</a>, <a data-link-type="dfn" href="#issuer_id_sk" id="ref-for-issuer_id_sk">ISSUER_ID_SK</a>
+    <dd data-md>
+     <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#issuer_id" id="ref-for-issuer_id①">ISSUER_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
    more details.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="sp_id">SP_ID</dfn>
-     <dd data-md>
-      <p>Service Provider IDentity, i.e. the <a data-link-type="dfn" href="#did" id="ref-for-did①">DID</a> style identifier for the <a data-link-type="dfn" href="#sp" id="ref-for-sp">SP</a>.</p>
-     <dt data-md><dfn data-dfn-type="dfn" data-export id="sp_da">SP_DA<a class="self-link" href="#sp_da"></a></dfn>
-     <dd data-md>
-      <p>Human readable Digital Address of the Service Provider (e.g., start.industries.us@dtx).</p>
-     <dt data-md><a data-link-type="dfn" href="#sp_id_pk" id="ref-for-sp_id_pk">SP_ID_PK</a>, <a data-link-type="dfn" href="#sp_id_sk" id="ref-for-sp_id_sk">SP_ID_SK</a>
-     <dd data-md>
-      <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#sp_id" id="ref-for-sp_id①">SP_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="sp_id">SP_ID</dfn>
+    <dd data-md>
+     <p>Service Provider IDentity, i.e. the <a data-link-type="dfn" href="#did" id="ref-for-did①">DID</a> style identifier for the <a data-link-type="dfn" href="#sp" id="ref-for-sp">SP</a>.</p>
+    <dt data-md><dfn data-dfn-type="dfn" data-export id="sp_da">SP_DA<a class="self-link" href="#sp_da"></a></dfn>
+    <dd data-md>
+     <p>Human readable Digital Address of the Service Provider (e.g., start.industries.us@dtx).</p>
+    <dt data-md><a data-link-type="dfn" href="#sp_id_pk" id="ref-for-sp_id_pk">SP_ID_PK</a>, <a data-link-type="dfn" href="#sp_id_sk" id="ref-for-sp_id_sk">SP_ID_SK</a>
+    <dd data-md>
+     <p>Public Key (PK) and Private Key (SK) related to the <a data-link-type="dfn" href="#sp_id" id="ref-for-sp_id①">SP_ID</a>. See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
    more details.</p>
-     <dt data-md><dfn data-dfn-type="dfn" data-export id="ta_user_issuer">TA_USER_ISSUER<a class="self-link" href="#ta_user_issuer"></a></dfn>
-     <dd data-md>
-      <p>The <a data-link-type="dfn" href="#issuer" id="ref-for-issuer②⓪">Issuer</a> specific <a data-link-type="dfn" href="#ta" id="ref-for-ta">TA</a>, i.e. hash(<a data-link-type="dfn" href="#ta" id="ref-for-ta①">TA</a>, <a data-link-type="dfn" href="#issuer_id" id="ref-for-issuer_id②">ISSUER_ID</a>).</p>
-     <dt data-md><a data-link-type="dfn" href="#user_fido_pk" id="ref-for-user_fido_pk">USER_FIDO_PK</a>, <a data-link-type="dfn" href="#user_fido_sk" id="ref-for-user_fido_sk">USER_FIDO_SK</a>
-     <dd data-md>
-      <p>The FIDO credential owned by the user’s authenticator and used
+    <dt data-md><dfn data-dfn-type="dfn" data-export id="ta_user_issuer">TA_USER_ISSUER<a class="self-link" href="#ta_user_issuer"></a></dfn>
+    <dd data-md>
+     <p>The <a data-link-type="dfn" href="#issuer" id="ref-for-issuer②⓪">Issuer</a> specific <a data-link-type="dfn" href="#ta" id="ref-for-ta">TA</a>, i.e. hash(<a data-link-type="dfn" href="#ta" id="ref-for-ta①">TA</a>, <a data-link-type="dfn" href="#issuer_id" id="ref-for-issuer_id②">ISSUER_ID</a>).</p>
+    <dt data-md><a data-link-type="dfn" href="#user_fido_pk" id="ref-for-user_fido_pk">USER_FIDO_PK</a>, <a data-link-type="dfn" href="#user_fido_sk" id="ref-for-user_fido_sk">USER_FIDO_SK</a>
+    <dd data-md>
+     <p>The FIDO credential owned by the user’s authenticator and used
    to authenticator to <a data-link-type="dfn" href="#das" id="ref-for-das①⑤">DAS</a> and <a data-link-type="dfn" href="#cloud-agent" id="ref-for-cloud-agent⑤">Cloud Agent</a>.  See figure <a href="#fig-key-material">Cryptographic Key Material</a> for
    more details.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="vc">VC</dfn>
-     <dd data-md>
-      <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="verifiable-credential">Verifiable Credential</dfn>, see <a data-link-type="biblio" href="#biblio-vc-data-model">[vc-data-model]</a>.</p>
-     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="vc_metadata">VC_METADATA</dfn>
-     <dd data-md>
-      <p>Metadata of a <a data-link-type="dfn" href="#vc" id="ref-for-vc①">VC</a>, i.e. <a data-link-type="dfn" href="#did" id="ref-for-did②">DID</a>, VC Schema Name, VC Schema Friendly Name</p>
-    </dl>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="vc">VC</dfn>
+    <dd data-md>
+     <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="verifiable-credential">Verifiable Credential</dfn>, see <a data-link-type="biblio" href="#biblio-vc-data-model">[vc-data-model]</a>.</p>
+    <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="vc_metadata">VC_METADATA</dfn>
+    <dd data-md>
+     <p>Metadata of a <a data-link-type="dfn" href="#vc" id="ref-for-vc①">VC</a>, i.e. <a data-link-type="dfn" href="#did" id="ref-for-did②">DID</a>, VC Schema Name, VC Schema Friendly Name</p>
    </dl>
    <h3 class="heading settled" data-level="1.9" id="sctn-trust-model"><span class="secno">1.9. </span><span class="content">Trust Model</span><a class="self-link" href="#sctn-trust-model"></a></h3>
    <figure id="fig-adia-trust-model">
@@ -4993,7 +4990,7 @@ David Henstock
    <dt id="biblio-uafprotocol">[UAFProtocol]
    <dd>R. Lindemann; et al. <a href="https://fidoalliance.org/specs/fido-uaf-v1.2-ps-20201020/fido-uaf-protocol-v1.2-ps-20201020.html"><cite>FIDO UAF Protocol Specification v1.2</cite></a>. Proposed Standard. URL: <a href="https://fidoalliance.org/specs/fido-uaf-v1.2-ps-20201020/fido-uaf-protocol-v1.2-ps-20201020.html">https://fidoalliance.org/specs/fido-uaf-v1.2-ps-20201020/fido-uaf-protocol-v1.2-ps-20201020.html</a>
    <dt id="biblio-vc-data-model">[VC-DATA-MODEL]
-   <dd>Manu Sporny; et al. <a href="https://www.w3.org/TR/vc-data-model/"><cite>Verifiable Credentials Data Model 1.0</cite></a>. 19 November 2019. REC. URL: <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a>
+   <dd>Manu Sporny; et al. <a href="https://www.w3.org/TR/vc-data-model/"><cite>Verifiable Credentials Data Model v1.1</cite></a>. 3 March 2022. REC. URL: <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a>
    <dt id="biblio-webauthn">[WebAuthn]
    <dd>Dirk Balfanz; et al. <a href="https://www.w3.org/TR/webauthn/"><cite>Web Authentication: An API for accessing Public Key Credentials Level 1</cite></a>. March 2018. CR. URL: <a href="https://www.w3.org/TR/webauthn/">https://www.w3.org/TR/webauthn/</a>
   </dl>
