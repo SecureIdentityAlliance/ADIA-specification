@@ -10,6 +10,44 @@
   h1, h2, h3 {
     color: #f29c00;
   }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  :link {
+    color: #00C;
+  }
+  :visited {
+    color: #609;
+  }
+  a:active {
+    color: #C00;
+  }
+  a[href]:focus, a[href]:hover {
+    color: #C00;
+  }
+  a[href] {
+    color: #034575;  
+    text-decoration-color: #034575;
+  }
+  :link, :visited, a:active {
+    background: transparent;
+  }
+  a:link img, a:visited img { /* no border on img links */
+    border-style: none 
+  }
+  .issue, .issue::before, .issue > .marker, details.issue > summary {
+    color: #aa0000;
+    text-decoration-color: #aa0000;
+    background: #fbb;
+    border-color: #aa0000;
+  }
+  .note, .note::before, .note > .marker, details.note > summary {
+    color: #52e052;
+    text-decoration-color: #52e052;
+    background: #e9fbe9;
+    border-color: #52e052;
+  }
   </style>
 </head>
 <body class="h-entry">

@@ -33,14 +33,16 @@ spec:webidl; type:interface; text:Promise
 
 # ADIA Security and Privacy Goals # {#sctn-adia-secref-goals}
 1. Allow Users to present a claim to the service provider, where
-    1. SG-1: the service provider can verify that the shared claim was issued by an Issuer belonging to the ADIA ecosystem (and the assurance level this issuer was vetted at) and    
-    2. SG-2: the service provider can verify that the entity presenting the claim is the subject of that claim    
-2. SG-3: Ensure that the user needs to consent with the action of sharing the claim(s)
-3. SG-4: Ensure that the user can select the claims to be shared (not only all claims or none).
-4. SG-5: Ensure the issuer doesn't learn who the service provider is (Note: the service provider will learn who the issuer is)
-5. SG-6: Ensure that a service provider that receives two claims doesn't learn whether the two claims belong to the same user *beyond* the degree of overlapping claims, i.e. We don't introduce another correlation handle.  For example, if a service provider receives two claims that the respective subject is older than 21, there is no way for the service provider to know whether the two claims belong to the same or two different users.  In the case the full name, birthdate etc. are included in the claims the service provider will learn that two claims containing the same attributes will likely or even certainly relate to the same users.
-6. SG-7: Assessable level of assurance - throughout the system (IAL and AAL)
-7. SG-8: Robust minimum assurance level with
+    1. <dfn>SG-0</dfn>: the claims accurately reflect the subject and
+         owner of the <a>VC</a>
+    2. <dfn>SG-1</dfn>: the service provider can verify that the shared claim was issued by an Issuer belonging to the ADIA ecosystem (and the assurance level this issuer was vetted at) and    
+    3. <dfn>SG-2</dfn>: the service provider can verify that the entity presenting the claim is the subject of that claim    
+2. <dfn>SG-3</dfn>: Ensure that the user needs to consent with the action of sharing the claim(s)
+3. <dfn>SG-4</dfn>: Ensure that the user can select the claims to be shared (not only all claims or none).
+4. <dfn>SG-5</dfn>: Ensure the issuer doesn't learn who the service provider is (Note: the service provider will learn who the issuer is)
+5. <dfn>SG-6</dfn>: Ensure that a service provider that receives two claims doesn't learn whether the two claims belong to the same user *beyond* the degree of overlapping claims, i.e. We don't introduce another correlation handle.  For example, if a service provider receives two claims that the respective subject is older than 21, there is no way for the service provider to know whether the two claims belong to the same or two different users.  In the case the full name, birthdate etc. are included in the claims the service provider will learn that two claims containing the same attributes will likely or even certainly relate to the same users.
+6. <dfn>SG-7</dfn>: Assessable level of assurance - throughout the system (IAL and AAL)
+7. <dfn>SG-8</dfn>: Robust minimum assurance level with
     1. Credential guessing resilience, i.e. provide robust protection against eavesdroppers, e.g. be resilient to physical observation, resilient to targeted impersonation, resilient to throttled and unthrottled guessing
     2. Credential Disclosure Resilience: Be resilient to phishing attacks and real-time phishing attack, including resilience to online attacks by adversaries able to actively manipulate network traffic
     3. Verifier Leak Resilience: Be resilient to leaks from other relying parties. I.e., nothing that a verifier could possibly leak can help an attacker impersonate a user to another relying party (e.g. claim's subject to service provider or user to issuer).
@@ -53,26 +55,187 @@ Issue: The DAS will learn whenever claims are presented - this needs
     to be discussed somewhere.
 
 # ADIA Assets to be Protected # {#sctn-adia-secref-assets}
-See section "Trust Model" of the ADIA specification.
+See section "Trust Model" of the ADIA specification for an overview.
 
-1. Private keys of:
-    1. ADIA Global Directory
-    1. ADIA Regional Directory
-    1. Digital Address Service (DAS), key maintained by the DAS agent.
-    1. Issuer, key maintained by the Issuer Agent.    
-    1. Service Provider, key maintained by the Service Provider Agent.    
-    1. User
-        1. DAS User ID key, maintained by the DAS User Agent	
-        2. FIDO keys, maintained by the user's FIDO Authenticator(s), and all other FIDO related assets that need protection, see
-            <a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html#assets-to-be-protected">FIDO
-            Security Reference</a>.
+## Private Key Assets ## {#sctn-adia-secref-assets-sk}
+The following private keys need to be protected against disclosure ("confidentiality protection"):
+
+<figure id="fig-privkey-asset-protection">
+ <table><COLGROUP width="100%"><COL width="60%"><COL width="40%"></COLGROUP>
+  <thead>
+   <tr><th>Asset</th><th>Protection Method</tr>
+  </thead>
+  <tbody>
+   <tr> <td>AGD_ID_SK</td> <td>TODO</td> </tr>
+   <tr> <td>ARD_ID_SK</td> <td>TODO</td> </tr>  
+   <tr> <td>DAS_USER_ID_SK</td> <td>TODO</td> </tr>  
+   <tr> <td>USER_FIDO_SK</td> <td>maintained by the user's FIDO Authenticator(s), and all other FIDO related assets that need protection, see
+        <a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html#assets-to-be-protected">FIDO
+        Security Reference</a>.
+	</td>
+   </tr>  
+   <tr> <td>DAS_ID_SK</td> <td>TODO</td> </tr>  
+   <tr> <td>ISSUER_ID_SK</td> <td>TODO</td> </tr>  
+   <tr> <td>SP_ID_SK</td> <td>TODO</td> </tr>  
+  </tbody>
+ </table>
+ <figcaption>Protection of Private Keys</figcaption>
+</figure>
+
+
+## Data Relation Assets ## {#sctn-adia-secref-assets-relations}
+
+<figure id="fig-data-asset-protection">
+ <table><COLGROUP width="100%"><COL width="60%"><COL width="40%"></COLGROUP>
+  <thead>
+   <tr><th>Asset</th><th>Protection Method</tr>
+  </thead>
+  <tbody>
+   <tr> <td>Issuer stored identity proofing records and their relation to the User's DA</td> <td>Stored in Issuer DB
+
+Issue: Is this proprietary to the Issuer?  Do we have minimum security
+    requirements for that? Do we specify a minimum retention period
+    for this?
+    </td> </tr>
+   <tr> <td>Relation of a Digital Address to a Trust Anchor in
+          general</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+     </td> </tr>  
+
+   <tr> <td>AGD_ID to AGD_DA relation</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+     </td> </tr>
+   <tr> <td>ARD_ID to ARD_DA relation</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+     </td> </tr>
+   <tr> <td>DAS_USER_ID to User's DA relation</td> <td>Stored in ARD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+    </td> </tr>
+   <tr> <td>DAS_ID to DAS_DA relation</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+    </td> </tr>
+   <tr> <td>ISSUER_ID to ISSUER_DA relation</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+      </td> </tr>
+   <tr> <td>SP_ID to SP_DA relation</td> <td>Stored in AGD as (TA, ID, DA, HomeDASId) tuple.
+
+Issue: What is the protection method?  How can that be audited?
+      </td> </tr>
+
+   <tr> <td>DAS_USER_ID_PK to DAS_USER_ID relation</td> <td>signed DIDDoc-USER</td> </tr>
+   <tr> <td>ISSUER_ID_PK to ISSUER_ID relation</td> <td>signed DIDDoc-ISSUER</td> </tr>
+   <tr> <td>SP_ID_PK to SP_ID relation</td> <td>signed DIDDoc-SP</td> </tr>
+   <tr> <td>DAS_ID_PK to DAS_ID relation</td> <td>signed DIDDoc-DAS</td> </tr>
+   <tr> <td>ARD_ID_PK to ARD_ID relation</td> <td>signed DIDDoc-ARD</td> </tr>
+   <tr> <td>AGD_ID_PK to AGD_ID relation</td> <td>signed DIDDoc-AGD</td> </tr>
+
+   <tr> <td>Relation of the various Claims in a VC to the
+         Claim identifying the (Credential) Subject (see ADIA Trust Model).</td>
+        <td>signed VC object</td>
+   </tr>
+   <tr> <td>Relation of a VC to the VP and to the respective public key
+         that is used to the presentation.</td>
+        <td>signed VP object</td>
+   </tr>
+  </tbody>
+ </table>
+ <figcaption>Protection of Data Relation Assets</figcaption>
+</figure>
+
+
+Issue: For each item above, describe what methods are in place to protect these
+    assets. E.g. we use signed DIDDocs for integrity protection of the
+    *_PK to *_ID relations, etc.
 
 
 # ADIA Security Measures # {#sctn-adia-secref-measures}
+1. <dfn>SM-1</dfn>: Tamper-Evidence through digitally signed data:
+    1. <a>User</a>s digitally sign the <a>VP</a>s to provide evidence
+        that the credential subject is presenting the <a>VC</a>.
+    1. <a>Issuer</a>s digitally sign the <a>VC</a>s based on information the <a>Issuer</a>s have verified.
+    1. <a>DAS</a> digitally signs the DIDDoc-USER, i.e. the relation
+        between the <A>DAS_USER_ID_PK</a> and the <a>DAS_USER_ID</a>.
+    1. <a>DAS</a> digitally signs the DIDDoc-ISSUER, i.e. the relation
+        between the <A>ISSUER_ID_PK</a> and the <a>ISSUER_ID</a>.
+    1. <a>ARD</a> digitally signs the DIDDoc-DAS, i.e. the relation
+        between the <A>DAS_ID_PK</a> and the <a>DAS_ID</a>.
+    1. <a>AGD</a> digitally signs the DIDDoc-ARD, i.e. the relation
+        between the <A>ARD_ID_PK</a> and the <a>ARD_ID</a>.
+
+1. <dfn>SM-2</dfn>: secure communication between the entities (except the User) using DIDComm [[DIDCOMM-MESSAGING-V1]]
+
+1. <dfn>SM-3</dfn>: secure communication between the <a>User</a>'s DAA
+    and <a>Issuer</a> using TLS and Issuer specific methods to verify
+    the user's identity (e.g. remote ID Proofing).
+
+1. <dfn>SM-4</dfn>: secure communication between the <a>User</a>'s DAA and the
+    1. <a>Cloud Agent</a> using FIDO authenticated TLS.
+    2. <a>SP</a> using TLS and TODO! Not yet clear how a session
+        initiated by the User would be tied to a <a>VP</a> in order to
+        know whether the User at the end of the line is the
+        <a>VP</a>'s subject.
+
+1. <dfn>SM-5</dfn>: support Anonymous <a>VC</a>s leveraging
+     zero-knowledge-proofs (ZKPs).
 
 Issue: TODO
 
 ## Relation between Measures and Goals ## {#sctn-adia-secref-measgoals}
+
+<figure id="fig-sm-to-sg">
+ <table><COLGROUP width="100%"><COL width="30%"><COL width="70%"></COLGROUP>
+  <thead>
+   <tr><th>Security Goal</th><th>Supporting Security Measures</tr>
+  </thead>
+  <tbody>
+   <tr> <td><a>SG-0</a></td> <td><a>Claims are verified by
+        <a>Issuer</a>s. TODO: add stipulatoins for <a>Issuer</a>
+        systems to validate the claims and to keep the records
+        integrity protected - even under attack.  Add details on dual
+        control to limit risk of malicious employee attack.</td> </tr>
+   <tr> <td><a>SG-1</a></td> <td><a>SM-1</a></td> </tr>
+   <tr> <td><a>SG-2</a></td> <td>TODO: Seems unclear at this stage! We
+     need some random value (server nonce) generated by the SP that is returned in
+     step "Wants proof and requests User to connect DAA via SP_ID" in figure "Verifiable Presentation and Verification (Option
+     1)" and the same applies to the Optopn 2 Anonymous flow.  This
+     server nonce also needs to be included in step "Invites SP for
+     DIDComm connection (mutual authentication)" since the SP wants to
+     know whether this communication relates to the session initiated
+     from some user in the beginning.
+ </td> </tr>
+   <tr> <td><a>SG-3</a></td> <td>User consent is enforced by the User's <a>Cloud
+                                 Agent</a> via the <a>DAA</a>.
+			     </td> </tr>
+   <tr> <td><a>SG-4</a></td> <td>Claim selection is performed by
+                                 User's <a>Cloud Agent</a> via the
+                                <a>DAA</a>.  A VC structure is being
+                                  used that supports fine grained
+                                  claim selection (TODO add reference).
+                             </td> </tr>
+   <tr> <td><a>SG-5</a></td> <td>TODO: Ensure that step "Request for
+      VC along with sending User's consent" in "VC
+      Presentation and Verification" doesn't include any SP specific
+      hints.  Since this communication with the Issuer is synchronous,
+      the Issuer at least learns the time when the user wants to share
+      the VC.  That could statistically disclose some information
+      about the SP.  The Issuer learns how often a user shares a
+      VC. Ideally, ADIA would "hide" that information and "cache" the VC.
+                             </td> </tr>
+   <tr> <td><a>SG-6</a></td> <td>SM-5</td> </tr>
+   <tr> <td><a>SG-7</a></td> <td>TODO: We need to track IAL and AAL
+     throughout the system.  We also need to avoid unexpected attack
+     points that might reduce the IAL/AAL. </td> </tr>
+   <tr> <td><a>SG-8</a></td> <td>TODO</td> </tr>
+  </tbody>
+ </table>
+ <figcaption>Relation between Security Measures and Goals</figcaption>
+</figure>
 
 Issue: TODO
 
@@ -82,5 +245,143 @@ Issue: TODO
 
 # Threat Analysis # {#sctn-adia-threat-analysis}
 
-Issue: TODO
+## Threats to the Global Directory ## {#sctn-ta-agd}
+
+## Threats to a Regional Directory ## {#sctn-ta-ard}
+
+## Threats to the DAS ## {#sctn-ta-das}
+
+## Threats to the Issuer ## {#sctn-ta-issuer}
+
+	  <table class='threats'><COLGROUP width="100%"><COL width="5em"><COL><COL width="5em"></COLGROUP>
+	    <thead>
+	      <tr><th><dfn>T-4.1.1</dfn></th><th>Malicious Employee</th><th>Violates</th></tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td></td>
+		<td>
+		  A malicious employee forges an ID Verification.
+		  
+		  <p><b>Consequences:</b>
+
+		  Issue: TODO
+
+		  </p>
+		  <p><b>Mitigations:</b>
+		  
+		   Issue: TODO
+		  
+		  </p></td>
+		<td>[=SG-1=]</td>
+	      </tr>
+	    </tbody>
+	  </table>
+
+
+## Threats to the Service Provider ## {#sctn-ta-sp}
+
+## Threats to the User Environment ## {#sctn-ta-user}
+
+	  <table class='threats'><COLGROUP width="100%"><COL width="5em"><COL><COL width="5em"></COLGROUP>
+	    <thead>
+	      <tr><th><dfn>T-6.1.1</dfn></th><th>DAA Corruption</th><th>Violates</th></tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td></td>
+		<td>
+		  The Digital Address Application used by the user
+     	          is corrupted (e.g. user installed and uses a
+	          malicious version or the original DAA was modified
+  	          by malware).
+		  
+		  <p><b>Consequences:</b>
+		    The USER_FIDO_PK/SK might be weakly protected
+		    (e.g. generated in SW rather than TEE, or
+		    generated such that it could be used without a
+		    user gesture, or generated such that export is allowed).
+
+		    The USER_FIDO_PK might be misused for unexpected
+		    purposes.
+
+		    QR-code scanned at "User Onboarding to First
+		    Issuer" might be misinterpreted.
+
+ 		    Data for remote ID Proofing might be taken from a
+		    source other than the device's live camera (e.g. a
+		    recording).
+
+		    ID-Attributes for HIDA computation might be
+		    malicious in User Initiated Digital Address Creation
+		    with DAA.
+
+		    The DAA might maliciously disclose the DAS_USER_ID
+		    and/or the DA.
+
+		    The DAA might maliciously disclose the SP_ID
+		    to the issuer.
+
+		    The DAA might display a malicious set of
+		    attributes to be included in a verifiable claim in VC
+		    Issued to a User by an Issuer.
+
+		    The DAA might display a malicious set of
+		    attributes to be included in a verifiable claim to
+		    be presented to a service provider or a malicious
+		    service provider name in Verifiable Presentation and
+		    Verification.
+
+ 		    The DAA might maliciously chose Option 1 instead
+		    of Option 2 in Verifiable Presentation and
+		    Verification.
+		  </p>
+		  <p><b>Mitigations:</b>
+		    Attestation of FIDO Authenticator allows the
+		    server to verify whether USER_FIDO_PK was
+		    generated in an authenticator with acceptable
+		    security characteristics.
+
+ 		    Issue: Should add a need to using SafetyNet and
+		        the iOS equivalent in order to allow the server to
+		        verify that the original DAA is being used.
+		  </p></td>
+		<td>[=SG-1=], [=SG-3=], [=SG-4=], [=SG-5=], [=SG-6=]</td>
+	      </tr>
+	    </tbody>
+	  </table>
+
+	  <table class='threats'><COLGROUP width="100%"><COL width="5em"><COL><COL width="5em"></COLGROUP>
+	    <thead>
+	      <tr><th><dfn>T-6.1.2</dfn></th><th>Cloud Agent Corruption</th><th>Violates</th></tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td></td>
+		<td>
+		  The Cloud Agent that acts on behalf of the user is
+		  attacked.
+		  
+		  <p><b>Consequences:</b>
+		   The attacker might try to extract the DAS_USER_ID_SK.
+
+		   The attacker might try to misuse the DAS_USER_ID_SK
+		   (e.g. to sign or decrypt messages withouh approval
+		   of the user).
+
+		   Issue: Should consider renaming DAS_USER_ID_PK to
+		       CA_USER_ID_PK (for cloud agent)
+		   </p>
+		  <p><b>Mitigations:</b>
+		  
+		   Issue: TODO, e.g. let Cloud Agent use HSMs and
+		       tight coupling of the HSM to the User's FIDO Key(s).
+		  
+		  </p></td>
+		<td>[=SG-2=], [=SG-3=], [=SG-4=], [=SG-5=], [=SG-6=]</td>
+	      </tr>
+	    </tbody>
+	  </table>
+
+
 

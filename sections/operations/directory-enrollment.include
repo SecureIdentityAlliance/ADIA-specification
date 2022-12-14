@@ -126,7 +126,7 @@ provides services to persist and search the <a>Credential Metadata</a> associate
 
 The diagram below represents a `new` <a>User</a> requesting a <a>Digital Address</a> from an <a>Issuer</a>.
 The </a>DAS</a> providing the Agency services, provisions a <a>Cloud Agent</a> for the <a>User</a> to create
-a public/private key pair and a <a>DID</a> (i.e. <a>DAS_usER_ID</a>) for the <a>User</a>. The identifier (<a>DAS_USER_ID</a>), along with the
+a public/private key pair and a <a>DID</a> (i.e. <a>DAS_USER_ID</a>) for the <a>User</a>. The identifier (<a>DAS_USER_ID</a>), along with the
 <a>HomeDAS</a> identifier (<a>HomeDAS_ID</a>) are persisted on the <a>DAS</a> to associate their identifiers with the newly created <a>Digital Address</a>.
 Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details on the representation and usage of the <a>Digital Address</a>.
 

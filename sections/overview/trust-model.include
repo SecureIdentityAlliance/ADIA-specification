@@ -5,6 +5,8 @@
     <figcaption>ADIA Trust Model</figcaption>
 </figure>
 
+Issue: Add DIDDoc-SP.  It is referenced in a sequence diagram (setup new SP) and also in the Security Reference.
+
 When verifying a verifiable presentation of a verifiable credential,
 the following objects need to be verified:
 1. <a>Verifiable Presentation</a>, i.e. an object containing a
