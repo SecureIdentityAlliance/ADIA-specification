@@ -5,7 +5,7 @@
 
 * All entities in the <a>ADIA</a> system have been verified at the time of enrollment, see [[#sctn-directory-enrollment]].
 
-* All communications are authenticated and encrypted - either using TLS or [[didcomm-messaging-v1]].
+* All communications are authenticated and encrypted - either using TLS.
 
 * Users are strongly authenticated via their <a>DAA</a> to their <a>Cloud Agent</a> using FIDO authentication [[UAFProtocol]] [[WebAuthn]].
 
