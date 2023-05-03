@@ -5,11 +5,11 @@
 
 * All entities in the <a>ADIA</a> system have been verified at the time of enrollment, see [[#sctn-directory-enrollment]].
 
-* All communications are authenticated and encrypted - either using TLS or [[didcomm-messaging-v1]].
+* All communications are authenticated and encrypted - either using server-authenticated TLS.
 
 * Users are strongly authenticated via their <a>DAA</a> to their <a>Cloud Agent</a> using FIDO authentication [[UAFProtocol]] [[WebAuthn]].
 
-* Acceptable Cryptographic suites are defined in [[#sctn-crypto-algs]] for: computing the <a>HIDA</a>, protecting DIDComm messages [[didcomm-messaging-v1]], signing <a>VC</a>s and FIDO authentication [[UAFProtocol]] [[WebAuthn]].
+* Acceptable Cryptographic suites are defined in [[#sctn-crypto-algs]] for: computing the <a>HIDA</a>, TLS (TODO: add link), signing <a>VC</a>s and FIDO authentication [[UAFProtocol]] [[WebAuthn]].
 
 * Support software and hardware based (recommended) key generation and key protection mechanisms [[#sctn-key-protection-level]].
 
