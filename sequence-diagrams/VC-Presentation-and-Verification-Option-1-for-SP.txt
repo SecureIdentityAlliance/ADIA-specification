@@ -7,11 +7,9 @@ Participant Service Provider as SP
 Participant DAS
 
 User -> SP: User wants a service from SP
-SP ->> User: Wants proof and requests User to connect DAA via SP_ID
+SP ->> User: Wants proof and requests User to connect DAA via SP_ID (e.g. QR-code)
 SP ->> DAA: Provide SP_ID to DAA
 DAA ->> Cloud Agent: Pass SP_ID to Cloud Agent to connect with SP
-Cloud Agent ->> SP: Invites SP for DIDComm connection (mutual authentication)
-Cloud Agent <<->> SP: Generate and exchange pairwise peer DIDs for DIDcomm connection. \n Connection established
 SP ->> Cloud Agent: Request VC presentation (provide VC schema and nonce)
 Cloud Agent ->> Cloud Agent: lookup VC metadata by VC schema\n and other criteria
 

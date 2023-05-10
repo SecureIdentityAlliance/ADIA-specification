@@ -43,7 +43,7 @@ entities in the ADIA system.
 
 # ADIA for SP Operations # {#sctn-adia4sp-ops}
 
-## Present Identifying Credentials ### {#sctn-iden-creds}
+## Present Identifying Credentials ## {#sctn-iden-creds}
 
 <figure id="fig-vc-presentation-and-verification-option-1">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1-for-SP.png"/>
@@ -51,7 +51,7 @@ entities in the ADIA system.
 </figure>
 
 
-## Present Anonymous Credentials ### {#sctn-anon-creds}
+## Present Anonymous Credentials ## {#sctn-anon-creds}
 
 Note: Presentation of anonymous credentials and Zero-knowledge proofs is a work in progress and
 will be supported in subsequent versions of this Specification.
@@ -69,10 +69,6 @@ to avoid the exposure of a correlation handle.
     <figcaption>Verifiable Presentation and Verification (Option 2: Anonymous)</figcaption>
 </figure>
 
-
-## 2nd Level Header ## {#sctn-adia4sp-ops-2ndlevelhdr}
-
-Issue: TODO
 
 # ADIA for SP Data Structures # {#sctn-adia4sp-data-structs}
 
