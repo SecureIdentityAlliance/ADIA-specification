@@ -1,0 +1,31 @@
+title VC Presentation and Verification
+
+Participant User
+Participant DAA
+Participant Cloud Agent
+Participant Service Provider as SP
+Participant DAS
+
+User -> SP: User wants a service from SP
+SP ->> User: Wants proof and requests User to connect DAA via SP_ID
+SP ->> DAA: Provide SP_ID to DAA
+DAA ->> Cloud Agent: Pass SP_ID to Cloud Agent to connect with SP
+Cloud Agent ->> SP: Invites SP for DIDComm connection (mutual authentication)
+Cloud Agent <<->> SP: Generate and exchange pairwise peer DIDs for DIDcomm connection. \n Connection established
+SP ->> Cloud Agent: Request VC presentation (provide VC schema and nonce)
+Cloud Agent ->> Cloud Agent: lookup VC metadata by VC schema\n and other criteria
+
+opt
+Cloud Agent -> DAA: Let user select the VC to be presented to SP
+DAA -> User: show selectable VCs
+User --> DAA: user selects & approves VC to be presented
+DAA <-> DAS: Authenticate user with FIDO \n[USER_FIDO_PK, DAS_USER_ID]
+DAA -> Cloud Agent: Send the selected VC & authenticate for providing consent
+end
+
+Cloud Agent ->> SP: Present VC or selected values to SP
+SP ->> DAS: SP receives the VC or \n selected values (ZKP) and requests for Issuer's DID Doc
+DAS -->> SP: send DID Doc
+SP -> SP: Verify DAS's signature on the Issuer's DIDDoc
+SP -> SP: Verify VC \n by using Issuer \n public keys (ISSUER_ID_PK)
+SP -->> Cloud Agent: Success

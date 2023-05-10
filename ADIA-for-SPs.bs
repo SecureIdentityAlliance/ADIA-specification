@@ -9,8 +9,9 @@ Group: fido
 URL:
 Editor: Rolf Lindemann, rolf@noknok.com
 
-Abstract: This specification shows the aspects of ADIA for Service
-    Providers (SPs).
+Abstract: This specification shows how Service
+    Providers can trigger the presentation of a verifiable credential
+    in order to learn verified attributes regarding the current user.
 
 Issue Tracking: GitHub https://github.com/ADIAssociation/ADIA-specification/issues
 Text Macro: INFORMATIVE <em>This section is not normative.</em>
@@ -33,11 +34,41 @@ spec:webidl; type:interface; text:Promise
   the specification-maturity-appropriate boilerplate -->
 
 # ADIA for SPs Overview # {#sctn-adia4sp-overview}
-Overview to be written.
+<dfn>Service Provider</dfn>s (<dfn>SP</dfn>s) are relying parties in
+the ecosystem.  They can query verifiable credentials for a user to be
+presented.  
+
+<a>Service Provider</a>s need to authenticate themselves to other
+entities in the ADIA system.  
 
 # ADIA for SP Operations # {#sctn-adia4sp-ops}
 
-Issue: TODO
+## Present Identifying Credentials ### {#sctn-iden-creds}
+
+<figure id="fig-vc-presentation-and-verification-option-1">
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1-for-SP.png"/>
+    <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
+</figure>
+
+
+## Present Anonymous Credentials ### {#sctn-anon-creds}
+
+Note: Presentation of anonymous credentials and Zero-knowledge proofs is a work in progress and
+will be supported in subsequent versions of this Specification.
+
+Note: In this case, the message to present the <a>Verifiable Credential</a> that is sent from the <a>Cloud Agent</a> to the <a>SP</a> is signed with a dedicated signing key
+as opposed to being signed with <a>DAS_USER_ID_SK</a> in order to avoid a correlation handle in this operation.
+
+<a>Anonymous Verifiable Credential</a>s don't intrinsically expose a link from the credential to a specific user.
+A key dedicated for this operation is created on-demand by the user's <a>Cloud Agent</a>.
+Presentations of the <a>Anonymous Verifiable Credential</a> to different <a>SP</a>s will trigger the use of different keys
+to avoid the exposure of a correlation handle.
+
+<figure id="fig-vc-presentation-and-verification-option-2">
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-2.svg"/>
+    <figcaption>Verifiable Presentation and Verification (Option 2: Anonymous)</figcaption>
+</figure>
+
 
 ## 2nd Level Header ## {#sctn-adia4sp-ops-2ndlevelhdr}
 
