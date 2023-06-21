@@ -57,7 +57,11 @@ Issue: What is ADIA's contribution here?  Wallet APIs will be
     implement a certain minimum set of functions so that the "ADIA spec"
     would be a "profiling" of existing specs (as SP you MUST implement
     X and Y, but Z is optional; as issuer you MUST implement A, B and
-    C, etc.)?  But what are the APIs for getting the credential?
+    C, etc.)?  But what are the APIs for getting the credential?  Look
+    at https://openwallet.foundation/ and
+    https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
+    and https://support.apple.com/guide/iphone/use-your-drivers-license-or-state-id-iph9f1847064/ios
+    
 
 Issue: Specify the semantics of a credential. Look at OASIS TC for the processing of a credential.
 
