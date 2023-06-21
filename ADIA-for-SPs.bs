@@ -43,7 +43,23 @@ entities in the ADIA system.
 
 # ADIA for SP Operations # {#sctn-adia4sp-ops}
 
-## Present Identifying Credentials ## {#sctn-iden-creds}
+## Request Presentation of Identifying Credentials ## {#sctn-iden-creds}
+
+Issue: We need to present this in an API centric way.  What are the
+    API calls that the SP has to implement and where are those APIs
+    (i.e., native App, cloud redirection, ...)?
+    Need to distinguish 2 cases: some native Wallet App is present,
+    use a cloud redirection approach.
+
+Issue: What is ADIA's contribution here?  Wallet APIs will be
+    maintained outside of ADIA.  OpenID4VC and OpenID4VP are
+    maintained in OpenID foundation.  Is ADIA requiring its members to
+    implement a certain minimum set of functions so that the "ADIA spec"
+    would be a "profiling" of existing specs (as SP you MUST implement
+    X and Y, but Z is optional; as issuer you MUST implement A, B and
+    C, etc.)?  But what are the APIs for getting the credential?
+
+Issue: Specify the semantics of a credential. Look at OASIS TC for the processing of a credential.
 
 <figure id="fig-vc-presentation-and-verification-option-1">
     <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1-for-SP.png"/>
@@ -51,7 +67,7 @@ entities in the ADIA system.
 </figure>
 
 
-## Present Anonymous Credentials ## {#sctn-anon-creds}
+## Request Presentation of Anonymous Credentials ## {#sctn-anon-creds}
 
 Note: Presentation of anonymous credentials and Zero-knowledge proofs is a work in progress and
 will be supported in subsequent versions of this Specification.
