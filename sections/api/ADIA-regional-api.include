@@ -19,7 +19,7 @@ Save A Digital Address with its corresponding Hashed anchor attributes
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -111,7 +111,7 @@ Returns a list of Digital Addresses matching a criteria from the ADIA Regional D
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -206,7 +206,7 @@ Get an entity with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -239,7 +239,7 @@ Get an entity with its DID or Digital DigitalAddress
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -253,6 +253,7 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>

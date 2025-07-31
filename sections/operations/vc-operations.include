@@ -12,7 +12,7 @@ The <a>User</a> signs the VC with their private key and sends the signed VC to t
 and notifies the Cloud Agent to persist the VC metadata in the DAS.
 
 <figure id="fig-vc-issuance-option-1">
-  <img src="sequence-diagrams/VC-Issued-to-a-User-by-an-Issuer.svg"/>
+  <img src="sequence-diagrams/VC-Issued-to-a-User-by-an-Issuer.svg">
   <figcaption>VC Issued to a User by an Issuer</figcaption>
 </figure>
 
@@ -29,7 +29,7 @@ the Credential Metadata on the DAS. The DAS checks for constraints before allowi
 3. The VC is valid and in a non-expired state.
 
 <figure id="fig-revoke-vc">
-   <img src="sequence-diagrams/Revoke-VC.svg"/>
+   <img src="sequence-diagrams/Revoke-VC.svg">
    <figcaption>Revoke a VC</figcaption>
 </figure>
 
@@ -43,7 +43,7 @@ scheduled jobs to scan its Credential Metadata and mark expired Credential Metad
 used for Proof Presentations by a User or Cloud Agent.
 
 <figure id="fig-expire-vc">
-   <img src="sequence-diagrams/Expire-VC.svg"/>
+   <img src="sequence-diagrams/Expire-VC.svg">
    <figcaption>Expire a VC</figcaption>
 </figure>
 
@@ -75,7 +75,7 @@ Please refer to the section on [[#sctn-trust-model]] for details on how the <a>I
 ### Present Identifying Credentials ### {#sctn-iden-creds}
 
 <figure id="fig-vc-presentation-and-verification-option-1">
-    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg"/>
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1.svg">
     <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
 </figure>
 
@@ -95,7 +95,7 @@ Presentations of the <a>Anonymous Verifiable Credential</a> to different <a>SP</
 to avoid the exposure of a correlation handle.
 
 <figure id="fig-vc-presentation-and-verification-option-2">
-    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-2.svg"/>
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-2.svg">
     <figcaption>Verifiable Presentation and Verification (Option 2: Anonymous)</figcaption>
 </figure>
 

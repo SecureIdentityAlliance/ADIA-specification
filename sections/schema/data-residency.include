@@ -6,7 +6,7 @@ and other relevant entities route information flows but the User and Issuers mai
 and access to information. This is represented by the diagram below:
 
 <figure id="fig-data-schema-dataresidency">
-    <img src="images/data-residency.svg"/>
+    <img src="images/data-residency.svg">
     <figcaption>Data Residency</figcaption>
 </figure>
 

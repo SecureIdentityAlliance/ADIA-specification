@@ -24,7 +24,7 @@ The <a>ADIA</a> system makes use of various cryptographic functions.  The follow
        <td>Compute <a>HIDA</a>, part of cryptographic signature computation and verification</td>
      </tr>
      <tr>
-       <td>ES256 [[!rfc8152]]</td>
+       <td>ES256 [[!rfc8152 obsolete]]</td>
        <td>Required</td>
        <td>Compute and verify cryptographic signatures</td>
      </tr>

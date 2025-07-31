@@ -9,7 +9,7 @@ access to their old device. Bootstraping a new instance of DAA requires the step
 Please see [[#sctn-da-delegated-recovery]] to recover the DA without the ID proofing process.
 
 <figure id="fig-user-bootstraps-new-daa-instance">
-    <img src="sequence-diagrams/User-bootstrap-new-DAA-instance.svg"/>
+    <img src="sequence-diagrams/User-bootstrap-new-DAA-instance.svg">
     <figcaption>User Bootstraps New DAA Instance "Lost Phone"</figcaption>
 </figure>
 
@@ -21,7 +21,7 @@ of their old</i> <a>DAA</a> instance. ID proofing is <i>not required</i> in such
 the new DAA instance with the DAA.
 
 <figure id="fig-user-bootstraps-addtl-daa-instance">
-    <img src="sequence-diagrams/User-bootstrap-addtl-DAA-instance.svg"/>
+    <img src="sequence-diagrams/User-bootstrap-addtl-DAA-instance.svg">
     <figcaption>User Bootstraps Additional DAA Instance "New Phone"</figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ privacy considerations.
 * DAS re-enrolls User with FIDO
 
 <figure id="fig-email-based-da-recovery">
-    <img src="sequence-diagrams/Email-based-da-recovery.svg"/>
+    <img src="sequence-diagrams/Email-based-da-recovery.svg">
     <figcaption>Email based recovery</figcaption>
 </figure>
 
@@ -79,7 +79,7 @@ using a peer mode by directly scanning a QR code from the delegatee's device.
 
 
 <figure id="fig-delegated-recovery-peer-mode">
-    <img src="sequence-diagrams/Delegated-Recovery-Peer-Mode.svg"/>
+    <img src="sequence-diagrams/Delegated-Recovery-Peer-Mode.svg">
     <figcaption>Delegated Recovery Peer Mode</figcaption>
 </figure>
 
@@ -92,7 +92,7 @@ available to the User with the same Assurance Level for Presentation to Service 
 
 
 <figure id="fig-delegated-recovery-multiple-Delegatees">
-    <img src="sequence-diagrams/Delegated-Recovery-Multiple-Delegatees.svg"/>
+    <img src="sequence-diagrams/Delegated-Recovery-Multiple-Delegatees.svg">
     <figcaption>Delegated Recovery Multiple Delegatees</figcaption>
 </figure>
 
@@ -109,7 +109,7 @@ The process may be initiated by the User or in some cases such as the Issuer of 
 #### User Initiated #### {#sctn-user-account-deletion-user-initiated}
 
 <figure id="fig-user-initiated-account-deletion">
-    <img src="sequence-diagrams/User-Initiated-Account-Deletion.svg"/>
+    <img src="sequence-diagrams/User-Initiated-Account-Deletion.svg">
     <figcaption>User Initiated Account Deletion</figcaption>
 </figure>
 
@@ -131,6 +131,6 @@ In such cases, an <a>Issuer</a> may initiate deletion of the <a>Digital Address<
 * There is no Credential Metadata on the DAS
 
 <figure id="fig-issuer-initiated-account-deletion">
-    <img src="sequence-diagrams/Issuer-Initiated-Account-Deletion.svg"/>
+    <img src="sequence-diagrams/Issuer-Initiated-Account-Deletion.svg">
     <figcaption>Issuer Initiated Account Deletion</figcaption>
 </figure>

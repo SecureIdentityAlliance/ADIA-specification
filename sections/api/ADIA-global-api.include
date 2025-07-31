@@ -23,7 +23,7 @@ Returns a list of Entities matching a criteria from the ADIA Directory
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -115,7 +115,7 @@ Get an entity with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -147,7 +147,7 @@ Get an entity with its DID or Digital DigitalAddress
 
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -160,6 +160,7 @@ curl -X GET  /api/entities/abc@dtx
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -196,7 +197,7 @@ Gets a list of Regional Directories in ADIA.
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -270,7 +271,7 @@ Get a Regional Directory with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -303,7 +304,7 @@ Get a Regional Directory with its DID or Digital DigitalAddress
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -317,6 +318,7 @@ curl -X GET  /api/regional-directories/abc@DTX
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -357,7 +359,7 @@ Save ADIA Regional Directory
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -445,7 +447,7 @@ Gets a list of dap-agencies in any of the ADIA Regions.
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -519,7 +521,7 @@ Get a DAS with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -552,7 +554,7 @@ Get a DAS with its DID or Digital DigitalAddress
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -565,6 +567,7 @@ curl -X GET  /api/dap-agencies/did:adia:I1111111111
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -602,7 +605,7 @@ Gets a list of issuers in in any of the ADIA Regions.
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -676,7 +679,7 @@ Get a Issuer with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -709,7 +712,7 @@ Get a Issuer with its DID or Digital DigitalAddress
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -722,6 +725,7 @@ curl -X GET  /api/issuers/did:adia:I1111111111
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -759,7 +763,7 @@ Gets a list of service-providers in in any of the ADIA Regions.
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -833,7 +837,7 @@ Get a Service Provider with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -866,7 +870,7 @@ Get a Service Provider with its DID or Digital DigitalAddress
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -879,6 +883,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>

@@ -11,6 +11,6 @@ of the scenario.
 The conventions used in these documents to represent interactions between participants is as follows:
 
 <figure id="fig-sequence-diagrams-legend">
-    <img src="sequence-diagrams/Sequence-Diagrams-Legend.svg"/>
+    <img src="sequence-diagrams/Sequence-Diagrams-Legend.svg">
     <figcaption>Message types in sequence diagrams</figcaption>
 </figure>

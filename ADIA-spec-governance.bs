@@ -46,7 +46,7 @@ The ADI Association is responsible for establishing and administering the govern
 component services, as specified by this and any related governance document, including all legal agreements.
 
 <figure id="fig-adia-ecosystem">
-    <img src="images/adia-spec-gov-ecosystem.png"/>
+    <img src="images/adia-spec-gov-ecosystem.png">
     <figcaption>The ADIA Ecosystem</figcaption>
 </figure>
 

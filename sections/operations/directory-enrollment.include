@@ -22,7 +22,7 @@ The following sequence diagram depicts the details of the flow between entities 
 Note: Details of the Agents and protocol messages are depicted below.
 
 <figure id="fig-onboarding-regional-adia-to-gadi">
-    <img src="sequence-diagrams/Enroll-ARD-to-AGD.svg"/>
+    <img src="sequence-diagrams/Enroll-ARD-to-AGD.svg">
     <figcaption>Enroll Regional Directory to Global Directory</figcaption>
 </figure>
 
@@ -48,7 +48,7 @@ The following sequence diagram depicts the details of the flow between entities 
 Note: Details of the agents and protocol messages are depicted below.
 
 <figure id="fig-onboarding-dap-to-regional-gadi">
-    <img src="sequence-diagrams/Enroll-DAS-to-ARD.svg"/>
+    <img src="sequence-diagrams/Enroll-DAS-to-ARD.svg">
     <figcaption>Enroll DAS to Regional Directory</figcaption>
 </figure>
 
@@ -76,7 +76,7 @@ is published to the <a>ADIA Global Directory</a> for lookups by any entity in th
 
 
 <figure id="fig-onboarding-issuer-to-dap">
-    <img src="sequence-diagrams/Enroll-Issuer-to-DAS.svg"/>
+    <img src="sequence-diagrams/Enroll-Issuer-to-DAS.svg">
     <figcaption>Enroll Issuer to a DAS</figcaption>
 </figure>
 
@@ -100,7 +100,7 @@ and enroll with the <a>DAS</a>. The <a>Service Provider</a>'s public information
 the <a>ADIA Global Directory</a> for lookups by any entity in the <a>ADIA</a> ecosystem.
 
 <figure id="fig-onboarding-sp-to-dap">
-    <img src="sequence-diagrams/Enroll-SP-to-DAS.svg"/>
+    <img src="sequence-diagrams/Enroll-SP-to-DAS.svg">
     <figcaption>Enroll an SP to DAS</figcaption>
 </figure>
 
@@ -125,7 +125,7 @@ provides services to persist and search the <a>Credential Metadata</a> associate
 #### Issuer Initiated New User Enrollment #### {#sctn-onboarding-1st-issuer}
 
 The diagram below represents a `new` <a>User</a> requesting a <a>Digital Address</a> from an <a>Issuer</a>.
-The </a>DAS</a> providing the Agency services, provisions a <a>Cloud Agent</a> for the <a>User</a> to create
+The <a>DAS</a> providing the Agency services, provisions a <a>Cloud Agent</a> for the <a>User</a> to create
 a public/private key pair and a <a>DID</a> (i.e. <a>DAS_usER_ID</a>) for the <a>User</a>. The identifier (<a>DAS_USER_ID</a>), along with the
 <a>HomeDAS</a> identifier (<a>HomeDAS_ID</a>) are persisted on the <a>DAS</a> to associate their identifiers with the newly created <a>Digital Address</a>.
 Please refer to the [[#sctn-trust-anchor]] and [[#sctn-digital-address]] sections for more details on the representation and usage of the <a>Digital Address</a>.
@@ -135,7 +135,7 @@ shows the sharing of <a>Digital Address</a> information encoded in a QR code tha
 another method endorsed by this <a>ADIA</a> Specification.
 
 <figure id="fig-onboarding-1st-issuer">
-    <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg"/>
+    <img src="sequence-diagrams/User-onboarding-to-first-issuer.svg">
     <figcaption>User Onboarding to First Issuer</figcaption>
 </figure>
 
@@ -182,7 +182,7 @@ Within a single <a>ADIA Regional Directory</a>, if the <a>HIDA</a> for the <a>Us
 request a new <a>Digital Address</a> but instead is notified of the existing one.
 
 <figure id="fig-onboarding-2nd-issuer">
-    <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg"/>
+    <img src="sequence-diagrams/User-onboarding-to-second-issuer.svg">
     <figcaption>User Onboarding to Second Issuer</figcaption>
 </figure>
 
@@ -200,7 +200,7 @@ such that the <a>User</a> is able to scan the QR code containing their <a>Digita
 with the <a>HomeDAS</a>.
 
 <figure id="fig-user-initiated-da">
-    <img src="sequence-diagrams/User-initiated-DA-with-daa.svg"/>
+    <img src="sequence-diagrams/User-initiated-DA-with-daa.svg">
     <figcaption>User Initiated Digital Address Creation with DAA</figcaption>
 </figure>
 
@@ -221,6 +221,6 @@ of their identity documents by a certified operator before reporting to the <a>D
 The <a>DAS</a> may independently request the <a>User</a> to authenticate before upgrading the <a>User</a>'s <a>Assurance Level</a>.
 
 <figure id="fig-verify-user-initiated-da">
-    <img src="sequence-diagrams/Verify-user-initiated-DA.svg"/>
+    <img src="sequence-diagrams/Verify-user-initiated-DA.svg">
     <figcaption>Verify User with Digital Address to upgrade Assurance Level</figcaption>
 </figure>

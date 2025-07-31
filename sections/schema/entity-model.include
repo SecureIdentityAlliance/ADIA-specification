@@ -9,7 +9,7 @@ The following diagram depicts a logical view of an entity in ADIA.
 
 
 <figure id="fig-data-schema-partymodel">
-    <img src="images/entity-data-model.svg"/>
+    <img src="images/entity-data-model.svg">
     <figcaption>Entity Model</figcaption>
 </figure>
 

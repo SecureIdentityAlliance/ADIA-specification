@@ -195,7 +195,6 @@
       <td>String</td>
       <td><a>Digital Address</a></td>
     </tr>
-      </tr>
       <tr>
         <td>entityRole</td>
         <td>Enum</td>

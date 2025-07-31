@@ -9,7 +9,7 @@ The focus of the ecosystem is to:
 * facilitate value settlements across different identity Systems
 
 <figure id="fig-adia-overview">
-    <img src="images/adia_overview.svg"/>
+    <img src="images/adia_overview.svg">
     <figcaption>ADIA Overview</figcaption>
 </figure>
 
@@ -34,7 +34,7 @@ The ADIA Directories (<a>AGD</a> and <a>ARD</a>s), for regulatory purposes and u
 Directories support a user’s right to be forgotten that is defined in many jurisdictions.
 
 Directories MAY use a Universally Unique Identifier (<dfn export=true>UUID</dfn>), a Globally Unique Identifier (<dfn export=true>GUID</dfn>)
-    as specified by [[!RFC4122]] or an opaque 128-character random character string to represent the Trust Anchor.
+    as specified by [[!RFC4122 obsolete]] or an opaque 128-character random character string to represent the Trust Anchor.
 
 
 ## Digital Address ## {#sctn-digital-address}
@@ -69,7 +69,7 @@ may change their <a>Digital Address</a> at a later point in time.
 
 The format is specified as follows:
 <code>
-  <Alphanumeric>@HomeDASIdentifier
+  <Alphanumeric>@HomeDASIdentifier</Alphanumeric>
 </code>
 
 Please see [[#sctn-digital-address-format]] for the format for Users and Entities.

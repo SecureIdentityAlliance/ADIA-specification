@@ -24,7 +24,7 @@ As represented in the figure below,
 
 
 <figure id="fig-das-to-das-scenario-1-image">
-    <img src="sequence-diagrams/das-to-das-scenario-1-image.png"/>
+    <img src="sequence-diagrams/das-to-das-scenario-1-image.png">
     <figcaption>Users and Issuers in the same DAS. Service Provider in a different DAS</figcaption>
 </figure>
 
@@ -42,7 +42,7 @@ The User's Cloud Agent routes the Presentation to the SP via the SP's HomeDAS. F
 
 
 <figure id="fig-das-to-das-scenario-1-verify-vc">
-    <img src="sequence-diagrams/das-to-das-scenario-1-verify-vc.svg"/>
+    <img src="sequence-diagrams/das-to-das-scenario-1-verify-vc.svg">
     <figcaption>Verify VC: Users and Issuers in the same DAS. Service Provider in a different DAS</figcaption>
 </figure>
 
@@ -56,7 +56,7 @@ As represented in the figure below,
 
 
 <figure id="fig-das-to-das-scenario-2-image">
-    <img src="sequence-diagrams/das-to-das-scenario-2-image.png"/>
+    <img src="sequence-diagrams/das-to-das-scenario-2-image.png">
     <figcaption>Users and Service Provider in the same DAS. Issuers in a different DAS</figcaption>
 </figure>
 
@@ -69,7 +69,7 @@ with the User's HomeDAS. The the Cloud Agent of the User saves the VC metadata f
 The User's Cloud Agent routes the response via the Issuer's HomeDAS. Further detail on the encryption, discovery and routing of the messages is represented below.
 
 <figure id="fig-das-to-das-scenario-2-issue-vc">
-    <img src="sequence-diagrams/das-to-das-scenario-2-issue-vc.svg"/>
+    <img src="sequence-diagrams/das-to-das-scenario-2-issue-vc.svg">
     <figcaption>Issue VC: Users and Service Provider in the same DAS. Issuers in a different DAS</figcaption>
 </figure>
 
@@ -85,7 +85,7 @@ by Issuer's in the User's HomeDAS, a discovery is not required. The HomeDAS or t
 The Cloud Agent routes the Presentation to the SP via the SP's HomeDAS. Further detail on the encryption, discovery and routing of the messages is represented below.
 
 <figure id="fig-das-to-das-scenario-2-verify-vc">
-    <img src="sequence-diagrams/das-to-das-scenario-2-verify-vc.svg"/>
+    <img src="sequence-diagrams/das-to-das-scenario-2-verify-vc.svg">
     <figcaption>Verify VC: Users and Service Provider in the same DAS. Issuers in a different DAS</figcaption>
 </figure>
 
@@ -98,7 +98,7 @@ As represented in the figure below,
 * The User's credential metadata resides with the DAS1.
 
 <figure id="fig-das-to-das-scenario-3-image">
-    <img src="sequence-diagrams/das-to-das-scenario-3-image.png"/>
+    <img src="sequence-diagrams/das-to-das-scenario-3-image.png">
     <figcaption>Users in One DAS. Issuers and Service Provider in a different DAS</figcaption>
 </figure>
 
@@ -119,7 +119,7 @@ by Issuer's in the User's HomeDAS, a discovery is not required. The HomeDAS or t
 The Cloud Agent routes the Presentation to the SP via the SP's HomeDAS. Further detail on the encryption, discovery and routing of the messages is represented below.
 
 <figure id="fig-das-to-das-scenario-3-verify-vc">
-    <img src="sequence-diagrams/das-to-das-scenario-3-verify-vc.svg"/>
+    <img src="sequence-diagrams/das-to-das-scenario-3-verify-vc.svg">
     <figcaption>Verify VC: Users in One DAS. Issuers and Service Provider in a different DAS</figcaption>
 </figure>
 
@@ -132,7 +132,7 @@ Scenario 4 presents a more complicated yet realistic scenario for a network-of-n
 * The User's credential metadata resides with the DAS1.
 
 <figure id="fig-das-to-das-scenario-4-image">
-    <img src="sequence-diagrams/das-to-das-scenario-4-image.png"/>
+    <img src="sequence-diagrams/das-to-das-scenario-4-image.png">
     <figcaption>Users in One DAS. Issuers and Service Provider in a different DAS</figcaption>
 </figure>
 
@@ -153,6 +153,6 @@ by Issuer's in the User's HomeDAS, a discovery is not required. The HomeDAS or t
 The Cloud Agent routes the Presentation to the SP via the SP's HomeDAS. Further detail on the encryption, discovery and routing of the messages is represented below.
 
 <figure id="fig-das-to-das-scenario-4-verify-vc">
-    <img src="sequence-diagrams/das-to-das-scenario-4-verify-vc.svg"/>
+    <img src="sequence-diagrams/das-to-das-scenario-4-verify-vc.svg">
     <figcaption>Verify VC: Users, Issuers and Service Provider in different DASs</figcaption>
 </figure>

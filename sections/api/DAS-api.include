@@ -23,7 +23,7 @@ Returns a list of Entities matching a criteria from the ADIA Directory
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -115,7 +115,7 @@ Get an entity with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -147,7 +147,7 @@ Get an entity with its DID or Digital DigitalAddress
 
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -160,6 +160,7 @@ curl -X GET  /api/entities/abc@dtx
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -198,7 +199,7 @@ Gets a list of issuers in in any of the ADIA Regions.
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -272,7 +273,7 @@ Get a Issuer with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -305,7 +306,7 @@ Get a Issuer with its DID or Digital DigitalAddress
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -318,6 +319,7 @@ curl -X GET  /api/issuers/did:adia:I1111111111
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -359,7 +361,7 @@ Save an Issuer with the DAS
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -448,7 +450,7 @@ Gets a list of service-providers in in any of the ADIA Regions.
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -522,7 +524,7 @@ Get a Service Provider with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -555,7 +557,7 @@ Get a Service Provider with its DID or Digital DigitalAddress
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -568,6 +570,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -608,7 +611,7 @@ Save a Service Provider with the DAS
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -701,7 +704,7 @@ Search A Scheme against which Verifiable Credentials are issued. A Schema is pub
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -809,7 +812,7 @@ A Scheme against which Verifiable Credentials are issued. A Schema is published 
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -921,7 +924,7 @@ Get a Credential Schema with its identifier
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -954,7 +957,7 @@ Get a Credential Schema with its identifier
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -967,6 +970,7 @@ curl -X GET  /api/credential-schema/AAA343234
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -1032,7 +1036,7 @@ Search A Scheme against which Verifiable Credentials are issued. A Metadata is p
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -1162,7 +1166,7 @@ Metadata of the credential issued by an Issuer. A credential is bound by a crede
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -1270,7 +1274,7 @@ Get a Service Provider with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -1303,7 +1307,7 @@ Get a Service Provider with its DID or Digital DigitalAddress
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -1316,6 +1320,7 @@ curl -X GET  /api/credential-metadata/434343434343
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -1374,7 +1379,7 @@ Metadata of the credential issued by an Issuer. A credential is bound by a crede
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -1472,7 +1477,7 @@ Metadata of the credential issued by an Issuer. A credential is bound by a crede
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -1569,7 +1574,7 @@ Metadata of the credential issued by an Issuer. A credential is bound by a crede
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -1665,7 +1670,7 @@ Metadata of the credential issued by an Issuer. A credential is bound by a crede
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -1762,7 +1767,7 @@ Metadata of the credential issued by an Issuer. A credential is bound by a crede
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -1799,7 +1804,7 @@ Metadata of the credential issued by an Issuer. A credential is bound by a crede
 
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -1812,6 +1817,7 @@ curl -X GET  /api/user/fido/transaction-result/aaxddgfhjhgggddd
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -1859,7 +1865,7 @@ curl -X GET  /api/user/fido/transaction-result/aaxddgfhjhgggddd
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -1896,7 +1902,7 @@ curl -X GET  /api/user/fido/transaction-result/aaxddgfhjhgggddd
 
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -1909,6 +1915,7 @@ curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>

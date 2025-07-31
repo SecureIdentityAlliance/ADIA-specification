@@ -19,7 +19,7 @@ Create A Digital Address with its corresponding Hashed anchor attributes
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -111,7 +111,7 @@ Returns a list of Digital Addresses matching a criteria from the ADIA Regional D
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -205,7 +205,7 @@ Get an entity with its DID or Digital DigitalAddress
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -238,7 +238,7 @@ Get an entity with its DID or Digital DigitalAddress
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -252,6 +252,7 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -296,7 +297,7 @@ Search A Scheme against which Verifiable Credentials are issued. A Schema is pub
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -404,7 +405,7 @@ A Scheme against which Verifiable Credentials are issued. A Schema is published 
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -516,7 +517,7 @@ Get a Credential Schema with its identifier
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -549,7 +550,7 @@ Get a Credential Schema with its identifier
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -562,6 +563,7 @@ curl -X GET  /api/credential-schema/AAA343234
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>
@@ -624,7 +626,7 @@ Issue a Verifiable Credentials against a published schema
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -719,7 +721,7 @@ Revoke an issued Verifiable Credential
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -802,7 +804,7 @@ Expire/Void/Retire an issued Verifiable Credential
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -885,7 +887,7 @@ Get an issued credential with its identifier from the VC Store
       <td><strong>Headers</strong></td>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</li>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information</li>
       </ul>
       </td>
     </tr>
@@ -918,7 +920,7 @@ Get an issued credential with its identifier from the VC Store
 <aside class="example">
 <div class="example-data-content-type">Content-Type: application/json</div>
 
-</br>
+<br/>
 <div><strong>Request</strong></div>
 <pre class="highlight">
 <code>
@@ -931,6 +933,7 @@ curl -X GET  /api/credential/b71bdb7a-5beb-40cc-8e38-40dd270b73d5
     <th>Response</th>
   </thead>
   <tbody>
+    <tr>
       <td>
       <pre class="highlight">
       <code>

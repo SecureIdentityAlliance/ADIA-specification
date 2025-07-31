@@ -14,7 +14,8 @@ mkdir -p dist
 # Iterate through the list of Bikeshed files and create the HTML files
 # Execute without installing Bikeshed!!
 for i in *.bs; do
-    bikeshed --print=plain spec -f "$i"
+    echo "----- Compiling $i"
+    .py/bin/bikeshed --print=console spec -f "$i"
     # curl https://api.csswg.org/bikeshed/ -F file=@"$i" -F force=1 > "${i%.*}".html
 done
 
