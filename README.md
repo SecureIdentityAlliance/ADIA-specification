@@ -4,7 +4,6 @@ Main specification repository
 To view the latest editor draft, see https://adia-spec.dev.digitaltrust.net/ADIA-overview.html
 
 
-
 The clone the repository locally:
 1. Click on "Code" and copy the HTTPS-URL -or- choose "Open with GitHub Desktop" (see note below)
 2. run "git" in a terminal window in a folder for git repositories (download git: https://git-scm.com/downloads)
