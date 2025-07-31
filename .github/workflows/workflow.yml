@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
+
       - name: Install bikeshed
         run: sudo apt-get update -y && ./setup.sh
-
-      - uses: actions/checkout@v2
 
       - name: Output to HTML
         run: ./compile.sh
