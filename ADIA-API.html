@@ -1238,14 +1238,15 @@ Possible extra rowspan handling
 			grid-column: 2;
 			width: auto;
 			margin-right: 1rem;
+			border-bottom: 3px solid transparent;
+			margin-bottom: -3px;
 		}
 		#toc .content:hover,
 		#toc .content:focus {
 			background: rgba(75%, 75%, 75%, .25);
 			background: var(--a-hover-bg);
-			border-bottom: 3px solid #054572;
-			border-bottom: 3px solid var(--toclink-underline);
-			margin-bottom: -3px;
+			border-bottom-color: #054572;
+			border-bottom-color: var(--toclink-underline);
 		}
 		#toc li li li .content {
 			margin-left: 1rem;
@@ -1500,10 +1501,10 @@ Possible extra rowspan handling
   }
 
   </style>
-  <meta content="Bikeshed version 37b7e7e68, updated Fri May 27 15:08:11 2022 -0700" name="generator">
-  <meta content="88ff81979d79c944c96c97339740bca2570ca051" name="document-revision">
-<style>/* style-autolinks */
-
+  <meta content="Bikeshed version 3f621ba99, updated Mon Jul 28 15:38:36 2025 -0700" name="generator">
+  <meta content="89117ea641a84ae7da86920781c03806b933153e" name="revision">
+  <meta content="dark light" name="color-scheme">
+<style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
     font-size: inherit;
@@ -1563,9 +1564,238 @@ pre .property::before, pre .property::after {
 
 [data-link-type=biblio] {
     white-space: pre;
-}</style>
-<style>/* style-counters */
+}
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
+</style>
+<style>/* Boilerplate: style-colors */
+/* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
+:root {
+    color-scheme: light dark;
+
+    --text: black;
+    --bg: white;
+
+    --unofficial-watermark: url(https://www.w3.org/StyleSheets/TR/2016/logos/UD-watermark);
+
+    --logo-bg: #1a5e9a;
+    --logo-active-bg: #c00;
+    --logo-text: white;
+
+    --tocnav-normal-text: #707070;
+    --tocnav-normal-bg: var(--bg);
+    --tocnav-hover-text: var(--tocnav-normal-text);
+    --tocnav-hover-bg: #f8f8f8;
+    --tocnav-active-text: #c00;
+    --tocnav-active-bg: var(--tocnav-normal-bg);
+
+    --tocsidebar-text: var(--text);
+    --tocsidebar-bg: #f7f8f9;
+    --tocsidebar-shadow: rgba(0,0,0,.1);
+    --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+    --toclink-text: var(--text);
+    --toclink-underline: #3980b5;
+    --toclink-visited-text: var(--toclink-text);
+    --toclink-visited-underline: #054572;
+
+    --heading-text: #005a9c;
+
+    --hr-text: var(--text);
+
+    --algo-border: #def;
+
+    --del-text: red;
+    --del-bg: transparent;
+    --ins-text: #080;
+    --ins-bg: transparent;
+
+    --a-normal-text: #034575;
+    --a-normal-underline: #bbb;
+    --a-visited-text: var(--a-normal-text);
+    --a-visited-underline: #707070;
+    --a-hover-bg: rgba(75%, 75%, 75%, .25);
+    --a-active-text: #c00;
+    --a-active-underline: #c00;
+
+    --blockquote-border: silver;
+    --blockquote-bg: transparent;
+    --blockquote-text: currentcolor;
+
+    --issue-border: #e05252;
+    --issue-bg: #fbe9e9;
+    --issue-text: var(--text);
+    --issueheading-text: #831616;
+
+    --example-border: #e0cb52;
+    --example-bg: #fcfaee;
+    --example-text: var(--text);
+    --exampleheading-text: #574b0f;
+
+    --note-border: #52e052;
+    --note-bg: #e9fbe9;
+    --note-text: var(--text);
+    --noteheading-text: hsl(120, 70%, 30%);
+    --notesummary-underline: silver;
+
+    --assertion-border: #aaa;
+    --assertion-bg: #eee;
+    --assertion-text: black;
+
+    --advisement-border: orange;
+    --advisement-bg: #fec;
+    --advisement-text: var(--text);
+    --advisementheading-text: #b35f00;
+
+    --warning-border: red;
+    --warning-bg: hsla(40,100%,50%,0.95);
+    --warning-text: var(--text);
+
+    --amendment-border: #330099;
+    --amendment-bg: #F5F0FF;
+    --amendment-text: var(--text);
+    --amendmentheading-text: #220066;
+
+    --def-border: #8ccbf2;
+    --def-bg: #def;
+    --def-text: var(--text);
+    --defrow-border: #bbd7e9;
+
+    --datacell-border: silver;
+
+    --indexinfo-text: #707070;
+
+    --indextable-hover-text: black;
+    --indextable-hover-bg: #f7f8f9;
+
+    --outdatedspec-bg: rgba(0, 0, 0, .5);
+    --outdatedspec-text: black;
+    --outdated-bg: maroon;
+    --outdated-text: white;
+    --outdated-shadow: red;
+
+    --editedrec-bg: darkorange;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #ddd;
+        --bg: black;
+
+        --unofficial-watermark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23100808' transform='translate(200 200) rotate(-45) translate(-200 -200)' stroke='%23100808' stroke-width='3'%3E%3Ctext x='50%25' y='220' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EUNOFFICIAL%3C/text%3E%3Ctext x='50%25' y='305' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EDRAFT%3C/text%3E%3C/g%3E%3C/svg%3E");
+
+        --logo-bg: #1a5e9a;
+        --logo-active-bg: #c00;
+        --logo-text: white;
+
+        --tocnav-normal-text: #999;
+        --tocnav-normal-bg: var(--bg);
+        --tocnav-hover-text: var(--tocnav-normal-text);
+        --tocnav-hover-bg: #080808;
+        --tocnav-active-text: #f44;
+        --tocnav-active-bg: var(--tocnav-normal-bg);
+
+        --tocsidebar-text: var(--text);
+        --tocsidebar-bg: #080808;
+        --tocsidebar-shadow: rgba(255,255,255,.1);
+        --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+        --toclink-text: var(--text);
+        --toclink-underline: #6af;
+        --toclink-visited-text: var(--toclink-text);
+        --toclink-visited-underline: #054572;
+
+        --heading-text: #8af;
+
+        --hr-text: var(--text);
+
+        --algo-border: #456;
+
+        --del-text: #f44;
+        --del-bg: transparent;
+        --ins-text: #4a4;
+        --ins-bg: transparent;
+
+        --a-normal-text: #6af;
+        --a-normal-underline: #555;
+        --a-visited-text: var(--a-normal-text);
+        --a-visited-underline: var(--a-normal-underline);
+        --a-hover-bg: rgba(25%, 25%, 25%, .2);
+        --a-active-text: #f44;
+        --a-active-underline: var(--a-active-text);
+
+        --borderedblock-bg: rgba(255, 255, 255, .05);
+
+        --blockquote-border: silver;
+        --blockquote-bg: var(--borderedblock-bg);
+        --blockquote-text: currentcolor;
+
+        --issue-border: #e05252;
+        --issue-bg: var(--borderedblock-bg);
+        --issue-text: var(--text);
+        --issueheading-text: hsl(0deg, 70%, 70%);
+
+        --example-border: hsl(50deg, 90%, 60%);
+        --example-bg: var(--borderedblock-bg);
+        --example-text: var(--text);
+        --exampleheading-text: hsl(50deg, 70%, 70%);
+
+        --note-border: hsl(120deg, 100%, 35%);
+        --note-bg: var(--borderedblock-bg);
+        --note-text: var(--text);
+        --noteheading-text: hsl(120, 70%, 70%);
+        --notesummary-underline: silver;
+
+        --assertion-border: #444;
+        --assertion-bg: var(--borderedblock-bg);
+        --assertion-text: var(--text);
+
+        --advisement-border: orange;
+        --advisement-bg: #222218;
+        --advisement-text: var(--text);
+        --advisementheading-text: #f84;
+
+        --warning-border: red;
+        --warning-bg: hsla(40,100%,20%,0.95);
+        --warning-text: var(--text);
+
+        --amendment-border: #330099;
+        --amendment-bg: #080010;
+        --amendment-text: var(--text);
+        --amendmentheading-text: #cc00ff;
+
+        --def-border: #8ccbf2;
+        --def-bg: #080818;
+        --def-text: var(--text);
+        --defrow-border: #136;
+
+        --datacell-border: silver;
+
+        --indexinfo-text: #aaa;
+
+        --indextable-hover-text: var(--text);
+        --indextable-hover-bg: #181818;
+
+        --outdatedspec-bg: rgba(255, 255, 255, .5);
+        --outdatedspec-text: black;
+        --outdated-bg: maroon;
+        --outdated-text: white;
+        --outdated-shadow: red;
+
+        --editedrec-bg: darkorange;
+    }
+    /* In case a transparent-bg image doesn't expect to be on a dark bg,
+       which is quite common in practice... */
+    img { background: white; }
+}
+</style>
+<style>/* Boilerplate: style-counters */
 body {
     counter-reset: example figure issue;
 }
@@ -1592,9 +1822,9 @@ figcaption {
 }
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
-}</style>
-<style>/* style-issues */
-
+}
+</style>
+<style>/* Boilerplate: style-issues */
 a[href].issue-return {
     float: right;
     float: inline-end;
@@ -1603,8 +1833,7 @@ a[href].issue-return {
     text-decoration: none;
 }
 </style>
-<style>/* style-md-lists */
-
+<style>/* Boilerplate: style-md-lists */
 /* This is a weird hack for me not yet following the commonmark spec
    regarding paragraph and lists. */
 [data-md] > :first-child {
@@ -1612,9 +1841,9 @@ a[href].issue-return {
 }
 [data-md] > :last-child {
     margin-bottom: 0;
-}</style>
-<style>/* style-selflinks */
-
+}
+</style>
+<style>/* Boilerplate: style-selflinks */
 :root {
     --selflink-text: white;
     --selflink-bg: gray;
@@ -1639,6 +1868,14 @@ a.self-link:hover {
 }
 .heading > a.self-link {
     font-size: 83%;
+}
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
 }
 li > a.self-link {
     left: calc(-1 * (3.5rem - 26px) - 2em);
@@ -1667,9 +1904,13 @@ dfn > a.self-link::before      { content: "#"; }
 </style>
  <body class="h-entry">
   <div class="head">
-   <p data-fill-with="logo"><a class="logo" href="https://www.didalliance.org/"> <img alt="ADI Association" height="48" src="resources/logo.svg" width="157"> </a> </p>
+   <p data-fill-with="logo"><a class="logo" href="https://www.didalliance.org/">
+    <img alt="ADI Association" height="48" src="resources/logo.svg" width="157">
+</a>
+</p>
    <h1 class="p-name no-ref" id="title">Accountable Digital Identity Association(ADIA) API</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2022-07-14">14 July 2022</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft,
+    <time class="dt-updated" datetime="2025-07-31">31 July 2025</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>Issue Tracking:
@@ -1679,7 +1920,8 @@ dfn > a.self-link::before      { content: "#"; }
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright">Copyright © 2022 <a href="https://www.didalliance.org">ADI Association</a>. All Rights Reserved. </p>
+   <p class="copyright" data-fill-with="copyright">Copyright © 2025 <a href="https://www.didalliance.org">ADI Association</a>. All Rights Reserved.
+</p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -1803,7 +2045,10 @@ dfn > a.self-link::before      { content: "#"; }
    <h3 class="heading settled" data-level="1.1" id="sctn-issuer-api"><span class="secno">1.1. </span><span class="content">Issuer API</span><a class="self-link" href="#sctn-issuer-api"></a></h3>
    <h4 class="heading settled" data-level="1.1.1" id="sctn-issuer-service"><span class="secno">1.1.1. </span><span class="content">Directory Service</span><a class="self-link" href="#sctn-issuer-service"></a></h4>
    <h5 class="heading settled" data-level="1.1.1.1" id="sctn-issuer-create-da"><span class="secno">1.1.1.1. </span><span class="content">Create Digital Address</span><a class="self-link" href="#sctn-issuer-create-da"></a></h5>
-    Create A Digital Address with its corresponding Hashed anchor attributes 
+   
+Create A Digital Address with its corresponding Hashed anchor attributes
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -1816,14 +2061,16 @@ dfn > a.self-link::before      { content: "#"; }
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Consumes</strong>
       <td>Content-Type: application/json
      <tr>
       <td><strong>Request Body</strong>
-      <td>DigitalAddress (required)<br> Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service. 
+      <td>DigitalAddress (required)<br>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>DigitalAddress Object
@@ -1838,7 +2085,8 @@ dfn > a.self-link::before      { content: "#"; }
        </ul>
    </table>
    <aside class="example" id="example-49f16672">
-    <a class="self-link" href="#example-49f16672"></a> 
+    <a class="self-link" href="#example-49f16672"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -1868,7 +2116,10 @@ dfn > a.self-link::before      { content: "#"; }
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.1.1.2" id="sctn-issuer-get-da"><span class="secno">1.1.1.2. </span><span class="content">Search Digital Addresses</span><a class="self-link" href="#sctn-issuer-get-da"></a></h5>
-    Returns a list of Digital Addresses matching a criteria from the ADIA Regional Directory 
+   
+Returns a list of Digital Addresses matching a criteria from the ADIA Regional Directory
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -1884,11 +2135,13 @@ dfn > a.self-link::before      { content: "#"; }
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>EntityCriteria (required)<br> Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service. 
+      <td>EntityCriteria (required)<br>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>List of DigitalAddress Objects
@@ -1902,7 +2155,8 @@ dfn > a.self-link::before      { content: "#"; }
        </ul>
    </table>
    <aside class="example" id="example-d3835c04">
-    <a class="self-link" href="#example-d3835c04"></a> 
+    <a class="self-link" href="#example-d3835c04"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -1942,7 +2196,10 @@ dfn > a.self-link::before      { content: "#"; }
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.1.1.3" id="sctn-issuer-get-byId"><span class="secno">1.1.1.3. </span><span class="content">Get a Digital Address by an Identifier</span><a class="self-link" href="#sctn-issuer-get-byId"></a></h5>
-    Get an entity with its DID or Digital DigitalAddress 
+   
+Get an entity with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -1955,7 +2212,7 @@ dfn > a.self-link::before      { content: "#"; }
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -1977,7 +2234,8 @@ dfn > a.self-link::before      { content: "#"; }
        </ul>
    </table>
    <aside class="example" id="example-0b627925">
-    <a class="self-link" href="#example-0b627925"></a> 
+    <a class="self-link" href="#example-0b627925"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -2006,7 +2264,10 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
    </aside>
    <h4 class="heading settled" data-level="1.1.2" id="sctn-issuer-credential-service"><span class="secno">1.1.2. </span><span class="content">Credential Service</span><a class="self-link" href="#sctn-issuer-credential-service"></a></h4>
    <h5 class="heading settled" data-level="1.1.2.1" id="sctn-issuer-get-credential-schema"><span class="secno">1.1.2.1. </span><span class="content">Search Credential Schema</span><a class="self-link" href="#sctn-issuer-get-credential-schema"></a></h5>
-    Search A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer 
+   
+Search A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2022,11 +2283,13 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>CredentialCriteria (required)<br> Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAS Ledger. 
+      <td>CredentialCriteria (required)<br>
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAS Ledger.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>List of CredentialSchema Object
@@ -2041,7 +2304,8 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
        </ul>
    </table>
    <aside class="example" id="example-0dd7221d">
-    <a class="self-link" href="#example-0dd7221d"></a> 
+    <a class="self-link" href="#example-0dd7221d"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -2091,7 +2355,10 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.1.2.2" id="sctn-issuer-publish-credential-schema"><span class="secno">1.1.2.2. </span><span class="content">Publish Credential Schema</span><a class="self-link" href="#sctn-issuer-publish-credential-schema"></a></h5>
-    A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer 
+   
+A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2107,11 +2374,13 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>CredentialSchema (required)<br> Body Parameter — Save a credential schema with attributes. Verifiable Credentials are issued against a credential schema published by the Issuer. 
+      <td>CredentialSchema (required)<br>
+      Body Parameter — Save a credential schema with attributes. Verifiable Credentials are issued against a credential schema published by the Issuer.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>CredentialSchema Object
@@ -2126,7 +2395,8 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
        </ul>
    </table>
    <aside class="example" id="example-e4027276">
-    <a class="self-link" href="#example-e4027276"></a> 
+    <a class="self-link" href="#example-e4027276"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -2183,7 +2453,10 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.1.2.3" id="sctn-issuer-get-one-credential-schema"><span class="secno">1.1.2.3. </span><span class="content">Get a Credential Schema by Identifier</span><a class="self-link" href="#sctn-issuer-get-one-credential-schema"></a></h5>
-    Get a Credential Schema with its identifier 
+   
+Get a Credential Schema with its identifier
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2196,7 +2469,7 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -2218,7 +2491,8 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
        </ul>
    </table>
    <aside class="example" id="example-41587974">
-    <a class="self-link" href="#example-41587974"></a> 
+    <a class="self-link" href="#example-41587974"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -2269,7 +2543,10 @@ curl -X GET  /api/credential-schema/AAA343234
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.1.2.4" id="sctn-issuer-issue-credential"><span class="secno">1.1.2.4. </span><span class="content">Issue a Verifiable Credential</span><a class="self-link" href="#sctn-issuer-issue-credential"></a></h5>
-    Issue a Verifiable Credentials against a published schema 
+   
+Issue a Verifiable Credentials against a published schema
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2282,14 +2559,16 @@ curl -X GET  /api/credential-schema/AAA343234
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Consumes</strong>
       <td>Content-Type: application/json
      <tr>
       <td><strong>Request Body</strong>
-      <td>VerifiableCredential (required)<br> Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service. 
+      <td>VerifiableCredential (required)<br>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>VerifiableCredential Object
@@ -2304,7 +2583,8 @@ curl -X GET  /api/credential-schema/AAA343234
        </ul>
    </table>
    <aside class="example" id="example-34d50cd3">
-    <a class="self-link" href="#example-34d50cd3"></a> 
+    <a class="self-link" href="#example-34d50cd3"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -2341,7 +2621,10 @@ curl -X GET  /api/credential-schema/AAA343234
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.1.2.5" id="sctn-issuer-revoke-credential"><span class="secno">1.1.2.5. </span><span class="content">Revoke a Verifiable Credential</span><a class="self-link" href="#sctn-issuer-revoke-credential"></a></h5>
-    Revoke an issued Verifiable Credential 
+   
+Revoke an issued Verifiable Credential
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2354,14 +2637,16 @@ curl -X GET  /api/credential-schema/AAA343234
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Consumes</strong>
       <td>Content-Type: application/json
      <tr>
       <td><strong>Request Body</strong>
-      <td>VerifiableCredential (required)<br> Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service. 
+      <td>VerifiableCredential (required)<br>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>VerifiableCredential Object
@@ -2375,7 +2660,8 @@ curl -X GET  /api/credential-schema/AAA343234
        </ul>
    </table>
    <aside class="example" id="example-bbfcf7f6">
-    <a class="self-link" href="#example-bbfcf7f6"></a> 
+    <a class="self-link" href="#example-bbfcf7f6"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -2400,7 +2686,10 @@ curl -X GET  /api/credential-schema/AAA343234
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.1.2.6" id="sctn-issuer-expire-credential"><span class="secno">1.1.2.6. </span><span class="content">Expire a Verifiable Credential</span><a class="self-link" href="#sctn-issuer-expire-credential"></a></h5>
-    Expire/Void/Retire an issued Verifiable Credential 
+   
+Expire/Void/Retire an issued Verifiable Credential
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2413,14 +2702,16 @@ curl -X GET  /api/credential-schema/AAA343234
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Consumes</strong>
       <td>Content-Type: application/json
      <tr>
       <td><strong>Request Body</strong>
-      <td>VerifiableCredential (required)<br> Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service. 
+      <td>VerifiableCredential (required)<br>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>VerifiableCredential Object
@@ -2434,7 +2725,8 @@ curl -X GET  /api/credential-schema/AAA343234
        </ul>
    </table>
    <aside class="example" id="example-d5991be7">
-    <a class="self-link" href="#example-d5991be7"></a> 
+    <a class="self-link" href="#example-d5991be7"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -2460,7 +2752,10 @@ curl -X GET  /api/credential-schema/AAA343234
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.1.2.7" id="sctn-issuer-get-one-credential-schema①"><span class="secno">1.1.2.7. </span><span class="content">Get a Credential by Identifier</span><a class="self-link" href="#sctn-issuer-get-one-credential-schema①"></a></h5>
-    Get an issued credential with its identifier from the VC Store 
+   
+Get an issued credential with its identifier from the VC Store
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2473,7 +2768,7 @@ curl -X GET  /api/credential-schema/AAA343234
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -2495,7 +2790,8 @@ curl -X GET  /api/credential-schema/AAA343234
        </ul>
    </table>
    <aside class="example" id="example-5e9c494a">
-    <a class="self-link" href="#example-5e9c494a"></a> 
+    <a class="self-link" href="#example-5e9c494a"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -2545,7 +2841,10 @@ curl -X GET  /api/credential/b71bdb7a-5beb-40cc-8e38-40dd270b73d5
    <h3 class="heading settled" data-level="1.2" id="sctn-dap-agency-api"><span class="secno">1.2. </span><span class="content">DAS API</span><a class="self-link" href="#sctn-dap-agency-api"></a></h3>
    <h4 class="heading settled" data-level="1.2.1" id="sctn-adia-directory-service"><span class="secno">1.2.1. </span><span class="content">Directory Service</span><a class="self-link" href="#sctn-adia-directory-service"></a></h4>
    <h5 class="heading settled" data-level="1.2.1.1" id="sctn-dap-agency-get-entities"><span class="secno">1.2.1.1. </span><span class="content">Search Entities</span><a class="self-link" href="#sctn-dap-agency-get-entities"></a></h5>
-    Returns a list of Entities matching a criteria from the ADIA Directory 
+   
+Returns a list of Entities matching a criteria from the ADIA Directory
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2561,11 +2860,13 @@ curl -X GET  /api/credential/b71bdb7a-5beb-40cc-8e38-40dd270b73d5
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>EntityCriteria (required)<br> Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service. 
+      <td>EntityCriteria (required)<br>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>List of Entity Objects
@@ -2579,7 +2880,8 @@ curl -X GET  /api/credential/b71bdb7a-5beb-40cc-8e38-40dd270b73d5
        </ul>
    </table>
    <aside class="example" id="example-c2229e1c">
-    <a class="self-link" href="#example-c2229e1c"></a> 
+    <a class="self-link" href="#example-c2229e1c"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -2618,7 +2920,10 @@ curl -X GET  /api/credential/b71bdb7a-5beb-40cc-8e38-40dd270b73d5
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.1.2" id="sctn-dap-agency-get-entities①"><span class="secno">1.2.1.2. </span><span class="content">Get an Entity by Identifier</span><a class="self-link" href="#sctn-dap-agency-get-entities①"></a></h5>
-    Get an entity with its DID or Digital DigitalAddress 
+   
+Get an entity with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2631,7 +2936,7 @@ curl -X GET  /api/credential/b71bdb7a-5beb-40cc-8e38-40dd270b73d5
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -2653,9 +2958,12 @@ curl -X GET  /api/credential/b71bdb7a-5beb-40cc-8e38-40dd270b73d5
        </ul>
    </table>
    <aside class="example" id="example-8f6f21b3">
-    <a class="self-link" href="#example-8f6f21b3"></a> 
+    <a class="self-link" href="#example-8f6f21b3"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
-     <br> 
+    
+<br>
+
     <div><strong>Request</strong></div>
 <pre class="highlight"><code>
 curl -X GET  /api/entities/abc@dtx
@@ -2680,7 +2988,11 @@ curl -X GET  /api/entities/abc@dtx
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.1.3" id="sctn-dap-agency-get-issuers"><span class="secno">1.2.1.3. </span><span class="content">Get issuers</span><a class="self-link" href="#sctn-dap-agency-get-issuers"></a></h5>
-    Gets a list of issuers in in any of the ADIA Regions. 
+   
+Gets a list of issuers in in any of the ADIA Regions.
+
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2693,7 +3005,7 @@ curl -X GET  /api/entities/abc@dtx
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Return Type</strong>
@@ -2708,7 +3020,8 @@ curl -X GET  /api/entities/abc@dtx
        </ul>
    </table>
    <aside class="example" id="example-1923ce6e">
-    <a class="self-link" href="#example-1923ce6e"></a> 
+    <a class="self-link" href="#example-1923ce6e"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -2738,7 +3051,10 @@ curl -X GET  /api/entities/abc@dtx
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.1.4" id="sctn-dap-agency-get-one-issuer"><span class="secno">1.2.1.4. </span><span class="content">Get a Issuer by Identifier</span><a class="self-link" href="#sctn-dap-agency-get-one-issuer"></a></h5>
-    Get a Issuer with its DID or Digital DigitalAddress 
+   
+Get a Issuer with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2751,7 +3067,7 @@ curl -X GET  /api/entities/abc@dtx
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -2773,7 +3089,8 @@ curl -X GET  /api/entities/abc@dtx
        </ul>
    </table>
    <aside class="example" id="example-9fa2f3b2">
-    <a class="self-link" href="#example-9fa2f3b2"></a> 
+    <a class="self-link" href="#example-9fa2f3b2"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -2800,7 +3117,10 @@ curl -X GET  /api/issuers/did:adia:I1111111111
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.1.5" id="sctn-dap-agency-save-issuer"><span class="secno">1.2.1.5. </span><span class="content">Save Issuer</span><a class="self-link" href="#sctn-dap-agency-save-issuer"></a></h5>
-    Save an Issuer with the DAS 
+   
+Save an Issuer with the DAS
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2816,11 +3136,13 @@ curl -X GET  /api/issuers/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>Entity (required)<br> Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service. 
+      <td>Entity (required)<br>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>Entity Object
@@ -2835,7 +3157,8 @@ curl -X GET  /api/issuers/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-509b431c">
-    <a class="self-link" href="#example-509b431c"></a> 
+    <a class="self-link" href="#example-509b431c"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -2866,7 +3189,11 @@ curl -X GET  /api/issuers/did:adia:I1111111111
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.1.6" id="sctn-dap-agency-get-service-providers"><span class="secno">1.2.1.6. </span><span class="content">Get Service Providers</span><a class="self-link" href="#sctn-dap-agency-get-service-providers"></a></h5>
-    Gets a list of service-providers in in any of the ADIA Regions. 
+   
+Gets a list of service-providers in in any of the ADIA Regions.
+
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2879,7 +3206,7 @@ curl -X GET  /api/issuers/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Return Type</strong>
@@ -2894,7 +3221,8 @@ curl -X GET  /api/issuers/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-6c0ca5fc">
-    <a class="self-link" href="#example-6c0ca5fc"></a> 
+    <a class="self-link" href="#example-6c0ca5fc"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -2924,7 +3252,10 @@ curl -X GET  /api/issuers/did:adia:I1111111111
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.1.7" id="sctn-dap-agency-get-one-service-provider"><span class="secno">1.2.1.7. </span><span class="content">Get a Service Provider by Identifier</span><a class="self-link" href="#sctn-dap-agency-get-one-service-provider"></a></h5>
-    Get a Service Provider with its DID or Digital DigitalAddress 
+   
+Get a Service Provider with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -2937,7 +3268,7 @@ curl -X GET  /api/issuers/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -2959,7 +3290,8 @@ curl -X GET  /api/issuers/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-28775aba">
-    <a class="self-link" href="#example-28775aba"></a> 
+    <a class="self-link" href="#example-28775aba"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -2986,7 +3318,10 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.1.8" id="sctn-dap-agency-save-serviceprovider"><span class="secno">1.2.1.8. </span><span class="content">Save Service Provider</span><a class="self-link" href="#sctn-dap-agency-save-serviceprovider"></a></h5>
-    Save a Service Provider with the DAS 
+   
+Save a Service Provider with the DAS
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -3002,11 +3337,13 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>Entity (required)<br> Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service. 
+      <td>Entity (required)<br>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>Entity Object
@@ -3021,7 +3358,8 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-eab99f75">
-    <a class="self-link" href="#example-eab99f75"></a> 
+    <a class="self-link" href="#example-eab99f75"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -3053,7 +3391,10 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
    </aside>
    <h4 class="heading settled" data-level="1.2.2" id="sctn-adia-credential-service"><span class="secno">1.2.2. </span><span class="content">Credential Service</span><a class="self-link" href="#sctn-adia-credential-service"></a></h4>
    <h5 class="heading settled" data-level="1.2.2.1" id="sctn-dap-agency-get-credential-schema"><span class="secno">1.2.2.1. </span><span class="content">Search Credential Schema</span><a class="self-link" href="#sctn-dap-agency-get-credential-schema"></a></h5>
-    Search A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer 
+   
+Search A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -3069,11 +3410,13 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>CredentialCriteria (required)<br> Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAS Ledger. 
+      <td>CredentialCriteria (required)<br>
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential schema records from the DAS Ledger.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>List of CredentialSchema Object
@@ -3088,7 +3431,8 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-0dd7221d①">
-    <a class="self-link" href="#example-0dd7221d①"></a> 
+    <a class="self-link" href="#example-0dd7221d①"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -3138,7 +3482,10 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.2.2" id="sctn-dap-agency-save-credential-schema"><span class="secno">1.2.2.2. </span><span class="content">Save Credential Schema</span><a class="self-link" href="#sctn-dap-agency-save-credential-schema"></a></h5>
-    A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer 
+   
+A Scheme against which Verifiable Credentials are issued. A Schema is published by an Issuer
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -3154,11 +3501,13 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>CredentialSchema (required)<br> Body Parameter — Save a credential schema with attributes. Verifiable Credentials are issued against a credential schema published by the Issuer. 
+      <td>CredentialSchema (required)<br>
+      Body Parameter — Save a credential schema with attributes. Verifiable Credentials are issued against a credential schema published by the Issuer.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>CredentialSchema Object
@@ -3173,7 +3522,8 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-e4027276①">
-    <a class="self-link" href="#example-e4027276①"></a> 
+    <a class="self-link" href="#example-e4027276①"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -3230,7 +3580,10 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.2.3" id="sctn-dap-agency-get-one-credential-schema"><span class="secno">1.2.2.3. </span><span class="content">Get a Credential Schema by Identifier</span><a class="self-link" href="#sctn-dap-agency-get-one-credential-schema"></a></h5>
-    Get a Credential Schema with its identifier 
+   
+Get a Credential Schema with its identifier
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -3243,7 +3596,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -3265,7 +3618,8 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-41587974①">
-    <a class="self-link" href="#example-41587974①"></a> 
+    <a class="self-link" href="#example-41587974①"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -3316,7 +3670,10 @@ curl -X GET  /api/credential-schema/AAA343234
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.2.4" id="sctn-dap-agency-get-credential-metadata"><span class="secno">1.2.2.4. </span><span class="content">Search Credential Metadata</span><a class="self-link" href="#sctn-dap-agency-get-credential-metadata"></a></h5>
-    Search A Scheme against which Verifiable Credentials are issued. A Metadata is published by an Issuer 
+   
+Search A Scheme against which Verifiable Credentials are issued. A Metadata is published by an Issuer
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -3332,11 +3689,13 @@ curl -X GET  /api/credential-schema/AAA343234
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>CredentialCriteria (required)<br> Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential metadata records from the DAS Ledger. 
+      <td>CredentialCriteria (required)<br>
+      Body Parameter — A criteria based search consisting of one or more attributes. Returns matching credential metadata records from the DAS Ledger.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>List of CredentialMetadata Object
@@ -3351,7 +3710,8 @@ curl -X GET  /api/credential-schema/AAA343234
        </ul>
    </table>
    <aside class="example" id="example-9ad2f05e">
-    <a class="self-link" href="#example-9ad2f05e"></a> 
+    <a class="self-link" href="#example-9ad2f05e"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -3423,7 +3783,10 @@ curl -X GET  /api/credential-schema/AAA343234
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.2.5" id="sctn-dap-agency-save-credential-metadata"><span class="secno">1.2.2.5. </span><span class="content">Save Credential Metadata</span><a class="self-link" href="#sctn-dap-agency-save-credential-metadata"></a></h5>
-    Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information. 
+   
+Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information.
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -3439,11 +3802,13 @@ curl -X GET  /api/credential-schema/AAA343234
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>CredentialMetadata (required)<br> Body Parameter — Save a credential metadata of the issued credential 
+      <td>CredentialMetadata (required)<br>
+      Body Parameter — Save a credential metadata of the issued credential
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>CredentialMetadata Object
@@ -3458,7 +3823,8 @@ curl -X GET  /api/credential-schema/AAA343234
        </ul>
    </table>
    <aside class="example" id="example-0fd1c854">
-    <a class="self-link" href="#example-0fd1c854"></a> 
+    <a class="self-link" href="#example-0fd1c854"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -3511,7 +3877,10 @@ curl -X GET  /api/credential-schema/AAA343234
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.2.6" id="sctn-dap-agency-get-one-credential-metadata"><span class="secno">1.2.2.6. </span><span class="content">Get a Credential Metadata by Identifier</span><a class="self-link" href="#sctn-dap-agency-get-one-credential-metadata"></a></h5>
-    Get a Service Provider with its DID or Digital DigitalAddress 
+   
+Get a Service Provider with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -3524,7 +3893,7 @@ curl -X GET  /api/credential-schema/AAA343234
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -3546,7 +3915,8 @@ curl -X GET  /api/credential-schema/AAA343234
        </ul>
    </table>
    <aside class="example" id="example-d2632968">
-    <a class="self-link" href="#example-d2632968"></a> 
+    <a class="self-link" href="#example-d2632968"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -3590,7 +3960,10 @@ curl -X GET  /api/credential-metadata/434343434343
    </aside>
    <h4 class="heading settled" data-level="1.2.3" id="sctn-dap-agency-user-service"><span class="secno">1.2.3. </span><span class="content">User Service</span><a class="self-link" href="#sctn-dap-agency-user-service"></a></h4>
    <h5 class="heading settled" data-level="1.2.3.1" id="sctn-dap-agency-initialize-authenticator"><span class="secno">1.2.3.1. </span><span class="content">Initialize Authenticator</span><a class="self-link" href="#sctn-dap-agency-initialize-authenticator"></a></h5>
-    Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information. 
+   
+Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information.
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -3606,11 +3979,13 @@ curl -X GET  /api/credential-metadata/434343434343
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>FidoCommandRequest (required)<br> Body Parameter — FIDO Request parameters 
+      <td>FidoCommandRequest (required)<br>
+      Body Parameter — FIDO Request parameters
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>FidoCommandResponse Object
@@ -3624,7 +3999,8 @@ curl -X GET  /api/credential-metadata/434343434343
        </ul>
    </table>
    <aside class="example" id="example-605276ae">
-    <a class="self-link" href="#example-605276ae"></a> 
+    <a class="self-link" href="#example-605276ae"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -3664,7 +4040,10 @@ curl -X GET  /api/credential-metadata/434343434343
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.3.2" id="sctn-dap-agency-register-account"><span class="secno">1.2.3.2. </span><span class="content">Register Account</span><a class="self-link" href="#sctn-dap-agency-register-account"></a></h5>
-    Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information. 
+   
+Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information.
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -3680,11 +4059,13 @@ curl -X GET  /api/credential-metadata/434343434343
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>FidoCommandRequest (required)<br> Body Parameter — FIDO Request parameters 
+      <td>FidoCommandRequest (required)<br>
+      Body Parameter — FIDO Request parameters
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>FidoCommandResponse Object
@@ -3698,7 +4079,8 @@ curl -X GET  /api/credential-metadata/434343434343
        </ul>
    </table>
    <aside class="example" id="example-605276ae①">
-    <a class="self-link" href="#example-605276ae①"></a> 
+    <a class="self-link" href="#example-605276ae①"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -3738,7 +4120,10 @@ curl -X GET  /api/credential-metadata/434343434343
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.2.3.3" id="sctn-dap-agency-deregister-account"><span class="secno">1.2.3.3. </span><span class="content">De-Register Account</span><a class="self-link" href="#sctn-dap-agency-deregister-account"></a></h5>
-    Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information. 
+   
+Metadata of the credential issued by an Issuer. A credential is bound by a credential schema, issuer, user information.
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -3754,11 +4139,13 @@ curl -X GET  /api/credential-metadata/434343434343
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>FidoCommandRequest (required)<br> Body Parameter — FIDO Request parameters 
+      <td>FidoCommandRequest (required)<br>
+      Body Parameter — FIDO Request parameters
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>FidoCommandResponse Object
@@ -3772,7 +4159,8 @@ curl -X GET  /api/credential-metadata/434343434343
        </ul>
    </table>
    <aside class="example" id="example-605276ae②">
-    <a class="self-link" href="#example-605276ae②"></a> 
+    <a class="self-link" href="#example-605276ae②"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -3827,11 +4215,13 @@ curl -X GET  /api/credential-metadata/434343434343
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>FidoCommandRequest (required)<br> Body Parameter — FIDO Request parameters 
+      <td>FidoCommandRequest (required)<br>
+      Body Parameter — FIDO Request parameters
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>FidoCommandResponse Object
@@ -3845,7 +4235,8 @@ curl -X GET  /api/credential-metadata/434343434343
        </ul>
    </table>
    <aside class="example" id="example-605276ae③">
-    <a class="self-link" href="#example-605276ae③"></a> 
+    <a class="self-link" href="#example-605276ae③"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -3900,7 +4291,7 @@ curl -X GET  /api/credential-metadata/434343434343
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -3910,7 +4301,9 @@ curl -X GET  /api/credential-metadata/434343434343
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>FidoCommandRequest (required)<br> Body Parameter — FIDO Request parameters 
+      <td>FidoCommandRequest (required)<br>
+      Body Parameter — FIDO Request parameters
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>FidoCommandResponse Object
@@ -3924,9 +4317,12 @@ curl -X GET  /api/credential-metadata/434343434343
        </ul>
    </table>
    <aside class="example" id="example-fcf3d664">
-    <a class="self-link" href="#example-fcf3d664"></a> 
+    <a class="self-link" href="#example-fcf3d664"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
-     <br> 
+    
+<br>
+
     <div><strong>Request</strong></div>
 <pre class="highlight"><code>
 curl -X GET  /api/user/fido/transaction-result/aaxddgfhjhgggddd
@@ -3974,7 +4370,7 @@ curl -X GET  /api/user/fido/transaction-result/aaxddgfhjhgggddd
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -3984,7 +4380,9 @@ curl -X GET  /api/user/fido/transaction-result/aaxddgfhjhgggddd
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>FidoCommandRequest (required)<br> Body Parameter — FIDO Request parameters 
+      <td>FidoCommandRequest (required)<br>
+      Body Parameter — FIDO Request parameters
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>FidoCommandResponse Object
@@ -3998,9 +4396,12 @@ curl -X GET  /api/user/fido/transaction-result/aaxddgfhjhgggddd
        </ul>
    </table>
    <aside class="example" id="example-f0a11053">
-    <a class="self-link" href="#example-f0a11053"></a> 
+    <a class="self-link" href="#example-f0a11053"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
-     <br> 
+    
+<br>
+
     <div><strong>Request</strong></div>
 <pre class="highlight"><code>
 curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
@@ -4035,7 +4436,10 @@ curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
    <h3 class="heading settled" data-level="1.3" id="sctn-adia-regional-api"><span class="secno">1.3. </span><span class="content">ADIA Regional Directory API</span><a class="self-link" href="#sctn-adia-regional-api"></a></h3>
    <h4 class="heading settled" data-level="1.3.1" id="sctn-adia-regional-directory-service"><span class="secno">1.3.1. </span><span class="content">Directory Service</span><a class="self-link" href="#sctn-adia-regional-directory-service"></a></h4>
    <h5 class="heading settled" data-level="1.3.1.1" id="sctn-adia-regional-save-da"><span class="secno">1.3.1.1. </span><span class="content">Save Digital Address</span><a class="self-link" href="#sctn-adia-regional-save-da"></a></h5>
-    Save A Digital Address with its corresponding Hashed anchor attributes 
+   
+Save A Digital Address with its corresponding Hashed anchor attributes
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4048,14 +4452,16 @@ curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Consumes</strong>
       <td>Content-Type: application/json
      <tr>
       <td><strong>Request Body</strong>
-      <td>DigitalAddress (required)<br> Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service. 
+      <td>DigitalAddress (required)<br>
+      Body Parameter — Payload contains the primary and secondary hashes created from the core attributes provided by the user and persisted to the ADIA Regional Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>DigitalAddress Object
@@ -4070,7 +4476,8 @@ curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
        </ul>
    </table>
    <aside class="example" id="example-49f16672①">
-    <a class="self-link" href="#example-49f16672①"></a> 
+    <a class="self-link" href="#example-49f16672①"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -4100,7 +4507,10 @@ curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.3.1.2" id="sctn-adia-regional-get-da"><span class="secno">1.3.1.2. </span><span class="content">Search Digital Addresses</span><a class="self-link" href="#sctn-adia-regional-get-da"></a></h5>
-    Returns a list of Digital Addresses matching a criteria from the ADIA Regional Directory 
+   
+Returns a list of Digital Addresses matching a criteria from the ADIA Regional Directory
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4116,11 +4526,13 @@ curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>EntityCriteria (required)<br> Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service. 
+      <td>EntityCriteria (required)<br>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>List of DigitalAddress Objects
@@ -4134,7 +4546,8 @@ curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
        </ul>
    </table>
    <aside class="example" id="example-747de83b">
-    <a class="self-link" href="#example-747de83b"></a> 
+    <a class="self-link" href="#example-747de83b"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -4175,7 +4588,10 @@ curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.3.1.3" id="sctn-adia-regional-get-byId"><span class="secno">1.3.1.3. </span><span class="content">Get a Digital Address by an Identifier</span><a class="self-link" href="#sctn-adia-regional-get-byId"></a></h5>
-    Get an entity with its DID or Digital DigitalAddress 
+   
+Get an entity with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4188,7 +4604,7 @@ curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -4210,7 +4626,8 @@ curl -X GET  /api/user/fido/transaction-status/aaxddgfhjhgggddd
        </ul>
    </table>
    <aside class="example" id="example-0b627925①">
-    <a class="self-link" href="#example-0b627925①"></a> 
+    <a class="self-link" href="#example-0b627925①"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -4240,7 +4657,10 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
    <h3 class="heading settled" data-level="1.4" id="sctn-adia-global-api"><span class="secno">1.4. </span><span class="content">ADIA Global API</span><a class="self-link" href="#sctn-adia-global-api"></a></h3>
    <h4 class="heading settled" data-level="1.4.1" id="sctn-adia-directory-service①"><span class="secno">1.4.1. </span><span class="content">Directory Service</span><a class="self-link" href="#sctn-adia-directory-service①"></a></h4>
    <h5 class="heading settled" data-level="1.4.1.1" id="sctn-adia-get-entities"><span class="secno">1.4.1.1. </span><span class="content">Search Entities</span><a class="self-link" href="#sctn-adia-get-entities"></a></h5>
-    Returns a list of Entities matching a criteria from the ADIA Directory 
+   
+Returns a list of Entities matching a criteria from the ADIA Directory
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4256,11 +4676,13 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>EntityCriteria (required)<br> Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service. 
+      <td>EntityCriteria (required)<br>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>List of Entity Objects
@@ -4274,7 +4696,8 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
        </ul>
    </table>
    <aside class="example" id="example-56b3a9cf">
-    <a class="self-link" href="#example-56b3a9cf"></a> 
+    <a class="self-link" href="#example-56b3a9cf"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -4313,7 +4736,10 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.4.1.2" id="sctn-adia-get-entities①"><span class="secno">1.4.1.2. </span><span class="content">Get an Entity by Identifier</span><a class="self-link" href="#sctn-adia-get-entities①"></a></h5>
-    Get an entity with its DID or Digital DigitalAddress 
+   
+Get an entity with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4326,7 +4752,7 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -4348,9 +4774,12 @@ curl -X GET  /api/digital-address/kiran.handsome@DTX
        </ul>
    </table>
    <aside class="example" id="example-9515d5c5">
-    <a class="self-link" href="#example-9515d5c5"></a> 
+    <a class="self-link" href="#example-9515d5c5"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
-     <br> 
+    
+<br>
+
     <div><strong>Request</strong></div>
 <pre class="highlight"><code>
 curl -X GET  /api/entities/abc@dtx
@@ -4375,7 +4804,10 @@ curl -X GET  /api/entities/abc@dtx
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.4.1.3" id="sctn-adia-global-get-regional-directories"><span class="secno">1.4.1.3. </span><span class="content">Get Regional Directories</span><a class="self-link" href="#sctn-adia-global-get-regional-directories"></a></h5>
-    Gets a list of Regional Directories in ADIA. 
+   
+Gets a list of Regional Directories in ADIA.
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4388,7 +4820,7 @@ curl -X GET  /api/entities/abc@dtx
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Return Type</strong>
@@ -4403,7 +4835,8 @@ curl -X GET  /api/entities/abc@dtx
        </ul>
    </table>
    <aside class="example" id="example-dcf60208">
-    <a class="self-link" href="#example-dcf60208"></a> 
+    <a class="self-link" href="#example-dcf60208"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -4433,7 +4866,10 @@ curl -X GET  /api/entities/abc@dtx
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.4.1.4" id="sctn-adia-get-one-regional-ds"><span class="secno">1.4.1.4. </span><span class="content">Get a Regional Directory by Identifier</span><a class="self-link" href="#sctn-adia-get-one-regional-ds"></a></h5>
-    Get a Regional Directory with its DID or Digital DigitalAddress 
+   
+Get a Regional Directory with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4446,7 +4882,7 @@ curl -X GET  /api/entities/abc@dtx
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -4468,7 +4904,8 @@ curl -X GET  /api/entities/abc@dtx
        </ul>
    </table>
    <aside class="example" id="example-2d1777eb">
-    <a class="self-link" href="#example-2d1777eb"></a> 
+    <a class="self-link" href="#example-2d1777eb"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -4495,7 +4932,10 @@ curl -X GET  /api/regional-directories/abc@DTX
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.4.1.5" id="sctn-adia-save-regional-ds"><span class="secno">1.4.1.5. </span><span class="content">Save Regional Directories</span><a class="self-link" href="#sctn-adia-save-regional-ds"></a></h5>
-    Save ADIA Regional Directory 
+   
+Save ADIA Regional Directory
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4511,11 +4951,13 @@ curl -X GET  /api/regional-directories/abc@DTX
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Request Body</strong>
-      <td>Entity (required)<br> Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service. 
+      <td>Entity (required)<br>
+      Body Parameter — A criteria based search consisting of one or more attributes returns matching entity records from the Directory Service.
+      
      <tr>
       <td><strong>Return Type</strong>
       <td>Entity Object
@@ -4530,7 +4972,8 @@ curl -X GET  /api/regional-directories/abc@DTX
        </ul>
    </table>
    <aside class="example" id="example-3bc98ee6">
-    <a class="self-link" href="#example-3bc98ee6"></a> 
+    <a class="self-link" href="#example-3bc98ee6"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -4561,7 +5004,11 @@ curl -X GET  /api/regional-directories/abc@DTX
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.4.1.6" id="sctn-adia-get-dap-agencies"><span class="secno">1.4.1.6. </span><span class="content">Get DASs</span><a class="self-link" href="#sctn-adia-get-dap-agencies"></a></h5>
-    Gets a list of dap-agencies in any of the ADIA Regions. 
+   
+Gets a list of dap-agencies in any of the ADIA Regions.
+
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4574,7 +5021,7 @@ curl -X GET  /api/regional-directories/abc@DTX
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Return Type</strong>
@@ -4589,7 +5036,8 @@ curl -X GET  /api/regional-directories/abc@DTX
        </ul>
    </table>
    <aside class="example" id="example-b3ed8304">
-    <a class="self-link" href="#example-b3ed8304"></a> 
+    <a class="self-link" href="#example-b3ed8304"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -4619,7 +5067,10 @@ curl -X GET  /api/regional-directories/abc@DTX
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.4.1.7" id="sctn-adia-get-one-dap-agency"><span class="secno">1.4.1.7. </span><span class="content">Get a DAS by Identifier</span><a class="self-link" href="#sctn-adia-get-one-dap-agency"></a></h5>
-    Get a DAS with its DID or Digital DigitalAddress 
+   
+Get a DAS with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4632,7 +5083,7 @@ curl -X GET  /api/regional-directories/abc@DTX
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -4654,7 +5105,8 @@ curl -X GET  /api/regional-directories/abc@DTX
        </ul>
    </table>
    <aside class="example" id="example-d6d391c0">
-    <a class="self-link" href="#example-d6d391c0"></a> 
+    <a class="self-link" href="#example-d6d391c0"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -4681,7 +5133,11 @@ curl -X GET  /api/dap-agencies/did:adia:I1111111111
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.4.1.8" id="sctn-adia-get-issuers"><span class="secno">1.4.1.8. </span><span class="content">Get issuers</span><a class="self-link" href="#sctn-adia-get-issuers"></a></h5>
-    Gets a list of issuers in in any of the ADIA Regions. 
+   
+Gets a list of issuers in in any of the ADIA Regions.
+
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4694,7 +5150,7 @@ curl -X GET  /api/dap-agencies/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Return Type</strong>
@@ -4709,7 +5165,8 @@ curl -X GET  /api/dap-agencies/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-1923ce6e①">
-    <a class="self-link" href="#example-1923ce6e①"></a> 
+    <a class="self-link" href="#example-1923ce6e①"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -4739,7 +5196,10 @@ curl -X GET  /api/dap-agencies/did:adia:I1111111111
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.4.1.9" id="sctn-adia-get-one-issuer"><span class="secno">1.4.1.9. </span><span class="content">Get a Issuer by Identifier</span><a class="self-link" href="#sctn-adia-get-one-issuer"></a></h5>
-    Get a Issuer with its DID or Digital DigitalAddress 
+   
+Get a Issuer with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4752,7 +5212,7 @@ curl -X GET  /api/dap-agencies/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -4774,7 +5234,8 @@ curl -X GET  /api/dap-agencies/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-9fa2f3b2①">
-    <a class="self-link" href="#example-9fa2f3b2①"></a> 
+    <a class="self-link" href="#example-9fa2f3b2①"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -4801,7 +5262,11 @@ curl -X GET  /api/issuers/did:adia:I1111111111
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.4.1.10" id="sctn-adia-get-service-providers"><span class="secno">1.4.1.10. </span><span class="content">Get Service Providers</span><a class="self-link" href="#sctn-adia-get-service-providers"></a></h5>
-    Gets a list of service-providers in in any of the ADIA Regions. 
+   
+Gets a list of service-providers in in any of the ADIA Regions.
+
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4814,7 +5279,7 @@ curl -X GET  /api/issuers/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Return Type</strong>
@@ -4829,7 +5294,8 @@ curl -X GET  /api/issuers/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-6c0ca5fc①">
-    <a class="self-link" href="#example-6c0ca5fc①"></a> 
+    <a class="self-link" href="#example-6c0ca5fc①"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <table class="data longlastcol">
      <thead>
@@ -4859,7 +5325,10 @@ curl -X GET  /api/issuers/did:adia:I1111111111
     </table>
    </aside>
    <h5 class="heading settled" data-level="1.4.1.11" id="sctn-adia-get-one-service-provider"><span class="secno">1.4.1.11. </span><span class="content">Get a Service Provider by Identifier</span><a class="self-link" href="#sctn-adia-get-one-service-provider"></a></h5>
-    Get a Service Provider with its DID or Digital DigitalAddress 
+   
+Get a Service Provider with its DID or Digital DigitalAddress
+
+
    <table class="data longlastcol">
     <tbody>
      <tr>
@@ -4872,7 +5341,7 @@ curl -X GET  /api/issuers/did:adia:I1111111111
       <td><strong>Headers</strong>
       <td>
        <ul>
-        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l - An Access Token with the Principal Information</i>
+        <li><i>Authorization: Bearer YWxhZGRpbjpvcGVuc2VzYW1l</i> - An Access Token with the Principal Information
        </ul>
      <tr>
       <td><strong>Parameters</strong>
@@ -4894,7 +5363,8 @@ curl -X GET  /api/issuers/did:adia:I1111111111
        </ul>
    </table>
    <aside class="example" id="example-28775aba①">
-    <a class="self-link" href="#example-28775aba①"></a> 
+    <a class="self-link" href="#example-28775aba①"></a>
+
     <div class="example-data-content-type">Content-Type: application/json</div>
     <p><br></p>
     <div><strong>Request</strong></div>
@@ -4936,7 +5406,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
      <tr>
       <td>entityDigitalAddress
       <td>String
-      <td><a data-link-type="dfn">Digital Address</a>
+      <td><u class="link-error" data-lt="Digital Address" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address&apos;.">Digital Address</u>
      <tr>
       <td>entityRole
       <td>Enum
@@ -4981,7 +5451,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
      <tr>
       <td>entityDigitalAddress
       <td>String
-      <td><a data-link-type="dfn">Digital Address</a>
+      <td><u class="link-error" data-lt="Digital Address" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address&apos;.">Digital Address</u>
      <tr>
       <td>entityRole
       <td>Enum
@@ -5028,7 +5498,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
      <tr>
       <td>entityDigitalAddress
       <td>String
-      <td><a data-link-type="dfn">Digital Address</a>
+      <td><u class="link-error" data-lt="Digital Address" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address&apos;.">Digital Address</u>
      <tr>
       <td>entityRole
       <td>Enum
@@ -5079,7 +5549,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
      <tr>
       <td>entityDigitalAddress
       <td>String
-      <td><a data-link-type="dfn">Digital Address</a>
+      <td><u class="link-error" data-lt="Digital Address" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address&apos;.">Digital Address</u>
      <tr>
       <td>entityRole
       <td>Enum
@@ -5499,7 +5969,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
       on = !document.body.classList.contains('toc-sidebar');
     }
 
-    /* Don’t scroll to compensate for the ToC if we’re above it already. */
+    /* Don't scroll to compensate for the ToC if we're above it already. */
     var headY = 0;
     var head = document.querySelector('.head');
     if (head) {
@@ -5530,16 +6000,16 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
       }
       if (toggle.matches(':hover')) {
         /* Unfocus button when not using keyboard navigation,
-           because I don’t know where else to send the focus. */
+           because I don't know where else to send the focus. */
         toggle.blur();
       }
     }
   }
 
   function createSidebarToggle() {
-    /* Create the sidebar toggle in JS; it shouldn’t exist when JS is off. */
+    /* Create the sidebar toggle in JS; it shouldn't exist when JS is off. */
     var toggle = document.createElement('a');
-      /* This should probably be a button, but appearance isn’t standards-track.*/
+      /* This should probably be a button, but appearance isn't standards-track.*/
     toggle.id = 'toc-toggle';
     toggle.class = 'toc-toggle';
     toggle.href = '#toc';
@@ -5555,7 +6025,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
     toggle.addEventListener('click', toggler, false);
 
 
-    /* Get <nav id=toc-nav>, or make it if we don’t have one. */
+    /* Get <nav id=toc-nav>, or make it if we don't have one. */
     var tocNav = document.getElementById('toc-nav');
     if (!tocNav) {
       tocNav = document.createElement('p');
@@ -5563,7 +6033,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
       /* Prepend for better keyboard navigation */
       document.body.insertBefore(tocNav, document.body.firstChild);
     }
-    /* While we’re at it, make sure we have a Jump to Toc link. */
+    /* While we're at it, make sure we have a Jump to Toc link. */
     var tocJump = document.getElementById('toc-jump');
     if (!tocJump) {
       tocJump = document.createElement('a');
@@ -5591,7 +6061,7 @@ curl -X GET  /api/interchanges/did:adia:I1111111111
     }, false);
   }
   else {
-    console.warn("Can’t find Table of Contents. Please use <nav id='toc'> around the ToC.");
+    console.warn("Can't find Table of Contents. Please use <nav id='toc'> around the ToC.");
   }
 
   /* Wrap tables in case they overflow */

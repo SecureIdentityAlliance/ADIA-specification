@@ -1238,14 +1238,15 @@ Possible extra rowspan handling
 			grid-column: 2;
 			width: auto;
 			margin-right: 1rem;
+			border-bottom: 3px solid transparent;
+			margin-bottom: -3px;
 		}
 		#toc .content:hover,
 		#toc .content:focus {
 			background: rgba(75%, 75%, 75%, .25);
 			background: var(--a-hover-bg);
-			border-bottom: 3px solid #054572;
-			border-bottom: 3px solid var(--toclink-underline);
-			margin-bottom: -3px;
+			border-bottom-color: #054572;
+			border-bottom-color: var(--toclink-underline);
 		}
 		#toc li li li .content {
 			margin-left: 1rem;
@@ -1500,10 +1501,10 @@ Possible extra rowspan handling
   }
 
   </style>
-  <meta content="Bikeshed version 37b7e7e68, updated Fri May 27 15:08:11 2022 -0700" name="generator">
-  <meta content="88ff81979d79c944c96c97339740bca2570ca051" name="document-revision">
-<style>/* style-autolinks */
-
+  <meta content="Bikeshed version 3f621ba99, updated Mon Jul 28 15:38:36 2025 -0700" name="generator">
+  <meta content="89117ea641a84ae7da86920781c03806b933153e" name="revision">
+  <meta content="dark light" name="color-scheme">
+<style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
     font-size: inherit;
@@ -1563,9 +1564,238 @@ pre .property::before, pre .property::after {
 
 [data-link-type=biblio] {
     white-space: pre;
-}</style>
-<style>/* style-counters */
+}
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
+</style>
+<style>/* Boilerplate: style-colors */
+/* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
+:root {
+    color-scheme: light dark;
+
+    --text: black;
+    --bg: white;
+
+    --unofficial-watermark: url(https://www.w3.org/StyleSheets/TR/2016/logos/UD-watermark);
+
+    --logo-bg: #1a5e9a;
+    --logo-active-bg: #c00;
+    --logo-text: white;
+
+    --tocnav-normal-text: #707070;
+    --tocnav-normal-bg: var(--bg);
+    --tocnav-hover-text: var(--tocnav-normal-text);
+    --tocnav-hover-bg: #f8f8f8;
+    --tocnav-active-text: #c00;
+    --tocnav-active-bg: var(--tocnav-normal-bg);
+
+    --tocsidebar-text: var(--text);
+    --tocsidebar-bg: #f7f8f9;
+    --tocsidebar-shadow: rgba(0,0,0,.1);
+    --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+    --toclink-text: var(--text);
+    --toclink-underline: #3980b5;
+    --toclink-visited-text: var(--toclink-text);
+    --toclink-visited-underline: #054572;
+
+    --heading-text: #005a9c;
+
+    --hr-text: var(--text);
+
+    --algo-border: #def;
+
+    --del-text: red;
+    --del-bg: transparent;
+    --ins-text: #080;
+    --ins-bg: transparent;
+
+    --a-normal-text: #034575;
+    --a-normal-underline: #bbb;
+    --a-visited-text: var(--a-normal-text);
+    --a-visited-underline: #707070;
+    --a-hover-bg: rgba(75%, 75%, 75%, .25);
+    --a-active-text: #c00;
+    --a-active-underline: #c00;
+
+    --blockquote-border: silver;
+    --blockquote-bg: transparent;
+    --blockquote-text: currentcolor;
+
+    --issue-border: #e05252;
+    --issue-bg: #fbe9e9;
+    --issue-text: var(--text);
+    --issueheading-text: #831616;
+
+    --example-border: #e0cb52;
+    --example-bg: #fcfaee;
+    --example-text: var(--text);
+    --exampleheading-text: #574b0f;
+
+    --note-border: #52e052;
+    --note-bg: #e9fbe9;
+    --note-text: var(--text);
+    --noteheading-text: hsl(120, 70%, 30%);
+    --notesummary-underline: silver;
+
+    --assertion-border: #aaa;
+    --assertion-bg: #eee;
+    --assertion-text: black;
+
+    --advisement-border: orange;
+    --advisement-bg: #fec;
+    --advisement-text: var(--text);
+    --advisementheading-text: #b35f00;
+
+    --warning-border: red;
+    --warning-bg: hsla(40,100%,50%,0.95);
+    --warning-text: var(--text);
+
+    --amendment-border: #330099;
+    --amendment-bg: #F5F0FF;
+    --amendment-text: var(--text);
+    --amendmentheading-text: #220066;
+
+    --def-border: #8ccbf2;
+    --def-bg: #def;
+    --def-text: var(--text);
+    --defrow-border: #bbd7e9;
+
+    --datacell-border: silver;
+
+    --indexinfo-text: #707070;
+
+    --indextable-hover-text: black;
+    --indextable-hover-bg: #f7f8f9;
+
+    --outdatedspec-bg: rgba(0, 0, 0, .5);
+    --outdatedspec-text: black;
+    --outdated-bg: maroon;
+    --outdated-text: white;
+    --outdated-shadow: red;
+
+    --editedrec-bg: darkorange;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #ddd;
+        --bg: black;
+
+        --unofficial-watermark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23100808' transform='translate(200 200) rotate(-45) translate(-200 -200)' stroke='%23100808' stroke-width='3'%3E%3Ctext x='50%25' y='220' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EUNOFFICIAL%3C/text%3E%3Ctext x='50%25' y='305' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EDRAFT%3C/text%3E%3C/g%3E%3C/svg%3E");
+
+        --logo-bg: #1a5e9a;
+        --logo-active-bg: #c00;
+        --logo-text: white;
+
+        --tocnav-normal-text: #999;
+        --tocnav-normal-bg: var(--bg);
+        --tocnav-hover-text: var(--tocnav-normal-text);
+        --tocnav-hover-bg: #080808;
+        --tocnav-active-text: #f44;
+        --tocnav-active-bg: var(--tocnav-normal-bg);
+
+        --tocsidebar-text: var(--text);
+        --tocsidebar-bg: #080808;
+        --tocsidebar-shadow: rgba(255,255,255,.1);
+        --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+        --toclink-text: var(--text);
+        --toclink-underline: #6af;
+        --toclink-visited-text: var(--toclink-text);
+        --toclink-visited-underline: #054572;
+
+        --heading-text: #8af;
+
+        --hr-text: var(--text);
+
+        --algo-border: #456;
+
+        --del-text: #f44;
+        --del-bg: transparent;
+        --ins-text: #4a4;
+        --ins-bg: transparent;
+
+        --a-normal-text: #6af;
+        --a-normal-underline: #555;
+        --a-visited-text: var(--a-normal-text);
+        --a-visited-underline: var(--a-normal-underline);
+        --a-hover-bg: rgba(25%, 25%, 25%, .2);
+        --a-active-text: #f44;
+        --a-active-underline: var(--a-active-text);
+
+        --borderedblock-bg: rgba(255, 255, 255, .05);
+
+        --blockquote-border: silver;
+        --blockquote-bg: var(--borderedblock-bg);
+        --blockquote-text: currentcolor;
+
+        --issue-border: #e05252;
+        --issue-bg: var(--borderedblock-bg);
+        --issue-text: var(--text);
+        --issueheading-text: hsl(0deg, 70%, 70%);
+
+        --example-border: hsl(50deg, 90%, 60%);
+        --example-bg: var(--borderedblock-bg);
+        --example-text: var(--text);
+        --exampleheading-text: hsl(50deg, 70%, 70%);
+
+        --note-border: hsl(120deg, 100%, 35%);
+        --note-bg: var(--borderedblock-bg);
+        --note-text: var(--text);
+        --noteheading-text: hsl(120, 70%, 70%);
+        --notesummary-underline: silver;
+
+        --assertion-border: #444;
+        --assertion-bg: var(--borderedblock-bg);
+        --assertion-text: var(--text);
+
+        --advisement-border: orange;
+        --advisement-bg: #222218;
+        --advisement-text: var(--text);
+        --advisementheading-text: #f84;
+
+        --warning-border: red;
+        --warning-bg: hsla(40,100%,20%,0.95);
+        --warning-text: var(--text);
+
+        --amendment-border: #330099;
+        --amendment-bg: #080010;
+        --amendment-text: var(--text);
+        --amendmentheading-text: #cc00ff;
+
+        --def-border: #8ccbf2;
+        --def-bg: #080818;
+        --def-text: var(--text);
+        --defrow-border: #136;
+
+        --datacell-border: silver;
+
+        --indexinfo-text: #aaa;
+
+        --indextable-hover-text: var(--text);
+        --indextable-hover-bg: #181818;
+
+        --outdatedspec-bg: rgba(255, 255, 255, .5);
+        --outdatedspec-text: black;
+        --outdated-bg: maroon;
+        --outdated-text: white;
+        --outdated-shadow: red;
+
+        --editedrec-bg: darkorange;
+    }
+    /* In case a transparent-bg image doesn't expect to be on a dark bg,
+       which is quite common in practice... */
+    img { background: white; }
+}
+</style>
+<style>/* Boilerplate: style-counters */
 body {
     counter-reset: example figure issue;
 }
@@ -1592,9 +1822,133 @@ figcaption {
 }
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
-}</style>
-<style>/* style-issues */
+}
+</style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+    --dfnpanel-target-bg: #ffc;
+    --dfnpanel-target-outline: orange;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dfnpanel-bg: #222;
+        --dfnpanel-text: var(--text);
+        --dfnpanel-target-bg: #333;
+        --dfnpanel-target-outline: silver;
+    }
+}
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel a:focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: 8px;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+    transition: left 1s ease-out, bottom 1s ease-out;
+}
+
+.dfn-panel .link-item:hover {
+    text-decoration: underline;
+}
+.dfn-panel .link-item .copy-icon {
+    opacity: 0;
+}
+.dfn-panel .link-item:hover .copy-icon,
+.dfn-panel .link-item .copy-icon:focus {
+    opacity: 1;
+}
+
+.dfn-panel .copy-icon {
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 0.85em;
+    height: 1em;
+    border-radius: 3px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.dfn-panel .copy-icon .icon {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dfn-panel .copy-icon .icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #ccc;
+    opacity: 0.25;
+    transform: translate(3px, -3px);
+}
+
+.dfn-panel .copy-icon:active .icon::before {
+    opacity: 1;
+}
+
+.dfn-paneled[role="button"] { cursor: help; }
+
+.highlighted {
+    animation: target-fade 3s;
+}
+
+@keyframes target-fade {
+    from {
+        background-color: var(--dfnpanel-target-bg);
+        outline: 5px solid var(--dfnpanel-target-outline);
+    }
+    to {
+        color: var(--a-normal-text);
+        background-color: transparent;
+        outline: transparent;
+    }
+}
+</style>
+<style>/* Boilerplate: style-issues */
 a[href].issue-return {
     float: right;
     float: inline-end;
@@ -1603,8 +1957,7 @@ a[href].issue-return {
     text-decoration: none;
 }
 </style>
-<style>/* style-md-lists */
-
+<style>/* Boilerplate: style-md-lists */
 /* This is a weird hack for me not yet following the commonmark spec
    regarding paragraph and lists. */
 [data-md] > :first-child {
@@ -1612,9 +1965,42 @@ a[href].issue-return {
 }
 [data-md] > :last-child {
     margin-bottom: 0;
-}</style>
-<style>/* style-selflinks */
+}
+</style>
+<style>/* Boilerplate: style-ref-hints */
+:root {
+    --ref-hint-bg: #ddd;
+    --ref-hint-text: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ref-hint-bg: #222;
+        --ref-hint-text: var(--text);
+    }
+}
 
+.ref-hint {
+    display: inline-block;
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.5em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--ref-hint-bg);
+    color: var(--ref-hint-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+
+.ref-hint * { margin: 0; padding: 0; text-indent: 0; }
+
+.ref-hint ul { padding: 0 0 0 1em; list-style: none; }
+</style>
+<style>/* Boilerplate: style-selflinks */
 :root {
     --selflink-text: white;
     --selflink-bg: gray;
@@ -1639,6 +2025,14 @@ a.self-link:hover {
 }
 .heading > a.self-link {
     font-size: 83%;
+}
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
 }
 li > a.self-link {
     left: calc(-1 * (3.5rem - 26px) - 2em);
@@ -1667,9 +2061,13 @@ dfn > a.self-link::before      { content: "#"; }
 </style>
  <body class="h-entry">
   <div class="head">
-   <p data-fill-with="logo"><a class="logo" href="https://www.didalliance.org/"> <img alt="ADI Association" height="48" src="resources/logo.svg" width="157"> </a> </p>
+   <p data-fill-with="logo"><a class="logo" href="https://www.didalliance.org/">
+    <img alt="ADI Association" height="48" src="resources/logo.svg" width="157">
+</a>
+</p>
    <h1 class="p-name no-ref" id="title">Accountable Digital Identity Association (ADIA) Requirements</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2022-07-14">14 July 2022</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft,
+    <time class="dt-updated" datetime="2025-07-31">31 July 2025</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>Issue Tracking:
@@ -1681,7 +2079,8 @@ dfn > a.self-link::before      { content: "#"; }
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright">Copyright © 2022 <a href="https://www.didalliance.org">ADI Association</a>. All Rights Reserved. </p>
+   <p class="copyright" data-fill-with="copyright">Copyright © 2025 <a href="https://www.didalliance.org">ADI Association</a>. All Rights Reserved.
+</p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -1696,6 +2095,11 @@ dfn > a.self-link::before      { content: "#"; }
      <a href="#sctn-adia-requirements"><span class="secno">1</span> <span class="content">Requirements List</span></a>
      <ol class="toc">
       <li><a href="#sctn-reqs"><span class="secno">1.1</span> <span class="content">ADIA Requirements</span></a>
+     </ol>
+    <li>
+     <a href="#index"><span class="secno"></span> <span class="content">Index</span></a>
+     <ol class="toc">
+      <li><a href="#index-defined-elsewhere"><span class="secno"></span> <span class="content">Terms defined by reference</span></a>
      </ol>
     <li>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
@@ -1720,156 +2124,239 @@ dfn > a.self-link::before      { content: "#"; }
      <tbody>
       <tr>
        <td>1
-       <td> The ADIA Framework respects national laws and allows the <a data-link-type="dfn">DAS</a>s to operate according to their local regulations.
-     This includes compliance to CCPA and GDPR. 
-       <td> Local law is the basis for any business. 
+       <td>
+    The ADIA Framework respects national laws and allows the <u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u>s to operate according to their local regulations.
+     This includes compliance to CCPA and GDPR.
+      
+       <td>
+          Local law is the basis for any business.
+            
       <tr>
        <td>2
-       <td> Users must have control on user credentials, i.e. no credentials are created or shared without the user’s consent.
-        This means, <a data-link-type="dfn">DAS</a> asks for user consent and strongly authenticates the user. 
-       <td> Data Privacy regulation &amp; expectation 
+       <td>
+        Users must have control on user credentials, i.e. no credentials are created or shared without the user’s consent.
+        This means, <u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u> asks for user consent and strongly authenticates the user.
+      
+       <td>
+        Data Privacy regulation &amp; expectation
+            
       <tr>
        <td>3
-       <td> Users have the ability to select a set of attributes verified by a specific issuer to be included in a specific credential. 
-       <td> Data Privacy regulation &amp; expectation.  If the user only wants to share a subset of the data that should be ok to the issuer. 
+       <td>
+        Users have the ability to select a set of attributes verified by a specific issuer to be included in a specific credential.
+      
+       <td>
+        Data Privacy regulation &amp; expectation.  If the user only wants to share a subset of the data that should be ok to the issuer.
+            
       <tr>
        <td>4
        <td>
-         ADIA doesn’t make user tracking or collusion between Service Providers easier.
-        If two <a data-link-type="dfn">SP</a>s both received a credential that John Doe was born on date X in Y,
-        then the two <a data-link-type="dfn">SP</a>s could learn it is the very likely same user. But this has nothing to do with ADIA. 
-        <p>As a consequence, the <a data-link-type="dfn">Digital Address</a> / <a data-link-type="dfn">Trust Anchor</a> are NOT part of the credential.
-        Credentials are in the W3C VC format <a data-link-type="biblio" href="#biblio-vc-data-model">[vc-data-model]</a> and are tied to a <a data-link-type="dfn">DID</a>.</p>
-       <td> ADIA doesn’t share correlation handles with <a data-link-type="dfn">SP</a>s for privacy reasons. 
+        
+        ADIA doesn’t make user tracking or collusion between Service Providers easier.
+        If two <u class="link-error" data-lt="SP" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;sp&apos;.">SP</u>s both received a credential that John Doe was born on date X in Y,
+        then the two <u class="link-error" data-lt="SP" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;sp&apos;.">SP</u>s could learn it is the very likely same user. But this has nothing to do with ADIA.
+
+
+        <p>As a consequence, the <u class="link-error" data-lt="Digital Address" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address&apos;.">Digital Address</u> / <u class="link-error" data-lt="Trust Anchor" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;trust anchor&apos;.">Trust Anchor</u> are NOT part of the credential.
+        Credentials are in the W3C VC format <a data-link-type="biblio" href="#biblio-vc-data-model" title="Verifiable Credentials Data Model v1.1">[vc-data-model]</a> and are tied to a <a data-link-type="dfn" href="https://w3c.github.io/did/#dfn-decentralized-identifiers" id="ref-for-dfn-decentralized-identifiers">DID</a>.</p>
+       <td>
+        ADIA doesn’t share correlation handles with <u class="link-error" data-lt="SP" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;sp&apos;.">SP</u>s for privacy reasons.
+            
       <tr>
        <td>5
-       <td> People who are not smartphone users must be part of the new Digital Identity ecosystem. 
-       <td> A substantial part of the world’s population belongs to this category.  This part is key for future growth opportunities 
+       <td>
+        People who are not smartphone users must be part of the new Digital Identity ecosystem.
+      
+       <td>
+        A substantial part of the world’s population belongs to this category.  This part is key for future growth opportunities
+            
       <tr>
        <td>6
-       <td> <a data-link-type="dfn">Issuer</a>s must be in the value chain.  This means that users cannot share credentials issued by
-        an issuer without allowing financial compensation for the issuer. 
-       <td> This is one of the main ADIA benefits compared to other approaches. 
+       <td>
+        <a data-link-type="dfn" href="https://w3c.github.io/vc-data-model/#dfn-issuers" id="ref-for-dfn-issuers">Issuer</a>s must be in the value chain.  This means that users cannot share credentials issued by
+        an issuer without allowing financial compensation for the issuer.
+      
+       <td>
+        This is one of the main ADIA benefits compared to other approaches.
+            
       <tr>
        <td>7
-       <td> ADIA enables a push model from the issuers where when there is change in credential status,
-        latest credential information is what would be presented. 
+       <td>
+        ADIA enables a push model from the issuers where when there is change in credential status,
+        latest credential information is what would be presented.
+      
        <td>
       <tr>
        <td>8
-       <td> <a data-link-type="dfn">Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
-        who got their <a data-link-type="dfn">Trust Anchor</a> from a different Digital Address Provider (<a data-link-type="dfn">DAS</a>) than the one this issuer is primarily using. 
+       <td>
+        <a data-link-type="dfn" href="https://w3c.github.io/vc-data-model/#dfn-issuers" id="ref-for-dfn-issuers①">Issuer</a>s should be able to issue the credentials to users who are not part of the same network, i.e.
+        who got their <u class="link-error" data-lt="Trust Anchor" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;trust anchor&apos;.">Trust Anchor</u> from a different Digital Address Provider (<u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u>) than the one this issuer is primarily using.
+      
        <td>
       <tr>
        <td>9
-       <td> There should be cross ledger value settlements for the issuers and may be
-        some reward points for the issuers as Users assert their credentials and provide data. 
+       <td>
+        There should be cross ledger value settlements for the issuers and may be
+        some reward points for the issuers as Users assert their credentials and provide data.
+      
        <td>
       <tr>
        <td>10
-       <td> Onboard the user with a trusted Identity that is approved by an <a data-link-type="dfn">Issuer</a> after proper Identity vetting 
+       <td>
+        Onboard the user with a trusted Identity that is approved by an <a data-link-type="dfn" href="https://w3c.github.io/vc-data-model/#dfn-issuers" id="ref-for-dfn-issuers②">Issuer</a> after proper Identity vetting
+      
        <td>
       <tr>
        <td>11
        <td>
+        
          It is possible for users to start their participation
         based on a low level identity assertion and increase
-        that level over time. 
+        that level over time.
+
+
         <p>However, there is a minmum identity assertion specified
         by the ADIA Governance Group. We need this to prevent
         user impersonation attacks through weak ID proofing methods.</p>
-       <td> Many users don’t have connections to a <a data-link-type="dfn">SP</a> which has performed strong ID proofing today.
-         But that might change over time.  We need to support such users. 
+       <td>
+        Many users don’t have connections to a <u class="link-error" data-lt="SP" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;sp&apos;.">SP</u> which has performed strong ID proofing today.
+         But that might change over time.  We need to support such users.
+            
       <tr>
        <td>12
-       <td> Each <a data-link-type="dfn">DAS</a> provides one Single <a data-link-type="dfn">Digital Address Application</a> for the user to be able to access and control the
+       <td>
+        Each <u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u> provides one Single <u class="link-error" data-lt="Digital Address Application" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address application&apos;.">Digital Address Application</u> for the user to be able to access and control the
         Identity and Credentials with a Digital Address Provider acting as a custodian interface to interchange the
-        user credentials on demand with user consent. 
+        user credentials on demand with user consent.
+      
        <td>
       <tr>
        <td>13
-       <td> <a data-link-type="dfn">Digital Address</a> (<a data-link-type="dfn">DA</a>) is a Human readable string that is easy to use, that is associated with the Users <a data-link-type="dfn">Trust Anchor</a>.
-        This becomes that identifier that the user can provide to issuers to get the credentials issued. 
+       <td>
+        <u class="link-error" data-lt="Digital Address" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address&apos;.">Digital Address</u> (<u class="link-error" data-lt="DA" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;da&apos;.">DA</u>) is a Human readable string that is easy to use, that is associated with the Users <u class="link-error" data-lt="Trust Anchor" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;trust anchor&apos;.">Trust Anchor</u>.
+        This becomes that identifier that the user can provide to issuers to get the credentials issued.
+      
        <td>
       <tr>
        <td>14
-       <td> Users in this scenario will have a single <a data-link-type="dfn">Digital Address Application</a> from one Digital Address Provider
+       <td>
+        Users in this scenario will have a single <u class="link-error" data-lt="Digital Address Application" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address application&apos;.">Digital Address Application</u> from one Digital Address Provider
         and the user will be able to present this human readable, typable, or presentable to the issuers to be able to
-        push the credentials for the user.   This is just between users and <a data-link-type="dfn">Issuer</a>s.  We however can also provide
-        different handles (Different <a data-link-type="dfn">Digital Address</a>es) that can be orchestrated between the user Device and <a data-link-type="dfn">DAS</a> to
-        present to different issuers if we need to also make DA one time as the issued credential is a <a data-link-type="dfn">DID</a>. 
+        push the credentials for the user.   This is just between users and <a data-link-type="dfn" href="https://w3c.github.io/vc-data-model/#dfn-issuers" id="ref-for-dfn-issuers③">Issuer</a>s.  We however can also provide
+        different handles (Different <u class="link-error" data-lt="Digital Address" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address&apos;.">Digital Address</u>es) that can be orchestrated between the user Device and <u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u> to
+        present to different issuers if we need to also make DA one time as the issued credential is a <a data-link-type="dfn" href="https://w3c.github.io/did/#dfn-decentralized-identifiers" id="ref-for-dfn-decentralized-identifiers①">DID</a>.
+      
        <td>
       <tr>
        <td>15
-       <td> The ADIA ledger is accessible to <a data-link-type="dfn">DAS</a>s only. 
+       <td>
+        The ADIA ledger is accessible to <u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u>s only.
+      
        <td>
       <tr>
        <td>16
-       <td> <a data-link-type="dfn">Trust Anchor</a>s are generated randomly by the <a data-link-type="dfn">HomeDAS</a>, such that collisions do not practically occur.
-        See <a data-link-type="dfn">Trust Anchor</a> Discussion below.
-        (not clear, see 20) 
-       <td> So that we only need to delete the relation between the <a data-link-type="dfn">Trust Anchor</a> and any other PII when the user
-        asks for account deletion (removal from ADIA). 
+       <td>
+        <u class="link-error" data-lt="Trust Anchor" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;trust anchor&apos;.">Trust Anchor</u>s are generated randomly by the <u class="link-error" data-lt="HomeDAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;homedas&apos;.">HomeDAS</u>, such that collisions do not practically occur.
+        See <u class="link-error" data-lt="Trust Anchor" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;trust anchor&apos;.">Trust Anchor</u> Discussion below.
+        (not clear, see 20)
+      
+       <td>
+        So that we only need to delete the relation between the <u class="link-error" data-lt="Trust Anchor" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;trust anchor&apos;.">Trust Anchor</u> and any other PII when the user
+        asks for account deletion (removal from ADIA).
+            
       <tr>
        <td>17
        <td>
-         Credentials that do not include PII shall be supported.  For example "the holder of the credential is at least 21 years old"
-        or "the holder of this credential got vaccinated against X". 
-        <p class="note" role="note"><span>Note:</span> sometimes there are existing business processes which will convey PI/PII outside of ADIA.</p>
-       <td> In the physical world we have those and for privacy reasons we should carry them over to the digital world. 
+        
+        Credentials that do not include PII shall be supported.  For example "the holder of the credential is at least 21 years old"
+        or "the holder of this credential got vaccinated against X".
+
+
+        <p class="note" role="note"><span class="marker">Note:</span> sometimes there are existing business processes which will convey PI/PII outside of ADIA.</p>
+       <td>
+        In the physical world we have those and for privacy reasons we should carry them over to the digital world.
+            
       <tr>
        <td>18
        <td>
-         ADIA and <a data-link-type="dfn">DAS</a>s do NOT persistently store personal information (PI).
-        And even pass-through of PI should be avoided. 
-        <p class="note" role="note"><span>Note:</span> they will likely need to store PII, i.e. information related to users</p>
-        <p class="note" role="note"><span>Note:</span> <a data-link-type="dfn">Issuer</a>s will have to store PI (in order to be able to issue credentials)</p>
+        
+        ADIA and <u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u>s do NOT persistently store personal information (PI).
+        And even pass-through of PI should be avoided.
+
+
+        <p class="note" role="note"><span class="marker">Note:</span> they will likely need to store PII, i.e. information related to users</p>
+        <p class="note" role="note"><span class="marker">Note:</span> <a data-link-type="dfn" href="https://w3c.github.io/vc-data-model/#dfn-issuers" id="ref-for-dfn-issuers④">Issuer</a>s will have to store PI (in order to be able to issue credentials)</p>
        <td>
       <tr>
        <td>19
-       <td> ADIA will store the <a data-link-type="dfn">HomeDAS</a> Identifier (i.e. <a data-link-type="dfn">HomeDAS_ID</a>) along with the user’s <a data-link-type="dfn">Trust Anchor</a>.
-        So each <a data-link-type="dfn">DAS</a> could ask ADIA for the <a data-link-type="dfn">HomeDAS</a> of a given user and would then directly talk to the user’s <a data-link-type="dfn">HomeDAS</a>. 
-       <td> We need that for cross-<a data-link-type="dfn">DAS</a> communications 
+       <td>
+        ADIA will store the <u class="link-error" data-lt="HomeDAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;homedas&apos;.">HomeDAS</u> Identifier (i.e. <u class="link-error" data-lt="HomeDAS_ID" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;homedas_id&apos;.">HomeDAS_ID</u>) along with the user’s <u class="link-error" data-lt="Trust Anchor" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;trust anchor&apos;.">Trust Anchor</u>.
+        So each <u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u> could ask ADIA for the <u class="link-error" data-lt="HomeDAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;homedas&apos;.">HomeDAS</u> of a given user and would then directly talk to the user’s <u class="link-error" data-lt="HomeDAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;homedas&apos;.">HomeDAS</u>.
+      
+       <td>
+        We need that for cross-<u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u> communications
+            
       <tr>
        <td>20
-       <td> We compute a Hash(firstname, last name, date of birth, country+city of birth) as either use this as <a data-link-type="dfn">Trust Anchor</a> or as an attribute stored along with the <a data-link-type="dfn">Trust Anchor</a> in ADIA. 
+       <td>
+        We compute a Hash(firstname, last name, date of birth, country+city of birth) as either use this as
+        <u class="link-error" data-lt="Trust Anchor" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;trust anchor&apos;.">Trust Anchor</u> or as an attribute stored along with the <u class="link-error" data-lt="Trust Anchor" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;trust anchor&apos;.">Trust Anchor</u> in ADIA.
+      
        <td>
       <tr>
        <td>21
-       <td> It shall  be possible to change the <a data-link-type="dfn">HomeDAS</a> of a user (e.g. from <a data-link-type="dfn">DAS</a>1 to <a data-link-type="dfn">DAS</a>2). 
+       <td>
+        It shall  be possible to change the <u class="link-error" data-lt="HomeDAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;homedas&apos;.">HomeDAS</u> of a user (e.g. from <u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u>1 to <u class="link-error" data-lt="DAS" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;das&apos;.">DAS</u>2).
+      
        <td>
       <tr>
        <td>22
-       <td> <a data-link-type="dfn">Issuer</a>s shouldn’t learn the <a data-link-type="dfn">SP</a> that verifies a credential. 
-       <td> Privacy 
+       <td>
+        <a data-link-type="dfn" href="https://w3c.github.io/vc-data-model/#dfn-issuers" id="ref-for-dfn-issuers⑤">Issuer</a>s shouldn’t learn the <u class="link-error" data-lt="SP" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;sp&apos;.">SP</u> that verifies a credential.
+      
+       <td>
+        Privacy
+            
       <tr>
        <td>23
-       <td> <a data-link-type="dfn">SP</a>s want to verify the <a data-link-type="dfn">VC</a> and hence will
-         need to decide whether they want to trust a specific <a data-link-type="dfn">Issuer</a>.
-        As a consequence, the <a data-link-type="dfn">SP</a> will learn who the <a data-link-type="dfn">Issuer</a> of that <a data-link-type="dfn">VC</a> is. 
+       <td>
+             <u class="link-error" data-lt="SP" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;sp&apos;.">SP</u>s want to verify the <u class="link-error" data-lt="VC" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;vc&apos; that are marked for export.
+  (Possible specs this could be from: vc-json-schema)">VC</u> and hence will
+         need to decide whether they want to trust a specific
+        <a data-link-type="dfn" href="https://w3c.github.io/vc-data-model/#dfn-issuers" id="ref-for-dfn-issuers⑥">Issuer</a>.
+        As a consequence, the <u class="link-error" data-lt="SP" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;sp&apos;.">SP</u> will learn who the
+        <a data-link-type="dfn" href="https://w3c.github.io/vc-data-model/#dfn-issuers" id="ref-for-dfn-issuers⑦">Issuer</a> of that <u class="link-error" data-lt="VC" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;vc&apos; that are marked for export.
+  (Possible specs this could be from: vc-json-schema)">VC</u> is.
+      
        <td>
       <tr>
        <td>24
        <td>
-        <p class="issue" id="issue-1eee36da"> Need to specify what functionality/certification is needed to call an application a ADIA "<a data-link-type="dfn">Digital Address Application</a>".</p>
+        <p class="issue" id="issue-1eee36da"> Need to specify what functionality/certification is needed to call an application a ADIA "<u class="link-error" data-lt="Digital Address Application" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address application&apos;.">Digital Address Application</u>".</p>
        <td>
       <tr>
        <td>25
-       <td> Organizational participants, including issuers, verifiers, and service providers require a publicly
-           resolvable DID 
+       <td>
+        Organizational participants, including issuers, verifiers, and service providers require a publicly
+           resolvable DID
+      
        <td>
       <tr>
        <td>26
-       <td> Regional directory services include the User related information,
+       <td>
+      Regional directory services include the User related information,
       the global directory only includes information on issuers,
       service providers abd interchanges.
-      So compliance can be managed on a regional level. 
+      So compliance can be managed on a regional level.
+      
        <td>
       <tr>
        <td>27
-       <td> Logically, the DAA is provided by The Agency - not the Issuer.
+       <td>
+      Logically, the DAA is provided by The Agency - not the Issuer.
       However, the Issuer could still provide the DAA on behalf
-      of The Agency. 
+      of The Agency.
+      
        <td>
     </table>
    </figure>
@@ -1895,7 +2382,7 @@ dfn > a.self-link::before      { content: "#"; }
       on = !document.body.classList.contains('toc-sidebar');
     }
 
-    /* Don’t scroll to compensate for the ToC if we’re above it already. */
+    /* Don't scroll to compensate for the ToC if we're above it already. */
     var headY = 0;
     var head = document.querySelector('.head');
     if (head) {
@@ -1926,16 +2413,16 @@ dfn > a.self-link::before      { content: "#"; }
       }
       if (toggle.matches(':hover')) {
         /* Unfocus button when not using keyboard navigation,
-           because I don’t know where else to send the focus. */
+           because I don't know where else to send the focus. */
         toggle.blur();
       }
     }
   }
 
   function createSidebarToggle() {
-    /* Create the sidebar toggle in JS; it shouldn’t exist when JS is off. */
+    /* Create the sidebar toggle in JS; it shouldn't exist when JS is off. */
     var toggle = document.createElement('a');
-      /* This should probably be a button, but appearance isn’t standards-track.*/
+      /* This should probably be a button, but appearance isn't standards-track.*/
     toggle.id = 'toc-toggle';
     toggle.class = 'toc-toggle';
     toggle.href = '#toc';
@@ -1951,7 +2438,7 @@ dfn > a.self-link::before      { content: "#"; }
     toggle.addEventListener('click', toggler, false);
 
 
-    /* Get <nav id=toc-nav>, or make it if we don’t have one. */
+    /* Get <nav id=toc-nav>, or make it if we don't have one. */
     var tocNav = document.getElementById('toc-nav');
     if (!tocNav) {
       tocNav = document.createElement('p');
@@ -1959,7 +2446,7 @@ dfn > a.self-link::before      { content: "#"; }
       /* Prepend for better keyboard navigation */
       document.body.insertBefore(tocNav, document.body.firstChild);
     }
-    /* While we’re at it, make sure we have a Jump to Toc link. */
+    /* While we're at it, make sure we have a Jump to Toc link. */
     var tocJump = document.getElementById('toc-jump');
     if (!tocJump) {
       tocJump = document.createElement('a');
@@ -1987,7 +2474,7 @@ dfn > a.self-link::before      { content: "#"; }
     }, false);
   }
   else {
-    console.warn("Can’t find Table of Contents. Please use <nav id='toc'> around the ToC.");
+    console.warn("Can't find Table of Contents. Please use <nav id='toc'> around the ToC.");
   }
 
   /* Wrap tables in case they overflow */
@@ -2003,15 +2490,828 @@ dfn > a.self-link::before      { content: "#"; }
 
 })();
 </script>
+  <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
+  <ul class="index">
+   <li>
+    <a data-link-type="biblio">[DID-1.1]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="9b54c2dc">DID</span>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[VC-DATA-MODEL-2.0]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="69b192c1">issuer</span>
+    </ul>
+  </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
+   <dt id="biblio-did-11">[DID-1.1]
+   <dd>Manu Sporny; Dmitri Zagidulin. <a href="https://w3c.github.io/did/"><cite>Decentralized Identifiers (DIDs) v1.1</cite></a>. URL: <a href="https://w3c.github.io/did/">https://w3c.github.io/did/</a>
    <dt id="biblio-vc-data-model">[VC-DATA-MODEL]
-   <dd>Manu Sporny; et al. <a href="https://www.w3.org/TR/vc-data-model/"><cite>Verifiable Credentials Data Model v1.1</cite></a>. 3 March 2022. REC. URL: <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a>
+   <dd>Manu Sporny; et al. <a href="https://w3c.github.io/vc-data-model/"><cite>Verifiable Credentials Data Model v1.1</cite></a>. URL: <a href="https://w3c.github.io/vc-data-model/">https://w3c.github.io/vc-data-model/</a>
+   <dt id="biblio-vc-data-model-20">[VC-DATA-MODEL-2.0]
+   <dd>Ivan Herman; et al. <a href="https://w3c.github.io/vc-data-model/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. URL: <a href="https://w3c.github.io/vc-data-model/">https://w3c.github.io/vc-data-model/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
    <div class="issue"> We will likely remove this section later.  But for now let’s
    keep it as a reference for the requirements th specs needs to meet. <a class="issue-return" href="#issue-117b6c75" title="Jump to section">↵</a></div>
-   <div class="issue"> Need to specify what functionality/certification is needed to call an application a ADIA "<a data-link-type="dfn">Digital Address Application</a>". <a class="issue-return" href="#issue-1eee36da" title="Jump to section">↵</a></div>
+   <div class="issue"> Need to specify what functionality/certification is needed to call an application a ADIA "<u class="link-error" data-lt="Digital Address Application" title="LINK ERROR: No &apos;dfn&apos; refs found for &apos;digital address application&apos;.">Digital Address Application</u>". <a class="issue-return" href="#issue-1eee36da" title="Jump to section">↵</a></div>
   </div>
+<script>/* Boilerplate: script-dom-helper */
+"use strict";
+function query(sel) { return document.querySelector(sel); }
+
+function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
+
+function iter(obj) {
+	if(!obj) return [];
+	var it = obj[Symbol.iterator];
+	if(it) return it;
+	return Object.entries(obj);
+}
+
+function mk(tagname, attrs, ...children) {
+	const el = document.createElement(tagname);
+	for(const [k,v] of iter(attrs)) {
+		if(k.slice(0,3) == "_on") {
+			const eventName = k.slice(3);
+			el.addEventListener(eventName, v);
+		} else if(k[0] == "_") {
+			// property, not attribute
+			el[k.slice(1)] = v;
+		} else {
+			if(v === false || v == null) {
+        continue;
+      } else if(v === true) {
+        el.setAttribute(k, "");
+        continue;
+      } else {
+  			el.setAttribute(k, v);
+      }
+		}
+	}
+	append(el, children);
+	return el;
+}
+
+/* Create shortcuts for every known HTML element */
+[
+  "a",
+  "abbr",
+  "acronym",
+  "address",
+  "applet",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "basefont",
+  "bdo",
+  "big",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "center",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "font",
+  "footer",
+  "form",
+  "frame",
+  "frameset",
+  "head",
+  "header",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "meta",
+  "meter",
+  "nav",
+  "nobr",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "pre",
+  "progress",
+  "q",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strike",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr",
+  "xmp",
+].forEach(tagname=>{
+	mk[tagname] = (...args) => mk(tagname, ...args);
+});
+
+function* nodesFromChildList(children) {
+	for(const child of children.flat(Infinity)) {
+		if(child instanceof Node) {
+			yield child;
+		} else {
+			yield new Text(child);
+		}
+	}
+}
+function append(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		if(el instanceof Node) el.appendChild(child);
+		else el.push(child);
+	}
+	return el;
+}
+
+function insertAfter(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		el.parentNode.insertBefore(child, el.nextSibling);
+	}
+	return el;
+}
+
+function clearContents(el) {
+	el.innerHTML = "";
+	return el;
+}
+
+function parseHTML(markup) {
+	if(markup.toLowerCase().trim().indexOf('<!doctype') === 0) {
+		const doc = document.implementation.createHTMLDocument("");
+		doc.documentElement.innerHTML = markup;
+		return doc;
+	} else {
+		const el = mk.template({});
+		el.innerHTML = markup;
+		return el.content;
+	}
+}</script>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+let dfnPanelData = {
+"69b192c1": {"dfnID":"69b192c1","dfnText":"issuer","external":true,"refSections":[{"refs":[{"id":"ref-for-dfn-issuers"},{"id":"ref-for-dfn-issuers\u2460"},{"id":"ref-for-dfn-issuers\u2461"},{"id":"ref-for-dfn-issuers\u2462"},{"id":"ref-for-dfn-issuers\u2463"},{"id":"ref-for-dfn-issuers\u2464"},{"id":"ref-for-dfn-issuers\u2465"},{"id":"ref-for-dfn-issuers\u2466"}],"title":"1.1. ADIA Requirements"}],"url":"https://w3c.github.io/vc-data-model/#dfn-issuers"},
+"9b54c2dc": {"dfnID":"9b54c2dc","dfnText":"DID","external":true,"refSections":[{"refs":[{"id":"ref-for-dfn-decentralized-identifiers"},{"id":"ref-for-dfn-decentralized-identifiers\u2460"}],"title":"1.1. ADIA Requirements"}],"url":"https://w3c.github.io/did/#dfn-decentralized-identifiers"},
+};
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    genAllDfnPanels();
+
+    document.body.addEventListener("click", (e) => {
+        // If not handled already, just hide all dfn panels.
+        hideAllDfnPanels();
+    });
+});
+
+window.addEventListener("resize", () => {
+    // Pin any visible dfn panel
+    queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>positionDfnPanel(el));
+});
+
+function genAllDfnPanels() {
+    for(const panelData of Object.values(dfnPanelData)) {
+        const dfnID = panelData.dfnID;
+        const dfn = document.getElementById(dfnID);
+        if(!dfn) {
+            console.log(`Can't find dfn#${dfnID}.`, panelData);
+            continue;
+        }
+        dfn.panelData = panelData;
+        insertDfnPopupAction(dfn);
+    }
+}
+
+function genDfnPanel(dfn, { dfnID, url, dfnText, refSections, external }) {
+    const dfnPanel = mk.aside({
+        class: "dfn-panel on",
+        id: `infopanel-for-${dfnID}`,
+        "data-for": dfnID,
+        "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+        },
+        mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+            `Info about the '${dfnText}' ${external?"external":""} reference.`),
+        mk.a({href:url, class:"dfn-link"}, url),
+        refSections.length == 0 ? [] :
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({ href: `#${ref.id}` },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        genLinkingSyntaxes(dfn),
+    );
+
+    dfnPanel.addEventListener('click', (event) => {
+        if (event.target.nodeName == 'A') {
+            scrollToTargetAndHighlight(event);
+            pinDfnPanel(dfnPanel);
+        }
+        event.stopPropagation();
+        refocusOnTarget(event);
+    });
+    dfnPanel.addEventListener('keydown', (event) => {
+        if(event.keyCode == 27) { // Escape key
+            hideDfnPanel({dfnPanel});
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+
+    dfnPanel.dfn = dfn;
+    dfn.dfnPanel = dfnPanel;
+    return dfnPanel;
+}
+
+
+
+function hideAllDfnPanels() {
+    // Delete the currently-active dfn panel.
+    queryAll(".dfn-panel").forEach(dfnPanel=>hideDfnPanel({dfnPanel}));
+}
+
+function showDfnPanel(dfn) {
+    hideAllDfnPanels(); // Only display one at a time.
+
+    dfn.setAttribute("aria-expanded", "true");
+
+    const dfnPanel = genDfnPanel(dfn, dfn.panelData);
+
+    // Give the dfn a unique tabindex, and then
+    // give all the tabbable panel bits successive indexes.
+    let tabIndex = 100;
+    dfn.tabIndex = tabIndex++;
+    const tabbable = dfnPanel.querySelectorAll(":is(a, button)");
+    for (const el of tabbable) {
+        el.tabIndex = tabIndex++;
+    }
+
+    append(document.body, dfnPanel);
+    positionDfnPanel(dfnPanel);
+}
+
+function positionDfnPanel(dfnPanel) {
+    const dfn = dfnPanel.dfn;
+    const dfnPos = getBounds(dfn);
+    dfnPanel.style.top = dfnPos.bottom + "px";
+    dfnPanel.style.left = dfnPos.left + "px";
+
+    const panelPos = dfnPanel.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, dfnPos.left - overflowAmount);
+        dfnPanel.style.left = newLeft + "px";
+    }
+}
+
+function pinDfnPanel(dfnPanel) {
+    // Switch it to "activated" state, which pins it.
+    dfnPanel.classList.add("activated");
+    dfnPanel.style.position = "fixed";
+    dfnPanel.style.left = null;
+    dfnPanel.style.top = null;
+}
+
+function hideDfnPanel({dfn, dfnPanel}) {
+    if(!dfnPanel) dfnPanel = dfn.dfnPanel;
+    if(!dfn) dfn = dfnPanel.dfn;
+    dfn.dfnPanel = undefined;
+    dfnPanel.dfn = undefined;
+    dfn.setAttribute("aria-expanded", "false");
+    dfn.tabIndex = undefined;
+    dfnPanel.remove()
+}
+
+function toggleDfnPanel(dfn) {
+    if(dfn.dfnPanel) {
+        hideDfnPanel(dfn);
+    } else {
+        showDfnPanel(dfn);
+    }
+}
+
+function insertDfnPopupAction(dfn) {
+    dfn.setAttribute('role', 'button');
+    dfn.setAttribute('aria-expanded', 'false')
+    dfn.tabIndex = 0;
+    dfn.classList.add('has-dfn-panel');
+    dfn.addEventListener('click', (event) => {
+        toggleDfnPanel(dfn);
+        event.stopPropagation();
+    });
+    dfn.addEventListener('keypress', (event) => {
+        const kc = event.keyCode;
+        // 32->Space, 13->Enter
+        if(kc == 32 || kc == 13) {
+            toggleDfnPanel(dfn);
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+}
+
+function refocusOnTarget(event) {
+    const target = event.target;
+    setTimeout(() => {
+        // Refocus on the event.target element.
+        // This is needed after browser scrolls to the destination.
+        target.focus();
+    });
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function scrollToTargetAndHighlight(event) {
+    let hash = event.target.hash;
+    if (hash) {
+        hash = decodeURIComponent(hash.substring(1));
+        const dest = document.getElementById(hash);
+        if (dest) {
+            dest.classList.add('highlighted');
+            setTimeout(() => dest.classList.remove('highlighted'), 1000);
+        }
+    }
+}
+
+// Functions, divided by link type, that wrap an autolink's
+// contents with the appropriate outer syntax.
+// Alternately, a string naming another type they format
+// the same as.
+function needsFor(type) {
+    switch(type) {
+        case "descriptor":
+        case "value":
+        case "element-attr":
+        case "attr-value":
+        case "element-state":
+        case "method":
+        case "constructor":
+        case "argument":
+        case "attribute":
+        case "const":
+        case "dict-member":
+        case "event":
+        case "enum-value":
+        case "stringifier":
+        case "serializer":
+        case "iterator":
+        case "maplike":
+        case "setlike":
+        case "state":
+        case "mode":
+        case "context":
+        case "facet": return true;
+
+        default: return false;
+    }
+}
+function refusesFor(type) {
+    switch(type) {
+        case "property":
+        case "element":
+        case "interface":
+        case "namespace":
+        case "callback":
+        case "dictionary":
+        case "enum":
+        case "exception":
+        case "typedef":
+        case "http-header":
+        case "permission": return true;
+
+        default: return false;
+    }
+}
+function linkFormatterFromType(type) {
+    switch(type) {
+        case 'scheme':
+        case 'permission':
+        case 'dfn': return (text) => `[=${text}=]`;
+
+        case 'abstract-op': return (text) => `[\$${text}\$]`;
+
+        case 'function':
+        case 'at-rule':
+        case 'selector':
+        case 'value': return (text) => `''${text}''`;
+
+        case 'http-header': return (text) => `[:${text}:]`;
+
+        case 'interface':
+        case 'constructor':
+        case 'method':
+        case 'argument':
+        case 'attribute':
+        case 'callback':
+        case 'dictionary':
+        case 'dict-member':
+        case 'enum':
+        case 'enum-value':
+        case 'exception':
+        case 'const':
+        case 'typedef':
+        case 'stringifier':
+        case 'serializer':
+        case 'iterator':
+        case 'maplike':
+        case 'setlike':
+        case 'extended-attribute':
+        case 'event':
+        case 'idl': return (text) => `{{${text}}}`;
+
+        case 'element-state':
+        case 'element-attr':
+        case 'attr-value':
+        case 'element': return (element) => `<{${element}}>`;
+
+        case 'grammar': return (text) => `${text} (within a <pre class=prod>)`;
+
+        case 'type': return (text)=> `<<${text}>>`;
+
+        case 'descriptor':
+        case 'property': return (text) => `'${text}'`;
+
+        default: return;
+    };
+};
+
+function genLinkingSyntaxes(dfn) {
+    if(dfn.tagName != "DFN") return;
+
+    const type = dfn.getAttribute('data-dfn-type');
+    if(!type) {
+        console.log(`<dfn> doesn't have a data-dfn-type:`, dfn);
+        return [];
+    }
+
+    // Return a function that wraps link text based on the type
+    const linkFormatter = linkFormatterFromType(type);
+    if(!linkFormatter) {
+        console.log(`<dfn> has an unknown data-dfn-type:`, dfn);
+        return [];
+    }
+
+    let ltAlts;
+    if(dfn.hasAttribute('data-lt')) {
+        ltAlts = dfn.getAttribute('data-lt')
+            .split("|")
+            .map(x=>x.trim());
+    } else {
+        ltAlts = [dfn.textContent.trim()];
+    }
+    if(type == "type") {
+        // lt of "<foo>", but "foo" is the interior;
+        // <<foo/bar>> is how you write it with a for,
+        // not <foo/<bar>> or whatever.
+        for(var i = 0; i < ltAlts.length; i++) {
+            const lt = ltAlts[i];
+            const match = /<(.*)>/.exec(lt);
+            if(match) { ltAlts[i] = match[1]; }
+        }
+    }
+
+    let forAlts;
+    if(dfn.hasAttribute('data-dfn-for')) {
+        forAlts = dfn.getAttribute('data-dfn-for')
+            .split(",")
+            .map(x=>x.trim());
+    } else {
+        forAlts = [''];
+    }
+
+    let linkingSyntaxes = [];
+    if(!needsFor(type)) {
+        for(const lt of ltAlts) {
+            linkingSyntaxes.push(linkFormatter(lt));
+        }
+    }
+    if(!refusesFor(type)) {
+        for(const f of forAlts) {
+            linkingSyntaxes.push(linkFormatter(`${f}/${ltAlts[0]}`))
+        }
+    }
+    return [
+        mk.b({}, 'Possible linking syntaxes:'),
+        mk.ul({},
+            ...linkingSyntaxes.map(link => {
+                const copyLink = async () =>
+                    await navigator.clipboard.writeText(link);
+                return mk.li({},
+                    mk.div({ class: 'link-item' },
+                        mk.button({
+                            class: 'copy-icon', title: 'Copy',
+                            type: 'button',
+                            _onclick: copyLink,
+                            tabindex: 0,
+                        }, mk.span({ class: 'icon' }) ),
+                        mk.span({}, link)
+                    )
+                );
+            })
+        )
+    ];
+}
+}
+</script>
+<script>/* Boilerplate: script-ref-hints */
+"use strict";
+{
+let refsData = {
+"https://w3c.github.io/did/#dfn-decentralized-identifiers": {"displayText":"DID","export":true,"for_":[],"level":"1","normative":false,"shortname":"did","spec":"did-1.1","status":"current","text":"did","type":"dfn","url":"https://w3c.github.io/did/#dfn-decentralized-identifiers"},
+"https://w3c.github.io/vc-data-model/#dfn-issuers": {"displayText":"issuer","export":true,"for_":[],"level":"1","normative":true,"shortname":"vc-data-model","spec":"vc-data-model-2.0","status":"current","text":"issuer","type":"dfn","url":"https://w3c.github.io/vc-data-model/#dfn-issuers"},
+};
+
+function mkRefHint(link, ref) {
+    const linkText = link.textContent;
+    let dfnTextElements = '';
+    if (ref.displayText.toLowerCase() != linkText.toLowerCase()) {
+        // Give the original term if it's being displayed in a different way.
+        // But allow casing differences, they're insignificant.
+        dfnTextElements =
+            mk.li({},
+                mk.b({}, "Term: "),
+                mk.span({}, ref.displayText)
+            );
+    }
+    const forList = ref.for_;
+    let forListElements;
+    if(forList.length == 0) {
+        forListElements = [];
+    } else if(forList.length == 1) {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.span({}, forList[0]),
+        );
+    } else {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.ul({},
+                ...forList.map(forItem =>
+                    mk.li({},
+                        mk.span({}, forItem)
+                    ),
+                ),
+            ),
+        );
+    }
+    const url = ref.url;
+    const safeUrl = encodeURIComponent(url);
+    const hintPanel = mk.aside({
+        class: "ref-hint",
+        id: `ref-hint-for-${safeUrl}`,
+        "data-for": url,
+        "aria-labelled-by": `ref-hint-for-${safeUrl}`,
+    },
+        mk.ul({},
+            dfnTextElements,
+            mk.li({},
+                mk.b({}, "URL: "),
+                mk.a({ href: url, class: "ref" }, url),
+            ),
+            mk.li({},
+                mk.b({}, "Type: "),
+                mk.span({}, `${ref.type}`),
+            ),
+            mk.li({},
+                mk.b({}, "Spec: "),
+                mk.span({}, `${ref.spec ? ref.spec : ''}`),
+            ),
+            forListElements
+        ),
+    );
+    hintPanel.forLink = link;
+    setupRefHintEventListeners(link, hintPanel);
+    return hintPanel;
+}
+
+function hideAllRefHints() {
+    queryAll(".ref-hint").forEach(el=>hideRefHint(el));
+}
+
+function hideRefHint(refHint) {
+    const link = refHint.forLink;
+    link.setAttribute("aria-expanded", "false");
+    if(refHint.teardownEventListeners) {
+        refHint.teardownEventListeners();
+    }
+    refHint.remove();
+}
+
+function showRefHint(link) {
+    if(link.classList.contains("dfn-link")) return;
+    const url = link.getAttribute("href");
+    const refHintKey = link.getAttribute("data-refhint-key");
+    let key = url;
+    if(refHintKey) {
+        key = refHintKey + "_" + url;
+    }
+    const ref = refsData[key];
+    if(!ref) return;
+
+    hideAllRefHints(); // Only display one at this time.
+
+    const refHint = mkRefHint(link, ref);
+    append(document.body, refHint);
+    link.setAttribute("aria-expanded", "true");
+    positionRefHint(refHint);
+}
+
+function setupRefHintEventListeners(link, refHint) {
+    if (refHint.teardownEventListeners) return;
+    // Add event handlers to hide the refHint after the user moves away
+    // from both the link and refHint, if not hovering either within one second.
+    let timeout = null;
+    const startHidingRefHint = (event) => {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => {
+            hideRefHint(refHint);
+        }, 1000);
+    }
+    const resetHidingRefHint = (event) => {
+        if (timeout) clearTimeout(timeout);
+        timeout = null;
+    };
+    link.addEventListener("mouseleave", startHidingRefHint);
+    link.addEventListener("mouseenter", resetHidingRefHint);
+    link.addEventListener("blur", startHidingRefHint);
+    link.addEventListener("focus", resetHidingRefHint);
+    refHint.addEventListener("mouseleave", startHidingRefHint);
+    refHint.addEventListener("mouseenter", resetHidingRefHint);
+    refHint.addEventListener("blur", startHidingRefHint);
+    refHint.addEventListener("focus", resetHidingRefHint);
+
+    refHint.teardownEventListeners = () => {
+        // remove event listeners
+        resetHidingRefHint();
+        link.removeEventListener("mouseleave", startHidingRefHint);
+        link.removeEventListener("mouseenter", resetHidingRefHint);
+        link.removeEventListener("blur", startHidingRefHint);
+        link.removeEventListener("focus", resetHidingRefHint);
+        refHint.removeEventListener("mouseleave", startHidingRefHint);
+        refHint.removeEventListener("mouseenter", resetHidingRefHint);
+        refHint.removeEventListener("blur", startHidingRefHint);
+        refHint.removeEventListener("focus", resetHidingRefHint);
+    };
+}
+
+function positionRefHint(refHint) {
+    const link = refHint.forLink;
+    const linkPos = getBounds(link);
+    refHint.style.top = linkPos.bottom + "px";
+    refHint.style.left = linkPos.left + "px";
+
+    const panelPos = refHint.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, linkPos.left - overflowAmount);
+        refHint.style.left = newLeft + "px";
+    }
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getBounds(el, relativeTo=document.body) {
+    const relativeRect = relativeTo.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const top = elRect.top - relativeRect.top;
+    const left = elRect.left - relativeRect.left;
+    return {
+        top,
+        left,
+        bottom: top + elRect.height,
+        right: left + elRect.width,
+    }
+}
+
+function showRefHintListener(e) {
+    // If the target isn't in a link (or is a link),
+    // just ignore it.
+    let link = e.target.closest("a");
+    if(!link) return;
+
+    // If the target is in a ref-hint panel
+    // (aka a link in the already-open one),
+    // also just ignore it.
+    if(link.closest(".ref-hint")) return;
+
+    // Otherwise, show the panel for the link.
+    showRefHint(link);
+}
+
+function hideAllHintsListener(e) {
+    // If the click is inside a ref-hint panel, ignore it.
+    if(e.target.closest(".ref-hint")) return;
+    // Otherwise, close all the current panels.
+    hideAllRefHints();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.addEventListener("mousedown", showRefHintListener);
+    document.body.addEventListener("focus", showRefHintListener);
+
+    document.body.addEventListener("click", hideAllHintsListener);
+});
+
+window.addEventListener("resize", () => {
+    // Hide any open ref hint.
+    hideAllRefHints();
+});
+}
+</script>
