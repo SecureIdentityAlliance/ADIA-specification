@@ -1,4 +1,4 @@
-title User onboarding to first Issuer
+title User onboarding to Issuers
 
 Participant User
 Participant DAA
@@ -8,40 +8,43 @@ Participant DAS
 Participant ARD
 
 
-User -> +Issuer: I want a Digital Address\n(Authentication + accept T&C)\n Issuer has ID-proofed user before
+User -> +Issuer: I want  to Connect\n(Authentication + accept T&C)\n Issuer has ID-proofed user before
 Issuer -> Issuer: Lookup ID-Attribs for that user in Issuer DB
 Issuer -> Issuer: ADIA-FN-001: Compute HIDA = hash (ID-Attribs)
-Issuer ->> +DAS: ADIA-DR-001: Securely send HIDA, ISSUER_ID \nand request Digital Address
+Issuer ->> +DAS: ADIA-DR-001: Lookup or Provision [ HIDA, ISSUER_ID]  \nand request DID
 DAS ->> +ARD: ADIA-DR-001: Lookup TA_USER_ISSUER for HIDA, ISSUER_ID
 ARD -> ARD: Lookup TA for HIDA
 
-alt TA not found
+alt TA found
+ARD -->> DAS: ADIA-DR-001:Compute and Return\nTA_USER_ISSUER found and HomeDAS_ID
+
+DAS ->> Issuer: DAS_User_ID of User
+
+else TA not found
 ARD -> ARD: Generate TA = random
 ARD -->> -DAS: ADIA-DR-001:No conflict with TA.\n Return TA_USER_ISSUER = hash (TA, ISSUER_ID), HomeDAS=DAS_ID
-else TA found
-note over DAS,ARD
-Enroll a User with existing Digital Address
-end note
-end
-
 DAS->>DAS: ADIA-DA-005:Provision a Cloud Agent for User with HIDA
-DAS->>Cloud Agent: ADIA-DA-001:Request to Create DAS_USER_ID for HIDA
+DAS->>Cloud Agent: ADIA-DA-001:Request to Create DAS_USER_ID
 Cloud Agent ->Cloud Agent: Create DAS_USER_ID & DAS_USER_ID_PK/SK\n Create DIDDoc
-Cloud Agent-->>DAS: ADIA-DA-001:Send [DAS_USER_ID, DAS_USER_ID_PK] to DAS
-DAS->DAS: Store User DIDDoc
-DAS-->>Cloud Agent: ADIA-DA-001: DID Doc save success
-DAS->>Cloud Agent: ADIA-DA-001:Create DA [DAS_USER_ID]
-Cloud Agent-->>DAS: ADIA-DA-001:DA Created
+Cloud Agent-->>DAS: ADIA-DA-001:Send [DAS_USER_ID, DAS_USER_ID_PK] to DAS for ARD
+DAS ->> Issuer: User is new, select and approve Digital Address, retrieve enrollment credential
+Issuer ->> Cloud Agent: Directory enrollment HIDA Credential
+Issuer ->> Cloud Agent: User Selected Digital Address
+Cloud Agent ->> DAS: ADIA-DA-001:Create DA [DAS_USER_ID]
 DAS -> DAS: Store [DA, TA_USER_ISSUER, DAS_USER_ID, DAS_USER_ID_PK]
-DAS ->> +ARD: ADIA-DR-002: Enroll [DAS_USER_ID, HIDA, HomeDAS_ID] to notify about DA
+DAS -->> Cloud Agent: ADIA-DA-001:DA Created
+Cloud Agent ->> ARD: Present HIDA Enrollment Credential and DAS_USER_ID
 ARD -> ARD: Store [HIDA, TA]\n [TA, DAS_USER_ID, HomeDAS_ID=DAS_ID]
-ARD -->> -DAS: ADIA-DR-002:Enroll Success
+ARD -->> -Cloud Agent: ADIA-DR-002:Enroll Success
 DAS -->> -Issuer: ADIA-DR-002:Return DAS_USER_ID
 Issuer -> Issuer: Remember DAS_USER_ID for user in Issuer DB
-Issuer -> Issuer: Create QR code (DAS_USER_ID, IssuerConnectionURL)
-Issuer ->> -User: Present QR (Ex: Console) or send QR (Ex: Email)
+Issuer -->User: Digital Address enrolled and ready for use
+end
+
 
 opt User scans the QR code
+Issuer -> Issuer: Create QR code (DAS_USER_ID, IssuerConnectionURL)
+Issuer ->> -User: Present QR (e.g.: Console) or send QR (e.g.: Email)
 User -> DAA: Scan and Extract [DAS_USER_ID, IssuerConnectionURL]
 DAA -> DAA: Start ID proofing on the device \nand extract the User info
 DAA-> +DAS: Send Verified User Attributes +\n DAS_USER_ID to IssuerConnectionURL
@@ -53,5 +56,5 @@ DAA -> DAA: If successful: Remember DAS_USER_ID, DA
 DAA <-> +DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
 DAS-> DAS: Remember (USER_FIDO_PK, DAS_USER_ID)
 DAS --> -DAA: Acknowledge successful FIDO registration
-DAA-->User: Digital Address enrolled and ready for use
+
 end
