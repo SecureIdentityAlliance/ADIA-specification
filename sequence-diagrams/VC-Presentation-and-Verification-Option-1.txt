@@ -1,6 +1,7 @@
 title VC Presentation and Verification
 
 Participant User
+Participant Browser
 Participant DAA
 Participant Cloud Agent
 Participant Service Provider as SP
@@ -9,8 +10,8 @@ Participant Issuer
 Participant ARD
 Participant AGD
 
-User -> SP: User wants a service from SP
-SP ->> User: Wants proof and requests User to connect DAA via SP_ID
+Browser -> SP: User wants a service from SP
+SP ->> Browser: Wants proof and requests User to connect DAA via SP_ID (+nonce)
 SP ->> DAA: Provide SP_ID to DAA
 DAA ->> Cloud Agent: Pass SP_ID to Cloud Agent to connect with SP
 Cloud Agent ->> SP: Invites SP for DIDComm connection (mutual authentication)
@@ -42,3 +43,6 @@ SP -> SP: Verify DAS's signature on the Issuer's DIDDoc
 SP -> SP: Verify VC \n by using Issuer \n public keys (ISSUER_ID_PK)
 SP -->> Cloud Agent: Success
 Cloud Agent -> Cloud Agent: Erases the VC from local agent storage
+
+Browser -> SP: Poll success page (provide nonce)
+SP --> Browser: return success page
