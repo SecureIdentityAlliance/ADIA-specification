@@ -1,0 +1,97 @@
+<!-- -*- mode: Text; eval: (auto-fill-mode 1); -*- -->
+<pre class='metadata'>
+Title: Accountable Digital Identity Association (ADIA) Security Reference
+Shortname: adia-secref
+Prepare for TR: true
+Level: 1
+Status: ED
+Group: fido
+URL:
+Editor: Rolf Lindemann, rolf@noknok.com
+
+Abstract: This specification shows how Service
+    Providers can trigger the presentation of a verifiable credential
+    in order to learn verified attributes regarding the current user.
+
+Issue Tracking: GitHub https://github.com/ADIAssociation/ADIA-specification/issues
+Text Macro: INFORMATIVE <em>This section is not normative.</em>
+Text Macro: NORMATIVE <em>This section is normative.</em>
+Boilerplate: omit conformance, omit feedback-header, omit abstract-header
+Local Boilerplate: header yes, footer yes, logo yes, copyright yes
+Markup Shorthands: css off, markdown on
+</pre>
+
+<pre class="link-defaults">
+spec:html; type:dfn; for:environment settings object; text:global object
+spec:infra; type:dfn; text:list
+spec:url; type:dfn; text:domain
+spec:url; type:dfn; text:valid domain;
+spec:webappsec-credential-management-1; type:dictionary; for:/; text:CredentialRequestOptions
+spec:webidl; type:interface; text:Promise
+</pre>
+
+<!-- only put content here if you want a custom status of document not
+  the specification-maturity-appropriate boilerplate -->
+
+# ADIA for SPs Overview # {#sctn-adia4sp-overview}
+<dfn>Service Provider</dfn>s (<dfn>SP</dfn>s) are relying parties in
+the ecosystem.  They can query verifiable credentials for a user to be
+presented.  
+
+<a>Service Provider</a>s need to authenticate themselves to other
+entities in the ADIA system.  
+
+# ADIA for SP Operations # {#sctn-adia4sp-ops}
+
+## Request Presentation of Identifying Credentials ## {#sctn-iden-creds}
+
+Issue: We need to present this in an API centric way.  What are the
+    API calls that the SP has to implement and where are those APIs
+    (i.e., native App, cloud redirection, ...)?
+    Need to distinguish 2 cases: some native Wallet App is present,
+    use a cloud redirection approach.
+
+Issue: What is ADIA's contribution here?  Wallet APIs will be
+    maintained outside of ADIA.  OpenID4VC and OpenID4VP are
+    maintained in OpenID foundation.  Is ADIA requiring its members to
+    implement a certain minimum set of functions so that the "ADIA spec"
+    would be a "profiling" of existing specs (as SP you MUST implement
+    X and Y, but Z is optional; as issuer you MUST implement A, B and
+    C, etc.)?  But what are the APIs for getting the credential?  Look
+    at https://openwallet.foundation/ and
+    https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
+    and https://support.apple.com/guide/iphone/use-your-drivers-license-or-state-id-iph9f1847064/ios
+    
+
+Issue: Specify the semantics of a credential. Look at OASIS TC for the processing of a credential.
+
+<figure id="fig-vc-presentation-and-verification-option-1">
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-1-for-SP.png"/>
+    <figcaption>Verifiable Presentation and Verification (Option 1)</figcaption>
+</figure>
+
+
+## Request Presentation of Anonymous Credentials ## {#sctn-anon-creds}
+
+Note: Presentation of anonymous credentials and Zero-knowledge proofs is a work in progress and
+will be supported in subsequent versions of this Specification.
+
+Note: In this case, the message to present the <a>Verifiable Credential</a> that is sent from the <a>Cloud Agent</a> to the <a>SP</a> is signed with a dedicated signing key
+as opposed to being signed with <a>DAS_USER_ID_SK</a> in order to avoid a correlation handle in this operation.
+
+<a>Anonymous Verifiable Credential</a>s don't intrinsically expose a link from the credential to a specific user.
+A key dedicated for this operation is created on-demand by the user's <a>Cloud Agent</a>.
+Presentations of the <a>Anonymous Verifiable Credential</a> to different <a>SP</a>s will trigger the use of different keys
+to avoid the exposure of a correlation handle.
+
+<figure id="fig-vc-presentation-and-verification-option-2">
+    <img src="sequence-diagrams/VC-Presentation-and-Verification-Option-2.svg"/>
+    <figcaption>Verifiable Presentation and Verification (Option 2: Anonymous)</figcaption>
+</figure>
+
+
+# ADIA for SP Data Structures # {#sctn-adia4sp-data-structs}
+
+Issue: TODO
+
+
