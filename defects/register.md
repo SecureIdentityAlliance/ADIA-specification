@@ -142,7 +142,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-517 | S3 | Verified |  | `auto` | L996 | "provisions **an** CI_AGENT" |  | `8a0cfa6` |
 | E-518 | S3 | Open |  | `auto` | L1000 | "the Interchange **send** a vc_offer" ×2 |  | `cb44fcb` |
 | E-519 | S3 | Open |  | `auto` | L1064 | "**POST return** issue_vc_token" — malformed |  | `9516e96` |
-| E-520 | S3 | Open |  | — | L1348, L1352 | `SERVICE_PROVIDER:9.` / `USER:10.` — missing space after colon |  |  |
+| E-520 | S3 | Open |  | — | L1348, L1352 | `SERVICE_PROVIDER:9.` / `USER:10.` — missing space after colon |  | `496fda2` |
 | E-521 | S3 | Open |  | — | §11.1.3 step 10 | Message text duplicates step 8 ("Respond to SP Agent with VP") |  |  |
 | E-522 | S3 | Open |  | `auto` | L1367 | Sentence truncated mid-word: "the service provider calls the get\_" |  |  |
 | E-523 | S3 | Open |  | `auto` | L437 | `[see W3C XXX]` placeholder |  |  |

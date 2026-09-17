@@ -1293,7 +1293,7 @@ The SP_AGENT creates a vc_authorization_request and constructs a URI, referencin
 
 **SP_AGENT -\> USER_AGENT: 3. POST ~user_agent/vc_request\n Redirect, Link, QR Code or App Notification**
 
-4.  The user agent selects an acceptable VC from the user’s VCs.  If there are more than one the user is requested to select one.  If there are no VCs that match the request, the user may be directed to an Issuer to obtain an acceptable VC. 
+4. The user agent selects an acceptable VC from the user’s VCs.  If there are more than one the user is requested to select one.  If there are no VCs that match the request, the user may be directed to an Issuer to obtain an acceptable VC. 
 
 The user agent obtains user consent & authorization using strong authentication.
 
@@ -1315,7 +1315,7 @@ This may be from the issuer vault or the user vault depending on issuer endpoint
 
 **VAULT_AGENT -\> USER_AGENT: 6. Return the VC requested**
 
-7. The user agent signs the VC with  the  users’ private key to create a VP. 
+7. The user agent signs the VC with the users’ private key to create a VP. 
 
 **USER_AGENT -\> USER_AGENT: 7. Create and sign VP**
 
@@ -1329,7 +1329,7 @@ This may be from the issuer vault or the user vault depending on issuer endpoint
 
 10.  The user agent informs the user that the VC has been presented to the service provider
 
-**USER_AGENT -\> USER: 10. <span class="mark">Respond to SP Agent with VP</span>**
+**USER_AGENT -\> USER: 10. <span class="mark">VC presented to SP</span>**
 
 ## 12.2 Requesting a public key
 
