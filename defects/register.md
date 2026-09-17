@@ -133,7 +133,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-508 | S3 | Open |  | `auto` | L173 | `ADI Network User (AD-NU)` → `ADI-NU` |  | `9527e32` |
 | E-509 | S3 | Open |  | `auto` | L279 | `(\[Role}-Agent endpoint)` — mismatched bracket and brace |  | `9e7252c` |
 | E-510 | S3 | Open |  | `auto` | L926 | Figure 11 caption: "Creating **and** AGD" |  | `3f1cf27` |
-| E-511 | S3 | Open |  | `auto` | L564 | "All VC subjects and issuer by are registered ADI NETWORK DIDs" — garbled |  |  |
+| E-511 | S3 | Open |  | `auto` | L564 | "All VC subjects and issuer by are registered ADI NETWORK DIDs" — garbled |  | `2094a3c` |
 | E-512 | S3 | Open |  | `auto` | L654 | "assigned one more Verifiable Credentials" → "one **or** more" |  |  |
 | E-513 | S3 | Open |  | `auto` | L698 | "HIDA usage is implementation and should be set" — missing word |  |  |
 | E-514 | S3 | Open |  | `auto` | L996 | §9.3 (Issuer flow) says "vetting of the **service provider**" ×2 |  |  |
