@@ -987,17 +987,17 @@ The Issuer administration applies to the Interchange to join the ADI ecosystem a
 
 The Interchange should have an enrollment form the issuer can fill out and submit.
 
-The issuer submits an enrollment request to the interchange. The request includes required information about the issuer.   This request may be submitted via a web form at the Interchange or other method.
+The Issuer submits an enrollment request to the interchange. The request includes required information about the issuer.   This request may be submitted via a web form at the Interchange or other method.
 
 **ISSUER -\> INTERCHANGE: POST ~ix/enroll_issuer  **
 
-The Interchange will vet the issuer information and execute a contract to join ADI.
+The Interchange will vet the Issuer information and execute a contract to join ADI.
 
-Once vetting of the issuer is completed, the Interchange provisions an CI_AGENT to perform ADI functions for the issuer. The CI_AGENT generates PK pairs, is assigned a DID & DIDdoc and OIDC endpoints & metadata using an issuer-selected domain / sub-domain.
+Once vetting of the Issuer is completed, the Interchange provisions a CI_AGENT to perform ADI functions for the issuer. The CI_AGENT generates PK pairs, is assigned a DID & DIDdoc and OIDC endpoints & metadata using an issuer-selected domain / sub-domain.
 
 **INTERCHANGE -\> INTERCHANGE:  Provision issuer agent, create keys, \n listing data & endpoints**
 
-Once the CI_AGENT is created,  the Interchange send a vc_offer for an ADI-Issuer role VC to the CI_AGENT to accept and sign, 
+Once the CI_AGENT is created, the Interchange sends a vc_offer for an ADI-Issuer role VC to the CI_AGENT to accept and sign. 
 
 **INTERCHANGE -\> CI_AGENT: POST ~CI_AGENT/vc_offer **
 
@@ -1019,7 +1019,7 @@ The issuer can now issue VCs to ADI participants.  
 
 ## 10.4 Enrolling a Service Provider
 
-The following request and response JSON objects are used during Issuer enrollment.
+The following request and response JSON objects are used during Service Provider enrollment.
 
 - [<u>Enroll_sp</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.dgy3qb3slgrx)
 
