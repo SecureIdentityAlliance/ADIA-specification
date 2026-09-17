@@ -130,7 +130,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-505 | S3 | Open |  | `auto` | L1386 | `## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs |  | `ad9351b` |
 | E-506 | S3 | Open |  | — | L1963 | Appendix C has no `# C.` heading; A and B both do |  | `16e83ad` |
 | E-507 | S3 | Verified |  | `auto` | L1086 | §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2. |  | `8c28c0f` |
-| E-508 | S3 | Open |  | `auto` | L173 | `ADI Network User (AD-NU)` → `ADI-NU` |  |  |
+| E-508 | S3 | Open |  | `auto` | L173 | `ADI Network User (AD-NU)` → `ADI-NU` |  | `9527e32` |
 | E-509 | S3 | Open |  | `auto` | L279 | `(\[Role}-Agent endpoint)` — mismatched bracket and brace |  |  |
 | E-510 | S3 | Open |  | `auto` | L926 | Figure 11 caption: "Creating **and** AGD" |  |  |
 | E-511 | S3 | Open |  | `auto` | L564 | "All VC subjects and issuer by are registered ADI NETWORK DIDs" — garbled |  |  |
