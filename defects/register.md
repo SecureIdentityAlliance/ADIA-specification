@@ -138,7 +138,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-513 | S3 | Verified |  | `auto` | L698 | "HIDA usage is implementation and should be set" — missing word |  | `f81815d` |
 | E-514 | S3 | Open |  | `auto` | L996 | §9.3 (Issuer flow) says "vetting of the **service provider**" ×2 |  | `24f3d18` |
 | E-515 | S3 | Verified |  | `auto` | L1008 | §9.3 "returns the VC to the **SP agent**" — should be CI_AGENT |  | `39482ec` |
-| E-516 | S3 | Open |  | `auto` | L968 | §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2 |  | `e89ed09` |
+| E-516 | S3 | Open |  | `auto` | L968 | §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2 |  | `3da4398` |
 | E-517 | S3 | Open |  | `auto` | L996 | "provisions **an** CI_AGENT" |  |  |
 | E-518 | S3 | Open |  | `auto` | L1000 | "the Interchange **send** a vc_offer" ×2 |  |  |
 | E-519 | S3 | Open |  | `auto` | L1064 | "**POST return** issue_vc_token" — malformed |  |  |
