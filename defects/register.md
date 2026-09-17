@@ -6,16 +6,16 @@
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-17 |
-| Defects | 105 (64 with an automated check) |
-| Verified | 16 |
+| Defects | 106 (66 with an automated check) |
+| Verified | 20 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 25 |
-| Open | 64 |
-| Standing invariants | 4 of 4 holding |
+| Open | 61 |
+| Standing invariants | 4 of 5 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
 
-Nobody moves their own work to `Verified`. For the 64 automated defects the harness does it; for the other 41 a second person does.
+Nobody moves their own work to `Verified`. For the 66 automated defects the harness does it; for the other 40 a second person does.
 
 ---
 
@@ -25,32 +25,32 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| A-101 | S1 | Blocked(D4) | RK | `auto` | B.1.2 L1441 / B.2.8 L1703 | Enrollment sends `role: "INTERCHANGE"`; role VC records `role: "IX"`. Same role, two tokens. AGD/ISSUER/SERVICE_PROVIDER match correctly across both. | Pick one token; align both |  |
+| A-101 | S1 | Blocked(D4) | RK | `auto` | B.1.2 / B.2.8 | Enrollment sends `role: "INTERCHANGE"`; role VC records `role: "IX"`. Same role, two tokens. AGD/ISSUER/SERVICE_PROVIDER match correctly across both. | Pick one token; align both |  |
 | A-102 | S1 | Open |  | `auto` | B.2.9, B.2.10, B.2.11 | `id_doc.id` is the **Interchange's** DID (`f6e18f71…`), not the subject's. §3.20 and §8.5.1 require a DIDdoc to carry its own DID's key. Verification would use the wrong key | Set `id_doc.id` = `subject`, with the subject's key |  |
-| A-103 | S1 | Open |  | `auto` | B.2.7 L1651/1665 | `issuer` (`8c019421…`) ≠ `subject` (`71a39c8d…`) on a credential §9.1 requires to be self-signed | Make them identical |  |
-| A-104 | S1 | Blocked(D2) |  | `auto` | B.2.7 L1667 vs id_doc | `subject` is `did:adi:71a39c8d…` but `id_doc.id` is `did:adi:71a39c8d…/region_1/` — same UUID, different path, trailing empty segment | Normalise per D-403 |  |
-| A-105 | S1 | Blocked(D4) |  | `auto` | B.2.7 L1683 | AGD `authorized_to_issue: ["AGD-VC"]` — the root cannot issue Interchange credentials, so §9.2 is unexecutable and the network cannot bootstrap | Add the IX role-VC type |  |
-| A-106 | S1 | Blocked(D4) |  | `auto` | B.2.8 L1727 | Interchange `authorized_to_issue: ["ADI-IX-VC"]` — an IX can only issue other IX credentials, contradicting §7.4.2, §9.3, §9.4, §9.5 | Set to Issuer + SP + User types |  |
-| A-107 | S2 | Blocked(D7) |  | — | B.2.9 L1773 | Issuer `authorized_to_issue: ["ADI-User-VC"]` — an Issuer issuing the ADI **role** credential contradicts §9.5, where the Interchange does. §9.5 allows outsourced *proofing*, which is not the same as issuance | Clarify proofing vs issuance; correct the value |  |
-| A-108 | S2 | Blocked(D8) |  | — | B.2.10 L1814 | SP `authorized_max_assurance_level: []` reads as "may accept nothing". SPs plausibly need an accepted *floor*, not an issuance *ceiling* | Decide semantics; rename or remove |  |
-| A-109 | S1 | Open |  | `auto` | B.2.11 L1839 | User VC `subject` ends `/issuer_1` — an Issuer path in a User credential — while `digital_address` is `USER_DA@IX_1`. Subject and DA disagree | Correct subject |  |
+| A-103 | S1 | Open |  | `auto` | B.2.7 | `issuer` (`8c019421…`) ≠ `subject` (`71a39c8d…`) on a credential §9.1 requires to be self-signed | Make them identical |  |
+| A-104 | S1 | Blocked(D2) |  | `auto` | B.2.7 | `subject` is `did:adi:71a39c8d…` but `id_doc.id` is `did:adi:71a39c8d…/region_1/` — same UUID, different path, trailing empty segment | Normalise per D-403 |  |
+| A-105 | S1 | Blocked(D4) |  | `auto` | B.2.7 | AGD `authorized_to_issue: ["AGD-VC"]` — the root cannot issue Interchange credentials, so §9.2 is unexecutable and the network cannot bootstrap | Add the IX role-VC type |  |
+| A-106 | S1 | Blocked(D4) |  | `auto` | B.2.8 | Interchange `authorized_to_issue: ["ADI-IX-VC"]` — an IX can only issue other IX credentials, contradicting §7.4.2, §9.3, §9.4, §9.5 | Set to Issuer + SP + User types |  |
+| A-107 | S2 | Blocked(D7) |  | — | B.2.9 | Issuer `authorized_to_issue: ["ADI-User-VC"]` — an Issuer issuing the ADI **role** credential contradicts §9.5, where the Interchange does. §9.5 allows outsourced *proofing*, which is not the same as issuance | Clarify proofing vs issuance; correct the value |  |
+| A-108 | S2 | Blocked(D8) |  | — | B.2.10 | SP `authorized_max_assurance_level: []` reads as "may accept nothing". SPs plausibly need an accepted *floor*, not an issuance *ceiling* | Decide semantics; rename or remove |  |
+| A-109 | S1 | Open |  | `auto` | B.2.11 | User VC `subject` ends `/issuer_1` — an Issuer path in a User credential — while `digital_address` is `USER_DA@IX_1`. Subject and DA disagree | Correct subject |  |
 | A-110 | S1 | Blocked(D2) |  | `auto` | B.2.9 / B.2.10 | Both subjects share method-specific-id `3b576f82…`, differing only by path. Under DID Core, path is not part of the identifier: the Issuer and SP are **the same DID** | Distinct identifiers |  |
-| A-111 | S2 | Open |  | — | B.2.4 L1597 | Issuer of a `UniversityDegreeCredential` is `…/region_1/ix_3` — an Interchange-shaped DID, not an Issuer | Use an Issuer DID |  |
-| A-112 | S1 | Open |  | `auto` | 8 examples | `"type": "JWT"`. The JOSE header parameter is `typ` (RFC 7515 §4.1.9). Zero occurrences of `typ` or `kid` anywhere | Rename; add `kid` |  |
-| A-113 | S2 | Open |  | `auto` | B.2.2 L1542, B.2.3 L1571, B.2.7 L1642 | Three malformed UUIDs: `7560e8400-e79n-21d4-…` (9 hex in group 1, non-hex `n`) ×2, and `aa2f772-…` (7 in group 1) | Regenerate |  |
-| A-114 | S3 | Open |  | `auto` | B.1.3 L1466 / B.1.4 L1486 | Identical `request_id` `bb20b6aa-…` in two different requests | Distinct values |  |
+| A-111 | S2 | Open |  | — | B.2.4 | Issuer of a `UniversityDegreeCredential` is `…/region_1/ix_3` — an Interchange-shaped DID, not an Issuer | Use an Issuer DID |  |
+| A-112 | S1 | Open |  | `auto` | B.1.1, B.1.2, B.2.3, B.2.7–B.2.11 | `"type": "JWT"`. The JOSE header parameter is `typ` (RFC 7515 §4.1.9). Zero occurrences of `typ` or `kid` anywhere | Rename; add `kid` |  |
+| A-113 | S2 | Open |  | `auto` | B.2.2, B.2.3, B.2.7 | Three malformed UUIDs: `7560e8400-e79n-21d4-…` (9 hex in group 1, non-hex `n`) ×2, and `aa2f772-…` (7 in group 1) | Regenerate |  |
+| A-114 | S3 | Open |  | `auto` | B.1.3 / B.1.4 | Identical `request_id` `bb20b6aa-…` in two different requests | Distinct values |  |
 | A-115 | S2 | Open |  | — | B.1.5 | Placeholder values were substituted during JSON repair and are invented, not authored | Review and replace |  |
-| A-116 | S2 | Open |  | `auto` | B.2.2 L1546 | `subject: "did:adi:{subject_did}"` — placeholder syntax inconsistent with all other examples | Use a literal |  |
+| A-116 | S2 | Open |  | `auto` | B.2.2 | `subject: "did:adi:{subject_did}"` — placeholder syntax inconsistent with all other examples | Use a literal |  |
 | A-117 | S2 | Blocked(D5) |  | — | B.2.6 | Claim set (`deviceID`, `fingerPrint`, `environmentID`, `isLoginAuthorized`, `custom:userId`) appears nowhere in the data model. `iss: "https://HOME@DAS1"` is not a valid URI | Document or replace |  |
-| A-118 | S2 | Open |  | `auto` | B.3.1 L1864+ | Metadata still branded `credential-issuer.example.com` (×4) while `authorization_servers` points at `users.adi.com` | De-brand |  |
-| A-119 | S2 | Blocked(D5) |  | `auto` | B.3.1 L1870 | `batch_credential_endpoint` and `deferred_credential_endpoint` were removed from later OIDC4VCI drafts. No draft version cited anywhere | Pin a draft; align |  |
+| A-118 | S2 | Open |  | `auto` | B.3.1 | Metadata still branded `credential-issuer.example.com` (×4) while `authorization_servers` points at `users.adi.com` | De-brand |  |
+| A-119 | S2 | Blocked(D5) |  | `auto` | B.3.1 | `batch_credential_endpoint` and `deferred_credential_endpoint` were removed from later OIDC4VCI drafts. No draft version cited anywhere | Pin a draft; align |  |
 | A-120 | S2 | Blocked(D10) |  | — | B.3.1 | Single `credential_vault_endpoint`, but §10.2.3 and §11.1.3 both require a choice between issuer vault and **user** vault. No user-vault discovery exists | Add discovery |  |
-| A-121 | S2 | Blocked(D5) |  | — | B.2.2 L1210 | `pre_authorized_code` used as a direct member of `grants` (OIDC4VCI uses `pre-authorized_code`, hyphenated, under a URN grant key), paired with an empty `authorization_code: {}` | Align or declare divergence |  |
+| A-121 | S2 | Blocked(D5) |  | — | B.2.2 | `pre_authorized_code` used as a direct member of `grants` (OIDC4VCI uses `pre-authorized_code`, hyphenated, under a URN grant key), paired with an empty `authorization_code: {}` | Align or declare divergence |  |
 | A-122 | S1 | Blocked(D5) |  | `auto` | B.2.2 | Offer carries no `tx_code`, no `expires_in`, no single-use rule, no subject pre-binding — while §10.2.3 delivers it by QR | Add binding + TTL |  |
 | A-123 | S1 | Open |  | `auto` | B.2.5 | `vc_request` has no `nonce`, no `aud`, no expiry. The resulting VP is replayable at any verifier. Document-wide: `"nonce"` ×1, `"aud"` ×0, `"cnf"` ×0 | Add all three |  |
-| A-124 | S2 | Blocked(D6) |  | `auto` | B.2.4 L1594 | VCDM **1.1** context (`2018/credentials/v1`), while §5.3 and the references cite VCDM 2.0. `vc_id` is not a VCDM member (should be `id`). `proof` is empty. No `credentialStatus`, no `credentialSchema` (zero occurrences document-wide) | Rebuild per D-802 |  |
-| A-125 | S2 | Blocked(D6) |  | — | B.2.4 vs §7.2 L601 | §7.2 states examples use JWT VC formatting; B.2.4 is plain JSON-LD | Reconcile |  |
-| A-126 | S2 | Blocked(D7) |  | `auto` | 8 vs 3 | `RS256` ×8 in examples, `ES256` ×3 in metadata. No mandatory-to-implement set, no algorithm-confusion prohibition, no minimum key size | Declare MTI set |  |
+| A-124 | S2 | Blocked(D6) |  | `auto` | B.2.4 | VCDM **1.1** context (`2018/credentials/v1`), while §5.3 and the references cite VCDM 2.0. `vc_id` is not a VCDM member (should be `id`). `proof` is empty. No `credentialStatus`, no `credentialSchema` (zero occurrences document-wide) | Rebuild per D-802 |  |
+| A-125 | S2 | Blocked(D6) |  | — | B.2.4 vs §8.2 | §7.2 states examples use JWT VC formatting; B.2.4 is plain JSON-LD | Reconcile |  |
+| A-126 | S2 | Blocked(D7) |  | `auto` | all JWT examples vs B.3.1 | `RS256` ×8 in examples, `ES256` ×3 in metadata. No mandatory-to-implement set, no algorithm-confusion prohibition, no minimum key size | Declare MTI set |  |
 
 ## Workstream B — Cryptography and protocol
 
@@ -58,25 +58,25 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| B-201 | S1 | Open |  | `auto` | §7.2 L604 | *"the public key encryption of the hash matches the signature"* — describes textbook RSA backwards and is inapplicable to ECDSA, which the same document specifies. The JWS signing input is not "combining metadata and claims sections", and the digest comes from `alg` | Replace with a normative reference to RFC 7515 §5.2 |  |
-| B-202 | S1 | Open |  | `auto` | §9.5 L1116, L1148 | `USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create ADI Network User VC`. The subject's own agent issues the subject's role credential, breaking §7.6. The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"* — so prose and flow directly contradict | Change actor to the Interchange DAS |  |
-| B-203 | S1 | Open |  | — | §9.5 L1112 | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |  |
-| B-204 | S2 | Open |  | — | §5.4 | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |  |
-| B-205 | S1 | Blocked(D8) |  | — | §8.3.2, §8.3.3 | AAL3 claimed while the signing key is held in the Interchange vault and released after remote authentication. Under SP 800-63B that is not AAL3 without sole-control machinery this document does not specify | Justify or withdraw |  |
-| B-206 | S1 | Blocked(D11) |  | — | §8.3.3, §8.3.4 | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Specify the binding |  |
-| B-207 | S2 | Open |  | `auto` | §11.1.3 step 4 | `Request Biometric approval` / `Biometric approval given` as protocol messages. In WebAuthn this is local user verification (`UV=1`) inside an assertion, not a round trip | Express as UV |  |
-| B-208 | S1 | Blocked(D11) |  | — | §7.1 | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Set a normative floor |  |
+| B-201 | S1 | Open |  | `auto` | L596 "public key encryption of the hash" | *"the public key encryption of the hash matches the signature"* — describes textbook RSA backwards and is inapplicable to ECDSA, which the same document specifies. The JWS signing input is not "combining metadata and claims sections", and the digest comes from `alg` | Replace with a normative reference to RFC 7515 §5.2 |  |
+| B-202 | S1 | Open |  | `auto` | L1097/1117/1129 "USER_AGENT -\> USER_AGENT" | `USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create ADI Network User VC`. The subject's own agent issues the subject's role credential, breaking §7.6. The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"* — so prose and flow directly contradict | Change actor to the Interchange DAS |  |
+| B-203 | S1 | Open |  | — | L1113 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |  |
+| B-204 | S2 | Open |  | — | L444 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |  |
+| B-205 | S1 | Blocked(D8) |  | — | L813 "AAL1, AAL2 & AAL3" | AAL3 claimed while the signing key is held in the Interchange vault and released after remote authentication. Under SP 800-63B that is not AAL3 without sole-control machinery this document does not specify | Justify or withdraw |  |
+| B-206 | S1 | Blocked(D11) |  | — | L819/821 "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Specify the binding |  |
+| B-207 | S2 | Open |  | `auto` | L1285/1287 "Biometric approval" | `Request Biometric approval` / `Biometric approval given` as protocol messages. In WebAuthn this is local user verification (`UV=1`) inside an assertion, not a round trip | Express as UV |  |
+| B-208 | S1 | Blocked(D11) |  | — | L580 "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Set a normative floor |  |
 | B-209 | S1 | Open |  | `auto` | document-wide | **No revocation or status.** Zero occurrences of `credentialStatus` or "revocation". No role-VC revocation, no root-key rotation, no key-compromise procedure. §7.6 explains how trust extends and never how a link breaks | Add |  |
 | B-210 | S1 | Open |  | — | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |  |
-| B-211 | S2 | Open |  | — | §11.2, B.3.4 | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |  |
-| B-212 | S2 | Open |  | — | §11.2 L1373 | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |  |
+| B-211 | S2 | Open |  | — | L1325/1329/1331 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |  |
+| B-212 | S2 | Open |  | — | L1317 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |  |
 | B-213 | S2 | Open |  | `auto` | document-wide | No key rotation or historical-key story. `agd_key_id`/`ard_key_id` exist in payloads but no `kid` in any header. Verifying an old VC after issuer rotation is impossible | Add lifecycle |  |
-| B-214 | S2 | Open |  | — | §8.3.1 L801 | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |  |
+| B-214 | S2 | Open |  | — | L783 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |  |
 | B-215 | S2 | Blocked(D6) |  | — | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim |  |
-| B-216 | S2 | Open |  | `auto` | §11.1.3 step 3 L1292 | `vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`, a different object | Define or rename |  |
-| B-217 | S2 | Open |  | — | §11.1 | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |  |
-| B-218 | S3 | Verified |  | `auto` | §10.2.3 L1230 vs B.2.3 | Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose also uses `make_credential_offer` where B.2.1 is `make_vc_offer` | Align names |  |
-| B-219 | S3 | Open |  | `auto` | B.1.2 L1429 | `POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/` | Rename |  |
+| B-216 | S2 | Open |  | `auto` | L1273 "vc_authorization_request" | `vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`, a different object | Define or rename |  |
+| B-217 | S2 | Open |  | — | L1245 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |  |
+| B-218 | S3 | Verified |  | `auto` | L1211/1542 "~issuer/issue_vc" | Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose also uses `make_credential_offer` where B.2.1 is `make_vc_offer` | Align names |  |
+| B-219 | S3 | Open |  | `auto` | L1410 "~ard/" | `POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/` | Rename |  |
 
 ## Workstream C — Normative structure and conformance
 
@@ -84,8 +84,8 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| C-301 | S1 | Open |  | `auto` | §1 L77 | "All text is normative unless otherwise labeled" + BCP 14 invoked, but the body has 8 uppercase keywords against 25 lowercase must/shall/should. Under RFC 8174 lowercase carries no normative force — so no requirement in the document is normative | Capitalise deliberately |  |
-| C-302 | S1 | Open |  | — | §3 | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements |  |
+| C-301 | S1 | Open |  | `auto` | L77 "All text is normative" | "All text is normative unless otherwise labeled" + BCP 14 invoked, but the body has 8 uppercase keywords against 25 lowercase must/shall/should. Under RFC 8174 lowercase carries no normative force — so no requirement in the document is normative | Capitalise deliberately |  |
+| C-302 | S1 | Open |  | — | L103/111 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements |  |
 | C-303 | S1 | Open |  | `auto` | — | **No Conformance clause.** Mandatory once RFC 2119 is invoked | Add |  |
 | C-304 | S1 | Open |  | `auto` | — | **No Security Considerations** section | Add |  |
 | C-305 | S1 | Open |  | `auto` | — | **No Privacy Considerations** section | Add |  |
@@ -93,8 +93,8 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | C-307 | S2 | Open |  | — | — | No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3 | Add |  |
 | C-308 | S2 | Open |  | — | — | No registries for role-VC type strings, schema names, or the `did:adi` method | Add |  |
 | C-309 | S2 | Open |  | — | §9.2 | **No flow description at all** — a figure and four bullets. §9.1, §9.3, §9.4, §9.5 all have prose walkthroughs. This is the flow that establishes the AGD→IX trust link | Write it |  |
-| C-310 | S2 | Open |  | `auto` | Appendix C L1963 | Titled "Informative References"; contains "To be completed — which references are normative is for further study"; lists nine standards that are plainly normative. `[W3C DM]` and `[W3C JS]` are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks | Split normative/informative; complete |  |
-| C-311 | S3 | Open |  | — | cover / Notices | Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group | Resolve process and boilerplate |  |
+| C-310 | S2 | Open |  | `auto` | L1950 "To be completed" | Titled "Informative References"; contains "To be completed — which references are normative is for further study"; lists nine standards that are plainly normative. `[W3C DM]` and `[W3C JS]` are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks | Split normative/informative; complete |  |
+| C-311 | S3 | Open |  | — | L71 "Copyright" | Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group | Resolve process and boilerplate |  |
 
 ## Workstream D — Architecture and terminology
 
@@ -102,56 +102,57 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| D-401 | S1 | Blocked(D1) |  | `auto` | Appendix B | **18 `ard_` field names remain** (`ard_da_user_name`, `ard_public_key`, `ard_information`, `ard_key_id`, `ard_enrollment_form`, `ard_da_global_name`, `ard_da_region_name`, `ard_da_interchange_name`, `ard_da_name`) plus one `~ard/` endpoint — including inside the AGD's own VC. The prose mention was deleted on 20 Aug, so the prefix now has **zero referent** in the document | Restore ARD as a role, or rename all 18 |  |
-| D-402 | S2 | Blocked(D8) |  | `auto` | §3.14, §7.5.3, §8.3.2-3, §A.1.1 | IAL/AAL/FAL conflated. Document contains `AAL` ×8, `IAL` ×0, `FAL` ×0, and one unqualified `authorized_max_assurance_level`. §3.14 describes IAL, §8.3.2 claims AAL. Cites SP 800-63-**3**; Rev. 4 is current | Split into three fields; update reference |  |
-| D-403 | S1 | Blocked(D2) |  | `auto` | document-wide | **13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2, 3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not DIDs — so path-only differences collide (see A-110). No method definition exists | Define the method; normalise every instance |  |
-| D-404 | S2 | Blocked(D3) |  | — | §3.21 vs §8.5.1 | DA uniqueness scope: "within an ADI-Region" (§3.21) vs "in an ADI Network" (§8.5.1). Format `user@interchange_name` is met by only **one** of five role VCs — B.2.7 `agd_admin@global_1`, B.2.9 `issuer_admin@issuer_1`, B.2.10 `sp_admin@service_provider_1`, B.2.11 `USER_DA@IX_1` all use a non-interchange host. B.3.2 uses a third syntax `issuer1@ix3.r1`. No ABNF, no case rule, no IDN/homograph policy for a human-facing identifier | Define ABNF; fix all instances |  |
-| D-405 | S2 | Blocked(D9) |  | — | §3.11, §3.24, §7.7.3, §8.5.2, §9.5 | HIDA is simultaneously mandatory ("Entities … are unique when they do not have matching HIDAs"; "The User HIDA **is** verified for uniqueness") and optional ("HIDA usage is optional"). Separately: no hash algorithm named, no salt/pepper/KDF/keyed-MAC, and **no canonicalization rule** — without normalization of case, diacritics, name order and date format the same person yields different HIDAs at different Interchanges and cross-region uniqueness silently fails | Decide; specify construction |  |
-| D-406 | S2 | Blocked(D12) |  | — | §3.19, §8.5.3 | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol |  |
-| D-407 | S2 | Verified |  | `auto` | §4.1, `type` fields, `authorized_to_issue`, §7.7.1.1 | Five competing naming schemes for the same five credentials. §4.1 also **omits ADI-SP VC** (which B.2.10 defines) and invents "ADI NETWORK VC" (L347), described as the role VC of an AGD *and* Interchange — incoherent, and used nowhere else | One registry, referenced everywhere |  |
-| D-408 | S2 | Open |  | — | §3.8, §6.2, §6.3, §7.4/7.5, §8.2 | Four incompatible scopes for "ADI Network Provider". §6.3 omits the Interchange entirely and calls the AGD an "Authoritative Domain Controller" (L522), a term used nowhere else. §6.2 says "Credential Provider" (L504 ×3) where §3.4 says "Credential Issuer" | Single taxonomy |  |
-| D-409 | S2 | Open |  | `auto` | §8.2 L767 vs §8.3.4 L840 | **DAA expanded two ways**: "Digital Address Application" and "Device Application Agent" | Pick one |  |
-| D-410 | S2 | Open |  | `auto` | §8.1 L746 | "Domain Authorities (AGs)" — wrong abbreviation, and the plural contradicts §7.4.1 ("There is only one AGD in an ADI Network") | Correct |  |
-| D-411 | S2 | Open |  | — | §6.3 L510 vs §7.7.4 L700 | The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time) | Delete one; cross-reference |  |
-| D-412 | S2 | Open |  | — | §9.4 L1040 vs L1070 | L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange do it. No authorization model for directory writes | Resolve |  |
-| D-413 | S2 | Open |  | — | §7.7.4, §8.4.1, §9.3/9.4 | Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory. Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation database | Specify or remove |  |
-| D-414 | S3 | Open |  | — | §4 | "Acronyms and abbreviations" contains no acronym list. §4.1 holds normative role-VC definitions (misfiled); §4.2 holds identifiers. AGD, CI, IX, SP, DA, DAS, VC, VP, HIDA, AAL, PII, KYC are never expanded in one place | Build the table |  |
+| D-401 | S1 | Blocked(D1) |  | `auto` | L1385/1386/1422 "ard_" | **18 `ard_` field names remain** (`ard_da_user_name`, `ard_public_key`, `ard_information`, `ard_key_id`, `ard_enrollment_form`, `ard_da_global_name`, `ard_da_region_name`, `ard_da_interchange_name`, `ard_da_name`) plus one `~ard/` endpoint — including inside the AGD's own VC. The prose mention was deleted on 20 Aug, so the prefix now has **zero referent** in the document | Restore ARD as a role, or rename all 18 | `20c25d9` |
+| D-402 | S2 | Blocked(D8) |  | `auto` | L217/813/1960 "800-63" | IAL/AAL/FAL conflated. Document contains `AAL` ×8, `IAL` ×0, `FAL` ×0, and one unqualified `authorized_max_assurance_level`. §3.14 describes IAL, §8.3.2 claims AAL. Cites SP 800-63-**3**; Rev. 4 is current | Split into three fields; update reference |  |
+| D-403 | S1 | Blocked(D2) |  | `auto` | L889/1498/1525 "did:adi:" | **13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2, 3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not DIDs — so path-only differences collide (see A-110). No method definition exists | Define the method; normalise every instance |  |
+| D-404 | S2 | Blocked(D3) |  | — | L275 "unique within an ADI-Region" | DA uniqueness scope: "within an ADI-Region" (§3.21) vs "in an ADI Network" (§8.5.1). Format `user@interchange_name` is met by only **one** of five role VCs — B.2.7 `agd_admin@global_1`, B.2.9 `issuer_admin@issuer_1`, B.2.10 `sp_admin@service_provider_1`, B.2.11 `USER_DA@IX_1` all use a non-interchange host. B.3.2 uses a third syntax `issuer1@ix3.r1`. No ABNF, no case rule, no IDN/homograph policy for a human-facing identifier | Define ABNF; fix all instances |  |
+| D-405 | S2 | Blocked(D9) |  | — | L877 "HIDA usage is optional" | HIDA is simultaneously mandatory ("Entities … are unique when they do not have matching HIDAs"; "The User HIDA **is** verified for uniqueness") and optional ("HIDA usage is optional"). Separately: no hash algorithm named, no salt/pepper/KDF/keyed-MAC, and **no canonicalization rule** — without normalization of case, diacritics, name order and date format the same person yields different HIDAs at different Interchanges and cross-region uniqueness silently fails | Decide; specify construction |  |
+| D-406 | S2 | Blocked(D12) |  | — | L257/865/883 "pairwise" | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol |  |
+| D-407 | S2 | Verified |  | `auto` | L? "ADI NETWORK VC" | Five competing naming schemes for the same five credentials. §4.1 also **omits ADI-SP VC** (which B.2.10 defines) and invents "ADI NETWORK VC" (L347), described as the role VC of an AGD *and* Interchange — incoherent, and used nowhere else | One registry, referenced everywhere |  |
+| D-408 | S2 | Open |  | — | L504/520 "Credential Provider" | Four incompatible scopes for "ADI Network Provider". §6.3 omits the Interchange entirely and calls the AGD an "Authoritative Domain Controller" (L522), a term used nowhere else. §6.2 says "Credential Provider" (L504 ×3) where §3.4 says "Credential Issuer" | Single taxonomy |  |
+| D-409 | S2 | Open |  | `auto` | DAA | **DAA expanded two ways**: "Digital Address Application" and "Device Application Agent" | Pick one |  |
+| D-410 | S2 | Open |  | `auto` | L727 "Domain Authorities (AGs)" | "Domain Authorities (AGs)" — wrong abbreviation, and the plural contradicts §7.4.1 ("There is only one AGD in an ADI Network") | Correct |  |
+| D-411 | S2 | Open |  | — | L534/699 "The assurance level of" | The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time) | Delete one; cross-reference |  |
+| D-412 | S2 | Open |  | — | L1021 "AGD Service Provider Directory" | L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange do it. No authorization model for directory writes | Resolve |  |
+| D-413 | S2 | Open |  | — | L540/705 "encrypted by issuer" | Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory. Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation database | Specify or remove |  |
+| D-414 | S3 | Open |  | — | L333 "Acronyms and abbreviations" | "Acronyms and abbreviations" contains no acronym list. §4.1 holds normative role-VC definitions (misfiled); §4.2 holds identifiers. AGD, CI, IX, SP, DA, DAS, VC, VP, HIDA, AAL, PII, KYC are never expanded in one place | Build the table |  |
 
 ## Workstream E — Editorial
 
-29 defects · 14 verified · 22 with an automated check
+30 defects · 18 verified · 24 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| E-501 | S2 | Open |  | `auto` | L552 | `# ADI Network interchanges and platforms` — **unnumbered H1** between §6 and §7. Content largely duplicates §7.3, §7.4, §8.5 |  | `87060b2` |
-| E-502 | S2 | Verified |  | `auto` | L672 | §7.7.1 heading is two full sentences |  | `bec5999` |
-| E-503 | S3 | Open |  | — | L676 | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
-| E-504 | S3 | Verified |  | `auto` | L484 | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
-| E-505 | S3 | Verified |  | `auto` | L1386 | `## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs |  | `ad9351b` |
-| E-506 | S3 | Open |  | — | L1963 | Appendix C has no `# C.` heading; A and B both do |  | `16e83ad` |
-| E-507 | S3 | Verified |  | `auto` | L1086 | §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2. |  | `8c28c0f` |
-| E-508 | S3 | Verified |  | `auto` | L173 | `ADI Network User (AD-NU)` → `ADI-NU` |  | `9527e32` |
-| E-509 | S3 | Verified |  | `auto` | L279 | `(\[Role}-Agent endpoint)` — mismatched bracket and brace |  | `9e7252c` |
-| E-510 | S3 | Verified |  | `auto` | L926 | Figure 11 caption: "Creating **and** AGD" |  | `3f1cf27` |
-| E-511 | S3 | Verified |  | `auto` | L564 | "All VC subjects and issuer by are registered ADI NETWORK DIDs" — garbled |  | `2094a3c` |
-| E-512 | S3 | Verified |  | `auto` | L654 | "assigned one more Verifiable Credentials" → "one **or** more" |  | `df94a69` |
-| E-513 | S3 | Verified |  | `auto` | L698 | "HIDA usage is implementation and should be set" — missing word |  | `f81815d` |
-| E-514 | S3 | Open |  | `auto` | L996 | §9.3 (Issuer flow) says "vetting of the **service provider**" ×2 |  | `9b1a320` |
-| E-515 | S3 | Verified |  | `auto` | L1008 | §9.3 "returns the VC to the **SP agent**" — should be CI_AGENT |  | `063d0f2` |
-| E-516 | S3 | Open |  | `auto` | L968 | §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2 |  | `3da4398` |
-| E-517 | S3 | Verified |  | `auto` | L996 | "provisions **an** CI_AGENT" |  | `8a0cfa6` |
-| E-518 | S3 | Open |  | `auto` | L1000 | "the Interchange **send** a vc_offer" ×2 |  | `cb44fcb` |
-| E-519 | S3 | Open |  | `auto` | L1064 | "**POST return** issue_vc_token" — malformed |  | `9516e96` |
-| E-520 | S3 | Open |  | — | L1348, L1352 | `SERVICE_PROVIDER:9.` / `USER:10.` — missing space after colon |  | `496fda2` |
-| E-521 | S3 | Open |  | — | §11.1.3 step 10 | Message text duplicates step 8 ("Respond to SP Agent with VP") |  | `116bff6` |
-| E-522 | S3 | Verified |  | `auto` | L1367 | Sentence truncated mid-word: "the service provider calls the get\_" |  | `87300d5` |
-| E-523 | S3 | Open |  | `auto` | L437 | `[see W3C XXX]` placeholder |  |  |
-| E-524 | S3 | Open |  | `auto` | L561, L905 | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  |  |
-| E-525 | S3 | Verified |  | `auto` | L1085 | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
-| E-526 | S3 | Open |  | `auto` | L745 | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
-| E-527 | S3 | Open |  | — | L747 vs L869 | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  |  |
-| E-528 | S3 | Open |  | — | figures | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
-| E-529 | S3 | Open |  | — | global | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  | `17bdc07` |
+| E-501 | S2 | Open | ND | `auto` | heading numbering — document-wide | **Document-wide check:** every heading (H1–H4) must carry a section or appendix number. Originally triggered by the unnumbered `# ADI Network interchanges and platforms` at L552, but the check inspects all headings, so any unnumbered heading anywhere fails it. Run `make explain ID=E-501` to see which. | Number every heading. Front-matter headings (Notices, Key words) must be numbered or demoted to bold text. | `87060b2` |
+| E-502 | S2 | Verified | ND | `auto` | heading length — document-wide | §7.7.1 heading is two full sentences |  | `bec5999` |
+| E-503 | S3 | Open | ND | — | L? "7.7.1.1" | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
+| E-504 | S3 | Verified | ND | `auto` | L? "# 6 Accountable" | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
+| E-505 | S3 | Verified | ND | `auto` | B.1. Schemas | `## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs |  | `ad9351b` |
+| E-506 | S3 | Open | ND | — | L1941 "Appendix C" | Appendix C has no `# C.` heading; A and B both do |  | `16e83ad` |
+| E-507 | S3 | Verified | ND | `auto` | L1067 "Issuers may initiate User Digital Address" | §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2. |  | `8c28c0f` |
+| E-508 | S3 | Verified | ND | `auto` | AD-NU | `ADI Network User (AD-NU)` → `ADI-NU` |  | `9527e32` |
+| E-509 | S3 | Verified | ND | `auto` | L? "[Role}-Agent" | `(\[Role}-Agent endpoint)` — mismatched bracket and brace |  | `9e7252c` |
+| E-510 | S3 | Verified | ND | `auto` | L? "Creating and AGD" | Figure 11 caption: "Creating **and** AGD" |  | `3f1cf27` |
+| E-511 | S3 | Verified | ND | `auto` | L? "issuer by are" | "All VC subjects and issuer by are registered ADI NETWORK DIDs" — garbled |  | `2094a3c` |
+| E-512 | S3 | Verified | ND | `auto` | L? "one more Verifiable Credentials" | "assigned one more Verifiable Credentials" → "one **or** more" |  | `df94a69` |
+| E-513 | S3 | Verified | ND | `auto` | L679 "HIDA usage is implementation" | "HIDA usage is implementation and should be set" — missing word |  | `f81815d` |
+| E-514 | S3 | Verified | ND | `auto` | L1035 "vetting of the service provider" | §9.3 (Issuer flow) says "vetting of the **service provider**" ×2 |  | `9b1a320` |
+| E-515 | S3 | Verified | ND | `auto` | L? "returns the VC to the SP agent" | §9.3 "returns the VC to the **SP agent**" — should be CI_AGENT |  | `063d0f2` |
+| E-516 | S3 | Verified | ND | `auto` | L949 "used during Issuer enrollment" | §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2 |  | `3da4398` |
+| E-517 | S3 | Verified | ND | `auto` | L? "provisions an CI_AGENT" | "provisions **an** CI_AGENT" |  | `8a0cfa6` |
+| E-518 | S3 | Open | ND | `auto` | L1039 "Interchange send a" | "the Interchange **send** a vc_offer" ×2 |  | `cb44fcb` |
+| E-519 | S3 | Open | ND | `auto` | L1045 "POST return" | "**POST return** issue_vc_token" — malformed |  | `9516e96` |
+| E-520 | S3 | Verified | ND | `auto` | L? "SERVICE_PROVIDER:9." | `SERVICE_PROVIDER:9.` / `USER:10.` — missing space after colon |  | `496fda2` |
+| E-521 | S3 | Verified | ND | `auto` | L1305 "Respond to SP Agent with VP" | Message text duplicates step 8 ("Respond to SP Agent with VP") |  | `116bff6` |
+| E-522 | S3 | Verified | ND | `auto` | L? "calls the get" | Sentence truncated mid-word: "the service provider calls the get\_" |  | `87300d5` |
+| E-523 | S3 | Open | ND | `auto` | L446 "W3C XXX" | `[see W3C XXX]` placeholder |  |  |
+| E-524 | S3 | Open | ND | `auto` | L887 "figure 4.4.3" | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  |  |
+| E-525 | S3 | Verified | ND | `auto` | L? "2.2.1 Issue Verifiable Credential" | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
+| E-526 | S3 | Open | ND | `auto` | L727 "3.3 Roles" | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
+| E-527 | S3 | Open | ND | — | L729/851 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  |  |
+| E-528 | S3 | Open | ND | — | L893 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
+| E-529 | S3 | Open | ND | — | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  | `17bdc07` |
+| E-530 | S2 | Open | ND | — | §7 vs §8.3 — duplication | §7 (overview) and §8.3 (Roles and Authorities) tell the same narrative twice; audit-log/legal-retrieval stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication. | Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated". |  |
 
 ## Workstream F — References, diagrams and tooling
 
@@ -159,12 +160,12 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| F-601 | S1 | Open |  | `auto` | 20 instances | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors |  |
-| F-602 | S2 | Open |  | `auto` | 20 instances | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid |  |
-| F-603 | S2 | Open |  | `auto` | headings | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors |  |
-| F-604 | S3 | Open |  | `auto` | \x{202F}` with a space |  |  |  |
-| F-605 | S3 | Open |  | `auto` | 101 lines | Trailing whitespace — phantom git diffs | Strip (none are intentional line breaks) |  |
-| F-606 | S2 | Open |  | — | CI | No automated gate. Every check run for this review is scriptable | JSON parse · fence-aware gremlin check · markdownlint · link checker |  |
+| F-601 | S1 | Open |  | `auto` | L59/727/879 "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors |  |
+| F-602 | S2 | Open |  | `auto` | L421/436/490 "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid |  |
+| F-603 | S2 | Open |  | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors |  |
+| F-604 | S3 | Open |  | `auto` | non-breaking spaces — document-wide |  |  |  |
+| F-605 | S3 | Open |  | `auto` | trailing whitespace — document-wide | Trailing whitespace — phantom git diffs | Strip (none are intentional line breaks) |  |
+| F-606 | S2 | Open |  | — | CI — no location | No automated gate. Every check run for this review is scriptable | JSON parse · fence-aware gremlin check · markdownlint · link checker |  |
 
 ---
 
@@ -174,6 +175,7 @@ Properties that must never regress. Not defects — guardrails.
 
 | Check | Holding |
 |---|---|
+| `INV-appendix` | **NO** |
 | `INV-encoding` | yes |
 | `INV-fences` | yes |
 | `INV-gremlins` | yes |

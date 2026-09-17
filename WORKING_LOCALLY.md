@@ -74,6 +74,8 @@ Type `make help` any time to see this list.
 | `make register` | Rebuild the report |
 | `make validate` | Check the tracker file for typos |
 | `make ci` | Has anything that used to pass started failing? |
+| `make explain ID=E-501` | **Why** a check fails — shows the exact lines |
+| `make relocate` | Refresh line numbers in the tracker after editing the spec |
 | `make save m="what you did"` | Record today's work |
 
 ### A normal session

@@ -6,7 +6,7 @@ defects:
 - id: A-101
   severity: S1
   workstream: data-model
-  location: B.1.2 L1441 / B.2.8 L1703
+  location: B.1.2 / B.2.8
   defect: 'Enrollment sends `role: "INTERCHANGE"`; role VC records `role: "IX"`. Same role, two tokens.
     AGD/ISSUER/SERVICE_PROVIDER match correctly across both.'
   fix: Pick one token; align both
@@ -15,6 +15,7 @@ defects:
   notes: null
   check: auto
   blocked_by: D4
+  anchor: B.1.2 / B.2.8
 - id: A-102
   severity: S1
   workstream: data-model
@@ -26,20 +27,22 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: B.2.9, B.2.10, B.2.11
 - id: A-103
   severity: S1
   workstream: data-model
-  location: B.2.7 L1651/1665
+  location: B.2.7
   defect: '`issuer` (`8c019421…`) ≠ `subject` (`71a39c8d…`) on a credential §9.1 requires to be self-signed'
   fix: Make them identical
   owner: null
   status: auto
   notes: null
   check: auto
+  anchor: B.2.7
 - id: A-104
   severity: S1
   workstream: data-model
-  location: B.2.7 L1667 vs id_doc
+  location: B.2.7
   defect: '`subject` is `did:adi:71a39c8d…` but `id_doc.id` is `did:adi:71a39c8d…/region_1/` — same UUID,
     different path, trailing empty segment'
   fix: Normalise per D-403
@@ -48,10 +51,11 @@ defects:
   notes: null
   check: auto
   blocked_by: D2
+  anchor: B.2.7
 - id: A-105
   severity: S1
   workstream: data-model
-  location: B.2.7 L1683
+  location: B.2.7
   defect: 'AGD `authorized_to_issue: ["AGD-VC"]` — the root cannot issue Interchange credentials, so §9.2
     is unexecutable and the network cannot bootstrap'
   fix: Add the IX role-VC type
@@ -60,10 +64,11 @@ defects:
   notes: null
   check: auto
   blocked_by: D4
+  anchor: B.2.7
 - id: A-106
   severity: S1
   workstream: data-model
-  location: B.2.8 L1727
+  location: B.2.8
   defect: 'Interchange `authorized_to_issue: ["ADI-IX-VC"]` — an IX can only issue other IX credentials,
     contradicting §7.4.2, §9.3, §9.4, §9.5'
   fix: Set to Issuer + SP + User types
@@ -72,10 +77,11 @@ defects:
   notes: null
   check: auto
   blocked_by: D4
+  anchor: B.2.8
 - id: A-107
   severity: S2
   workstream: data-model
-  location: B.2.9 L1773
+  location: B.2.9
   defect: 'Issuer `authorized_to_issue: ["ADI-User-VC"]` — an Issuer issuing the ADI **role** credential
     contradicts §9.5, where the Interchange does. §9.5 allows outsourced *proofing*, which is not the
     same as issuance'
@@ -84,10 +90,11 @@ defects:
   status: Open
   notes: null
   blocked_by: D7
+  anchor: B.2.9
 - id: A-108
   severity: S2
   workstream: data-model
-  location: B.2.10 L1814
+  location: B.2.10
   defect: 'SP `authorized_max_assurance_level: []` reads as "may accept nothing". SPs plausibly need an
     accepted *floor*, not an issuance *ceiling*'
   fix: Decide semantics; rename or remove
@@ -95,10 +102,11 @@ defects:
   status: Open
   notes: null
   blocked_by: D8
+  anchor: B.2.10
 - id: A-109
   severity: S1
   workstream: data-model
-  location: B.2.11 L1839
+  location: B.2.11
   defect: User VC `subject` ends `/issuer_1` — an Issuer path in a User credential — while `digital_address`
     is `USER_DA@IX_1`. Subject and DA disagree
   fix: Correct subject
@@ -106,6 +114,7 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: B.2.11
 - id: A-110
   severity: S1
   workstream: data-model
@@ -118,20 +127,22 @@ defects:
   notes: null
   check: auto
   blocked_by: D2
+  anchor: B.2.9 / B.2.10
 - id: A-111
   severity: S2
   workstream: data-model
-  location: B.2.4 L1597
+  location: B.2.4
   defect: Issuer of a `UniversityDegreeCredential` is `…/region_1/ix_3` — an Interchange-shaped DID, not
     an Issuer
   fix: Use an Issuer DID
   owner: null
   status: Open
   notes: null
+  anchor: B.2.4
 - id: A-112
   severity: S1
   workstream: data-model
-  location: 8 examples
+  location: B.1.1, B.1.2, B.2.3, B.2.7–B.2.11
   defect: '`"type": "JWT"`. The JOSE header parameter is `typ` (RFC 7515 §4.1.9). Zero occurrences of
     `typ` or `kid` anywhere'
   fix: Rename; add `kid`
@@ -139,10 +150,11 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: B.1.1, B.1.2, B.2.3, B.2.7–B.2.11
 - id: A-113
   severity: S2
   workstream: data-model
-  location: B.2.2 L1542, B.2.3 L1571, B.2.7 L1642
+  location: B.2.2, B.2.3, B.2.7
   defect: 'Three malformed UUIDs: `7560e8400-e79n-21d4-…` (9 hex in group 1, non-hex `n`) ×2, and `aa2f772-…`
     (7 in group 1)'
   fix: Regenerate
@@ -150,16 +162,18 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: B.2.2, B.2.3, B.2.7
 - id: A-114
   severity: S3
   workstream: data-model
-  location: B.1.3 L1466 / B.1.4 L1486
+  location: B.1.3 / B.1.4
   defect: Identical `request_id` `bb20b6aa-…` in two different requests
   fix: Distinct values
   owner: null
   status: auto
   notes: null
   check: auto
+  anchor: B.1.3 / B.1.4
 - id: A-115
   severity: S2
   workstream: data-model
@@ -169,16 +183,18 @@ defects:
   owner: null
   status: Open
   notes: null
+  anchor: B.1.5
 - id: A-116
   severity: S2
   workstream: data-model
-  location: B.2.2 L1546
+  location: B.2.2
   defect: '`subject: "did:adi:{subject_did}"` — placeholder syntax inconsistent with all other examples'
   fix: Use a literal
   owner: null
   status: auto
   notes: null
   check: auto
+  anchor: B.2.2
 - id: A-117
   severity: S2
   workstream: data-model
@@ -190,10 +206,11 @@ defects:
   status: Open
   notes: null
   blocked_by: D5
+  anchor: B.2.6
 - id: A-118
   severity: S2
   workstream: data-model
-  location: B.3.1 L1864+
+  location: B.3.1
   defect: Metadata still branded `credential-issuer.example.com` (×4) while `authorization_servers` points
     at `users.adi.com`
   fix: De-brand
@@ -201,10 +218,11 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: B.3.1
 - id: A-119
   severity: S2
   workstream: data-model
-  location: B.3.1 L1870
+  location: B.3.1
   defect: '`batch_credential_endpoint` and `deferred_credential_endpoint` were removed from later OIDC4VCI
     drafts. No draft version cited anywhere'
   fix: Pin a draft; align
@@ -213,6 +231,7 @@ defects:
   notes: null
   check: auto
   blocked_by: D5
+  anchor: B.3.1
 - id: A-120
   severity: S2
   workstream: data-model
@@ -224,10 +243,11 @@ defects:
   status: Open
   notes: null
   blocked_by: D10
+  anchor: B.3.1
 - id: A-121
   severity: S2
   workstream: data-model
-  location: B.2.2 L1210
+  location: B.2.2
   defect: '`pre_authorized_code` used as a direct member of `grants` (OIDC4VCI uses `pre-authorized_code`,
     hyphenated, under a URN grant key), paired with an empty `authorization_code: {}`'
   fix: Align or declare divergence
@@ -235,6 +255,7 @@ defects:
   status: Open
   notes: null
   blocked_by: D5
+  anchor: B.2.2
 - id: A-122
   severity: S1
   workstream: data-model
@@ -247,6 +268,7 @@ defects:
   notes: null
   check: auto
   blocked_by: D5
+  anchor: B.2.2
 - id: A-123
   severity: S1
   workstream: data-model
@@ -258,10 +280,11 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: B.2.5
 - id: A-124
   severity: S2
   workstream: data-model
-  location: B.2.4 L1594
+  location: B.2.4
   defect: VCDM **1.1** context (`2018/credentials/v1`), while §5.3 and the references cite VCDM 2.0. `vc_id`
     is not a VCDM member (should be `id`). `proof` is empty. No `credentialStatus`, no `credentialSchema`
     (zero occurrences document-wide)
@@ -271,20 +294,22 @@ defects:
   notes: null
   check: auto
   blocked_by: D6
+  anchor: B.2.4
 - id: A-125
   severity: S2
   workstream: data-model
-  location: B.2.4 vs §7.2 L601
+  location: B.2.4 vs §8.2
   defect: §7.2 states examples use JWT VC formatting; B.2.4 is plain JSON-LD
   fix: Reconcile
   owner: null
   status: Open
   notes: null
   blocked_by: D6
+  anchor: B.2.4 vs §8.2
 - id: A-126
   severity: S2
   workstream: data-model
-  location: 8 vs 3
+  location: all JWT examples vs B.3.1
   defect: '`RS256` ×8 in examples, `ES256` ×3 in metadata. No mandatory-to-implement set, no algorithm-confusion
     prohibition, no minimum key size'
   fix: Declare MTI set
@@ -293,10 +318,11 @@ defects:
   notes: null
   check: auto
   blocked_by: D7
+  anchor: all JWT examples vs B.3.1
 - id: B-201
   severity: S1
   workstream: crypto-protocol
-  location: §7.2 L604
+  location: L596 "public key encryption of the hash"
   defect: '*"the public key encryption of the hash matches the signature"* — describes textbook RSA backwards
     and is inapplicable to ECDSA, which the same document specifies. The JWS signing input is not "combining
     metadata and claims sections", and the digest comes from `alg`'
@@ -305,10 +331,11 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: public key encryption of the hash
 - id: B-202
   severity: S1
   workstream: crypto-protocol
-  location: §9.5 L1116, L1148
+  location: L1097/1117/1129 "USER_AGENT -\> USER_AGENT"
   defect: '`USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create
     ADI Network User VC`. The subject''s own agent issues the subject''s role credential, breaking §7.6.
     The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"*
@@ -318,20 +345,22 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: USER_AGENT -\> USER_AGENT
 - id: B-203
   severity: S1
   workstream: crypto-protocol
-  location: §9.5 L1112
+  location: L1113 "Generate a PK pair"
   defect: Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to
     a public key that already exists
   fix: Reorder
   owner: null
   status: Open
   notes: null
+  anchor: Generate a PK pair
 - id: B-204
   severity: S2
   workstream: crypto-protocol
-  location: §5.4
+  location: L444 "Proofing of Claims"
   defect: '"Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential"
     step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has
     the correct order'
@@ -339,10 +368,11 @@ defects:
   owner: null
   status: Open
   notes: null
+  anchor: Proofing of Claims
 - id: B-205
   severity: S1
   workstream: crypto-protocol
-  location: §8.3.2, §8.3.3
+  location: L813 "AAL1, AAL2 & AAL3"
   defect: AAL3 claimed while the signing key is held in the Interchange vault and released after remote
     authentication. Under SP 800-63B that is not AAL3 without sole-control machinery this document does
     not specify
@@ -351,10 +381,11 @@ defects:
   status: Open
   notes: null
   blocked_by: D8
+  anchor: AAL1, AAL2 & AAL3
 - id: B-206
   severity: S1
   workstream: crypto-protocol
-  location: §8.3.3, §8.3.4
+  location: L819/821 "Device Application Agent"
   defect: No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held
     key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS
   fix: Specify the binding
@@ -362,10 +393,11 @@ defects:
   status: Open
   notes: null
   blocked_by: D11
+  anchor: Device Application Agent
 - id: B-207
   severity: S2
   workstream: crypto-protocol
-  location: §11.1.3 step 4
+  location: L1285/1287 "Biometric approval"
   defect: '`Request Biometric approval` / `Biometric approval given` as protocol messages. In WebAuthn
     this is local user verification (`UV=1`) inside an assertion, not a round trip'
   fix: Express as UV
@@ -373,10 +405,11 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: Biometric approval
 - id: B-208
   severity: S1
   workstream: crypto-protocol
-  location: §7.1
+  location: L580 "hardened data vault"
   defect: '"hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation,
     no non-exportability requirement — while the entire accountability claim rests on private-key control'
   fix: Set a normative floor
@@ -384,6 +417,7 @@ defects:
   status: Open
   notes: null
   blocked_by: D11
+  anchor: hardened data vault
 - id: B-209
   severity: S1
   workstream: crypto-protocol
@@ -410,23 +444,25 @@ defects:
 - id: B-211
   severity: S2
   workstream: crypto-protocol
-  location: §11.2, B.3.4
+  location: L1325/1329/1331 "get_did_doc"
   defect: '`get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed
     using the private key of the issuer" without saying who the issuer of a DIDdoc is'
   fix: Define
   owner: null
   status: Open
   notes: null
+  anchor: get_did_doc
 - id: B-212
   severity: S2
   workstream: crypto-protocol
-  location: §11.2 L1373
+  location: L1317 "ROLE VC / DID"
   defect: Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict
     behaviour
   fix: Set precedence
   owner: null
   status: Open
   notes: null
+  anchor: ROLE VC / DID
 - id: B-213
   severity: S2
   workstream: crypto-protocol
@@ -441,7 +477,7 @@ defects:
 - id: B-214
   severity: S2
   workstream: crypto-protocol
-  location: §8.3.1 L801
+  location: L783 "mutual TLS"
   defect: mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy.
     No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on
     mismatch
@@ -449,6 +485,7 @@ defects:
   owner: null
   status: Open
   notes: null
+  anchor: mutual TLS
 - id: B-215
   severity: S2
   workstream: crypto-protocol
@@ -463,7 +500,7 @@ defects:
 - id: B-216
   severity: S2
   workstream: crypto-protocol
-  location: §11.1.3 step 3 L1292
+  location: L1273 "vc_authorization_request"
   defect: '`vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`,
     a different object'
   fix: Define or rename
@@ -471,20 +508,22 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: vc_authorization_request
 - id: B-217
   severity: S2
   workstream: crypto-protocol
-  location: §11.1
+  location: L1245 "Tech Note"
   defect: Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or
     session binding across the redirect — CSRF / session-fixation surface
   fix: Specify correlation
   owner: null
   status: Open
   notes: null
+  anchor: Tech Note
 - id: B-218
   severity: S3
   workstream: crypto-protocol
-  location: §10.2.3 L1230 vs B.2.3
+  location: L1211/1542 "~issuer/issue_vc"
   defect: Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose
     also uses `make_credential_offer` where B.2.1 is `make_vc_offer`
   fix: Align names
@@ -493,20 +532,22 @@ defects:
   notes: null
   check: auto
   blocked_by: D5
+  anchor: ~issuer/issue_vc
 - id: B-219
   severity: S3
   workstream: crypto-protocol
-  location: B.1.2 L1429
+  location: L1410 "~ard/"
   defect: '`POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/`'
   fix: Rename
   owner: null
   status: auto
   notes: null
   check: auto
+  anchor: ~ard/
 - id: C-301
   severity: S1
   workstream: normative
-  location: §1 L77
+  location: L77 "All text is normative"
   defect: '"All text is normative unless otherwise labeled" + BCP 14 invoked, but the body has 8 uppercase
     keywords against 25 lowercase must/shall/should. Under RFC 8174 lowercase carries no normative force
     — so no requirement in the document is normative'
@@ -515,10 +556,11 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: All text is normative
 - id: C-302
   severity: S1
   workstream: normative
-  location: §3
+  location: L103/111 "NOTE 1 to entry"
   defect: 'Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must
     include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be
     unique within an ADI-Region" (3.21)'
@@ -526,6 +568,7 @@ defects:
   owner: null
   status: Open
   notes: null
+  anchor: NOTE 1 to entry
 - id: C-303
   severity: S1
   workstream: normative
@@ -597,7 +640,7 @@ defects:
 - id: C-310
   severity: S2
   workstream: normative
-  location: Appendix C L1963
+  location: L1950 "To be completed"
   defect: Titled "Informative References"; contains "To be completed — which references are normative
     is for further study"; lists nine standards that are plainly normative. `[W3C DM]` and `[W3C JS]`
     are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks
@@ -606,20 +649,22 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: To be completed
 - id: C-311
   severity: S3
   workstream: normative
-  location: cover / Notices
+  location: L71 "Copyright"
   defect: Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee
     Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group
   fix: Resolve process and boilerplate
   owner: null
   status: Open
   notes: null
+  anchor: Copyright
 - id: D-401
   severity: S1
   workstream: architecture
-  location: Appendix B
+  location: L1385/1386/1422 "ard_"
   defect: '**18 `ard_` field names remain** (`ard_da_user_name`, `ard_public_key`, `ard_information`,
     `ard_key_id`, `ard_enrollment_form`, `ard_da_global_name`, `ard_da_region_name`, `ard_da_interchange_name`,
     `ard_da_name`) plus one `~ard/` endpoint — including inside the AGD''s own VC. The prose mention was
@@ -630,10 +675,11 @@ defects:
   notes: null
   check: auto
   blocked_by: D1
+  anchor: ard_
 - id: D-402
   severity: S2
   workstream: architecture
-  location: §3.14, §7.5.3, §8.3.2-3, §A.1.1
+  location: L217/813/1960 "800-63"
   defect: IAL/AAL/FAL conflated. Document contains `AAL` ×8, `IAL` ×0, `FAL` ×0, and one unqualified `authorized_max_assurance_level`.
     §3.14 describes IAL, §8.3.2 claims AAL. Cites SP 800-63-**3**; Rev. 4 is current
   fix: Split into three fields; update reference
@@ -642,10 +688,11 @@ defects:
   notes: null
   check: auto
   blocked_by: D8
+  anchor: 800-63
 - id: D-403
   severity: S1
   workstream: architecture
-  location: document-wide
+  location: L889/1498/1525 "did:adi:"
   defect: '**13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also
     a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2,
     3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not
@@ -656,10 +703,11 @@ defects:
   notes: null
   check: auto
   blocked_by: D2
+  anchor: 'did:adi:'
 - id: D-404
   severity: S2
   workstream: architecture
-  location: §3.21 vs §8.5.1
+  location: L275 "unique within an ADI-Region"
   defect: 'DA uniqueness scope: "within an ADI-Region" (§3.21) vs "in an ADI Network" (§8.5.1). Format
     `user@interchange_name` is met by only **one** of five role VCs — B.2.7 `agd_admin@global_1`, B.2.9
     `issuer_admin@issuer_1`, B.2.10 `sp_admin@service_provider_1`, B.2.11 `USER_DA@IX_1` all use a non-interchange
@@ -670,10 +718,11 @@ defects:
   status: Open
   notes: null
   blocked_by: D3
+  anchor: unique within an ADI-Region
 - id: D-405
   severity: S2
   workstream: architecture
-  location: §3.11, §3.24, §7.7.3, §8.5.2, §9.5
+  location: L877 "HIDA usage is optional"
   defect: 'HIDA is simultaneously mandatory ("Entities … are unique when they do not have matching HIDAs";
     "The User HIDA **is** verified for uniqueness") and optional ("HIDA usage is optional"). Separately:
     no hash algorithm named, no salt/pepper/KDF/keyed-MAC, and **no canonicalization rule** — without
@@ -684,10 +733,11 @@ defects:
   status: Open
   notes: null
   blocked_by: D9
+  anchor: HIDA usage is optional
 - id: D-406
   severity: S2
   workstream: architecture
-  location: §3.19, §8.5.3
+  location: L257/865/883 "pairwise"
   defect: '§3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters:
     **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same
     global correlator'
@@ -696,10 +746,11 @@ defects:
   status: Open
   notes: null
   blocked_by: D12
+  anchor: pairwise
 - id: D-407
   severity: S2
   workstream: architecture
-  location: §4.1, `type` fields, `authorized_to_issue`, §7.7.1.1
+  location: L? "ADI NETWORK VC"
   defect: Five competing naming schemes for the same five credentials. §4.1 also **omits ADI-SP VC** (which
     B.2.10 defines) and invents "ADI NETWORK VC" (L347), described as the role VC of an AGD *and* Interchange
     — incoherent, and used nowhere else
@@ -709,10 +760,11 @@ defects:
   notes: null
   check: auto
   blocked_by: D4
+  anchor: ADI NETWORK VC
 - id: D-408
   severity: S2
   workstream: architecture
-  location: §3.8, §6.2, §6.3, §7.4/7.5, §8.2
+  location: L504/520 "Credential Provider"
   defect: Four incompatible scopes for "ADI Network Provider". §6.3 omits the Interchange entirely and
     calls the AGD an "Authoritative Domain Controller" (L522), a term used nowhere else. §6.2 says "Credential
     Provider" (L504 ×3) where §3.4 says "Credential Issuer"
@@ -720,20 +772,22 @@ defects:
   owner: null
   status: Open
   notes: null
+  anchor: Credential Provider
 - id: D-409
   severity: S2
   workstream: architecture
-  location: §8.2 L767 vs §8.3.4 L840
+  location: DAA
   defect: '**DAA expanded two ways**: "Digital Address Application" and "Device Application Agent"'
   fix: Pick one
   owner: null
   status: auto
   notes: null
   check: auto
+  anchor: (DAA)
 - id: D-410
   severity: S2
   workstream: architecture
-  location: §8.1 L746
+  location: L727 "Domain Authorities (AGs)"
   defect: '"Domain Authorities (AGs)" — wrong abbreviation, and the plural contradicts §7.4.1 ("There
     is only one AGD in an ADI Network")'
   fix: Correct
@@ -741,30 +795,33 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: Domain Authorities (AGs)
 - id: D-411
   severity: S2
   workstream: architecture
-  location: §6.3 L510 vs §7.7.4 L700
+  location: L534/699 "The assurance level of"
   defect: 'The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding
     this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time)'
   fix: Delete one; cross-reference
   owner: null
   status: Open
   notes: null
+  anchor: The assurance level of
 - id: D-412
   severity: S2
   workstream: architecture
-  location: §9.4 L1040 vs L1070
+  location: L1021 "AGD Service Provider Directory"
   defect: L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange
     do it. No authorization model for directory writes
   fix: Resolve
   owner: null
   status: Open
   notes: null
+  anchor: AGD Service Provider Directory
 - id: D-413
   severity: S2
   workstream: architecture
-  location: §7.7.4, §8.4.1, §9.3/9.4
+  location: L540/705 "encrypted by issuer"
   defect: Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory.
     Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation
     database
@@ -772,10 +829,11 @@ defects:
   owner: null
   status: Open
   notes: null
+  anchor: encrypted by issuer
 - id: D-414
   severity: S3
   workstream: architecture
-  location: §4
+  location: L333 "Acronyms and abbreviations"
   defect: '"Acronyms and abbreviations" contains no acronym list. §4.1 holds normative role-VC definitions
     (misfiled); §4.2 holds identifiers. AGD, CI, IX, SP, DA, DAS, VC, VP, HIDA, AAL, PII, KYC are never
     expanded in one place'
@@ -783,298 +841,343 @@ defects:
   owner: null
   status: Open
   notes: null
+  anchor: Acronyms and abbreviations
 - id: E-501
   severity: S2
   workstream: editorial
-  location: L552
-  defect: '`# ADI Network interchanges and platforms` — **unnumbered H1** between §6 and §7. Content largely
-    duplicates §7.3, §7.4, §8.5'
-  fix: ''
-  owner: null
+  location: heading numbering — document-wide
+  defect: '**Document-wide check:** every heading (H1–H4) must carry a section or appendix number. Originally
+    triggered by the unnumbered `# ADI Network interchanges and platforms` at L552, but the check inspects
+    all headings, so any unnumbered heading anywhere fails it. Run `make explain ID=E-501` to see which.'
+  fix: Number every heading. Front-matter headings (Notices, Key words) must be numbered or demoted to
+    bold text.
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: (heading numbering — document-wide)
 - id: E-502
   severity: S2
   workstream: editorial
-  location: L672
+  location: heading length — document-wide
   defect: §7.7.1 heading is two full sentences
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: (heading length — document-wide)
 - id: E-503
   severity: S3
   workstream: editorial
-  location: L676
+  location: L? "7.7.1.1"
   defect: §7.7.1.1 is an orphan H4 among H3 siblings
   fix: ''
-  owner: null
+  owner: ND
   status: Open
   notes: null
+  anchor: 7.7.1.1
 - id: E-504
   severity: S3
   workstream: editorial
-  location: L484
+  location: L? "# 6 Accountable"
   defect: '`# 6 Accountable digital identity reference model` — missing the period every other H1 has'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: '# 6 Accountable'
 - id: E-505
   severity: S3
   workstream: editorial
-  location: L1386
+  location: B.1. Schemas
   defect: '`## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment
     *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: B.1. Schemas
 - id: E-506
   severity: S3
   workstream: editorial
-  location: L1963
+  location: L1941 "Appendix C"
   defect: Appendix C has no `# C.` heading; A and B both do
   fix: ''
-  owner: null
+  owner: ND
   status: Open
   notes: null
+  anchor: Appendix C
 - id: E-507
   severity: S3
   workstream: editorial
-  location: L1086
+  location: L1067 "Issuers may initiate User Digital Address"
   defect: §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2.
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: Issuers may initiate User Digital Address
 - id: E-508
   severity: S3
   workstream: editorial
-  location: L173
+  location: AD-NU
   defect: '`ADI Network User (AD-NU)` → `ADI-NU`'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: (AD-NU)
 - id: E-509
   severity: S3
   workstream: editorial
-  location: L279
+  location: L? "[Role}-Agent"
   defect: '`(\[Role}-Agent endpoint)` — mismatched bracket and brace'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: '[Role}-Agent'
 - id: E-510
   severity: S3
   workstream: editorial
-  location: L926
+  location: L? "Creating and AGD"
   defect: 'Figure 11 caption: "Creating **and** AGD"'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: Creating and AGD
 - id: E-511
   severity: S3
   workstream: editorial
-  location: L564
+  location: L? "issuer by are"
   defect: '"All VC subjects and issuer by are registered ADI NETWORK DIDs" — garbled'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: issuer by are
 - id: E-512
   severity: S3
   workstream: editorial
-  location: L654
+  location: L? "one more Verifiable Credentials"
   defect: '"assigned one more Verifiable Credentials" → "one **or** more"'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: one more Verifiable Credentials
 - id: E-513
   severity: S3
   workstream: editorial
-  location: L698
+  location: L679 "HIDA usage is implementation"
   defect: '"HIDA usage is implementation and should be set" — missing word'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: HIDA usage is implementation
 - id: E-514
   severity: S3
   workstream: editorial
-  location: L996
+  location: L1035 "vetting of the service provider"
   defect: §9.3 (Issuer flow) says "vetting of the **service provider**" ×2
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: vetting of the service provider
 - id: E-515
   severity: S3
   workstream: editorial
-  location: L1008
+  location: L? "returns the VC to the SP agent"
   defect: §9.3 "returns the VC to the **SP agent**" — should be CI_AGENT
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: returns the VC to the SP agent
 - id: E-516
   severity: S3
   workstream: editorial
-  location: L968
+  location: L949 "used during Issuer enrollment"
   defect: §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: used during Issuer enrollment
 - id: E-517
   severity: S3
   workstream: editorial
-  location: L996
+  location: L? "provisions an CI_AGENT"
   defect: '"provisions **an** CI_AGENT"'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: provisions an CI_AGENT
 - id: E-518
   severity: S3
   workstream: editorial
-  location: L1000
+  location: L1039 "Interchange send a"
   defect: '"the Interchange **send** a vc_offer" ×2'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: Interchange send a
 - id: E-519
   severity: S3
   workstream: editorial
-  location: L1064
+  location: L1045 "POST return"
   defect: '"**POST return** issue_vc_token" — malformed'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: POST return
 - id: E-520
   severity: S3
   workstream: editorial
-  location: L1348, L1352
+  location: L? "SERVICE_PROVIDER:9."
   defect: '`SERVICE_PROVIDER:9.` / `USER:10.` — missing space after colon'
   fix: ''
-  owner: null
-  status: Open
+  owner: ND
+  status: auto
   notes: null
+  anchor: SERVICE_PROVIDER:9.
+  check: auto
 - id: E-521
   severity: S3
   workstream: editorial
-  location: §11.1.3 step 10
+  location: L1305 "Respond to SP Agent with VP"
   defect: Message text duplicates step 8 ("Respond to SP Agent with VP")
   fix: ''
-  owner: null
-  status: Open
+  owner: ND
+  status: auto
   notes: null
+  anchor: Respond to SP Agent with VP
+  check: auto
 - id: E-522
   severity: S3
   workstream: editorial
-  location: L1367
+  location: L? "calls the get"
   defect: 'Sentence truncated mid-word: "the service provider calls the get\_"'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: calls the get
 - id: E-523
   severity: S3
   workstream: editorial
-  location: L437
+  location: L446 "W3C XXX"
   defect: '`[see W3C XXX]` placeholder'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: W3C XXX
 - id: E-524
   severity: S3
   workstream: editorial
-  location: L561, L905
+  location: L887 "figure 4.4.3"
   defect: '"See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not
     exist'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: figure 4.4.3
 - id: E-525
   severity: S3
   workstream: editorial
-  location: L1085
+  location: L? "2.2.1 Issue Verifiable Credential"
   defect: '"(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions"'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: 2.2.1 Issue Verifiable Credential
 - id: E-526
   severity: S3
   workstream: editorial
-  location: L745
+  location: L727 "3.3 Roles"
   defect: '"See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent"'
   fix: ''
-  owner: null
+  owner: ND
   status: auto
   notes: null
   check: auto
+  anchor: 3.3 Roles
 - id: E-527
   severity: S3
   workstream: editorial
-  location: L747 vs L869
+  location: L729/851 "red line"
   defect: Red-line reference points at Figure 4 in one place, the ADI Network figure in another
   fix: ''
-  owner: null
+  owner: ND
   status: Open
   notes: null
+  anchor: red line
 - id: E-528
   severity: S3
   workstream: editorial
-  location: figures
+  location: L893 "Figure 10."
   defect: 'Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with
     the image, some on their own line'
   fix: ''
-  owner: null
+  owner: ND
   status: Open
   notes: null
+  anchor: Figure 10.
 - id: E-529
   severity: S3
   workstream: editorial
-  location: global
+  location: capitalisation — document-wide
   defect: '`ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc`
     / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs'
   fix: ''
-  owner: null
+  owner: ND
   status: Open
   notes: null
+  anchor: (capitalisation — document-wide)
+- id: E-530
+  severity: S2
+  workstream: editorial
+  location: §7 vs §8.3 — duplication
+  defect: §7 (overview) and §8.3 (Roles and Authorities) tell the same narrative twice; audit-log/legal-retrieval
+    stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication.
+  fix: 'Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated".'
+  owner: ND
+  status: Open
+  notes: null
+  anchor: (§7 vs §8.3 — duplication)
 - id: F-601
   severity: S1
   workstream: references-tooling
-  location: 20 instances
+  location: L59/727/879 "docs.google.com"
   defect: Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the
     RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader
   fix: Rewrite against stable anchors
@@ -1082,10 +1185,11 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: docs.google.com
 - id: F-602
   severity: S2
   workstream: references-tooling
-  location: 20 instances
+  location: L421/436/490 "media/image"
   defect: 'Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and
     the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed'
   fix: Recover source; commit as Mermaid
@@ -1093,10 +1197,11 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: media/image
 - id: F-603
   severity: S2
   workstream: references-tooling
-  location: headings
+  location: anchors — document-wide
   defect: Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text,
     so number-derived links break on every renumber
   fix: Use explicit `<a id="">` anchors
@@ -1104,32 +1209,36 @@ defects:
   status: auto
   notes: null
   check: auto
+  anchor: (anchors — document-wide)
 - id: F-604
   severity: S3
   workstream: references-tooling
-  location: \x{202F}` with a space
+  location: non-breaking spaces — document-wide
   defect: ''
   fix: ''
   owner: null
   status: auto
   notes: null
   check: auto
+  anchor: (non-breaking spaces — document-wide)
 - id: F-605
   severity: S3
   workstream: references-tooling
-  location: 101 lines
+  location: trailing whitespace — document-wide
   defect: Trailing whitespace — phantom git diffs
   fix: Strip (none are intentional line breaks)
   owner: null
   status: auto
   notes: null
   check: auto
+  anchor: (trailing whitespace — document-wide)
 - id: F-606
   severity: S2
   workstream: references-tooling
-  location: CI
+  location: CI — no location
   defect: No automated gate. Every check run for this review is scriptable
   fix: JSON parse · fence-aware gremlin check · markdownlint · link checker
   owner: null
   status: Open
   notes: null
+  anchor: (CI — no location)
