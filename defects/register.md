@@ -144,7 +144,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-519 | S3 | Open |  | `auto` | L1064 | "**POST return** issue_vc_token" — malformed |  | `9516e96` |
 | E-520 | S3 | Open |  | — | L1348, L1352 | `SERVICE_PROVIDER:9.` / `USER:10.` — missing space after colon |  | `496fda2` |
 | E-521 | S3 | Open |  | — | §11.1.3 step 10 | Message text duplicates step 8 ("Respond to SP Agent with VP") |  | `116bff6` |
-| E-522 | S3 | Verified |  | `auto` | L1367 | Sentence truncated mid-word: "the service provider calls the get\_" |  |  |
+| E-522 | S3 | Verified |  | `auto` | L1367 | Sentence truncated mid-word: "the service provider calls the get\_" |  | `87300d5` |
 | E-523 | S3 | Open |  | `auto` | L437 | `[see W3C XXX]` placeholder |  |  |
 | E-524 | S3 | Open |  | `auto` | L561, L905 | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  |  |
 | E-525 | S3 | Open |  | `auto` | L1085 | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  |  |
