@@ -170,7 +170,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 >
 > Note 2 to entry: The term Service Provider is not the same as an ADI-NP. It refers to an organization that provides business or consumer products or services to End Users (i.e., ADI Network Users).
 
-## 3.9 ADI Network User (AD-NU) (“User”)
+## 3.9 ADI Network User (ADI-NU) (“User”)
 
 > Individual that requests and uses one or more Verifiable Credentials
 >
@@ -276,7 +276,7 @@ Assertion made about a Subject
 >
 > Note 3 to entry: ADI Network Providers can also be assigned a DA by their controlling entity.
 
-## 3.22 Endpoint (agent endpoint) (\[Role}-Agent endpoint)
+## 3.22 Endpoint (agent endpoint) (\[Role]-Agent endpoint)
 
 > URL that resolves to an ADI Network service access point.
 >
@@ -481,7 +481,7 @@ The SP makes a judgment call on the acceptability of the Holder (the prospective
 
 \*\*\*\*
 
-# 6 Accountable digital identity reference model
+# 6. Accountable digital identity reference model
 
 ## 6.1 The ADI Ecosystem
 
@@ -561,7 +561,7 @@ An ADI Role VC is also bound to a single Digital Address. Each DIDdoc contains c
 
 DID formats include network locations which enable global navigation and communication within the ADI NETWORK.  See figure 7.3 DID issuance & format.
 
-All VC subjects and issuer by are registered ADI NETWORK  DIDs owned by a unique Digital Address.
+All VC subjects are issued registered ADI NETWORK DIDs owned by a unique Digital Address.
 
 All Digital Addresses have an ADI-ROLE VC issued and signed by an ADI NETWORK authority.  Roles and network authorities are defined as claims in an ADI-ROLE VC.   See ADI Network Hierarchy.
 
@@ -651,7 +651,7 @@ ADI Network Providers offer ADI enrollment, transaction processing and directory
 
 ### 8.5.3 Users (User)
 
-> A user is a real person that can be verified to a NIST assurance level and assigned one more Verifiable Credentials (VCs).
+> A user is a real person that can be verified to a NIST assurance level and assigned one or more Verifiable Credentials (VCs).
 >
 > *Note:  User definition may be extended to support any identifiable entity or object, provided that the entity or object is properly capable of identifying itself using asymmetric keys (public key / private key pairs)*
 
@@ -669,11 +669,11 @@ Figure 5: ADI Roles & Chain of Trust
 
 ## 8.7 Governance 
 
-### 8.7.1 An ADI NETWORK is governed by the controlling authority of the AGD, the AGD-Provider. Governance is enforced with both contractual agreements and network policy configuration.
+An ADI NETWORK is governed by the controlling authority of the AGD, the AGD-Provider. Governance is enforced with both contractual agreements and network policy configuration.
 
 This specification aims to support flexible governance models that may stand alone,  join,  link or refer to each other, thereby allowing for a truly global identity ecosystem.
 
-#### 8.7.1.1 ADI-ROLE VC Schemas
+### 8.7.1 ADI-ROLE VC Schemas
 
 VC governance rules may be defined in ADI-ROLE VC schema metadata.  
 
@@ -695,7 +695,7 @@ A HIDA is a hash of PII attributes to maintain privacy.   Which PII attributes 
 
 HIDA construction, management and usage rules are defined within a region scope.  For example, in a global ADI Network that uses national identity to create a HIDA, the HIDA may be comprised of: Name,  Date of Birth & National ID card \#.  In an enterprise it may be defined as name and employee ID.  In a social or community ADI Network it may be simply phone or email.
 
-HIDA usage is implementation and should be set by ADI-Provider governance policies.
+HIDA usage is implementation-specific and should be set by ADI-Provider governance policies.
 
 ### 8.7.4 Authority Entitlements
 
@@ -923,7 +923,7 @@ The following request and response descriptions are used during AGD enrollment.
 
 - [<u>create_agd</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.hfgugc59964c)
 
-<img src="media/image11.png" style="width:6.5in;height:4.98611in" />Figure 11. Creating and AGD
+<img src="media/image11.png" style="width:6.5in;height:4.98611in" />Figure 11. Creating an AGD
 
 This flow is the first step to create an ADI Network.  An AGD must be created, which contains the root signing key for all other ADI signed transactions.
 
@@ -987,13 +987,13 @@ The Issuer administration applies to the Interchange to join the ADI ecosystem a
 
 The Interchange should have an enrollment form the issuer can fill out and submit.
 
-The issuer submits an enrollment request to the interchange. The request includes required information about the  issuer.   This request may be submitted via a web form at the Interchange or other method.
+The issuer submits an enrollment request to the interchange. The request includes required information about the issuer.   This request may be submitted via a web form at the Interchange or other method.
 
 **ISSUER -\> INTERCHANGE: POST ~ix/enroll_issuer  **
 
 The Interchange will vet the issuer information and execute a contract to join ADI.
 
-Once vetting of the service provider is completed, the Interchange provisions an CI_AGENT to perform ADI functions for the  issuer. The CI_AGENT generates PK pairs,  is assigned a DID & DIDdoc and OIDC endpoints & metadata using an issuer selected domain / sub-domain.
+Once vetting of the issuer is completed, the Interchange provisions an CI_AGENT to perform ADI functions for the issuer. The CI_AGENT generates PK pairs, is assigned a DID & DIDdoc and OIDC endpoints & metadata using an issuer-selected domain / sub-domain.
 
 **INTERCHANGE -\> INTERCHANGE:  Provision issuer agent, create keys, \n listing data & endpoints**
 
@@ -1005,7 +1005,7 @@ The CI_AGENT signs the offer with its private_key and returns an issue_vc_token.
 
 **CI_AGENT -\> INTERCHANGE: Returns issue_vc_token**
 
-The interchange creates and signs an ADI-ISSUER  role VC for the issuer, stores it in the interchange vault, updates the AGD provider directory listing and returns the VC to the SP agent.
+The interchange creates and signs an ADI-ISSUER role VC for the issuer, stores it in the interchange vault, updates the AGD provider directory listing and returns the VC to the CI_Agent.
 
 **INTERCHANGE -\> IX-VAULT:  POST ~ix_vault/ADI-ISSUER role VC **
 
@@ -1383,7 +1383,7 @@ Service providers may not want to hold sensitive PII, instead just relying on AD
 
 # B. Schemas
 
-## B.1. Schemas
+## B.1 Enrollment
 
 ### B.1.1 create_agd
 
@@ -1521,7 +1521,7 @@ POST ~ard/enroll_ix
 }
 ```
 
-## B.2 Credentials
+## B.2 Verifiable Credentials (VCs)
 
 ### B.2.1 make_vc_offer
 
@@ -1957,7 +1957,7 @@ POST ~issuer/issue_vc_token
 }
 ```
 
-**Appendix C – References**
+# **Appendix C – References**
 This appendix contains the informative references that are used in this document.
 While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
 ## C.1 Informative References

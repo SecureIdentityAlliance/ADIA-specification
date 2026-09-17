@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-17 |
 | Defects | 105 (64 with an automated check) |
-| Verified | 3 |
+| Verified | 12 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 26 |
-| Open | 76 |
+| Open | 67 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -119,25 +119,25 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 
 ## Workstream E — Editorial
 
-29 defects · 2 verified · 22 with an automated check
+29 defects · 11 verified · 22 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| E-501 | S2 | Verified |  | `auto` | L552 | `# ADI Network interchanges and platforms` — **unnumbered H1** between §6 and §7. Content largely duplicates §7.3, §7.4, §8.5 |  | `3bd3f8e` |
-| E-502 | S2 | Open |  | `auto` | L672 | §7.7.1 heading is two full sentences |  | `bec5999` |
+| E-501 | S2 | Open |  | `auto` | L552 | `# ADI Network interchanges and platforms` — **unnumbered H1** between §6 and §7. Content largely duplicates §7.3, §7.4, §8.5 |  | `3bd3f8e` |
+| E-502 | S2 | Verified |  | `auto` | L672 | §7.7.1 heading is two full sentences |  | `bec5999` |
 | E-503 | S3 | Open |  | — | L676 | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
-| E-504 | S3 | Open |  | `auto` | L484 | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
-| E-505 | S3 | Open |  | `auto` | L1386 | `## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs |  | `ad9351b` |
+| E-504 | S3 | Verified |  | `auto` | L484 | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
+| E-505 | S3 | Verified |  | `auto` | L1386 | `## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs |  | `ad9351b` |
 | E-506 | S3 | Open |  | — | L1963 | Appendix C has no `# C.` heading; A and B both do |  | `16e83ad` |
 | E-507 | S3 | Verified |  | `auto` | L1086 | §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2. |  | `8c28c0f` |
-| E-508 | S3 | Open |  | `auto` | L173 | `ADI Network User (AD-NU)` → `ADI-NU` |  | `9527e32` |
-| E-509 | S3 | Open |  | `auto` | L279 | `(\[Role}-Agent endpoint)` — mismatched bracket and brace |  | `9e7252c` |
-| E-510 | S3 | Open |  | `auto` | L926 | Figure 11 caption: "Creating **and** AGD" |  | `3f1cf27` |
-| E-511 | S3 | Open |  | `auto` | L564 | "All VC subjects and issuer by are registered ADI NETWORK DIDs" — garbled |  | `2094a3c` |
-| E-512 | S3 | Open |  | `auto` | L654 | "assigned one more Verifiable Credentials" → "one **or** more" |  | `df94a69` |
-| E-513 | S3 | Open |  | `auto` | L698 | "HIDA usage is implementation and should be set" — missing word |  | `f81815d` |
+| E-508 | S3 | Verified |  | `auto` | L173 | `ADI Network User (AD-NU)` → `ADI-NU` |  | `9527e32` |
+| E-509 | S3 | Verified |  | `auto` | L279 | `(\[Role}-Agent endpoint)` — mismatched bracket and brace |  | `9e7252c` |
+| E-510 | S3 | Verified |  | `auto` | L926 | Figure 11 caption: "Creating **and** AGD" |  | `3f1cf27` |
+| E-511 | S3 | Verified |  | `auto` | L564 | "All VC subjects and issuer by are registered ADI NETWORK DIDs" — garbled |  | `2094a3c` |
+| E-512 | S3 | Verified |  | `auto` | L654 | "assigned one more Verifiable Credentials" → "one **or** more" |  | `df94a69` |
+| E-513 | S3 | Verified |  | `auto` | L698 | "HIDA usage is implementation and should be set" — missing word |  | `f81815d` |
 | E-514 | S3 | Open |  | `auto` | L996 | §9.3 (Issuer flow) says "vetting of the **service provider**" ×2 |  | `24f3d18` |
-| E-515 | S3 | Open |  | `auto` | L1008 | §9.3 "returns the VC to the **SP agent**" — should be CI_AGENT |  |  |
+| E-515 | S3 | Verified |  | `auto` | L1008 | §9.3 "returns the VC to the **SP agent**" — should be CI_AGENT |  | `39482ec` |
 | E-516 | S3 | Open |  | `auto` | L968 | §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2 |  |  |
 | E-517 | S3 | Open |  | `auto` | L996 | "provisions **an** CI_AGENT" |  |  |
 | E-518 | S3 | Open |  | `auto` | L1000 | "the Interchange **send** a vc_offer" ×2 |  |  |
