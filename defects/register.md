@@ -136,7 +136,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-511 | S3 | Open |  | `auto` | L564 | "All VC subjects and issuer by are registered ADI NETWORK DIDs" — garbled |  | `2094a3c` |
 | E-512 | S3 | Open |  | `auto` | L654 | "assigned one more Verifiable Credentials" → "one **or** more" |  | `df94a69` |
 | E-513 | S3 | Open |  | `auto` | L698 | "HIDA usage is implementation and should be set" — missing word |  | `f81815d` |
-| E-514 | S3 | Open |  | `auto` | L996 | §9.3 (Issuer flow) says "vetting of the **service provider**" ×2 |  |  |
+| E-514 | S3 | Open |  | `auto` | L996 | §9.3 (Issuer flow) says "vetting of the **service provider**" ×2 |  | `24f3d18` |
 | E-515 | S3 | Open |  | `auto` | L1008 | §9.3 "returns the VC to the **SP agent**" — should be CI_AGENT |  |  |
 | E-516 | S3 | Open |  | `auto` | L968 | §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2 |  |  |
 | E-517 | S3 | Open |  | `auto` | L996 | "provisions **an** CI_AGENT" |  |  |
