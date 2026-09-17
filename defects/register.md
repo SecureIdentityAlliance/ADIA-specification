@@ -128,7 +128,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-503 | S3 | Open |  | — | L676 | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
 | E-504 | S3 | Open |  | `auto` | L484 | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
 | E-505 | S3 | Open |  | `auto` | L1386 | `## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs |  | `ad9351b` |
-| E-506 | S3 | Open |  | — | L1963 | Appendix C has no `# C.` heading; A and B both do |  |  |
+| E-506 | S3 | Open |  | — | L1963 | Appendix C has no `# C.` heading; A and B both do |  | `16e83ad` |
 | E-507 | S3 | Verified |  | `auto` | L1086 | §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2. |  |  |
 | E-508 | S3 | Open |  | `auto` | L173 | `ADI Network User (AD-NU)` → `ADI-NU` |  |  |
 | E-509 | S3 | Open |  | `auto` | L279 | `(\[Role}-Agent endpoint)` — mismatched bracket and brace |  |  |
