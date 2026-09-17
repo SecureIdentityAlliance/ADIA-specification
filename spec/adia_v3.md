@@ -1341,7 +1341,7 @@ They may rely on their Agent to perform this task for them, or they may check th
 
 VC issuers and subjects can be validated  by using their VC DID to request their public key.  With the public key the VP (user) & VC (Issuer) signatures can each be validated using the VC proof cryptographic algorithms specified in the VC metadata header. 
 
-To request the DIDdoc, the service provider calls the get\_
+To request the DIDdoc, the service provider calls get_did_doc.
 
 <img src="media/image20.png" style="width:6.5in;height:3.94444in" />Figure 20. Service Provider Requests a DID Document
 
