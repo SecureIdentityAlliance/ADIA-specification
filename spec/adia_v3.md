@@ -989,7 +989,7 @@ The Interchange should have an enrollment form the issuer can fill out and submi
 
 The Issuer submits an enrollment request to the interchange. The request includes required information about the issuer.   This request may be submitted via a web form at the Interchange or other method.
 
-**ISSUER -\> INTERCHANGE: POST ~ix/enroll_issuer  **
+**ISSUER -\> INTERCHANGE: POST ~ix/enroll_issuer**
 
 The Interchange will vet the Issuer information and execute a contract to join ADI.
 
@@ -999,7 +999,7 @@ Once vetting of the Issuer is completed, the Interchange provisions a CI_AGENT t
 
 Once the CI_AGENT is created, the Interchange sends a vc_offer for an ADI-Issuer role VC to the CI_AGENT to accept and sign. 
 
-**INTERCHANGE -\> CI_AGENT: POST ~CI_AGENT/vc_offer **
+**INTERCHANGE -\> CI_AGENT: POST ~CI_AGENT/vc_offer**
 
 The CI_AGENT signs the offer with its private_key and returns an issue_vc_token.
 
@@ -1325,11 +1325,11 @@ This may be from the issuer vault or the user vault depending on issuer endpoint
 
 9.  The SP agent responds to the original request for a VC from the service provider.
 
-**SP_AGENT -\> SERVICE_PROVIDER:9. Success: Respond VP to Request for VC**
+**SP_AGENT -\> SERVICE_PROVIDER: 9. Success: Respond VP to Request for VC**
 
 10.  The user agent informs the user that the VC has been presented to the service provider
 
-**USER_AGENT -\> USER:10. <span class="mark">Respond to SP Agent with VP</span>**
+**USER_AGENT -\> USER: 10. <span class="mark">Respond to SP Agent with VP</span>**
 
 ## 12.2 Requesting a public key
 
