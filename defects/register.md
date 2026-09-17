@@ -151,7 +151,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-526 | S3 | Open |  | `auto` | L745 | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
 | E-527 | S3 | Open |  | — | L747 vs L869 | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  |  |
 | E-528 | S3 | Open |  | — | figures | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
-| E-529 | S3 | Open |  | — | global | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  |  |
+| E-529 | S3 | Open |  | — | global | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  | `17bdc07` |
 
 ## Workstream F — References, diagrams and tooling
 
