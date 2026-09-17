@@ -1,0 +1,62 @@
+name: Update register
+
+# Runs automatically whenever defects.yaml or the spec changes.
+# Regenerates register.md and commits it back, so nobody has to run
+# anything locally. This is what lets a non-technical editor work
+# entirely in the GitHub web interface.
+
+on:
+  push:
+    paths:
+      - 'defects/defects.yaml'
+      - 'defects/adia_checks.py'
+      - 'spec/**'
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install pyyaml
+
+      - name: Check the tracker file is readable
+        run: |
+          python3 - <<'EOF'
+          import yaml, sys
+          try:
+              d = yaml.safe_load(open('defects/defects.yaml'))
+          except Exception as e:
+              print("::error::defects.yaml could not be read. "
+                    "Most likely a spacing or quote-mark problem.")
+              print(e); sys.exit(1)
+          ids = [x['id'] for x in d['defects']]
+          if len(ids) != len(set(ids)):
+              print("::error::Two entries share an ID."); sys.exit(1)
+          ok = {'Open','Fixed','Verified','Rejected'}
+          for x in d['defects']:
+              s = str(x.get('status',''))
+              if s not in ok and not s.startswith(('Blocked(','Superseded(')):
+                  print("::error::%s has an unknown status: %s" % (x['id'], s)); sys.exit(1)
+          print("tracker file is fine — %d entries" % len(ids))
+          EOF
+
+      - name: Rebuild the register
+        run: python3 defects/render.py
+
+      - name: Save it back
+        run: |
+          git config user.name  "adia-bot"
+          git config user.email "adia-bot@users.noreply.github.com"
+          if ! git diff --quiet defects/register.md; then
+            git add defects/register.md
+            git commit -m "Update register [skip ci]"
+            git push
+          else
+            echo "register already up to date"
+          fi

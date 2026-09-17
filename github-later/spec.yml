@@ -1,0 +1,25 @@
+name: spec
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }        # render.py reads git log for the Ref column
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install pyyaml
+
+      # blocking: a check that passed on the baseline must never fail again
+      - name: Defect checks
+        run: python3 defects/adia_checks.py spec/adia_v3.md --ci
+
+      # blocking: nobody hand-edited the generated register
+      - name: Register is current
+        run: python3 defects/render.py --check
+
+      # informational: how the backlog is moving
+      - name: Progress
+        if: always()
+        run: python3 defects/adia_checks.py spec/adia_v3.md | head -3

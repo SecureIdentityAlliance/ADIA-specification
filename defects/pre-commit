@@ -1,0 +1,10 @@
+#!/bin/sh
+# Installed by `make setup`. Stops a broken tracker file being saved,
+# and keeps register.md in step with defects.yaml automatically.
+python3 defects/validate.py || {
+  echo ""
+  echo "  Nothing was saved. Fix the problem above and try again."
+  exit 1
+}
+python3 defects/render.py > /dev/null && git add defects/register.md
+exit 0
