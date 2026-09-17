@@ -148,7 +148,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-523 | S3 | Open |  | `auto` | L437 | `[see W3C XXX]` placeholder |  |  |
 | E-524 | S3 | Open |  | `auto` | L561, L905 | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  |  |
 | E-525 | S3 | Open |  | `auto` | L1085 | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
-| E-526 | S3 | Open |  | `auto` | L745 | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `ef80848` |
+| E-526 | S3 | Open |  | `auto` | L745 | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
 | E-527 | S3 | Open |  | — | L747 vs L869 | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  |  |
 | E-528 | S3 | Open |  | — | figures | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
 | E-529 | S3 | Open |  | — | global | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  |  |
