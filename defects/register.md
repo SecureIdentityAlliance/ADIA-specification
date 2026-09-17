@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
-| Rendered | 2026-09-16 |
+| Rendered | 2026-09-17 |
 | Defects | 105 (64 with an automated check) |
 | Verified | 3 |
 | Fixed, awaiting verification | 0 |
@@ -126,7 +126,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-501 | S2 | Verified |  | `auto` | L552 | `# ADI Network interchanges and platforms` — **unnumbered H1** between §6 and §7. Content largely duplicates §7.3, §7.4, §8.5 |  | `3bd3f8e` |
 | E-502 | S2 | Open |  | `auto` | L672 | §7.7.1 heading is two full sentences |  | `bec5999` |
 | E-503 | S3 | Open |  | — | L676 | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
-| E-504 | S3 | Open |  | `auto` | L484 | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  |  |
+| E-504 | S3 | Open |  | `auto` | L484 | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
 | E-505 | S3 | Open |  | `auto` | L1386 | `## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs |  |  |
 | E-506 | S3 | Open |  | — | L1963 | Appendix C has no `# C.` heading; A and B both do |  |  |
 | E-507 | S3 | Verified |  | `auto` | L1086 | §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2. |  |  |
