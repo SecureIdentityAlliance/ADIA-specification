@@ -140,7 +140,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-515 | S3 | Verified |  | `auto` | L1008 | §9.3 "returns the VC to the **SP agent**" — should be CI_AGENT |  | `063d0f2` |
 | E-516 | S3 | Open |  | `auto` | L968 | §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2 |  | `3da4398` |
 | E-517 | S3 | Verified |  | `auto` | L996 | "provisions **an** CI_AGENT" |  | `8a0cfa6` |
-| E-518 | S3 | Open |  | `auto` | L1000 | "the Interchange **send** a vc_offer" ×2 |  |  |
+| E-518 | S3 | Open |  | `auto` | L1000 | "the Interchange **send** a vc_offer" ×2 |  | `cb44fcb` |
 | E-519 | S3 | Open |  | `auto` | L1064 | "**POST return** issue_vc_token" — malformed |  |  |
 | E-520 | S3 | Open |  | — | L1348, L1352 | `SERVICE_PROVIDER:9.` / `USER:10.` — missing space after colon |  |  |
 | E-521 | S3 | Open |  | — | §11.1.3 step 10 | Message text duplicates step 8 ("Respond to SP Agent with VP") |  |  |
