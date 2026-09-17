@@ -11,7 +11,7 @@
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 25 |
 | Open | 61 |
-| Standing invariants | 4 of 5 holding |
+| Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
 
@@ -175,7 +175,6 @@ Properties that must never regress. Not defects — guardrails.
 
 | Check | Holding |
 |---|---|
-| `INV-appendix` | **NO** |
 | `INV-encoding` | yes |
 | `INV-fences` | yes |
 | `INV-gremlins` | yes |

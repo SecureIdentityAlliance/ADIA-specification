@@ -210,7 +210,7 @@ CHECKS = {
 "INV-fences":   lambda s: s.text.count("```") % 2 == 0,
 "INV-gremlins": lambda s: _no_gremlins_in_fences(s),
 "INV-encoding": lambda s: "\r" not in s.text and s.text.endswith("\n"),
-"INV-appendix": lambda s: len({("long" if h.startswith("# Appendix") else "short")
+"E-506": lambda s: len({("long" if h.startswith("# Appendix") else "short")
                                 for h in re.findall(r"^# (?:Appendix [A-Z]|[A-Z]\.)[^\n]*", s.text, re.M)}) <= 1
                           and not re.search(r"^\*\*Appendix [A-Z]\*\*\s*$", s.text, re.M),
 }
@@ -232,7 +232,7 @@ EXPLAIN = {
 "D-409": lambda s: [m.group(0) for m in re.finditer(r"[^.\n]{0,40}\(DAA\)", s.text)],
 "F-604": lambda s: ["L%d  %s" % (i+1, l.strip()[:60]) for i, l in enumerate(s.text.split("\n")) if "\u00a0" in l or "\u202f" in l][:15],
 "F-605": lambda s: ["L%d" % (i+1) for i, l in enumerate(s.text.split("\n")) if l != l.rstrip()][:20],
-"INV-appendix": lambda s: [l for l in re.findall(r"^(?:# (?:Appendix [A-Z]|[A-Z]\.)[^\n]*|\*\*Appendix [A-Z]\*\*)\s*$", s.text, re.M)],
+"E-506": lambda s: [l for l in re.findall(r"^(?:# (?:Appendix [A-Z]|[A-Z]\.)[^\n]*|\*\*Appendix [A-Z]\*\*)\s*$", s.text, re.M)],
 "INV-json":     lambda s: ["does not parse: %s" % n for n in s.unparsed],
 "INV-gremlins": lambda s: _gremlin_lines(s),
 "E-526": lambda s: ["L%d  %s" % (i+1, l.strip()[:90]) for i, l in enumerate(s.text.split("\n"))
