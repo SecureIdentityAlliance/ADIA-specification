@@ -147,7 +147,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-522 | S3 | Verified |  | `auto` | L1367 | Sentence truncated mid-word: "the service provider calls the get\_" |  | `87300d5` |
 | E-523 | S3 | Open |  | `auto` | L437 | `[see W3C XXX]` placeholder |  |  |
 | E-524 | S3 | Open |  | `auto` | L561, L905 | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  |  |
-| E-525 | S3 | Open |  | `auto` | L1085 | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  |  |
+| E-525 | S3 | Open |  | `auto` | L1085 | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
 | E-526 | S3 | Open |  | `auto` | L745 | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  |  |
 | E-527 | S3 | Open |  | — | L747 vs L869 | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  |  |
 | E-528 | S3 | Open |  | — | figures | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
