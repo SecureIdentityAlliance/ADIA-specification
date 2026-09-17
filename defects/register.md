@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-17 |
 | Defects | 105 (64 with an automated check) |
-| Verified | 14 |
+| Verified | 16 |
 | Fixed, awaiting verification | 0 |
-| Blocked on a decision | 26 |
-| Open | 65 |
+| Blocked on a decision | 25 |
+| Open | 64 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -98,7 +98,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 
 ## Workstream D — Architecture and terminology
 
-14 defects · 0 verified · 6 with an automated check
+14 defects · 1 verified · 6 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -108,7 +108,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | D-404 | S2 | Blocked(D3) |  | — | §3.21 vs §8.5.1 | DA uniqueness scope: "within an ADI-Region" (§3.21) vs "in an ADI Network" (§8.5.1). Format `user@interchange_name` is met by only **one** of five role VCs — B.2.7 `agd_admin@global_1`, B.2.9 `issuer_admin@issuer_1`, B.2.10 `sp_admin@service_provider_1`, B.2.11 `USER_DA@IX_1` all use a non-interchange host. B.3.2 uses a third syntax `issuer1@ix3.r1`. No ABNF, no case rule, no IDN/homograph policy for a human-facing identifier | Define ABNF; fix all instances |  |
 | D-405 | S2 | Blocked(D9) |  | — | §3.11, §3.24, §7.7.3, §8.5.2, §9.5 | HIDA is simultaneously mandatory ("Entities … are unique when they do not have matching HIDAs"; "The User HIDA **is** verified for uniqueness") and optional ("HIDA usage is optional"). Separately: no hash algorithm named, no salt/pepper/KDF/keyed-MAC, and **no canonicalization rule** — without normalization of case, diacritics, name order and date format the same person yields different HIDAs at different Interchanges and cross-region uniqueness silently fails | Decide; specify construction |  |
 | D-406 | S2 | Blocked(D12) |  | — | §3.19, §8.5.3 | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol |  |
-| D-407 | S2 | Blocked(D4) |  | `auto` | §4.1, `type` fields, `authorized_to_issue`, §7.7.1.1 | Five competing naming schemes for the same five credentials. §4.1 also **omits ADI-SP VC** (which B.2.10 defines) and invents "ADI NETWORK VC" (L347), described as the role VC of an AGD *and* Interchange — incoherent, and used nowhere else | One registry, referenced everywhere |  |
+| D-407 | S2 | Verified |  | `auto` | §4.1, `type` fields, `authorized_to_issue`, §7.7.1.1 | Five competing naming schemes for the same five credentials. §4.1 also **omits ADI-SP VC** (which B.2.10 defines) and invents "ADI NETWORK VC" (L347), described as the role VC of an AGD *and* Interchange — incoherent, and used nowhere else | One registry, referenced everywhere |  |
 | D-408 | S2 | Open |  | — | §3.8, §6.2, §6.3, §7.4/7.5, §8.2 | Four incompatible scopes for "ADI Network Provider". §6.3 omits the Interchange entirely and calls the AGD an "Authoritative Domain Controller" (L522), a term used nowhere else. §6.2 says "Credential Provider" (L504 ×3) where §3.4 says "Credential Issuer" | Single taxonomy |  |
 | D-409 | S2 | Open |  | `auto` | §8.2 L767 vs §8.3.4 L840 | **DAA expanded two ways**: "Digital Address Application" and "Device Application Agent" | Pick one |  |
 | D-410 | S2 | Open |  | `auto` | §8.1 L746 | "Domain Authorities (AGs)" — wrong abbreviation, and the plural contradicts §7.4.1 ("There is only one AGD in an ADI Network") | Correct |  |
@@ -119,11 +119,11 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 
 ## Workstream E — Editorial
 
-29 defects · 13 verified · 22 with an automated check
+29 defects · 14 verified · 22 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| E-501 | S2 | Open |  | `auto` | L552 | `# ADI Network interchanges and platforms` — **unnumbered H1** between §6 and §7. Content largely duplicates §7.3, §7.4, §8.5 |  | `3bd3f8e` |
+| E-501 | S2 | Open |  | `auto` | L552 | `# ADI Network interchanges and platforms` — **unnumbered H1** between §6 and §7. Content largely duplicates §7.3, §7.4, §8.5 |  | `87060b2` |
 | E-502 | S2 | Verified |  | `auto` | L672 | §7.7.1 heading is two full sentences |  | `bec5999` |
 | E-503 | S3 | Open |  | — | L676 | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
 | E-504 | S3 | Verified |  | `auto` | L484 | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
@@ -147,7 +147,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 | E-522 | S3 | Verified |  | `auto` | L1367 | Sentence truncated mid-word: "the service provider calls the get\_" |  | `87300d5` |
 | E-523 | S3 | Open |  | `auto` | L437 | `[see W3C XXX]` placeholder |  |  |
 | E-524 | S3 | Open |  | `auto` | L561, L905 | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  |  |
-| E-525 | S3 | Open |  | `auto` | L1085 | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
+| E-525 | S3 | Verified |  | `auto` | L1085 | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
 | E-526 | S3 | Open |  | `auto` | L745 | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
 | E-527 | S3 | Open |  | — | L747 vs L869 | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  |  |
 | E-528 | S3 | Open |  | — | figures | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
