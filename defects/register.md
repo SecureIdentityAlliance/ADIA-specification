@@ -6,7 +6,7 @@
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-17 |
-| Defects | 106 (66 with an automated check) |
+| Defects | 106 (67 with an automated check) |
 | Verified | 20 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 25 |
@@ -15,7 +15,7 @@
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
 
-Nobody moves their own work to `Verified`. For the 66 automated defects the harness does it; for the other 40 a second person does.
+Nobody moves their own work to `Verified`. For the 67 automated defects the harness does it; for the other 39 a second person does.
 
 ---
 
@@ -119,16 +119,16 @@ Nobody moves their own work to `Verified`. For the 66 automated defects the harn
 
 ## Workstream E — Editorial
 
-30 defects · 18 verified · 24 with an automated check
+30 defects · 18 verified · 25 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| E-501 | S2 | Open | ND | `auto` | heading numbering — document-wide | **Document-wide check:** every heading (H1–H4) must carry a section or appendix number. Originally triggered by the unnumbered `# ADI Network interchanges and platforms` at L552, but the check inspects all headings, so any unnumbered heading anywhere fails it. Run `make explain ID=E-501` to see which. | Number every heading. Front-matter headings (Notices, Key words) must be numbered or demoted to bold text. | `87060b2` |
+| E-501 | S2 | Open | ND | `auto` | heading numbering — document-wide | **Document-wide check:** every heading (H1–H4) must carry a section or appendix number. Originally triggered by the unnumbered `# ADI Network interchanges and platforms` at L552, but the check inspects all headings, so any unnumbered heading anywhere fails it. Run `make explain ID=E-501` to see which. | Number every heading. Front-matter headings (Notices, Key words) must be numbered or demoted to bold text. | `933735b` |
 | E-502 | S2 | Verified | ND | `auto` | heading length — document-wide | §7.7.1 heading is two full sentences |  | `bec5999` |
 | E-503 | S3 | Open | ND | — | L? "7.7.1.1" | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
 | E-504 | S3 | Verified | ND | `auto` | L? "# 6 Accountable" | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
 | E-505 | S3 | Verified | ND | `auto` | B.1. Schemas | `## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs |  | `ad9351b` |
-| E-506 | S3 | Open | ND | — | L1941 "Appendix C" | Appendix C has no `# C.` heading; A and B both do |  | `16e83ad` |
+| E-506 | S3 | Open | ND | `auto` | L1941 "Appendix C" | Appendix C has no `# C.` heading; A and B both do |  | `16e83ad` |
 | E-507 | S3 | Verified | ND | `auto` | L1067 "Issuers may initiate User Digital Address" | §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2. |  | `8c28c0f` |
 | E-508 | S3 | Verified | ND | `auto` | AD-NU | `ADI Network User (AD-NU)` → `ADI-NU` |  | `9527e32` |
 | E-509 | S3 | Verified | ND | `auto` | L? "[Role}-Agent" | `(\[Role}-Agent endpoint)` — mismatched bracket and brace |  | `9e7252c` |

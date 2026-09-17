@@ -907,9 +907,10 @@ defects:
   defect: Appendix C has no `# C.` heading; A and B both do
   fix: ''
   owner: ND
-  status: Open
+  status: auto
   notes: null
   anchor: Appendix C
+  check: auto
 - id: E-507
   severity: S3
   workstream: editorial

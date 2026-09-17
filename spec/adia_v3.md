@@ -1336,7 +1336,7 @@ The Agent will return the  DID_DOC
 
 The agent can now verify the signature of the signer, using the Public Key from the  DIDDoc & cryptography signature algorithm listed.
 
-**Appendix A**
+# Appendix A
 
 # A. Additional Use Cases
 
@@ -1360,7 +1360,7 @@ ADI can be used for authentication to login or approve transactions by a service
 
 Service providers may not want to hold sensitive PII, instead just relying on ADI assurance that the PII meets certain criteria required for a service.  The actual PII can be escrowed by an Interchange and retrieved as needed by a service provider in the case of disputes or fraud.
 
-**Appendix B**
+# Appendix B
 
 # B. Schemas
 
@@ -1938,7 +1938,7 @@ POST ~issuer/issue_vc_token
 }
 ```
 
-# **Appendix C – References**
+# Appendix C – References
 This appendix contains the informative references that are used in this document.
 While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
 ## C.1 Informative References
