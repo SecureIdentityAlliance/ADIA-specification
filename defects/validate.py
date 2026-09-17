@@ -15,7 +15,7 @@ import yaml
 HERE = os.path.dirname(os.path.abspath(__file__))
 YAML_PATH = os.path.join(HERE, "defects.yaml")
 
-OK_STATUS = {"Open", "Fixed", "Verified", "Rejected"}
+OK_STATUS = {"Open", "Fixed", "Verified", "Rejected", "auto"}
 REQUIRED  = ("id", "severity", "workstream", "status")
 
 
@@ -68,15 +68,27 @@ def main():
             fail("'%s' is not a valid ID." % did, "IDs look like A-101 or E-510.")
 
         s = str(e["status"])
-        if s not in OK_STATUS and not s.startswith(("Blocked(", "Superseded(")):
+        if s not in OK_STATUS and not s.startswith("Superseded("):
             fail("%s has an unrecognised status: '%s'" % (did, s),
-                 "Allowed: Open, Fixed, Verified, Rejected,\n"
-                 "         Blocked(D4), Superseded(A-102)\n"
-                 "Capital letters matter — 'fixed' is not the same as 'Fixed'.")
+                 "Allowed: Open, Fixed, Verified, Rejected, auto,\n"
+                 "         Superseded(A-102)\n"
+                 "To mark something blocked, do not use the status field --\n"
+                 "add a line:  blocked_by: D4\n"
+                 "Capital letters matter -- 'fixed' is not the same as 'Fixed'.")
+        b = e.get("blocked_by")
+        if b is not None and not re.match(r"^D\d+$", str(b)):
+            fail("%s has an invalid blocked_by: '%s'" % (did, b),
+                 "It should look like:  blocked_by: D4")
 
-        if e.get("check") == "auto" and s in ("Fixed", "Verified"):
-            print("  note: %s is checked automatically, so its status will be" % did)
-            print("        recalculated when the register is rebuilt.")
+        if e.get("check") == "auto" and s != "auto":
+            fail("%s is checked automatically — its status must stay 'auto'." % did,
+                 "The checker reads the spec and decides this one. You set it to '%s',\n"
+                 "which would be ignored and overwritten.\n"
+                 "Change it back to:  status: auto\n"
+                 "Then look in register.md to see what the checker decided." % s)
+        if e.get("check") != "auto" and s == "auto":
+            fail("%s has no automatic check, so 'auto' is not a valid status." % did,
+                 "Use Open, Fixed, Verified, Rejected or Blocked(Dn).")
 
     print("  defects.yaml is fine — %d entries, no problems found." % len(entries))
 

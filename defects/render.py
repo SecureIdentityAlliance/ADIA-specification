@@ -73,13 +73,13 @@ def render():
 
     defects = doc["defects"]
     for d in defects:
-        if d.get("check") == "auto" and d["id"] in res:
-            live = res[d["id"]]
-            # a blocked defect that now passes is genuinely done
-            if live == "Verified":
-                d["status"] = "Verified"
-            elif d["status"] == "Verified":
-                d["status"] = "Open"        # regression
+        if d.get("check") == "auto":
+            # the checker owns pass/fail; defects.yaml owns whether it is blocked
+            live = res.get(d["id"], "Open")
+            d["status"] = live if live == "Verified" else (
+                "Blocked(%s)" % d["blocked_by"] if d.get("blocked_by") else "Open")
+        elif d.get("blocked_by") and d["status"] == "Open":
+            d["status"] = "Blocked(%s)" % d["blocked_by"]
         d["_ref"] = git_ref(d["id"])
 
     n_auto = len([d for d in defects if d.get("check") == "auto"])

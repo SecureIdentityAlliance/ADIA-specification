@@ -1279,21 +1279,21 @@ Figure 18. Requesting a VC - High-Level Flow
 
 ### 12.1.3 Flow Description
 
-1\. The user requests a service from a service provider.  While interacting with a service provider site / service, the service provider may require a VC to verify the user's identity.  
+1. The user requests a service from a service provider.  While interacting with a service provider site / service, the service provider may require a VC to verify the user's identity.  
 
 **USER -\> SERVICE_PROVIDER: 1. Requests service**
 
-2\. The service provider requests its agent to obtain a VC from a list of acceptable list VC schemas. This *vc_request* is sent to the SP agents for fulfillment.
+2. The service provider requests its agent to obtain a VC from a list of acceptable list VC schemas. This *vc_request* is sent to the SP agents for fulfillment.
 
 **SERVICE_PROVIDER -\> SP_AGENT: 2. POST ~service_provider/vc_request**
 
-3\. The SP_AGENT notifies the user agent authorize the request
+3. The SP_AGENT notifies the user agent authorize the request
 
 The SP_AGENT creates a vc_authorization_request and constructs a URI, referencing the request, to be used as a link, redirect, QR code or user agent notification action for the user agent to fulfill.
 
 **SP_AGENT -\> USER_AGENT: 3. POST ~user_agent/vc_request\n Redirect, Link, QR Code or App Notification**
 
-4\.  The user agent selects an acceptable VC from the user’s VCs.  If there are more than one the user is requested to select one.  If there are no VCs that match the request, the user may be directed to an Issuer to obtain an acceptable VC. 
+4.  The user agent selects an acceptable VC from the user’s VCs.  If there are more than one the user is requested to select one.  If there are no VCs that match the request, the user may be directed to an Issuer to obtain an acceptable VC. 
 
 The user agent obtains user consent & authorization using strong authentication.
 
@@ -1305,29 +1305,29 @@ The user agent obtains user consent & authorization using strong authentication.
 
 **USER -\> USER_AGENT: Biometric approval given**
 
-5\. The user agent creates a user signed authorization_token and sends the request to the VAULT_AGENT endpoint to retrieve the VC.
+5. The user agent creates a user signed authorization_token and sends the request to the VAULT_AGENT endpoint to retrieve the VC.
 
 This may be from the issuer vault or the user vault depending on issuer endpoint setting rules for this.
 
 **USER_AGENT -\> VAULT_AGENT: 5. POST ~vc_vault/vc_authorization_token **
 
-6\. The VAULT_AGENT verifies the authorization_token, retrieves and returns the VC
+6. The VAULT_AGENT verifies the authorization_token, retrieves and returns the VC
 
 **VAULT_AGENT -\> USER_AGENT: 6. Return the VC requested**
 
-7\. The user agent signs the VC with  the  users’ private key to create a VP. 
+7. The user agent signs the VC with  the  users’ private key to create a VP. 
 
 **USER_AGENT -\> USER_AGENT: 7. Create and sign VP**
 
-8\. The user agent sends the VP to the SP agent.
+8. The user agent sends the VP to the SP agent.
 
 **USER_AGENT -\> SP_AGENT: 8. Respond to SP Agent with VP**
 
-9\.  The SP agent responds to the original request for a VC from the service provider.
+9.  The SP agent responds to the original request for a VC from the service provider.
 
 **SP_AGENT -\> SERVICE_PROVIDER:9. Success: Respond VP to Request for VC**
 
-10\.  The user agent informs the user that the VC has been presented to the service provider
+10.  The user agent informs the user that the VC has been presented to the service provider
 
 **USER_AGENT -\> USER:10. <span class="mark">Respond to SP Agent with VP</span>**
 

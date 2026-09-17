@@ -10,10 +10,11 @@ defects:
   defect: 'Enrollment sends `role: "INTERCHANGE"`; role VC records `role: "IX"`. Same role, two tokens.
     AGD/ISSUER/SERVICE_PROVIDER match correctly across both.'
   fix: Pick one token; align both
-  owner: "RK"
-  status: Blocked(D4)
+  owner: RK
+  status: auto
   notes: null
   check: auto
+  blocked_by: D4
 - id: A-102
   severity: S1
   workstream: data-model
@@ -22,7 +23,7 @@ defects:
     require a DIDdoc to carry its own DID''s key. Verification would use the wrong key'
   fix: Set `id_doc.id` = `subject`, with the subject's key
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: A-103
@@ -32,7 +33,7 @@ defects:
   defect: '`issuer` (`8c019421…`) ≠ `subject` (`71a39c8d…`) on a credential §9.1 requires to be self-signed'
   fix: Make them identical
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: A-104
@@ -43,9 +44,10 @@ defects:
     different path, trailing empty segment'
   fix: Normalise per D-403
   owner: null
-  status: Blocked(D2)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D2
 - id: A-105
   severity: S1
   workstream: data-model
@@ -54,9 +56,10 @@ defects:
     is unexecutable and the network cannot bootstrap'
   fix: Add the IX role-VC type
   owner: null
-  status: Blocked(D4)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D4
 - id: A-106
   severity: S1
   workstream: data-model
@@ -65,9 +68,10 @@ defects:
     contradicting §7.4.2, §9.3, §9.4, §9.5'
   fix: Set to Issuer + SP + User types
   owner: null
-  status: Blocked(D4)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D4
 - id: A-107
   severity: S2
   workstream: data-model
@@ -77,8 +81,9 @@ defects:
     same as issuance'
   fix: Clarify proofing vs issuance; correct the value
   owner: null
-  status: Blocked(D7)
+  status: Open
   notes: null
+  blocked_by: D7
 - id: A-108
   severity: S2
   workstream: data-model
@@ -87,8 +92,9 @@ defects:
     accepted *floor*, not an issuance *ceiling*'
   fix: Decide semantics; rename or remove
   owner: null
-  status: Blocked(D8)
+  status: Open
   notes: null
+  blocked_by: D8
 - id: A-109
   severity: S1
   workstream: data-model
@@ -97,7 +103,7 @@ defects:
     is `USER_DA@IX_1`. Subject and DA disagree
   fix: Correct subject
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: A-110
@@ -108,9 +114,10 @@ defects:
     path is not part of the identifier: the Issuer and SP are **the same DID**'
   fix: Distinct identifiers
   owner: null
-  status: Blocked(D2)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D2
 - id: A-111
   severity: S2
   workstream: data-model
@@ -129,7 +136,7 @@ defects:
     `typ` or `kid` anywhere'
   fix: Rename; add `kid`
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: A-113
@@ -140,7 +147,7 @@ defects:
     (7 in group 1)'
   fix: Regenerate
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: A-114
@@ -150,7 +157,7 @@ defects:
   defect: Identical `request_id` `bb20b6aa-…` in two different requests
   fix: Distinct values
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: A-115
@@ -169,7 +176,7 @@ defects:
   defect: '`subject: "did:adi:{subject_did}"` — placeholder syntax inconsistent with all other examples'
   fix: Use a literal
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: A-117
@@ -180,8 +187,9 @@ defects:
     appears nowhere in the data model. `iss: "https://HOME@DAS1"` is not a valid URI'
   fix: Document or replace
   owner: null
-  status: Blocked(D5)
+  status: Open
   notes: null
+  blocked_by: D5
 - id: A-118
   severity: S2
   workstream: data-model
@@ -190,7 +198,7 @@ defects:
     at `users.adi.com`
   fix: De-brand
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: A-119
@@ -201,9 +209,10 @@ defects:
     drafts. No draft version cited anywhere'
   fix: Pin a draft; align
   owner: null
-  status: Blocked(D5)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D5
 - id: A-120
   severity: S2
   workstream: data-model
@@ -212,8 +221,9 @@ defects:
     vault and **user** vault. No user-vault discovery exists
   fix: Add discovery
   owner: null
-  status: Blocked(D10)
+  status: Open
   notes: null
+  blocked_by: D10
 - id: A-121
   severity: S2
   workstream: data-model
@@ -222,8 +232,9 @@ defects:
     hyphenated, under a URN grant key), paired with an empty `authorization_code: {}`'
   fix: Align or declare divergence
   owner: null
-  status: Blocked(D5)
+  status: Open
   notes: null
+  blocked_by: D5
 - id: A-122
   severity: S1
   workstream: data-model
@@ -232,9 +243,10 @@ defects:
     §10.2.3 delivers it by QR
   fix: Add binding + TTL
   owner: null
-  status: Blocked(D5)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D5
 - id: A-123
   severity: S1
   workstream: data-model
@@ -243,7 +255,7 @@ defects:
     Document-wide: `"nonce"` ×1, `"aud"` ×0, `"cnf"` ×0'
   fix: Add all three
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: A-124
@@ -255,9 +267,10 @@ defects:
     (zero occurrences document-wide)
   fix: Rebuild per D-802
   owner: null
-  status: Blocked(D6)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D6
 - id: A-125
   severity: S2
   workstream: data-model
@@ -265,8 +278,9 @@ defects:
   defect: §7.2 states examples use JWT VC formatting; B.2.4 is plain JSON-LD
   fix: Reconcile
   owner: null
-  status: Blocked(D6)
+  status: Open
   notes: null
+  blocked_by: D6
 - id: A-126
   severity: S2
   workstream: data-model
@@ -275,9 +289,10 @@ defects:
     prohibition, no minimum key size'
   fix: Declare MTI set
   owner: null
-  status: Blocked(D7)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D7
 - id: B-201
   severity: S1
   workstream: crypto-protocol
@@ -287,7 +302,7 @@ defects:
     metadata and claims sections", and the digest comes from `alg`'
   fix: Replace with a normative reference to RFC 7515 §5.2
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: B-202
@@ -300,7 +315,7 @@ defects:
     — so prose and flow directly contradict'
   fix: Change actor to the Interchange DAS
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: B-203
@@ -333,8 +348,9 @@ defects:
     not specify
   fix: Justify or withdraw
   owner: null
-  status: Blocked(D8)
+  status: Open
   notes: null
+  blocked_by: D8
 - id: B-206
   severity: S1
   workstream: crypto-protocol
@@ -343,8 +359,9 @@ defects:
     key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS
   fix: Specify the binding
   owner: null
-  status: Blocked(D11)
+  status: Open
   notes: null
+  blocked_by: D11
 - id: B-207
   severity: S2
   workstream: crypto-protocol
@@ -353,7 +370,7 @@ defects:
     this is local user verification (`UV=1`) inside an assertion, not a round trip'
   fix: Express as UV
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: B-208
@@ -364,8 +381,9 @@ defects:
     no non-exportability requirement — while the entire accountability claim rests on private-key control'
   fix: Set a normative floor
   owner: null
-  status: Blocked(D11)
+  status: Open
   notes: null
+  blocked_by: D11
 - id: B-209
   severity: S1
   workstream: crypto-protocol
@@ -375,7 +393,7 @@ defects:
     never how a link breaks'
   fix: Add
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: B-210
@@ -417,7 +435,7 @@ defects:
     `kid` in any header. Verifying an old VC after issuer rotation is impossible
   fix: Add lifecycle
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: B-214
@@ -439,8 +457,9 @@ defects:
     step 7). SD-JWT named in §3.16 but never used
   fix: Adopt SD-JWT VC or drop the claim
   owner: null
-  status: Blocked(D6)
+  status: Open
   notes: null
+  blocked_by: D6
 - id: B-216
   severity: S2
   workstream: crypto-protocol
@@ -449,7 +468,7 @@ defects:
     a different object'
   fix: Define or rename
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: B-217
@@ -470,9 +489,10 @@ defects:
     also uses `make_credential_offer` where B.2.1 is `make_vc_offer`
   fix: Align names
   owner: null
-  status: Blocked(D5)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D5
 - id: B-219
   severity: S3
   workstream: crypto-protocol
@@ -480,7 +500,7 @@ defects:
   defect: '`POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/`'
   fix: Rename
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: C-301
@@ -492,7 +512,7 @@ defects:
     — so no requirement in the document is normative'
   fix: Capitalise deliberately
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: C-302
@@ -513,7 +533,7 @@ defects:
   defect: '**No Conformance clause.** Mandatory once RFC 2119 is invoked'
   fix: Add
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: C-304
@@ -523,7 +543,7 @@ defects:
   defect: '**No Security Considerations** section'
   fix: Add
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: C-305
@@ -533,7 +553,7 @@ defects:
   defect: '**No Privacy Considerations** section'
   fix: Add
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: C-306
@@ -583,7 +603,7 @@ defects:
     are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks
   fix: Split normative/informative; complete
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: C-311
@@ -606,9 +626,10 @@ defects:
     deleted on 20 Aug, so the prefix now has **zero referent** in the document'
   fix: Restore ARD as a role, or rename all 18
   owner: null
-  status: Blocked(D1)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D1
 - id: D-402
   severity: S2
   workstream: architecture
@@ -617,9 +638,10 @@ defects:
     §3.14 describes IAL, §8.3.2 claims AAL. Cites SP 800-63-**3**; Rev. 4 is current
   fix: Split into three fields; update reference
   owner: null
-  status: Blocked(D8)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D8
 - id: D-403
   severity: S1
   workstream: architecture
@@ -630,9 +652,10 @@ defects:
     DIDs — so path-only differences collide (see A-110). No method definition exists'
   fix: Define the method; normalise every instance
   owner: null
-  status: Blocked(D2)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D2
 - id: D-404
   severity: S2
   workstream: architecture
@@ -644,8 +667,9 @@ defects:
     a human-facing identifier'
   fix: Define ABNF; fix all instances
   owner: null
-  status: Blocked(D3)
+  status: Open
   notes: null
+  blocked_by: D3
 - id: D-405
   severity: S2
   workstream: architecture
@@ -657,8 +681,9 @@ defects:
     at different Interchanges and cross-region uniqueness silently fails'
   fix: Decide; specify construction
   owner: null
-  status: Blocked(D9)
+  status: Open
   notes: null
+  blocked_by: D9
 - id: D-406
   severity: S2
   workstream: architecture
@@ -668,8 +693,9 @@ defects:
     global correlator'
   fix: Reconcile with the protocol
   owner: null
-  status: Blocked(D12)
+  status: Open
   notes: null
+  blocked_by: D12
 - id: D-407
   severity: S2
   workstream: architecture
@@ -679,9 +705,10 @@ defects:
     — incoherent, and used nowhere else
   fix: One registry, referenced everywhere
   owner: null
-  status: Blocked(D4)
+  status: auto
   notes: null
   check: auto
+  blocked_by: D4
 - id: D-408
   severity: S2
   workstream: architecture
@@ -700,7 +727,7 @@ defects:
   defect: '**DAA expanded two ways**: "Digital Address Application" and "Device Application Agent"'
   fix: Pick one
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: D-410
@@ -711,7 +738,7 @@ defects:
     is only one AGD in an ADI Network")'
   fix: Correct
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: D-411
@@ -764,7 +791,7 @@ defects:
     duplicates §7.3, §7.4, §8.5'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-502
@@ -774,7 +801,7 @@ defects:
   defect: §7.7.1 heading is two full sentences
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-503
@@ -793,7 +820,7 @@ defects:
   defect: '`# 6 Accountable digital identity reference model` — missing the period every other H1 has'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-505
@@ -804,7 +831,7 @@ defects:
     *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-506
@@ -823,7 +850,7 @@ defects:
   defect: §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2.
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-508
@@ -833,7 +860,7 @@ defects:
   defect: '`ADI Network User (AD-NU)` → `ADI-NU`'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-509
@@ -843,7 +870,7 @@ defects:
   defect: '`(\[Role}-Agent endpoint)` — mismatched bracket and brace'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-510
@@ -853,7 +880,7 @@ defects:
   defect: 'Figure 11 caption: "Creating **and** AGD"'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-511
@@ -863,7 +890,7 @@ defects:
   defect: '"All VC subjects and issuer by are registered ADI NETWORK DIDs" — garbled'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-512
@@ -873,7 +900,7 @@ defects:
   defect: '"assigned one more Verifiable Credentials" → "one **or** more"'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-513
@@ -883,7 +910,7 @@ defects:
   defect: '"HIDA usage is implementation and should be set" — missing word'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-514
@@ -893,7 +920,7 @@ defects:
   defect: §9.3 (Issuer flow) says "vetting of the **service provider**" ×2
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-515
@@ -903,7 +930,7 @@ defects:
   defect: §9.3 "returns the VC to the **SP agent**" — should be CI_AGENT
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-516
@@ -913,7 +940,7 @@ defects:
   defect: §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-517
@@ -923,7 +950,7 @@ defects:
   defect: '"provisions **an** CI_AGENT"'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-518
@@ -933,7 +960,7 @@ defects:
   defect: '"the Interchange **send** a vc_offer" ×2'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-519
@@ -943,7 +970,7 @@ defects:
   defect: '"**POST return** issue_vc_token" — malformed'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-520
@@ -971,7 +998,7 @@ defects:
   defect: 'Sentence truncated mid-word: "the service provider calls the get\_"'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-523
@@ -981,7 +1008,7 @@ defects:
   defect: '`[see W3C XXX]` placeholder'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-524
@@ -992,7 +1019,7 @@ defects:
     exist'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-525
@@ -1002,7 +1029,7 @@ defects:
   defect: '"(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions"'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-526
@@ -1012,7 +1039,7 @@ defects:
   defect: '"See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent"'
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: E-527
@@ -1052,7 +1079,7 @@ defects:
     RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader
   fix: Rewrite against stable anchors
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: F-602
@@ -1063,7 +1090,7 @@ defects:
     the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed'
   fix: Recover source; commit as Mermaid
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: F-603
@@ -1074,7 +1101,7 @@ defects:
     so number-derived links break on every renumber
   fix: Use explicit `<a id="">` anchors
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: F-604
@@ -1084,7 +1111,7 @@ defects:
   defect: ''
   fix: ''
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: F-605
@@ -1094,7 +1121,7 @@ defects:
   defect: Trailing whitespace — phantom git diffs
   fix: Strip (none are intentional line breaks)
   owner: null
-  status: Open
+  status: auto
   notes: null
   check: auto
 - id: F-606

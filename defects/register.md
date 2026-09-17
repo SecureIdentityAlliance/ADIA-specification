@@ -123,7 +123,7 @@ Nobody moves their own work to `Verified`. For the 64 automated defects the harn
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| E-501 | S2 | Verified |  | `auto` | L552 | `# ADI Network interchanges and platforms` — **unnumbered H1** between §6 and §7. Content largely duplicates §7.3, §7.4, §8.5 |  |  |
+| E-501 | S2 | Verified |  | `auto` | L552 | `# ADI Network interchanges and platforms` — **unnumbered H1** between §6 and §7. Content largely duplicates §7.3, §7.4, §8.5 |  | `3bd3f8e` |
 | E-502 | S2 | Open |  | `auto` | L672 | §7.7.1 heading is two full sentences |  |  |
 | E-503 | S3 | Open |  | — | L676 | §7.7.1.1 is an orphan H4 among H3 siblings |  |  |
 | E-504 | S3 | Open |  | `auto` | L484 | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  |  |
