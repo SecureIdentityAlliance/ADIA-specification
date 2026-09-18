@@ -203,6 +203,7 @@ CHECKS = {
 "F-602": lambda s: "media/image" not in s.text,
 "F-603": lambda s: _dangling(s) == set() and bool(re.search(r"\]\(#", s.text)),
 "F-604": lambda s: "\u00a0" not in s.text and "\u202f" not in s.text,
+"F-607": lambda s: not _unanchored(s),
 "F-605": lambda s: all(l == l.rstrip() for l in s.text.split("\n")),
 
 # ---- standing invariants: these must never regress ----
@@ -232,6 +233,7 @@ EXPLAIN = {
 "D-409": lambda s: [m.group(0) for m in re.finditer(r"[^.\n]{0,40}\(DAA\)", s.text)],
 "F-603": lambda s: (["no in-document links yet -- F-601 first"] if not re.search(r"\]\(#", s.text)
                     else ["link to #%s has no <a id=\"%s\"> anchor" % (r, r) for r in sorted(_dangling(s))]),
+"F-607": lambda s: _unanchored(s) or [],
 "F-604": lambda s: ["L%d  %s" % (i+1, l.strip()[:60]) for i, l in enumerate(s.text.split("\n")) if "\u00a0" in l or "\u202f" in l][:15],
 "F-605": lambda s: ["L%d" % (i+1) for i, l in enumerate(s.text.split("\n")) if l != l.rstrip()][:20],
 "E-506": lambda s: [l for l in re.findall(r"^(?:# (?:Appendix [A-Z]|[A-Z]\.)[^\n]*|\*\*Appendix [A-Z]\*\*)\s*$", s.text, re.M)],
@@ -293,6 +295,12 @@ for _cid, _ph in ABSENT.items():
     EXPLAIN[_cid] = _absent_explain(_ph)
 
 # ───────────────────────── helpers ─────────────────────────
+
+def _unanchored(s):
+    """Headings with no <a id> on the line above."""
+    L = s.text.split("\n")
+    return ["L%d  %s" % (i + 1, l[:70]) for i, l in enumerate(L)
+            if re.match(r"^#{1,4} ", l) and not (i and L[i - 1].startswith("<a id="))]
 
 def _dangling(s):
     """In-document links whose target anchor does not exist."""

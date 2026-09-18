@@ -64,6 +64,46 @@ for frag, aid in ANCHORS.items():
     lines.insert(hit, tag); added += 1
     text = "\n".join(lines)
 
+# 1b. anchor every remaining heading
+def _slug(h):
+    h = re.sub(r"^(?:Appendix [A-Z][.:\u2013\u2014-]?|[A-Z]\.(?:\d+(?:\.\d+)*\.?)?|\d+(?:\.\d+)*\.?)\s*", "", h)
+    h = re.sub(r"[*_`]", "", h)
+    return re.sub(r"[^a-z0-9]+", "-", h.lower()).strip("-") or "section"
+
+lines = text.split("\n")
+existing = set(re.findall(r'<a id="([^"]+)"', text))
+# first pass: which base names appear more than once? those all get parent-qualified
+_counts = {}
+for l in lines:
+    m = re.match(r"^(#{1,4}) (.*)$", l)
+    if m: _counts[_slug(m.group(2))] = _counts.get(_slug(m.group(2)), 0) + 1
+shared = {k for k, v in _counts.items() if v > 1}
+parents = {}                      # depth -> slug of most recent heading at that depth
+out, auto = [], 0
+i = 0
+while i < len(lines):
+    l = lines[i]
+    m = re.match(r"^(#{1,4}) (.*)$", l)
+    if m:
+        depth, title = len(m.group(1)), m.group(2).strip()
+        base = _slug(title)
+        parents[depth] = base
+        for d in list(parents):
+            if d > depth: del parents[d]
+        already = out and out[-1].startswith("<a id=")
+        if not already:
+            aid = base
+            if base in shared or aid in existing:            # shared name -> qualify with parent
+                par = parents.get(depth - 1)
+                aid = ("%s-%s" % (par, base)) if par else base
+            n = 2
+            while aid in existing:                           # still taken -> numeric suffix, last resort
+                aid = "%s-%d" % (base, n); n += 1
+            out.append('<a id="%s"></a>' % aid)
+            existing.add(aid); auto += 1
+    out.append(l); i += 1
+text = "\n".join(out)
+
 # 2. rewrite links by exact target
 rewritten = 0
 for old, new in TARGETS.items():
@@ -77,6 +117,6 @@ open(SPEC, "w", encoding="utf-8").write(text)
 ids  = set(re.findall(r'<a id="([^"]+)"', text))
 refs = set(re.findall(r"\]\(#([^)]+)\)", text))
 left = sorted(refs - ids)
-print("anchors added: %d   links rewritten: %d   links still unresolved: %d" % (added, rewritten, len(left)))
+print("targeted anchors added: %d   all-heading anchors added: %d   links rewritten: %d   unresolved: %d" % (added, auto, rewritten, len(left)))
 for r in left:
     print("  unresolved: #%s   (run: make explain ID=F-603)" % r)
