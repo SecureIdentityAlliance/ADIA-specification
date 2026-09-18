@@ -1075,9 +1075,9 @@ The user can now participate in the ADI-Network to:
 
 - Receive additional VCs by complying with Identification validation processes from Issuers (§ 11.1 Verifiable Credential Issuance Protocols).
 
-- Authorize requests from a Service Provider for a VC (See [<u>VC Presentation</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.rqh1pxmhaus7)).
+- Authorize requests from a Service Provider for a VC (See [VC Presentation](#10-vc-presentation).
 
-- Authorize VC issuance offers to obtain a VC from Credential Issuers (See [<u>VC Issuance Protocols</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.iryjgqua2c71)).
+- Authorize VC issuance offers to obtain a VC from Credential Issuers (See [VC Issuance Protocols](#9.-vc-issuance-protocols)).
 
 Depending upon governance policies a user may enroll starting at an Issuer or an Interchange.
 
@@ -1135,7 +1135,7 @@ The INTERCHANGE responds with success 
 
 The User now has a DA, DAA & USER_AGENT *(wallet)* and may obtain and use VCs with ADI Credential Issuers and Service Providers.
 
-# 9. Verifiable Credential Issuance Protocols
+# 9. VC Issuance Protocols
 
 ## 9.1 Schemas
 
