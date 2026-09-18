@@ -28,7 +28,7 @@ Alan Bachmann (<aabachmann@cvshealth.com>)
 
 **Editor:**
 
-Nathan Dent ([<u>nathan@adiassociation.org</u>](mailto:nathan@adiassociation.org))
+Nathan Dent ([nathan@adiassociation.org](mailto:nathan@adiassociation.org))
 
 **Material Changes:**
 
@@ -56,7 +56,7 @@ This document is a draft document that has NOT yet been approved by the ADIA Tec
 
 **Key words:**
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 \[RFC2119](#c.1 informative references) and [RFC8174](c.1 informative references) when, and only when, they appear in all capitals, as shown here.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 \[RFC2119](#informative-references) and [RFC8174](c.1 informative references) when, and only when, they appear in all capitals, as shown here.
 
 **Citation format:**
 
@@ -443,7 +443,7 @@ The basic steps in the process are: 
 
 **Proofing of Claims**
 
-1.  A Subject (most often an individual) presents evidence for a set of Claims to a Credential Issuer (i.e., a person or organization that is authorized to examine and validate the Claim evidence). The Claims required, which vary by Credential type, are identified in a Credential Schema. See [<u>W3C - Verifiable Credentials JSON Schema Specification</u>](https://www.w3.org/TR/vc-json-schema)for schema specification.    
+1.  A Subject (most often an individual) presents evidence for a set of Claims to a Credential Issuer (i.e., a person or organization that is authorized to examine and validate the Claim evidence). The Claims required, which vary by Credential type, are identified in a Credential Schema. See [W3C - Verifiable Credentials JSON Schema Specification](https://www.w3.org/TR/vc-json-schema)for schema specification.    
 
 2.  The Credential Issuer’s software assembles the Claims into a Credential and validates completeness against the Credential Schema. The package of Claims and Metadata is then signed using the Credential Issuer’s private key and becomes a VC.
 
@@ -595,6 +595,7 @@ Note: This document will be using JWT VC formatting in examples. Other formats m
 
 The verifier can check the signature by combining the metadata and claims sections to create a SHA256 hash. Using the public key from the issuers ADI DIDDoc, the signature is valid if the public key encryption of the hash matches the signature of the proof, using the specified encryption algorithm in the metadata.
 
+<a id="roles-and-authorities"></a>
 ## 6.3 Roles and Authorities
 
 Roles and authorities are defined as claims in an ADI-ROLE VC. Accountability and authority are cryptographically documented and enforced using public key cryptography and ADI-\[role\] VCs that define provider roles and authorities. Providers are defined in §8.4 and Members in §8.5.
@@ -724,7 +725,7 @@ An ADI-Network consists of a collection of Interchanges that each service users,
 
 VCs are stored and retrieved from an Agents published VC Vault endpoint. This may vary, some credential issuers may require the VC be stored in the CI’s Vault, others may allow the VC to be stored in the User Vault.  The CI can define the location of the vault endpoints it allows in the CI metadata.
 
-Domain Authorities (AGs) also publish agent endpoints to service ADI requests in their respective domains. See [Roles and Authorities](#6.3 roles and authorities) for a description of network participants.
+Domain Authorities (AGs) also publish agent endpoints to service ADI requests in their respective domains. See [Roles and Authorities](#roles-and-authorities) for a description of network participants.
 
 Agents communicate network requests using endpoints, the red line in the figure 4.
 
@@ -732,7 +733,7 @@ Agent endpoint metadata is obtained from GET ~*participant*/metadata.
 
 ADI-Network participant URLs can be obtained by calling the AGD with a DID or DA using ~agd/network_location.
 
-*Implementation option:  user, issuer, service provider and interchange digital addresses may contain a suffix containing ADI region.  For example, [<u>issuer1@ix3.region</u>](mailto:issuer1@ix3.region)1  or the interchange id can be globally unique.*
+*Implementation option:  user, issuer, service provider and interchange digital addresses may contain a suffix containing ADI region.  For example, [issuer1@ix3.region](mailto:issuer1@ix3.region)1  or the interchange id can be globally unique.*
 
 ## 7.2 ADI-Network software components
 
@@ -804,7 +805,7 @@ Once an owner is authenticated with its agent, the agent can perform ADI-Network
 
 The ADI wallet is a hybrid architecture consisting of a cloud User Agent hosted in the Interchange and a User Device Agent (native or web app) running on the user’s device.
 
-This model is similar to the [<u>eIDAS Trust Service Providers</u>](https://ec.europa.eu/digital-single-market/en/trust-services) Digital Signature legal binding model.
+This model is similar to the [eIDAS Trust Service Providers](https://ec.europa.eu/digital-single-market/en/trust-services) Digital Signature legal binding model.
 
 This hybrid model enables improved user experience and secure key management.  
 
@@ -901,7 +902,7 @@ Note: Create_agd does not have an authority_issuer since it is the root.  Imple
 
 The following request and response descriptions are used during AGD enrollment.
 
-[create_agd](#b.1.1-create_agd)
+[create_agd](#create-agd)
 
 <img src="media/image11.png" style="width:6.5in;height:4.98611in" />Figure 11. Creating an AGD
 
@@ -931,13 +932,13 @@ The AGD can now issue ADI-AGD VCs 
 
 The following request and response JSON objects are used during Interchange enrollment.
 
-- [enroll_ix](#b.1.3-enroll_ix)
+- [enroll_ix](#enroll-ix)
 
-- [vc_offer](#b.2.2-vc_offer)
+- [vc_offer](#vc-offer)
 
-- [issue_token](#b.2.3-issue_vc_token)
+- [issue_token](#issue-vc-token)
 
-- [ADI-IX role VC](#b.3.3-adi-ix-role-vc)
+- [ADI-IX role VC](#adi-ix-role-vc)
 
 <img src="media/image12.png" style="width:6.5in;height:3.36111in" />
 
@@ -947,13 +948,13 @@ Figure 12. Enrolling an Interchange
 
 The following request and response JSON objects are used during Issuer enrollment.
 
-- [enroll_issuer](#b.1.4-enroll_user)
+- [enroll_issuer](#enroll-user)
 
-- [vc_offer](#b.2.2-vc_offer)
+- [vc_offer](#vc-offer)
 
-- [issue_token](#b.2.3-issue_vc_token)
+- [issue_token](#issue-vc-token)
 
-- [ADI-ISSUER role VC](#b.3.4-adi-issuer-role-vc)
+- [ADI-ISSUER role VC](#adi-issuer-role-vc)
 
 Issuers are onboarded into the ADI Ecosystem by n Interchange. The process starts with the Interchange requiring the prospective Issuer to provide organizational information, a contact person for the organization and details to qualify the Issuer as a member in good business standing, financial status and criteria to meet the certification process established by the ADI Governance policies.
 
@@ -1001,13 +1002,13 @@ The issuer can now issue VCs to ADI participants.  
 
 The following request and response JSON objects are used during Service Provider enrollment.
 
-- [enroll_sp](#b.1.5-enroll_sp)
+- [enroll_sp](#enroll-sp)
 
-- [vc_offer](#b.2.2-vc_offer)
+- [vc_offer](#vc-offer)
 
-- [issue_token](#b.2.3-issue_vc_token)
+- [issue_token](#issue-vc-token)
 
-- [ADI-SP role VC](#b.3.5-adi-sp-role-vc)
+- [ADI-SP role VC](#adi-sp-role-vc)
 
 Service Providers are onboarded into the ADI-Network by an Interchange. The process starts with the Interchange requiring the prospective Service Provider to provide organizational information, a contact person for the organization and details required to join the ADI-Network.
 
@@ -1057,7 +1058,7 @@ The  service provider can now request VCs from ADI participants.  
 
 ## 8.5 Enrolling a user
 
-~ix/[enroll_user](#b.1.6-enroll_user)
+~ix/[enroll_user](#enroll-user)
 
 User Enrollment
 
@@ -1075,9 +1076,9 @@ The user can now participate in the ADI-Network to:
 
 - Receive additional VCs by complying with Identification validation processes from Issuers (§ 11.1 Verifiable Credential Issuance Protocols).
 
-- Authorize requests from a Service Provider for a VC (See [VC Presentation](#10-vc-presentation).
+- Authorize requests from a Service Provider for a VC (See [VC Presentation](#vc-presentation).
 
-- Authorize VC issuance offers to obtain a VC from Credential Issuers (See [VC Issuance Protocols](#9.-vc-issuance-protocols)).
+- Authorize VC issuance offers to obtain a VC from Credential Issuers (See [VC Issuance Protocols](#vc-issuance)).
 
 Depending upon governance policies a user may enroll starting at an Issuer or an Interchange.
 
@@ -1135,6 +1136,7 @@ The INTERCHANGE responds with success 
 
 The User now has a DA, DAA & USER_AGENT *(wallet)* and may obtain and use VCs with ADI Credential Issuers and Service Providers.
 
+<a id="vc-issuance"></a>
 # 9. VC Issuance Protocols
 
 ## 9.1 Schemas
@@ -1223,7 +1225,8 @@ returns success and VC or metadata to the user
 
 **USER_AGENT -\> CI_AGENT: Success**
 
-# 10. Verifiable Credential Presentation
+<a id="vc-presentation"></a>
+# 10. VC Presentation
 
 ## 10.1 Service Provider
 
@@ -1335,6 +1338,7 @@ The Agent will return the  DID_DOC
 
 The agent can now verify the signature of the signer, using the Public Key from the  DIDDoc & cryptography signature algorithm listed.
 
+<a id="additional-use-cases"></a>
 # 11. Additional Use Cases
 
 The following are additional use cases that can be enabled in an ADI-Network.
@@ -1362,6 +1366,7 @@ Service providers may not want to hold sensitive PII, instead just relying on AD
 This appendix contains the informative references that are used in this document.
 While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
 
+<a id="informative-references"></a>
 ## C.1 Informative References
 
 The following referenced documents are not required for the application of this document but may assist the reader with regard to a particular subject area.
@@ -1388,6 +1393,7 @@ This document is based on and makes use of the following external standards:
 
 ## B.1 Enrollment
 
+<a id="create-agd"></a>
 ### B.1.1 create_agd
 
 JWT create request is signed by the AGD private key, validated by the public key in the enroll request.
@@ -1425,6 +1431,7 @@ POST ~agd/create_agd
 }
 ```
 
+<a id="enroll-ix"></a>
 ### B.1.2 enroll_ix
 
 JWT create request is signed by the interchange private key, validated by the public key in the enroll request.
@@ -1462,6 +1469,7 @@ POST ~agd/enroll_ix
 }
 ```
 
+<a id="enroll-issuer"></a>
 ### B.1.3 enroll_issuer
 
 ```json
@@ -1482,6 +1490,7 @@ POST ~agd/enroll_ix
 }
 ```
 
+<a id="enroll-sp"></a>
 ### B.1.4 enroll_sp
 
 ```json
@@ -1502,6 +1511,7 @@ POST ~agd/enroll_ix
 }
 ```
 
+<a id="enroll-user"></a>
 ### B.1.5 enroll_user
 
 ```json
@@ -1536,6 +1546,7 @@ POST ~agd/enroll_ix
 }
 ```
 
+<a id="vc-offer"></a>
 ### B.2.2 vc_offer
 
 POST ~user/vc_offer
@@ -1559,6 +1570,7 @@ POST ~user/vc_offer
 }
 ```
 
+<a id="issue-vc-token"></a>
 ### B.2.3 issue_vc_token
 
 POST ~issuer/issue_vc_token
@@ -1689,6 +1701,7 @@ POST ~issuer/issue_vc_token
 }
 ```
 
+<a id="adi-ix-role-vc"></a>
 ### B.2.8 ADI-IX role VC
 
 ```json
@@ -1735,6 +1748,7 @@ POST ~issuer/issue_vc_token
 }
 ```
 
+<a id="adi-issuer-role-vc"></a>
 ### B.2.9 ADI-ISSUER role VC
 
 ```json
@@ -1780,6 +1794,7 @@ POST ~issuer/issue_vc_token
 }
 ```
 
+<a id="adi-sp-role-vc"></a>
 ### B.2.10 ADI-SP role VC
 
 ```json

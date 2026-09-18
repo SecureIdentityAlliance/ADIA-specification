@@ -176,12 +176,12 @@ with the disclosures shown separately. §8.2's sentence "This document will be u
 
 ## Part 3 — Workstream B: cryptography and protocol
 
-### <a id="err-replace-the-verification-paragraph-in-82"></a>B-201 — Replace the verification paragraph in §8.2
+### B-201 — Replace the verification paragraph in §8.2
 Delete from "The verifier can check the signature by combining…" to "…signature of the proof." Replace with:
 
 > Signatures on ADI credentials, presentations and requests are JSON Web Signatures [RFC 7515]. A verifier MUST validate a signature using the procedure in RFC 7515 §5.2: reconstruct the signing input as `BASE64URL(UTF8(protected header)) || '.' || BASE64URL(payload)`, select the algorithm from the `alg` header parameter, locate the key identified by `kid` in the signer's DIDdoc, and verify according to that algorithm. Verifiers MUST reject `alg` values not in §D7 and MUST reject any token whose `kid` does not resolve to a key in the signer's current DIDdoc.
 
-### <a id="err-fix-the-user-enrollment-sequence-in-105"></a>B-202, B-203 — Fix the user enrollment sequence in §10.5
+### B-202, B-203 — Fix the user enrollment sequence in §10.5
 The User Agent cannot issue the User's own role credential. Corrected message list (replace from `DAA -> USER_AGENT` through `Sign and create ADI Network User VC`):
 
 ```
@@ -201,7 +201,7 @@ IX_DAS      -> DAA           : Return DA, DID, ADI-USER-VC
 
 Key generation now precedes DID creation (B-203). The Interchange signs the role credential (B-202). Redraw Figure 15 to match.
 
-### <a id="err-reorder-54"></a>B-204 — Reorder §5.4
+### B-204 — Reorder §5.4
 Move the signing step out of "Proofing of Claims" and into "Issuing a Verifiable Credential" as the step **after** Holder approval:
 
 1. Proofing — CI verifies claims. Output: verified claims, unsigned.
@@ -210,7 +210,7 @@ Move the signing step out of "Proofing of Claims" and into "Issuing a Verifiable
 4. **Sign and issue** — CI signs. This is the first moment a VC exists.
 5. Store.
 
-### <a id="err-sole-control-of-the-vault-key-the-d11-design"></a>B-206, B-207, B-208 — Sole control of the vault key (the D11 design)
+### B-206, B-207, B-208 — Sole control of the vault key (the D11 design)
 New subsection §9.3.3.1 "Authorising a signing operation". Normative text:
 
 > 1. The User's vault signing key MUST be generated inside and never leave a hardware security module meeting FIPS 140-3 Level 2 or higher; Level 3 is RECOMMENDED. The key MUST be marked non-exportable.
@@ -224,14 +224,14 @@ Step 2 is what replaces "Request Biometric approval" in §12.1.3 (B-207). Step 1
 
 **B-205:** with this design, claim AAL2 in §9.3.2, §9.3.3 and §A.1.1. Remove AAL3.
 
-### <a id="err-revocation-and-status"></a>B-209 — Revocation and status
+### B-209 — Revocation and status
 Every ADI credential (role and subject) carries a `status` claim referencing a **Token Status List** (IETF, companion to SD-JWT VC). Add §8.8 "Credential status":
 
 > Issuers MUST publish a status list for every credential type they issue and MUST include a `status.status_list` reference in each credential. Verifiers MUST fetch the referenced list and MUST reject credentials whose status is `revoked` or `suspended`. Status lists MUST be signed by the issuer and MUST carry `exp` no more than 24 hours after `iat`. Role-credential revocation propagates: revoking an ADI-IX-VC invalidates every credential whose chain passes through that Interchange.
 
 Root key rotation: the AGD publishes a new self-signed ADI-AGD-VC signed by **both** old and new keys for a 90-day overlap; verifiers MUST accept either during overlap. Add as §8.8.1.
 
-### <a id="err-the-verification-algorithm"></a>B-210 — The verification algorithm
+### B-210 — The verification algorithm
 New §12.3 "Presentation verification". This is the interoperability contract; write it as numbered normative steps:
 
 > A verifier receiving a presentation *VP* for a request *R* MUST perform every step below in order and MUST reject on the first failure.
@@ -251,17 +251,17 @@ New §12.3 "Presentation verification". This is the interoperability contract; w
 >
 > A verifier MAY cache the results of steps 7–10 for the lifetime of the shortest `status_list.exp` in the chain.
 
-### <a id="err-diddoc-response-precedence-key-ids"></a>B-211, B-212, B-213 — DIDdoc response, precedence, key IDs
+### B-211, B-212, B-213 — DIDdoc response, precedence, key IDs
 Add B.3.5 `did_doc` response — the `id_doc` object from the role-VC template above, plus `"proof"` = JWS by the enrolling Interchange (or self, for the AGD). §12.2 precedence rule:
 
 > When a public key appears in both a role credential's `id_doc` and a resolved DIDdoc, the **DIDdoc is authoritative**. A mismatch MUST be treated as a verification failure.
 
 B-213: every JOSE header carries `kid` = `<DID>#<fragment>`; DIDdocs retain rotated-out keys in `verificationMethod` with a `revoked` timestamp so old signatures still verify.
 
-### <a id="err-bind-mtls-to-the-did-hierarchy"></a>B-214 — Bind mTLS to the DID hierarchy
+### B-214 — Bind mTLS to the DID hierarchy
 §9.3.1: *"DAS-to-DAS connections MUST use mutual TLS. The client certificate's `subjectAltName` MUST contain a `uniformResourceIdentifier` equal to the connecting party's DID. The receiving DAS MUST verify the DID resolves to a DIDdoc whose `verificationMethod` includes the certificate's public key. A mismatch MUST close the connection."* That makes the X.509 layer a transport for the DID identity instead of a second trust hierarchy.
 
-### <a id="err-names"></a>B-216, B-218, B-219 — Names
+### B-216, B-218, B-219 — Names
 | Narrative says | Appendix says | Use |
 |---|---|---|
 | `vc_authorization_request` (§12.1.3) | `vc_authorization_token` (B.2.6) | Define both: the SP sends a `vc_request` (B.2.5); the user agent returns a `vc_authorization_token` to the vault. Delete the phrase `vc_authorization_request`. |
@@ -273,7 +273,7 @@ B-213: every JOSE header carries `kid` = `<DID>#<fragment>`; DIDdocs retain rota
 
 ## Part 4 — Workstream C: normative structure
 
-### <a id="err-make-the-requirements-normative"></a>C-301, C-302 — Make the requirements normative
+### C-301, C-302 — Make the requirements normative
 Two mechanical passes over the prose (not the examples):
 
 **Pass 1 — capitalise.** Every lowercase `must` / `shall` / `should` / `may` that expresses a requirement becomes `MUST` / `SHALL` / `SHOULD` / `MAY`. Every one that is merely descriptive ("a verifier may then choose…") gets rewritten to avoid the keyword ("a verifier can then choose…"). There are 25 to decide.
@@ -290,7 +290,7 @@ Two mechanical passes over the prose (not the examples):
 
 Add to §1: *"Terms defined in §3 are informative. Requirements appear only in §8–§12 and Appendix B."*
 
-### <a id="err-conformance-clause"></a>C-303 — Conformance clause
+### C-303 — Conformance clause
 New §2 (shift the change log to an appendix). Template:
 
 > ## 2. Conformance
@@ -300,7 +300,7 @@ New §2 (shift the change log to an appendix). Template:
 >
 > Requirements phrased with SHOULD and MAY do not affect conformance.
 
-### <a id="err-security-considerations-outline"></a>C-304 — Security Considerations (outline)
+### C-304 — Security Considerations (outline)
 Write one paragraph each; the review already identified the content:
 1. Trust anchor distribution and root key compromise (B-209 rotation)
 2. Interchange as a privileged party: what it can and cannot do with the vault key (B-206)
@@ -312,7 +312,7 @@ Write one paragraph each; the review already identified the content:
 8. Directory poisoning — authorisation of directory writes (D-412)
 9. mTLS/DID binding (B-214)
 
-### <a id="err-privacy-considerations-outline"></a>C-305 — Privacy Considerations (outline)
+### C-305 — Privacy Considerations (outline)
 1. Stable subject identifiers and verifier linkability (D12 — stated honestly)
 2. Interchange visibility of transaction metadata (§8.3)
 3. PII inside role credentials published to directories (D-413) — recommend: role credentials carry `legal_name` and a contact URI only; everything else moves to an encrypted enrollment record held by the enrolling party
@@ -321,7 +321,7 @@ Write one paragraph each; the review already identified the content:
 6. Retention and the right to erasure for signed artefacts
 7. Biometric data never leaves the device (B-207 step 6)
 
-### <a id="err-error-model"></a>C-306 — Error model
+### C-306 — Error model
 One object, used by every endpoint in Appendix B:
 
 ```json
@@ -330,13 +330,13 @@ One object, used by every endpoint in Appendix B:
 
 Registry of `error` codes: `invalid_request`, `invalid_signature`, `unknown_kid`, `expired`, `revoked`, `not_entitled`, `assurance_insufficient`, `schema_mismatch`, `duplicate`, `rate_limited`, `internal`. HTTP status mapping in a two-column table.
 
-### <a id="err-versioning"></a>C-307 — Versioning
+### C-307 — Versioning
 Issuer/IX/AGD metadata gains `"adia_versions_supported": ["3.0"]`. Every request carries `"adia_version": "3.0"`. A party receiving an unsupported version returns `invalid_request` with `error_description` naming the versions it supports. Minor versions are additive only.
 
-### <a id="err-registries"></a>C-308 — Registries
+### C-308 — Registries
 Three tables in a new Appendix D: role-VC types (D4), `vct` schema names (§11.1), error codes (C-306). Each with a registration rule ("TWG approval; specification required").
 
-### <a id="err-write-102-enrolling-an-interchange"></a>C-309 — Write §10.2 (Enrolling an Interchange)
+### C-309 — Write §10.2 (Enrolling an Interchange)
 Mirror §10.3's structure exactly:
 
 ```
@@ -352,7 +352,7 @@ IX_APPLICANT -> IX_DAS        : Provision DAS with credential and AGD endpoints
 
 Prose: four short paragraphs matching the §10.3 pattern.
 
-### <a id="err-1"></a>C-310, C-311
+### C-310, C-311
 Split Appendix C into **C.1 Normative** (RFC 2119, RFC 8174, RFC 7515, RFC 7517, RFC 7519, SD-JWT VC, Token Status List, OpenID4VCI, OpenID4VP, WebAuthn L3, DID Core, NIST SP 800-63-4, JSON Schema) and **C.2 Informative** (X.1254, X.1281, VCDM 2.0, eIDAS). Add `[W3C DM]` and `[W3C JS]` entries. Replace the RFC 2119/8174 Google Doc links with `https://www.rfc-editor.org/rfc/rfc2119` and `…/rfc8174`. Delete "To be completed". Copyright → 2026. Replace every "OASIS" with "ADIA".
 
 ---

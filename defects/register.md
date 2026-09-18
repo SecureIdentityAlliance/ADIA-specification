@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-18 |
 | Defects | 106 (67 with an automated check) |
-| Verified | 29 |
+| Verified | 30 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 24 |
-| Open | 53 |
+| Open | 52 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -76,7 +76,7 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 | B-216 | S2 | Open |  | `auto` | L1273 "vc_authorization_request" | `vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`, a different object | Define or rename |  |
 | B-217 | S2 | Open |  | — | L1245 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |  |
 | B-218 | S3 | Verified |  | `auto` | L1211/1542 "~issuer/issue_vc" | Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose also uses `make_credential_offer` where B.2.1 is `make_vc_offer` | Align names | `58a4bca` |
-| B-219 | S3 | Verified |  | `auto` | L1410 "~ard/" | `POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/` | Rename |  |
+| B-219 | S3 | Verified |  | `auto` | L1410 "~ard/" | `POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/` | Rename | `cd19202` |
 
 ## Workstream C — Normative structure and conformance
 
@@ -156,13 +156,13 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 
 ## Workstream F — References, diagrams and tooling
 
-6 defects · 1 verified · 5 with an automated check
+6 defects · 2 verified · 5 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | F-601 | S1 | Verified |  | `auto` | L59/727/879 "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors | `9df1ff6` |
 | F-602 | S2 | Open |  | `auto` | L421/436/490 "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid |  |
-| F-603 | S2 | Open |  | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors |  |
+| F-603 | S2 | Verified |  | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors |  |
 | F-604 | S3 | Open |  | `auto` | non-breaking spaces — document-wide |  |  |  |
 | F-605 | S3 | Open |  | `auto` | trailing whitespace — document-wide | Trailing whitespace — phantom git diffs | Strip (none are intentional line breaks) |  |
 | F-606 | S2 | Open |  | — | CI — no location | No automated gate. Every check run for this review is scriptable | JSON parse · fence-aware gremlin check · markdownlint · link checker |  |
