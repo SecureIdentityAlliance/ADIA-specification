@@ -104,7 +104,6 @@ ABSENT = {
 "E-525": ["2.2.1 Issue Verifiable Credential"],
 "E-524": ["figure 7.3", "figure 4.4.3"],
 "F-601": ["docs.google.com/document"],
-"F-602": ["media/image"],
 }
 
 def _absent_check(phrases):
@@ -203,6 +202,7 @@ CHECKS = {
 "F-602": lambda s: "media/image" not in s.text,
 "F-603": lambda s: _dangling(s) == set() and bool(re.search(r"\]\(#", s.text)),
 "F-604": lambda s: "\u00a0" not in s.text and "\u202f" not in s.text,
+"F-602": lambda s: "media/image" not in s.text and not _bad_figures(s),
 "F-607": lambda s: not _unanchored(s),
 "F-605": lambda s: all(l == l.rstrip() for l in s.text.split("\n")),
 
@@ -233,6 +233,8 @@ EXPLAIN = {
 "D-409": lambda s: [m.group(0) for m in re.finditer(r"[^.\n]{0,40}\(DAA\)", s.text)],
 "F-603": lambda s: (["no in-document links yet -- F-601 first"] if not re.search(r"\]\(#", s.text)
                     else ["link to #%s has no <a id=\"%s\"> anchor" % (r, r) for r in sorted(_dangling(s))]),
+"F-602": lambda s: (["L%d  %s" % (i+1, l.strip()[:70]) for i, l in enumerate(s.text.split("\n")) if "media/image" in l]
+                    + _bad_figures(s)),
 "F-607": lambda s: _unanchored(s) or [],
 "F-604": lambda s: ["L%d  %s" % (i+1, l.strip()[:60]) for i, l in enumerate(s.text.split("\n")) if "\u00a0" in l or "\u202f" in l][:15],
 "F-605": lambda s: ["L%d" % (i+1) for i, l in enumerate(s.text.split("\n")) if l != l.rstrip()][:20],
@@ -295,6 +297,17 @@ for _cid, _ph in ABSENT.items():
     EXPLAIN[_cid] = _absent_explain(_ph)
 
 # ───────────────────────── helpers ─────────────────────────
+
+def _bad_figures(s):
+    """Image links with empty alt text or a target file that does not exist."""
+    base = os.path.dirname(os.path.abspath(s.path))
+    out = []
+    for m in re.finditer(r"!\[([^\]]*)\]\(([^)]+)\)", s.text):
+        alt, tgt = m.group(1).strip(), m.group(2).strip()
+        if not alt: out.append("no alt text: %s" % tgt)
+        if not tgt.startswith("http") and not os.path.exists(os.path.join(base, tgt)):
+            out.append("missing file: %s" % tgt)
+    return out
 
 def _unanchored(s):
     """Headings with no <a id> on the line above."""

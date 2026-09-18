@@ -455,7 +455,9 @@ A structured <span class="mark">Credential includes metadata to describe Credent
 
 Claims are not restricted to fundamental identification characteristics and <span class="mark">can include, for example, digital employee ids, digital driver's licenses, and digital educational certificates.</span>
 
-<img src="media/image1.png" style="width:2.67269in;height:1.95956in" />
+![Verifiable Credential Structure](figures/fig-01-verifiable-credential-structure.svg)
+
+*Figure 1. Verifiable Credential Structure*
 
 *<span class="mark">Source: www.w3.org/TR/vc-data-model-2.0</span>*
 
@@ -471,7 +473,9 @@ In the digital marketplace customers and suppliers can be anywhere in the world,
 Figure 2 provides an overview of how credentials about a Subject are created, processed, and distributed with the consent of the Holder. It illustrates the marketplace functions of creating and issuing VCs, controlling their presentation, and delivering them to approved destinations. 
 
 <figure>
-<img src="media/image2.png" style="width:5.13889in;height:2.42639in" alt="A diagram of a company Description automatically generated" />
+![Digital Credential Marketplace](figures/fig-02-digital-credential-marketplace.svg)
+
+*Figure 2. Digital Credential Marketplace*
 <figcaption aria-hidden="true">A diagram of a company Description automatically generated</figcaption>
 </figure>
 
@@ -527,9 +531,9 @@ The SP makes a judgment call on the acceptability of the Holder (the prospective
 
 The Accountable Digital Identity (ADI) ecosystem includes all the entities in the ADI universe – participants, providers, users, systems and infrastructures. Figure 3 provides an illustration of this “big picture” perspective.
 
-<img src="media/image3.png" style="width:6.5in;height:3in" />
+![The ADI Ecosystem](figures/fig-03-adi-ecosystem.svg)
 
-Figure 3: The ADI ecosystem
+*Figure 3. The ADI Ecosystem*
 
 <a id="participants"></a>
 ### 5.5.2 Participants
@@ -646,8 +650,9 @@ The verifier can check the signature by combining the metadata and claims sectio
 
 Roles and authorities are defined as claims in an ADI-ROLE VC. Accountability and authority are cryptographically documented and enforced using public key cryptography and ADI-\[role\] VCs that define provider roles and authorities. Providers are defined in §8.4 and Members in §8.5.
 
-![Figure 4: ADI Roles](media/image4.png)
-Figure 4: ADI Roles
+![ADI Roles](figures/fig-04-adi-roles.svg)
+
+*Figure 4. ADI Roles*
 
 <a id="adi-network-providers"></a>
 ## 6.4 ADI-Network Providers
@@ -699,9 +704,9 @@ The root of signing trust begins at the AGD and extends to all participants and 
 
 Each ADI-ROLE is issued and signed by an ADI-Authority.  Role VCs designate which role VCs the holder has authority to issue and sign.
 
-<img src="media/image5.png" style="width:6.5in;height:3.31944in" />
+![ADI Roles and Chain of Trust](figures/fig-05-adi-roles-chain-of-trust.svg)
 
-Figure 5: ADI Roles & Chain of Trust
+*Figure 5. ADI Roles and Chain of Trust*
 
 <a id="governance"></a>
 ## 6.7 Governance 
@@ -905,9 +910,9 @@ The following defines a systems architecture and API endpoints for each provider
 
 The AGD maintains the master provider directory, which contains provider metadata, ADI-Network DID address and URL service endpoints.  AGD administrators access console settings with user agent / wallet authentication.  AGD keys are stored on the hardened vault.
 
-<img src="media/image6.png" style="width:6.5in;height:4.04167in" />
+![Authoritative Global Domain](figures/fig-06-authoritative-global-domain.svg)
 
-Figure 6: Authoritative Global Domain
+*Figure 6. Authoritative Global Domain*
 
 <a id="interchange-provider-architecture"></a>
 ### 7.3.2 Interchange provider architecture
@@ -916,7 +921,9 @@ The interchange maintains keys and ADI-ROLE VCs for credential issuers, service 
 
 The interchange supports location & identifier resolutions and performs auditing of all transactions,
 
-<img src="media/image7.png" style="width:6.5in;height:4.04167in" />Figure 7: Interchange Architecture
+![Interchange Architecture](figures/fig-07-interchange-architecture.svg)
+
+*Figure 7. Interchange Architecture*
 
 <a id="adi-network-overall-view"></a>
 ### 7.3.3 ADI-Network overall view
@@ -925,9 +932,9 @@ Interchanges and domain authorities (AGDs) all communicate directly using publis
 
 The Interchange offers a hybrid wallet service to ADI-Network Users, providers and interchange administrators.
 
-<img src="media/image8.png" style="width:6.5in;height:3.33333in" />
+![ADI Network](figures/fig-08-adi-network.svg)
 
-Figure 8: ADI-Network
+*Figure 8. ADI Network*
 
 <a id="adi-network-architecture-identifiers"></a>
 ## 7.4 Identifiers
@@ -941,9 +948,9 @@ All entities within the architecture are represented by a Digital Address which 
 
 Each Digital Address is bound to one or more DIDs and is assigned an ADI-ROLE VC by an ADI issuing authority.
 
-<img src="media/image9.png" style="width:6.5in;height:3.15278in" />
+![Digital Address](figures/fig-09-digital-address.svg)
 
-Figure 9: Digital Address
+*Figure 9. Digital Address*
 
 <a id="identifiers-hida"></a>
 ### 7.4.2 HIDA
@@ -964,9 +971,9 @@ DID addresses include network locations which enable global navigation and commu
 
 An ADI-Network DID bound to the Digital Address and may have the format of -  did:adi:issuer_6/r1/ix6.
 
-<img src="media/image10.png" style="width:6.5in;height:3.30556in" />
+![ADI Network DID Addressing](figures/fig-10-adi-network-did-addressing.svg)
 
-Figure 10. ADI-Network Addressing
+*Figure 10. ADI Network DID Addressing*
 
 <a id="enrollment"></a>
 # 8. Enrollment
@@ -982,7 +989,22 @@ The following request and response descriptions are used during AGD enrollment.
 
 [create_agd](#create-agd)
 
-<img src="media/image11.png" style="width:6.5in;height:4.98611in" />Figure 11. Creating an AGD
+```mermaid
+sequenceDiagram
+    autonumber
+    participant AGD
+    participant HSM as AGD HSM
+    participant VAULT as AGD Vault
+    AGD->>HSM: Generate root key pair (non-exportable)
+    HSM-->>AGD: Public key, key id
+    AGD->>AGD: POST ~agd/create_agd (self-signed with root key)
+    AGD->>AGD: Create AGD DID and DIDdoc (public key, service endpoints)
+    AGD->>AGD: Sign ADI-AGD role VC (issuer = subject)
+    AGD->>VAULT: Store ADI-AGD role VC
+    AGD->>AGD: Publish trust anchor and network directory
+```
+
+*Figure 11. Creating an AGD*
 
 This flow is the first step to create an ADI-Network.  An AGD must be created, which contains the root signing key for all other ADI signed transactions.
 
@@ -1019,9 +1041,25 @@ The following request and response JSON objects are used during Interchange enro
 
 - [ADI-IX role VC](#adi-ix-role-vc)
 
-<img src="media/image12.png" style="width:6.5in;height:3.36111in" />
+```mermaid
+sequenceDiagram
+    autonumber
+    participant IX as IX Applicant
+    participant AGD
+    participant VAULT as AGD Vault
+    participant DAS as IX DAS
+    IX->>IX: Generate key pair; store private key in HSM
+    IX->>AGD: POST ~agd/enroll_ix (public key, key id, digital address, enrollment form)
+    AGD->>AGD: Vet applicant against governance policy
+    AGD->>AGD: Create IX DID and DIDdoc from submitted public key
+    AGD->>AGD: Sign ADI-IX role VC (entitlements: Issuer, SP, User)
+    AGD->>VAULT: Store ADI-IX role VC
+    AGD->>AGD: Add Interchange to network directory
+    AGD-->>IX: Return DID, DIDdoc, ADI-IX role VC, directory endpoints
+    IX->>DAS: Provision DAS with credential and AGD endpoints
+```
 
-Figure 12. Enrolling an Interchange
+*Figure 12. Enrolling an Interchange*
 
 <a id="enrolling-an-issuer"></a>
 ## 8.3 Enrolling an Issuer
@@ -1040,9 +1078,29 @@ Issuers are onboarded into the ADI Ecosystem by n Interchange. The process start
 
 The governing body within the Interchange may approve or reject requests to enroll into the Interchange and the ADI ecosystem. Successful approval of an entity as an Issuer results in a Digital Address, DID (i.e. ISSUER_ID) and network VC being created. A VC is issued by the Interchange using information used to verify the Issuer. The VC may also enforce additional policies to ensure that the Issuer can issue Digital Addresses to Users or issue Verifiable Credentials with a certain Assurance Level. 
 
-<img src="media/image13.png" style="width:6.5in;height:3.38889in" />
+```mermaid
+sequenceDiagram
+    autonumber
+    participant ISSUER as Issuer
+    participant IX as Interchange
+    participant CI as CI Agent
+    participant VAULT as IX Vault
+    participant AGD
+    ISSUER->>IX: POST ~ix/enroll_issuer (enrollment form)
+    IX->>IX: Vet applicant against network policy
+    IX->>CI: Provision CI Agent; generate keys in agent HSM
+    IX->>IX: Create Issuer DID and DIDdoc
+    IX->>CI: POST vc_offer (ADI-ISSUER role VC)
+    CI->>CI: Sign issue_vc_token with Issuer private key
+    CI-->>IX: issue_vc_token
+    IX->>IX: Verify token signer = Issuer DID; sign ADI-ISSUER role VC
+    IX->>VAULT: Store ADI-ISSUER role VC
+    IX->>AGD: List Issuer in network directory
+    IX-->>CI: Return ADI-ISSUER role VC
+    CI-->>ISSUER: Notification of successful enrollment
+```
 
-Figure 13. Enrolling an Issuer
+*Figure 13. Enrolling an Issuer*
 
 The Issuer administration applies to the Interchange to join the ADI ecosystem as an Issuer. 
 
@@ -1103,9 +1161,29 @@ The SP Agent will list the Service Provider in the AGD Service Provider Director
 
 The SP Agent is now ready to accept and process ADI-Network requests.
 
-<img src="media/image14.png" style="width:6.5in;height:3.27778in" />
+```mermaid
+sequenceDiagram
+    autonumber
+    participant SP as Service Provider
+    participant IX as Interchange
+    participant SPA as SP Agent
+    participant VAULT as IX Vault
+    participant AGD
+    SP->>IX: POST ~ix/enroll_sp (enrollment form)
+    IX->>IX: Vet applicant against network policy
+    IX->>SPA: Provision SP Agent; generate keys in agent HSM
+    IX->>IX: Create SP DID and DIDdoc
+    IX->>SPA: POST vc_offer (ADI-SP role VC)
+    SPA->>SPA: Sign issue_vc_token with SP private key
+    SPA-->>IX: issue_vc_token
+    IX->>IX: Verify token signer = SP DID; sign ADI-SP role VC
+    IX->>VAULT: Store ADI-SP role VC
+    IX->>AGD: List Service Provider in network directory
+    IX-->>SPA: Return ADI-SP role VC
+    SPA-->>SP: Notification of successful enrollment
+```
 
-Figure 14. Enrolling a Service Provider
+*Figure 14. Enrolling a Service Provider*
 
 The service provider submits an enrollment request to the interchange. The request includes required information about the  service provider.   This request may be submitted via a web form at the Interchange or other method.
 
@@ -1166,9 +1244,33 @@ Depending upon governance policies a user may enroll starting at an Issuer or an
 
 The following describes when a user enrolls at an Interchange.
 
-<img src="media/image15.png" style="width:6.5in;height:3.38889in" />
+```mermaid
+sequenceDiagram
+    autonumber
+    actor USER as User
+    participant DAA as Device App (DAA)
+    participant DAS as IX DAS
+    participant CI as CI Agent
+    participant UA as Cloud User Agent
+    participant AGD
+    USER->>DAA: Request enrollment; complete forms; accept T&Cs
+    DAA->>DAA: Generate FIDO credential (user verification enrolled)
+    DAA->>DAS: POST ~ix/enroll_user (FIDO public key, HIDA if required, forms)
+    DAS->>DAS: Check Digital Address uniqueness; verify HIDA per region policy
+    opt Interchange outsources identity proofing
+        DAS->>CI: Request identity proofing
+        CI-->>DAS: Proofing result (IAL)
+    end
+    DAS->>UA: Provision Cloud User Agent; create vault signing key in HSM
+    DAS->>DAS: Create User DID and DIDdoc (binds FIDO key and vault key)
+    DAS->>DAS: Sign ADI-USER role VC with Interchange key
+    DAS->>UA: Store ADI-USER role VC in user vault
+    DAS->>AGD: Register User DID in directory
+    DAS-->>DAA: Return Digital Address, DID, ADI-USER role VC
+    DAA-->>USER: Enrollment complete
+```
 
-Figure 15. Enrolling a User
+*Figure 15. Enrolling a User*
 
 The user uses the INTERCHANGE “wallet” web, mobile or computer DAA *(& associate cloud agent)*  to enroll with the INTERCHANGE.
 
@@ -1252,16 +1354,56 @@ The user agent  sends the signed issuance_token back to the issuer agent, who w
 <a id="credential-issuer-high-level-flow"></a>
 ### 9.2.1 High Level Flow
 
-<img src="media/image16.png" style="width:6.5in;height:3.08333in" />
+```mermaid
+sequenceDiagram
+    autonumber
+    participant CI as Credential Issuer
+    participant CIA as CI Agent
+    participant UA as User Agent
+    actor USER as User
+    participant VAULT as Vault
+    CI->>CIA: make_vc_offer (type, claims, bound subject DID)
+    CIA-->>UA: vc_offer (single-use, expires, tx_code)
+    UA->>USER: Present offer; request approval
+    USER-->>UA: Authenticate on device; approve
+    UA->>UA: Sign issue_vc_token with user key (WebAuthn-authorised)
+    UA->>CIA: issue_vc_token
+    CIA->>CIA: Verify signer = bound subject; sign VC
+    CIA->>VAULT: Store VC (issuer or user vault per DIDdoc service)
+    CIA-->>UA: Issuance complete
+```
 
-Figure 16. Issuing a VC - High-Level Flow
+*Figure 16. Issuing a VC — High-Level Flow*
 
 <a id="credential-issuer-detailed-flow"></a>
 ### 9.2.2 Detailed Flow
 
-<img src="media/image17.png" style="width:6.5in;height:3.40278in" />
+```mermaid
+sequenceDiagram
+    autonumber
+    actor USER as User
+    participant DAA as Device App (DAA)
+    participant UA as Cloud User Agent
+    participant CIA as CI Agent
+    participant ISS as Issuer
+    participant VAULT as Vault
+    ISS->>CIA: POST ~issuer/make_vc_offer {vct, claims, adia_subject}
+    CIA->>CIA: Create offer: pre-authorized code, tx_code, expiry
+    CIA-->>UA: vc_offer (QR / deep link)
+    UA->>DAA: Display offer; request consent
+    DAA->>USER: Show credential details and tx_code prompt
+    USER-->>DAA: Approve; user verification (UV=1)
+    DAA-->>UA: WebAuthn assertion, challenge = SHA-256(token payload)
+    UA->>UA: Verify assertion; HSM signs issue_vc_token
+    UA->>CIA: POST ~issuer/issue_vc {issue_vc_token}
+    CIA->>CIA: Verify signature; verify sub = adia_subject; check offer unexpired, unused
+    CIA->>CIA: Sign VC (SD-JWT VC with cnf = user key, status reference)
+    CIA->>VAULT: Store VC at endpoint from user DIDdoc service, else issuer vault
+    CIA-->>UA: Issued; vault location
+    UA-->>DAA: Notify user
+```
 
-Figure 17. Issuing a VC - Detailed Flow
+*Figure 17. Issuing a VC — Detailed Flow*
 
 <a id="credential-issuer-flow-description"></a>
 ### 9.2.3 Flow Description
@@ -1341,14 +1483,56 @@ The VP is then returned as a response to the service provider request.
 <a id="service-provider-high-level-flow"></a>
 ### 10.1.1 High Level Flow
 
-<img src="media/image18.png" style="width:6.5in;height:3.40278in" />
+```mermaid
+sequenceDiagram
+    autonumber
+    participant SP as Service Provider
+    participant SPA as SP Agent
+    participant UA as User Agent
+    actor USER as User
+    participant VAULT as Vault
+    SP->>SPA: Request presentation (accepted types, assurance floor)
+    SPA->>UA: vc_request {nonce, aud, exp, schemas_accepted, min_ial, min_aal}
+    UA->>USER: Show what is requested; ask consent
+    USER-->>UA: Authenticate on device; approve disclosure
+    UA->>VAULT: Fetch VC
+    VAULT-->>UA: VC
+    UA->>UA: Build VP bound to nonce and aud; sign with user key
+    UA->>SPA: VP
+    SPA->>SPA: Verify per §12.3 (signatures, chain, entitlement, status, assurance)
+    SPA-->>SP: Verified claims
+```
 
-Figure 18. Requesting a VC - High-Level Flow
+*Figure 18. Requesting a VC — High-Level Flow*
 
 <a id="service-provider-detailed-flow"></a>
 ### 10.1.2 Detailed Flow
 
-<img src="media/image19.png" style="width:6.5in;height:3.40278in" />Figure 19. Service Provider Requests a VC
+```mermaid
+sequenceDiagram
+    autonumber
+    participant SP as Service Provider
+    participant SPA as SP Agent
+    participant UA as Cloud User Agent
+    participant DAA as Device App (DAA)
+    actor USER as User
+    participant VAULT as Vault
+    SP->>SPA: Present-credential request for User
+    SPA->>UA: POST vc_request {nonce, aud, state, exp, schemas_accepted, min_ial, min_aal}
+    UA->>DAA: Request consent; list credentials and claims to disclose
+    DAA->>USER: Consent screen
+    USER-->>DAA: Approve; select claims; user verification (UV=1)
+    DAA-->>UA: WebAuthn assertion, challenge = SHA-256(VP payload)
+    UA->>VAULT: Fetch VC and disclosures
+    VAULT-->>UA: VC (SD-JWT) and selected disclosures
+    UA->>UA: Verify assertion; HSM signs KB-JWT with nonce, aud
+    UA->>SPA: VP {SD-JWT VC, disclosures, KB-JWT} + state
+    SPA->>SPA: §12.3: nonce/aud match, VP sig, VC sig, cnf, status, chain to AGD, entitlement, assurance, schema
+    SPA-->>SP: Verified claims, or rejection with error code
+    UA-->>DAA: Presentation delivered
+```
+
+*Figure 19. Service Provider Requests a VC*
 
 <a id="service-provider-flow-description"></a>
 ### 10.1.3 Flow Description
@@ -1418,7 +1602,19 @@ VC issuers and subjects can be validated  by using their VC DID to request thei
 
 To request the DIDDoc, the service provider calls get_did_doc.
 
-<img src="media/image20.png" style="width:6.5in;height:3.94444in" />Figure 20. Service Provider Requests a DID Document
+```mermaid
+sequenceDiagram
+    autonumber
+    participant SPA as SP Agent
+    participant DAS as IX DAS (of the DID's Interchange)
+    SPA->>SPA: Parse DID; identify Interchange
+    SPA->>DAS: GET ~ix/did/{id}
+    DAS-->>SPA: did_doc {verificationMethod[], service[], proof}
+    SPA->>SPA: Verify DIDdoc proof (signed by the enrolling Interchange)
+    SPA->>SPA: Select key by kid; DIDdoc is authoritative over role VC copy (B-212)
+```
+
+*Figure 20. Service Provider Requests a DID Document*
 
 The Service Provider asks its SP Agent for the DIDDoc public key of the signer, by a get_did_doc request containing the DID requested.
 

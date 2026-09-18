@@ -32,7 +32,7 @@ save:       ## record today's work in the local history
 	@python3 defects/render.py >/dev/null
 	@git add -A && git commit -q -m "$(m)" && echo "Saved: $(m)"
 
-.PHONY: help setup validate register status check ci save explain relocate anchors
+.PHONY: help setup validate register status check ci save explain relocate anchors figures
 
 explain:    ## why a check fails, e.g. make explain ID=E-501
 	@python3 defects/adia_checks.py $(SPEC) --explain $(ID)
@@ -43,3 +43,6 @@ relocate:   ## refresh every line reference in defects.yaml from its anchor phra
 
 anchors:    ## F-601/F-603: add stable anchors and rewrite the Google Docs links
 	@python3 defects/add_anchors.py
+
+figures:    ## F-602: swap media/imageN.png for named SVGs and Mermaid (needs spec/figures/)
+	@python3 defects/apply_figures.py

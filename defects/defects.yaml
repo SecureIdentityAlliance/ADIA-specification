@@ -1243,3 +1243,15 @@ defects:
   status: Open
   notes: null
   anchor: (CI — no location)
+- id: F-607
+  severity: S3
+  workstream: references-tooling
+  location: headings — document-wide
+  anchor: (every heading carries a stable anchor)
+  defect: Every heading should have a stable <a id> anchor above it so future links survive renumbering.
+    Catches new headings added without one.
+  fix: Run make anchors — adds only where missing, safe to repeat.
+  owner: null
+  status: auto
+  notes: null
+  check: auto
