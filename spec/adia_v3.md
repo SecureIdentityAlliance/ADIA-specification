@@ -56,7 +56,7 @@ This document is a draft document that has NOT yet been approved by the ADIA Tec
 
 **Key words:**
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 \[[RFC2119](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#bookmark=kix.dz6nownqsfba)\] and \[[RFC8174](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#bookmark=kix.e8fivmxekybu)\] when, and only when, they appear in all capitals, as shown here.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 \[RFC2119](#c.1 informative references) and [RFC8174](c.1 informative references) when, and only when, they appear in all capitals, as shown here.
 
 **Citation format:**
 
@@ -1042,7 +1042,7 @@ Once the SP_AGENT setup  is completed,  the Interchange sends a vc_offer for a
 
 The SP_AGENT signs the offer with its private_key returns an issue_vc_token.
 
-**SP_AGENT -\> INTERCHANGE: POST returns issue_vc_token**
+**SP_AGENT -\> INTERCHANGE: Return issue_vc_token**
 
 The interchange creates and signs an ADI-SP role VC for the service provider, stores it in the interchange vault, updates the AGD provider directory listing and returns the ADI-SP role VC to the SP agent.
 
@@ -1362,13 +1362,18 @@ Service providers may not want to hold sensitive PII, instead just relying on AD
 
 This appendix contains the informative references that are used in this document.
 While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
+
 ## C.1 Informative References
+
 The following referenced documents are not required for the application of this document but may assist the reader with regard to a particular subject area.
+**To be completed - which references are normative is for further study.**
+
 **[RFC2119]**
 Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, <<https://www.rfc-editor.org/info/rfc2119>>.
+
 **[RFC8174]**
 Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, <<https://www.rfc-editor.org/info/rfc8174>>.
-**To be completed - which references are normative is for further study.**
+
 This document is based on and makes use of the following external standards:
 1. W3C Verifiable Credentials Data Model V2.0 
 2. W3C Verifiable Credentials JSON Schema Specification

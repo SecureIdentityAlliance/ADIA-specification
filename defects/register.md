@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-17 |
 | Defects | 106 (67 with an automated check) |
-| Verified | 24 |
+| Verified | 25 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 25 |
-| Open | 57 |
+| Open | 56 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -119,7 +119,7 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 
 ## Workstream E — Editorial
 
-30 defects · 22 verified · 25 with an automated check
+30 defects · 23 verified · 25 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -141,7 +141,7 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 | E-516 | S3 | Verified | ND | `auto` | L949 "used during Issuer enrollment" | §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2 |  | `3da4398` |
 | E-517 | S3 | Verified | ND | `auto` | L? "provisions an CI_AGENT" | "provisions **an** CI_AGENT" |  | `8a0cfa6` |
 | E-518 | S3 | Verified | ND | `auto` | L1039 "Interchange send a" | "the Interchange **send** a vc_offer" ×2 |  | `53edaa7` |
-| E-519 | S3 | Open | ND | `auto` | L1045 "POST return" | "**POST return** issue_vc_token" — malformed |  | `2de76a7` |
+| E-519 | S3 | Verified | ND | `auto` | L1045 "POST return" | "**POST return** issue_vc_token" — malformed |  | `185c268` |
 | E-520 | S3 | Verified | ND | `auto` | L? "SERVICE_PROVIDER:9." | `SERVICE_PROVIDER:9.` / `USER:10.` — missing space after colon |  | `496fda2` |
 | E-521 | S3 | Verified | ND | `auto` | L1305 "Respond to SP Agent with VP" | Message text duplicates step 8 ("Respond to SP Agent with VP") |  | `116bff6` |
 | E-522 | S3 | Verified | ND | `auto` | L? "calls the get" | Sentence truncated mid-word: "the service provider calls the get\_" |  | `87300d5` |
