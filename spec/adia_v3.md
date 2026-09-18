@@ -372,7 +372,7 @@ Assertion made about a Subject
 
 - Digital identity ecosystems must facilitate and preserve personal privacy
 
-- Checking a user’s digital identity and asserted credentials should be straightforward and also reduce fraud and friction in the physical world
+- Checking a user’s digital identity and asserted credentials should be straight-forward and also reduce fraud and friction in the physical world
 
 - Support needs to be provided for the 20% of the global population that is without a digital identity today
 
@@ -1404,8 +1404,8 @@ POST ~agd/create_agd
     "request_id": "45bde61c-7da0-4f85-aed4-39d2d7508e99",
     "action": "CREATE",
     "role": "AGD",
-    "ard_da_user_name": "agd_admin",
-    "ard_da_global_name": "global_1",
+    "agd_da_user_name": "agd_admin",
+    "agd_da_global_name": "global_1",
     "agd_key_id": "cee86113-7989-4f04-b368-ab3127ccd51d",
     "agd_public_key": {
       "kty": "RSA",
@@ -1429,7 +1429,7 @@ POST ~agd/create_agd
 
 JWT create request is signed by the interchange private key, validated by the public key in the enroll request.
 
-POST ~ard/enroll_ix
+POST ~agd/enroll_ix
 
 ```json
 {
@@ -1441,15 +1441,15 @@ POST ~ard/enroll_ix
     "request_id": "a523335a-df3b-41cc-b371-88034beb1e5c",
     "action": "ENROLL",
     "role": "INTERCHANGE",
-    "ard_da_user_name": "interchange_admin",
-    "ard_da_region_name": "ix_1",
-    "ard_key_id": "f6e18f71-4311-4e09-8bfc-9980a90e4be7",
-    "ard_public_key": {
+    "agd_da_user_name": "interchange_admin",
+    "agd_da_region_name": "ix_1",
+    "agd_key_id": "f6e18f71-4311-4e09-8bfc-9980a90e4be7",
+    "agd_public_key": {
       "kty": "RSA",
       "n": "6yQ2uHyv4yyKNxrEjbWjAoZaGxGzO-0CKQsedoJHqr0aREu-KgKmgJK9McFAH-ZiNj9yc-SZVSi_wEYfEZYvB7iZwKy86bTotN9ZF4dA2iPuJCYpOC1xMo87kVv45Xjb9SURXcmpuUmPf4PN4ZdT07JRs41f126YUfePqvxDhzoX5q0to1OEBszsjZUKGjvKb7rdSOYqmuEmdfI2PlGBl6vq4nbIV_zxCAseN-CYUWKR3sylJX3Mg9N5V0W-WcOEvaNHumu73gIEjS8HhJmtZ636gXY3ePhzDeo2Mxurj902WZR3QFjrqSPp2-_OBalxxvdLOP-JMBRNEoNjjV5nRQ",
       "e": "AQAB"
     },
-    "ard_enrollment_form": {
+    "agd_enrollment_form": {
       "legal_name": "ADI Entity legal name",
       "address": "legal address",
       "email": "email@ix_1_domain.com",
@@ -1469,9 +1469,9 @@ POST ~ard/enroll_ix
   "request_id": "bb20b6aa-2063-45f5-ab20-9f2b4f1224ec",
   "action": "ENROLL",
   "role": "ISSUER",
-  "ard_da_user_name": "issuer_admin",
-  "ard_da_name": "issuer_1",
-  "ard_enrollment_form": {
+  "agd_da_user_name": "issuer_admin",
+  "agd_da_name": "issuer_1",
+  "agd_enrollment_form": {
     "legal_name": "ADI Entity legal name",
     "address": "legal address",
     "email": "email@issuer_1_domain.com",
@@ -1489,8 +1489,8 @@ POST ~ard/enroll_ix
   "request_id": "bb20b6aa-2063-45f5-ab20-9f2b4f1224ec",
   "action": "ENROLL",
   "role": "SERVICE_PROVIDER",
-  "ard_da_user_name": "adi_authority",
-  "ard_da_name": "service_provider_1",
+  "agd_da_user_name": "adi_authority",
+  "agd_da_name": "service_provider_1",
   "service_provider_enrollment_form": {
     "legal_name": "ADI Entity legal name",
     "address": "legal address",
@@ -1645,7 +1645,7 @@ POST ~issuer/issue_vc_token
   "request_id": "aa2f772-0c23-4d11-99b6-c7fdc932ca26",
   "status": "{ OK | FAILED | PENDING }",
   "error_msg": "error msg or null if none",
-  "adi_ard_role_vc": {
+  "adi_agd_role_vc": {
     "header": {
       "alg": "RS256",
       "type": "JWT"
@@ -1657,7 +1657,7 @@ POST ~issuer/issue_vc_token
         "subject": "did:adi:71a39c8d-0500-45d0-88d0-9c08d3931cce",
         "digital_address": "agd_admin@global_1",
         "role": "AGD",
-        "ard_da_global_name": "global_1",
+        "agd_da_global_name": "global_1",
         "id_doc": {
           "id": "did:adi:71a39c8d-0500-45d0-88d0-9c08d3931cce/region_1/",
           "public_key": {
@@ -1666,7 +1666,7 @@ POST ~issuer/issue_vc_token
             "e": "AQAB"
           }
         },
-        "ard_information": {
+        "agd_information": {
           "legal_name": "ADI Entity legal name",
           "address": "legal address",
           "email": "email@region_1.com",
@@ -1704,7 +1704,7 @@ POST ~issuer/issue_vc_token
       "subject": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1",
       "digital_address": "interchange_admin@ix_1",
       "role": "IX",
-      "ard_da_interchange_name": "ix_1",
+      "agd_da_interchange_name": "ix_1",
       "id_doc": {
         "id": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1",
         "public_key": {
@@ -1713,7 +1713,7 @@ POST ~issuer/issue_vc_token
           "e": "AQAB"
         }
       },
-      "ard_information": {
+      "agd_information": {
         "legal_name": "ADI Entity legal name",
         "address": "legal address",
         "email": "email@ix_1.com",
@@ -1758,7 +1758,7 @@ POST ~issuer/issue_vc_token
           "e": "AQAB"
         }
       },
-      "ard_information": {
+      "agd_information": {
         "legal_name": "ADI Entity legal name",
         "address": "legal address",
         "email": "email@issuer_1.com",
@@ -1803,7 +1803,7 @@ POST ~issuer/issue_vc_token
           "e": "AQAB"
         }
       },
-      "ard_information": {
+      "agd_information": {
         "legal_name": "ADI Entity legal name",
         "address": "legal address",
         "email": "email@service_provider_1.com",
