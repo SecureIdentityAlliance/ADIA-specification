@@ -593,7 +593,7 @@ The credential metadata describes the format of the VC and the definition of the
 
 Note: This document will be using JWT VC formatting in examples. Other formats may be used.
 
-The verifier can check the signature by combining the metadata and claims sections to create a SHA256 hash. Using the public key from the issuers ADI DIDDoc, the signature is valid if the public key encryption of the hash matches the signature of the proof, using the specified encryption algorithm in the metadata
+The verifier can check the signature by combining the metadata and claims sections to create a SHA256 hash. Using the public key from the issuers ADI DIDDoc, the signature is valid if the public key encryption of the hash matches the signature of the proof, using the specified encryption algorithm in the metadata.
 
 ## 6.3 Roles and Authorities
 
@@ -816,7 +816,7 @@ An ADI wallet authenticates the user with a NIST 800-63 Assurance Level AAL1, AA
 
 The user agent creates, manages and uses cryptographic keys securely stored at the Interchange.  Using these keys the User Agent will coordinate with the interchange DAS  to sign and perform ADI-Network transactions on behalf of the User.  
 
-The User Agent enrolls and authenticates the user with the Device Application Agent  using strong authenticators capable of AAL1, AAL2 or AAL3 assurance levels.
+The User Agent enrolls and authenticates the user with the Device Application Agent using strong authenticators capable of AAL1, AAL2 or AAL3 assurance levels.
 
 #### 7.2.3.2 Device Application Agent (DAA)
 
@@ -1153,9 +1153,9 @@ Issuers may issue one or more Verifiable Credentials to a User who has a Digital
 
 VC Issuance begins with the issuer vetting and validating the user’s identity per ADI-Network governance rules for the VC Schema to be issued.
 
-Once verified, the Issuer creates a make_credential_offer containing the VC information for the user to review and approve.
+Once verified, the Issuer creates a make_vc_offer containing the VC information for the user to review and approve.
 
-The issuer sends this make_credential_offer request to its agent for processing to obtain user approval to issue the VC.
+The issuer sends this make_vc_offer request to its agent for processing to obtain user approval to issue the VC.
 
 The issuer agent saves the VC offer and requests the user’s agent to return a user signed issuance_token to demonstrate acceptance.  
 
@@ -1181,9 +1181,9 @@ The user interacts with the issuer’s site to request a VC of a particular sche
 
 **USER -\> ISSUER: Request VC\n Credential Issuer verifies user**
 
-Once the user’s claims for the VC are verified, the credential issuer sends an ADI make_credential_offer request to its CI-Agent to make the offer to the user.  
+Once the user’s claims for the VC are verified, the credential issuer sends an ADI make_vc_offer request to its CI-Agent to make the offer to the user.  
 
-This make_credential_offer request contains the VC claims, values and schema type to be used.  The issuer sends this request to its agent to fulfill.
+This make_vc_offer request contains the VC claims, values and schema type to be used.  The issuer sends this request to its agent to fulfill.
 
 **ISSUER -\> CI_AGENT: POST ~issuer/make_vc_offer**
 
@@ -1207,7 +1207,7 @@ The USER_AGENT verifies the authentication and consent of the user and creates a
 
 The USER_AGENT sends the issue_vc token to the issuer agent’s endpoint to validate and issue the VC.
 
-**USER_AGENT -\> CI_AGENT: POST ~issuer/issue_vc**
+**USER_AGENT -\> CI_AGENT: POST ~issuer/issue_vc_token**
 
 The issuer agent validates the user's signature of the issue_vc token and retrieves VC claims based on the pre_authorized_code.   Using the user DID from the issue_vc token for the VC subject, a VC is generated and signed with DID private key.  The issuer agent  stores the VC in the VC Vault specified by the credential issuer.  (NOTE based on the issuer metadata the VC may be stored at the issuer or user vault.  The issuer_vault endpoint will point to the location the issuer supports.)
 

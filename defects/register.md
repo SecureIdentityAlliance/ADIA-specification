@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
-| Rendered | 2026-09-17 |
+| Rendered | 2026-09-18 |
 | Defects | 106 (67 with an automated check) |
 | Verified | 27 |
 | Fixed, awaiting verification | 0 |
@@ -160,7 +160,7 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| F-601 | S1 | Verified |  | `auto` | L59/727/879 "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors | `5f99cf4` |
+| F-601 | S1 | Verified |  | `auto` | L59/727/879 "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors | `9df1ff6` |
 | F-602 | S2 | Open |  | `auto` | L421/436/490 "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid |  |
 | F-603 | S2 | Open |  | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors |  |
 | F-604 | S3 | Open |  | `auto` | non-breaking spaces — document-wide |  |  |  |
