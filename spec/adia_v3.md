@@ -1,4 +1,4 @@
-**ACCOUNTABLE DIGITAL IDENTITY ARCHITECTURE SPECIFICATION **
+**ACCOUNTABLE DIGITAL IDENTITY ARCHITECTURE SPECIFICATION **
 
 **Version 3.0**
 
@@ -48,7 +48,7 @@ This document replaces or supersedes:
 
 **Abstract:**
 
-This document provides a reference model, concepts, terms, and protocols for an accountable digital identity system. 
+This document provides a reference model, concepts, terms, and protocols for an accountable digital identity system.
 
 **Status:**
 
@@ -77,9 +77,9 @@ Distributed under the terms of the Accountable Digital Identity Architecture (AD
 
 All text is normative unless otherwise labeled.
 
-The Accountable Digital Identity Architecture Network (“ADI-Network”) is a distributed identity system consisting of people, processes and technologies that together deliver global digital identity services for individuals.   
+The Accountable Digital Identity Architecture Network (“ADI-Network”) is a distributed identity system consisting of people, processes and technologies that together deliver global digital identity services for individuals.
 
-This document provides an overall perspective of the “ADI-Network” and introduces its fundamental concepts and terms. In addition, this document specifies protocols for onboarding Participants and for issuing and presenting Verifiable Credentials with the consent of the Participant. 
+This document provides an overall perspective of the “ADI-Network” and introduces its fundamental concepts and terms. In addition, this document specifies protocols for onboarding Participants and for issuing and presenting Verifiable Credentials with the consent of the Participant.
 
 This document includes:
 
@@ -111,7 +111,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 <a id="adi-administrator-adi-role-admin-administrator"></a>
 ## 3.2 ADI-Administrator (ADI-\[role\]-Admin) (“administrator”)
 
-> Organization role that performs administrative and management functions for an ADI-Interchange Provider. 
+> Organization role that performs administrative and management functions for an ADI-Interchange Provider.
 >
 > NOTE 1 to entry: Administrator services include but are not limited to reviewing and approving requests to enroll in the ADI-Network as a Credential Issuer or a Service Provider.
 >
@@ -122,7 +122,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 <a id="adi-agent-adi-role-agent-agent"></a>
 ## 3.3 ADI-Agent (ADI-\[role\]-Agent) (“agent”)
 
-> Role that represents an entity in an ADI-Interchange 
+> Role that represents an entity in an ADI-Interchange
 >
 > Note 1 to entry: Agents are primarily but not exclusively deployed and controlled by an ADI-Interchange.
 >
@@ -130,7 +130,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 >
 > Note 3 to entry: Agents include but are not restricted to SP-Agent, CI-Agent, User-Agent, and IX-Agent.
 >
-> Note 4 to entry: A User-Agent may include cloud-based wallet functions. A User App or Wallet App on the End User’s device interacts with the User-Agent in the ADI-Interchange. 
+> Note 4 to entry: A User-Agent may include cloud-based wallet functions. A User App or Wallet App on the End User’s device interacts with the User-Agent in the ADI-Interchange.
 
 <a id="adi-credential-issuer-adi-ci-credential-issuer"></a>
 ## 3.4 ADI-Credential Issuer (ADI-CI) (“Credential Issuer”)
@@ -144,13 +144,13 @@ This document entirely replaces the previous Accountable Digital identity Archit
 > Note 3 to entry: A Credential Issuer may be assigned an Assurance Level based on its reputation or on a risk assessment of its proofing processes.
 
 <a id="adi-governor"></a>
-## 3.5 ADI-Governor  
+## 3.5 ADI-Governor
 
 > Organization or system that provides governance functions in an ADI-Network.
 >
 > Note 1 to entry: An ADI-Governor may have a global or regional authority.
 >
-> Note 2 to entry: An ADI-Region scope may have organizational, political, geographic or jurisdictional significance. ADI-Regions may overlap.  
+> Note 2 to entry: An ADI-Region scope may have organizational, political, geographic or jurisdictional significance. ADI-Regions may overlap.
 
 <a id="adi-interchange-adi-ix-interchange"></a>
 ## 3.6 ADI-Interchange (ADI-IX) (“Interchange”)
@@ -161,14 +161,14 @@ This document entirely replaces the previous Accountable Digital identity Archit
 >
 > Note 2 to entry: An ADI-Network must include at least one ADI-Interchange.
 >
-> Note 3 to entry: An ADI-Region must include at least one ADI-Interchange. 
+> Note 3 to entry: An ADI-Region must include at least one ADI-Interchange.
 
 <a id="adi-interchange-provider-adi-ip-interchange-provider"></a>
 ## 3.7 ADI-Interchange Provider (ADI-IP) (“Interchange Provider”)
 
 > Organization offering ADI-Interchange services within a region of an ADI-Network
 >
-> Note 1 to entry: Services include Agent services for Issuers, Service Providers and Holders.  
+> Note 1 to entry: Services include Agent services for Issuers, Service Providers and Holders.
 >
 > Note 2 to entry: An ADI-IP may offer other value-added services, such as Identity Escrow, Vetting, and Payment Services (*future*).
 
@@ -193,14 +193,14 @@ This document entirely replaces the previous Accountable Digital identity Archit
 
 > Form that ADI-Network Providers complete when applying to join an ADI-Network.
 >
-> Note 1 to entry:  A NEW-SP Form includes the information required to enroll a Service Provider; a NEW-CI Form includes the information required to enroll a Credential Issuer; A NEW-IX Form includes the information required to enroll an Interchange Provider.
+> Note 1 to entry:  A NEW-SP Form includes the information required to enroll a Service Provider; a NEW-CI Form includes the information required to enroll a Credential Issuer; A NEW-IX Form includes the information required to enroll an Interchange Provider.
 
 <a id="adi-region-region"></a>
 ## 3.11 ADI-Region (region)
 
 > Virtual or physical scope or boundaries for the uniqueness of a Digital Address.
 >
-> Note 1 to entry: A region may include one or more ADI-Interchanges.  
+> Note 1 to entry: A region may include one or more ADI-Interchanges.
 >
 > Note 2 to entry: Entities within an ADI-Region are unique when they do not have matching HIDAs.
 
@@ -238,16 +238,16 @@ This document entirely replaces the previous Accountable Digital identity Archit
 
 > System that provides the overall ADI-Network trust anchor and searchable directory of ADI-Providers.
 >
-> Note 1 to entry:  An AGD provides services as defined on this specification, it is administered and operated by a Legal Entity capable of contractually enforcing and managing the ADI-Network.
+> Note 1 to entry:  An AGD provides services as defined on this specification, it is administered and operated by a Legal Entity capable of contractually enforcing and managing the ADI-Network.
 
 <a id="claim"></a>
 ## 3.16 Claim
 
 Assertion made about a Subject
 
-> Note 1 to entry: Assertions can refer to a Subject’s basic identity (e.g. name and birth date) or to related information (e.g., certificates, licenses, qualifiers, eligibilities, permissions).
+> Note 1 to entry: Assertions can refer to a Subject’s basic identity (e.g. name and birth date) or to related information (e.g., certificates, licenses, qualifiers, eligibilities, permissions).
 >
-> Note 2 to entry: Claims can be formatted in various ways (e.g., JSON, JWT, or SD-JWT).  
+> Note 2 to entry: Claims can be formatted in various ways (e.g., JSON, JWT, or SD-JWT).
 
 <a id="claim-evidence"></a>
 ## 3.17 Claim Evidence
@@ -261,7 +261,7 @@ Assertion made about a Subject
 
 > Set of claims about an individual.
 >
-> Note 1 to entry: A credential is transformed into a Verifiable Credential by adding metadata and a Credential Issuer signature. 
+> Note 1 to entry: A credential is transformed into a Verifiable Credential by adding metadata and a Credential Issuer signature.
 >
 > Note 2 to entry: The Claims in a credential can have different levels of assurance.
 
@@ -270,18 +270,18 @@ Assertion made about a Subject
 
 > Portable URI-based identifier associated with an entity.
 >
-> Note:  ADI uses DID address formatting and refers to a DID Document for the purpose of retrieving the public key.  ADI relies upon Role VCs which include the public key (DIDDoc) and is signed  by issuing authority and contains entitlement rights the holder has within the network.  Other DID features are not required.
+> Note:  ADI uses DID address formatting and refers to a DID Document for the purpose of retrieving the public key.  ADI relies upon Role VCs which include the public key (DIDDoc) and is signed  by issuing authority and contains entitlement rights the holder has within the network.  Other DID features are not required.
 >
-> Note 1 to entry: An example of a DID is:  did:example:123456abcdef
+> Note 1 to entry: An example of a DID is:  did:example:123456abcdef
 >
 > Note 2 to entry: A DID represents a private key whose public key is notarized in a DIDDoc which is bound to the DID.
 >
-> Note 3 to entry:  Every ADI-Network entity has a primary DID that includes its own cryptographic keys that can be used for digital signing and data encryption. ADI-Network entities may also have temporary, pairwise DIDs for session use. 
+> Note 3 to entry:  Every ADI-Network entity has a primary DID that includes its own cryptographic keys that can be used for digital signing and data encryption. ADI-Network entities may also have temporary, pairwise DIDs for session use.
 
 <a id="diddoc"></a>
 ## 3.20 DIDDoc
 
-> Document signed using the private key of the issuer.  
+> Document signed using the private key of the issuer.
 >
 > Note 1 to entry: A DIDDoc contains the associated DID, the public key of the DID, the verification method(s) and optionally other metadata.
 >
@@ -305,11 +305,11 @@ Assertion made about a Subject
 
 > URL that resolves to an ADI-Network service access point.
 >
-> Note 1 to entry: An “endpoint” or “agent endpoint” refers to any endpoint in the ADI-Network. A \[Role\]-Agent endpoint refers to an endpoint in an agent playing a specific role (e.g. IX-Agent endpoint refers to an endpoint in an Interchange Agent).   
+> Note 1 to entry: An “endpoint” or “agent endpoint” refers to any endpoint in the ADI-Network. A \[Role\]-Agent endpoint refers to an endpoint in an agent playing a specific role (e.g. IX-Agent endpoint refers to an endpoint in an Interchange Agent).
 >
-> Note 2 to entry: An endpoint identifies the source or destination agents for a protocol exchange using OIDC or ADIA protocols. 
+> Note 2 to entry: An endpoint identifies the source or destination agents for a protocol exchange using OIDC or ADIA protocols.
 >
-> Note 3 to entry: Agents must have at least one endpoint in order to communicate. 
+> Note 3 to entry: Agents must have at least one endpoint in order to communicate.
 >
 > Note 4 to entry: Agent endpoints can only communicate with specified other endpoints.
 
@@ -329,11 +329,11 @@ Assertion made about a Subject
 
 > Cryptographic hash computed over a specified set of Claims about a Subject.
 >
-> Note 1 to entry: The HIDA is a key driver for performing lookup operations to ensure that no two entities have the same DA within an ADI-Region. HIDAs are used to ensure uniqueness among entities that are applying for a DID and/or DA. 
+> Note 1 to entry: The HIDA is a key driver for performing lookup operations to ensure that no two entities have the same DA within an ADI-Region. HIDAs are used to ensure uniqueness among entities that are applying for a DID and/or DA.
 >
 > Note 2 to entry: The ID attributes to be used for HIDA calculations are specified by regional policies.
 >
-> Note 3 to entry: Agents that compute a HIDA are typically those that have access to the specified ID attributes, either through data entry, a scan operation, or a connector to the system of record. 
+> Note 3 to entry: Agents that compute a HIDA are typically those that have access to the specified ID attributes, either through data entry, a scan operation, or a connector to the system of record.
 >
 > Note 4 to entry: ID attributes of a User or organizational entity such as the ADI-Network Governor (regional), an Issuer, or a SP.
 
@@ -342,9 +342,9 @@ Assertion made about a Subject
 
 > Tamper-evident credential that has authorship that can be cryptographically verified.
 >
-> Note 1 to entry: A VC consists of metadata, one or more claims, and a signature.  See \[W3C DM\] for details.
+> Note 1 to entry: A VC consists of metadata, one or more claims, and a signature.  See \[W3C DM\] for details.
 >
-> Note 2 to entry: A VC could represent the same information as a physical credential such as a birth certificate. Addition of metadata and a digital signature can make a VC more tamper-evident and trustworthy than their physical counterparts. 
+> Note 2 to entry: A VC could represent the same information as a physical credential such as a birth certificate. Addition of metadata and a digital signature can make a VC more tamper-evident and trustworthy than their physical counterparts.
 
 <a id="vc-schema-credential-schema"></a>
 ## 3.26 VC Schema (credential schema)
@@ -353,7 +353,7 @@ Assertion made about a Subject
 >
 > Note 1 to entry: A schema may apply to all of or any portion of a VC. Multiple JSON schemas may describe a single VC, e.g., one schema for the Subject and another for related Claims.
 >
-> Note 2 to entry: A Credential Schema publishes the structure and contents of a Credential or Verifiable Credential.  See \[W3C JS\] W3C Verifiable Credentials JSON Schema Specification for more information.** **
+> Note 2 to entry: A Credential Schema publishes the structure and contents of a Credential or Verifiable Credential.  See \[W3C JS\] W3C Verifiable Credentials JSON Schema Specification for more information.** **
 
 <a id="vc-vault"></a>
 ## 3.27 VC Vault
@@ -364,19 +364,19 @@ Assertion made about a Subject
 # 4. Acronyms and abbreviations
 
 <a id="adi-role-vcs"></a>
-## 4.1 ADI-Role VCs 
+## 4.1 ADI-Role VCs
 
-> All participants of the ADI-Network are vetted and issued an ADI-ROLE VC which defines their role and authority to transact in the network. Each ADI-ROLE VC is defined by a schema of the same name. 
+> All participants of the ADI-Network are vetted and issued an ADI-ROLE VC which defines their role and authority to transact in the network. Each ADI-ROLE VC is defined by a schema of the same name.
 >
 > **ADI-AGD VC** ADI-ROLE VC of an AGD
 >
 > **ADI-INTERCHANGE VC** ADI-ROLE VC of an Interchange
 >
-> **ADI-ISSUER VC** ADI-ROLE VC of an authorized Issuer of User Credentials 
+> **ADI-ISSUER VC** ADI-ROLE VC of an authorized Issuer of User Credentials
 >
 > **ADI-USER VC** ADI-ROLE VC of a Holder (which could also be the VC Subject)
 >
-> **ADI-Network VC** ADI-ROLE VC of an AGD & Interchange.  
+> **ADI-Network VC** ADI-ROLE VC of an AGD & Interchange.
 
 <a id="acronyms-and-abbreviations-identifiers"></a>
 ## 4.2 Identifiers
@@ -397,7 +397,7 @@ Assertion made about a Subject
 <a id="digital-transformation"></a>
 ## 5.1 Digital transformation
 
-> Many of today’s digital innovations are part of the global transformation towards a digital society. Various forms of automation, such as robotics, digital twins, driverless cars, smart cities, and digital money, are advancing rapidly. Smartphones enable very powerful personal applications that use artificial intelligence and promote mobile living. The ability to securely and reliably identify people, things, and objects has become a ubiquitous requirement for the digital world.   
+> Many of today’s digital innovations are part of the global transformation towards a digital society. Various forms of automation, such as robotics, digital twins, driverless cars, smart cities, and digital money, are advancing rapidly. Smartphones enable very powerful personal applications that use artificial intelligence and promote mobile living. The ability to securely and reliably identify people, things, and objects has become a ubiquitous requirement for the digital world.
 >
 > There is a general agreement among industry experts, standards bodies, governments, and global enterprises that addressing the need for verifiable, accountable digital identities is a priority. There is a strong conviction among experts that:
 
@@ -417,7 +417,7 @@ Assertion made about a Subject
 
 - Validate (“proof”) the claims
 
-- Structure and cryptographically sign credentials 
+- Structure and cryptographically sign credentials
 
 - Issue verifiable (i.e., signed) credentials upon consent from the Subject or Holder
 
@@ -434,7 +434,7 @@ Assertion made about a Subject
 
 Every individual has their own unique identity – it is the sum of everything that makes them who they are and differentiates them from everyone else. No two people are truly indistinguishable – they can never claim to have identical characteristics, features, capabilities, experiences and relationships (not even twins). A person’s identity (called a credential) is typically a set of facts (called claims) that together serve as a unique identifier.
 
-Note: While other entities such as organizations, physical objects and information can be identified in a similar manner, this document addresses only identifiers for individuals. 
+Note: While other entities such as organizations, physical objects and information can be identified in a similar manner, this document addresses only identifiers for individuals.
 
 In the physical world, a person’s first identity is usually established by a group of trusted people. Parents choose a name, doctors record the birth details, and governments issue a formal birth certificate (which is a credential). The birth certificate can then be used to create extended identities for schools, employers, banks, medical facilities, and so on. Everything an individual does in life is tied to their identity, and that identity becomes the accountable party.
 
@@ -447,9 +447,9 @@ Establishing an equivalent identity model for the digital world is a priority th
 <a id="verifiable-credentials"></a>
 ## 5.3 Verifiable credentials
 
-<span class="mark">A Credential is a set of one or more Claims about an entity. </span>
+<span class="mark">A Credential is a set of one or more Claims about an entity. </span>
 
-A structured <span class="mark">Credential includes metadata to describe Credential properties including but not limited to the issuer ID, the validity date and time, a representative image, verification material, status information, and so on. </span>
+A structured <span class="mark">Credential includes metadata to describe Credential properties including but not limited to the issuer ID, the validity date and time, a representative image, verification material, status information, and so on. </span>
 
 <span class="mark">A credential is said to be verifiable</span> when it contains tamper-evident Claims and cryptographic proof from the issuer<span class="mark">. Verifiable Credentials (VCs), illustrated in Figure 1, are defined by World Wide Web Consortium standards. VCs can (but do not have to) represent the same data as is contained in physical credentials such as a passport, and they can also represent data that have no physical equivalent, such as the ownership of a bank account.</span>
 
@@ -470,7 +470,7 @@ A digital identity marketplace enables a customer (i.e., a person or organizatio
 
 In the digital marketplace customers and suppliers can be anywhere in the world, be subject to different laws, and operate across multiple time zones. Digital marketplaces are also subject to the network effect – the more consumers there are the more the suppliers want to participate, and vice versa.
 
-Figure 2 provides an overview of how credentials about a Subject are created, processed, and distributed with the consent of the Holder. It illustrates the marketplace functions of creating and issuing VCs, controlling their presentation, and delivering them to approved destinations. 
+Figure 2 provides an overview of how credentials about a Subject are created, processed, and distributed with the consent of the Holder. It illustrates the marketplace functions of creating and issuing VCs, controlling their presentation, and delivering them to approved destinations.
 
 <figure>
 ![Digital Credential Marketplace](figures/fig-02-digital-credential-marketplace.svg)
@@ -481,33 +481,33 @@ Figure 2 provides an overview of how credentials about a Subject are created, pr
 
 **Figure 2**: Digital Credential Marketplace
 
-The basic steps in the process are: 
+The basic steps in the process are:
 
 **Proofing of Claims**
 
-1.  A Subject (most often an individual) presents evidence for a set of Claims to a Credential Issuer (i.e., a person or organization that is authorized to examine and validate the Claim evidence). The Claims required, which vary by Credential type, are identified in a Credential Schema. See [W3C - Verifiable Credentials JSON Schema Specification](https://www.w3.org/TR/vc-json-schema)for schema specification.    
+1.  A Subject (most often an individual) presents evidence for a set of Claims to a Credential Issuer (i.e., a person or organization that is authorized to examine and validate the Claim evidence). The Claims required, which vary by Credential type, are identified in a Credential Schema. See [W3C - Verifiable Credentials JSON Schema Specification](https://www.w3.org/TR/vc-json-schema)for schema specification.
 
 2.  The Credential Issuer’s software assembles the Claims into a Credential and validates completeness against the Credential Schema. The package of Claims and Metadata is then signed using the Credential Issuer’s private key and becomes a VC.
 
 **Issuing a Verifiable Credential**
 
-1.  The Credential Issuer offers to issue the VC to the Holder via the Interchange to which they are connected; a Credential Issuer is enrolled with one and only one Interchange. 
+1.  The Credential Issuer offers to issue the VC to the Holder via the Interchange to which they are connected; a Credential Issuer is enrolled with one and only one Interchange.
 
-2.  The Holder and Subject are most often the same entity, but this is not mandatory. 
+2.  The Holder and Subject are most often the same entity, but this is not mandatory.
 
 3.  Upon receiving approval from the Holder, the Credential Issuer submits the VC to the Interchange where it is stored either in the interchange platform’s vault or, alternately, in the Holder’s Wallet. The Wallet may belong entirely to the Holder, be hosted by the platform, or be a hybrid of both.
 
-4.  Once stored in the Vault or Wallet, the VC is considered to be issued and is available for use in accordance with applicable rules or policies.      
+4.  Once stored in the Vault or Wallet, the VC is considered to be issued and is available for use in accordance with applicable rules or policies.
 
-**Requesting a Verifiable Presentation **
+**Requesting a Verifiable Presentation **
 
-1.  When a Holder requests a product or service from a Service Provider, it may be necessary to obtain information about the Holder. There can be multiple reasons for this, not the least of which are to (a) ensure the request is legal and (b) minimize the risk of payment default. 
+1.  When a Holder requests a product or service from a Service Provider, it may be necessary to obtain information about the Holder. There can be multiple reasons for this, not the least of which are to (a) ensure the request is legal and (b) minimize the risk of payment default.
 
-2.  The Service Provider requests a Verifiable Presentation from the Holder via an Interchange and specifies the Credential Schema(s) and specific Claims that are to be presented.  
+2.  The Service Provider requests a Verifiable Presentation from the Holder via an Interchange and specifies the Credential Schema(s) and specific Claims that are to be presented.
 
 3.  The Holder assembles a VP by selecting VCs (and Claims within a VC) to be included in the VP. A VP is very similar to a VC except that the payload is one or more VCs, and the Holder signs the VP.
 
-**Delivering a Verifiable Presentation **
+**Delivering a Verifiable Presentation **
 
 Upon receiving the Holder’s consent, the Vault or Wallet delivers the requested VP via the Interchange.
 
@@ -517,9 +517,9 @@ The Service Provider serves as a Verifier for the VP, the VC(s) it contains, and
 
 - Obtain the Public Key of the Issuer to test the VC signature; and
 
-- Obtain the Credential Schema(s) for the presented VCs to ensure the VCs are complete and in the correct format.  
+- Obtain the Credential Schema(s) for the presented VCs to ensure the VCs are complete and in the correct format.
 
-The SP makes a judgment call on the acceptability of the Holder (the prospective customer) based on the Claims received and the Assurance Levels of the VC, the Issuer and potentially the Holder.   
+The SP makes a judgment call on the acceptability of the Holder (the prospective customer) based on the Claims received and the Assurance Levels of the VC, the Issuer and potentially the Holder.
 
 \*\*\*\*
 
@@ -538,19 +538,19 @@ The Accountable Digital Identity (ADI) ecosystem includes all the entities in th
 <a id="participants"></a>
 ### 5.5.2 Participants
 
-Participants are organizations and individuals that either make use of the services offered by the ADI-Network or implement policies and practices. 
+Participants are organizations and individuals that either make use of the services offered by the ADI-Network or implement policies and practices.
 
 Participants can be Users, Providers (Credential or Business), or Governors:
 
-1.  A User is a person that wants to obtain a physical or digital service (or product) from a Service Provider.  This is a very common consumer/supplier transaction – a purchase at a store or an online marketplace, for example. Users can be classified as Subjects or Holder.
+1.  A User is a person that wants to obtain a physical or digital service (or product) from a Service Provider.  This is a very common consumer/supplier transaction – a purchase at a store or an online marketplace, for example. Users can be classified as Subjects or Holder.
 
 2.  A Service Provider is an organization that can supply the product or service but may require information in order to complete the transaction. The information required ranges from simple proof of humanity to a significant set of personal information.
 
 3.  A Credential Provider is an organization that can collect, validate, package and then issue the information that the Service Provider needs.
 
-4.  A Governor is an organization that sponsors and oversees an ADI-Network including its component systems.     
+4.  A Governor is an organization that sponsors and oversees an ADI-Network including its component systems.
 
-Participants must be enrolled in the ADI-Network to use its services (i.e., to use or provide accountable digital identity information). Participants may be enrolled in the same or different regions. 
+Participants must be enrolled in the ADI-Network to use its services (i.e., to use or provide accountable digital identity information). Participants may be enrolled in the same or different regions.
 
 <a id="roles"></a>
 ### 5.5.3 Roles
@@ -561,11 +561,11 @@ The roles currently defined for the ADI ecosystem are:
 
 1.  VC Wallet – A User connects to the ADI-Network via a Wallet role that can provide a VC Vault, VP functions, and VC disclosure control. The Wallet role can be deployed in the User’s device, in a User-provided cloud service, in an ADI interchange, or a hybrid configuration. The Wallet role interacts with the User on behalf of the ADI-Network.
 
-2.  VC Verifier – A Service Provider connects to the ADI-Network via a VC Verifier role that can receive and verify the format of a VP and its source and authenticity. The VC Verifier functions can be deployed by the Service Provider or by the Service Provider Agent (or a combination of both). 
+2.  VC Verifier – A Service Provider connects to the ADI-Network via a VC Verifier role that can receive and verify the format of a VP and its source and authenticity. The VC Verifier functions can be deployed by the Service Provider or by the Service Provider Agent (or a combination of both).
 
 3.  VC Issuer – A Credential Provider connects to the ADI-Network via a VC Issuer role that can prepare and issue a VC based on validated Claims. The VC Issuer functions can be deployed by the Credential Provider or by the VC Issuer Agent (or a combination of both).
 
-4.  AGD – An ADI-Network Governor connects to the ADI-Network via an Authoritative Domain Controller role that can establish management policies and controls at a global or regional level.    
+4.  AGD – An ADI-Network Governor connects to the ADI-Network via an Authoritative Domain Controller role that can establish management policies and controls at a global or regional level.
 
 Actors on an ADI-Network have an ADI-ROLE VC that defines:
 
@@ -587,9 +587,9 @@ Actors on an ADI-Network have an ADI-ROLE VC that defines:
 
 - Metadata for the actor & directory listing
 
-- HIDA information 
+- HIDA information
 
-- Digital Address 
+- Digital Address
 
 Roles, Authorities, confirmations and evidence are defined in ADI-ROLE VCSchemas.
 
@@ -702,52 +702,52 @@ Members enroll with an Interchange. Member uniqueness is enforced within an Inte
 
 The root of signing trust begins at the AGD and extends to all participants and members of the ADI-Network.
 
-Each ADI-ROLE is issued and signed by an ADI-Authority.  Role VCs designate which role VCs the holder has authority to issue and sign.
+Each ADI-ROLE is issued and signed by an ADI-Authority.  Role VCs designate which role VCs the holder has authority to issue and sign.
 
 ![ADI Roles and Chain of Trust](figures/fig-05-adi-roles-chain-of-trust.svg)
 
 *Figure 5. ADI Roles and Chain of Trust*
 
 <a id="governance"></a>
-## 6.7 Governance 
+## 6.7 Governance
 
 An ADI-Network is governed by the controlling authority of the AGD, the AGD-Provider. Governance is enforced with both contractual agreements and network policy configuration.
 
-This specification aims to support flexible governance models that may stand alone,  join,  link or refer to each other, thereby allowing for a truly global identity ecosystem.
+This specification aims to support flexible governance models that may stand alone,  join,  link or refer to each other, thereby allowing for a truly global identity ecosystem.
 
 <a id="adi-role-vc-schemas"></a>
 ### 6.7.1 ADI-ROLE VC Schemas
 
-VC governance rules may be defined in ADI-ROLE VC schema metadata.  
+VC governance rules may be defined in ADI-ROLE VC schema metadata.
 
-For example, an Interchange may issue an ADI-IX VC with authority to issue VCs up to a certain assurance level and be authorized to issue ADI-CI VCs but not ADI-SP VCs.  Other services may be offered such as vc_vault, identity_escrow, identity_broker, financial_services and other value-added services. 
+For example, an Interchange may issue an ADI-IX VC with authority to issue VCs up to a certain assurance level and be authorized to issue ADI-CI VCs but not ADI-SP VCs.  Other services may be offered such as vc_vault, identity_escrow, identity_broker, financial_services and other value-added services.
 
-Logic to process rules should be automated to work off of a configurable data set by network administrators.  The ADI DAS component is responsible for enforcing these rules based on configurable settings and verifiable attributes in ADI-ROLE VCs.
+Logic to process rules should be automated to work off of a configurable data set by network administrators.  The ADI DAS component is responsible for enforcing these rules based on configurable settings and verifiable attributes in ADI-ROLE VCs.
 
 Roles, authorities, confirmations and evidence can be defined in ADI-ROLE VC schemas.
 
 <a id="user-vc-schemas"></a>
 ### 6.7.2 User VC Schemas
 
-For user VC schemas, the AGD in conjunction with Interchanges, maintains a directory of schema definition and claims acceptable within the Network.  Interchanges and regions may maintain unique schemas to their jurisdiction.
+For user VC schemas, the AGD in conjunction with Interchanges, maintains a directory of schema definition and claims acceptable within the Network.  Interchanges and regions may maintain unique schemas to their jurisdiction.
 
-Credential Issuers are vetted and required to perform identity verification to a certain assurance level, and to issue certain types of VC Schema.  Each VC issued contains an assurance level and may contain evidence and risk attributes.  All of which can be used to create and enforce ADI-Network policies.
+Credential Issuers are vetted and required to perform identity verification to a certain assurance level, and to issue certain types of VC Schema.  Each VC issued contains an assurance level and may contain evidence and risk attributes.  All of which can be used to create and enforce ADI-Network policies.
 
 <a id="governance-hida"></a>
 ### 6.7.3 HIDA
 
-A HIDA is a hash of PII attributes to maintain privacy.   Which PII attributes are used to comprise a HIDA may vary.  
+A HIDA is a hash of PII attributes to maintain privacy.   Which PII attributes are used to comprise a HIDA may vary.
 
-HIDA construction, management and usage rules are defined within a region scope.  For example, in a global ADI-Network that uses national identity to create a HIDA, the HIDA may be comprised of: Name,  Date of Birth & National ID card \#.  In an enterprise it may be defined as name and employee ID.  In a social or community ADI-Network it may be simply phone or email.
+HIDA construction, management and usage rules are defined within a region scope.  For example, in a global ADI-Network that uses national identity to create a HIDA, the HIDA may be comprised of: Name,  Date of Birth & National ID card \#.  In an enterprise it may be defined as name and employee ID.  In a social or community ADI-Network it may be simply phone or email.
 
 HIDA usage is implementation-specific and should be set by ADI-Provider governance policies.
 
 <a id="authority-entitlements"></a>
 ### 6.7.4 Authority Entitlements
 
-Authority to perform ADI-Network transactions are defined in ADI-ROLE VCs.  Role VCs are checked to see if the holder of the VC has the authority to issue a VC of a schema type.  An ADI-Issuer would have the authority to issue VCs to an ADI-Network User.
+Authority to perform ADI-Network transactions are defined in ADI-ROLE VCs.  Role VCs are checked to see if the holder of the VC has the authority to issue a VC of a schema type.  An ADI-Issuer would have the authority to issue VCs to an ADI-Network User.
 
-ADI-Role VCs may specify value added services the authority has rights to issue.  For example, an interchange may have the authority entitlement  to issue VCs to ADI-Network providers to offer valid added financial services & payment processing.  Vetting and contractual agreements are enforced when on-boarding third-party value-added service providers. 
+ADI-Role VCs may specify value added services the authority has rights to issue.  For example, an interchange may have the authority entitlement  to issue VCs to ADI-Network providers to offer valid added financial services & payment processing.  Vetting and contractual agreements are enforced when on-boarding third-party value-added service providers.
 
 Actors on an ADI-Network have an ADI-ROLE VC that defines:
 
@@ -759,7 +759,7 @@ Actors on an ADI-Network have an ADI-ROLE VC that defines:
 
 - The types of role VCs this role VC is allowed to issue
 
-- The levels of VC assurance this role VC is  allowed to issue
+- The levels of VC assurance this role VC is  allowed to issue
 
 - The assurance level of the VC subject at the time of issuance
 
@@ -771,16 +771,16 @@ Actors on an ADI-Network have an ADI-ROLE VC that defines:
 
 - Metadata for the actor & directory listing
 
-- HIDA information 
+- HIDA information
 
-- Digital Address  
+- Digital Address
 
 <a id="users"></a>
 ### 6.7.5 Users
 
-ADI-Network User VCs must contain minimum information as required by ADI-Network governance policies. For example, participants may be required to be vetted to a certain level, and HIDA attributes may be collected from government, enterprise or financial KYC identities.  For lesser scope deployments minimum information may be an OTP via mobile or email, or other methods and information in between these scopes.
+ADI-Network User VCs must contain minimum information as required by ADI-Network governance policies. For example, participants may be required to be vetted to a certain level, and HIDA attributes may be collected from government, enterprise or financial KYC identities.  For lesser scope deployments minimum information may be an OTP via mobile or email, or other methods and information in between these scopes.
 
-Note: User VCs may be delegated to other users.  For example, a health identity may be delegated  between family members or care providers to pick up prescriptions. 
+Note: User VCs may be delegated to other users.  For example, a health identity may be delegated  between family members or care providers to pick up prescriptions.
 
 <a id="adi-network-architecture"></a>
 # 7. ADI-Network Architecture
@@ -788,9 +788,9 @@ Note: User VCs may be delegated to other users.  For example, a health identity
 <a id="overview"></a>
 ## 7.1 Overview
 
-An ADI-Network consists of a collection of Interchanges that each service users, credential issuers and service providers.  Interchanges communicate with each other through their agents' published endpoints.  In this way users, credential issuers and service providers can transact throughout the global ADI-Network.
+An ADI-Network consists of a collection of Interchanges that each service users, credential issuers and service providers.  Interchanges communicate with each other through their agents' published endpoints.  In this way users, credential issuers and service providers can transact throughout the global ADI-Network.
 
-VCs are stored and retrieved from an Agents published VC Vault endpoint. This may vary, some credential issuers may require the VC be stored in the CI’s Vault, others may allow the VC to be stored in the User Vault.  The CI can define the location of the vault endpoints it allows in the CI metadata.
+VCs are stored and retrieved from an Agents published VC Vault endpoint. This may vary, some credential issuers may require the VC be stored in the CI’s Vault, others may allow the VC to be stored in the User Vault.  The CI can define the location of the vault endpoints it allows in the CI metadata.
 
 Domain Authorities (AGs) also publish agent endpoints to service ADI requests in their respective domains. See [Roles and Authorities](#roles-and-authorities) for a description of network participants.
 
@@ -800,7 +800,7 @@ Agent endpoint metadata is obtained from GET ~*participant*/metadata.
 
 ADI-Network participant URLs can be obtained by calling the AGD with a DID or DA using ~agd/network_location.
 
-*Implementation option:  user, issuer, service provider and interchange digital addresses may contain a suffix containing ADI region.  For example, [issuer1@ix3.region](mailto:issuer1@ix3.region)1  or the interchange id can be globally unique.*
+*Implementation option:  user, issuer, service provider and interchange digital addresses may contain a suffix containing ADI region.  For example, [issuer1@ix3.region](mailto:issuer1@ix3.region)1  or the interchange id can be globally unique.*
 
 <a id="adi-network-software-components"></a>
 ## 7.2 ADI-Network software components
@@ -813,20 +813,20 @@ ADI-Network Providers: AGD, Interchanges are built using the following software 
 
 - User Wallet
 
-  - ADI-Agent (Cloud) 
+  - ADI-Agent (Cloud)
 
   - Digital Address Application (DAA) (User Device)
 
-Note:  For AGD & Interchanges the user wallet is used for administrative and operational users.
+Note:  For AGD & Interchanges the user wallet is used for administrative and operational users.
 
 <a id="digital-address-service-das"></a>
 ### 7.2.1 Digital Address Service (DAS)
 
-A **Digital Address Service** is the core of an ADI-Network.  The DAS is designed to register and manage Digital Addresses, DIDs, DIDdocs & ADI-ROLE VCs throughout the ADI-Network.  The DAS will enforce network governance policies for authority and usage of ADI-ROLE VCs, Network transactions and auditing.  Depending on the governance rules, a DAS component may require ADI-Network certification that it enforces programmatic policy rules as expected.
+A **Digital Address Service** is the core of an ADI-Network.  The DAS is designed to register and manage Digital Addresses, DIDs, DIDdocs & ADI-ROLE VCs throughout the ADI-Network.  The DAS will enforce network governance policies for authority and usage of ADI-ROLE VCs, Network transactions and auditing.  Depending on the governance rules, a DAS component may require ADI-Network certification that it enforces programmatic policy rules as expected.
 
 Each Network Provider runs DAS software within their environment
 
-Each DAS is configured with the URL endpoint of the ADI AGD.  From there a directory of other endpoints (Interchanges) are available.  Every DAS speaks to other DAS endpoints to perform ADI-Network Transactions throughout the ADI Global Network.
+Each DAS is configured with the URL endpoint of the ADI AGD.  From there a directory of other endpoints (Interchanges) are available.  Every DAS speaks to other DAS endpoints to perform ADI-Network Transactions throughout the ADI Global Network.
 
 The DAS records the public keys of Digital Addresses & DIDs, maintains Network Directories and may enforce HIDA uniqueness.
 
@@ -842,12 +842,12 @@ DAS functions include:
 >
 > Digital signature validation services
 >
-> *Verify & manage authorities (schema check for approved rights) *
+> *Verify & manage authorities (schema check for approved rights) *
 
 <a id="agents"></a>
 ### 7.2.2 Agents
 
-Agents act as surrogates within the ADI-Network and perform tasks on behalf of their respective owner.  Agents may create, use and manage cryptographic keys for their owner.   
+Agents act as surrogates within the ADI-Network and perform tasks on behalf of their respective owner.  Agents may create, use and manage cryptographic keys for their owner.
 
 Users are authenticated to their agents using strong authentication.
 
@@ -878,37 +878,37 @@ The ADI wallet is a hybrid architecture consisting of a cloud User Agent hosted 
 
 This model is similar to the [eIDAS Trust Service Providers](https://ec.europa.eu/digital-single-market/en/trust-services) Digital Signature legal binding model.
 
-This hybrid model enables improved user experience and secure key management.  
+This hybrid model enables improved user experience and secure key management.
 
-Users are in control of the VCs they hold.  With an ADI Wallet the user can obtain and present and securely store VCs.
+Users are in control of the VCs they hold.  With an ADI Wallet the user can obtain and present and securely store VCs.
 
 An ADI wallet authenticates the user with a NIST 800-63 Assurance Level AAL1, AAL2 & AAL3, and conveys that level in ADI-Network transactions.
 
 <a id="cloud-user-agent"></a>
-#### 7.2.3.1 Cloud User Agent 
+#### 7.2.3.1 Cloud User Agent
 
-The user agent creates, manages and uses cryptographic keys securely stored at the Interchange.  Using these keys the User Agent will coordinate with the interchange DAS  to sign and perform ADI-Network transactions on behalf of the User.  
+The user agent creates, manages and uses cryptographic keys securely stored at the Interchange.  Using these keys the User Agent will coordinate with the interchange DAS  to sign and perform ADI-Network transactions on behalf of the User.
 
-The User Agent enrolls and authenticates the user with the Device Application Agent using strong authenticators capable of AAL1, AAL2 or AAL3 assurance levels.
+The User Agent enrolls and authenticates the user with the Device Application Agent using strong authenticators capable of AAL1, AAL2 or AAL3 assurance levels.
 
 <a id="device-application-agent-daa"></a>
 #### 7.2.3.2 Device Application Agent (DAA)
 
-The DAA operates on a user’s device and performs strong authentication.  Examples include FIDO, Passkeys and other methods (biometrics) that have the ability to securely assert success using OAuth2 and OpenID connect.
+The DAA operates on a user’s device and performs strong authentication.  Examples include FIDO, Passkeys and other methods (biometrics) that have the ability to securely assert success using OAuth2 and OpenID connect.
 
-The User Device Agent works in conjunction with the interchange provisioned user agent to perform user authentication and VC wallet functions on behalf of the User.  
+The User Device Agent works in conjunction with the interchange provisioned user agent to perform user authentication and VC wallet functions on behalf of the User.
 
 <a id="adi-provider-architecture"></a>
 ## 7.3 ADI Provider Architecture
 
-ADI-Network Providers (AGD, Interchange) each operate a local DAS to perform ADI-Network Transactions and one or more ADI-Agents to perform delegated tasks on behalf of the agent owner.  
+ADI-Network Providers (AGD, Interchange) each operate a local DAS to perform ADI-Network Transactions and one or more ADI-Agents to perform delegated tasks on behalf of the agent owner.
 
 The following defines a systems architecture and API endpoints for each provider role.
 
 <a id="agd-provider-architecture"></a>
 ### 7.3.1 AGD provider architecture
 
-The AGD maintains the master provider directory, which contains provider metadata, ADI-Network DID address and URL service endpoints.  AGD administrators access console settings with user agent / wallet authentication.  AGD keys are stored on the hardened vault.
+The AGD maintains the master provider directory, which contains provider metadata, ADI-Network DID address and URL service endpoints.  AGD administrators access console settings with user agent / wallet authentication.  AGD keys are stored on the hardened vault.
 
 ![Authoritative Global Domain](figures/fig-06-authoritative-global-domain.svg)
 
@@ -917,7 +917,7 @@ The AGD maintains the master provider directory, which contains provider metadat
 <a id="interchange-provider-architecture"></a>
 ### 7.3.2 Interchange provider architecture
 
-The interchange maintains keys and ADI-ROLE VCs for credential issuers, service providers and users.  Agents control these keys and act on behalf of their owner. These keys are stored in the hardened vault, as are ADI-ROLE VCs.
+The interchange maintains keys and ADI-ROLE VCs for credential issuers, service providers and users.  Agents control these keys and act on behalf of their owner. These keys are stored in the hardened vault, as are ADI-ROLE VCs.
 
 The interchange supports location & identifier resolutions and performs auditing of all transactions,
 
@@ -928,7 +928,7 @@ The interchange supports location & identifier resolutions and performs auditing
 <a id="adi-network-overall-view"></a>
 ### 7.3.3 ADI-Network overall view
 
-Interchanges and domain authorities (AGDs) all communicate directly using published endpoints in the ADI-Network directory.  The red line represents requests, typically OIDC / VC formatted, to issue and obtain VC, authorization and consent.
+Interchanges and domain authorities (AGDs) all communicate directly using published endpoints in the ADI-Network directory.  The red line represents requests, typically OIDC / VC formatted, to issue and obtain VC, authorization and consent.
 
 The Interchange offers a hybrid wallet service to ADI-Network Users, providers and interchange administrators.
 
@@ -942,9 +942,9 @@ The Interchange offers a hybrid wallet service to ADI-Network Users, providers a
 <a id="digital-address"></a>
 ### 7.4.1 Digital Address
 
-A **Digital Address i**s an identifier that is unique in an ADI-Network.   It has the form of username@interchange_name.  For example, alice@interchange_1.
+A **Digital Address i**s an identifier that is unique in an ADI-Network.   It has the form of username@interchange_name.  For example, alice@interchange_1.
 
-All entities within the architecture are represented by a Digital Address which is bound to an ADI-Network DID and may be bound to one or more privacy preserving pairwise DIDs. DIDdocs contain the public key of the DID.   DIDs digitally sign using their private key and can be verified using the DIDDoc public key.
+All entities within the architecture are represented by a Digital Address which is bound to an ADI-Network DID and may be bound to one or more privacy preserving pairwise DIDs. DIDdocs contain the public key of the DID.   DIDs digitally sign using their private key and can be verified using the DIDDoc public key.
 
 Each Digital Address is bound to one or more DIDs and is assigned an ADI-ROLE VC by an ADI issuing authority.
 
@@ -955,21 +955,20 @@ Each Digital Address is bound to one or more DIDs and is assigned an ADI-ROLE VC
 <a id="identifiers-hida"></a>
 ### 7.4.2 HIDA
 
-Participant uniqueness can be globally or regionally enforced by creating a participant HIDA (Hashed ID Attributes) from required PII data.   The hashed PII data will produce a digital fingerprint that can be used to check for pre-existence of an identity to ensure uniqueness.
+Participant uniqueness can be globally or regionally enforced by creating a participant HIDA (Hashed ID Attributes) from required PII data.   The hashed PII data will produce a digital fingerprint that can be used to check for pre-existence of an identity to ensure uniqueness.
 
- HIDA usage is optional.  
-
+ HIDA usage is optional.
 
 <a id="did-addressing"></a>
 ### 7.4.3 DID Addressing
 
 All Digital Addresses have a primary DID and one or more pairwise DIDs.
 
-DIDs are identifiers of a private key the DID owner securely holds.  The public key is available through the DID’s DIDDoc / VC in the ADI-Network.
+DIDs are identifiers of a private key the DID owner securely holds.  The public key is available through the DID’s DIDDoc / VC in the ADI-Network.
 
-DID addresses include network locations which enable global navigation and communication within the ADI-Network.  See figure 4.4.3 DID issuance & format.
+DID addresses include network locations which enable global navigation and communication within the ADI-Network.  See figure 4.4.3 DID issuance & format.
 
-An ADI-Network DID bound to the Digital Address and may have the format of -  did:adi:issuer_6/r1/ix6.
+An ADI-Network DID bound to the Digital Address and may have the format of -  did:adi:issuer_6/r1/ix6.
 
 ![ADI Network DID Addressing](figures/fig-10-adi-network-did-addressing.svg)
 
@@ -983,7 +982,7 @@ An ADI-Network DID bound to the Digital Address and may have the format of -  d
 
 The ADI Global Domain (AGD) serves as a root of trust for all participants in the ecosystem. The AGD ensures interoperability between Interchanges
 
-Note: Create_agd does not have an authority_issuer since it is the root.  Implementations should provide administrative operator consoles to set up & configure the new AGD and create and store keys.
+Note: Create_agd does not have an authority_issuer since it is the root.  Implementations should provide administrative operator consoles to set up & configure the new AGD and create and store keys.
 
 The following request and response descriptions are used during AGD enrollment.
 
@@ -1006,19 +1005,19 @@ sequenceDiagram
 
 *Figure 11. Creating an AGD*
 
-This flow is the first step to create an ADI-Network.  An AGD must be created, which contains the root signing key for all other ADI signed transactions.
+This flow is the first step to create an ADI-Network.  An AGD must be created, which contains the root signing key for all other ADI signed transactions.
 
 Since this is the root, a DID for the AGD is created and the DIDDoc must be the public key of the AGD private key. The ADI-AGD ADI-ROLE VC is self-signed using the AGD DID.
 
-The AGD posts a signed request to enroll to the AGD. The request includes the private key identifier and required information about the AGD. 
+The AGD posts a signed request to enroll to the AGD. The request includes the private key identifier and required information about the AGD.
 
 **AGD -\> AGD: POST ~agd/create_agd \n (self-signed by the AGD private key)**
 
 The AGD will create, sign, store and return an ADI-AGD role VC.
 
-**AGD -\> AGD:  Create and sign the ADI-AGD VC**
+**AGD -\> AGD:  Create and sign the ADI-AGD VC**
 
-**AGD -\>** **AGD-VAULT:  Store the ADI-AGD VC**
+**AGD -\>** **AGD-VAULT:  Store the ADI-AGD VC**
 
 **AGD -\> AGD: Update directory with \n AGD listing Information**
 
@@ -1026,10 +1025,10 @@ DIDDoc, endpoint location
 
 **AGD -\> AGD: Return success**
 
-The AGD can now issue ADI-AGD VCs 
+The AGD can now issue ADI-AGD VCs
 
 <a id="enrolling-an-interchange"></a>
-## 8.2 Enrolling an Interchange 
+## 8.2 Enrolling an Interchange
 
 The following request and response JSON objects are used during Interchange enrollment.
 
@@ -1076,7 +1075,7 @@ The following request and response JSON objects are used during Issuer enrollmen
 
 Issuers are onboarded into the ADI Ecosystem by n Interchange. The process starts with the Interchange requiring the prospective Issuer to provide organizational information, a contact person for the organization and details to qualify the Issuer as a member in good business standing, financial status and criteria to meet the certification process established by the ADI Governance policies.
 
-The governing body within the Interchange may approve or reject requests to enroll into the Interchange and the ADI ecosystem. Successful approval of an entity as an Issuer results in a Digital Address, DID (i.e. ISSUER_ID) and network VC being created. A VC is issued by the Interchange using information used to verify the Issuer. The VC may also enforce additional policies to ensure that the Issuer can issue Digital Addresses to Users or issue Verifiable Credentials with a certain Assurance Level. 
+The governing body within the Interchange may approve or reject requests to enroll into the Interchange and the ADI ecosystem. Successful approval of an entity as an Issuer results in a Digital Address, DID (i.e. ISSUER_ID) and network VC being created. A VC is issued by the Interchange using information used to verify the Issuer. The VC may also enforce additional policies to ensure that the Issuer can issue Digital Addresses to Users or issue Verifiable Credentials with a certain Assurance Level.
 
 ```mermaid
 sequenceDiagram
@@ -1102,21 +1101,21 @@ sequenceDiagram
 
 *Figure 13. Enrolling an Issuer*
 
-The Issuer administration applies to the Interchange to join the ADI ecosystem as an Issuer. 
+The Issuer administration applies to the Interchange to join the ADI ecosystem as an Issuer.
 
 The Interchange should have an enrollment form the issuer can fill out and submit.
 
-The Issuer submits an enrollment request to the interchange. The request includes required information about the issuer.   This request may be submitted via a web form at the Interchange or other method.
+The Issuer submits an enrollment request to the interchange. The request includes required information about the issuer.   This request may be submitted via a web form at the Interchange or other method.
 
 **ISSUER -\> INTERCHANGE: POST ~ix/enroll_issuer**
 
 The Interchange will vet the Issuer information and execute a contract to join ADI.
 
-Once vetting of the Issuer is completed, the Interchange provisions a CI_AGENT to perform ADI functions for the issuer. The CI_AGENT generates PK pairs, is assigned a DID & DIDDoc and OIDC endpoints & metadata using an issuer-selected domain / sub-domain.
+Once vetting of the Issuer is completed, the Interchange provisions a CI_AGENT to perform ADI functions for the issuer. The CI_AGENT generates PK pairs, is assigned a DID & DIDDoc and OIDC endpoints & metadata using an issuer-selected domain / sub-domain.
 
-**INTERCHANGE -\> INTERCHANGE:  Provision issuer agent, create keys, \n listing data & endpoints**
+**INTERCHANGE -\> INTERCHANGE:  Provision issuer agent, create keys, \n listing data & endpoints**
 
-Once the CI_AGENT is created, the Interchange sends a vc_offer for an ADI-Issuer role VC to the CI_AGENT to accept and sign. 
+Once the CI_AGENT is created, the Interchange sends a vc_offer for an ADI-Issuer role VC to the CI_AGENT to accept and sign.
 
 **INTERCHANGE -\> CI_AGENT: POST ~CI_AGENT/vc_offer**
 
@@ -1126,15 +1125,15 @@ The CI_AGENT signs the offer with its private_key and returns an issue_vc_token.
 
 The interchange creates and signs an ADI-ISSUER role VC for the issuer, stores it in the interchange vault, updates the AGD provider directory listing and returns the VC to the CI_Agent.
 
-**INTERCHANGE -\> IX-VAULT:  POST ~ix_vault/ADI-ISSUER role VC **
+**INTERCHANGE -\> IX-VAULT:  POST ~ix_vault/ADI-ISSUER role VC **
 
-**INTERCHANGE -\>  AGD:  List issuer in AGD provider directory**
+**INTERCHANGE -\>  AGD:  List issuer in AGD provider directory**
 
 **INTERCHANGE -\> CI_AGENT: Return ADI-ISSUER role VC**
 
-**INTERCHANGE -\> ISSUER:   Notification of successful enrollment**
+**INTERCHANGE -\> ISSUER:   Notification of successful enrollment**
 
-The issuer can now issue VCs to ADI participants.  
+The issuer can now issue VCs to ADI participants.
 
 <a id="enrolling-a-service-provider"></a>
 ## 8.4 Enrolling a Service Provider
@@ -1153,9 +1152,9 @@ Service Providers are onboarded into the ADI-Network by an Interchange. The proc
 
 The Interchange will perform due diligence, information validation and contract execution per ADI-Network governance rules.
 
-The governing body within Interchange may approve or reject requests to enroll onto the Interchange. Successful approval of a requesting entity as a Service Provider results in a Digital Address being assigned and an SP_DID & associated DID_DOC being created. 
+The governing body within Interchange may approve or reject requests to enroll onto the Interchange. Successful approval of a requesting entity as a Service Provider results in a Digital Address being assigned and an SP_DID & associated DID_DOC being created.
 
-The Interchange will also create an Agent for the Service Provider.  This Agent is the Service Provider's surrogate within the ADI-Network and will execute requests from the Service Provider and from the ADI-Network on behalf of the Service Provider. For example, a user is requesting a service that requires a VC of a certain type to access.  The Service Provider will request a VC with a schema type from their Agent endpoint. 
+The Interchange will also create an Agent for the Service Provider.  This Agent is the Service Provider's surrogate within the ADI-Network and will execute requests from the Service Provider and from the ADI-Network on behalf of the Service Provider. For example, a user is requesting a service that requires a VC of a certain type to access.  The Service Provider will request a VC with a schema type from their Agent endpoint.
 
 The SP Agent will list the Service Provider in the AGD Service Provider Directory.
 
@@ -1185,19 +1184,19 @@ sequenceDiagram
 
 *Figure 14. Enrolling a Service Provider*
 
-The service provider submits an enrollment request to the interchange. The request includes required information about the  service provider.   This request may be submitted via a web form at the Interchange or other method.
+The service provider submits an enrollment request to the interchange. The request includes required information about the  service provider.   This request may be submitted via a web form at the Interchange or other method.
 
-**SERVICE_PROVIDER -\> INTERCHANGE: POST ~ix/enroll_sp  **
+**SERVICE_PROVIDER -\> INTERCHANGE: POST ~ix/enroll_sp  **
 
 The Interchange will vet the service provider information and execute a contract to join ADI.
 
-Once vetting of the service provider is completed, the Interchange provisions an SP_AGENT to perform ADI functions for the  service provider. The SP_AGENT generates PK pairs,  is assigned a DID & DIDDoc and OIDC endpoints & metadata using a service provider selected domain / sub-domain.
+Once vetting of the service provider is completed, the Interchange provisions an SP_AGENT to perform ADI functions for the  service provider. The SP_AGENT generates PK pairs,  is assigned a DID & DIDDoc and OIDC endpoints & metadata using a service provider selected domain / sub-domain.
 
-**INTERCHANGE -\> INTERCHANGE:  Provision agent, create keys, \n listing data & endpoints**
+**INTERCHANGE -\> INTERCHANGE:  Provision agent, create keys, \n listing data & endpoints**
 
-Once the SP_AGENT setup  is completed,  the Interchange sends a vc_offer for an ADI-SP ROLE VC to the SP_AGENT to accept and sign.
+Once the SP_AGENT setup  is completed,  the Interchange sends a vc_offer for an ADI-SP ROLE VC to the SP_AGENT to accept and sign.
 
-**INTERCHANGE -\> SP_AGENT: POST ~sp_agent/vc_offer **
+**INTERCHANGE -\> SP_AGENT: POST ~sp_agent/vc_offer **
 
 The SP_AGENT signs the offer with its private_key returns an issue_vc_token.
 
@@ -1205,15 +1204,15 @@ The SP_AGENT signs the offer with its private_key returns an issue_vc_token.
 
 The interchange creates and signs an ADI-SP role VC for the service provider, stores it in the interchange vault, updates the AGD provider directory listing and returns the ADI-SP role VC to the SP agent.
 
-**INTERCHANGE -\> IX-VAULT:  POST ~ix_vault/ADI-SP role VC **
+**INTERCHANGE -\> IX-VAULT:  POST ~ix_vault/ADI-SP role VC **
 
-**INTERCHANGE -\>  AGD:  List SERVICE_PROVIDER in AGD provider directory**
+**INTERCHANGE -\>  AGD:  List SERVICE_PROVIDER in AGD provider directory**
 
 **INTERCHANGE -\> SP_AGENT: Return ADI-SP role VC**
 
-**INTERCHANGE -\> SERVICE_PROVIDER:   Notification of successful enrollment**
+**INTERCHANGE -\> SERVICE_PROVIDER:   Notification of successful enrollment**
 
-The  service provider can now request VCs from ADI participants.  
+The  service provider can now request VCs from ADI participants.
 
 <a id="enrolling-a-user"></a>
 ## 8.5 Enrolling a user
@@ -1226,7 +1225,7 @@ A user may enroll in an ADI-Network starting at either (1) an issuer who is auth
 
 1.  Issuers may initiate User Digital Address enrollment, by inviting the user to receive a VC. In this case the Issuer validates and supplies necessary PII to meet ADI-Network governance requirements for uniqueness verification and User Identity validation.
 
-2.  Users may initiate Digital Address registration with an Interchange directly.  In this case the Interchange will perform vetting and issuing procedures to meet Network governance requirements or use a partnered network Issuer to perform vetting procedures.
+2.  Users may initiate Digital Address registration with an Interchange directly.  In this case the Interchange will perform vetting and issuing procedures to meet Network governance requirements or use a partnered network Issuer to perform vetting procedures.
 
 In both cases during the enrollment process:
 
@@ -1234,7 +1233,7 @@ In both cases during the enrollment process:
 
 The user can now participate in the ADI-Network to:
 
-- Receive additional VCs by complying with Identification validation processes from Issuers (§ 11.1 Verifiable Credential Issuance Protocols).
+- Receive additional VCs by complying with Identification validation processes from Issuers (§ 11.1 Verifiable Credential Issuance Protocols).
 
 - Authorize requests from a Service Provider for a VC (See [VC Presentation](#vc-presentation).
 
@@ -1272,51 +1271,51 @@ sequenceDiagram
 
 *Figure 15. Enrolling a User*
 
-The user uses the INTERCHANGE “wallet” web, mobile or computer DAA *(& associate cloud agent)*  to enroll with the INTERCHANGE.
+The user uses the INTERCHANGE “wallet” web, mobile or computer DAA *(& associate cloud agent)*  to enroll with the INTERCHANGE.
 
 **USER -\> DAA : Request to enroll, complete enrollment forms**
 
-**DAA -\> USER_AGENT:  https POST ~ix/create_user**
+**DAA -\> USER_AGENT:  https POST ~ix/create_user**
 
-**USER_AGENT -\> USER_AGENT :  Select Digital Address ID \nRequest Auth registration** 
+**USER_AGENT -\> USER_AGENT :  Select Digital Address ID \nRequest Auth registration**
 
 **USER_AGENT -\> INTERCHANGE : Create Digital Address**
 
-**INTERCHANGE -\> USER_AGENT:  Digital Address created**
+**INTERCHANGE -\> USER_AGENT:  Digital Address created**
 
-**USER_AGENT -\> DAA : Request  accept T&Cs, signing of Auth registration nonce**
+**USER_AGENT -\> DAA : Request  accept T&Cs, signing of Auth registration nonce**
 
 The DAA enrolls the user with a FIDO / Strong Auth / OAuth method and records the Public Key for subsequent authentications.
 
-**DAA -\> USER:  Accept T&Cs, enroll in Strong Auth**
+**DAA -\> USER:  Accept T&Cs, enroll in Strong Auth**
 
-**USER -\> DAA:  Accept T&C perform Strong Auth enrollment**
+**USER -\> DAA:  Accept T&C perform Strong Auth enrollment**
 
-**DAA -\>   USER_AGENT:  Accepted T&Cs, sign Strong Auth response.**
+**DAA -\>   USER_AGENT:  Accepted T&Cs, sign Strong Auth response.**
 
 Generate a PK pair and securely store the private key in the user agent hardened key store.
 
-The interchange will vet the user identity and issue an ADI-Network User VC to the user.  
+The interchange will vet the user identity and issue an ADI-Network User VC to the user.
 
-**USER_AGENT -\> USER_AGENT :  Vet user and issue ADI-Network User VC **
+**USER_AGENT -\> USER_AGENT :  Vet user and issue ADI-Network User VC **
 
 **alt if an Issuer is used to issue the ADI-Network User VC**
 
-The INTERCHANGE may require an Issuer perform an identity proofing at a certain level.  If required, the INTERCHANGE will validate the identity with a selected Credential Issuer.
+The INTERCHANGE may require an Issuer perform an identity proofing at a certain level.  If required, the INTERCHANGE will validate the identity with a selected Credential Issuer.
 
-**USER_AGENT -\> CI_AGENT :  Verify the ADI-Network User VC Identity**
+**USER_AGENT -\> CI_AGENT :  Verify the ADI-Network User VC Identity**
 
-**CI_AGENT -\> USER_AGENT:  Verified VC claims**
+**CI_AGENT -\> USER_AGENT:  Verified VC claims**
 
 **end**
 
-**USER_AGENT -\> USER_AGENT:  Sign and create ADI-Network User VC**
+**USER_AGENT -\> USER_AGENT:  Sign and create ADI-Network User VC**
 
-The INTERCHANGE responds with success 
+The INTERCHANGE responds with success
 
-**USER_AGENT -\> DAA:   Success **
+**USER_AGENT -\> DAA:   Success **
 
-**DAA -\> USER:   Success**
+**DAA -\> USER:   Success**
 
 The User now has a DA, DAA & USER_AGENT *(wallet)* and may obtain and use VCs with ADI Credential Issuers and Service Providers.
 
@@ -1326,18 +1325,18 @@ The User now has a DA, DAA & USER_AGENT *(wallet)* and may obtain and use VCs wi
 <a id="vc-issuance-protocols-schemas"></a>
 ## 9.1 Schemas
 
-A VC schema describes the claims a VC contains.  A government ID schema might contain gov ID#, name, address and date of birth, whereas a university diploma schema might contain name, graduation date and degree.   The VC name denotes the schema that was used.  A US-GOV-PASSPORT VC and US-DIPLOMA VC are VCs using their respective schemas.
+A VC schema describes the claims a VC contains.  A government ID schema might contain gov ID#, name, address and date of birth, whereas a university diploma schema might contain name, graduation date and degree.   The VC name denotes the schema that was used.  A US-GOV-PASSPORT VC and US-DIPLOMA VC are VCs using their respective schemas.
 
-ADI maintains a list of approved schemas that are commonly used within the ADI-Network.  This list expands as needed per ADI governance regulations.
+ADI maintains a list of approved schemas that are commonly used within the ADI-Network.  This list expands as needed per ADI governance regulations.
 
-ADI defines reserved VC schema protocols for ADI-Network roles.  These schemas are designed to convey accountability and authority.
+ADI defines reserved VC schema protocols for ADI-Network roles.  These schemas are designed to convey accountability and authority.
 
 User schemas are approved for use in the ADI-Network and stored in the ADI Schema directory.
 
 <a id="credential-issuer"></a>
 ## 9.2 Credential Issuer
 
-Issuers may issue one or more Verifiable Credentials to a User who has a Digital Address. A VC contains user-related claims based on well-defined and ADI-approved credential schemas. 
+Issuers may issue one or more Verifiable Credentials to a User who has a Digital Address. A VC contains user-related claims based on well-defined and ADI-approved credential schemas.
 
 VC Issuance begins with the issuer vetting and validating the user’s identity per ADI-Network governance rules for the VC Schema to be issued.
 
@@ -1345,11 +1344,11 @@ Once verified, the Issuer creates a make_vc_offer containing the VC information 
 
 The issuer sends this make_vc_offer request to its agent for processing to obtain user approval to issue the VC.
 
-The issuer agent saves the VC offer and requests the user’s agent to return a user signed issuance_token to demonstrate acceptance.  
+The issuer agent saves the VC offer and requests the user’s agent to return a user signed issuance_token to demonstrate acceptance.
 
 The user agent signs an issuance_token request for the VC using the private key bound to the VC subject DID to prove they are the subject of the VC.
 
-The user agent  sends the signed issuance_token back to the issuer agent, who will then sign,  Issue and store the VC in a secure VC Vault.  The credential issuer agent will send the VC or its metadata to the user agent.
+The user agent  sends the signed issuance_token back to the issuer agent, who will then sign,  Issue and store the VC in a secure VC Vault.  The credential issuer agent will send the VC or its metadata to the user agent.
 
 <a id="credential-issuer-high-level-flow"></a>
 ### 9.2.1 High Level Flow
@@ -1408,25 +1407,25 @@ sequenceDiagram
 <a id="credential-issuer-flow-description"></a>
 ### 9.2.3 Flow Description
 
-The user interacts with the issuer’s site to request a VC of a particular schema.  The credential issuer validates the user’s identity required to issue the VC.
+The user interacts with the issuer’s site to request a VC of a particular schema.  The credential issuer validates the user’s identity required to issue the VC.
 
 **USER -\> ISSUER: Request VC\n Credential Issuer verifies user**
 
-Once the user’s claims for the VC are verified, the credential issuer sends an ADI make_vc_offer request to its CI-Agent to make the offer to the user.  
+Once the user’s claims for the VC are verified, the credential issuer sends an ADI make_vc_offer request to its CI-Agent to make the offer to the user.
 
-This make_vc_offer request contains the VC claims, values and schema type to be used.  The issuer sends this request to its agent to fulfill.
+This make_vc_offer request contains the VC claims, values and schema type to be used.  The issuer sends this request to its agent to fulfill.
 
 **ISSUER -\> CI_AGENT: POST ~issuer/make_vc_offer**
 
 The issuer agent creates a vc_offer containing a pre_authorized_code (OIDC4VCI).
 
-The issuer agent creates a URI referring to this vc_offer.  This is returned as a link and can be used as a redirect, QR or notification action for the user agent to fulfill.
+The issuer agent creates a URI referring to this vc_offer.  This is returned as a link and can be used as a redirect, QR or notification action for the user agent to fulfill.
 
-**CI_AGENT -\> USER_AGENT: return URI: ~user_agent/get_credential_offer/{offer_id} \n via URL Link, QR Code or Notification **
+**CI_AGENT -\> USER_AGENT: return URI: ~user_agent/get_credential_offer/{offer_id} \n via URL Link, QR Code or Notification **
 
-**USER_AGENT -\> CI_AGENT:  POST ~issuer/get_credential_offer/{offer_id}**
+**USER_AGENT -\> CI_AGENT:  POST ~issuer/get_credential_offer/{offer_id}**
 
-**CI_AGENT -\> USER_AGENT:  Return vc_offer**
+**CI_AGENT -\> USER_AGENT:  Return vc_offer**
 
 The USER_AGENT will request consent and authorization from the User. Note: the nonce signed by the USER_AGENT may be the hash of the VC offer.
 
@@ -1434,23 +1433,23 @@ The USER_AGENT will request consent and authorization from the User. Note: the n
 
 **USER -\> USER_AGENT: Approval given - private key signed & AAL level used**
 
-The USER_AGENT verifies the authentication and consent of the user and creates an issue_vc token  signed by the user as confirmation.  
+The USER_AGENT verifies the authentication and consent of the user and creates an issue_vc token  signed by the user as confirmation.
 
 The USER_AGENT sends the issue_vc token to the issuer agent’s endpoint to validate and issue the VC.
 
 **USER_AGENT -\> CI_AGENT: POST ~issuer/issue_vc_token**
 
-The issuer agent validates the user's signature of the issue_vc token and retrieves VC claims based on the pre_authorized_code.   Using the user DID from the issue_vc token for the VC subject, a VC is generated and signed with DID private key.  The issuer agent  stores the VC in the VC Vault specified by the credential issuer.  (NOTE based on the issuer metadata the VC may be stored at the issuer or user vault.  The issuer_vault endpoint will point to the location the issuer supports.)
+The issuer agent validates the user's signature of the issue_vc token and retrieves VC claims based on the pre_authorized_code.   Using the user DID from the issue_vc token for the VC subject, a VC is generated and signed with DID private key.  The issuer agent  stores the VC in the VC Vault specified by the credential issuer.  (NOTE based on the issuer metadata the VC may be stored at the issuer or user vault.  The issuer_vault endpoint will point to the location the issuer supports.)
 
-**CI_AGENT -\> VAULT_AGENT: ~issuer\_ or user\_  vault/VC **
+**CI_AGENT -\> VAULT_AGENT: ~issuer\_ or user\_  vault/VC **
 
-**CI_AGENT -\> USER_AGENT:  Return issued VC**
+**CI_AGENT -\> USER_AGENT:  Return issued VC**
 
 returns success and VC or metadata to the user
 
-**USER_AGENT -\> USER_AGENT:  VC Issued**
+**USER_AGENT -\> USER_AGENT:  VC Issued**
 
-**USER_AGENT -\> USER:  VC Issued**
+**USER_AGENT -\> USER:  VC Issued**
 
 **USER_AGENT -\> CI_AGENT: Success**
 
@@ -1460,17 +1459,17 @@ returns success and VC or metadata to the user
 <a id="service-provider"></a>
 ## 10.1 Service Provider
 
-The service provider may request a user for one or more claims about their identity.  This can be a single claim such as “over 18” or a set of claims such as in government, institutional and enterprise IDs.
+The service provider may request a user for one or more claims about their identity.  This can be a single claim such as “over 18” or a set of claims such as in government, institutional and enterprise IDs.
 
-Claims are contained in a VC.  Each VC is signed by an approved ADI credential issuer.   
+Claims are contained in a VC.  Each VC is signed by an approved ADI credential issuer.
 
 When requesting a VC, the service provider must specify one or more schemas that are acceptable.
 
-The SP agent requests the USER_AGENT <span class="mark">to provide one or more of an acceptable list of VCs</span>.  
+The SP agent requests the USER_AGENT <span class="mark">to provide one or more of an acceptable list of VCs</span>.
 
-The USER_AGENT will ask the user to select one or more VCs from their wallet (if there is more than one) to use for this request.  If the User has no acceptable VCs, then the user may be redirected to a Credential Issuer to obtain a suitable VC.
+The USER_AGENT will ask the user to select one or more VCs from their wallet (if there is more than one) to use for this request.  If the User has no acceptable VCs, then the user may be redirected to a Credential Issuer to obtain a suitable VC.
 
-The USER_AGENT will then ask the user for consent to present this VC to the service provider, using Strong Auth.  The USER_AGENT will then take the VC to create and sign a VP with the users’ private key to demonstrate user consent. 
+The USER_AGENT will then ask the user for consent to present this VC to the service provider, using Strong Auth.  The USER_AGENT will then take the VC to create and sign a VP with the users’ private key to demonstrate user consent.
 
 The VP is then returned as a response to the service provider request.
 
@@ -1478,7 +1477,7 @@ The VP is then returned as a response to the service provider request.
 
 *The User may be referenced by a User ID or a null if not known at the time of request.*
 
-*If not known, the USER_AGENT will  supply the ID of the User when processing the request. Because the wallet was redirected there it can supply the user DID or DA during processing, therefore it is not required.*
+*If not known, the USER_AGENT will  supply the ID of the User when processing the request. Because the wallet was redirected there it can supply the user DID or DA during processing, therefore it is not required.*
 
 <a id="service-provider-high-level-flow"></a>
 ### 10.1.1 High Level Flow
@@ -1537,7 +1536,7 @@ sequenceDiagram
 <a id="service-provider-flow-description"></a>
 ### 10.1.3 Flow Description
 
-1. The user requests a service from a service provider.  While interacting with a service provider site / service, the service provider may require a VC to verify the user's identity.  
+1. The user requests a service from a service provider.  While interacting with a service provider site / service, the service provider may require a VC to verify the user's identity.
 
 **USER -\> SERVICE_PROVIDER: 1. Requests service**
 
@@ -1551,7 +1550,7 @@ The SP_AGENT creates a vc_authorization_request and constructs a URI, referencin
 
 **SP_AGENT -\> USER_AGENT: 3. POST ~user_agent/vc_request\n Redirect, Link, QR Code or App Notification**
 
-4. The USER_AGENT selects an acceptable VC from the user’s VCs.  If there are more than one the user is requested to select one.  If there are no VCs that match the request, the user may be directed to an Issuer to obtain an acceptable VC. 
+4. The USER_AGENT selects an acceptable VC from the user’s VCs.  If there are more than one the user is requested to select one.  If there are no VCs that match the request, the user may be directed to an Issuer to obtain an acceptable VC.
 
 The USER_AGENT obtains user consent & authorization using strong authentication.
 
@@ -1559,7 +1558,7 @@ The USER_AGENT obtains user consent & authorization using strong authentication.
 
 **USER -\> USER_AGENT: VC selected & confirm consent**
 
-**USER_AGENT -\> USER:  Request Biometric approval**
+**USER_AGENT -\> USER:  Request Biometric approval**
 
 **USER -\> USER_AGENT: Biometric approval given**
 
@@ -1567,13 +1566,13 @@ The USER_AGENT obtains user consent & authorization using strong authentication.
 
 This may be from the issuer vault or the user vault depending on issuer endpoint setting rules for this.
 
-**USER_AGENT -\> VAULT_AGENT: 5. POST ~vc_vault/vc_authorization_token **
+**USER_AGENT -\> VAULT_AGENT: 5. POST ~vc_vault/vc_authorization_token **
 
 6. The VAULT_AGENT verifies the authorization_token, retrieves and returns the VC
 
 **VAULT_AGENT -\> USER_AGENT: 6. Return the VC requested**
 
-7. The USER_AGENT signs the VC with the users’ private key to create a VP. 
+7. The USER_AGENT signs the VC with the users’ private key to create a VP.
 
 **USER_AGENT -\> USER_AGENT: 7. Create and sign VP**
 
@@ -1581,24 +1580,24 @@ This may be from the issuer vault or the user vault depending on issuer endpoint
 
 **USER_AGENT -\> SP_AGENT: 8. Respond to SP Agent with VP**
 
-9.  The SP agent responds to the original request for a VC from the service provider.
+9.  The SP agent responds to the original request for a VC from the service provider.
 
 **SP_AGENT -\> SERVICE_PROVIDER: 9. Success: Respond VP to Request for VC**
 
-10.  The USER_AGENT informs the user that the VC has been presented to the service provider
+10.  The USER_AGENT informs the user that the VC has been presented to the service provider
 
 **USER_AGENT -\> USER: 10. <span class="mark">VC presented to SP</span>**
 
 <a id="requesting-a-public-key"></a>
 ## 10.2 Requesting a public key
 
-Keys may be obtained in the ADI-ROLE VC / DIDDoc based upon  the subject DID (subject of VC).
+Keys may be obtained in the ADI-ROLE VC / DIDDoc based upon  the subject DID (subject of VC).
 
 Service Providers need to be assured that the VC was properly issued and signed by an ADI Credential Issuer and that the VP was signed by the ADI-Network User to show proof of ownership.
 
-They may rely on their Agent to perform this task for them, or they may check the digital signatures themselves by requesting the DIDDoc public key of the signer. 
+They may rely on their Agent to perform this task for them, or they may check the digital signatures themselves by requesting the DIDDoc public key of the signer.
 
-VC issuers and subjects can be validated  by using their VC DID to request their public key.  With the public key the VP (user) & VC (Issuer) signatures can each be validated using the VC proof cryptographic algorithms specified in the VC metadata header. 
+VC issuers and subjects can be validated  by using their VC DID to request their public key.  With the public key the VP (user) & VC (Issuer) signatures can each be validated using the VC proof cryptographic algorithms specified in the VC metadata header.
 
 To request the DIDDoc, the service provider calls get_did_doc.
 
@@ -1620,11 +1619,11 @@ The Service Provider asks its SP Agent for the DIDDoc public key of the signer, 
 
 **SERVICE_PROVIDER -\> SP_AGENT: POST ~service_provider/get_did_doc**
 
-The Agent will return the  DID_DOC
+The Agent will return the  DID_DOC
 
-**SP_AGENT -\> SERVICE_PROVIDER:   DIDDoc Public Key**
+**SP_AGENT -\> SERVICE_PROVIDER:   DIDDoc Public Key**
 
-The agent can now verify the signature of the signer, using the Public Key from the  DIDDoc & cryptography signature algorithm listed.
+The agent can now verify the signature of the signer, using the Public Key from the  DIDDoc & cryptography signature algorithm listed.
 
 <a id="additional-use-cases"></a>
 # 11. Additional Use Cases
@@ -1634,23 +1633,23 @@ The following are additional use cases that can be enabled in an ADI-Network.
 <a id="financial-services"></a>
 ## 11.1 Financial Services
 
-ADI can be used to identify and authenticate shoppers conducting payment transactions.  Payment processing services offered by service providers to accept and receive payments can be enhanced with accountable identity and superior payer/payee authentication offered by ADI.  VC architecture proposed by ADI can include credit and debit tokens representing payment account ownership connected to a user's identity in a cloud or hybrid wallet.
+ADI can be used to identify and authenticate shoppers conducting payment transactions.  Payment processing services offered by service providers to accept and receive payments can be enhanced with accountable identity and superior payer/payee authentication offered by ADI.  VC architecture proposed by ADI can include credit and debit tokens representing payment account ownership connected to a user's identity in a cloud or hybrid wallet.
 
-Financial service offerings may include such enhanced VCs that are further extended to represent user’s financial information such as credit ability & ratings, financial status, other connected wallets, and more.  
+Financial service offerings may include such enhanced VCs that are further extended to represent user’s financial information such as credit ability & ratings, financial status, other connected wallets, and more.
 
 <a id="authentication"></a>
 ## 11.2 Authentication
 
-ADI enables authentication of NIST AAL levels 1, 2 & 3.  Interchanges may offer technologies capable of tailored authentication such as user biometrics and notarized verification.
+ADI enables authentication of NIST AAL levels 1, 2 & 3.  Interchanges may offer technologies capable of tailored authentication such as user biometrics and notarized verification.
 
 Details of integration with these technologies are technology implementation specific but must be approved by regional and global domain authorities for use within an ADI-Network.
 
-ADI can be used for authentication to login or approve transactions by a service provider.   For example, login to financial services, approving payments and funds transfers or log into or consent to any service or transaction,
+ADI can be used for authentication to login or approve transactions by a service provider.   For example, login to financial services, approving payments and funds transfers or log into or consent to any service or transaction,
 
 <a id="identity-escrow"></a>
 ## 11.3 Identity Escrow
 
-Service providers may not want to hold sensitive PII, instead just relying on ADI assurance that the PII meets certain criteria required for a service.  The actual PII can be escrowed by an Interchange and retrieved as needed by a service provider in the case of disputes or fraud.
+Service providers may not want to hold sensitive PII, instead just relying on ADI assurance that the PII meets certain criteria required for a service.  The actual PII can be escrowed by an Interchange and retrieved as needed by a service provider in the case of disputes or fraud.
 
 <a id="references"></a>
 # Appendix A - References
@@ -1671,7 +1670,7 @@ Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14,
 Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, <<https://www.rfc-editor.org/info/rfc8174>>.
 
 This document is based on and makes use of the following external standards:
-1. W3C Verifiable Credentials Data Model V2.0 
+1. W3C Verifiable Credentials Data Model V2.0
 2. W3C Verifiable Credentials JSON Schema Specification
 3. ITU-T X.1254
 4. ITU-T X.1281
@@ -1941,7 +1940,7 @@ POST ~issuer/issue_vc_token
 ```
 
 <a id="vcauthorizationtoken"></a>
-### B.2.6  vc_authorization_token
+### B.2.6  vc_authorization_token
 
 ```json
 {
@@ -1950,7 +1949,7 @@ POST ~issuer/issue_vc_token
 ```
 
 <a id="adi-agd-role-vc"></a>
-### B.2.7  ADI-AGD role VC
+### B.2.7  ADI-AGD role VC
 
 ```json
 {
@@ -2280,5 +2279,3 @@ POST ~issuer/issue_vc_token
   "did": "did:adi:09f4cee0-b3a8-4bfe-a1f7-69d834764159/region1/IX_2"
 }
 ```
-
-

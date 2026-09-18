@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-18 |
 | Defects | 107 (68 with an automated check) |
-| Verified | 32 |
+| Verified | 34 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 24 |
-| Open | 51 |
+| Open | 49 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -156,15 +156,15 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream F — References, diagrams and tooling
 
-7 defects · 4 verified · 6 with an automated check
+7 defects · 6 verified · 6 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | F-601 | S1 | Verified |  | `auto` | L59/727/879 "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors | `9df1ff6` |
-| F-602 | S2 | Verified |  | `auto` | L421/436/490 "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid |  |
+| F-602 | S2 | Verified |  | `auto` | L421/436/490 "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid | `e861a28` |
 | F-603 | S2 | Verified |  | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors | `d20e3a1` |
-| F-604 | S3 | Open |  | `auto` | non-breaking spaces — document-wide |  |  |  |
-| F-605 | S3 | Open |  | `auto` | trailing whitespace — document-wide | Trailing whitespace — phantom git diffs | Strip (none are intentional line breaks) |  |
+| F-604 | S3 | Verified |  | `auto` | non-breaking spaces — document-wide |  |  |  |
+| F-605 | S3 | Verified |  | `auto` | trailing whitespace — document-wide | Trailing whitespace — phantom git diffs | Strip (none are intentional line breaks) |  |
 | F-606 | S2 | Open |  | — | CI — no location | No automated gate. Every check run for this review is scriptable | JSON parse · fence-aware gremlin check · markdownlint · link checker |  |
 | F-607 | S3 | Verified |  | `auto` | headings — document-wide | Every heading should have a stable <a id> anchor above it so future links survive renumbering. Catches new headings added without one. | Run make anchors — adds only where missing, safe to repeat. |  |
 
