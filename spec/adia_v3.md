@@ -443,7 +443,7 @@ The basic steps in the process are: 
 
 **Proofing of Claims**
 
-1.  A Subject (most often an individual) presents evidence for a set of Claims to a Credential Issuer (i.e., a person or organization that is authorized to examine and validate the Claim evidence). The Claims required, which vary by Credential type, are identified in a Credential Schema \[see W3C XXX\].    
+1.  A Subject (most often an individual) presents evidence for a set of Claims to a Credential Issuer (i.e., a person or organization that is authorized to examine and validate the Claim evidence). The Claims required, which vary by Credential type, are identified in a Credential Schema [W3C - Verifiable Credentials JSON Schema Specification](https://www.w3.org/TR/vc-json-schema).    
 
 2.  The Credential Issuer’s software assembles the Claims into a Credential and validates completeness against the Credential Schema. The package of Claims and Metadata is then signed using the Credential Issuer’s private key and becomes a VC.
 
