@@ -145,7 +145,7 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 | E-520 | S3 | Verified | ND | `auto` | L? "SERVICE_PROVIDER:9." | `SERVICE_PROVIDER:9.` / `USER:10.` — missing space after colon |  | `496fda2` |
 | E-521 | S3 | Verified | ND | `auto` | L1305 "Respond to SP Agent with VP" | Message text duplicates step 8 ("Respond to SP Agent with VP") |  | `116bff6` |
 | E-522 | S3 | Verified | ND | `auto` | L? "calls the get" | Sentence truncated mid-word: "the service provider calls the get\_" |  | `87300d5` |
-| E-523 | S3 | Verified | ND | `auto` | L446 "W3C XXX" | `[see W3C XXX]` placeholder |  |  |
+| E-523 | S3 | Verified | ND | `auto` | L446 "W3C XXX" | `[see W3C XXX]` placeholder |  | `4746ecd` |
 | E-524 | S3 | Open | ND | `auto` | L887 "figure 4.4.3" | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  |  |
 | E-525 | S3 | Verified | ND | `auto` | L? "2.2.1 Issue Verifiable Credential" | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
 | E-526 | S3 | Open | ND | `auto` | L727 "3.3 Roles" | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
