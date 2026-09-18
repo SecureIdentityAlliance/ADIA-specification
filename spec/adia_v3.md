@@ -1036,7 +1036,7 @@ Once vetting of the service provider is completed, the Interchange provisions an
 
 **INTERCHANGE -\> INTERCHANGE:  Provision agent, create keys, \n listing data & endpoints**
 
-Once the SP_AGENT setup  is completed,  the Interchange send a vc_offer for an ADI-SP ROLE VC to the SP_AGENT to accept and sign.
+Once the SP_AGENT setup  is completed,  the Interchange sends a vc_offer for an ADI-SP ROLE VC to the SP_AGENT to accept and sign.
 
 **INTERCHANGE -\> SP_AGENT: POST ~sp_agent/vc_offer **
 

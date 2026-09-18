@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-17 |
 | Defects | 106 (67 with an automated check) |
-| Verified | 22 |
+| Verified | 23 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 25 |
-| Open | 59 |
+| Open | 58 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -119,11 +119,11 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 
 ## Workstream E — Editorial
 
-30 defects · 20 verified · 25 with an automated check
+30 defects · 21 verified · 25 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| E-501 | S2 | Verified | ND | `auto` | heading numbering — document-wide | **Document-wide check:** every heading (H1–H4) must carry a section or appendix number. Originally triggered by the unnumbered `# ADI Network interchanges and platforms` at L552, but the check inspects all headings, so any unnumbered heading anywhere fails it. Run `make explain ID=E-501` to see which. | Number every heading. Front-matter headings (Notices, Key words) must be numbered or demoted to bold text. | `4f1dc5f` |
+| E-501 | S2 | Verified | ND | `auto` | heading numbering — document-wide | **Document-wide check:** every heading (H1–H4) must carry a section or appendix number. Originally triggered by the unnumbered `# ADI Network interchanges and platforms` at L552, but the check inspects all headings, so any unnumbered heading anywhere fails it. Run `make explain ID=E-501` to see which. | Number every heading. Front-matter headings (Notices, Key words) must be numbered or demoted to bold text. | `090248e` |
 | E-502 | S2 | Verified | ND | `auto` | heading length — document-wide | §7.7.1 heading is two full sentences |  | `bec5999` |
 | E-503 | S3 | Open | ND | — | L? "7.7.1.1" | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
 | E-504 | S3 | Verified | ND | `auto` | L? "# 6 Accountable" | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
@@ -140,7 +140,7 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 | E-515 | S3 | Verified | ND | `auto` | L? "returns the VC to the SP agent" | §9.3 "returns the VC to the **SP agent**" — should be CI_AGENT |  | `063d0f2` |
 | E-516 | S3 | Verified | ND | `auto` | L949 "used during Issuer enrollment" | §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2 |  | `3da4398` |
 | E-517 | S3 | Verified | ND | `auto` | L? "provisions an CI_AGENT" | "provisions **an** CI_AGENT" |  | `8a0cfa6` |
-| E-518 | S3 | Open | ND | `auto` | L1039 "Interchange send a" | "the Interchange **send** a vc_offer" ×2 |  | `cb44fcb` |
+| E-518 | S3 | Verified | ND | `auto` | L1039 "Interchange send a" | "the Interchange **send** a vc_offer" ×2 |  | `cb44fcb` |
 | E-519 | S3 | Open | ND | `auto` | L1045 "POST return" | "**POST return** issue_vc_token" — malformed |  | `9516e96` |
 | E-520 | S3 | Verified | ND | `auto` | L? "SERVICE_PROVIDER:9." | `SERVICE_PROVIDER:9.` / `USER:10.` — missing space after colon |  | `496fda2` |
 | E-521 | S3 | Verified | ND | `auto` | L1305 "Respond to SP Agent with VP" | Message text duplicates step 8 ("Respond to SP Agent with VP") |  | `116bff6` |
