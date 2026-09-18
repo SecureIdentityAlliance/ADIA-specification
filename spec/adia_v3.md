@@ -1042,7 +1042,7 @@ Once the SP_AGENT setup  is completed,  the Interchange sends a vc_offer for a
 
 The SP_AGENT signs the offer with its private_key returns an issue_vc_token.
 
-**SP_AGENT -\> INTERCHANGE: POST return issue_vc_token**
+**SP_AGENT -\> INTERCHANGE: POST returns issue_vc_token**
 
 The interchange creates and signs an ADI-SP role VC for the service provider, stores it in the interchange vault, updates the AGD provider directory listing and returns the ADI-SP role VC to the SP agent.
 
