@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-18 |
 | Defects | 107 (68 with an automated check) |
-| Verified | 34 |
+| Verified | 35 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 24 |
-| Open | 49 |
+| Open | 48 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -119,7 +119,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream E — Editorial
 
-30 defects · 24 verified · 25 with an automated check
+30 defects · 25 verified · 25 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -146,7 +146,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | E-521 | S3 | Verified | ND | `auto` | L1305 "Respond to SP Agent with VP" | Message text duplicates step 8 ("Respond to SP Agent with VP") |  | `116bff6` |
 | E-522 | S3 | Verified | ND | `auto` | L? "calls the get" | Sentence truncated mid-word: "the service provider calls the get\_" |  | `87300d5` |
 | E-523 | S3 | Verified | ND | `auto` | L446 "W3C XXX" | `[see W3C XXX]` placeholder |  | `4746ecd` |
-| E-524 | S3 | Open | ND | `auto` | L887 "figure 4.4.3" | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  |  |
+| E-524 | S3 | Verified | ND | `auto` | L887 "figure 4.4.3" | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  |  |
 | E-525 | S3 | Verified | ND | `auto` | L? "2.2.1 Issue Verifiable Credential" | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
 | E-526 | S3 | Verified | ND | `auto` | L727 "3.3 Roles" | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
 | E-527 | S3 | Open | ND | — | L729/851 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  |  |
@@ -163,8 +163,8 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | F-601 | S1 | Verified |  | `auto` | L59/727/879 "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors | `9df1ff6` |
 | F-602 | S2 | Verified |  | `auto` | L421/436/490 "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid | `e861a28` |
 | F-603 | S2 | Verified |  | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors | `d20e3a1` |
-| F-604 | S3 | Verified |  | `auto` | non-breaking spaces — document-wide |  |  |  |
-| F-605 | S3 | Verified |  | `auto` | trailing whitespace — document-wide | Trailing whitespace — phantom git diffs | Strip (none are intentional line breaks) |  |
+| F-604 | S3 | Verified |  | `auto` | non-breaking spaces — document-wide |  |  | `6f42aad` |
+| F-605 | S3 | Verified |  | `auto` | trailing whitespace — document-wide | Trailing whitespace — phantom git diffs | Strip (none are intentional line breaks) | `6f42aad` |
 | F-606 | S2 | Open |  | — | CI — no location | No automated gate. Every check run for this review is scriptable | JSON parse · fence-aware gremlin check · markdownlint · link checker |  |
 | F-607 | S3 | Verified |  | `auto` | headings — document-wide | Every heading should have a stable <a id> anchor above it so future links survive renumbering. Catches new headings added without one. | Run make anchors — adds only where missing, safe to repeat. |  |
 

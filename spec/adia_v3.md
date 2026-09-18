@@ -966,7 +966,7 @@ All Digital Addresses have a primary DID and one or more pairwise DIDs.
 
 DIDs are identifiers of a private key the DID owner securely holds.  The public key is available through the DID’s DIDDoc / VC in the ADI-Network.
 
-DID addresses include network locations which enable global navigation and communication within the ADI-Network.  See figure 4.4.3 DID issuance & format.
+DID addresses include network locations which enable global navigation and communication within the ADI-Network.
 
 An ADI-Network DID bound to the Digital Address and may have the format of -  did:adi:issuer_6/r1/ix6.
 
