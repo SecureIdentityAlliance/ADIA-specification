@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-17 |
 | Defects | 106 (67 with an automated check) |
-| Verified | 25 |
+| Verified | 26 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 25 |
-| Open | 56 |
+| Open | 55 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -119,7 +119,7 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 
 ## Workstream E — Editorial
 
-30 defects · 23 verified · 25 with an automated check
+30 defects · 24 verified · 25 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -148,7 +148,7 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 | E-523 | S3 | Verified | ND | `auto` | L446 "W3C XXX" | `[see W3C XXX]` placeholder |  | `4746ecd` |
 | E-524 | S3 | Open | ND | `auto` | L887 "figure 4.4.3" | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  |  |
 | E-525 | S3 | Verified | ND | `auto` | L? "2.2.1 Issue Verifiable Credential" | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
-| E-526 | S3 | Open | ND | `auto` | L727 "3.3 Roles" | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
+| E-526 | S3 | Verified | ND | `auto` | L727 "3.3 Roles" | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
 | E-527 | S3 | Open | ND | — | L729/851 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  |  |
 | E-528 | S3 | Open | ND | — | L893 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
 | E-529 | S3 | Open | ND | — | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  | `17bdc07` |
@@ -160,7 +160,7 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| F-601 | S1 | Open |  | `auto` | L59/727/879 "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors | `6abf6fc` |
+| F-601 | S1 | Open |  | `auto` | L59/727/879 "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors | `a2c870e` |
 | F-602 | S2 | Open |  | `auto` | L421/436/490 "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid |  |
 | F-603 | S2 | Open |  | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors |  |
 | F-604 | S3 | Open |  | `auto` | non-breaking spaces — document-wide |  |  |  |

@@ -724,7 +724,7 @@ An ADI-Network consists of a collection of Interchanges that each service users,
 
 VCs are stored and retrieved from an Agents published VC Vault endpoint. This may vary, some credential issuers may require the VC be stored in the CI’s Vault, others may allow the VC to be stored in the User Vault.  The CI can define the location of the vault endpoints it allows in the CI metadata.
 
-Domain Authorities (AGs) also publish agent endpoints to service ADI requests in their respective domains. See [<u>3.3 Roles & Authorities</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.bvasm53r31m) for a description of network participants.
+Domain Authorities (AGs) also publish agent endpoints to service ADI requests in their respective domains. See [Roles and Authorities](#6.3 roles and authorities) for a description of network participants.
 
 Agents communicate network requests using endpoints, the red line in the figure 4.
 
@@ -874,9 +874,8 @@ Figure 9: Digital Address
 
 Participant uniqueness can be globally or regionally enforced by creating a participant HIDA (Hashed ID Attributes) from required PII data.   The hashed PII data will produce a digital fingerprint that can be used to check for pre-existence of an identity to ensure uniqueness.
 
- HIDA usage is optional.  HIDA requirements should be specified in governance policies.  
+ HIDA usage is optional.  
 
-See [<u>Governance HIDA</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.g7c9avwei6bl).
 
 ### 7.4.3 DID Addressing
 
@@ -902,7 +901,7 @@ Note: Create_agd does not have an authority_issuer since it is the root.  Imple
 
 The following request and response descriptions are used during AGD enrollment.
 
-- [<u>create_agd</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.hfgugc59964c)
+[create_agd](#b.1.1-create_agd)
 
 <img src="media/image11.png" style="width:6.5in;height:4.98611in" />Figure 11. Creating an AGD
 
@@ -932,13 +931,13 @@ The AGD can now issue ADI-AGD VCs 
 
 The following request and response JSON objects are used during Interchange enrollment.
 
-- [<u>enroll_ix</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.e4s937b5x8r8)
+- [enroll_ix](#b.1.3-enroll_ix)
 
-- [<u>vc_offer</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.c36eaqi0mzdk)
+- [vc_offer](#b.2.2-vc_offer)
 
-- [<u>issuance_token</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.4dmxauxtiwp0)
+- [issue_token](#b.2.3-issue_vc_token)
 
-- [<u>ADI-IX role VC</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.flj1plkiyk8p)
+- [ADI-IX role VC](#b.3.3-adi-ix-role-vc)
 
 <img src="media/image12.png" style="width:6.5in;height:3.36111in" />
 
@@ -948,15 +947,15 @@ Figure 12. Enrolling an Interchange
 
 The following request and response JSON objects are used during Issuer enrollment.
 
-- [<u>enroll_issuer</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.sqxdeon7jrjh)
+- [enroll_issuer](#b.1.4-enroll_user)
 
-- [<u>vc_offer</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.c36eaqi0mzdk)
+- [vc_offer](#b.2.2-vc_offer)
 
-- [<u>issuance_token</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.4dmxauxtiwp0)
+- [issue_token](#b.2.3-issue_vc_token)
 
-- [<u>ADI-ISSUER role VC</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.7s49za3wsph9)
+- [ADI-ISSUER role VC](#b.3.4-adi-issuer-role-vc)
 
-Issuers are onboarded into the ADI Ecosystem by an Interchange. The process starts with the Interchange requiring the prospective Issuer to provide organizational information, a contact person for the organization and details to qualify the Issuer as a member in good business standing, financial status and criteria to meet the certification process established by the ADI Governance policies.
+Issuers are onboarded into the ADI Ecosystem by n Interchange. The process starts with the Interchange requiring the prospective Issuer to provide organizational information, a contact person for the organization and details to qualify the Issuer as a member in good business standing, financial status and criteria to meet the certification process established by the ADI Governance policies.
 
 The governing body within the Interchange may approve or reject requests to enroll into the Interchange and the ADI ecosystem. Successful approval of an entity as an Issuer results in a Digital Address, DID (i.e. ISSUER_ID) and network VC being created. A VC is issued by the Interchange using information used to verify the Issuer. The VC may also enforce additional policies to ensure that the Issuer can issue Digital Addresses to Users or issue Verifiable Credentials with a certain Assurance Level. 
 
@@ -1002,13 +1001,13 @@ The issuer can now issue VCs to ADI participants.  
 
 The following request and response JSON objects are used during Service Provider enrollment.
 
-- [<u>Enroll_sp</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.dgy3qb3slgrx)
+- [enroll_sp](#b.1.5-enroll_sp)
 
-- [<u>vc_offer</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.c36eaqi0mzdk)
+- [vc_offer](#b.2.2-vc_offer)
 
-- [<u>issuance_token</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.4dmxauxtiwp0)
+- [issue_token](#b.2.3-issue_vc_token)
 
-- [<u>ADI-SP role VC</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.u4e8qubh20j5)
+- [ADI-SP role VC](#b.3.5-adi-sp-role-vc)
 
 Service Providers are onboarded into the ADI-Network by an Interchange. The process starts with the Interchange requiring the prospective Service Provider to provide organizational information, a contact person for the organization and details required to join the ADI-Network.
 
@@ -1058,7 +1057,7 @@ The  service provider can now request VCs from ADI participants.  
 
 ## 8.5 Enrolling a user
 
-~ix/[<u>enroll_user</u>](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.wb30ofcvwe63)
+~ix/[enroll_user](#b.1.6-enroll_user)
 
 User Enrollment
 
