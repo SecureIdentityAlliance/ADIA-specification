@@ -160,7 +160,7 @@ Nobody moves their own work to `Verified`. For the 67 automated defects the harn
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| F-601 | S1 | Open |  | `auto` | L59/727/879 "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors |  |
+| F-601 | S1 | Open |  | `auto` | L59/727/879 "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors | `6abf6fc` |
 | F-602 | S2 | Open |  | `auto` | L421/436/490 "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid |  |
 | F-603 | S2 | Open |  | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors |  |
 | F-604 | S3 | Open |  | `auto` | non-breaking spaces — document-wide |  |  |  |
