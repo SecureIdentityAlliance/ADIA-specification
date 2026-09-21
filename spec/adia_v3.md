@@ -198,11 +198,13 @@ This document entirely replaces the previous Accountable Digital identity Archit
 <a id="adi-region-region"></a>
 ## 3.11 ADI-Region (region)
 
-> Virtual or physical scope or boundaries for the uniqueness of a Digital Address.
+> Virtual or physical grouping of Interchanges for governance and routing purposes.
+>
+> Note: A Region is not the scope of Digital Address uniqueness. Digital Addresses are unique within an Interchange, and network-unique by construction; see §7.4.1.
 >
 > Note 1 to entry: A region may include one or more ADI-Interchanges.
 >
-> Note 2 to entry: Entities within an ADI-Region are unique when they do not have matching HIDAs.
+> Note 2 to entry: An Interchange determines that two enrollment applicants are the same entity when their HIDAs match. This comparison is performed within a single Interchange and is not performed across Interchanges.
 
 <a id="adi-service-provider-adi-sp-service-provider-sp"></a>
 ## 3.12 ADI-Service Provider (ADI-SP) (“Service Provider”) (“SP”)
@@ -296,7 +298,7 @@ Assertion made about a Subject
 >
 > Note 1 to entry: The format of a User DA is user@interchange_name
 >
-> Note 2 to entry: A DA must be unique within an ADI-Region.
+> Note 2 to entry: A Digital Address is unique within the Interchange that issued it. Because Interchange names are network-unique, every Digital Address is unique within the ADI Network.
 >
 > Note 3 to entry: ADI-Network Providers can also be assigned a DA by their controlling entity.
 
@@ -329,7 +331,7 @@ Assertion made about a Subject
 
 > Cryptographic hash computed over a specified set of Claims about a Subject.
 >
-> Note 1 to entry: The HIDA is a key driver for performing lookup operations to ensure that no two entities have the same DA within an ADI-Region. HIDAs are used to ensure uniqueness among entities that are applying for a DID and/or DA.
+> Note 1 to entry: An Interchange uses the HIDA to determine whether an enrollment applicant already holds a Digital Address issued by that Interchange, so that it issues at most one Digital Address per natural person. HIDAs are not compared across Interchanges.
 >
 > Note 2 to entry: The ID attributes to be used for HIDA calculations are specified by regional policies.
 >
@@ -800,7 +802,7 @@ Agent endpoint metadata is obtained from GET ~*participant*/metadata.
 
 ADI-Network participant URLs can be obtained by calling the AGD with a DID or DA using ~agd/network_location.
 
-*Implementation option:  user, issuer, service provider and interchange digital addresses may contain a suffix containing ADI region.  For example, [issuer1@ix3.region](mailto:issuer1@ix3.region)1  or the interchange id can be globally unique.*
+*Implementation option: an Interchange name may itself be structured, for example `ix3.region1`, provided the whole name is unique within the ADI Network. Structure within the Interchange name has no protocol meaning.*
 
 <a id="adi-network-software-components"></a>
 ## 7.2 ADI-Network software components
@@ -828,7 +830,7 @@ Each Network Provider runs DAS software within their environment
 
 Each DAS is configured with the URL endpoint of the ADI AGD.  From there a directory of other endpoints (Interchanges) are available.  Every DAS speaks to other DAS endpoints to perform ADI-Network Transactions throughout the ADI Global Network.
 
-The DAS records the public keys of Digital Addresses & DIDs, maintains Network Directories and may enforce HIDA uniqueness.
+The DAS records the public keys of Digital Addresses and DIDs, maintains Network Directories, and enforces Digital Address and HIDA uniqueness within its own Interchange.
 
 DAS functions include:
 
@@ -898,7 +900,6 @@ The DAA operates on a user’s device and performs strong authentication.  Examp
 
 The User Device Agent works in conjunction with the interchange provisioned user agent to perform user authentication and VC wallet functions on behalf of the User.
 
-
 <a id="authentication-and-federation-assurance"></a>
 ### 7.2.4 Authentication and federation assurance
 
@@ -949,7 +950,6 @@ The User Device Agent works in conjunction with the interchange provisioned user
 >
 > Where biometric verification is used, it is performed entirely within the authenticator and is expressed to the ADI Network solely as `UV = 1` within a WebAuthn assertion. No biometric sample, template, or comparison score is transmitted to, stored by, or processed by any ADI Network participant.
 
-
 <a id="adi-provider-architecture"></a>
 ## 7.3 ADI Provider Architecture
 
@@ -994,7 +994,13 @@ The Interchange offers a hybrid wallet service to ADI-Network Users, providers a
 <a id="digital-address"></a>
 ### 7.4.1 Digital Address
 
-A **Digital Address i**s an identifier that is unique in an ADI-Network.   It has the form of username@interchange_name.  For example, alice@interchange_1.
+A **Digital Address** is an identifier of the form `local@interchange`, where `local` is 1 to 64 characters from ALPHA, DIGIT, ".", "_" and "-", and `interchange` is an Interchange name assigned by the AGD. For example, `alice@interchange_1`. Comparison is case-insensitive and Digital Addresses are stored in lowercase. In this version `local` is restricted to ASCII.
+
+Interchange names are assigned by the AGD at enrollment and MUST be unique within the ADI Network. The AGD MUST reject an enrollment request naming an Interchange name already in use.
+
+An Interchange MUST ensure that no two Digital Addresses it issues share the same `local` part. Because Interchange names are network-unique, every Digital Address is therefore unique within the ADI Network.
+
+An Interchange MUST ensure that it issues no more than one Digital Address to the same natural person, determined by HIDA comparison under §7.4.2. This requirement is scoped to a single Interchange. A natural person MAY hold Digital Addresses issued by more than one Interchange, and the ADI Network does not determine whether Digital Addresses issued by different Interchanges refer to the same person.
 
 All entities within the architecture are represented by a Digital Address which is bound to an ADI-Network DID and may be bound to one or more privacy preserving pairwise DIDs. DIDdocs contain the public key of the DID.   DIDs digitally sign using their private key and can be verified using the DIDDoc public key.
 
@@ -1007,7 +1013,9 @@ Each Digital Address is bound to one or more DIDs and is assigned an ADI-ROLE VC
 <a id="identifiers-hida"></a>
 ### 7.4.2 HIDA
 
-Participant uniqueness can be globally or regionally enforced by creating a participant HIDA (Hashed ID Attributes) from required PII data.   The hashed PII data will produce a digital fingerprint that can be used to check for pre-existence of an identity to ensure uniqueness.
+Participant uniqueness is enforced by the enrolling Interchange by creating a participant HIDA (Hashed ID Attributes) from required PII data. The HIDA produces a digital fingerprint that the Interchange compares against the HIDAs of its own participants, to determine whether an applicant already holds a Digital Address issued by that Interchange.
+
+HIDAs MUST NOT be compared across Interchanges. A participant's HIDA is computed using a key held by the enrolling Interchange and is not disclosed to other Interchanges or to the AGD.
 
  HIDA usage is optional.
 
@@ -1328,7 +1336,7 @@ A user may enroll in an ADI-Network starting at either (1) an issuer who is auth
 
 In both cases during the enrollment process:
 
-- The User HIDA is verified for uniqueness, and an ADI-Network User VC is issued to the user for participation in the ADI ecosystem.
+- The User HIDA is compared against the HIDAs held by the enrolling Interchange to confirm the applicant does not already hold a Digital Address there, and an ADI-Network User VC is issued to the user for participation in the ADI ecosystem.
 
 The user can now participate in the ADI-Network to:
 
