@@ -12,16 +12,16 @@ Part 1 gives a **recommended default for each of the twelve open decisions**. No
 |---|---|---|---|
 | **D1** | ARD prefix | **Drop the prefix.** `ard_da_user_name` → `da_user_name`, `ard_public_key` → `public_key`, `ard_key_id` → `key_id`, `ard_information` → `information`, `ard_enrollment_form` → `enrollment_form`. `~ard/enroll_ix` → `~agd/enroll_ix`. | The fields describe the applicant, not a role. A neutral name is correct for all five enrollment types and never needs renaming again. Restoring ARD as a role adds a tier the architecture no longer has. |
 | **D2** | `did:adi` syntax | **Colons, not slashes.** `did:adi:<region>:<ix>:<uuid>` — e.g. `did:adi:r1:ix3:09f4cee0-b3a8-4bfe-a1f7-69d834764159`. Region and IX labels are lowercase `[a-z0-9-]`, 1–32 chars. | DID Core permits `:` inside the method-specific-id but treats `/` as a path separator, so the current form makes every Issuer and SP under one IX the *same DID*. Colons keep the routing information the spec clearly wants while staying a real DID. |
-| **D3** | Digital Address | **ABNF:** `da = local "@" ix-name` · `local = 1*64(ALPHA / DIGIT / "." / "_" / "-")` · `ix-name = label *("." label)`. Compare case-insensitively, store lowercase, ASCII-only in 3.0. Reserve `admin`, `agd`, `ix`, `root`, `system`. | IX names are network-unique, so a DA is network-unique by construction — that dissolves the §3.21 (region) vs §8.5.1 (network) conflict rather than picking a side. Defer IDN to 3.1 with a stated rationale (homograph risk). |
+| **D3** | Digital Address | **ABNF:** `da = local "@" ix-name` · `local = 1*64(ALPHA / DIGIT / "." / "_" / "-")` · `ix-name = label *("." label)`. Compare case-insensitively, store lowercase, ASCII-only in 3.0. Reserve `admin`, `agd`, `ix`, `root`, `system`. | IX names are network-unique, so a DA is network-unique by construction — that dissolves the §3.21 (region) vs §6.5.1 (network) conflict rather than picking a side. Defer IDN to 3.1 with a stated rationale (homograph risk). |
 | **D4** | Role-VC type registry | Five type strings: `ADI-AGD-VC` `ADI-IX-VC` `ADI-ISSUER-VC` `ADI-SP-VC` `ADI-USER-VC`. Five role tokens: `AGD` `IX` `ISSUER` `SP` `USER`. Delete `ADI NETWORK VC`. One table in §4; every other mention references it. | Currently five competing schemes. Uppercase-hyphenated matches the majority of existing `type` fields, so it is the smallest diff. |
 | **D5** | OpenID4VCI | **Profile it.** Pin to a specific published version, adopt its Credential Offer and metadata shapes verbatim, add ADIA extensions under an `adia_` prefix, and publish a one-page delta table. Use `/.well-known/openid-credential-issuer`. | Existing wallet libraries then work unmodified. Every deviation in the current examples is a deviation from something implementers already have code for. |
-| **D6** | VC format | **SD-JWT VC** (IETF OAuth WG). | The spec promises selective disclosure (§5.4, §11.1) and the flows can't deliver it with whole-VC transport. SD-JWT VC has `cnf` holder binding built in, uses the JWS framing §8.2 already describes, and pairs with Token Status List for revocation. Closes A-124, A-125, B-215 at once. |
+| **D6** | VC format | **SD-JWT VC** (IETF OAuth WG). | The spec promises selective disclosure (§5.4, §9.1) and the flows can't deliver it with whole-VC transport. SD-JWT VC has `cnf` holder binding built in, uses the JWS framing §6.2 already describes, and pairs with Token Status List for revocation. Closes A-124, A-125, B-215 at once. |
 | **D7** | Signature algorithms | **MTI:** `ES256` required, `EdDSA` (Ed25519) recommended. `RS256` not permitted for new signatures; verifiers MAY accept for 12 months. `kid` REQUIRED in every JOSE header. `alg: none` and all `HS*` MUST be rejected. | The metadata already says ES256; the examples say RS256. Pick the one the metadata already advertises. |
 | **D8** | Assurance | Three distinct integer fields per NIST SP 800-63 Rev. 4: `ial`, `aal`, `fal`, each 1–3. Role VCs for AGD/IX/Issuer carry ceilings `max_ial`, `max_aal`. SP role VC carries floors `min_ial`, `min_aal`. Delete `authorized_max_assurance_level`. | The document conflates identity proofing (IAL) with authentication strength (AAL). An Issuer's ceiling and an SP's floor are different kinds of number. |
 | **D9** | HIDA | **Optional per region; when used, keyed and canonicalised.** `HIDA = HMAC-SHA-256(K_region, canon(given_name) ‖ 0x1F ‖ canon(family_name) ‖ 0x1F ‖ dob_ISO8601 ‖ 0x1F ‖ national_id)`. `canon` = NFKC → casefold → strip whitespace and punctuation → transliterate to ASCII. Scope uniqueness to the region; drop cross-region matching. | An unsalted digest over {name, DOB, ID number} is enumerable offline. Without canonicalisation the same person hashes differently at different Interchanges, so global uniqueness silently fails anyway. A region-held key makes the registry useless to anyone without it. |
 | **D10** | Vault discovery | Add a `service` entry to the **user's DIDdoc**: `{"id": "#vault", "type": "ADIVault", "serviceEndpoint": "https://…"}`. Issuer's vault stays in issuer metadata. User agent rule: own DIDdoc service first, issuer metadata as fallback. | One singular `credential_vault_endpoint` in issuer metadata cannot express a per-user choice. The DIDdoc is the one place every party can already resolve. |
 | **D11** | Sole control of the vault key | See Part 3, B-206 for the full design. Summary: HSM-resident non-exportable key (FIPS 140-3 L3 recommended, L2 minimum); each signing operation requires a fresh WebAuthn assertion whose `challenge` is the SHA-256 of the exact payload to be signed, with `UV=1`; DAS verifies before the HSM signs; every operation appended to a hash-chained log. Claim **AAL2**, not AAL3. | This is what eIDAS remote-QSCD actually requires. Without it the accountability property is asserted, not constructed. AAL3 needs a hardware authenticator with verifier-impersonation resistance — a server-held key released after remote auth is not that, however well-guarded. |
-| **D12** | Pairwise DIDs | **Withdraw from 3.0.** Delete the claim in §3.19 and §9.5.3; add a paragraph to Privacy Considerations stating that 3.0 credentials carry a stable subject identifier, that Interchanges see all transactions, and that pairwise identifiers are planned for a later revision. | No flow uses one and no example shows one. A privacy property the protocol doesn't implement is worse than an honest limitation. Doing it properly means per-verifier `cnf` keys in SD-JWT VC, which is real design work for 3.1. |
+| **D12** | Pairwise DIDs | **Withdraw from 3.0.** Delete the claim in §3.19 and §7.4.3; add a paragraph to Privacy Considerations stating that 3.0 credentials carry a stable subject identifier, that Interchanges see all transactions, and that pairwise identifiers are planned for a later revision. | No flow uses one and no example shows one. A privacy property the protocol doesn't implement is worse than an honest limitation. Doing it properly means per-verifier `cnf` keys in SD-JWT VC, which is real design work for 3.1. |
 
 Once the TWG has accepted these (or substituted its own), Parts 2–5 are unblocked in full.
 
@@ -119,7 +119,7 @@ Replace B.2.2 with the OpenID4VCI shape exactly:
 }
 ```
 
-Normative text for §11.2.3, replacing the sentence at "Using the user DID from the issue_vc token":
+Normative text for §9.2.3, replacing the sentence at "Using the user DID from the issue_vc token":
 
 > The Issuer MUST bind `adia_subject` when the offer is created. On redemption the Issuer MUST verify that the `issue_vc_token` is signed by the key bound to `adia_subject`, and MUST reject the redemption otherwise. The subject of the issued credential MUST be `adia_subject`, never a value taken from the redeeming party. Offers MUST be single-use and MUST expire no later than `adia_offer_expires`, which SHOULD be within 10 minutes of creation.
 
@@ -162,7 +162,7 @@ Replace B.2.4 with an SD-JWT VC. Decoded payload:
 }
 ```
 
-with the disclosures shown separately. §8.2's sentence "This document will be using JWT VC formatting in examples" becomes true (A-125). A-124's `vc_id` disappears — `jti` if an identifier is needed.
+with the disclosures shown separately. §6.2's sentence "This document will be using JWT VC formatting in examples" becomes true (A-125). A-124's `vc_id` disappears — `jti` if an identifier is needed.
 
 ### A-cluster 5 — Everything else in A
 | ID | Fix |
@@ -176,12 +176,12 @@ with the disclosures shown separately. §8.2's sentence "This document will be u
 
 ## Part 3 — Workstream B: cryptography and protocol
 
-### B-201 — Replace the verification paragraph in §8.2
+### B-201 — Replace the verification paragraph in §6.2
 Delete from "The verifier can check the signature by combining…" to "…signature of the proof." Replace with:
 
 > Signatures on ADI credentials, presentations and requests are JSON Web Signatures [RFC 7515]. A verifier MUST validate a signature using the procedure in RFC 7515 §5.2: reconstruct the signing input as `BASE64URL(UTF8(protected header)) || '.' || BASE64URL(payload)`, select the algorithm from the `alg` header parameter, locate the key identified by `kid` in the signer's DIDdoc, and verify according to that algorithm. Verifiers MUST reject `alg` values not in §D7 and MUST reject any token whose `kid` does not resolve to a key in the signer's current DIDdoc.
 
-### B-202, B-203 — Fix the user enrollment sequence in §10.5
+### B-202, B-203 — Fix the user enrollment sequence in §8.5
 The User Agent cannot issue the User's own role credential. Corrected message list (replace from `DAA -> USER_AGENT` through `Sign and create ADI Network User VC`):
 
 ```
@@ -220,9 +220,9 @@ New subsection §9.3.3.1 "Authorising a signing operation". Normative text:
 > 5. The DAS MUST append a record `{timestamp, sub, SHA-256(P), assertion_hash, prev_hash}` to a hash-chained log for every signing operation, successful or refused. The log head MUST be published to the AGD daily.
 > 6. Biometric matching occurs entirely within the authenticator. No biometric data, template or match score is transmitted. The protocol carries only the WebAuthn assertion.
 
-Step 2 is what replaces "Request Biometric approval" in §12.1.3 (B-207). Step 1 is the floor for "hardened data vault" (B-208). Steps 2–4 are the binding B-206 asked for.
+Step 2 is what replaces "Request Biometric approval" in §10.1.3 (B-207). Step 1 is the floor for "hardened data vault" (B-208). Steps 2–4 are the binding B-206 asked for.
 
-**B-205:** with this design, claim AAL2 in §9.3.2, §9.3.3 and §A.1.1. Remove AAL3.
+**B-205:** with this design, claim AAL2 in §7.2.3, §7.2.3 and §A.1.1. Remove AAL3.
 
 ### B-209 — Revocation and status
 Every ADI credential (role and subject) carries a `status` claim referencing a **Token Status List** (IETF, companion to SD-JWT VC). Add §8.8 "Credential status":
@@ -232,13 +232,13 @@ Every ADI credential (role and subject) carries a `status` claim referencing a *
 Root key rotation: the AGD publishes a new self-signed ADI-AGD-VC signed by **both** old and new keys for a 90-day overlap; verifiers MUST accept either during overlap. Add as §8.8.1.
 
 ### B-210 — The verification algorithm
-New §12.3 "Presentation verification". This is the interoperability contract; write it as numbered normative steps:
+New §10.3 "Presentation verification". This is the interoperability contract; write it as numbered normative steps:
 
 > A verifier receiving a presentation *VP* for a request *R* MUST perform every step below in order and MUST reject on the first failure.
 >
 > 1. **Freshness.** `VP.nonce == R.nonce`, `VP.aud == R.aud`, current time < `R.exp`.
-> 2. **Presentation signature.** Verify `VP` per §8.2 using the key in `VP.cnf` (SD-JWT KB-JWT).
-> 3. **Credential signature.** For each credential *C* in *VP*, resolve `C.iss` to a DIDdoc via §12.2, locate `C.kid`, verify per §8.2.
+> 2. **Presentation signature.** Verify `VP` per §6.2 using the key in `VP.cnf` (SD-JWT KB-JWT).
+> 3. **Credential signature.** For each credential *C* in *VP*, resolve `C.iss` to a DIDdoc via §10.2, locate `C.kid`, verify per §8.2.
 > 4. **Holder binding.** `C.cnf.jwk` equals the key used in step 2.
 > 5. **Credential status.** Fetch `C.status.status_list`; verify its signature; confirm *C*'s index is not revoked or suspended.
 > 6. **Validity.** `C.iat` ≤ now < `C.exp`.
@@ -252,21 +252,21 @@ New §12.3 "Presentation verification". This is the interoperability contract; w
 > A verifier MAY cache the results of steps 7–10 for the lifetime of the shortest `status_list.exp` in the chain.
 
 ### B-211, B-212, B-213 — DIDdoc response, precedence, key IDs
-Add B.3.5 `did_doc` response — the `id_doc` object from the role-VC template above, plus `"proof"` = JWS by the enrolling Interchange (or self, for the AGD). §12.2 precedence rule:
+Add B.3.5 `did_doc` response — the `id_doc` object from the role-VC template above, plus `"proof"` = JWS by the enrolling Interchange (or self, for the AGD). §10.2 precedence rule:
 
 > When a public key appears in both a role credential's `id_doc` and a resolved DIDdoc, the **DIDdoc is authoritative**. A mismatch MUST be treated as a verification failure.
 
 B-213: every JOSE header carries `kid` = `<DID>#<fragment>`; DIDdocs retain rotated-out keys in `verificationMethod` with a `revoked` timestamp so old signatures still verify.
 
 ### B-214 — Bind mTLS to the DID hierarchy
-§9.3.1: *"DAS-to-DAS connections MUST use mutual TLS. The client certificate's `subjectAltName` MUST contain a `uniformResourceIdentifier` equal to the connecting party's DID. The receiving DAS MUST verify the DID resolves to a DIDdoc whose `verificationMethod` includes the certificate's public key. A mismatch MUST close the connection."* That makes the X.509 layer a transport for the DID identity instead of a second trust hierarchy.
+§7.2.2: *"DAS-to-DAS connections MUST use mutual TLS. The client certificate's `subjectAltName` MUST contain a `uniformResourceIdentifier` equal to the connecting party's DID. The receiving DAS MUST verify the DID resolves to a DIDdoc whose `verificationMethod` includes the certificate's public key. A mismatch MUST close the connection."* That makes the X.509 layer a transport for the DID identity instead of a second trust hierarchy.
 
 ### B-216, B-218, B-219 — Names
 | Narrative says | Appendix says | Use |
 |---|---|---|
-| `vc_authorization_request` (§12.1.3) | `vc_authorization_token` (B.2.6) | Define both: the SP sends a `vc_request` (B.2.5); the user agent returns a `vc_authorization_token` to the vault. Delete the phrase `vc_authorization_request`. |
+| `vc_authorization_request` (§10.1.3) | `vc_authorization_token` (B.2.6) | Define both: the SP sends a `vc_request` (B.2.5); the user agent returns a `vc_authorization_token` to the vault. Delete the phrase `vc_authorization_request`. |
 | `~issuer/issue_vc` | `~issuer/issue_vc_token` | `~issuer/issue_vc` |
-| `make_credential_offer` (§11.2) | `make_vc_offer` (B.2.1) | `make_vc_offer` |
+| `make_credential_offer` (§9.2) | `make_vc_offer` (B.2.1) | `make_vc_offer` |
 | `~ard/enroll_ix` | — | `~agd/enroll_ix` |
 
 ---
@@ -282,11 +282,11 @@ Two mechanical passes over the prose (not the examples):
 
 | Currently | Becomes |
 |---|---|
-| §3.1 Note 2 "An ADI Network must include at least one ADI-Region" | §8.4.1: "An ADI Network MUST include at least one Region." |
-| §3.20 Note 2 "A DID must be bound to one and only one DIDdoc" | §9.5.3: "Each DID MUST resolve to exactly one DIDdoc." |
-| §3.21 Note 2 "A DA must be unique within an ADI-Region" | §9.5.1: "A Digital Address MUST be unique across the network." (per D3) |
-| §3.22 Note 3 "Agents must have at least one endpoint" | §9.3.1 |
-| §8.1 "All participants … must generate a PK Pair" | §8.1, as a MUST |
+| §3.1 Note 2 "An ADI Network must include at least one ADI-Region" | §6.4.1: "An ADI Network MUST include at least one Region." |
+| §3.20 Note 2 "A DID must be bound to one and only one DIDdoc" | §7.4.3: "Each DID MUST resolve to exactly one DIDdoc." |
+| §3.21 Note 2 "A DA must be unique within an ADI-Region" | §7.4.1: "A Digital Address MUST be unique across the network." (per D3) |
+| §3.22 Note 3 "Agents must have at least one endpoint" | §7.2.2 |
+| §6.1 "All participants … must generate a PK Pair" | §6.1, as a MUST |
 
 Add to §1: *"Terms defined in §3 are informative. Requirements appear only in §8–§12 and Appendix B."*
 
@@ -296,7 +296,7 @@ New §2 (shift the change log to an appendix). Template:
 > ## 2. Conformance
 > This specification defines requirements for five conformance targets: **AGD**, **Interchange**, **Credential Issuer**, **Service Provider**, and **User Agent**. An implementation conforms as a given target if it satisfies every MUST and MUST NOT requirement addressed to that target in §8–§12 and produces and accepts the messages in Appendix B for that target.
 >
-> An implementation MAY claim conformance to more than one target. Conformance to any target requires: (a) the mandatory-to-implement algorithms of §D7; (b) the verification procedure of §12.3 where the target verifies credentials; (c) publication of status lists per §8.8 where the target issues credentials.
+> An implementation MAY claim conformance to more than one target. Conformance to any target requires: (a) the mandatory-to-implement algorithms of §D7; (b) the verification procedure of §10.3 where the target verifies credentials; (c) publication of status lists per §8.8 where the target issues credentials.
 >
 > Requirements phrased with SHOULD and MAY do not affect conformance.
 
@@ -314,7 +314,7 @@ Write one paragraph each; the review already identified the content:
 
 ### C-305 — Privacy Considerations (outline)
 1. Stable subject identifiers and verifier linkability (D12 — stated honestly)
-2. Interchange visibility of transaction metadata (§8.3)
+2. Interchange visibility of transaction metadata (§6.3)
 3. PII inside role credentials published to directories (D-413) — recommend: role credentials carry `legal_name` and a contact URI only; everything else moves to an encrypted enrollment record held by the enrolling party
 4. Selective disclosure and what SD-JWT does and does not hide
 5. HIDA as a correlation risk even when keyed
@@ -334,10 +334,10 @@ Registry of `error` codes: `invalid_request`, `invalid_signature`, `unknown_kid`
 Issuer/IX/AGD metadata gains `"adia_versions_supported": ["3.0"]`. Every request carries `"adia_version": "3.0"`. A party receiving an unsupported version returns `invalid_request` with `error_description` naming the versions it supports. Minor versions are additive only.
 
 ### C-308 — Registries
-Three tables in a new Appendix D: role-VC types (D4), `vct` schema names (§11.1), error codes (C-306). Each with a registration rule ("TWG approval; specification required").
+Three tables in a new Appendix D: role-VC types (D4), `vct` schema names (§9.1), error codes (C-306). Each with a registration rule ("TWG approval; specification required").
 
-### C-309 — Write §10.2 (Enrolling an Interchange)
-Mirror §10.3's structure exactly:
+### C-309 — Write §8.2 (Enrolling an Interchange)
+Mirror §8.3's structure exactly:
 
 ```
 IX_APPLICANT -> AGD           : POST ~agd/enroll_ix  { public_key, key_id, da_user_name, da_region_name, enrollment_form }
@@ -350,7 +350,7 @@ AGD          -> IX_APPLICANT  : Return DID, DIDdoc, ADI-IX-VC, directory URLs
 IX_APPLICANT -> IX_DAS        : Provision DAS with credential and AGD endpoints
 ```
 
-Prose: four short paragraphs matching the §10.3 pattern.
+Prose: four short paragraphs matching the §8.3 pattern.
 
 ### C-310, C-311
 Split Appendix C into **C.1 Normative** (RFC 2119, RFC 8174, RFC 7515, RFC 7517, RFC 7519, SD-JWT VC, Token Status List, OpenID4VCI, OpenID4VP, WebAuthn L3, DID Core, NIST SP 800-63-4, JSON Schema) and **C.2 Informative** (X.1254, X.1281, VCDM 2.0, eIDAS). Add `[W3C DM]` and `[W3C JS]` entries. Replace the RFC 2119/8174 Google Doc links with `https://www.rfc-editor.org/rfc/rfc2119` and `…/rfc8174`. Delete "To be completed". Copyright → 2026. Replace every "OASIS" with "ADIA".
@@ -364,17 +364,17 @@ Everything here is mechanical once Part 1 is accepted.
 | ID | After decision | Do this |
 |---|---|---|
 | D-401 | D1 | Global rename of the 18 `ard_` fields and `~ard/`. Checker goes green when zero `ard_` remain. |
-| D-402 | D8 | Replace `authorized_max_assurance_level` everywhere with `max_ial`/`max_aal` (issuers) or `min_ial`/`min_aal` (SPs). §3.14 → cite SP 800-63-4; define IAL, AAL, FAL separately. §9.3.2, §9.3.3, §A.1.1 → AAL2. |
+| D-402 | D8 | Replace `authorized_max_assurance_level` everywhere with `max_ial`/`max_aal` (issuers) or `min_ial`/`min_aal` (SPs). §3.14 → cite SP 800-63-4; define IAL, AAL, FAL separately. §7.2.3, §7.2.3, §11.2 → AAL2. |
 | D-403 | D2 | Every `did:adi:…/…` → colon form. B.3.2's `issuser1/ix3/r1` → `did:adi:r1:ix3:<uuid>`. Add §9.5.3.1 with the ABNF and a one-paragraph resolution procedure (DAS of the named IX serves `GET ~ix/did/{uuid}`). |
 | D-404 | D3 | ABNF into §9.5.1. Fix the four non-conforming DAs in B.2.7–B.2.11. Delete the region-scope sentence in §3.21. |
-| D-405 | D9 | Rewrite §8.7.3 and §9.5.2 with the HMAC construction and canonicalisation steps. §3.11 Note 2 and §3.24 Note 1 → "when HIDA is in use". §10.5 "is verified" → "is verified where region policy requires". |
+| D-405 | D9 | Rewrite §6.7.3 and §7.4.2 with the HMAC construction and canonicalisation steps. §3.11 Note 2 and §3.24 Note 1 → "when HIDA is in use". §8.5 "is verified" → "is verified where region policy requires". |
 | D-406 | D12 | Delete pairwise sentences in §3.19 Note 3 and §9.5.3. Add the honest paragraph to Privacy Considerations. |
 | D-407 | D4 | One table in §4.1. Replace every variant string. Delete "ADI NETWORK VC". Add ADI-SP-VC to §4.1. |
 | D-408 | — | Pick one taxonomy: **Providers** = AGD, Interchange; **Members** = Issuer, SP, User. Fix §3.8, §6.2 ("Credential Provider" → "Credential Issuer"), §6.3 (add Interchange; "Authoritative Domain Controller" → "Authoritative Global Domain"), §9.2. |
 | D-409 | — | DAA = **Device Application Agent** everywhere (§9.2's "Digital Address Application" is the outlier). |
 | D-410 | — | §9.1: "Domain Authorities (AGs)" → "The AGD". |
-| D-411 | — | Delete the list in §6.3; replace with "See §8.7.4." Keep §8.7.4's "at time of issuance" wording — it is the one that makes sense with status lists. |
-| D-412 | — | §10.4: the **Interchange** publishes to the directory. Add to §9.4.1: "Only the enrolling Interchange MAY write a Member's directory entry; writes MUST be signed by the Interchange's DID key." |
+| D-411 | — | Delete the list in §6.3; replace with "See §8.7.4." Keep §6.7.4's "at time of issuance" wording — it is the one that makes sense with status lists. |
+| D-412 | — | §8.4: the **Interchange** publishes to the directory. Add to §9.4.1: "Only the enrolling Interchange MAY write a Member's directory entry; writes MUST be signed by the Interchange's DID key." |
 | D-413 | C-305 §3 | Role credentials carry `legal_name` + contact URI only. Move the rest to an enrollment record. |
 | D-414 | — | Acronym table in §4: AGD, AAL, CI, DA, DAA, DAS, DID, FAL, HIDA, IAL, IX, JWS, KYC, PII, SD-JWT, SP, VC, VP. |
 

@@ -899,6 +899,7 @@ The DAA operates on a user’s device and performs strong authentication.  Examp
 The User Device Agent works in conjunction with the interchange provisioned user agent to perform user authentication and VC wallet functions on behalf of the User.
 
 
+<a id="authentication-and-federation-assurance"></a>
 ### 7.2.4 Authentication and federation assurance
 
 > **§7.2.4.1 Assurance levels conveyed**
@@ -1025,6 +1026,7 @@ An ADI-Network DID bound to the Digital Address and may have the format of -  di
 
 *Figure 10. ADI Network DID Addressing*
 
+<a id="transaction-dids"></a>
 ### 7.4.4 Transaction DIDs
 
 > **7.4.4.1 Purpose and scope**
@@ -2028,6 +2030,9 @@ POST ~issuer/issue_vc_token
 ```json
 {
   "sp_id": "sp1@interchange1",
+  "min_ial": 2,
+  "min_aal": 2,
+  "min_fal": 1,
   "schemas_accepted": [
     "US_Passport",
     "US_Driver_License",
@@ -2086,9 +2091,9 @@ POST ~issuer/issue_vc_token
           "authorized_to_issue": [
             "AGD-VC"
           ],
-          "authorized_max_assurance_level": [
-            "3"
-          ]
+          "max_ial": 3,
+          "max_aal": 2,
+          "max_fal": 2
         }
       }
     },
@@ -2134,9 +2139,9 @@ POST ~issuer/issue_vc_token
         "authorized_to_issue": [
           "ADI-IX-VC"
         ],
-        "authorized_max_assurance_level": [
-          "3"
-        ]
+        "max_ial": 3,
+        "max_aal": 2,
+        "max_fal": 2
       }
     }
   },
@@ -2180,9 +2185,9 @@ POST ~issuer/issue_vc_token
         "authorized_to_issue": [
           "ADI-User-VC"
         ],
-        "authorized_max_assurance_level": [
-          "3"
-        ]
+        "max_ial": 3,
+        "max_aal": 2,
+        "max_fal": 2
       }
     }
   },
@@ -2224,7 +2229,9 @@ POST ~issuer/issue_vc_token
       },
       "rights": {
         "authorized_to_issue": [],
-        "authorized_max_assurance_level": []
+        "min_ial": 2,
+        "min_aal": 2,
+        "min_fal": 1
       }
     }
   },
