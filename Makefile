@@ -32,7 +32,7 @@ save:       ## record today's work in the local history
 	@python3 defects/render.py >/dev/null
 	@git add -A && git commit -q -m "$(m)" && echo "Saved: $(m)"
 
-.PHONY: help setup validate register status check ci save explain relocate anchors figures tidy
+.PHONY: help setup validate register status check ci save explain relocate anchors figures tidy assurance
 
 explain:    ## why a check fails, e.g. make explain ID=E-501
 	@python3 defects/adia_checks.py $(SPEC) --explain $(ID)
@@ -49,3 +49,6 @@ figures:    ## F-602: swap media/imageN.png for named SVGs and Mermaid (needs sp
 
 tidy:       ## F-604/F-605: remove invisible characters, strip trailing whitespace
 	@python3 defects/tidy.py
+
+assurance:  ## apply the ASSURANCE_MODEL data model changes to Appendix B
+	@python3 defects/apply_assurance.py

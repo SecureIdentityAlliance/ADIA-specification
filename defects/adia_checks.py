@@ -203,6 +203,7 @@ CHECKS = {
 "F-603": lambda s: _dangling(s) == set() and bool(re.search(r"\]\(#", s.text)),
 "F-604": lambda s: "\u00a0" not in s.text and "\u202f" not in s.text,
 "F-602": lambda s: "media/image" not in s.text and not _bad_figures(s),
+"A-127": lambda s: '"adia_subject_scope"' in s.text and '"verifiableCredential"' in s.text,
 "F-607": lambda s: not _unanchored(s),
 "F-605": lambda s: all(l == l.rstrip() for l in s.text.split("\n")),
 
@@ -235,6 +236,7 @@ EXPLAIN = {
                     else ["link to #%s has no <a id=\"%s\"> anchor" % (r, r) for r in sorted(_dangling(s))]),
 "F-602": lambda s: (["L%d  %s" % (i+1, l.strip()[:70]) for i, l in enumerate(s.text.split("\n")) if "media/image" in l]
                     + _bad_figures(s)),
+"A-127": lambda s: [] if '"adia_subject_scope"' in s.text else ["Appendix B defines no VP object (expected a B.2.12 vp section)"],
 "F-607": lambda s: _unanchored(s) or [],
 "F-604": lambda s: ["L%d  %s" % (i+1, l.strip()[:60]) for i, l in enumerate(s.text.split("\n")) if "\u00a0" in l or "\u202f" in l][:15],
 "F-605": lambda s: ["L%d" % (i+1) for i, l in enumerate(s.text.split("\n")) if l != l.rstrip()][:20],

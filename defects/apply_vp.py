@@ -40,7 +40,8 @@ VC_REQUEST = '''{
   ]
 }'''
 
-VP_SECTION = '''### B.2.12 vp
+VP_SECTION = '''<a id="vp"></a>
+### B.2.12 vp
 
 A Verifiable Presentation returned by a User Agent in response to a
 `vc_request`. The envelope fields are independent of the credential format;
@@ -109,7 +110,12 @@ def main():
         if not m:
             print("  WARNING: B.3 heading not found; B.2.12 not inserted")
         else:
-            text = text[:m.start()] + VP_SECTION + text[m.start():]
+            # insert ABOVE any anchor line belonging to B.3, not between it and its heading
+            at = m.start()
+            prev = text.rfind("\n", 0, at - 1) + 1
+            if text[prev:at].lstrip().startswith("<a id="):
+                at = prev
+            text = text[:at] + VP_SECTION + text[at:]
             did.append("B.2.12")
 
     # 3. one sentence in the presentation section

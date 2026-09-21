@@ -33,6 +33,9 @@ Nathan Dent ([nathan@adiassociation.org](mailto:nathan@adiassociation.org))
 **Material Changes:**
 
 - Change ADIA to Accountable Digital Identity Architecture
+- Change Authoritative Global Domain to "ADI Global Domain"
+- Convert document .md
+  -- Associated formatting changes for headings, anchors, figures, etc.
 
 **Additional artifacts:**
 
@@ -235,8 +238,8 @@ This document entirely replaces the previous Accountable Digital identity Archit
 >
 > Note 2 to entry: Assurance levels are described in detail in NIST SP 800-63-4 (2025) and in ITU-T X.1254 (2020).
 
-<a id="authoritative-global-domain-adi-agd"></a>
-## 3.15 Authoritative Global Domain (ADI-AGD)
+<a id="adi-global-domain-adi-agd"></a>
+## 3.15 ADI Global Domain (ADI-AGD)
 
 > System that provides the overall ADI-Network trust anchor and searchable directory of ADI-Providers.
 >
@@ -567,7 +570,7 @@ The roles currently defined for the ADI ecosystem are:
 
 3.  VC Issuer – A Credential Provider connects to the ADI-Network via a VC Issuer role that can prepare and issue a VC based on validated Claims. The VC Issuer functions can be deployed by the Credential Provider or by the VC Issuer Agent (or a combination of both).
 
-4.  AGD – An ADI-Network Governor connects to the ADI-Network via an Authoritative Domain Controller role that can establish management policies and controls at a global or regional level.
+4.  AGD – An ADI-Network Governor connects to the ADI-Network via an ADI Domain Controller role that can establish management policies and controls at a global or regional level.
 
 Actors on an ADI-Network have an ADI-ROLE VC that defines:
 
@@ -600,9 +603,9 @@ Governance is enforced with both contractual agreements and network policy confi
 <a id="adi-network-overview"></a>
 ### 5.5.4 ADI-Network overview
 
-An ADI-Network is governed by an "authoritative global domain" (AGD) which sets network policy and enrolls other network authorities who in turn enroll members of the network. A Digital Address can obtain, store and use Verifiable Credentials in the ADI-Network.
+An ADI-Network is governed by an "ADI Global Domain" (AGD) which sets network policy and enrolls other network authorities who in turn enroll members of the network. A Digital Address can obtain, store and use Verifiable Credentials in the ADI-Network.
 
-The Accountable Digital Identity Architecture is a decentralized interconnected network of networks consisting of an Authoritative Global Domain, Interchanges and their underlying hardware, software and network platform.
+The Accountable Digital Identity Architecture is a decentralized interconnected network of networks consisting of an ADI Global Domain, Interchanges and their underlying hardware, software and network platform.
 
 All entities within the architecture are represented by a Digital Address which is bound to a DID. Each DIDDoc contains the DID's public keys and metadata, used to verify the Digital Address holder's authorizations and digital signatures.
 
@@ -661,8 +664,8 @@ Roles and authorities are defined as claims in an ADI-ROLE VC. Accountability an
 
 ADI-Network Providers offer ADI enrollment, transaction processing and directory services.
 
-<a id="authoritative-global-domain-agd"></a>
-### 6.4.1 Authoritative Global Domain (AGD)
+<a id="adi-global-domain-agd"></a>
+### 6.4.1 ADI Global Domain (AGD)
 
 > The AGD is the root issuing authority of an ADI-Network. The AGD defines governance policies and requirements for all providers and members to follow. The AGD vets and onboards Interchanges.
 >
@@ -962,9 +965,9 @@ The following defines a systems architecture and API endpoints for each provider
 
 The AGD maintains the master provider directory, which contains provider metadata, ADI-Network DID address and URL service endpoints.  AGD administrators access console settings with user agent / wallet authentication.  AGD keys are stored on the hardened vault.
 
-![Authoritative Global Domain](figures/fig-06-authoritative-global-domain.svg)
+![ADI Global Domain](figures/fig-06-adi-global-domain.svg)
 
-*Figure 6. Authoritative Global Domain*
+*Figure 6. ADI Global Domain*
 
 <a id="interchange-provider-architecture"></a>
 ### 7.3.2 Interchange provider architecture
