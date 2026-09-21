@@ -1558,6 +1558,8 @@ returns success and VC or metadata to the user
 <a id="service-provider"></a>
 ## 10.1 Service Provider
 
+A Verifiable Presentation is defined in [B.2.12 vp](#vp). It is bound to the requesting Service Provider by `aud` and to the request by `nonce`, and carries the identity, authentication and federation assurance levels achieved.
+
 The service provider may request a user for one or more claims about their identity.  This can be a single claim such as “over 18” or a set of claims such as in government, institutional and enterprise IDs.
 
 Claims are contained in a VC.  Each VC is signed by an approved ADI credential issuer.
@@ -2030,9 +2032,14 @@ POST ~issuer/issue_vc_token
 ```json
 {
   "sp_id": "sp1@interchange1",
+  "aud": "did:adi:r1:ix1:a523335a-df3b-41cc-b371-88034beb1e5c",
+  "nonce": "n-0S6_WzA2Mj",
+  "state": "af0ifjsldkj",
+  "exp": 1758240600,
   "min_ial": 2,
   "min_aal": 2,
   "min_fal": 1,
+  "subject_scope_required": "any",
   "schemas_accepted": [
     "US_Passport",
     "US_Driver_License",
@@ -2278,6 +2285,46 @@ POST ~issuer/issue_vc_token
 ```
 
 <a id="network-services"></a>
+### B.2.12 vp
+
+A Verifiable Presentation returned by a User Agent in response to a
+`vc_request`. The envelope fields are independent of the credential format;
+`verifiableCredential` carries the credential as serialized under the format
+specified in §6.2.
+
+`adia_subject_scope` is `primary` when the presentation is bound to the User's
+primary DID, and `transaction` when it is bound to a single-use transaction DID
+generated under §7.4.4. A Service Provider MUST NOT store a transaction-scoped
+identifier as a persistent account key.
+
+```json
+{
+  "iss": "did:adi:r1:ix1:txn:3b9c1e2a-7d41-4f8e-9a02-5c6d18b4e730",
+  "aud": "did:adi:r1:ix1:a523335a-df3b-41cc-b371-88034beb1e5c",
+  "nonce": "n-0S6_WzA2Mj",
+  "state": "af0ifjsldkj",
+  "iat": 1758240120,
+  "exp": 1758240420,
+  "adia_subject_scope": "transaction",
+  "ial": 2,
+  "aal": 2,
+  "fal": 2,
+  "verifiableCredential": [
+    "eyJhbGciOiJFUzI1NiIsInR5cCI6InZjK3NkLWp3dCIsImtpZCI6ImtleS0xIn0..."
+  ],
+  "disclosures": [
+    "WyJfMjZiYzRsVC1hYzZxMktJNmNCVyIsICJmYW1pbHlfbmFtZSIsICJEb2UiXQ"
+  ],
+  "proof": {
+    "type": "JsonWebSignature2020",
+    "created": "2026-09-19T00:02:00Z",
+    "verificationMethod": "did:adi:r1:ix1:txn:3b9c1e2a-7d41-4f8e-9a02-5c6d18b4e730#key-1",
+    "jws": "eyJhbGciOiJFUzI1NiJ9..."
+  }
+}
+```
+
+<a id="schemas-network-services"></a>
 ## B.3 Network Services
 
 <a id="metadata"></a>

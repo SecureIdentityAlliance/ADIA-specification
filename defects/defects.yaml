@@ -397,7 +397,7 @@ defects:
 - id: B-207
   severity: S2
   workstream: crypto-protocol
-  location: L1660/1662 "Biometric approval"
+  location: L1662/1664 "Biometric approval"
   defect: '`Request Biometric approval` / `Biometric approval given` as protocol messages. In WebAuthn
     this is local user verification (`UV=1`) inside an assertion, not a round trip'
   fix: 'Resolved by §9.3.5.5: UV=1 inside a WebAuthn assertion, no separate message.'
@@ -444,7 +444,7 @@ defects:
 - id: B-211
   severity: S2
   workstream: crypto-protocol
-  location: L1701/1717/1719 "get_did_doc"
+  location: L1703/1719/1721 "get_did_doc"
   defect: '`get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed
     using the private key of the issuer" without saying who the issuer of a DIDdoc is'
   fix: Define
@@ -455,7 +455,7 @@ defects:
 - id: B-212
   severity: S2
   workstream: crypto-protocol
-  location: L1693 "ROLE VC / DID"
+  location: L1695 "ROLE VC / DID"
   defect: Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict
     behaviour
   fix: Set precedence
@@ -500,7 +500,7 @@ defects:
 - id: B-216
   severity: S2
   workstream: crypto-protocol
-  location: L1648 "vc_authorization_request"
+  location: L1650 "vc_authorization_request"
   defect: '`vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`,
     a different object'
   fix: Define or rename
@@ -512,7 +512,7 @@ defects:
 - id: B-217
   severity: S2
   workstream: crypto-protocol
-  location: L1575 "Tech Note"
+  location: L1577 "Tech Note"
   defect: Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or
     session binding across the redirect — CSRF / session-fixation surface
   fix: Specify correlation
@@ -523,7 +523,7 @@ defects:
 - id: B-218
   severity: S3
   workstream: crypto-protocol
-  location: L1496/1539/1970 "~issuer/issue_vc"
+  location: L1496/1539/1972 "~issuer/issue_vc"
   defect: Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose
     also uses `make_credential_offer` where B.2.1 is `make_vc_offer`
   fix: Align names
@@ -662,7 +662,7 @@ defects:
 - id: C-310
   severity: S2
   workstream: normative
-  location: L1763 "To be completed"
+  location: L1765 "To be completed"
   defect: Titled "Informative References"; contains "To be completed — which references are normative
     is for further study"; lists nine standards that are plainly normative. `[W3C DM]` and `[W3C JS]`
     are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks
@@ -715,7 +715,7 @@ defects:
 - id: D-403
   severity: S1
   workstream: architecture
-  location: L1023/1045/1922 "did:adi:"
+  location: L1023/1045/1924 "did:adi:"
   defect: '**13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also
     a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2,
     3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not
@@ -1091,7 +1091,7 @@ defects:
 - id: E-521
   severity: S3
   workstream: editorial
-  location: L1680 "Respond to SP Agent with VP"
+  location: L1682 "Respond to SP Agent with VP"
   defect: Message text duplicates step 8 ("Respond to SP Agent with VP")
   fix: ''
   owner: ND
