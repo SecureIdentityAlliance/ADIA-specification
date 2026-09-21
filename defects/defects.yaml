@@ -558,7 +558,7 @@ defects:
 - id: B-221
   severity: S1
   workstream: crypto-protocol
-  location: presentations / §12.3 step 11
+  location: L? "adia_tier"
   anchor: adia_tier
   defect: Presentations do not declare their signing tier, so a verifier cannot distinguish device-bound
     proof of possession from vault-assisted signing, and cannot enforce an AAL3 floor.

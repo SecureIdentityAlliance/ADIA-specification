@@ -898,6 +898,57 @@ The DAA operates on a user’s device and performs strong authentication.  Examp
 
 The User Device Agent works in conjunction with the interchange provisioned user agent to perform user authentication and VC wallet functions on behalf of the User.
 
+
+### 7.2.4 Authentication and federation assurance
+
+> **§7.2.4.1 Assurance levels conveyed**
+>
+> ADI Network participants record three assurance levels as distinct integer values, with the meanings given in [NIST SP 800-63-4]:
+>
+> - `ial` — identity assurance level, the rigour of identity proofing (SP 800-63A), range 1 to 3
+> - `aal` — authentication assurance level, the strength of the authentication event (SP 800-63B), range 1 to 2
+> - `fal` — federation assurance level, the strength of the assertion conveying that event to a relying party (SP 800-63C), range 1 to 2
+>
+> These MUST NOT be combined into a single value. Where any of the three is absent from a credential or presentation, a verifier MUST treat that level as unspecified and MUST NOT assume it satisfies any floor.
+>
+> **§7.2.4.2 Maximum assurance in this version**
+>
+> An ADI Network presentation is signed by a key held in an Interchange-operated hardware security module and released on the User's authenticated instruction under §7.2.4.4. The User does not hold the signing key.
+>
+> Accordingly, a participant MUST NOT assert `aal` above 2 or `fal` above 2 in this version of this specification. A verifier MUST reject any presentation asserting a higher value.
+>
+> NOTE: AAL3 requires the claimant to prove possession of an authenticator key through a public-key cryptographic protocol. A signature produced on the subscriber's behalf by a third party does not satisfy that requirement, however well the key is protected. Relying parties whose use case requires AAL3 or FAL3 are not served by this version.
+>
+> **§7.2.4.3 Authenticator requirements**
+>
+> To assert `aal: 2`, all of the following MUST hold:
+>
+> 1. The Device Application Agent uses a WebAuthn Level 2 or later authenticator registered with the Interchange at enrollment.
+> 2. Two distinct authentication factors are proven at each ceremony. A multi-factor cryptographic authenticator reporting `UV = 1` satisfies this.
+> 3. The Interchange verifies the assertion against the registered credential, confirms `UV = 1`, and confirms that the signature counter has increased where the authenticator provides one.
+> 4. The User has re-authenticated with at least one factor within the preceding 12 hours, and within 30 minutes of the last account activity.
+>
+> Synchronised (multi-device) credentials MAY be used at `aal: 2`. Authenticator attestation is NOT REQUIRED at this level.
+>
+> An Interchange MUST NOT permit IP address allowlisting, possession of a bearer token, or a knowledge-only factor to serve as, or count towards, either factor. Assertion of authentication success conveyed over OAuth 2.0 or OpenID Connect does not by itself establish an authentication assurance level; the underlying ceremony determines the level.
+>
+> **§7.2.4.4 Control of the vault signing key**
+>
+> The following requirements are the basis on which a relying party may rely on a signature produced on the User's behalf:
+>
+> 1. The signing key MUST be generated inside, and MUST never leave, a hardware security module validated to FIPS 140-3 Level 2 or higher; Level 3 is RECOMMENDED. The key MUST be marked non-exportable.
+> 2. To authorise a signing operation on payload *P*, the Cloud User Agent MUST obtain a WebAuthn assertion from the User's Device Application Agent with `challenge = SHA-256(P)` and `userVerification = "required"`.
+> 3. The Digital Address Service MUST verify the assertion against the credential registered at enrollment, MUST confirm `UV = 1`, MUST confirm that `clientDataJSON.challenge` equals `SHA-256(P)`, and MUST confirm that the signature counter increased.
+> 4. Only on success MAY the Digital Address Service request the HSM to sign *P*. The HSM MUST refuse any signing request not accompanied by an attestation of a successful verification under step 3.
+> 5. The Digital Address Service MUST append a record `{timestamp, subject, SHA-256(P), assertion digest, previous record digest}` to a hash-chained log for every signing operation, whether it succeeded or was refused, and MUST publish the log head to the AGD daily.
+>
+> Binding the WebAuthn challenge to the hash of the exact payload is what prevents an Interchange from signing anything other than what the User approved.
+>
+> **§7.2.4.5 Biometric verification**
+>
+> Where biometric verification is used, it is performed entirely within the authenticator and is expressed to the ADI Network solely as `UV = 1` within a WebAuthn assertion. No biometric sample, template, or comparison score is transmitted to, stored by, or processed by any ADI Network participant.
+
+
 <a id="adi-provider-architecture"></a>
 ## 7.3 ADI Provider Architecture
 
@@ -974,6 +1025,52 @@ An ADI-Network DID bound to the Digital Address and may have the format of -  di
 
 *Figure 10. ADI Network DID Addressing*
 
+### 7.4.4 Transaction DIDs
+
+> **7.4.4.1 Purpose and scope**
+>
+> A **transaction DID** is a short-lived Decentralized Identifier generated by an Interchange on behalf of a User, used as the subject identifier of a single Verifiable Presentation. Its purpose is to prevent a Service Provider from using the subject identifier to correlate one presentation with another.
+>
+> A transaction DID is generated by the Interchange's Digital Address Service. A User does not generate one, and a Service Provider MUST NOT generate, assign, or request a specific transaction DID.
+>
+> Each Digital Address has exactly one primary DID, which is permanent and is the subject of its ADI-ROLE VC. A Digital Address MAY additionally be represented by transaction DIDs, each valid for one presentation.
+>
+> **7.4.4.2 Generation**
+>
+> On receiving a `vc_request` from a Service Provider Agent, and after the User has authorised the presentation under §9.3.5.4, the Digital Address Service MUST:
+>
+> 1. Generate a fresh key pair inside the Interchange hardware security module. The key MUST be unique to this presentation and MUST NOT be derived from, or linkable to, the primary DID key or any previous transaction key by any party other than the Interchange.
+> 2. Construct a transaction DID in the form specified in §9.5.3, whose method-specific identifier is a UUIDv4 and which is marked as transaction-scoped by the `txn` segment. For example: `did:adi:r1:ix1:txn:3b9c1e2a-...`.
+> 3. Record the binding `{transaction DID, primary DID, Service Provider DID, timestamp, request nonce}` in the Interchange audit log required by §8.
+> 4. Publish a DIDDoc for the transaction DID containing the generated public key, signed by the Interchange, with `validUntil` no later than `iat + 24 hours`.
+>
+> The Interchange MUST NOT reuse a transaction DID for a second presentation, and MUST NOT issue two transaction DIDs bearing the same public key.
+>
+> **7.4.4.3 Use in a presentation**
+>
+> Where a presentation uses a transaction DID:
+>
+> 1. The key-binding JWT MUST be signed by the transaction key and its `iss` MUST be the transaction DID.
+> 2. The presented credential MUST have been issued with `credentialSubject.id` withheld, and its `cnf` MUST reference the transaction key (see §9.5.4.4). A presentation whose credential carries a stable `credentialSubject.id` MUST NOT be described as unlinkable, and the Interchange MUST NOT represent it as such.
+> 3. The presentation MUST carry `adia_subject_scope: "transaction"`. Where the primary DID is the subject, it MUST carry `adia_subject_scope: "primary"`.
+>
+> A Service Provider MUST treat a transaction DID as valid for the presentation in which it appears and for no other purpose. It MUST NOT store a transaction DID as a persistent account identifier, and MUST NOT expect the same identifier from the same User on a subsequent presentation.
+>
+> **7.4.4.4 Credential requirements**
+>
+> A credential intended for presentation under a transaction DID MUST be issued such that its subject identifier is not disclosed to the verifier. This specification defines one conforming method:
+>
+> - **Selectively disclosable subject.** The credential is an SD-JWT VC (§8.2) in which `sub` is a selectively disclosable claim. The Holder withholds the `sub` disclosure. The credential's `cnf` is set at issuance to a key the Interchange will use for a single presentation, and the Issuer MUST issue a batch of such credentials, one per intended presentation, each with a distinct `cnf` key.
+>
+> An Issuer that cannot meet this requirement MUST NOT mark a credential as eligible for transaction-DID presentation, and the Interchange MUST reject a request to present such a credential under a transaction DID.
+>
+> **7.4.4.5 Resolution**
+>
+> A transaction DID resolves through §12.2 in the same way as a primary DID. The Digital Address Service of the issuing Interchange MUST serve its DIDDoc until `validUntil` and MAY return `410 Gone` thereafter. A verifier MUST complete verification of a presentation within the validity window of the transaction DID it carries.
+>
+> **7.4.4.6 Accountability**
+>
+> The binding recorded under §9.5.4.2 item 3 is the sole record linking a transaction DID to a primary DID. The Interchange MUST retain it for the period required by applicable regional law and MUST disclose it only under §8. A transaction DID therefore provides unlinkability with respect to Service Providers, and no unlinkability with respect to the Interchange.
 <a id="enrollment"></a>
 # 8. Enrollment
 

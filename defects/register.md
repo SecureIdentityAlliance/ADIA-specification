@@ -7,9 +7,9 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-21 |
 | Defects | 109 (68 with an automated check) |
-| Verified | 35 |
+| Verified | 36 |
 | Fixed, awaiting verification | 0 |
-| Blocked on a decision | 24 |
+| Blocked on a decision | 23 |
 | Open | 49 |
 | Standing invariants | 4 of 4 holding |
 
@@ -78,15 +78,15 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | B-218 | S3 | Verified |  | `auto` | L1397/1440/1871 "~issuer/issue_vc" | Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose also uses `make_credential_offer` where B.2.1 is `make_vc_offer` | Align names | `58a4bca` |
 | B-219 | S3 | Verified |  | `auto` | L? "~ard/" | `POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/` | Rename | `cd19202` |
 | B-220 | S2 | Open |  | — | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |  |
-| B-221 | S1 | Superseded(B-205) |  | — | presentations / §12.3 step 11 | Presentations do not declare their signing tier, so a verifier cannot distinguish device-bound proof of possession from vault-assisted signing, and cannot enforce an AAL3 floor. | Add adia_tier; enforce the AAL2/FAL2 ceiling for vault-assisted in §12.3 step 11. |  |
+| B-221 | S1 | Superseded(B-205) |  | — | L? "adia_tier" | Presentations do not declare their signing tier, so a verifier cannot distinguish device-bound proof of possession from vault-assisted signing, and cannot enforce an AAL3 floor. | Add adia_tier; enforce the AAL2/FAL2 ceiling for vault-assisted in §12.3 step 11. |  |
 
 ## Workstream C — Normative structure and conformance
 
-11 defects · 0 verified · 5 with an automated check
+11 defects · 1 verified · 5 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| C-301 | S1 | Open |  | `auto` | L78 "All text is normative" | "All text is normative unless otherwise labeled" + BCP 14 invoked, but the body has 8 uppercase keywords against 25 lowercase must/shall/should. Under RFC 8174 lowercase carries no normative force — so no requirement in the document is normative | Capitalise deliberately |  |
+| C-301 | S1 | Verified |  | `auto` | L78 "All text is normative" | "All text is normative unless otherwise labeled" + BCP 14 invoked, but the body has 8 uppercase keywords against 25 lowercase must/shall/should. Under RFC 8174 lowercase carries no normative force — so no requirement in the document is normative | Capitalise deliberately |  |
 | C-302 | S1 | Open |  | — | L107/116 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements |  |
 | C-303 | S1 | Open |  | `auto` | — | **No Conformance clause.** Mandatory once RFC 2119 is invoked | Add |  |
 | C-304 | S1 | Open |  | `auto` | — | **No Security Considerations** section | Add |  |
@@ -100,12 +100,12 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream D — Architecture and terminology
 
-14 defects · 2 verified · 6 with an automated check
+14 defects · 3 verified · 6 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | D-401 | S1 | Verified | ND | `auto` | L? "ard_" | **18 `ard_` field names remain** (`ard_da_user_name`, `ard_public_key`, `ard_information`, `ard_key_id`, `ard_enrollment_form`, `ard_da_global_name`, `ard_da_region_name`, `ard_da_interchange_name`, `ard_da_name`) plus one `~ard/` endpoint — including inside the AGD's own VC. The prose mention was deleted on 20 Aug, so the prefix now has **zero referent** in the document | Restore ARD as a role, or rename all 18 | `20c25d9` |
-| D-402 | S2 | Blocked(D8) | ND | `auto` | L234/885/1681 "800-63" | IAL/AAL/FAL conflated. Document contains `AAL` ×8, `IAL` ×0, `FAL` ×0, and one unqualified `authorized_max_assurance_level`. §3.14 describes IAL, §8.3.2 claims AAL. Cites SP 800-63-**3**; Rev. 4 is current | Three fields ial/aal/fal; ranges ial 1-3, aal 1-2, fal 1-2. Ceilings on provider role VCs, floors on SP role VCs. See ASSURANCE_MODEL.md §4. |  |
+| D-402 | S2 | Verified | ND | `auto` | L234/885/1681 "800-63" | IAL/AAL/FAL conflated. Document contains `AAL` ×8, `IAL` ×0, `FAL` ×0, and one unqualified `authorized_max_assurance_level`. §3.14 describes IAL, §8.3.2 claims AAL. Cites SP 800-63-**3**; Rev. 4 is current | Three fields ial/aal/fal; ranges ial 1-3, aal 1-2, fal 1-2. Ceilings on provider role VCs, floors on SP role VCs. See ASSURANCE_MODEL.md §4. |  |
 | D-403 | S1 | Blocked(D2) |  | `auto` | L971/1823/1853 "did:adi:" | **13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2, 3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not DIDs — so path-only differences collide (see A-110). No method definition exists | Define the method; normalise every instance |  |
 | D-404 | S2 | Blocked(D3) |  | — | L299 "unique within an ADI-Region" | DA uniqueness scope: "within an ADI-Region" (§3.21) vs "in an ADI Network" (§8.5.1). Format `user@interchange_name` is met by only **one** of five role VCs — B.2.7 `agd_admin@global_1`, B.2.9 `issuer_admin@issuer_1`, B.2.10 `sp_admin@service_provider_1`, B.2.11 `USER_DA@IX_1` all use a non-interchange host. B.3.2 uses a third syntax `issuer1@ix3.r1`. No ABNF, no case rule, no IDN/homograph policy for a human-facing identifier | Define ABNF; fix all instances |  |
 | D-405 | S2 | Blocked(D9) |  | — | L960 "HIDA usage is optional" | HIDA is simultaneously mandatory ("Entities … are unique when they do not have matching HIDAs"; "The User HIDA **is** verified for uniqueness") and optional ("HIDA usage is optional"). Separately: no hash algorithm named, no salt/pepper/KDF/keyed-MAC, and **no canonicalization rule** — without normalization of case, diacritics, name order and date format the same person yields different HIDAs at different Interchanges and cross-region uniqueness silently fails | Decide; specify construction |  |
@@ -130,7 +130,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | E-503 | S3 | Open | ND | — | L? "7.7.1.1" | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
 | E-504 | S3 | Verified | ND | `auto` | L? "# 6 Accountable" | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
 | E-505 | S3 | Verified | ND | `auto` | B.1. Schemas | `## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs |  | `ad9351b` |
-| E-506 | S3 | Verified | ND | `auto` | L? "Appendix C" | Appendix C has no `# C.` heading; A and B both do |  | `16e83ad` |
+| E-506 | S3 | Verified | ND | `auto` | L? "Appendix C" | Appendix C has no `# C.` heading; A and B both do |  | `484a066` |
 | E-507 | S3 | Verified | ND | `auto` | L1226 "Issuers may initiate User Digital Address" | §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2. |  | `8c28c0f` |
 | E-508 | S3 | Verified | ND | `auto` | AD-NU | `ADI Network User (AD-NU)` → `ADI-NU` |  | `9527e32` |
 | E-509 | S3 | Verified | ND | `auto` | L? "[Role}-Agent" | `(\[Role}-Agent endpoint)` — mismatched bracket and brace |  | `9e7252c` |
@@ -158,7 +158,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream F — References, diagrams and tooling
 
-7 defects · 6 verified · 6 with an automated check
+7 defects · 5 verified · 6 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -168,7 +168,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | F-604 | S3 | Verified | ND | `auto` | non-breaking spaces — document-wide |  |  | `6f42aad` |
 | F-605 | S3 | Verified | ND | `auto` | trailing whitespace — document-wide | Trailing whitespace — phantom git diffs | Strip (none are intentional line breaks) | `6f42aad` |
 | F-606 | S2 | Open |  | — | CI — no location | No automated gate. Every check run for this review is scriptable | JSON parse · fence-aware gremlin check · markdownlint · link checker |  |
-| F-607 | S3 | Verified | ND | `auto` | headings — document-wide | Every heading should have a stable <a id> anchor above it so future links survive renumbering. Catches new headings added without one. | Run make anchors — adds only where missing, safe to repeat. |  |
+| F-607 | S3 | Open | ND | `auto` | headings — document-wide | Every heading should have a stable <a id> anchor above it so future links survive renumbering. Catches new headings added without one. | Run make anchors — adds only where missing, safe to repeat. |  |
 
 ---
 
