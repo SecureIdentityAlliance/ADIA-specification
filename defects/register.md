@@ -6,8 +6,8 @@
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-21 |
-| Defects | 109 (68 with an automated check) |
-| Verified | 37 |
+| Defects | 110 (68 with an automated check) |
+| Verified | 38 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 23 |
 | Open | 48 |
@@ -15,7 +15,7 @@
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
 
-Nobody moves their own work to `Verified`. For the 68 automated defects the harness does it; for the other 41 a second person does.
+Nobody moves their own work to `Verified`. For the 68 automated defects the harness does it; for the other 42 a second person does.
 
 ---
 
@@ -100,7 +100,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream D — Architecture and terminology
 
-14 defects · 3 verified · 6 with an automated check
+15 defects · 3 verified · 6 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -118,6 +118,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | D-412 | S2 | Open |  | — | L1266 "AGD Service Provider Directory" | L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange do it. No authorization model for directory writes | Resolve |  |
 | D-413 | S2 | Open |  | — | L588/772 "encrypted by issuer" | Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory. Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation database | Specify or remove |  |
 | D-414 | S3 | Open |  | — | L366 "Acronyms and abbreviations" | "Acronyms and abbreviations" contains no acronym list. §4.1 holds normative role-VC definitions (misfiled); §4.2 holds identifiers. AGD, CI, IX, SP, DA, DAS, VC, VP, HIDA, AAL, PII, KYC are never expanded in one place | Build the table |  |
+| D-418 | S2 | Open |  | — | spec/figures/ — SVG text | AGD was renamed to "ADI Global Domain" in the prose, but the term is rendered text inside the figure SVGs (at least Figures 4, 5, 6, 8). Prose and figures now disagree. | Edit the PowerPoint source, re-export the affected slides as SVG into spec/figures/ under the same filenames. |  |
 
 ## Workstream E — Editorial
 
@@ -158,12 +159,12 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream F — References, diagrams and tooling
 
-7 defects · 5 verified · 6 with an automated check
+7 defects · 6 verified · 6 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | F-601 | S1 | Verified | ND | `auto` | L? "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors | `9df1ff6` |
-| F-602 | S2 | Open |  | `auto` | L? "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid | `e861a28` |
+| F-602 | S2 | Verified |  | `auto` | L? "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid | `e861a28` |
 | F-603 | S2 | Verified | ND | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors | `d20e3a1` |
 | F-604 | S3 | Verified | ND | `auto` | non-breaking spaces — document-wide |  |  | `6f42aad` |
 | F-605 | S3 | Verified | ND | `auto` | trailing whitespace — document-wide | Trailing whitespace — phantom git diffs | Strip (none are intentional line breaks) | `6f42aad` |

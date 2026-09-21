@@ -865,6 +865,18 @@ defects:
   status: Open
   notes: null
   anchor: Acronyms and abbreviations
+- id: D-418
+  severity: S2
+  workstream: architecture
+  location: spec/figures/ — SVG text
+  anchor: (figures still say Authoritative Global Domain)
+  defect: AGD was renamed to "ADI Global Domain" in the prose, but the term is rendered text inside the
+    figure SVGs (at least Figures 4, 5, 6, 8). Prose and figures now disagree.
+  fix: Edit the PowerPoint source, re-export the affected slides as SVG into spec/figures/ under the same
+    filenames.
+  owner: null
+  status: Open
+  notes: null
 - id: E-501
   severity: S2
   workstream: editorial
