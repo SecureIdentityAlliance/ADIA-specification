@@ -77,9 +77,9 @@ Distributed under the terms of the Accountable Digital Identity Architecture (AD
 
 All text is normative unless otherwise labeled.
 
-The Accountable Digital Identity Architecture Network (“ADI-Network”) is a distributed identity system consisting of people, processes and technologies that together deliver global digital identity services for individuals.
+The Accountable Digital Identity Architecture Network (ADI-Network) is a Distributed Global Digital Identity System consisting of ADI Interchange providers who have implemented ADI Architecture and offer services to enterprises, service providers, governed processes, and individuals.
 
-This document provides an overall perspective of the “ADI-Network” and introduces its fundamental concepts and terms. In addition, this document specifies protocols for onboarding Participants and for issuing and presenting Verifiable Credentials with the consent of the Participant.
+This document provides an overall perspective of the “ADI-Network” and introduces its fundamental concepts and terms. In addition, this document specifies protocols for onboarding participants and for issuing and presenting Verifiable Credentials with the consent of the participant.
 
 This document includes:
 
@@ -113,7 +113,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 
 > Organization role that performs administrative and management functions for an ADI-Interchange Provider.
 >
-> NOTE 1 to entry: Administrator services include but are not limited to reviewing and approving requests to enroll in the ADI-Network as a Credential Issuer or a Service Provider.
+> NOTE 1 to entry: Administrator services include but are not limited to reviewing and approving requests to enroll an enterprise in the ADI-Network as a Credential Issuer, a Service Provider or as an Interchange provider.
 >
 > NOTE 2 to entry: ADI-Network Providers must implement at least one administrator role. This includes CI-Admin, IX-Admin, SP-Admin, and AGD-Admin.
 >
@@ -216,7 +216,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 <a id="adi-wallet-wallet"></a>
 ## 3.13 ADI-wallet (wallet)
 
-> Secure mobile or desktop application designed to store, manage, and share personal information and Verifiable Credentials in digital format.
+> Secure mobile or desktop application designed to store, manage, and share personal information and Verifiable Credential metadata in digital format.
 >
 > Note 1 to entry: ADI-wallets, which represent a User in an ADI-Network, are also referred to as a User Agent.
 >
@@ -231,7 +231,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 >
 > Note 1 to entry: Identity assurance refers to the strength of the identity proofing process carried out by the Issuer.
 >
-> Note 2 to entry: Assurance levels are described in detail in NIST SP 800-63-3 and in ITU-T X.1254 (2020).
+> Note 2 to entry: Assurance levels are described in detail in NIST SP 800-63-4 (2025) and in ITU-T X.1254 (2020).
 
 <a id="authoritative-global-domain-adi-agd"></a>
 ## 3.15 Authoritative Global Domain (ADI-AGD)
@@ -270,7 +270,7 @@ Assertion made about a Subject
 
 > Portable URI-based identifier associated with an entity.
 >
-> Note:  ADI uses DID address formatting and refers to a DID Document for the purpose of retrieving the public key.  ADI relies upon Role VCs which include the public key (DIDDoc) and is signed  by issuing authority and contains entitlement rights the holder has within the network.  Other DID features are not required.
+> Note:  ADI uses DID address formatting and refers to a DID Document for the purpose of retrieving the public key.  ADI relies upon Role VCs which include the public key (DIDDoc) and is signed by issuing authority and contains entitlement rights the holder has within the network.  Other DID features are not required.
 >
 > Note 1 to entry: An example of a DID is:  did:example:123456abcdef
 >
@@ -1658,7 +1658,7 @@ This appendix contains the informative references that are used in this document
 While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
 
 <a id="informative-references"></a>
-## C.1 Informative References
+## A.1 Informative References
 
 The following referenced documents are not required for the application of this document but may assist the reader with regard to a particular subject area.
 **To be completed - which references are normative is for further study.**
