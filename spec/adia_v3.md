@@ -2284,7 +2284,7 @@ POST ~issuer/issue_vc_token
 }
 ```
 
-<a id="network-services"></a>
+<a id="vp"></a>
 ### B.2.12 vp
 
 A Verifiable Presentation returned by a User Agent in response to a
@@ -2324,7 +2324,7 @@ identifier as a persistent account key.
 }
 ```
 
-<a id="schemas-network-services"></a>
+<a id="network-services"></a>
 ## B.3 Network Services
 
 <a id="metadata"></a>

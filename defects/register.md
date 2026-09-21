@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-21 |
 | Defects | 109 (68 with an automated check) |
-| Verified | 37 |
+| Verified | 38 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 23 |
-| Open | 48 |
+| Open | 47 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -158,13 +158,13 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream F — References, diagrams and tooling
 
-7 defects · 5 verified · 6 with an automated check
+7 defects · 6 verified · 6 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | F-601 | S1 | Verified | ND | `auto` | L? "docs.google.com" | Every internal cross-reference is a `docs.google.com/document/d/1jwhmY0…` link — including the RFC 2119 and RFC 8174 links in the Key Words section. Dead or access-restricted for every reader | Rewrite against stable anchors | `9df1ff6` |
 | F-602 | S2 | Verified |  | `auto` | L? "media/image" | Diagrams are flat `media/imageN.png` with no alt text. The `alt` / `end` keywords in §9.5 and the `A -> B: message` lines throughout §9–§11 indicate PlantUML/Mermaid source once existed | Recover source; commit as Mermaid | `e861a28` |
-| F-603 | S2 | Open | ND | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors | `d20e3a1` |
+| F-603 | S2 | Verified | ND | `auto` | anchors — document-wide | Numbering will change again (E-501 through E-507). GitHub derives anchors from heading text, so number-derived links break on every renumber | Use explicit `<a id="">` anchors | `d20e3a1` |
 | F-604 | S3 | Verified | ND | `auto` | non-breaking spaces — document-wide |  |  | `6f42aad` |
 | F-605 | S3 | Verified | ND | `auto` | trailing whitespace — document-wide | Trailing whitespace — phantom git diffs | Strip (none are intentional line breaks) | `6f42aad` |
 | F-606 | S2 | Open |  | — | CI — no location | No automated gate. Every check run for this review is scriptable | JSON parse · fence-aware gremlin check · markdownlint · link checker |  |
