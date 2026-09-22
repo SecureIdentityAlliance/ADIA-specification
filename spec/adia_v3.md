@@ -823,7 +823,7 @@ The root of signing trust begins at the AGD and extends to all participants and 
 
 Each ADI-ROLE is issued and signed by an ADI-Authority.  Role VCs designate which role VCs the holder has authority to issue and sign.
 
-An authority that granted an entity its role MUST be able to withdraw it, and a verifier MUST determine, as part of chain verification, that no authority in the chain has been withdrawn. Withdrawal of an Interchange's authority invalidates every entity it enrolled. The mechanism by which withdrawal is recorded and discovered is specified with the authority record it applies to.
+A verifier MUST, as part of verifying any credential, confirm that the Issuer holds a valid ADI-ISSUER role credential issued by an Interchange, that the Interchange holds a valid ADI-IX role credential issued by the ADI Global Domain, and that the Issuer's entitlement covers the credential type presented. This check is not discretionary. An authority that granted an entity its role MUST be able to withdraw it, and a verifier MUST determine, as part of chain verification, that no authority in the chain has been withdrawn. Withdrawal of an Interchange's authority invalidates every entity it enrolled. The mechanism by which withdrawal is recorded and discovered is specified with the authority record it applies to.
 
 ![ADI Roles and Chain of Trust](figures/fig-05-adi-roles-chain-of-trust.svg)
 
