@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-22 |
 | Defects | 111 (68 with an automated check) |
-| Verified | 44 |
+| Verified | 45 |
 | Fixed, awaiting verification | 1 |
 | Blocked on a decision | 24 |
-| Open | 41 |
+| Open | 40 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -82,14 +82,14 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream C — Normative structure and conformance
 
-11 defects · 2 verified · 5 with an automated check
+11 defects · 3 verified · 5 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | C-301 | S1 | Verified |  | `auto` | L78 "All text is normative" | "All text is normative unless otherwise labeled" + BCP 14 invoked, but the body has 8 uppercase keywords against 25 lowercase must/shall/should. Under RFC 8174 lowercase carries no normative force — so no requirement in the document is normative | Capitalise deliberately |  |
 | C-302 | S1 | Open |  | — | L107/116 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements |  |
-| C-303 | S1 | Verified |  | `auto` | — | **No Conformance clause.** Mandatory once RFC 2119 is invoked | Add |  |
-| C-304 | S1 | Open |  | `auto` | — | **No Security Considerations** section | Add |  |
+| C-303 | S1 | Verified |  | `auto` | — | **No Conformance clause.** Mandatory once RFC 2119 is invoked | Add | `9b71b7e` |
+| C-304 | S1 | Verified |  | `auto` | — | **No Security Considerations** section | Add |  |
 | C-305 | S1 | Open |  | `auto` | — | **No Privacy Considerations** section | Add |  |
 | C-306 | S2 | Open |  | — | — | No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else | Add |  |
 | C-307 | S2 | Open |  | — | — | No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3 | Add |  |
