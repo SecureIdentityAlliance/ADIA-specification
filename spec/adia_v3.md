@@ -157,7 +157,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 >
 > NOTE 1 to entry: One or more ADI Networks may exist as distinct ecosystems that may or may not be interoperable.
 >
-> NOTE 2 to entry: An ADI-Network must include at least one ADI-Region.
+> NOTE 2 to entry: An ADI-Network includes at least one ADI-Region; see clause 6.4.
 
 <a id="adi-administrator-adi-role-admin-administrator"></a>
 ## 3.2 ADI-Administrator (ADI-\[role\]-Admin) (“administrator”)
@@ -166,7 +166,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 >
 > NOTE 1 to entry: Administrator services include but are not limited to reviewing and approving requests to enroll an enterprise in the ADI-Network as a Credential Issuer, a Service Provider or as an Interchange provider.
 >
-> NOTE 2 to entry: ADI-Network Providers must implement at least one administrator role. This includes CI-Admin, IX-Admin, SP-Admin, and AGD-Admin.
+> NOTE 2 to entry: ADI-Network Providers implement at least one administrator role (CI-Admin, IX-Admin, SP-Admin or AGD-Admin); see clause 6.4.
 >
 > Note 3 to entry: ADI-Administrators can be a person or a system.
 
@@ -210,9 +210,9 @@ This document entirely replaces the previous Accountable Digital identity Archit
 >
 > Note 1 to entry: An ADI-Interchange includes multiple service subsystems that may be offered by the same or different Interchange Providers.
 >
-> Note 2 to entry: An ADI-Network must include at least one ADI-Interchange.
+> Note 2 to entry: An ADI-Network includes at least one ADI-Interchange; see clause 6.4.
 >
-> Note 3 to entry: An ADI-Region must include at least one ADI-Interchange.
+> Note 3 to entry: An ADI-Region includes at least one ADI-Interchange; see clause 6.4.
 
 <a id="adi-interchange-provider-adi-ip-interchange-provider"></a>
 ## 3.7 ADI-Interchange Provider (ADI-IP) (“Interchange Provider”)
@@ -338,7 +338,7 @@ Assertion made about a Subject
 >
 > Note 1 to entry: A DIDDoc contains the associated DID, the public key of the DID, the verification method(s) and optionally other metadata.
 >
-> Note 2 to entry: A DID must be bound to one and only one DIDDoc.
+> Note 2 to entry: A DID is bound to exactly one DIDDoc; see clause 7.4.3.
 >
 > Note 3 to entry: A DIDDoc may be packaged as a JWT VC.
 
@@ -362,7 +362,7 @@ Assertion made about a Subject
 >
 > Note 2 to entry: An endpoint identifies the source or destination agents for a protocol exchange using OIDC or ADIA protocols.
 >
-> Note 3 to entry: Agents must have at least one endpoint in order to communicate.
+> Note 3 to entry: An Agent has at least one endpoint; see clause 7.2.2.
 >
 > Note 4 to entry: Agent endpoints can only communicate with specified other endpoints.
 
@@ -704,7 +704,7 @@ All ADI-Network transactions are logged by the Interchange and AGD in an audit l
 <a id="authorizations-and-signing"></a>
 ## 6.1 Authorizations and signing
 
-ADI uses public-key cryptography for authorization and signing to enforce accountability. All participants in an ADI-Network must generate a PK Pair using their agent which acts on their behalf. The agent must securely store the private key in a hardened data vault.
+ADI uses public-key cryptography for authorization and signing to enforce accountability. All participants in an ADI-Network MUST generate a PK Pair using their agent which acts on their behalf. The agent MUST store the private key in a hardware security module meeting the requirements of clause 7.2.4.4.
 
 The public key is given to the ADI-Network authority enrolling the participant to be registered and used to verify the participant's digital signature.
 
@@ -776,6 +776,8 @@ Roles and authorities are defined as claims in an ADI-ROLE VC. Accountability an
 
 ADI-Network Providers offer ADI enrollment, transaction processing and directory services.
 
+An ADI Network MUST include at least one Region and at least one Interchange, and every Region MUST include at least one Interchange. Every ADI Network Provider MUST implement at least one administrator role.
+
 <a id="adi-global-domain-agd"></a>
 ### 6.4.1 ADI Global Domain (AGD)
 
@@ -841,7 +843,7 @@ VC governance rules may be defined in ADI-ROLE VC schema metadata.
 
 For example, an Interchange may issue an ADI-IX VC with authority to issue VCs up to a certain assurance level and be authorized to issue ADI-CI VCs but not ADI-SP VCs.  Other services may be offered such as vc_vault, identity_escrow, identity_broker, financial_services and other value-added services.
 
-Logic to process rules should be automated to work off of a configurable data set by network administrators.  The ADI DAS component is responsible for enforcing these rules based on configurable settings and verifiable attributes in ADI-ROLE VCs.
+Logic to process rules SHOULD be automated to work off of a configurable data set by network administrators.  The ADI DAS component is responsible for enforcing these rules based on configurable settings and verifiable attributes in ADI-ROLE VCs.
 
 Roles, authorities, confirmations and evidence can be defined in ADI-ROLE VC schemas.
 
@@ -897,7 +899,7 @@ Actors on an ADI-Network have an ADI-ROLE VC that defines:
 <a id="users"></a>
 ### 6.7.5 Users
 
-ADI-Network User VCs must contain minimum information as required by ADI-Network governance policies. For example, participants may be required to be vetted to a certain level, and HIDA attributes may be collected from government, enterprise or financial KYC identities.  For lesser scope deployments minimum information may be an OTP via mobile or email, or other methods and information in between these scopes.
+ADI-Network User VCs MUST contain the minimum information required by ADI-Network governance policies. For example, participants may be required to be vetted to a certain level, and HIDA attributes may be collected from government, enterprise or financial KYC identities.  For lesser scope deployments minimum information may be an OTP via mobile or email, or other methods and information in between these scopes.
 
 Note: User VCs may be delegated to other users.  For example, a health identity may be delegated  between family members or care providers to pick up prescriptions.
 
@@ -967,6 +969,8 @@ DAS functions include:
 ### 7.2.2 Agents
 
 Agents act as surrogates within the ADI-Network and perform tasks on behalf of their respective owner.  Agents may create, use and manage cryptographic keys for their owner.
+
+An Agent MUST expose at least one endpoint through which it can be reached.
 
 Users are authenticated to their agents using strong authentication.
 
@@ -1141,6 +1145,8 @@ HIDA usage is REQUIRED. An Interchange cannot satisfy §7.4.1 without it. The ch
 
 All Digital Addresses have a primary DID and one or more pairwise DIDs.
 
+Every DID MUST resolve to exactly one DIDDoc, and a DIDDoc MUST be bound to exactly one DID.
+
 DIDs are identifiers of a private key the DID owner securely holds.  The public key is available through the DID’s DIDDoc / VC in the ADI-Network.
 
 DID addresses include network locations which enable global navigation and communication within the ADI-Network.
@@ -1206,7 +1212,7 @@ An ADI-Network DID bound to the Digital Address and may have the format of -  di
 
 The ADI Global Domain (AGD) serves as a root of trust for all participants in the ecosystem. The AGD ensures interoperability between Interchanges
 
-Note: Create_agd does not have an authority_issuer since it is the root.  Implementations should provide administrative operator consoles to set up & configure the new AGD and create and store keys.
+Note: Create_agd does not have an authority_issuer since it is the root.  Implementations SHOULD provide administrative operator consoles to set up & configure the new AGD and create and store keys.
 
 The following request and response descriptions are used during AGD enrollment.
 
@@ -1229,9 +1235,9 @@ sequenceDiagram
 
 *Figure 11. Creating an AGD*
 
-This flow is the first step to create an ADI-Network.  An AGD must be created, which contains the root signing key for all other ADI signed transactions.
+This flow is the first step to create an ADI-Network.  An AGD MUST be created, which contains the root signing key for all other ADI signed transactions.
 
-Since this is the root, a DID for the AGD is created and the DIDDoc must be the public key of the AGD private key. The ADI-AGD ADI-ROLE VC is self-signed using the AGD DID.
+Since this is the root, a DID for the AGD is created and its DIDDoc MUST contain the public key corresponding to the AGD root signing key. The ADI-AGD ADI-ROLE VC is self-signed using the AGD DID.
 
 The AGD posts a signed request to enroll to the AGD. The request includes the private key identifier and required information about the AGD.
 
@@ -1327,13 +1333,13 @@ sequenceDiagram
 
 The Issuer administration applies to the Interchange to join the ADI ecosystem as an Issuer.
 
-The Interchange should have an enrollment form the issuer can fill out and submit.
+The Interchange SHOULD provide an enrollment form the issuer can fill out and submit.
 
 The Issuer submits an enrollment request to the interchange. The request includes required information about the issuer.   This request may be submitted via a web form at the Interchange or other method.
 
 **ISSUER -\> INTERCHANGE: POST ~ix/enroll_issuer**
 
-The Interchange will vet the Issuer information and execute a contract to join ADI.
+The Interchange MUST vet the Issuer information and execute a contract to join ADI before enrolling the Issuer.
 
 Once vetting of the Issuer is completed, the Interchange provisions a CI_AGENT to perform ADI functions for the issuer. The CI_AGENT generates PK pairs, is assigned a DID & DIDDoc and OIDC endpoints & metadata using an issuer-selected domain / sub-domain.
 
@@ -1374,13 +1380,13 @@ The following request and response JSON objects are used during Service Provider
 
 Service Providers are onboarded into the ADI-Network by an Interchange. The process starts with the Interchange requiring the prospective Service Provider to provide organizational information, a contact person for the organization and details required to join the ADI-Network.
 
-The Interchange will perform due diligence, information validation and contract execution per ADI-Network governance rules.
+The Interchange MUST perform due diligence, information validation and contract execution per ADI-Network governance rules before enrolling the Service Provider.
 
 The governing body within Interchange may approve or reject requests to enroll onto the Interchange. Successful approval of a requesting entity as a Service Provider results in a Digital Address being assigned and an SP_DID & associated DID_DOC being created.
 
-The Interchange will also create an Agent for the Service Provider.  This Agent is the Service Provider's surrogate within the ADI-Network and will execute requests from the Service Provider and from the ADI-Network on behalf of the Service Provider. For example, a user is requesting a service that requires a VC of a certain type to access.  The Service Provider will request a VC with a schema type from their Agent endpoint.
+The Interchange MUST create an Agent for the Service Provider.  This Agent is the Service Provider's surrogate within the ADI-Network and will execute requests from the Service Provider and from the ADI-Network on behalf of the Service Provider. For example, a user is requesting a service that requires a VC of a certain type to access.  The Service Provider will request a VC with a schema type from their Agent endpoint.
 
-The SP Agent will list the Service Provider in the AGD Service Provider Directory.
+The Interchange MUST list the Service Provider in the AGD Service Provider Directory; only the enrolling Interchange writes a Member's directory entry.
 
 The SP Agent is now ready to accept and process ADI-Network requests.
 
@@ -1412,7 +1418,7 @@ The service provider submits an enrollment request to the interchange. The reque
 
 **SERVICE_PROVIDER -\> INTERCHANGE: POST ~ix/enroll_sp  **
 
-The Interchange will vet the service provider information and execute a contract to join ADI.
+The Interchange MUST vet the service provider information and execute a contract to join ADI before enrolling the Service Provider.
 
 Once vetting of the service provider is completed, the Interchange provisions an SP_AGENT to perform ADI functions for the  service provider. The SP_AGENT generates PK pairs,  is assigned a DID & DIDDoc and OIDC endpoints & metadata using a service provider selected domain / sub-domain.
 
@@ -1449,7 +1455,7 @@ A user may enroll in an ADI-Network starting at either (1) an issuer who is auth
 
 1.  Issuers may initiate User Digital Address enrollment, by inviting the user to receive a VC. In this case the Issuer validates and supplies necessary PII to meet ADI-Network governance requirements for uniqueness verification and User Identity validation.
 
-2.  Users may initiate Digital Address registration with an Interchange directly.  In this case the Interchange will perform vetting and issuing procedures to meet Network governance requirements or use a partnered network Issuer to perform vetting procedures.
+2.  Users may initiate Digital Address registration with an Interchange directly.  In this case the Interchange MUST perform vetting to meet Network governance requirements, either itself or through a partnered network Issuer.
 
 In both cases during the enrollment process:
 
@@ -1519,13 +1525,13 @@ The DAA enrolls the user with a FIDO / Strong Auth / OAuth method and records th
 
 Generate a PK pair and securely store the private key in the user agent hardened key store.
 
-The interchange will vet the user identity and issue an ADI-Network User VC to the user.
+The interchange MUST vet the user identity before issuing an ADI-Network User VC to the user.
 
 **INTERCHANGE -\> USER_AGENT:  Vet user and issue ADI-Network User VC**
 
 **alt if an Issuer is used to issue the ADI-Network User VC**
 
-The INTERCHANGE may require an Issuer perform an identity proofing at a certain level.  If required, the INTERCHANGE will validate the identity with a selected Credential Issuer.
+The INTERCHANGE may require an Issuer perform an identity proofing at a certain level.  If required, the INTERCHANGE MUST validate the identity with a selected Credential Issuer before proceeding.
 
 **USER_AGENT -\> CI_AGENT :  Verify the ADI-Network User VC Identity**
 
@@ -1572,7 +1578,7 @@ The issuer agent saves the VC offer and requests the user’s agent to return a 
 
 The user agent signs an issuance_token request for the VC using the private key bound to the VC subject DID to prove they are the subject of the VC.
 
-The user agent  sends the signed issuance_token back to the issuer agent, who will then sign,  Issue and store the VC in a secure VC Vault.  The credential issuer agent will send the VC or its metadata to the user agent.
+The user agent sends the signed issuance_token back to the issuer agent. The issuer agent MUST verify the token before signing, issuing and storing the VC in a secure VC Vault.  The credential issuer agent will send the VC or its metadata to the user agent.
 
 <a id="credential-issuer-high-level-flow"></a>
 ### 9.2.1 High Level Flow
@@ -1651,7 +1657,7 @@ The issuer agent creates a URI referring to this vc_offer.  This is returned as 
 
 **CI_AGENT -\> USER_AGENT:  Return vc_offer**
 
-The USER_AGENT will request consent and authorization from the User. Note: the nonce signed by the USER_AGENT may be the hash of the VC offer.
+The USER_AGENT MUST obtain consent and authorization from the User before proceeding. Note: the nonce signed by the USER_AGENT may be the hash of the VC offer.
 
 **USER_AGENT -\> USER: Request consent and signed approval**
 
@@ -1663,7 +1669,7 @@ The USER_AGENT sends the issue_vc token to the issuer agent’s endpoint to vali
 
 **USER_AGENT -\> CI_AGENT: POST ~issuer/issue_vc_token**
 
-The issuer agent validates the user's signature of the issue_vc token and retrieves VC claims based on the pre_authorized_code.   Using the user DID from the issue_vc token for the VC subject, a VC is generated and signed with DID private key.  The issuer agent  stores the VC in the VC Vault specified by the credential issuer.  (NOTE based on the issuer metadata the VC may be stored at the issuer or user vault.  The issuer_vault endpoint will point to the location the issuer supports.)
+The issuer agent validates the user's signature of the issue_vc token and retrieves VC claims based on the pre_authorized_code.   The issuer agent MUST verify that the issue_vc token was signed by the key of the subject bound to the offer when it was created (clause 12.4), and MUST use that subject, not a value taken from the token, as the VC subject. A VC is then generated and signed with the Issuer's DID private key.  The issuer agent  stores the VC in the VC Vault specified by the credential issuer.  (NOTE based on the issuer metadata the VC may be stored at the issuer or user vault.  The issuer_vault endpoint will point to the location the issuer supports.)
 
 **CI_AGENT -\> VAULT_AGENT: ~issuer\_ or user\_  vault/VC **
 
@@ -1689,13 +1695,13 @@ The service provider may request a user for one or more claims about their ident
 
 Claims are contained in a VC.  Each VC is signed by an approved ADI credential issuer.
 
-When requesting a VC, the service provider must specify one or more schemas that are acceptable.
+When requesting a VC, the service provider MUST specify one or more schemas that are acceptable.
 
 The SP agent requests the USER_AGENT <span class="mark">to provide one or more of an acceptable list of VCs</span>.
 
-The USER_AGENT will ask the user to select one or more VCs from their wallet (if there is more than one) to use for this request.  If the User has no acceptable VCs, then the user may be redirected to a Credential Issuer to obtain a suitable VC.
+The USER_AGENT MUST present the acceptable VCs from the User's wallet and ask the User to select one or more to use for this request.  If the User has no acceptable VCs, then the user may be redirected to a Credential Issuer to obtain a suitable VC.
 
-The USER_AGENT will then ask the user for consent to present this VC to the service provider, using Strong Auth.  The USER_AGENT will then take the VC to create and sign a VP with the users’ private key to demonstrate user consent.
+The USER_AGENT MUST obtain the User's consent to present the selected VC to the service provider, using strong authentication, and MUST then create and sign a VP with the User's private key to demonstrate that consent.
 
 The VP is then returned as a response to the service provider request.
 
@@ -1845,7 +1851,7 @@ The Service Provider asks its SP Agent for the DIDDoc public key of the signer, 
 
 **SERVICE_PROVIDER -\> SP_AGENT: POST ~service_provider/get_did_doc**
 
-The Agent will return the  DID_DOC
+The Agent MUST return the DID_DOC
 
 **SP_AGENT -\> SERVICE_PROVIDER:   DIDDoc Public Key**
 
@@ -2148,17 +2154,17 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
-| B-203 | Critical | L1522 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |
-| B-205 | Critical | L1006 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. *(awaiting D8)* |
+| B-203 | Critical | L1520 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |
+| B-205 | Critical | L1004 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. *(awaiting D8)* |
 | B-206 | Critical | L? "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. *(awaiting D11)* |
 | B-208 | Critical | L707 "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. *(awaiting D11)* |
 | B-210 | Critical | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |
 | B-204 | Major | L564 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |
-| B-211 | Major | L1830/1846/1848 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |
-| B-212 | Major | L1822 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
-| B-214 | Major | L975/1951 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
+| B-211 | Major | L1828/1844/1846 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |
+| B-212 | Major | L1820 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
+| B-214 | Major | L973/1949 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
 | B-215 | Major | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim *(awaiting D6)* |
-| B-217 | Major | L1704 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |
+| B-217 | Major | L1702 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |
 | B-220 | Major | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |
 
 <a id="editors-notes-data-model"></a>
@@ -2193,15 +2199,15 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
-| D-403 | Critical | L1150/1172/2135 "did:adi:" | **13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2, 3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not DIDs — so path-only differences collide (see A-110). No method definition exists | Define the method; normalise every instance *(awaiting D2)* |
+| D-403 | Critical | L1148/1170/2131 "did:adi:" | **13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2, 3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not DIDs — so path-only differences collide (see A-110). No method definition exists | Define the method; normalise every instance *(awaiting D2)* |
 | D-419 | Critical | clauses 4.2, 6.3, 6.6, 6.7, 8, 10.3, B.2.7–B.2.11 | The working group architect has proposed removing ADI-ROLE Verifiable Credentials and carrying role, entitlements and assurance ceilings in each entity's DID Document, signed by the enrolling authority as DID controller. Preserves the chain of trust and simplifies enrollment, but makes DID resolution a dependency of every verification and requires a did:adi method that returns controller-signed documents. | Design complete in AUTHORITY_IN_DIDDOC.md. Apply only after the working group confirms; see its §10 on timing. *(awaiting D13)* |
 | D-404 | Major | L? "unique within an ADI-Region" | DA uniqueness scope: "within an ADI-Region" (§3.21) vs "in an ADI Network" (§8.5.1). Format `user@interchange_name` is met by only **one** of five role VCs — B.2.7 `agd_admin@global_1`, B.2.9 `issuer_admin@issuer_1`, B.2.10 `sp_admin@service_provider_1`, B.2.11 `USER_DA@IX_1` all use a non-interchange host. B.3.2 uses a third syntax `issuer1@ix3.r1`. No ABNF, no case rule, no IDN/homograph policy for a human-facing identifier | Define ABNF; fix all instances *(awaiting D3)* |
 | D-405 | Major | L? "HIDA usage is optional" | HIDA is simultaneously mandatory ("Entities … are unique when they do not have matching HIDAs"; "The User HIDA **is** verified for uniqueness") and optional ("HIDA usage is optional"). Separately: no hash algorithm named, no salt/pepper/KDF/keyed-MAC, and **no canonicalization rule** — without normalization of case, diacritics, name order and date format the same person yields different HIDAs at different Interchanges and cross-region uniqueness silently fails | Decide; specify construction *(awaiting D9)* |
-| D-406 | Major | L332/1124/1144 "pairwise" | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol *(awaiting D12)* |
+| D-406 | Major | L332/1122/1142 "pairwise" | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol *(awaiting D12)* |
 | D-408 | Major | L627/644 "Credential Provider" | Four incompatible scopes for "ADI Network Provider". §6.3 omits the Interchange entirely and calls the AGD an "Authoritative Domain Controller" (L522), a term used nowhere else. §6.2 says "Credential Provider" (L504 ×3) where §3.4 says "Credential Issuer" | Single taxonomy |
-| D-411 | Major | L658/885 "The assurance level of" | The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time) | Delete one; cross-reference |
-| D-412 | Major | L1385 "AGD Service Provider Directory" | L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange do it. No authorization model for directory writes | Resolve |
-| D-413 | Major | L664/891 "encrypted by issuer" | Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory. Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation database | Specify or remove |
+| D-411 | Major | L658/883 "The assurance level of" | The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time) | Delete one; cross-reference |
+| D-412 | Major | L1383 "AGD Service Provider Directory" | L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange do it. No authorization model for directory writes | Resolve |
+| D-413 | Major | L664/889 "encrypted by issuer" | Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory. Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation database | Specify or remove |
 | D-418 | Major | spec/figures/ — SVG text | AGD was renamed to "ADI Global Domain" in the prose, but the term is rendered text inside the figure SVGs (at least Figures 4, 5, 6, 8). Prose and figures now disagree. | Edit the PowerPoint source, re-export the affected slides as SVG into spec/figures/ under the same filenames. |
 | D-414 | Minor | L417 "Acronyms and abbreviations" | "Acronyms and abbreviations" contains no acronym list. §4.1 holds normative role-VC definitions (misfiled); §4.2 holds identifiers. AGD, CI, IX, SP, DA, DAS, VC, VP, HIDA, AAL, PII, KYC are never expanded in one place | Build the table |
 
@@ -2219,8 +2225,8 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 |---|---|---|---|---|
 | E-530 | Major | §7 vs §8.3 — duplication | §7 (overview) and §8.3 (Roles and Authorities) tell the same narrative twice; audit-log/legal-retrieval stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication. | Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated". |
 | E-503 | Minor | L? "7.7.1.1" | §7.7.1.1 is an orphan H4 among H3 siblings | — |
-| E-527 | Minor | L918/1102 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another | — |
-| E-528 | Minor | L1154 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line | — |
+| E-527 | Minor | L916/1100 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another | — |
+| E-528 | Minor | L1152 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line | — |
 | E-529 | Minor | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs | — |
 
 <a id="editors-notes-absent"></a>
