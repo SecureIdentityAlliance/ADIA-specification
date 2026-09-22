@@ -894,10 +894,10 @@ An ADI wallet authenticates the user with a NIST 800-63 Assurance Level AAL1, AA
 
 The user agent creates, manages and uses cryptographic keys securely stored at the Interchange.  Using these keys the User Agent will coordinate with the interchange DAS  to sign and perform ADI-Network transactions on behalf of the User.
 
-The User Agent enrolls and authenticates the user with the Device Application Agent using strong authenticators capable of AAL1, AAL2 or AAL3 assurance levels.
+The User Agent enrolls and authenticates the user with the Digital Address Application using strong authenticators capable of AAL1, AAL2 or AAL3 assurance levels.
 
-<a id="device-application-agent-daa"></a>
-#### 7.2.3.2 Device Application Agent (DAA)
+<a id="digital-address-application-daa"></a>
+#### 7.2.3.2 Digital Address Application (DAA)
 
 The DAA operates on a user’s device and performs strong authentication.  Examples include FIDO, Passkeys and other methods (biometrics) that have the ability to securely assert success using OAuth2 and OpenID connect.
 
@@ -928,7 +928,7 @@ The User Device Agent works in conjunction with the interchange provisioned user
 >
 > To assert `aal: 2`, all of the following MUST hold:
 >
-> 1. The Device Application Agent uses a WebAuthn Level 2 or later authenticator registered with the Interchange at enrollment.
+> 1. The Digital Address Application uses a WebAuthn Level 2 or later authenticator registered with the Interchange at enrollment.
 > 2. Two distinct authentication factors are proven at each ceremony. A multi-factor cryptographic authenticator reporting `UV = 1` satisfies this.
 > 3. The Interchange verifies the assertion against the registered credential, confirms `UV = 1`, and confirms that the signature counter has increased where the authenticator provides one.
 > 4. The User has re-authenticated with at least one factor within the preceding 12 hours, and within 30 minutes of the last account activity.
@@ -942,7 +942,7 @@ The User Device Agent works in conjunction with the interchange provisioned user
 > The following requirements are the basis on which a relying party may rely on a signature produced on the User's behalf:
 >
 > 1. The signing key MUST be generated inside, and MUST never leave, a hardware security module validated to FIPS 140-3 Level 2 or higher; Level 3 is RECOMMENDED. The key MUST be marked non-exportable.
-> 2. To authorise a signing operation on payload *P*, the Cloud User Agent MUST obtain a WebAuthn assertion from the User's Device Application Agent with `challenge = SHA-256(P)` and `userVerification = "required"`.
+> 2. To authorise a signing operation on payload *P*, the Cloud User Agent MUST obtain a WebAuthn assertion from the User's Digital Address Application with `challenge = SHA-256(P)` and `userVerification = "required"`.
 > 3. The Digital Address Service MUST verify the assertion against the credential registered at enrollment, MUST confirm `UV = 1`, MUST confirm that `clientDataJSON.challenge` equals `SHA-256(P)`, and MUST confirm that the signature counter increased.
 > 4. Only on success MAY the Digital Address Service request the HSM to sign *P*. The HSM MUST refuse any signing request not accompanied by an attestation of a successful verification under step 3.
 > 5. The Digital Address Service MUST append a record `{timestamp, subject, SHA-256(P), assertion digest, previous record digest}` to a hash-chained log for every signing operation, whether it succeeded or was refused, and MUST publish the log head to the AGD daily.
@@ -1357,7 +1357,7 @@ The following describes when a user enrolls at an Interchange.
 sequenceDiagram
     autonumber
     actor USER as User
-    participant DAA as Device App (DAA)
+    participant DAA as Digital Address App (DAA)
     participant DAS as IX DAS
     participant CI as CI Agent
     participant UA as Cloud User Agent
@@ -1491,7 +1491,7 @@ sequenceDiagram
 sequenceDiagram
     autonumber
     actor USER as User
-    participant DAA as Device App (DAA)
+    participant DAA as Digital Address App (DAA)
     participant UA as Cloud User Agent
     participant CIA as CI Agent
     participant ISS as Issuer
@@ -1625,7 +1625,7 @@ sequenceDiagram
     participant SP as Service Provider
     participant SPA as SP Agent
     participant UA as Cloud User Agent
-    participant DAA as Device App (DAA)
+    participant DAA as Digital Address App (DAA)
     actor USER as User
     participant VAULT as Vault
     SP->>SPA: Present-credential request for User

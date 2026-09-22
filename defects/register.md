@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-21 |
 | Defects | 110 (68 with an automated check) |
-| Verified | 40 |
+| Verified | 41 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 23 |
-| Open | 46 |
+| Open | 45 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -100,19 +100,19 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream D — Architecture and terminology
 
-15 defects · 3 verified · 6 with an automated check
+15 defects · 4 verified · 6 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | D-401 | S1 | Verified | ND | `auto` | L? "ard_" | **18 `ard_` field names remain** (`ard_da_user_name`, `ard_public_key`, `ard_information`, `ard_key_id`, `ard_enrollment_form`, `ard_da_global_name`, `ard_da_region_name`, `ard_da_interchange_name`, `ard_da_name`) plus one `~ard/` endpoint — including inside the AGD's own VC. The prose mention was deleted on 20 Aug, so the prefix now has **zero referent** in the document | Restore ARD as a role, or rename all 18 | `20c25d9` |
 | D-402 | S2 | Verified | ND | `auto` | L236/887/908 "800-63" | IAL/AAL/FAL conflated. Document contains `AAL` ×8, `IAL` ×0, `FAL` ×0, and one unqualified `authorized_max_assurance_level`. §3.14 describes IAL, §8.3.2 claims AAL. Cites SP 800-63-**3**; Rev. 4 is current | Three fields ial/aal/fal; ranges ial 1-3, aal 1-2, fal 1-2. Ceilings on provider role VCs, floors on SP role VCs. See ASSURANCE_MODEL.md §4. |  |
 | D-403 | S1 | Blocked(D2) |  | `auto` | L1031/1053/1932 "did:adi:" | **13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2, 3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not DIDs — so path-only differences collide (see A-110). No method definition exists | Define the method; normalise every instance |  |
-| D-404 | S2 | Blocked(D3) |  | — | L? "unique within an ADI-Region" | DA uniqueness scope: "within an ADI-Region" (§3.21) vs "in an ADI Network" (§8.5.1). Format `user@interchange_name` is met by only **one** of five role VCs — B.2.7 `agd_admin@global_1`, B.2.9 `issuer_admin@issuer_1`, B.2.10 `sp_admin@service_provider_1`, B.2.11 `USER_DA@IX_1` all use a non-interchange host. B.3.2 uses a third syntax `issuer1@ix3.r1`. No ABNF, no case rule, no IDN/homograph policy for a human-facing identifier | Define ABNF; fix all instances | `6aceb76` |
+| D-404 | S2 | Blocked(D3) |  | — | L? "unique within an ADI-Region" | DA uniqueness scope: "within an ADI-Region" (§3.21) vs "in an ADI Network" (§8.5.1). Format `user@interchange_name` is met by only **one** of five role VCs — B.2.7 `agd_admin@global_1`, B.2.9 `issuer_admin@issuer_1`, B.2.10 `sp_admin@service_provider_1`, B.2.11 `USER_DA@IX_1` all use a non-interchange host. B.3.2 uses a third syntax `issuer1@ix3.r1`. No ABNF, no case rule, no IDN/homograph policy for a human-facing identifier | Define ABNF; fix all instances | `f014f07` |
 | D-405 | S2 | Blocked(D9) |  | — | L1020 "HIDA usage is optional" | HIDA is simultaneously mandatory ("Entities … are unique when they do not have matching HIDAs"; "The User HIDA **is** verified for uniqueness") and optional ("HIDA usage is optional"). Separately: no hash algorithm named, no salt/pepper/KDF/keyed-MAC, and **no canonicalization rule** — without normalization of case, diacritics, name order and date format the same person yields different HIDAs at different Interchanges and cross-region uniqueness silently fails | Decide; specify construction |  |
 | D-406 | S2 | Blocked(D12) |  | — | L281/1005/1025 "pairwise" | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol |  |
 | D-407 | S2 | Verified |  | `auto` | L? "ADI NETWORK VC" | Five competing naming schemes for the same five credentials. §4.1 also **omits ADI-SP VC** (which B.2.10 defines) and invents "ADI NETWORK VC" (L347), described as the role VC of an AGD *and* Interchange — incoherent, and used nowhere else | One registry, referenced everywhere |  |
 | D-408 | S2 | Open |  | — | L551/568 "Credential Provider" | Four incompatible scopes for "ADI Network Provider". §6.3 omits the Interchange entirely and calls the AGD an "Authoritative Domain Controller" (L522), a term used nowhere else. §6.2 says "Credential Provider" (L504 ×3) where §3.4 says "Credential Issuer" | Single taxonomy |  |
-| D-409 | S2 | Open |  | `auto` | DAA | **DAA expanded two ways**: "Digital Address Application" and "Device Application Agent" | Pick one |  |
+| D-409 | S2 | Verified |  | `auto` | DAA | **DAA expanded two ways**: "Digital Address Application" and "Device Application Agent" | Pick one |  |
 | D-410 | S2 | Open |  | `auto` | L797 "Domain Authorities (AGs)" | "Domain Authorities (AGs)" — wrong abbreviation, and the plural contradicts §7.4.1 ("There is only one AGD in an ADI Network") | Correct |  |
 | D-411 | S2 | Open |  | — | L582/766 "The assurance level of" | The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time) | Delete one; cross-reference |  |
 | D-412 | S2 | Open |  | — | L1266 "AGD Service Provider Directory" | L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange do it. No authorization model for directory writes | Resolve |  |
