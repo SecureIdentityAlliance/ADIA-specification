@@ -335,7 +335,7 @@ defects:
 - id: B-202
   severity: S1
   workstream: crypto-protocol
-  location: L1504/1674/1803 "USER_AGENT -\> USER_AGENT"
+  location: L1510/1680/1809 "USER_AGENT -\> USER_AGENT"
   defect: '`USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create
     ADI Network User VC`. The subject''s own agent issues the subject''s role credential, breaking §7.6.
     The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"*
@@ -349,7 +349,7 @@ defects:
 - id: B-203
   severity: S1
   workstream: crypto-protocol
-  location: L1520 "Generate a PK pair"
+  location: L1526 "Generate a PK pair"
   defect: Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to
     a public key that already exists
   fix: Reorder
@@ -372,7 +372,7 @@ defects:
 - id: B-205
   severity: S1
   workstream: crypto-protocol
-  location: L1004 "AAL1, AAL2 & AAL3"
+  location: L1008 "AAL1, AAL2 & AAL3"
   defect: 'AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4
     proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum.'
   fix: Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention.
@@ -409,7 +409,7 @@ defects:
 - id: B-208
   severity: S1
   workstream: crypto-protocol
-  location: L707 "hardened data vault"
+  location: L? "hardened data vault"
   defect: '"hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation,
     no non-exportability requirement — while the entire accountability claim rests on private-key control'
   fix: 'Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable.'
@@ -444,7 +444,7 @@ defects:
 - id: B-211
   severity: S2
   workstream: crypto-protocol
-  location: L1828/1844/1846 "get_did_doc"
+  location: L1834/1850/1852 "get_did_doc"
   defect: '`get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed
     using the private key of the issuer" without saying who the issuer of a DIDdoc is'
   fix: Define
@@ -455,7 +455,7 @@ defects:
 - id: B-212
   severity: S2
   workstream: crypto-protocol
-  location: L1820 "ROLE VC / DID"
+  location: L1826 "ROLE VC / DID"
   defect: Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict
     behaviour
   fix: Set precedence
@@ -477,7 +477,7 @@ defects:
 - id: B-214
   severity: S2
   workstream: crypto-protocol
-  location: L973/1949 "mutual TLS"
+  location: L977/1955 "mutual TLS"
   defect: mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy.
     No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on
     mismatch
@@ -512,7 +512,7 @@ defects:
 - id: B-217
   severity: S2
   workstream: crypto-protocol
-  location: L1702 "Tech Note"
+  location: L1708 "Tech Note"
   defect: Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or
     session binding across the redirect — CSRF / session-fixation surface
   fix: Specify correlation
@@ -523,7 +523,7 @@ defects:
 - id: B-218
   severity: S3
   workstream: crypto-protocol
-  location: L1621/1664/2303 "~issuer/issue_vc"
+  location: L1627/1670/2309 "~issuer/issue_vc"
   defect: Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose
     also uses `make_credential_offer` where B.2.1 is `make_vc_offer`
   fix: Align names
@@ -715,7 +715,7 @@ defects:
 - id: D-403
   severity: S1
   workstream: architecture
-  location: L1148/1170/2131 "did:adi:"
+  location: L1154/1176/2137 "did:adi:"
   defect: '**13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also
     a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2,
     3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not
@@ -760,7 +760,7 @@ defects:
 - id: D-406
   severity: S2
   workstream: architecture
-  location: L332/1122/1142 "pairwise"
+  location: L332/1126/1146 "pairwise"
   defect: '§3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters:
     **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same
     global correlator'
@@ -822,7 +822,7 @@ defects:
 - id: D-411
   severity: S2
   workstream: architecture
-  location: L658/883 "The assurance level of"
+  location: L658/885 "The assurance level of"
   defect: 'The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding
     this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time)'
   fix: Delete one; cross-reference
@@ -833,7 +833,7 @@ defects:
 - id: D-412
   severity: S2
   workstream: architecture
-  location: L1383 "AGD Service Provider Directory"
+  location: L1389 "AGD Service Provider Directory"
   defect: L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange
     do it. No authorization model for directory writes
   fix: Resolve
@@ -844,7 +844,7 @@ defects:
 - id: D-413
   severity: S2
   workstream: architecture
-  location: L664/889 "encrypted by issuer"
+  location: L664/891 "encrypted by issuer"
   defect: Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory.
     Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation
     database
@@ -964,7 +964,7 @@ defects:
 - id: E-507
   severity: S3
   workstream: editorial
-  location: L1450 "Issuers may initiate User Digital Address"
+  location: L1456 "Issuers may initiate User Digital Address"
   defect: §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2.
   fix: ''
   owner: ND
@@ -1041,7 +1041,7 @@ defects:
 - id: E-514
   severity: S3
   workstream: editorial
-  location: L1417 "vetting of the service provider"
+  location: L1423 "vetting of the service provider"
   defect: §9.3 (Issuer flow) says "vetting of the **service provider**" ×2
   fix: ''
   owner: ND
@@ -1063,7 +1063,7 @@ defects:
 - id: E-516
   severity: S3
   workstream: editorial
-  location: L1290 "used during Issuer enrollment"
+  location: L1296 "used during Issuer enrollment"
   defect: §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2
   fix: ''
   owner: ND
@@ -1118,7 +1118,7 @@ defects:
 - id: E-521
   severity: S3
   workstream: editorial
-  location: L1807 "Respond to SP Agent with VP"
+  location: L1813 "Respond to SP Agent with VP"
   defect: Message text duplicates step 8 ("Respond to SP Agent with VP")
   fix: ''
   owner: ND
@@ -1185,7 +1185,7 @@ defects:
 - id: E-527
   severity: S3
   workstream: editorial
-  location: L916/1100 "red line"
+  location: L918/1104 "red line"
   defect: Red-line reference points at Figure 4 in one place, the ADI Network figure in another
   fix: ''
   owner: ND
@@ -1195,7 +1195,7 @@ defects:
 - id: E-528
   severity: S3
   workstream: editorial
-  location: L1152 "Figure 10."
+  location: L1158 "Figure 10."
   defect: 'Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with
     the image, some on their own line'
   fix: ''

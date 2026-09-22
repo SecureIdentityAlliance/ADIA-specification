@@ -915,7 +915,7 @@ VCs are stored and retrieved from an Agents published VC Vault endpoint. This ma
 
 AGD also publishes agent endpoints to service ADI requests. See [Roles and Authorities](#roles-and-authorities) for a description of network participants.
 
-Agents communicate network requests using endpoints, the red line in the figure 4.
+Agents communicate network requests using endpoints.
 
 Agent endpoint metadata is obtained from GET ~*participant*/metadata.
 
@@ -2154,17 +2154,17 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
-| B-203 | Critical | L1520 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |
-| B-205 | Critical | L1004 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. *(awaiting D8)* |
+| B-203 | Critical | L1526 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |
+| B-205 | Critical | L1008 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. *(awaiting D8)* |
 | B-206 | Critical | L? "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. *(awaiting D11)* |
-| B-208 | Critical | L707 "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. *(awaiting D11)* |
+| B-208 | Critical | L? "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. *(awaiting D11)* |
 | B-210 | Critical | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |
 | B-204 | Major | L564 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |
-| B-211 | Major | L1828/1844/1846 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |
-| B-212 | Major | L1820 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
-| B-214 | Major | L973/1949 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
+| B-211 | Major | L1834/1850/1852 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |
+| B-212 | Major | L1826 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
+| B-214 | Major | L977/1955 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
 | B-215 | Major | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim *(awaiting D6)* |
-| B-217 | Major | L1702 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |
+| B-217 | Major | L1708 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |
 | B-220 | Major | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |
 
 <a id="editors-notes-data-model"></a>
@@ -2199,15 +2199,15 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
-| D-403 | Critical | L1148/1170/2131 "did:adi:" | **13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2, 3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not DIDs — so path-only differences collide (see A-110). No method definition exists | Define the method; normalise every instance *(awaiting D2)* |
+| D-403 | Critical | L1154/1176/2137 "did:adi:" | **13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2, 3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not DIDs — so path-only differences collide (see A-110). No method definition exists | Define the method; normalise every instance *(awaiting D2)* |
 | D-419 | Critical | clauses 4.2, 6.3, 6.6, 6.7, 8, 10.3, B.2.7–B.2.11 | The working group architect has proposed removing ADI-ROLE Verifiable Credentials and carrying role, entitlements and assurance ceilings in each entity's DID Document, signed by the enrolling authority as DID controller. Preserves the chain of trust and simplifies enrollment, but makes DID resolution a dependency of every verification and requires a did:adi method that returns controller-signed documents. | Design complete in AUTHORITY_IN_DIDDOC.md. Apply only after the working group confirms; see its §10 on timing. *(awaiting D13)* |
 | D-404 | Major | L? "unique within an ADI-Region" | DA uniqueness scope: "within an ADI-Region" (§3.21) vs "in an ADI Network" (§8.5.1). Format `user@interchange_name` is met by only **one** of five role VCs — B.2.7 `agd_admin@global_1`, B.2.9 `issuer_admin@issuer_1`, B.2.10 `sp_admin@service_provider_1`, B.2.11 `USER_DA@IX_1` all use a non-interchange host. B.3.2 uses a third syntax `issuer1@ix3.r1`. No ABNF, no case rule, no IDN/homograph policy for a human-facing identifier | Define ABNF; fix all instances *(awaiting D3)* |
 | D-405 | Major | L? "HIDA usage is optional" | HIDA is simultaneously mandatory ("Entities … are unique when they do not have matching HIDAs"; "The User HIDA **is** verified for uniqueness") and optional ("HIDA usage is optional"). Separately: no hash algorithm named, no salt/pepper/KDF/keyed-MAC, and **no canonicalization rule** — without normalization of case, diacritics, name order and date format the same person yields different HIDAs at different Interchanges and cross-region uniqueness silently fails | Decide; specify construction *(awaiting D9)* |
-| D-406 | Major | L332/1122/1142 "pairwise" | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol *(awaiting D12)* |
+| D-406 | Major | L332/1126/1146 "pairwise" | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol *(awaiting D12)* |
 | D-408 | Major | L627/644 "Credential Provider" | Four incompatible scopes for "ADI Network Provider". §6.3 omits the Interchange entirely and calls the AGD an "Authoritative Domain Controller" (L522), a term used nowhere else. §6.2 says "Credential Provider" (L504 ×3) where §3.4 says "Credential Issuer" | Single taxonomy |
-| D-411 | Major | L658/883 "The assurance level of" | The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time) | Delete one; cross-reference |
-| D-412 | Major | L1383 "AGD Service Provider Directory" | L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange do it. No authorization model for directory writes | Resolve |
-| D-413 | Major | L664/889 "encrypted by issuer" | Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory. Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation database | Specify or remove |
+| D-411 | Major | L658/885 "The assurance level of" | The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time) | Delete one; cross-reference |
+| D-412 | Major | L1389 "AGD Service Provider Directory" | L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange do it. No authorization model for directory writes | Resolve |
+| D-413 | Major | L664/891 "encrypted by issuer" | Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory. Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation database | Specify or remove |
 | D-418 | Major | spec/figures/ — SVG text | AGD was renamed to "ADI Global Domain" in the prose, but the term is rendered text inside the figure SVGs (at least Figures 4, 5, 6, 8). Prose and figures now disagree. | Edit the PowerPoint source, re-export the affected slides as SVG into spec/figures/ under the same filenames. |
 | D-414 | Minor | L417 "Acronyms and abbreviations" | "Acronyms and abbreviations" contains no acronym list. §4.1 holds normative role-VC definitions (misfiled); §4.2 holds identifiers. AGD, CI, IX, SP, DA, DAS, VC, VP, HIDA, AAL, PII, KYC are never expanded in one place | Build the table |
 
@@ -2225,8 +2225,8 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 |---|---|---|---|---|
 | E-530 | Major | §7 vs §8.3 — duplication | §7 (overview) and §8.3 (Roles and Authorities) tell the same narrative twice; audit-log/legal-retrieval stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication. | Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated". |
 | E-503 | Minor | L? "7.7.1.1" | §7.7.1.1 is an orphan H4 among H3 siblings | — |
-| E-527 | Minor | L916/1100 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another | — |
-| E-528 | Minor | L1152 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line | — |
+| E-527 | Minor | L918/1104 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another | — |
+| E-528 | Minor | L1158 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line | — |
 | E-529 | Minor | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs | — |
 
 <a id="editors-notes-absent"></a>
