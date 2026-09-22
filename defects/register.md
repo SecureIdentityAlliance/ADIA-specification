@@ -7,9 +7,9 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-22 |
 | Defects | 111 (68 with an automated check) |
-| Verified | 62 |
+| Verified | 63 |
 | Fixed, awaiting verification | 1 |
-| Blocked on a decision | 20 |
+| Blocked on a decision | 19 |
 | Open | 27 |
 | Standing invariants | 4 of 4 holding |
 
@@ -21,11 +21,11 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream A — Data model and examples
 
-26 defects · 13 verified · 18 with an automated check
+26 defects · 14 verified · 18 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| A-101 | S1 | Blocked(D4) | RK | `auto` | B.1.2 / B.2.8 | Enrollment sends `role: "INTERCHANGE"`; role VC records `role: "IX"`. Same role, two tokens. AGD/ISSUER/SERVICE_PROVIDER match correctly across both. | Pick one token; align both |  |
+| A-101 | S1 | Verified | RK | `auto` | B.1.2 / B.2.8 | Enrollment sends `role: "INTERCHANGE"`; role VC records `role: "IX"`. Same role, two tokens. AGD/ISSUER/SERVICE_PROVIDER match correctly across both. | Pick one token; align both |  |
 | A-102 | S1 | Verified |  | `auto` | B.2.9, B.2.10, B.2.11 | `id_doc.id` is the **Interchange's** DID (`f6e18f71…`), not the subject's. §3.20 and §8.5.1 require a DIDdoc to carry its own DID's key. Verification would use the wrong key | Set `id_doc.id` = `subject`, with the subject's key |  |
 | A-103 | S1 | Verified |  | `auto` | B.2.7 | `issuer` (`8c019421…`) ≠ `subject` (`71a39c8d…`) on a credential §9.1 requires to be self-signed | Make them identical |  |
 | A-104 | S1 | Verified |  | `auto` | B.2.7 | `subject` is `did:adi:71a39c8d…` but `id_doc.id` is `did:adi:71a39c8d…/region_1/` — same UUID, different path, trailing empty segment | Normalise per D-403 |  |
