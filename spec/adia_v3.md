@@ -33,7 +33,7 @@ Nathan Dent ([nathan@adiassociation.org](mailto:nathan@adiassociation.org))
 **Material Changes:**
 
 - Change ADIA to Accountable Digital Identity Architecture
-- Change Authoritative Global Domain to "ADI Global Domain"
+- Change ADI Global Domain to "ADI Global Domain"
 - Convert document .md
   -- Associated formatting changes for headings, anchors, figures, etc.
 
@@ -368,8 +368,33 @@ Assertion made about a Subject
 <a id="acronyms-and-abbreviations"></a>
 # 4. Acronyms and abbreviations
 
+<a id="acronyms"></a>
+## 4.1 Acronyms
+
+| Acronym | Expansion | Defined in |
+|---|---|---|
+| AAL | Authentication Assurance Level — the strength of an authentication event, per NIST SP 800-63B | §7.2.4 |
+| ADI | Accountable Digital Identity | §1 |
+| ADIA | Accountable Digital Identity Association | §1 |
+| AGD | ADI Global Domain — the root authority of an ADI Network | §3.15, §6.4.1 |
+| CI | Credential Issuer (ADI-CI) | §3.4, §6.5.1 |
+| DA | Digital Address — an entity identifier of the form `local@interchange` | §3.21, §7.4.1 |
+| DAA | Digital Address Application — the application on the User's device that performs strong authentication | §7.2.3.2 |
+| DAS | Digital Address Service — the component within an AGD or Interchange that creates and maintains Digital Addresses | §7.2.1 |
+| DID | Decentralized Identifier | §3.19, §7.4.3 |
+| DIDDoc | DID Document — the document bound to a DID, containing its verification keys and metadata | §3.20 |
+| FAL | Federation Assurance Level — the strength of an assertion conveying an authentication event to a relying party, per NIST SP 800-63C | §7.2.4 |
+| HIDA | Hash of (Subject) ID Attributes — a digest of PII used to establish that an applicant is not already enrolled | §3.24, §6.7.3, §7.4.2 |
+| IAL | Identity Assurance Level — the rigour of identity proofing, per NIST SP 800-63A | §7.2.4 |
+| IX | Interchange (ADI-IX) | §3.6, §6.4.2 |
+| KYC | Know Your Customer — regulated identity verification performed by financial institutions | §11.1 |
+| PII | Personally Identifiable Information | §6.7.3 |
+| SP | Service Provider (ADI-SP) — in this document, equivalent to the Relying Party and Verifier roles | §3.12, §6.5.2 |
+| VC | Verifiable Credential | §3.25, §6.2 |
+| VP | Verifiable Presentation | §10.1 |
+
 <a id="adi-role-vcs"></a>
-## 4.1 ADI-Role VCs
+## 4.2 ADI-Role VCs
 
 > All participants of the ADI-Network are vetted and issued an ADI-ROLE VC which defines their role and authority to transact in the network. Each ADI-ROLE VC is defined by a schema of the same name.
 >
@@ -384,7 +409,7 @@ Assertion made about a Subject
 > **ADI-Network VC** ADI-ROLE VC of an AGD & Interchange.
 
 <a id="acronyms-and-abbreviations-identifiers"></a>
-## 4.2 Identifiers
+## 4.3 Identifiers
 
 > **SP_ID** Service Provider DID or DA
 >
@@ -797,7 +822,7 @@ An ADI-Network consists of a collection of Interchanges that each service users,
 
 VCs are stored and retrieved from an Agents published VC Vault endpoint. This may vary, some credential issuers may require the VC be stored in the CI’s Vault, others may allow the VC to be stored in the User Vault.  The CI can define the location of the vault endpoints it allows in the CI metadata.
 
-Domain Authorities (AGs) also publish agent endpoints to service ADI requests in their respective domains. See [Roles and Authorities](#roles-and-authorities) for a description of network participants.
+AGD also publishes agent endpoints to service ADI requests. See [Roles and Authorities](#roles-and-authorities) for a description of network participants.
 
 Agents communicate network requests using endpoints, the red line in the figure 4.
 

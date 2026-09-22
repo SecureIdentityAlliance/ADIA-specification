@@ -721,7 +721,7 @@ defects:
     3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not
     DIDs — so path-only differences collide (see A-110). No method definition exists'
   fix: Define the method; normalise every instance
-  owner: null
+  owner: RK
   status: auto
   notes: null
   check: auto
@@ -737,7 +737,7 @@ defects:
     host. B.3.2 uses a third syntax `issuer1@ix3.r1`. No ABNF, no case rule, no IDN/homograph policy for
     a human-facing identifier'
   fix: Define ABNF; fix all instances
-  owner: null
+  owner: RK
   status: Open
   notes: null
   blocked_by: D3
@@ -765,7 +765,7 @@ defects:
     **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same
     global correlator'
   fix: Reconcile with the protocol
-  owner: null
+  owner: RK
   status: Open
   notes: null
   blocked_by: D12
@@ -802,9 +802,9 @@ defects:
   location: DAA
   defect: '**DAA expanded two ways**: "Digital Address Application" and "Device Application Agent"'
   fix: Pick one
-  owner: null
+  owner: RK
   status: auto
-  notes: null
+  notes: "Digital Address Application"
   check: auto
   anchor: (DAA)
 - id: D-410
