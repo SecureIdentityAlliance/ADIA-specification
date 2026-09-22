@@ -804,7 +804,7 @@ defects:
   fix: Pick one
   owner: RK
   status: auto
-  notes: "Digital Address Application"
+  notes: Digital Address Application
   check: auto
   anchor: (DAA)
 - id: D-410
@@ -862,8 +862,8 @@ defects:
     expanded in one place'
   fix: Build the table
   owner: null
-  status: Open
-  notes: null
+  status: Fixed
+  notes: Acronym table added as §4.1 (19 terms); existing subsections renumbered to 4.2 and 4.3.
   anchor: Acronyms and abbreviations
 - id: D-418
   severity: S2
@@ -877,6 +877,21 @@ defects:
   owner: null
   status: Open
   notes: null
+- id: D-419
+  severity: S1
+  workstream: architecture
+  location: clauses 4.2, 6.3, 6.6, 6.7, 8, 10.3, B.2.7–B.2.11
+  anchor: (role VCs vs DID Document authority)
+  defect: The working group architect has proposed removing ADI-ROLE Verifiable Credentials and carrying
+    role, entitlements and assurance ceilings in each entity's DID Document, signed by the enrolling authority
+    as DID controller. Preserves the chain of trust and simplifies enrollment, but makes DID resolution
+    a dependency of every verification and requires a did:adi method that returns controller-signed documents.
+  fix: Design complete in AUTHORITY_IN_DIDDOC.md. Apply only after the working group confirms; see its
+    §10 on timing.
+  owner: RK
+  status: Open
+  notes: Pending RK confirmation as of 22 Sep 2026.
+  blocked_by: D13
 - id: E-501
   severity: S2
   workstream: editorial

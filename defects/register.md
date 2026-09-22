@@ -6,16 +6,16 @@
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-22 |
-| Defects | 110 (68 with an automated check) |
+| Defects | 111 (68 with an automated check) |
 | Verified | 43 |
-| Fixed, awaiting verification | 0 |
-| Blocked on a decision | 23 |
-| Open | 43 |
+| Fixed, awaiting verification | 1 |
+| Blocked on a decision | 24 |
+| Open | 42 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
 
-Nobody moves their own work to `Verified`. For the 68 automated defects the harness does it; for the other 42 a second person does.
+Nobody moves their own work to `Verified`. For the 68 automated defects the harness does it; for the other 43 a second person does.
 
 ---
 
@@ -100,7 +100,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream D — Architecture and terminology
 
-15 defects · 5 verified · 6 with an automated check
+16 defects · 5 verified · 6 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -117,8 +117,9 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | D-411 | S2 | Open |  | — | L582/766 "The assurance level of" | The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time) | Delete one; cross-reference |  |
 | D-412 | S2 | Open |  | — | L1266 "AGD Service Provider Directory" | L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange do it. No authorization model for directory writes | Resolve |  |
 | D-413 | S2 | Open |  | — | L588/772 "encrypted by issuer" | Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory. Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation database | Specify or remove |  |
-| D-414 | S3 | Open |  | — | L366 "Acronyms and abbreviations" | "Acronyms and abbreviations" contains no acronym list. §4.1 holds normative role-VC definitions (misfiled); §4.2 holds identifiers. AGD, CI, IX, SP, DA, DAS, VC, VP, HIDA, AAL, PII, KYC are never expanded in one place | Build the table |  |
+| D-414 | S3 | Fixed |  | — | L366 "Acronyms and abbreviations" | "Acronyms and abbreviations" contains no acronym list. §4.1 holds normative role-VC definitions (misfiled); §4.2 holds identifiers. AGD, CI, IX, SP, DA, DAS, VC, VP, HIDA, AAL, PII, KYC are never expanded in one place | Build the table |  |
 | D-418 | S2 | Open |  | — | spec/figures/ — SVG text | AGD was renamed to "ADI Global Domain" in the prose, but the term is rendered text inside the figure SVGs (at least Figures 4, 5, 6, 8). Prose and figures now disagree. | Edit the PowerPoint source, re-export the affected slides as SVG into spec/figures/ under the same filenames. |  |
+| D-419 | S1 | Blocked(D13) | RK | — | clauses 4.2, 6.3, 6.6, 6.7, 8, 10.3, B.2.7–B.2.11 | The working group architect has proposed removing ADI-ROLE Verifiable Credentials and carrying role, entitlements and assurance ceilings in each entity's DID Document, signed by the enrolling authority as DID controller. Preserves the chain of trust and simplifies enrollment, but makes DID resolution a dependency of every verification and requires a did:adi method that returns controller-signed documents. | Design complete in AUTHORITY_IN_DIDDOC.md. Apply only after the working group confirms; see its §10 on timing. |  |
 
 ## Workstream E — Editorial
 
