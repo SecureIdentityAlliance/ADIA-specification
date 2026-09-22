@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-22 |
 | Defects | 111 (68 with an automated check) |
-| Verified | 54 |
+| Verified | 62 |
 | Fixed, awaiting verification | 1 |
-| Blocked on a decision | 24 |
-| Open | 31 |
+| Blocked on a decision | 20 |
+| Open | 27 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -21,22 +21,22 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream A — Data model and examples
 
-26 defects · 5 verified · 18 with an automated check
+26 defects · 13 verified · 18 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | A-101 | S1 | Blocked(D4) | RK | `auto` | B.1.2 / B.2.8 | Enrollment sends `role: "INTERCHANGE"`; role VC records `role: "IX"`. Same role, two tokens. AGD/ISSUER/SERVICE_PROVIDER match correctly across both. | Pick one token; align both |  |
-| A-102 | S1 | Open |  | `auto` | B.2.9, B.2.10, B.2.11 | `id_doc.id` is the **Interchange's** DID (`f6e18f71…`), not the subject's. §3.20 and §8.5.1 require a DIDdoc to carry its own DID's key. Verification would use the wrong key | Set `id_doc.id` = `subject`, with the subject's key |  |
-| A-103 | S1 | Open |  | `auto` | B.2.7 | `issuer` (`8c019421…`) ≠ `subject` (`71a39c8d…`) on a credential §9.1 requires to be self-signed | Make them identical |  |
-| A-104 | S1 | Blocked(D2) |  | `auto` | B.2.7 | `subject` is `did:adi:71a39c8d…` but `id_doc.id` is `did:adi:71a39c8d…/region_1/` — same UUID, different path, trailing empty segment | Normalise per D-403 |  |
-| A-105 | S1 | Blocked(D4) |  | `auto` | B.2.7 | AGD `authorized_to_issue: ["AGD-VC"]` — the root cannot issue Interchange credentials, so §9.2 is unexecutable and the network cannot bootstrap | Add the IX role-VC type |  |
-| A-106 | S1 | Blocked(D4) |  | `auto` | B.2.8 | Interchange `authorized_to_issue: ["ADI-IX-VC"]` — an IX can only issue other IX credentials, contradicting §7.4.2, §9.3, §9.4, §9.5 | Set to Issuer + SP + User types |  |
+| A-102 | S1 | Verified |  | `auto` | B.2.9, B.2.10, B.2.11 | `id_doc.id` is the **Interchange's** DID (`f6e18f71…`), not the subject's. §3.20 and §8.5.1 require a DIDdoc to carry its own DID's key. Verification would use the wrong key | Set `id_doc.id` = `subject`, with the subject's key |  |
+| A-103 | S1 | Verified |  | `auto` | B.2.7 | `issuer` (`8c019421…`) ≠ `subject` (`71a39c8d…`) on a credential §9.1 requires to be self-signed | Make them identical |  |
+| A-104 | S1 | Verified |  | `auto` | B.2.7 | `subject` is `did:adi:71a39c8d…` but `id_doc.id` is `did:adi:71a39c8d…/region_1/` — same UUID, different path, trailing empty segment | Normalise per D-403 |  |
+| A-105 | S1 | Verified |  | `auto` | B.2.7 | AGD `authorized_to_issue: ["AGD-VC"]` — the root cannot issue Interchange credentials, so §9.2 is unexecutable and the network cannot bootstrap | Add the IX role-VC type |  |
+| A-106 | S1 | Verified |  | `auto` | B.2.8 | Interchange `authorized_to_issue: ["ADI-IX-VC"]` — an IX can only issue other IX credentials, contradicting §7.4.2, §9.3, §9.4, §9.5 | Set to Issuer + SP + User types |  |
 | A-107 | S2 | Blocked(D7) |  | — | B.2.9 | Issuer `authorized_to_issue: ["ADI-User-VC"]` — an Issuer issuing the ADI **role** credential contradicts §9.5, where the Interchange does. §9.5 allows outsourced *proofing*, which is not the same as issuance | Clarify proofing vs issuance; correct the value |  |
 | A-108 | S2 | Blocked(D8) |  | — | B.2.10 | SP `authorized_max_assurance_level: []` reads as "may accept nothing". SPs plausibly need an accepted *floor*, not an issuance *ceiling* | Decide semantics; rename or remove |  |
-| A-109 | S1 | Open |  | `auto` | B.2.11 | User VC `subject` ends `/issuer_1` — an Issuer path in a User credential — while `digital_address` is `USER_DA@IX_1`. Subject and DA disagree | Correct subject |  |
-| A-110 | S1 | Blocked(D2) |  | `auto` | B.2.9 / B.2.10 | Both subjects share method-specific-id `3b576f82…`, differing only by path. Under DID Core, path is not part of the identifier: the Issuer and SP are **the same DID** | Distinct identifiers |  |
+| A-109 | S1 | Verified |  | `auto` | B.2.11 | User VC `subject` ends `/issuer_1` — an Issuer path in a User credential — while `digital_address` is `USER_DA@IX_1`. Subject and DA disagree | Correct subject |  |
+| A-110 | S1 | Verified |  | `auto` | B.2.9 / B.2.10 | Both subjects share method-specific-id `3b576f82…`, differing only by path. Under DID Core, path is not part of the identifier: the Issuer and SP are **the same DID** | Distinct identifiers |  |
 | A-111 | S2 | Open |  | — | B.2.4 | Issuer of a `UniversityDegreeCredential` is `…/region_1/ix_3` — an Interchange-shaped DID, not an Issuer | Use an Issuer DID | `1e1476e` |
-| A-112 | S1 | Open |  | `auto` | B.1.1, B.1.2, B.2.3, B.2.7–B.2.11 | `"type": "JWT"`. The JOSE header parameter is `typ` (RFC 7515 §4.1.9). Zero occurrences of `typ` or `kid` anywhere | Rename; add `kid` |  |
+| A-112 | S1 | Verified |  | `auto` | B.1.1, B.1.2, B.2.3, B.2.7–B.2.11 | `"type": "JWT"`. The JOSE header parameter is `typ` (RFC 7515 §4.1.9). Zero occurrences of `typ` or `kid` anywhere | Rename; add `kid` |  |
 | A-113 | S2 | Verified |  | `auto` | B.2.2, B.2.3, B.2.7 | Three malformed UUIDs: `7560e8400-e79n-21d4-…` (9 hex in group 1, non-hex `n`) ×2, and `aa2f772-…` (7 in group 1) | Regenerate | `1e1476e` |
 | A-114 | S3 | Verified |  | `auto` | B.1.3 / B.1.4 | Identical `request_id` `bb20b6aa-…` in two different requests | Distinct values | `1e1476e` |
 | A-115 | S2 | Open |  | — | B.1.5 | Placeholder values were substituted during JSON repair and are invented, not authored | Review and replace |  |
@@ -155,7 +155,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | E-526 | S3 | Verified | ND | `auto` | L? "3.3 Roles" | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
 | E-527 | S3 | Open | ND | — | L1104 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  | `4465b57` |
 | E-528 | S3 | Open | ND | — | L1158 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
-| E-529 | S3 | Open | ND | — | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  | `17bdc07` |
+| E-529 | S3 | Open | ND | — | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  | `a5377a5` |
 | E-530 | S2 | Open | ND | — | §7 vs §8.3 — duplication | §7 (overview) and §8.3 (Roles and Authorities) tell the same narrative twice; audit-log/legal-retrieval stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication. | Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated". |  |
 
 ## Workstream F — References, diagrams and tooling
