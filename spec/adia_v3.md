@@ -743,9 +743,9 @@ Credential Issuers are vetted and required to perform identity verification to a
 
 A HIDA is a hash of PII attributes to maintain privacy.   Which PII attributes are used to comprise a HIDA may vary.
 
-HIDA construction, management and usage rules are defined within a region scope.  For example, in a global ADI-Network that uses national identity to create a HIDA, the HIDA may be comprised of: Name,  Date of Birth & National ID card \#.  In an enterprise it may be defined as name and employee ID.  In a social or community ADI-Network it may be simply phone or email.
+HIDA construction, management and usage rules are set by governance policy and applied within the scope of a single Interchange.  For example, in a global ADI-Network that uses national identity to create a HIDA, the HIDA may be comprised of: Name,  Date of Birth & National ID card \#.  In an enterprise it may be defined as name and employee ID.  In a social or community ADI-Network it may be simply phone or email.
 
-HIDA usage is implementation-specific and should be set by ADI-Provider governance policies.
+Every Interchange MUST compute and retain a HIDA for each participant it enrolls, and MUST use it to satisfy the one-Digital-Address-per-person requirement of §7.4.1. Which PII attributes comprise the HIDA, and the retention period, are set by ADI-Provider governance policies.
 
 <a id="authority-entitlements"></a>
 ### 6.7.4 Authority Entitlements
@@ -1020,7 +1020,7 @@ Participant uniqueness is enforced by the enrolling Interchange by creating a pa
 
 HIDAs MUST NOT be compared across Interchanges. A participant's HIDA is computed using a key held by the enrolling Interchange and is not disclosed to other Interchanges or to the AGD.
 
- HIDA usage is optional.
+HIDA usage is REQUIRED. An Interchange cannot satisfy §7.4.1 without it. The choice of contributing PII attributes is set by governance policies; the requirement to perform the comparison is not optional.
 
 <a id="did-addressing"></a>
 ### 7.4.3 DID Addressing
@@ -1364,7 +1364,7 @@ sequenceDiagram
     participant AGD
     USER->>DAA: Request enrollment; complete forms; accept T&Cs
     DAA->>DAA: Generate FIDO credential (user verification enrolled)
-    DAA->>DAS: POST ~ix/enroll_user (FIDO public key, HIDA if required, forms)
+    DAA->>DAS: POST ~ix/enroll_user (FIDO public key, HIDA, forms)
     DAS->>DAS: Check Digital Address uniqueness; verify HIDA per region policy
     opt Interchange outsources identity proofing
         DAS->>CI: Request identity proofing

@@ -29,7 +29,7 @@ EDITS = [
   "Every Interchange MUST compute and retain a HIDA for each participant it enrolls, and MUST use it to satisfy the one-Digital-Address-per-person requirement of §7.4.1. Which PII attributes comprise the HIDA, and the retention period, are set by ADI-Provider governance policies."),
 
  ("§7.4.2 — HIDA usage is optional",
-  " HIDA usage is optional.  HIDA requirements should be specified in governance policies.",
+  " HIDA usage is optional.",
   "HIDA usage is REQUIRED. An Interchange cannot satisfy §7.4.1 without it. The choice of contributing PII attributes is set by governance policies; the requirement to perform the comparison is not optional."),
 
  ("§6.7.3 — construction scope is the Interchange, not the region",
@@ -37,7 +37,7 @@ EDITS = [
   "HIDA construction, management and usage rules are set by governance policy and applied within the scope of a single Interchange."),
 
  ("§7.4.2 — stray Google Docs link",
-  "See [Governance \nHIDA](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.g7c9avwei6bl).",
+  "See [Governance HIDA](https://docs.google.com/document/d/1jwhmY0vXv1tI1v9RXlx-ELG7UQXTSF03IE-C-WqLIxM/edit#heading=h.g7c9avwei6bl).",
   "See [Governance HIDA](#governance-hida)."),
 
  ("§8.5 flow — HIDA is not conditional",
