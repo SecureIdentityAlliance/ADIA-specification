@@ -673,7 +673,16 @@ The credential metadata describes the format of the VC and the definition of the
 
 Note: This document will be using JWT VC formatting in examples. Other formats may be used.
 
-The verifier can check the signature by combining the metadata and claims sections to create a SHA256 hash. Using the public key from the issuers ADI DIDDoc, the signature is valid if the public key encryption of the hash matches the signature of the proof, using the specified encryption algorithm in the metadata.
+Signatures on ADI Verifiable Credentials, presentations and protocol requests are JSON Web Signatures [RFC7515].
+
+A verifier MUST validate a signature using the procedure in [RFC7515] §5.2. In outline: reconstruct the signing input as `BASE64URL(UTF8(protected header))`, a full stop, and `BASE64URL(payload)`; select the signature algorithm named by the `alg` header parameter; locate the verification key identified by the `kid` header parameter in the signer's DIDDoc; and verify the signature over the signing input according to that algorithm.
+
+The following apply to every signature verification:
+
+- A verifier MUST reject a token whose `alg` value is `none`, and MUST reject any `alg` value not permitted by this specification.
+- A verifier MUST select the verification algorithm from the `alg` header parameter, and MUST confirm that it matches the key type of the key retrieved. A verifier MUST NOT allow a token to select a symmetric algorithm where an asymmetric key is expected.
+- A verifier MUST reject a token whose `kid` does not resolve to a verification method in the signer's current DIDDoc.
+- Where a key appears both in a role credential and in a resolved DIDDoc, the DIDDoc is authoritative. A mismatch MUST be treated as a verification failure.
 
 <a id="roles-and-authorities"></a>
 ## 6.3 Roles and Authorities

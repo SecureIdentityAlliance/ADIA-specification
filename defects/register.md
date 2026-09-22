@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-21 |
 | Defects | 110 (68 with an automated check) |
-| Verified | 42 |
+| Verified | 43 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 23 |
-| Open | 44 |
+| Open | 43 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -54,11 +54,11 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream B — Cryptography and protocol
 
-21 defects · 4 verified · 8 with an automated check
+21 defects · 5 verified · 8 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| B-201 | S1 | Open |  | `auto` | L648 "public key encryption of the hash" | *"the public key encryption of the hash matches the signature"* — describes textbook RSA backwards and is inapplicable to ECDSA, which the same document specifies. The JWS signing input is not "combining metadata and claims sections", and the digest comes from `alg` | Replace with a normative reference to RFC 7515 §5.2 |  |
+| B-201 | S1 | Verified |  | `auto` | L648 "public key encryption of the hash" | *"the public key encryption of the hash matches the signature"* — describes textbook RSA backwards and is inapplicable to ECDSA, which the same document specifies. The JWS signing input is not "combining metadata and claims sections", and the digest comes from `alg` | Replace with a normative reference to RFC 7515 §5.2 |  |
 | B-202 | S1 | Verified |  | `auto` | L1387/1407/1419 "USER_AGENT -\> USER_AGENT" | `USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create ADI Network User VC`. The subject's own agent issues the subject's role credential, breaking §7.6. The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"* — so prose and flow directly contradict | Change actor to the Interchange DAS | `2996d31` |
 | B-203 | S1 | Open |  | — | L1403 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |  |
 | B-204 | S2 | Open |  | — | L488 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |  |
@@ -113,7 +113,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | D-407 | S2 | Verified |  | `auto` | L? "ADI NETWORK VC" | Five competing naming schemes for the same five credentials. §4.1 also **omits ADI-SP VC** (which B.2.10 defines) and invents "ADI NETWORK VC" (L347), described as the role VC of an AGD *and* Interchange — incoherent, and used nowhere else | One registry, referenced everywhere |  |
 | D-408 | S2 | Open |  | — | L551/568 "Credential Provider" | Four incompatible scopes for "ADI Network Provider". §6.3 omits the Interchange entirely and calls the AGD an "Authoritative Domain Controller" (L522), a term used nowhere else. §6.2 says "Credential Provider" (L504 ×3) where §3.4 says "Credential Issuer" | Single taxonomy |  |
 | D-409 | S2 | Verified | RK | `auto` | DAA | **DAA expanded two ways**: "Digital Address Application" and "Device Application Agent" | Pick one | `0d7a41e` |
-| D-410 | S2 | Verified |  | `auto` | L797 "Domain Authorities (AGs)" | "Domain Authorities (AGs)" — wrong abbreviation, and the plural contradicts §7.4.1 ("There is only one AGD in an ADI Network") | Correct |  |
+| D-410 | S2 | Verified |  | `auto` | L797 "Domain Authorities (AGs)" | "Domain Authorities (AGs)" — wrong abbreviation, and the plural contradicts §7.4.1 ("There is only one AGD in an ADI Network") | Correct | `d4225eb` |
 | D-411 | S2 | Open |  | — | L582/766 "The assurance level of" | The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time) | Delete one; cross-reference |  |
 | D-412 | S2 | Open |  | — | L1266 "AGD Service Provider Directory" | L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange do it. No authorization model for directory writes | Resolve |  |
 | D-413 | S2 | Open |  | — | L588/772 "encrypted by issuer" | Role VCs carry "PII (encrypted by issuer)" and those entities are published in the AGD directory. Encrypted to whom, under what key management, with what retention? Directory + PII + HIDA is a correlation database | Specify or remove |  |
