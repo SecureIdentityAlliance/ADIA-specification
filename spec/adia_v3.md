@@ -78,7 +78,7 @@ Distributed under the terms of the Accountable Digital Identity Architecture (AD
 <a id="introduction"></a>
 # 1. Introduction
 
-All text is normative unless otherwise labeled.
+The normative and informative parts of this document are identified in clause 1.1.
 
 The Accountable Digital Identity Architecture Network (ADI-Network) is a Distributed Global Digital Identity System consisting of ADI Interchange providers who have implemented ADI Architecture and offer services to enterprises, service providers, governed processes, and individuals.
 
@@ -93,6 +93,54 @@ This document includes:
 - a framework for operations and management of an ADI-Network; and
 
 - Protocols for issuing and presenting Verifiable Credentials.
+
+<a id="conformance"></a>
+## 1.1 Conformance
+
+<a id="normative-and-informative-content"></a>
+### 1.1.1 Normative and informative content
+
+Clauses 6, 7, 8, 9 and 10 and Appendix B are normative. Clauses 1 to 5, clause 11, clause 12 and Appendix A are informative, except that the references listed as normative in Appendix A are themselves normative.
+
+Within a normative clause, requirements are expressed using the key words defined in [RFC2119] and [RFC8174]. Text that does not use those key words, including notes, examples, figures and the "NOTE to entry" text accompanying definitions, is informative and does not affect conformance.
+
+<a id="conformance-targets"></a>
+### 1.1.2 Conformance targets
+
+This document defines requirements for five conformance targets. An implementation claims conformance as one or more of them.
+
+| Target | Role in the ADI Network | Principal normative clauses |
+|---|---|---|
+| **ADI Global Domain (AGD)** | Root authority; enrols Interchanges; publishes the network directory and trust anchor | 6.4.1, 6.6, 6.7, 7.3.1, 8.1, 8.2 |
+| **Interchange** | Enrols Credential Issuers, Service Providers and Users; operates the Digital Address Service and Cloud User Agents | 6.4.2, 6.6, 6.7, 7.2, 7.3.2, 7.4, 8.3, 8.4, 8.5 |
+| **Credential Issuer** | Proofs claims and issues Verifiable Credentials to Users | 6.5.1, 6.7, 9 |
+| **Service Provider** | Requests and verifies Verifiable Presentations | 6.5.2, 10 |
+| **Digital Address Application** | The User's device application; performs strong authentication and authorises signing | 7.2.3.2, 7.2.4 |
+
+The Cloud User Agent is a component of the Interchange and is not a separate conformance target.
+
+<a id="conditions-of-conformance"></a>
+### 1.1.3 Conditions of conformance
+
+An implementation conforms as a given target if all of the following hold:
+
+1. It satisfies every requirement expressed with MUST, MUST NOT, REQUIRED, SHALL or SHALL NOT that is addressed to that target in the normative clauses.
+2. It produces, on every interface it exposes, messages that validate against the schemas in Appendix B, and it accepts every message defined there for that target.
+3. Where the target signs, it uses only signature algorithms permitted by this document, and where it verifies, it applies the verification procedure of clause 6.2 and, for presentations, the procedure of clause 10.3.
+4. Where the target issues credentials, it publishes credential status as required by this document.
+5. Where the target authenticates Users, it meets the authenticator and assurance requirements of clause 7.2.4 for every assurance level it asserts, and asserts no level it does not meet.
+
+Requirements expressed with SHOULD, SHOULD NOT, RECOMMENDED, NOT RECOMMENDED and MAY describe preferred or permitted behaviour and do not affect conformance.
+
+<a id="extensions"></a>
+### 1.1.4 Extensions
+
+An implementation MAY support features not defined in this document, provided that no such feature contradicts a requirement of this document, and that the implementation continues to conform when the feature is not exercised. Extensions to the data model MUST use property names outside the vocabulary of Appendix B.
+
+<a id="conformance-claims"></a>
+### 1.1.5 Conformance claims
+
+A conformance claim MUST state the target or targets for which conformance is claimed and the version of this document against which it is made. A claim MUST NOT be made for a target where any requirement of clause 1.1.3 is unmet.
 
 <a id="changes-from-earlier-versions"></a>
 # 2. Changes from earlier Versions
@@ -1808,8 +1856,8 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 67 |
-| Of which critical | 22 |
+| Items outstanding | 66 |
+| Of which critical | 21 |
 | Awaiting an architectural decision | 24 |
 | Open decisions | 12 |
 | Corrected, awaiting confirmation | 1 |
@@ -1902,7 +1950,6 @@ Description not recorded.
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
 | C-302 | Critical | L107/116 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements |
-| C-303 | Critical | — | **No Conformance clause.** Mandatory once RFC 2119 is invoked | Add |
 | C-304 | Critical | — | **No Security Considerations** section | Add |
 | C-305 | Critical | — | **No Privacy Considerations** section | Add |
 | C-306 | Major | — | No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else | Add |
@@ -2006,7 +2053,6 @@ The items below are not corrections to existing text but clauses that do not yet
 
 - **B-209** — **No revocation or status.** Zero occurrences of `credentialStatus` or "revocation". No role-VC revocation, no root-key rotation, no key-compromise procedure. §7.6 explains how trust extends and never how a link breaks
 - **B-210** — **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified
-- **C-303** — **No Conformance clause.** Mandatory once RFC 2119 is invoked
 - **C-304** — **No Security Considerations** section
 - **C-305** — **No Privacy Considerations** section
 - **C-306** — No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else
