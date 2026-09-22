@@ -708,6 +708,23 @@ ADI uses public-key cryptography for authorization and signing to enforce accoun
 
 The public key is given to the ADI-Network authority enrolling the participant to be registered and used to verify the participant's digital signature.
 
+
+<a id="key-identifiers"></a>
+### 6.1.1 Key identifiers
+
+Every JSON Web Signature produced by an ADI Network participant MUST carry a `kid` header parameter identifying the signing key. The value MUST be a DID URL of the form `<DID>#<fragment>`, where `<DID>` is the signer's DID and `<fragment>` identifies a verification method in the DIDDoc that DID resolves to. A verifier MUST reject a signature whose `kid` does not resolve to a verification method in the signer's current DIDDoc, as clause 6.2 requires.
+
+The `typ` header parameter, where present, identifies the token type per [RFC7515]. Implementations MUST NOT use a header parameter named `type` for this purpose.
+
+<a id="key-rotation"></a>
+### 6.1.2 Key rotation
+
+A participant rotates a signing key by having its DIDDoc republished with the new key added to `verificationMethod` and the retired key retained, marked with a `revoked` property carrying the timestamp from which it is no longer to be used for new signatures. The retired key MUST remain in the DIDDoc for as long as any signature made with it may need to be verified, and in no case less than the longest validity period of any credential signed with it.
+
+A verifier presented with a signature whose `kid` identifies a retired key MUST verify it only if the signature was made before the key's `revoked` timestamp, as established by the signed object's own `iat` or equivalent. A verifier MUST reject a signature made with a retired key after its `revoked` timestamp.
+
+Rotation of the ADI Global Domain root key follows clause 12.2. Rotation of an Interchange's key MUST be notified to the ADI Global Domain, which MUST update the network directory before the retired key's `revoked` timestamp takes effect.
+
 <a id="adi-verifiable-credentials"></a>
 ## 6.2 ADI Verifiable Credentials
 
@@ -731,6 +748,21 @@ The following apply to every signature verification:
 - A verifier MUST select the verification algorithm from the `alg` header parameter, and MUST confirm that it matches the key type of the key retrieved. A verifier MUST NOT allow a token to select a symmetric algorithm where an asymmetric key is expected.
 - A verifier MUST reject a token whose `kid` does not resolve to a verification method in the signer's current DIDDoc.
 - Where a key appears both in a role credential and in a resolved DIDDoc, the DIDDoc is authoritative. A mismatch MUST be treated as a verification failure.
+
+
+<a id="credential-status"></a>
+### 6.2.1 Credential status
+
+Every Verifiable Credential issued in the ADI Network MUST carry a status reference from which a verifier can determine whether the credential has been revoked or suspended since issuance. The reference identifies a status resource published by the Issuer and the position of this credential within it.
+
+An Issuer MUST publish a status resource for every credential type it issues, MUST sign it, and MUST refresh it so that its validity period never exceeds 24 hours. A verifier MUST retrieve the status resource, MUST verify its signature against the Issuer's DIDDoc, and MUST reject a credential whose status is revoked or suspended. A verifier MAY cache a status resource for its stated validity period and MUST NOT rely on it beyond that.
+
+The form of the status reference and resource depends on the credential format:
+
+- for credentials serialised as SD-JWT VC, the `status` claim referencing a Token Status List;
+- for credentials serialised under the W3C Verifiable Credentials Data Model, the `credentialStatus` property referencing a Bitstring Status List.
+
+Revocation of a credential does not alter the credential; copies already held remain syntactically valid and are distinguished from live credentials only by the status check. This is why the check is mandatory.
 
 <a id="roles-and-authorities"></a>
 ## 6.3 Roles and Authorities
@@ -790,6 +822,8 @@ Members enroll with an Interchange. Member uniqueness is enforced within an Inte
 The root of signing trust begins at the AGD and extends to all participants and members of the ADI-Network.
 
 Each ADI-ROLE is issued and signed by an ADI-Authority.  Role VCs designate which role VCs the holder has authority to issue and sign.
+
+An authority that granted an entity its role MUST be able to withdraw it, and a verifier MUST determine, as part of chain verification, that no authority in the chain has been withdrawn. Withdrawal of an Interchange's authority invalidates every entity it enrolled. The mechanism by which withdrawal is recorded and discovered is specified with the authority record it applies to.
 
 ![ADI Roles and Chain of Trust](figures/fig-05-adi-roles-chain-of-trust.svg)
 
@@ -1740,7 +1774,7 @@ sequenceDiagram
 
 3. The SP_AGENT notifies the USER_AGENT authorize the request
 
-The SP_AGENT creates a vc_authorization_request and constructs a URI, referencing the request, to be used as a link, redirect, QR code or USER_AGENT notification action for the USER_AGENT to fulfill.
+The SP_AGENT creates a vc_request ([B.2.5](#vcrequest)) and constructs a URI, referencing the request, to be used as a link, redirect, QR code or USER_AGENT notification action for the USER_AGENT to fulfill.
 
 **SP_AGENT -\> USER_AGENT: 3. POST ~user_agent/vc_request\n Redirect, Link, QR Code or App Notification**
 
@@ -2013,8 +2047,8 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 63 |
-| Of which critical | 19 |
+| Items outstanding | 60 |
+| Of which critical | 18 |
 | Awaiting an architectural decision | 24 |
 | Open decisions | 12 |
 | Corrected, awaiting confirmation | 1 |
@@ -2122,15 +2156,12 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 | B-205 | Critical | L887 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. *(awaiting D8)* |
 | B-206 | Critical | L894/897/928 "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. *(awaiting D11)* |
 | B-208 | Critical | L631 "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. *(awaiting D11)* |
-| B-209 | Critical | document-wide | **No revocation or status.** Zero occurrences of `credentialStatus` or "revocation". No role-VC revocation, no root-key rotation, no key-compromise procedure. §7.6 explains how trust extends and never how a link breaks | Add |
 | B-210 | Critical | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |
 | B-204 | Major | L488 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |
 | B-211 | Major | L1711/1727/1729 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |
 | B-212 | Major | L1703 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
-| B-213 | Major | document-wide | No key rotation or historical-key story. `agd_key_id`/`ard_key_id` exist in payloads but no `kid` in any header. Verifying an old VC after issuer rotation is impossible | Add lifecycle |
 | B-214 | Major | L856 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
 | B-215 | Major | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim *(awaiting D6)* |
-| B-216 | Major | L1658 "vc_authorization_request" | `vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`, a different object | Define or rename |
 | B-217 | Major | L1585 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |
 | B-220 | Major | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |
 
@@ -2205,7 +2236,6 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 
 The items below are not corrections to existing text but clauses that do not yet exist. They are listed separately because they represent the larger part of the drafting effort remaining.
 
-- **B-209** — **No revocation or status.** Zero occurrences of `credentialStatus` or "revocation". No role-VC revocation, no root-key rotation, no key-compromise procedure. §7.6 explains how trust extends and never how a link breaks
 - **B-210** — **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified
 - **C-306** — No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else
 - **C-307** — No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3
@@ -2308,7 +2338,8 @@ POST ~agd/create_agd
 {
   "header": {
     "alg": "RS256",
-    "type": "JWT"
+    "typ": "JWT",
+    "kid": "did:adi:global:agd:8c019421-2920-410c-acfe-77d5c87b187c#key-1"
   },
   "payload": {
     "request_id": "45bde61c-7da0-4f85-aed4-39d2d7508e99",
@@ -2346,7 +2377,8 @@ POST ~agd/enroll_ix
 {
   "header": {
     "alg": "RS256",
-    "type": "JWT"
+    "typ": "JWT",
+    "kid": "did:adi:r1:ix1:f6e18f71-4311-4e09-8bfc-9980a90e4be7#key-1"
   },
   "payload": {
     "request_id": "a523335a-df3b-41cc-b371-88034beb1e5c",
@@ -2485,7 +2517,8 @@ POST ~issuer/issue_vc_token
 {
   "header": {
     "alg": "RS256",
-    "type": "JWT"
+    "typ": "JWT",
+    "kid": "did:adi:r1:ix1:45bde61c-7da0-4f85-aed4-39d2d7508e99#key-1"
   },
   "payload": {
     "vc_offer": {

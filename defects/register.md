@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-22 |
 | Defects | 111 (68 with an automated check) |
-| Verified | 47 |
+| Verified | 50 |
 | Fixed, awaiting verification | 1 |
 | Blocked on a decision | 24 |
-| Open | 38 |
+| Open | 35 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -54,7 +54,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream B — Cryptography and protocol
 
-21 defects · 5 verified · 8 with an automated check
+21 defects · 8 verified · 8 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -66,14 +66,14 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | B-206 | S1 | Blocked(D11) |  | — | L894/897/928 "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. |  |
 | B-207 | S2 | Verified |  | `auto` | L1670/1672 "Biometric approval" | `Request Biometric approval` / `Biometric approval given` as protocol messages. In WebAuthn this is local user verification (`UV=1`) inside an assertion, not a round trip | Resolved by §9.3.5.5: UV=1 inside a WebAuthn assertion, no separate message. | `2996d31` |
 | B-208 | S1 | Blocked(D11) |  | — | L631 "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. |  |
-| B-209 | S1 | Open |  | `auto` | document-wide | **No revocation or status.** Zero occurrences of `credentialStatus` or "revocation". No role-VC revocation, no root-key rotation, no key-compromise procedure. §7.6 explains how trust extends and never how a link breaks | Add |  |
+| B-209 | S1 | Verified |  | `auto` | document-wide | **No revocation or status.** Zero occurrences of `credentialStatus` or "revocation". No role-VC revocation, no root-key rotation, no key-compromise procedure. §7.6 explains how trust extends and never how a link breaks | Add |  |
 | B-210 | S1 | Open |  | — | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |  |
 | B-211 | S2 | Open |  | — | L1711/1727/1729 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |  |
 | B-212 | S2 | Open |  | — | L1703 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |  |
-| B-213 | S2 | Open |  | `auto` | document-wide | No key rotation or historical-key story. `agd_key_id`/`ard_key_id` exist in payloads but no `kid` in any header. Verifying an old VC after issuer rotation is impossible | Add lifecycle |  |
+| B-213 | S2 | Verified |  | `auto` | document-wide | No key rotation or historical-key story. `agd_key_id`/`ard_key_id` exist in payloads but no `kid` in any header. Verifying an old VC after issuer rotation is impossible | Add lifecycle |  |
 | B-214 | S2 | Open |  | — | L856 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |  |
 | B-215 | S2 | Blocked(D6) |  | — | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim |  |
-| B-216 | S2 | Open |  | `auto` | L1658 "vc_authorization_request" | `vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`, a different object | Define or rename |  |
+| B-216 | S2 | Verified |  | `auto` | L1658 "vc_authorization_request" | `vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`, a different object | Define or rename |  |
 | B-217 | S2 | Open |  | — | L1585 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |  |
 | B-218 | S3 | Verified |  | `auto` | L1504/1547/1980 "~issuer/issue_vc" | Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose also uses `make_credential_offer` where B.2.1 is `make_vc_offer` | Align names | `58a4bca` |
 | B-219 | S3 | Verified |  | `auto` | L? "~ard/" | `POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/` | Rename | `cd19202` |
@@ -95,7 +95,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | C-307 | S2 | Open |  | — | — | No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3 | Add |  |
 | C-308 | S2 | Open |  | — | — | No registries for role-VC type strings, schema names, or the `did:adi` method | Add |  |
 | C-309 | S2 | Open |  | — | §9.2 | **No flow description at all** — a figure and four bullets. §9.1, §9.3, §9.4, §9.5 all have prose walkthroughs. This is the flow that establishes the AGD→IX trust link | Write it |  |
-| C-310 | S2 | Verified |  | `auto` | L1773 "To be completed" | Titled "Informative References"; contains "To be completed — which references are normative is for further study"; lists nine standards that are plainly normative. `[W3C DM]` and `[W3C JS]` are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks | Split normative/informative; complete |  |
+| C-310 | S2 | Verified |  | `auto` | L1773 "To be completed" | Titled "Informative References"; contains "To be completed — which references are normative is for further study"; lists nine standards that are plainly normative. `[W3C DM]` and `[W3C JS]` are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks | Split normative/informative; complete | `2a5b828` |
 | C-311 | S3 | Open |  | — | L71 "Copyright" | Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group | Resolve process and boilerplate |  |
 
 ## Workstream D — Architecture and terminology

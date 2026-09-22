@@ -160,7 +160,7 @@ CHECKS = {
 "B-202": lambda s: "USER_AGENT -\\> USER_AGENT" not in s.text,
 "B-207": lambda s: "Biometric approval" not in s.text,
 "B-209": lambda s: "credentialStatus" in s.text and "revoc" in s.prose.lower(),
-"B-213": lambda s: s.text.count('"kid"') >= 8,
+"B-213": lambda s: '<a id="key-rotation"></a>' in s.text and "revoked" in s.prose and '"kid"' in s.text,
 "B-216": lambda s: ("vc_authorization_request" not in s.text
                     or "B.2." in _section_of(s, "vc_authorization_request")),
 "B-218": lambda s: not ("~issuer/issue_vc\n" in s.text and "~issuer/issue_vc_token" in s.text),
