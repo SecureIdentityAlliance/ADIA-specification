@@ -1185,7 +1185,7 @@ defects:
 - id: E-527
   severity: S3
   workstream: editorial
-  location: L918/1104 "red line"
+  location: L1104 "red line"
   defect: Red-line reference points at Figure 4 in one place, the ADI Network figure in another
   fix: ''
   owner: ND

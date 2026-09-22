@@ -153,7 +153,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | E-524 | S3 | Verified | ND | `auto` | L? "figure 4.4.3" | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  | `08040c2` |
 | E-525 | S3 | Verified | ND | `auto` | L? "2.2.1 Issue Verifiable Credential" | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
 | E-526 | S3 | Verified | ND | `auto` | L? "3.3 Roles" | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
-| E-527 | S3 | Open | ND | — | L918/1104 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  |  |
+| E-527 | S3 | Open | ND | — | L1104 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  | `4465b57` |
 | E-528 | S3 | Open | ND | — | L1158 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
 | E-529 | S3 | Open | ND | — | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  | `17bdc07` |
 | E-530 | S2 | Open | ND | — | §7 vs §8.3 — duplication | §7 (overview) and §8.3 (Roles and Authorities) tell the same narrative twice; audit-log/legal-retrieval stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication. | Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated". |  |

@@ -86,9 +86,9 @@ This document provides an overall perspective of the “ADI-Network” and intro
 
 This document includes:
 
-- a reference model for Accountable Digital Identity Networks (ADI Networks);
+- a reference model for Accountable Digital Identity Networks (ADI-Networks);
 
-- concepts and terminology for describing ADI Networks;
+- concepts and terminology for describing ADI-Networks;
 
 - a framework for operations and management of an ADI-Network; and
 
@@ -109,7 +109,7 @@ Within a normative clause, requirements are expressed using the key words define
 
 This document defines requirements for five conformance targets. An implementation claims conformance as one or more of them.
 
-| Target | Role in the ADI Network | Principal normative clauses |
+| Target | Role in the ADI-Network | Principal normative clauses |
 |---|---|---|
 | **ADI Global Domain (AGD)** | Root authority; enrols Interchanges; publishes the network directory and trust anchor | 6.4.1, 6.6, 6.7, 7.3.1, 8.1, 8.2 |
 | **Interchange** | Enrols Credential Issuers, Service Providers and Users; operates the Digital Address Service and Cloud User Agents | 6.4.2, 6.6, 6.7, 7.2, 7.3.2, 7.4, 8.3, 8.4, 8.5 |
@@ -155,7 +155,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 
 > Ecosystem of people, processes and technologies for issuing, holding, controlling and dispensing Verifiable Credentials.
 >
-> NOTE 1 to entry: One or more ADI Networks may exist as distinct ecosystems that may or may not be interoperable.
+> NOTE 1 to entry: One or more ADI-Networks may exist as distinct ecosystems that may or may not be interoperable.
 >
 > NOTE 2 to entry: An ADI-Network includes at least one ADI-Region; see clause 6.4.
 
@@ -179,9 +179,9 @@ This document entirely replaces the previous Accountable Digital identity Archit
 >
 > Note 2 to entry: An agent performs functions on behalf of the entity it represents. Each entity has an associated instance of an Agent which maintains its cryptographic keys, offers endpoint services, and maintains compliance with ADI-Network governance.
 >
-> Note 3 to entry: Agents include but are not restricted to SP-Agent, CI-Agent, User-Agent, and IX-Agent.
+> Note 3 to entry: Agents include but are not restricted to SP-Agent, CI-Agent, USER_AGENT, and IX-Agent.
 >
-> Note 4 to entry: A User-Agent may include cloud-based wallet functions. A User App or Wallet App on the End User’s device interacts with the User-Agent in the ADI-Interchange.
+> Note 4 to entry: A USER_AGENT may include cloud-based wallet functions. A User App or Wallet App on the End User’s device interacts with the USER_AGENT in the ADI-Interchange.
 
 <a id="adi-credential-issuer-adi-ci-credential-issuer"></a>
 ## 3.4 ADI-Credential Issuer (ADI-CI) (“Credential Issuer”)
@@ -271,7 +271,7 @@ This document entirely replaces the previous Accountable Digital identity Archit
 
 > Secure mobile or desktop application designed to store, manage, and share personal information and Verifiable Credential metadata in digital format.
 >
-> Note 1 to entry: ADI-wallets, which represent a User in an ADI-Network, are also referred to as a User Agent.
+> Note 1 to entry: ADI-wallets, which represent a User in an ADI-Network, are also referred to as a USER_AGENT.
 >
 > Note 2 to entry: A User-based Wallet can be dedicated to the ADI-Network or shared with external credential-based systems.
 >
@@ -323,24 +323,24 @@ Assertion made about a Subject
 
 > Portable URI-based identifier associated with an entity.
 >
-> Note:  ADI uses DID address formatting and refers to a DID Document for the purpose of retrieving the public key.  ADI relies upon Role VCs which include the public key (DIDDoc) and is signed by issuing authority and contains entitlement rights the holder has within the network.  Other DID features are not required.
+> Note:  ADI uses DID address formatting and refers to a DIDdoc for the purpose of retrieving the public key.  ADI relies upon Role VCs which include the public key (DIDdoc) and is signed by issuing authority and contains entitlement rights the holder has within the network.  Other DID features are not required.
 >
 > Note 1 to entry: An example of a DID is:  did:example:123456abcdef
 >
-> Note 2 to entry: A DID represents a private key whose public key is notarized in a DIDDoc which is bound to the DID.
+> Note 2 to entry: A DID represents a private key whose public key is notarized in a DIDdoc which is bound to the DID.
 >
 > Note 3 to entry:  Every ADI-Network entity has a primary DID that includes its own cryptographic keys that can be used for digital signing and data encryption. ADI-Network entities may also have temporary, pairwise DIDs for session use.
 
 <a id="diddoc"></a>
-## 3.20 DIDDoc
+## 3.20 DIDdoc
 
 > Document signed using the private key of the issuer.
 >
-> Note 1 to entry: A DIDDoc contains the associated DID, the public key of the DID, the verification method(s) and optionally other metadata.
+> Note 1 to entry: A DIDdoc contains the associated DID, the public key of the DID, the verification method(s) and optionally other metadata.
 >
-> Note 2 to entry: A DID is bound to exactly one DIDDoc; see clause 7.4.3.
+> Note 2 to entry: A DID is bound to exactly one DIDdoc; see clause 7.4.3.
 >
-> Note 3 to entry: A DIDDoc may be packaged as a JWT VC.
+> Note 3 to entry: A DIDdoc may be packaged as a JWT VC.
 
 <a id="digital-address-da"></a>
 ## 3.21 Digital Address (DA)
@@ -349,7 +349,7 @@ Assertion made about a Subject
 >
 > Note 1 to entry: The format of a User DA is user@interchange_name
 >
-> Note 2 to entry: A Digital Address is unique within the Interchange that issued it. Because Interchange names are network-unique, every Digital Address is unique within the ADI Network.
+> Note 2 to entry: A Digital Address is unique within the Interchange that issued it. Because Interchange names are network-unique, every Digital Address is unique within the ADI-Network.
 >
 > Note 3 to entry: ADI-Network Providers can also be assigned a DA by their controlling entity.
 
@@ -424,13 +424,13 @@ Assertion made about a Subject
 | AAL | Authentication Assurance Level — the strength of an authentication event, per NIST SP 800-63B | §7.2.4 |
 | ADI | Accountable Digital Identity | §1 |
 | ADIA | Accountable Digital Identity Association | §1 |
-| AGD | ADI Global Domain — the root authority of an ADI Network | §3.15, §6.4.1 |
+| AGD | ADI Global Domain — the root authority of an ADI-Network | §3.15, §6.4.1 |
 | CI | Credential Issuer (ADI-CI) | §3.4, §6.5.1 |
 | DA | Digital Address — an entity identifier of the form `local@interchange` | §3.21, §7.4.1 |
 | DAA | Digital Address Application — the application on the User's device that performs strong authentication | §7.2.3.2 |
 | DAS | Digital Address Service — the component within an AGD or Interchange that creates and maintains Digital Addresses | §7.2.1 |
 | DID | Decentralized Identifier | §3.19, §7.4.3 |
-| DIDDoc | DID Document — the document bound to a DID, containing its verification keys and metadata | §3.20 |
+| DIDdoc | DIDdoc — the document bound to a DID, containing its verification keys and metadata | §3.20 |
 | FAL | Federation Assurance Level — the strength of an assertion conveying an authentication event to a relying party, per NIST SP 800-63C | §7.2.4 |
 | HIDA | Hash of (Subject) ID Attributes — a digest of PII used to establish that an applicant is not already enrolled | §3.24, §6.7.3, §7.4.2 |
 | IAL | Identity Assurance Level — the rigour of identity proofing, per NIST SP 800-63A | §7.2.4 |
@@ -680,7 +680,7 @@ An ADI-Network is governed by an "ADI Global Domain" (AGD) which sets network po
 
 The Accountable Digital Identity Architecture is a decentralized interconnected network of networks consisting of an ADI Global Domain, Interchanges and their underlying hardware, software and network platform.
 
-All entities within the architecture are represented by a Digital Address which is bound to a DID. Each DIDDoc contains the DID's public keys and metadata, used to verify the Digital Address holder's authorizations and digital signatures.
+All entities within the architecture are represented by a Digital Address which is bound to a DID. Each DIDdoc contains the DID's public keys and metadata, used to verify the Digital Address holder's authorizations and digital signatures.
 
 DID formats include network locations which enable global navigation and communication within the ADI-Network. See §9.5.3.
 
@@ -711,14 +711,14 @@ The public key is given to the ADI-Network authority enrolling the participant t
 <a id="key-identifiers"></a>
 ### 6.1.1 Key identifiers
 
-Every JSON Web Signature produced by an ADI Network participant MUST carry a `kid` header parameter identifying the signing key. The value MUST be a DID URL of the form `<DID>#<fragment>`, where `<DID>` is the signer's DID and `<fragment>` identifies a verification method in the DIDDoc that DID resolves to. A verifier MUST reject a signature whose `kid` does not resolve to a verification method in the signer's current DIDDoc, as clause 6.2 requires.
+Every JSON Web Signature produced by an ADI-Network participant MUST carry a `kid` header parameter identifying the signing key. The value MUST be a DID URL of the form `<DID>#<fragment>`, where `<DID>` is the signer's DID and `<fragment>` identifies a verification method in the DIDdoc that DID resolves to. A verifier MUST reject a signature whose `kid` does not resolve to a verification method in the signer's current DIDdoc, as clause 6.2 requires.
 
 The `typ` header parameter, where present, identifies the token type per [RFC7515]. Implementations MUST NOT use a header parameter named `type` for this purpose.
 
 <a id="key-rotation"></a>
 ### 6.1.2 Key rotation
 
-A participant rotates a signing key by having its DIDDoc republished with the new key added to `verificationMethod` and the retired key retained, marked with a `revoked` property carrying the timestamp from which it is no longer to be used for new signatures. The retired key MUST remain in the DIDDoc for as long as any signature made with it may need to be verified, and in no case less than the longest validity period of any credential signed with it.
+A participant rotates a signing key by having its DIDdoc republished with the new key added to `verificationMethod` and the retired key retained, marked with a `revoked` property carrying the timestamp from which it is no longer to be used for new signatures. The retired key MUST remain in the DIDdoc for as long as any signature made with it may need to be verified, and in no case less than the longest validity period of any credential signed with it.
 
 A verifier presented with a signature whose `kid` identifies a retired key MUST verify it only if the signature was made before the key's `revoked` timestamp, as established by the signed object's own `iat` or equivalent. A verifier MUST reject a signature made with a retired key after its `revoked` timestamp.
 
@@ -739,21 +739,21 @@ Note: This document will be using JWT VC formatting in examples. Other formats m
 
 Signatures on ADI Verifiable Credentials, presentations and protocol requests are JSON Web Signatures [RFC7515].
 
-A verifier MUST validate a signature using the procedure in [RFC7515] §5.2. In outline: reconstruct the signing input as `BASE64URL(UTF8(protected header))`, a full stop, and `BASE64URL(payload)`; select the signature algorithm named by the `alg` header parameter; locate the verification key identified by the `kid` header parameter in the signer's DIDDoc; and verify the signature over the signing input according to that algorithm.
+A verifier MUST validate a signature using the procedure in [RFC7515] §5.2. In outline: reconstruct the signing input as `BASE64URL(UTF8(protected header))`, a full stop, and `BASE64URL(payload)`; select the signature algorithm named by the `alg` header parameter; locate the verification key identified by the `kid` header parameter in the signer's DIDdoc; and verify the signature over the signing input according to that algorithm.
 
 The following apply to every signature verification:
 
 - A verifier MUST reject a token whose `alg` value is `none`, and MUST reject any `alg` value not permitted by this specification.
 - A verifier MUST select the verification algorithm from the `alg` header parameter, and MUST confirm that it matches the key type of the key retrieved. A verifier MUST NOT allow a token to select a symmetric algorithm where an asymmetric key is expected.
-- A verifier MUST reject a token whose `kid` does not resolve to a verification method in the signer's current DIDDoc.
-- Where a key appears both in a role credential and in a resolved DIDDoc, the DIDDoc is authoritative. A mismatch MUST be treated as a verification failure.
+- A verifier MUST reject a token whose `kid` does not resolve to a verification method in the signer's current DIDdoc.
+- Where a key appears both in a role credential and in a resolved DIDdoc, the DIDdoc is authoritative. A mismatch MUST be treated as a verification failure.
 
 <a id="credential-status"></a>
 ### 6.2.1 Credential status
 
-Every Verifiable Credential issued in the ADI Network MUST carry a status reference from which a verifier can determine whether the credential has been revoked or suspended since issuance. The reference identifies a status resource published by the Issuer and the position of this credential within it.
+Every Verifiable Credential issued in the ADI-Network MUST carry a status reference from which a verifier can determine whether the credential has been revoked or suspended since issuance. The reference identifies a status resource published by the Issuer and the position of this credential within it.
 
-An Issuer MUST publish a status resource for every credential type it issues, MUST sign it, and MUST refresh it so that its validity period never exceeds 24 hours. A verifier MUST retrieve the status resource, MUST verify its signature against the Issuer's DIDDoc, and MUST reject a credential whose status is revoked or suspended. A verifier MAY cache a status resource for its stated validity period and MUST NOT rely on it beyond that.
+An Issuer MUST publish a status resource for every credential type it issues, MUST sign it, and MUST refresh it so that its validity period never exceeds 24 hours. A verifier MUST retrieve the status resource, MUST verify its signature against the Issuer's DIDdoc, and MUST reject a credential whose status is revoked or suspended. A verifier MAY cache a status resource for its stated validity period and MUST NOT rely on it beyond that.
 
 The form of the status reference and resource depends on the credential format:
 
@@ -776,7 +776,7 @@ Roles and authorities are defined as claims in an ADI-ROLE VC. Accountability an
 
 ADI-Network Providers offer ADI enrollment, transaction processing and directory services.
 
-An ADI Network MUST include at least one Region and at least one Interchange, and every Region MUST include at least one Interchange. Every ADI Network Provider MUST implement at least one administrator role.
+An ADI-Network MUST include at least one Region and at least one Interchange, and every Region MUST include at least one Interchange. Every ADI-Network Provider MUST implement at least one administrator role.
 
 <a id="adi-global-domain-agd"></a>
 ### 6.4.1 ADI Global Domain (AGD)
@@ -921,7 +921,7 @@ Agent endpoint metadata is obtained from GET ~*participant*/metadata.
 
 ADI-Network participant URLs can be obtained by calling the AGD with a DID or DA using ~agd/network_location.
 
-*Implementation option: an Interchange name may itself be structured, for example `ix3.region1`, provided the whole name is unique within the ADI Network. Structure within the Interchange name has no protocol meaning.*
+*Implementation option: an Interchange name may itself be structured, for example `ix3.region1`, provided the whole name is unique within the ADI-Network. Structure within the Interchange name has no protocol meaning.*
 
 <a id="adi-network-software-components"></a>
 ## 7.2 ADI-Network software components
@@ -997,7 +997,7 @@ Once an owner is authenticated with its agent, the agent can perform ADI-Network
 <a id="adi-user-wallet"></a>
 ### 7.2.3 ADI User Wallet
 
-The ADI wallet is a hybrid architecture consisting of a cloud User Agent hosted in the Interchange and a User Device Agent (native or web app) running on the user’s device.
+The ADI wallet is a hybrid architecture consisting of a cloud USER_AGENT hosted in the Interchange and a User Device Agent (native or web app) running on the user’s device.
 
 This model is similar to the [eIDAS Trust Service Providers](https://ec.europa.eu/digital-single-market/en/trust-services) Digital Signature legal binding model.
 
@@ -1010,23 +1010,23 @@ An ADI wallet authenticates the user with a NIST 800-63 Assurance Level AAL1, AA
 <a id="cloud-user-agent"></a>
 #### 7.2.3.1 Cloud User Agent
 
-The user agent creates, manages and uses cryptographic keys securely stored at the Interchange.  Using these keys the User Agent will coordinate with the interchange DAS  to sign and perform ADI-Network transactions on behalf of the User.
+The USER_AGENT creates, manages and uses cryptographic keys securely stored at the Interchange.  Using these keys the USER_AGENT will coordinate with the interchange DAS  to sign and perform ADI-Network transactions on behalf of the User.
 
-The User Agent enrolls and authenticates the user with the Digital Address Application using strong authenticators capable of AAL1, AAL2 or AAL3 assurance levels.
+The USER_AGENT enrolls and authenticates the user with the Digital Address Application using strong authenticators capable of AAL1, AAL2 or AAL3 assurance levels.
 
 <a id="digital-address-application-daa"></a>
 #### 7.2.3.2 Digital Address Application (DAA)
 
 The DAA operates on a user’s device and performs strong authentication.  Examples include FIDO, Passkeys and other methods (biometrics) that have the ability to securely assert success using OAuth2 and OpenID connect.
 
-The User Device Agent works in conjunction with the interchange provisioned user agent to perform user authentication and VC wallet functions on behalf of the User.
+The User Device Agent works in conjunction with the interchange provisioned USER_AGENT to perform user authentication and VC wallet functions on behalf of the User.
 
 <a id="authentication-and-federation-assurance"></a>
 ### 7.2.4 Authentication and federation assurance
 
 > **§7.2.4.1 Assurance levels conveyed**
 >
-> ADI Network participants record three assurance levels as distinct integer values, with the meanings given in [NIST SP 800-63-4]:
+> ADI-Network participants record three assurance levels as distinct integer values, with the meanings given in [NIST SP 800-63-4]:
 >
 > - `ial` — identity assurance level, the rigour of identity proofing (SP 800-63A), range 1 to 3
 > - `aal` — authentication assurance level, the strength of the authentication event (SP 800-63B), range 1 to 2
@@ -1036,7 +1036,7 @@ The User Device Agent works in conjunction with the interchange provisioned user
 >
 > **§7.2.4.2 Maximum assurance in this version**
 >
-> An ADI Network presentation is signed by a key held in an Interchange-operated hardware security module and released on the User's authenticated instruction under §7.2.4.4. The User does not hold the signing key.
+> An ADI-Network presentation is signed by a key held in an Interchange-operated hardware security module and released on the User's authenticated instruction under §7.2.4.4. The User does not hold the signing key.
 >
 > Accordingly, a participant MUST NOT assert `aal` above 2 or `fal` above 2 in this version of this specification. A verifier MUST reject any presentation asserting a higher value.
 >
@@ -1069,7 +1069,7 @@ The User Device Agent works in conjunction with the interchange provisioned user
 >
 > **§7.2.4.5 Biometric verification**
 >
-> Where biometric verification is used, it is performed entirely within the authenticator and is expressed to the ADI Network solely as `UV = 1` within a WebAuthn assertion. No biometric sample, template, or comparison score is transmitted to, stored by, or processed by any ADI Network participant.
+> Where biometric verification is used, it is performed entirely within the authenticator and is expressed to the ADI-Network solely as `UV = 1` within a WebAuthn assertion. No biometric sample, template, or comparison score is transmitted to, stored by, or processed by any ADI-Network participant.
 
 <a id="adi-provider-architecture"></a>
 ## 7.3 ADI Provider Architecture
@@ -1081,7 +1081,7 @@ The following defines a systems architecture and API endpoints for each provider
 <a id="agd-provider-architecture"></a>
 ### 7.3.1 AGD provider architecture
 
-The AGD maintains the master provider directory, which contains provider metadata, ADI-Network DID address and URL service endpoints.  AGD administrators access console settings with user agent / wallet authentication.  AGD keys are stored on the hardened vault.
+The AGD maintains the master provider directory, which contains provider metadata, ADI-Network DID address and URL service endpoints.  AGD administrators access console settings with USER_AGENT / wallet authentication.  AGD keys are stored on the hardened vault.
 
 ![ADI Global Domain](figures/fig-06-adi-global-domain.svg)
 
@@ -1105,9 +1105,9 @@ Interchanges and domain authorities (AGDs) all communicate directly using publis
 
 The Interchange offers a hybrid wallet service to ADI-Network Users, providers and interchange administrators.
 
-![ADI Network](figures/fig-08-adi-network.svg)
+![ADI-Network](figures/fig-08-adi-network.svg)
 
-*Figure 8. ADI Network*
+*Figure 8. ADI-Network*
 
 <a id="adi-network-architecture-identifiers"></a>
 ## 7.4 Identifiers
@@ -1117,13 +1117,13 @@ The Interchange offers a hybrid wallet service to ADI-Network Users, providers a
 
 A **Digital Address** is an identifier of the form `local@interchange`, where `local` is 1 to 64 characters from ALPHA, DIGIT, ".", "_" and "-", and `interchange` is an Interchange name assigned by the AGD. For example, `alice@interchange_1`. Comparison is case-insensitive and Digital Addresses are stored in lowercase. In this version `local` is restricted to ASCII.
 
-Interchange names are assigned by the AGD at enrollment and MUST be unique within the ADI Network. The AGD MUST reject an enrollment request naming an Interchange name already in use.
+Interchange names are assigned by the AGD at enrollment and MUST be unique within the ADI-Network. The AGD MUST reject an enrollment request naming an Interchange name already in use.
 
-An Interchange MUST ensure that no two Digital Addresses it issues share the same `local` part. Because Interchange names are network-unique, every Digital Address is therefore unique within the ADI Network.
+An Interchange MUST ensure that no two Digital Addresses it issues share the same `local` part. Because Interchange names are network-unique, every Digital Address is therefore unique within the ADI-Network.
 
-An Interchange MUST ensure that it issues no more than one Digital Address to the same natural person, determined by HIDA comparison under §7.4.2. This requirement is scoped to a single Interchange. A natural person MAY hold Digital Addresses issued by more than one Interchange, and the ADI Network does not determine whether Digital Addresses issued by different Interchanges refer to the same person.
+An Interchange MUST ensure that it issues no more than one Digital Address to the same natural person, determined by HIDA comparison under §7.4.2. This requirement is scoped to a single Interchange. A natural person MAY hold Digital Addresses issued by more than one Interchange, and the ADI-Network does not determine whether Digital Addresses issued by different Interchanges refer to the same person.
 
-All entities within the architecture are represented by a Digital Address which is bound to an ADI-Network DID and may be bound to one or more privacy preserving pairwise DIDs. DIDdocs contain the public key of the DID.   DIDs digitally sign using their private key and can be verified using the DIDDoc public key.
+All entities within the architecture are represented by a Digital Address which is bound to an ADI-Network DID and may be bound to one or more privacy preserving pairwise DIDs. DIDdocs contain the public key of the DID.   DIDs digitally sign using their private key and can be verified using the DIDdoc public key.
 
 Each Digital Address is bound to one or more DIDs and is assigned an ADI-ROLE VC by an ADI issuing authority.
 
@@ -1145,17 +1145,17 @@ HIDA usage is REQUIRED. An Interchange cannot satisfy §7.4.1 without it. The ch
 
 All Digital Addresses have a primary DID and one or more pairwise DIDs.
 
-Every DID MUST resolve to exactly one DIDDoc, and a DIDDoc MUST be bound to exactly one DID.
+Every DID MUST resolve to exactly one DIDdoc, and a DIDdoc MUST be bound to exactly one DID.
 
-DIDs are identifiers of a private key the DID owner securely holds.  The public key is available through the DID’s DIDDoc / VC in the ADI-Network.
+DIDs are identifiers of a private key the DID owner securely holds.  The public key is available through the DID’s DIDdoc / VC in the ADI-Network.
 
 DID addresses include network locations which enable global navigation and communication within the ADI-Network.
 
 An ADI-Network DID bound to the Digital Address and may have the format of -  did:adi:issuer_6/r1/ix6.
 
-![ADI Network DID Addressing](figures/fig-10-adi-network-did-addressing.svg)
+![ADI-Network DID Addressing](figures/fig-10-adi-network-did-addressing.svg)
 
-*Figure 10. ADI Network DID Addressing*
+*Figure 10. ADI-Network DID Addressing*
 
 <a id="transaction-dids"></a>
 ### 7.4.4 Transaction DIDs
@@ -1175,7 +1175,7 @@ An ADI-Network DID bound to the Digital Address and may have the format of -  di
 > 1. Generate a fresh key pair inside the Interchange hardware security module. The key MUST be unique to this presentation and MUST NOT be derived from, or linkable to, the primary DID key or any previous transaction key by any party other than the Interchange.
 > 2. Construct a transaction DID in the form specified in §9.5.3, whose method-specific identifier is a UUIDv4 and which is marked as transaction-scoped by the `txn` segment. For example: `did:adi:r1:ix1:txn:3b9c1e2a-...`.
 > 3. Record the binding `{transaction DID, primary DID, Service Provider DID, timestamp, request nonce}` in the Interchange audit log required by §8.
-> 4. Publish a DIDDoc for the transaction DID containing the generated public key, signed by the Interchange, with `validUntil` no later than `iat + 24 hours`.
+> 4. Publish a DIDdoc for the transaction DID containing the generated public key, signed by the Interchange, with `validUntil` no later than `iat + 24 hours`.
 >
 > The Interchange MUST NOT reuse a transaction DID for a second presentation, and MUST NOT issue two transaction DIDs bearing the same public key.
 >
@@ -1199,7 +1199,7 @@ An ADI-Network DID bound to the Digital Address and may have the format of -  di
 >
 > **7.4.4.5 Resolution**
 >
-> A transaction DID resolves through §12.2 in the same way as a primary DID. The Digital Address Service of the issuing Interchange MUST serve its DIDDoc until `validUntil` and MAY return `410 Gone` thereafter. A verifier MUST complete verification of a presentation within the validity window of the transaction DID it carries.
+> A transaction DID resolves through §12.2 in the same way as a primary DID. The Digital Address Service of the issuing Interchange MUST serve its DIDdoc until `validUntil` and MAY return `410 Gone` thereafter. A verifier MUST complete verification of a presentation within the validity window of the transaction DID it carries.
 >
 > **7.4.4.6 Accountability**
 >
@@ -1237,7 +1237,7 @@ sequenceDiagram
 
 This flow is the first step to create an ADI-Network.  An AGD MUST be created, which contains the root signing key for all other ADI signed transactions.
 
-Since this is the root, a DID for the AGD is created and its DIDDoc MUST contain the public key corresponding to the AGD root signing key. The ADI-AGD ADI-ROLE VC is self-signed using the AGD DID.
+Since this is the root, a DID for the AGD is created and its DIDdoc MUST contain the public key corresponding to the AGD root signing key. The ADI-AGD ADI-ROLE VC is self-signed using the AGD DID.
 
 The AGD posts a signed request to enroll to the AGD. The request includes the private key identifier and required information about the AGD.
 
@@ -1251,7 +1251,7 @@ The AGD will create, sign, store and return an ADI-AGD role VC.
 
 **AGD -\> AGD: Update directory with \n AGD listing Information**
 
-DIDDoc, endpoint location
+DIDdoc, endpoint location
 
 **AGD -\> AGD: Return success**
 
@@ -1341,7 +1341,7 @@ The Issuer submits an enrollment request to the interchange. The request include
 
 The Interchange MUST vet the Issuer information and execute a contract to join ADI before enrolling the Issuer.
 
-Once vetting of the Issuer is completed, the Interchange provisions a CI_AGENT to perform ADI functions for the issuer. The CI_AGENT generates PK pairs, is assigned a DID & DIDDoc and OIDC endpoints & metadata using an issuer-selected domain / sub-domain.
+Once vetting of the Issuer is completed, the Interchange provisions a CI_AGENT to perform ADI functions for the issuer. The CI_AGENT generates PK pairs, is assigned a DID & DIDdoc and OIDC endpoints & metadata using an issuer-selected domain / sub-domain.
 
 **INTERCHANGE -\> INTERCHANGE:  Provision issuer agent, create keys, \n listing data & endpoints**
 
@@ -1420,7 +1420,7 @@ The service provider submits an enrollment request to the interchange. The reque
 
 The Interchange MUST vet the service provider information and execute a contract to join ADI before enrolling the Service Provider.
 
-Once vetting of the service provider is completed, the Interchange provisions an SP_AGENT to perform ADI functions for the  service provider. The SP_AGENT generates PK pairs,  is assigned a DID & DIDDoc and OIDC endpoints & metadata using a service provider selected domain / sub-domain.
+Once vetting of the service provider is completed, the Interchange provisions an SP_AGENT to perform ADI functions for the  service provider. The SP_AGENT generates PK pairs,  is assigned a DID & DIDdoc and OIDC endpoints & metadata using a service provider selected domain / sub-domain.
 
 **INTERCHANGE -\> INTERCHANGE:  Provision agent, create keys, \n listing data & endpoints**
 
@@ -1523,7 +1523,7 @@ The DAA enrolls the user with a FIDO / Strong Auth / OAuth method and records th
 
 **DAA -\>   USER_AGENT:  Accepted T&Cs, sign Strong Auth response.**
 
-Generate a PK pair and securely store the private key in the user agent hardened key store.
+Generate a PK pair and securely store the private key in the USER_AGENT hardened key store.
 
 The interchange MUST vet the user identity before issuing an ADI-Network User VC to the user.
 
@@ -1576,9 +1576,9 @@ The issuer sends this make_vc_offer request to its agent for processing to obtai
 
 The issuer agent saves the VC offer and requests the user’s agent to return a user signed issuance_token to demonstrate acceptance.
 
-The user agent signs an issuance_token request for the VC using the private key bound to the VC subject DID to prove they are the subject of the VC.
+The USER_AGENT signs an issuance_token request for the VC using the private key bound to the VC subject DID to prove they are the subject of the VC.
 
-The user agent sends the signed issuance_token back to the issuer agent. The issuer agent MUST verify the token before signing, issuing and storing the VC in a secure VC Vault.  The credential issuer agent will send the VC or its metadata to the user agent.
+The USER_AGENT sends the signed issuance_token back to the issuer agent. The issuer agent MUST verify the token before signing, issuing and storing the VC in a secure VC Vault.  The credential issuer agent will send the VC or its metadata to the USER_AGENT.
 
 <a id="credential-issuer-high-level-flow"></a>
 ### 9.2.1 High Level Flow
@@ -1649,7 +1649,7 @@ This make_vc_offer request contains the VC claims, values and schema type to be 
 
 The issuer agent creates a vc_offer containing a pre_authorized_code (OIDC4VCI).
 
-The issuer agent creates a URI referring to this vc_offer.  This is returned as a link and can be used as a redirect, QR or notification action for the user agent to fulfill.
+The issuer agent creates a URI referring to this vc_offer.  This is returned as a link and can be used as a redirect, QR or notification action for the USER_AGENT to fulfill.
 
 **CI_AGENT -\> USER_AGENT: return URI: ~user_agent/get_credential_offer/{offer_id} \n via URL Link, QR Code or Notification **
 
@@ -1823,15 +1823,15 @@ This may be from the issuer vault or the user vault depending on issuer endpoint
 <a id="requesting-a-public-key"></a>
 ## 10.2 Requesting a public key
 
-Keys may be obtained in the ADI-ROLE VC / DIDDoc based upon  the subject DID (subject of VC).
+Keys may be obtained in the ADI-ROLE VC / DIDdoc based upon  the subject DID (subject of VC).
 
 Service Providers need to be assured that the VC was properly issued and signed by an ADI Credential Issuer and that the VP was signed by the ADI-Network User to show proof of ownership.
 
-They may rely on their Agent to perform this task for them, or they may check the digital signatures themselves by requesting the DIDDoc public key of the signer.
+They may rely on their Agent to perform this task for them, or they may check the digital signatures themselves by requesting the DIDdoc public key of the signer.
 
 VC issuers and subjects can be validated  by using their VC DID to request their public key.  With the public key the VP (user) & VC (Issuer) signatures can each be validated using the VC proof cryptographic algorithms specified in the VC metadata header.
 
-To request the DIDDoc, the service provider calls get_did_doc.
+To request the DIDdoc, the service provider calls get_did_doc.
 
 ```mermaid
 sequenceDiagram
@@ -1845,17 +1845,17 @@ sequenceDiagram
     SPA->>SPA: Select key by kid; DIDdoc is authoritative over role VC copy (B-212)
 ```
 
-*Figure 20. Service Provider Requests a DID Document*
+*Figure 20. Service Provider Requests a DIDdoc*
 
-The Service Provider asks its SP Agent for the DIDDoc public key of the signer, by a get_did_doc request containing the DID requested.
+The Service Provider asks its SP Agent for the DIDdoc public key of the signer, by a get_did_doc request containing the DID requested.
 
 **SERVICE_PROVIDER -\> SP_AGENT: POST ~service_provider/get_did_doc**
 
 The Agent MUST return the DID_DOC
 
-**SP_AGENT -\> SERVICE_PROVIDER:   DIDDoc Public Key**
+**SP_AGENT -\> SERVICE_PROVIDER:   DIDdoc Public Key**
 
-The agent can now verify the signature of the signer, using the Public Key from the  DIDDoc & cryptography signature algorithm listed.
+The agent can now verify the signature of the signer, using the Public Key from the  DIDdoc & cryptography signature algorithm listed.
 
 <a id="additional-use-cases"></a>
 # 11. Additional Use Cases
@@ -1891,7 +1891,7 @@ This clause is normative. It records the threats the architecture is designed to
 <a id="security-trust-model"></a>
 ## 12.1 Trust model
 
-The ADI Network places trust in two parties and withholds it from the rest.
+The ADI-Network places trust in two parties and withholds it from the rest.
 
 The **ADI Global Domain** is trusted as the root of the network. Its signing key is the trust anchor from which every other authority derives. Compromise of the AGD key compromises the network; there is no higher authority to recover from.
 
@@ -1929,7 +1929,7 @@ Correlation of a presentation request with the User's session across a redirect 
 <a id="security-crypto"></a>
 ## 12.5 Cryptographic agility and algorithm confusion
 
-Verifiers MUST select the signature algorithm from the token's `alg` header and MUST confirm that it is consistent with the type of the key retrieved from the signer's DIDDoc. A verifier MUST reject `alg: none` and MUST reject any attempt to verify with a symmetric algorithm a token whose signer is identified by an asymmetric key. These requirements are stated in clause 6.2 and are restated here because their omission is a well-known class of vulnerability in JWS implementations.
+Verifiers MUST select the signature algorithm from the token's `alg` header and MUST confirm that it is consistent with the type of the key retrieved from the signer's DIDdoc. A verifier MUST reject `alg: none` and MUST reject any attempt to verify with a symmetric algorithm a token whose signer is identified by an asymmetric key. These requirements are stated in clause 6.2 and are restated here because their omission is a well-known class of vulnerability in JWS implementations.
 
 The set of signature algorithms permitted by this document is to be stated by the working group; until it is, implementers SHOULD support ES256 and SHOULD NOT produce new signatures with RSA PKCS#1 v1.5 (`RS256`).
 
@@ -1952,7 +1952,7 @@ NOTE — The syntax of the `did:adi` identifier is under revision. In the form u
 <a id="security-transport"></a>
 ## 12.8 Transport security
 
-Connections between Digital Address Services MUST use mutual TLS. The client certificate MUST carry the connecting party's DID as a `uniformResourceIdentifier` subject alternative name, and the receiving party MUST confirm that the certificate's public key appears in the DIDDoc that DID resolves to. This binds the transport identity to the network identity; without it the two are independent trust hierarchies and a certificate issued to one party can front for another.
+Connections between Digital Address Services MUST use mutual TLS. The client certificate MUST carry the connecting party's DID as a `uniformResourceIdentifier` subject alternative name, and the receiving party MUST confirm that the certificate's public key appears in the DIDdoc that DID resolves to. This binds the transport identity to the network identity; without it the two are independent trust hierarchies and a certificate issued to one party can front for another.
 
 Network-layer controls, including IP address allowlisting, MUST NOT be used as, or counted towards, a User authentication factor (clause 7.2.4.3).
 
@@ -1969,19 +1969,19 @@ Assertion of an authentication assurance level is valid only for the reauthentic
 <a id="security-availability"></a>
 ## 12.11 Availability dependencies
 
-Verification of a presentation requires resolution of the signer's public key and authority, which in turn requires the Digital Address Service of the issuing Interchange to be reachable. A verifier with no network path to that Interchange cannot verify. Verifiers MAY cache resolved DIDDocs and authority records for the lifetime their signer declares, and SHOULD do so; they MUST NOT extend a cached record beyond its declared lifetime.
+Verification of a presentation requires resolution of the signer's public key and authority, which in turn requires the Digital Address Service of the issuing Interchange to be reachable. A verifier with no network path to that Interchange cannot verify. Verifiers MAY cache resolved DIDdocs and authority records for the lifetime their signer declares, and SHOULD do so; they MUST NOT extend a cached record beyond its declared lifetime.
 
 An attacker able to deny access to an Interchange's Digital Address Service can prevent verification of every credential issued under that Interchange. Interchange operators SHOULD provision the service for availability accordingly.
 
 <a id="privacy-considerations"></a>
 # 13. Privacy Considerations
 
-This clause is normative. It states the privacy properties the ADI Network provides to a User, the parties from whom the User's activity is and is not protected, and the requirements on participants that follow. Claims about privacy elsewhere in this document are to be read as qualified by this clause.
+This clause is normative. It states the privacy properties the ADI-Network provides to a User, the parties from whom the User's activity is and is not protected, and the requirements on participants that follow. Claims about privacy elsewhere in this document are to be read as qualified by this clause.
 
 <a id="privacy-scope"></a>
 ## 13.1 What the architecture protects, and from whom
 
-The ADI Network is designed so that a Service Provider learns only what the User consents to disclose, and so that a Service Provider cannot, from the identifiers it receives, link one User's presentations to another Service Provider's. It is not designed to conceal the User's activity from the Interchange that serves them. The Interchange sees every presentation the User makes, knows the identity behind every Digital Address it issued, and holds the record that links the two. This is the accountability property from which the architecture takes its name, and it is stated here so that no reader infers a stronger property than the one provided.
+The ADI-Network is designed so that a Service Provider learns only what the User consents to disclose, and so that a Service Provider cannot, from the identifiers it receives, link one User's presentations to another Service Provider's. It is not designed to conceal the User's activity from the Interchange that serves them. The Interchange sees every presentation the User makes, knows the identity behind every Digital Address it issued, and holds the record that links the two. This is the accountability property from which the architecture takes its name, and it is stated here so that no reader infers a stronger property than the one provided.
 
 <a id="privacy-linkability"></a>
 ## 13.2 Subject identifiers and linkability across Service Providers
@@ -2007,9 +2007,9 @@ This is a privacy property: a person's activity at one Interchange is not linkab
 <a id="privacy-disclosure"></a>
 ## 13.5 Selective disclosure and data minimisation
 
-A Service Provider MUST request only the credential types and claims its purpose requires, and MUST state that purpose in a manner the User can see before consenting. A User Agent MUST present the User with the specific claims that will be disclosed, not merely the credential, and MUST NOT disclose claims the User has not approved.
+A Service Provider MUST request only the credential types and claims its purpose requires, and MUST state that purpose in a manner the User can see before consenting. A USER_AGENT MUST present the User with the specific claims that will be disclosed, not merely the credential, and MUST NOT disclose claims the User has not approved.
 
-Where the credential format permits selective disclosure, the User Agent MUST disclose only the claims the User selected. Where it does not, the whole credential is disclosed and the User Agent MUST make this apparent to the User before consent is given.
+Where the credential format permits selective disclosure, the USER_AGENT MUST disclose only the claims the User selected. Where it does not, the whole credential is disclosed and the USER_AGENT MUST make this apparent to the User before consent is given.
 
 <a id="privacy-pii"></a>
 ## 13.6 Personal information in enrolment records and the directory
@@ -2026,7 +2026,7 @@ The HIDA is a keyed digest of personal attributes, computed and held by the enro
 <a id="privacy-biometrics"></a>
 ## 13.8 Biometric information
 
-Where the User's authenticator uses biometric verification, the biometric sample, any template derived from it, and any comparison score remain within the authenticator (clause 7.2.4.5). The only artefact that reaches any ADI Network participant is the `UV` flag in a WebAuthn assertion, indicating that verification succeeded. No participant MUST collect, store or process biometric information, and no ADI Network protocol message carries it.
+Where the User's authenticator uses biometric verification, the biometric sample, any template derived from it, and any comparison score remain within the authenticator (clause 7.2.4.5). The only artefact that reaches any ADI-Network participant is the `UV` flag in a WebAuthn assertion, indicating that verification succeeded. No participant MUST collect, store or process biometric information, and no ADI-Network protocol message carries it.
 
 <a id="privacy-audit"></a>
 ## 13.9 Audit records and lawful access
@@ -2225,7 +2225,7 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 |---|---|---|---|---|
 | E-530 | Major | §7 vs §8.3 — duplication | §7 (overview) and §8.3 (Roles and Authorities) tell the same narrative twice; audit-log/legal-retrieval stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication. | Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated". |
 | E-503 | Minor | L? "7.7.1.1" | §7.7.1.1 is an orphan H4 among H3 siblings | — |
-| E-527 | Minor | L918/1104 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another | — |
+| E-527 | Minor | L1104 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another | — |
 | E-528 | Minor | L1158 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line | — |
 | E-529 | Minor | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs | — |
 
@@ -2828,7 +2828,7 @@ POST ~issuer/issue_vc_token
 <a id="vp"></a>
 ### B.2.12 vp
 
-A Verifiable Presentation returned by a User Agent in response to a
+A Verifiable Presentation returned by a USER_AGENT in response to a
 `vc_request`. The envelope fields are independent of the credential format;
 `verifiableCredential` carries the credential as serialized under the format
 specified in §6.2.
