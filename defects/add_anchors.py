@@ -47,6 +47,10 @@ TARGETS = {
 }
 
 text = open(SPEC, encoding="utf-8").read()
+# leave the generated Editor's Notes clause alone; it carries its own anchors
+_a, _b = text.find("<!-- EDITORS-NOTES-START"), text.find("<!-- EDITORS-NOTES-END")
+_notes = text[_a:_b] if (_a != -1 and _b != -1) else ""
+if _notes: text = text[:_a] + "\x00NOTES\x00" + text[_b:]
 lines = text.split("\n")
 
 # 1. anchors above headings
@@ -113,6 +117,7 @@ for old, new in TARGETS.items():
 # also strip leftover <u> tags inside link labels
 text = re.sub(r"\[<u>([^\]]*?)</u>\]", r"[\1]", text)
 
+if _notes: text = text.replace("\x00NOTES\x00", _notes)
 open(SPEC, "w", encoding="utf-8").write(text)
 ids  = set(re.findall(r'<a id="([^"]+)"', text))
 refs = set(re.findall(r"\]\(#([^)]+)\)", text))

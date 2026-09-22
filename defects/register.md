@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
-| Rendered | 2026-09-21 |
+| Rendered | 2026-09-22 |
 | Defects | 110 (68 with an automated check) |
 | Verified | 43 |
 | Fixed, awaiting verification | 0 |
@@ -58,7 +58,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| B-201 | S1 | Verified |  | `auto` | L648 "public key encryption of the hash" | *"the public key encryption of the hash matches the signature"* — describes textbook RSA backwards and is inapplicable to ECDSA, which the same document specifies. The JWS signing input is not "combining metadata and claims sections", and the digest comes from `alg` | Replace with a normative reference to RFC 7515 §5.2 |  |
+| B-201 | S1 | Verified |  | `auto` | L648 "public key encryption of the hash" | *"the public key encryption of the hash matches the signature"* — describes textbook RSA backwards and is inapplicable to ECDSA, which the same document specifies. The JWS signing input is not "combining metadata and claims sections", and the digest comes from `alg` | Replace with a normative reference to RFC 7515 §5.2 | `b41e48f` |
 | B-202 | S1 | Verified |  | `auto` | L1387/1407/1419 "USER_AGENT -\> USER_AGENT" | `USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create ADI Network User VC`. The subject's own agent issues the subject's role credential, breaking §7.6. The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"* — so prose and flow directly contradict | Change actor to the Interchange DAS | `2996d31` |
 | B-203 | S1 | Open |  | — | L1403 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |  |
 | B-204 | S2 | Open |  | — | L488 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |  |

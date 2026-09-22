@@ -29,10 +29,11 @@ ci:         ## has anything that used to pass started failing?
 
 save:       ## record today's work in the local history
 	@python3 defects/validate.py
+	@python3 defects/make_editors_notes.py
 	@python3 defects/render.py >/dev/null
 	@git add -A && git commit -q -m "$(m)" && echo "Saved: $(m)"
 
-.PHONY: help setup validate register status check ci save explain relocate anchors figures tidy assurance
+.PHONY: help setup validate register status check ci save explain relocate anchors figures tidy assurance notes
 
 explain:    ## why a check fails, e.g. make explain ID=E-501
 	@python3 defects/adia_checks.py $(SPEC) --explain $(ID)
@@ -52,3 +53,6 @@ tidy:       ## F-604/F-605: remove invisible characters, strip trailing whitespa
 
 assurance:  ## apply the ASSURANCE_MODEL data model changes to Appendix B
 	@python3 defects/apply_assurance.py
+
+notes:      ## regenerate the Editor's Notes clause from the register
+	@python3 defects/make_editors_notes.py

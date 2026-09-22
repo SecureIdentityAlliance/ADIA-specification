@@ -23,7 +23,12 @@ import sys, os, re, json, collections
 class Spec:
     def __init__(self, path):
         self.path = path
-        self.text = open(path, encoding="utf-8").read()
+        raw = open(path, encoding="utf-8").read()
+        # The Editor's Notes clause quotes defect text verbatim, so leaving it in
+        # would make every phrase check find its own target inside the notes.
+        a, b = raw.find("<!-- EDITORS-NOTES-START"), raw.find("<!-- EDITORS-NOTES-END")
+        self.notes = raw[a:b] if (a != -1 and b != -1) else ""
+        self.text = (raw[:a] + raw[b:]) if (a != -1 and b != -1) else raw
         self.blocks = re.findall(r"```json\n(.*?)\n```", self.text, re.S)
         self.names  = re.findall(r"^#{2,3} (B\.\d+\.\d+)", self.text, re.M)
         self.J = {}
