@@ -59,7 +59,7 @@ This document is a draft document that has NOT yet been approved by the ADIA Tec
 
 **Key words:**
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 \[RFC2119](#informative-references) and [RFC8174](c.1 informative references) when, and only when, they appear in all capitals, as shown here.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 \[RFC2119](#references) and [RFC8174](c.1 informative references) when, and only when, they appear in all capitals, as shown here.
 
 **Citation format:**
 
@@ -100,7 +100,7 @@ This document includes:
 <a id="normative-and-informative-content"></a>
 ### 1.1.1 Normative and informative content
 
-Clauses 6, 7, 8, 9, 10, 12 and 13 and Appendix B are normative. Clauses 1 to 5, clause 11, clause 12 and Appendix A are informative, except that the references listed as normative in Appendix A are themselves normative.
+Clauses 6, 7, 8, 9, 10, 12 and 13 and Appendix B are normative. Clauses 1 to 5, clause 11, clause 12 and The classification of the references in Appendix A as normative or informative is for the Study Group to determine.
 
 Within a normative clause, requirements are expressed using the key words defined in [RFC2119] and [RFC8174]. Text that does not use those key words, including notes, examples, figures and the "NOTE to entry" text accompanying definitions, is informative and does not affect conformance.
 
@@ -2013,7 +2013,7 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 64 |
+| Items outstanding | 63 |
 | Of which critical | 19 |
 | Awaiting an architectural decision | 24 |
 | Open decisions | 12 |
@@ -2111,7 +2111,6 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 | C-307 | Major | — | No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3 | Add |
 | C-308 | Major | — | No registries for role-VC type strings, schema names, or the `did:adi` method | Add |
 | C-309 | Major | §9.2 | **No flow description at all** — a figure and four bullets. §9.1, §9.3, §9.4, §9.5 all have prose walkthroughs. This is the flow that establishes the AGD→IX trust link | Write it |
-| C-310 | Major | L1773 "To be completed" | Titled "Informative References"; contains "To be completed — which references are normative is for further study"; lists nine standards that are plainly normative. `[W3C DM]` and `[W3C JS]` are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks | Split normative/informative; complete |
 | C-311 | Minor | L71 "Copyright" | Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group | Resolve process and boilerplate |
 
 <a id="editors-notes-crypto-protocol"></a>
@@ -2219,31 +2218,78 @@ The items below are not corrections to existing text but clauses that do not yet
 <a id="references"></a>
 # Appendix A - References
 
-This appendix contains the informative references that are used in this document.
-While any hyperlinks included in this appendix were valid at the time of publication, OASIS cannot guarantee their long-term validity.
+This appendix lists the external documents this draft relies on or refers to. Classification of each reference as normative or informative is left to the Study Group taking this draft forward, in accordance with its conventions.
 
-<a id="informative-references"></a>
-## A.1 Informative References
+Hyperlinks were valid at the time of publication. The Accountable Digital Identity Association cannot guarantee their long-term validity.
 
-The following referenced documents are not required for the application of this document but may assist the reader with regard to a particular subject area.
-**To be completed - which references are normative is for further study.**
+<a id="references-list"></a>
+## A.1 References
 
 **[RFC2119]**
-Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, <<https://www.rfc-editor.org/info/rfc2119>>.
+Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, <https://www.rfc-editor.org/info/rfc2119>.
 
 **[RFC8174]**
-Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, <<https://www.rfc-editor.org/info/rfc8174>>.
+Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-This document is based on and makes use of the following external standards:
-1. W3C Verifiable Credentials Data Model V2.0
-2. W3C Verifiable Credentials JSON Schema Specification
-3. ITU-T X.1254
-4. ITU-T X.1281
-5. OpenID for Verifiable Credential Issuance
-6. OpenID for Verifiable Presentations
-7. OpenID Identity Assurance schema definition 1.0
-8. IETF SD-JWT-based Verifiable Credentials (SD-JWT VC)
-9. NIST SP 800-63
+**[RFC3986]**
+Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform Resource Identifier (URI): Generic Syntax", STD 66, RFC 3986, DOI 10.17487/RFC3986, January 2005, <https://www.rfc-editor.org/info/rfc3986>.
+
+**[RFC5234]**
+Crocker, D., Ed., and P. Overell, "Augmented BNF for Syntax Specifications: ABNF", STD 68, RFC 5234, DOI 10.17487/RFC5234, January 2008, <https://www.rfc-editor.org/info/rfc5234>.
+
+**[RFC7515]**
+Jones, M., Bradley, J., and N. Sakimura, "JSON Web Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May 2015, <https://www.rfc-editor.org/info/rfc7515>.
+
+**[RFC7517]**
+Jones, M., "JSON Web Key (JWK)", RFC 7517, DOI 10.17487/RFC7517, May 2015, <https://www.rfc-editor.org/info/rfc7517>.
+
+**[RFC7519]**
+Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015, <https://www.rfc-editor.org/info/rfc7519>.
+
+**[RFC9562]**
+Davis, K., Peabody, B., and P. Leach, "Universally Unique IDentifiers (UUIDs)", RFC 9562, DOI 10.17487/RFC9562, May 2024, <https://www.rfc-editor.org/info/rfc9562>.
+
+**[DID-CORE]**
+Sporny, M., Guy, A., Sabadello, M., and D. Reed, Eds., "Decentralized Identifiers (DIDs) v1.0", W3C Recommendation, 19 July 2022, <https://www.w3.org/TR/did-core/>.
+
+**[VC-DATA-MODEL]**
+Sporny, M., Longley, D., Chadwick, D., and I. Herman, Eds., "Verifiable Credentials Data Model v2.0", W3C Recommendation, 15 May 2025, <https://www.w3.org/TR/vc-data-model-2.0/>.
+
+**[VC-JSON-SCHEMA]**
+Prorock, M., Cohen, G., and A. Guy, Eds., "Verifiable Credentials JSON Schema Specification", W3C Recommendation, 15 May 2025, <https://www.w3.org/TR/vc-json-schema/>.
+
+**[WEBAUTHN]**
+Hodges, J., Jones, J.C., Jones, M.B., Kumar, A., and E. Lundberg, Eds., "Web Authentication: An API for accessing Public Key Credentials Level 2", W3C Recommendation, 8 April 2021, <https://www.w3.org/TR/webauthn-2/>. Later Levels of this specification satisfy references to it in this document.
+
+**[SD-JWT-VC]** (*)
+Terbu, O., Fett, D., and B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)", Work in Progress, Internet-Draft, draft-ietf-oauth-sd-jwt-vc, <https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/>. The version to be cited is to be confirmed at approval of this document.
+
+**[OID4VCI]** (*)
+Lodderstedt, T., Yasuda, K., and T. Looker, "OpenID for Verifiable Credential Issuance 1.0", OpenID Foundation, <https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html>. The version to be cited is to be confirmed at approval of this document.
+
+**[OID4VP]** (*)
+Terbu, O., Lodderstedt, T., Yasuda, K., and T. Looker, "OpenID for Verifiable Presentations 1.0", OpenID Foundation, <https://openid.net/specs/openid-4-verifiable-presentations-1_0.html>. The version to be cited is to be confirmed at approval of this document.
+
+**[NIST-800-63]**
+National Institute of Standards and Technology, "Digital Identity Guidelines", NIST Special Publication 800-63-4, together with SP 800-63A-4 (Identity Proofing and Enrollment), SP 800-63B-4 (Authentication and Authenticator Management) and SP 800-63C-4 (Federation and Assertions), 2025, <https://pages.nist.gov/800-63-4/>.
+
+**[FIPS-140-3]**
+National Institute of Standards and Technology, "Security Requirements for Cryptographic Modules", FIPS PUB 140-3, March 2019, <https://doi.org/10.6028/NIST.FIPS.140-3>.
+
+**[X.1254]**
+ITU-T Recommendation X.1254, "Entity authentication assurance framework", September 2020.
+
+**[X.1281]** (*)
+ITU-T Recommendation X.1281. Title and edition to be confirmed at approval of this document.
+
+**[OIDC-IDA]**
+Lodderstedt, T., Fett, D., Haine, M., Pulido, A., Lehmann, K., and K. Koiwai, "OpenID Connect for Identity Assurance 1.0", OpenID Foundation, <https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html>.
+
+**[eIDAS]**
+Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market, as amended by Regulation (EU) 2024/1183. Referenced for its remote qualified signature creation device model, which the vault-assisted signing model of clause 7.2.4.4 follows.
+
+**[ADIA-V2]**
+Accountable Digital Identity Association, "ADI Association Specification V2.0", October 2024. The version of this document that the present version replaces.
 
 <a id="schemas"></a>
 # Appendix B - Schemas

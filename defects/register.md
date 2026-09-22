@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-22 |
 | Defects | 111 (68 with an automated check) |
-| Verified | 46 |
+| Verified | 47 |
 | Fixed, awaiting verification | 1 |
 | Blocked on a decision | 24 |
-| Open | 39 |
+| Open | 38 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -82,7 +82,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream C — Normative structure and conformance
 
-11 defects · 4 verified · 5 with an automated check
+11 defects · 5 verified · 5 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -90,12 +90,12 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | C-302 | S1 | Open |  | — | L107/116 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements |  |
 | C-303 | S1 | Verified | ND | `auto` | — | **No Conformance clause.** Mandatory once RFC 2119 is invoked | Add | `9b71b7e` |
 | C-304 | S1 | Verified | ND | `auto` | — | **No Security Considerations** section | Add | `e44bc76` |
-| C-305 | S1 | Verified |  | `auto` | — | **No Privacy Considerations** section | Add |  |
+| C-305 | S1 | Verified |  | `auto` | — | **No Privacy Considerations** section | Add | `59eeea0` |
 | C-306 | S2 | Open |  | — | — | No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else | Add |  |
 | C-307 | S2 | Open |  | — | — | No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3 | Add |  |
 | C-308 | S2 | Open |  | — | — | No registries for role-VC type strings, schema names, or the `did:adi` method | Add |  |
 | C-309 | S2 | Open |  | — | §9.2 | **No flow description at all** — a figure and four bullets. §9.1, §9.3, §9.4, §9.5 all have prose walkthroughs. This is the flow that establishes the AGD→IX trust link | Write it |  |
-| C-310 | S2 | Open |  | `auto` | L1773 "To be completed" | Titled "Informative References"; contains "To be completed — which references are normative is for further study"; lists nine standards that are plainly normative. `[W3C DM]` and `[W3C JS]` are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks | Split normative/informative; complete |  |
+| C-310 | S2 | Verified |  | `auto` | L1773 "To be completed" | Titled "Informative References"; contains "To be completed — which references are normative is for further study"; lists nine standards that are plainly normative. `[W3C DM]` and `[W3C JS]` are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks | Split normative/informative; complete |  |
 | C-311 | S3 | Open |  | — | L71 "Copyright" | Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group | Resolve process and boilerplate |  |
 
 ## Workstream D — Architecture and terminology

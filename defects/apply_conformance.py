@@ -28,7 +28,7 @@ CLAUSE = '''<a id="conformance"></a>
 
 ### 1.1.1 Normative and informative content
 
-Clauses 6, 7, 8, 9 and 10 and Appendix B are normative. Clauses 1 to 5, clause 11, the Editor's Notes clause and Appendix A are informative, except that the references listed as normative in Appendix A are themselves normative.
+Clauses 6, 7, 8, 9 and 10 and Appendix B are normative. Clauses 1 to 5, clause 11, the Editor's Notes clause and Appendix A are informative.
 
 Within a normative clause, requirements are expressed using the key words defined in [RFC2119] and [RFC8174]. Text that does not use those key words, including notes, examples, figures and the "NOTE to entry" text accompanying definitions, is informative and does not affect conformance.
 
