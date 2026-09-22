@@ -7,10 +7,10 @@
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-21 |
 | Defects | 110 (68 with an automated check) |
-| Verified | 38 |
+| Verified | 40 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 23 |
-| Open | 48 |
+| Open | 46 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -54,17 +54,17 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream B — Cryptography and protocol
 
-21 defects · 2 verified · 8 with an automated check
+21 defects · 4 verified · 8 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | B-201 | S1 | Open |  | `auto` | L648 "public key encryption of the hash" | *"the public key encryption of the hash matches the signature"* — describes textbook RSA backwards and is inapplicable to ECDSA, which the same document specifies. The JWS signing input is not "combining metadata and claims sections", and the digest comes from `alg` | Replace with a normative reference to RFC 7515 §5.2 |  |
-| B-202 | S1 | Open |  | `auto` | L1387/1407/1419 "USER_AGENT -\> USER_AGENT" | `USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create ADI Network User VC`. The subject's own agent issues the subject's role credential, breaking §7.6. The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"* — so prose and flow directly contradict | Change actor to the Interchange DAS |  |
+| B-202 | S1 | Verified |  | `auto` | L1387/1407/1419 "USER_AGENT -\> USER_AGENT" | `USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create ADI Network User VC`. The subject's own agent issues the subject's role credential, breaking §7.6. The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"* — so prose and flow directly contradict | Change actor to the Interchange DAS |  |
 | B-203 | S1 | Open |  | — | L1403 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |  |
 | B-204 | S2 | Open |  | — | L488 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |  |
 | B-205 | S1 | Blocked(D8) |  | — | L887 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. |  |
 | B-206 | S1 | Blocked(D11) |  | — | L894/897/928 "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. |  |
-| B-207 | S2 | Open |  | `auto` | L1670/1672 "Biometric approval" | `Request Biometric approval` / `Biometric approval given` as protocol messages. In WebAuthn this is local user verification (`UV=1`) inside an assertion, not a round trip | Resolved by §9.3.5.5: UV=1 inside a WebAuthn assertion, no separate message. |  |
+| B-207 | S2 | Verified |  | `auto` | L1670/1672 "Biometric approval" | `Request Biometric approval` / `Biometric approval given` as protocol messages. In WebAuthn this is local user verification (`UV=1`) inside an assertion, not a round trip | Resolved by §9.3.5.5: UV=1 inside a WebAuthn assertion, no separate message. |  |
 | B-208 | S1 | Blocked(D11) |  | — | L631 "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. |  |
 | B-209 | S1 | Open |  | `auto` | document-wide | **No revocation or status.** Zero occurrences of `credentialStatus` or "revocation". No role-VC revocation, no root-key rotation, no key-compromise procedure. §7.6 explains how trust extends and never how a link breaks | Add |  |
 | B-210 | S1 | Open |  | — | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |  |

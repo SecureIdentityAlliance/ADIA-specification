@@ -1407,7 +1407,7 @@ Generate a PK pair and securely store the private key in the user agent hardened
 
 The interchange will vet the user identity and issue an ADI-Network User VC to the user.
 
-**USER_AGENT -\> USER_AGENT :  Vet user and issue ADI-Network User VC **
+**INTERCHANGE -\> USER_AGENT:  Vet user and issue ADI-Network User VC**
 
 **alt if an Issuer is used to issue the ADI-Network User VC**
 
@@ -1419,7 +1419,7 @@ The INTERCHANGE may require an Issuer perform an identity proofing at a certain 
 
 **end**
 
-**USER_AGENT -\> USER_AGENT:  Sign and create ADI-Network User VC**
+**INTERCHANGE -\> INTERCHANGE:  Sign and create ADI-Network User VC**
 
 The INTERCHANGE responds with success
 
@@ -1670,9 +1670,9 @@ The USER_AGENT obtains user consent & authorization using strong authentication.
 
 **USER -\> USER_AGENT: VC selected & confirm consent**
 
-**USER_AGENT -\> USER:  Request Biometric approval**
+**USER_AGENT -\> DAA:  Request WebAuthn assertion, challenge = SHA-256(VP payload), UV required**
 
-**USER -\> USER_AGENT: Biometric approval given**
+**DAA -\> USER_AGENT: WebAuthn assertion (UV=1)**
 
 5. The USER_AGENT creates a user signed authorization_token and sends the request to the VAULT_AGENT endpoint to retrieve the VC.
 
