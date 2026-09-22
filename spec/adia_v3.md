@@ -100,7 +100,7 @@ This document includes:
 <a id="normative-and-informative-content"></a>
 ### 1.1.1 Normative and informative content
 
-Clauses 6, 7, 8, 9, 10 and 12 and Appendix B are normative. Clauses 1 to 5, clause 11, clause 12 and Appendix A are informative, except that the references listed as normative in Appendix A are themselves normative.
+Clauses 6, 7, 8, 9, 10, 12 and 13 and Appendix B are normative. Clauses 1 to 5, clause 11, clause 12 and Appendix A are informative, except that the references listed as normative in Appendix A are themselves normative.
 
 Within a normative clause, requirements are expressed using the key words defined in [RFC2119] and [RFC8174]. Text that does not use those key words, including notes, examples, figures and the "NOTE to entry" text accompanying definitions, is informative and does not affect conformance.
 
@@ -1936,10 +1936,76 @@ Verification of a presentation requires resolution of the signer's public key an
 An attacker able to deny access to an Interchange's Digital Address Service can prevent verification of every credential issued under that Interchange. Interchange operators SHOULD provision the service for availability accordingly.
 
 
+<a id="privacy-considerations"></a>
+# 13. Privacy Considerations
+
+This clause is normative. It states the privacy properties the ADI Network provides to a User, the parties from whom the User's activity is and is not protected, and the requirements on participants that follow. Claims about privacy elsewhere in this document are to be read as qualified by this clause.
+
+<a id="privacy-scope"></a>
+## 13.1 What the architecture protects, and from whom
+
+The ADI Network is designed so that a Service Provider learns only what the User consents to disclose, and so that a Service Provider cannot, from the identifiers it receives, link one User's presentations to another Service Provider's. It is not designed to conceal the User's activity from the Interchange that serves them. The Interchange sees every presentation the User makes, knows the identity behind every Digital Address it issued, and holds the record that links the two. This is the accountability property from which the architecture takes its name, and it is stated here so that no reader infers a stronger property than the one provided.
+
+<a id="privacy-linkability"></a>
+## 13.2 Subject identifiers and linkability across Service Providers
+
+A credential whose `credentialSubject.id` is the User's primary DID carries a stable, globally unique identifier into every presentation of that credential. Two Service Providers receiving such presentations can trivially establish that they concern the same User, and one Service Provider can link a User's repeat visits. The transaction identifier mechanism of clause 7.4.4 addresses the identifier on the *presentation*; it does not address the identifier inside the *credential*. A transaction DID wrapping a credential that names the primary DID provides no unlinkability, and clause 7.4.4.3 prohibits representing it as such.
+
+Unlinkability across Service Providers therefore requires that the credential itself not disclose a stable subject identifier. This version of this document does not fully specify a mechanism for that; the credential format decision recorded in the Editor's Notes determines whether it can be provided. Until it is, an Interchange MUST NOT describe presentations to Users or Service Providers as unlinkable.
+
+<a id="privacy-interchange"></a>
+## 13.3 Visibility to the Interchange
+
+An Interchange necessarily observes, for every User it serves: each presentation request received, the Service Provider that made it, the credential selected, the time, and the assurance asserted. It holds the User's vault signing key and authorises its use. It retains the enrolment record, including the PII from which the HIDA was computed.
+
+An Interchange MUST limit its use of this information to the operation of the network, the enforcement of governance policy, and disclosure required by law under clause 6. It MUST NOT use transaction records to profile Users, and MUST NOT disclose them to Service Providers, Credential Issuers or other Interchanges except as this document or applicable law requires. The record retention and access requirements of clause 12.9 apply.
+
+<a id="privacy-cross-interchange"></a>
+## 13.4 Identity across Interchanges
+
+A natural person may hold Digital Addresses issued by more than one Interchange. The uniqueness check of clause 7.4.1 is performed within a single Interchange, and Hashes of Subject ID Attributes are not compared across Interchanges (clause 7.4.2). The network therefore does not determine, and cannot determine, that two Digital Addresses issued by different Interchanges refer to the same person.
+
+This is a privacy property: a person's activity at one Interchange is not linkable to their activity at another through any network mechanism. It is also a limitation: the network provides no global assurance of one-person-one-identity, and a Service Provider that assumes a Digital Address corresponds to a unique natural person network-wide is mistaken. Service Providers whose use case requires that assurance MUST obtain it by other means.
+
+<a id="privacy-disclosure"></a>
+## 13.5 Selective disclosure and data minimisation
+
+A Service Provider MUST request only the credential types and claims its purpose requires, and MUST state that purpose in a manner the User can see before consenting. A User Agent MUST present the User with the specific claims that will be disclosed, not merely the credential, and MUST NOT disclose claims the User has not approved.
+
+Where the credential format permits selective disclosure, the User Agent MUST disclose only the claims the User selected. Where it does not, the whole credential is disclosed and the User Agent MUST make this apparent to the User before consent is given.
+
+<a id="privacy-pii"></a>
+## 13.6 Personal information in enrolment records and the directory
+
+The information an Interchange collects at enrolment is held for the purposes of vetting, uniqueness checking and accountability. It MUST NOT be published. The network directory MUST contain, for each entity, no more than its Digital Address, its DID, its role, and its service endpoints. An entity's legal name and contact details MAY be published for Providers, Credential Issuers and Service Providers, which are organisations; they MUST NOT be published for Users.
+
+Where this document provides for personal information to be carried inside a credential or authority record, it MUST be limited to what the recipient requires for the purpose the record serves, and the record MUST state the party for whose access it is protected.
+
+<a id="privacy-hida"></a>
+## 13.7 Hash of Subject ID Attributes
+
+The HIDA is a keyed digest of personal attributes, computed and held by the enrolling Interchange for the sole purpose of detecting duplicate enrolment (clause 7.4.2). It is derived from PII and MUST be treated as PII. It MUST NOT leave the Interchange, MUST NOT be included in any credential, presentation or directory entry, and MUST NOT be used for any purpose other than the uniqueness check at enrolment. The Interchange key under which it is computed MUST be managed so that the HIDA cannot be recomputed by any other party.
+
+<a id="privacy-biometrics"></a>
+## 13.8 Biometric information
+
+Where the User's authenticator uses biometric verification, the biometric sample, any template derived from it, and any comparison score remain within the authenticator (clause 7.2.4.5). The only artefact that reaches any ADI Network participant is the `UV` flag in a WebAuthn assertion, indicating that verification succeeded. No participant MUST collect, store or process biometric information, and no ADI Network protocol message carries it.
+
+<a id="privacy-audit"></a>
+## 13.9 Audit records and lawful access
+
+The audit record of clause 12.9 links transaction identifiers, Digital Addresses and Service Providers. It exists so that, under appropriate legal process, the identity behind a transaction can be established. Access to it MUST be limited to that purpose. An Interchange MUST maintain a record of each disclosure made from the audit record, including the legal basis, and SHOULD make aggregate statistics of such disclosures available to the governance body of the network.
+
+<a id="privacy-retention"></a>
+## 13.10 Retention and erasure
+
+Signed artefacts — credentials, presentations, authority records — cannot be altered after signing without invalidating the signature, and copies may be held by parties outside the Interchange's control. A User's right to erasure under applicable law is therefore satisfied by revocation and by deletion of the Interchange's own copies, not by alteration of issued artefacts. An Interchange MUST document its retention periods for enrolment records, audit records and vault keys, and MUST delete or irreversibly anonymise each category when its retention period ends or when a User withdraws from the network, whichever is earlier, save where law requires longer retention.
+
+
 <!-- EDITORS-NOTES-START — generated by make_editors_notes.py, do not edit by hand -->
 
 <a id="editors-notes"></a>
-# 13. Editor's Notes — work still needed
+# 14. Editor's Notes — work still needed
 
 *This clause is generated from the editing register maintained alongside this draft. It was last regenerated on 22 September 2026 and reflects the state of the text at that point.*
 
@@ -1947,8 +2013,8 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 65 |
-| Of which critical | 20 |
+| Items outstanding | 64 |
+| Of which critical | 19 |
 | Awaiting an architectural decision | 24 |
 | Open decisions | 12 |
 | Corrected, awaiting confirmation | 1 |
@@ -1956,9 +2022,9 @@ This clause records work the editors know to be outstanding. It is provided so t
 Severity is recorded as **Critical** where the text as written would lead an implementer to build something incorrect or insecure, **Major** where the text is contradictory or where required normative material is absent, and **Minor** where the issue is editorial.
 
 <a id="editors-notes-decisions"></a>
-## 13.1 Architectural decisions required
+## 14.1 Architectural decisions required
 
-The following questions are unresolved. Each blocks one or more of the items in clause 13.2, and they are listed first because the drafting that follows depends on them.
+The following questions are unresolved. Each blocks one or more of the items in clause 14.2, and they are listed first because the drafting that follows depends on them.
 
 **D2 — DID syntax**
 
@@ -2033,15 +2099,14 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 *Blocks: D-419*
 
 <a id="editors-notes-items"></a>
-## 13.2 Outstanding items
+## 14.2 Outstanding items
 
 <a id="editors-notes-normative"></a>
-### 13.2.1 Normative structure and conformance
+### 14.2.1 Normative structure and conformance
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
 | C-302 | Critical | L107/116 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements |
-| C-305 | Critical | — | **No Privacy Considerations** section | Add |
 | C-306 | Major | — | No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else | Add |
 | C-307 | Major | — | No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3 | Add |
 | C-308 | Major | — | No registries for role-VC type strings, schema names, or the `did:adi` method | Add |
@@ -2050,7 +2115,7 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 | C-311 | Minor | L71 "Copyright" | Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group | Resolve process and boilerplate |
 
 <a id="editors-notes-crypto-protocol"></a>
-### 13.2.2 Cryptography and protocol
+### 14.2.2 Cryptography and protocol
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
@@ -2071,7 +2136,7 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 | B-220 | Major | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |
 
 <a id="editors-notes-data-model"></a>
-### 13.2.3 Data model and schemas
+### 14.2.3 Data model and schemas
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
@@ -2102,7 +2167,7 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 | A-114 | Minor | B.1.3 / B.1.4 | Identical `request_id` `bb20b6aa-…` in two different requests | Distinct values |
 
 <a id="editors-notes-architecture"></a>
-### 13.2.4 Architecture and terminology
+### 14.2.4 Architecture and terminology
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
@@ -2119,14 +2184,14 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 | D-414 | Minor | L366 "Acronyms and abbreviations" | "Acronyms and abbreviations" contains no acronym list. §4.1 holds normative role-VC definitions (misfiled); §4.2 holds identifiers. AGD, CI, IX, SP, DA, DAS, VC, VP, HIDA, AAL, PII, KYC are never expanded in one place | Build the table |
 
 <a id="editors-notes-references-tooling"></a>
-### 13.2.5 References, figures and tooling
+### 14.2.5 References, figures and tooling
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
 | F-606 | Major | CI — no location | No automated gate. Every check run for this review is scriptable | JSON parse · fence-aware gremlin check · markdownlint · link checker |
 
 <a id="editors-notes-editorial"></a>
-### 13.2.6 Editorial
+### 14.2.6 Editorial
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
@@ -2137,13 +2202,12 @@ The architect has proposed that ADI-ROLE Verifiable Credentials be removed and t
 | E-529 | Minor | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs | — |
 
 <a id="editors-notes-absent"></a>
-## 13.3 Normative material not yet drafted
+## 14.3 Normative material not yet drafted
 
 The items below are not corrections to existing text but clauses that do not yet exist. They are listed separately because they represent the larger part of the drafting effort remaining.
 
 - **B-209** — **No revocation or status.** Zero occurrences of `credentialStatus` or "revocation". No role-VC revocation, no root-key rotation, no key-compromise procedure. §7.6 explains how trust extends and never how a link breaks
 - **B-210** — **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified
-- **C-305** — **No Privacy Considerations** section
 - **C-306** — No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else
 - **C-307** — No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3
 - **C-308** — No registries for role-VC type strings, schema names, or the `did:adi` method

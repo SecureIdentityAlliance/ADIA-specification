@@ -597,9 +597,9 @@ defects:
   location: —
   defect: '**No Conformance clause.** Mandatory once RFC 2119 is invoked'
   fix: Add
-  owner: null
+  owner: ND
   status: auto
-  notes: null
+  notes: Added
   check: auto
 - id: C-304
   severity: S1
@@ -607,9 +607,9 @@ defects:
   location: —
   defect: '**No Security Considerations** section'
   fix: Add
-  owner: null
+  owner: ND
   status: auto
-  notes: null
+  notes: Added
   check: auto
 - id: C-305
   severity: S1
