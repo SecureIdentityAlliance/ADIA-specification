@@ -523,7 +523,7 @@ defects:
 - id: B-218
   severity: S3
   workstream: crypto-protocol
-  location: L1627/1670/2309 "~issuer/issue_vc"
+  location: L1627/1670/2311 "~issuer/issue_vc"
   defect: Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose
     also uses `make_credential_offer` where B.2.1 is `make_vc_offer`
   fix: Align names

@@ -88,7 +88,7 @@ def fix(name, d, log):
         if doc.get("id") != subj:
             doc["id"] = subj; log.append("%s: id_doc.id = subject" % name)
         pk = find(doc, "public_key")
-        if pk is not None:
+        if pk is not None and pk["public_key"] != jwk(tag):
             pk["public_key"] = jwk(tag); log.append("%s: id_doc key is the subject's" % name)
 
     r = find(d, "authorized_to_issue")

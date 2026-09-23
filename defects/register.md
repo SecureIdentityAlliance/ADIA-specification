@@ -5,11 +5,11 @@
 | | |
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
-| Rendered | 2026-09-22 |
+| Rendered | 2026-09-23 |
 | Defects | 111 (68 with an automated check) |
-| Verified | 63 |
+| Verified | 67 |
 | Fixed, awaiting verification | 1 |
-| Blocked on a decision | 19 |
+| Blocked on a decision | 15 |
 | Open | 27 |
 | Standing invariants | 4 of 4 holding |
 
@@ -21,11 +21,11 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream A — Data model and examples
 
-26 defects · 14 verified · 18 with an automated check
+26 defects · 18 verified · 18 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
-| A-101 | S1 | Verified | RK | `auto` | B.1.2 / B.2.8 | Enrollment sends `role: "INTERCHANGE"`; role VC records `role: "IX"`. Same role, two tokens. AGD/ISSUER/SERVICE_PROVIDER match correctly across both. | Pick one token; align both |  |
+| A-101 | S1 | Verified | RK | `auto` | B.1.2 / B.2.8 | Enrollment sends `role: "INTERCHANGE"`; role VC records `role: "IX"`. Same role, two tokens. AGD/ISSUER/SERVICE_PROVIDER match correctly across both. | Pick one token; align both | `2ab2354` |
 | A-102 | S1 | Verified |  | `auto` | B.2.9, B.2.10, B.2.11 | `id_doc.id` is the **Interchange's** DID (`f6e18f71…`), not the subject's. §3.20 and §8.5.1 require a DIDdoc to carry its own DID's key. Verification would use the wrong key | Set `id_doc.id` = `subject`, with the subject's key |  |
 | A-103 | S1 | Verified |  | `auto` | B.2.7 | `issuer` (`8c019421…`) ≠ `subject` (`71a39c8d…`) on a credential §9.1 requires to be self-signed | Make them identical |  |
 | A-104 | S1 | Verified |  | `auto` | B.2.7 | `subject` is `did:adi:71a39c8d…` but `id_doc.id` is `did:adi:71a39c8d…/region_1/` — same UUID, different path, trailing empty segment | Normalise per D-403 |  |
@@ -43,14 +43,14 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | A-116 | S2 | Verified |  | `auto` | B.2.2 | `subject: "did:adi:{subject_did}"` — placeholder syntax inconsistent with all other examples | Use a literal | `1e1476e` |
 | A-117 | S2 | Blocked(D5) |  | — | B.2.6 | Claim set (`deviceID`, `fingerPrint`, `environmentID`, `isLoginAuthorized`, `custom:userId`) appears nowhere in the data model. `iss: "https://HOME@DAS1"` is not a valid URI | Document or replace |  |
 | A-118 | S2 | Verified |  | `auto` | B.3.1 | Metadata still branded `credential-issuer.example.com` (×4) while `authorization_servers` points at `users.adi.com` | De-brand | `1e1476e` |
-| A-119 | S2 | Blocked(D5) |  | `auto` | B.3.1 | `batch_credential_endpoint` and `deferred_credential_endpoint` were removed from later OIDC4VCI drafts. No draft version cited anywhere | Pin a draft; align |  |
+| A-119 | S2 | Verified |  | `auto` | B.3.1 | `batch_credential_endpoint` and `deferred_credential_endpoint` were removed from later OIDC4VCI drafts. No draft version cited anywhere | Pin a draft; align |  |
 | A-120 | S2 | Blocked(D10) |  | — | B.3.1 | Single `credential_vault_endpoint`, but §10.2.3 and §11.1.3 both require a choice between issuer vault and **user** vault. No user-vault discovery exists | Add discovery |  |
 | A-121 | S2 | Blocked(D5) |  | — | B.2.2 | `pre_authorized_code` used as a direct member of `grants` (OIDC4VCI uses `pre-authorized_code`, hyphenated, under a URN grant key), paired with an empty `authorization_code: {}` | Align or declare divergence |  |
-| A-122 | S1 | Blocked(D5) |  | `auto` | B.2.2 | Offer carries no `tx_code`, no `expires_in`, no single-use rule, no subject pre-binding — while §10.2.3 delivers it by QR | Add binding + TTL |  |
+| A-122 | S1 | Verified |  | `auto` | B.2.2 | Offer carries no `tx_code`, no `expires_in`, no single-use rule, no subject pre-binding — while §10.2.3 delivers it by QR | Add binding + TTL |  |
 | A-123 | S1 | Verified |  | `auto` | B.2.5 | `vc_request` has no `nonce`, no `aud`, no expiry. The resulting VP is replayable at any verifier. Document-wide: `"nonce"` ×1, `"aud"` ×0, `"cnf"` ×0 | Add all three |  |
-| A-124 | S2 | Blocked(D6) |  | `auto` | B.2.4 | VCDM **1.1** context (`2018/credentials/v1`), while §5.3 and the references cite VCDM 2.0. `vc_id` is not a VCDM member (should be `id`). `proof` is empty. No `credentialStatus`, no `credentialSchema` (zero occurrences document-wide) | Rebuild per D-802 |  |
+| A-124 | S2 | Verified |  | `auto` | B.2.4 | VCDM **1.1** context (`2018/credentials/v1`), while §5.3 and the references cite VCDM 2.0. `vc_id` is not a VCDM member (should be `id`). `proof` is empty. No `credentialStatus`, no `credentialSchema` (zero occurrences document-wide) | Rebuild per D-802 |  |
 | A-125 | S2 | Blocked(D6) |  | — | B.2.4 vs §8.2 | §7.2 states examples use JWT VC formatting; B.2.4 is plain JSON-LD | Reconcile |  |
-| A-126 | S2 | Blocked(D7) |  | `auto` | all JWT examples vs B.3.1 | `RS256` ×8 in examples, `ES256` ×3 in metadata. No mandatory-to-implement set, no algorithm-confusion prohibition, no minimum key size | Declare MTI set |  |
+| A-126 | S2 | Verified |  | `auto` | all JWT examples vs B.3.1 | `RS256` ×8 in examples, `ES256` ×3 in metadata. No mandatory-to-implement set, no algorithm-confusion prohibition, no minimum key size | Declare MTI set |  |
 
 ## Workstream B — Cryptography and protocol
 
@@ -75,7 +75,7 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | B-215 | S2 | Blocked(D6) |  | — | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim |  |
 | B-216 | S2 | Verified |  | `auto` | L? "vc_authorization_request" | `vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`, a different object | Define or rename | `bd0d758` |
 | B-217 | S2 | Open |  | — | L1708 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |  |
-| B-218 | S3 | Verified |  | `auto` | L1627/1670/2309 "~issuer/issue_vc" | Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose also uses `make_credential_offer` where B.2.1 is `make_vc_offer` | Align names | `58a4bca` |
+| B-218 | S3 | Verified |  | `auto` | L1627/1670/2311 "~issuer/issue_vc" | Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose also uses `make_credential_offer` where B.2.1 is `make_vc_offer` | Align names | `58a4bca` |
 | B-219 | S3 | Verified |  | `auto` | L? "~ard/" | `POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/` | Rename | `cd19202` |
 | B-220 | S2 | Open |  | — | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |  |
 | B-221 | S1 | Superseded(B-205) |  | — | L? "adia_tier" | Presentations do not declare their signing tier, so a verifier cannot distinguish device-bound proof of possession from vault-assisted signing, and cannot enforce an AAL3 floor. | Add adia_tier; enforce the AAL2/FAL2 ceiling for vault-assisted in §12.3 step 11. |  |

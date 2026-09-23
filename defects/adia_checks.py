@@ -131,7 +131,9 @@ def _absent_explain(phrases):
 CHECKS = {
 
 # ---- Workstream A: data model and examples ----
-"A-101": lambda s: s.find("B.1.2", "role") == s.find("B.2.8", "role"),
+"A-101": lambda s: s.find("B.1.2", "role") == s.find("B.2.8", "role")
+                   and all(str(v) in ("AGD","INTERCHANGE","ISSUER","SERVICE_PROVIDER","USER")
+                           for v in re.findall(r'"role":\s*"([^"]+)"', s.text)),
 "A-102": lambda s: all(s.find(n, "subject") == s.id_doc_id(n)
                        for n in ("B.2.9", "B.2.10", "B.2.11")),
 "A-103": lambda s: s.find("B.2.7", "issuer") == s.find("B.2.7", "subject"),
@@ -148,12 +150,13 @@ CHECKS = {
 "A-118": lambda s: "credential-issuer.example.com" not in s.text,
 "A-119": lambda s: "batch_credential_endpoint" not in s.text
                    and "deferred_credential_endpoint" not in s.text,
-"A-122": lambda s: "tx_code" in s.text and "expires_in" in s.text,
+"A-122": lambda s: ('"expires"' in s.text or '"expires_in"' in s.text) and '"single_use"' in s.text
+                   and "bind the intended subject" in s.prose and '"subject": "did:adi:' in s.text,
 "A-123": lambda s: all(k in json.dumps(s.J.get("B.2.5", {})) for k in ("nonce", "aud")),
 "A-124": lambda s: "ns/credentials/v2" in s.text
                    and "2018/credentials/v1" not in s.text
                    and "credentialStatus" in s.text,
-"A-126": lambda s: not (("RS256" in s.text) and ("ES256" in s.text)),
+"A-126": lambda s: '"alg": "RS256"' not in s.text and '"alg": "ES256"' in s.text and "ES256" in s.prose,
 
 # ---- Workstream B: cryptography and protocol ----
 "B-201": lambda s: "public key encryption of the hash" not in s.text,
@@ -240,6 +243,11 @@ EXPLAIN = {
 "D-409": lambda s: [m.group(0) for m in re.finditer(r"[^.\n]{0,40}\(DAA\)", s.text)],
 "F-603": lambda s: (["no in-document links yet -- F-601 first"] if not re.search(r"\]\(#", s.text)
                     else ["link to #%s has no <a id=\"%s\"> anchor" % (r, r) for r in sorted(_dangling(s))]),
+"A-122": lambda s: [l for ok,l in [
+                     ('"expires"' in s.text or '"expires_in"' in s.text, 'offer has no expiry field'),
+                     ('"single_use"' in s.text, 'offer has no single_use marker'),
+                     ('"subject": "did:adi:' in s.text, 'offer does not bind a subject DID'),
+                     ("bind the intended subject" in s.prose, 'clause 12.4 binding requirement not found')] if not ok],
 "F-602": lambda s: (["L%d  %s" % (i+1, l.strip()[:70]) for i, l in enumerate(s.text.split("\n")) if "media/image" in l]
                     + _bad_figures(s)),
 "A-127": lambda s: [] if '"adia_subject_scope"' in s.text else ["Appendix B defines no VP object (expected a B.2.12 vp section)"],

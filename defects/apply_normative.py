@@ -132,7 +132,9 @@ def main():
     text = apply(text, NOTES, "note", done, skipped)
 
     for heading, para in RESTATE.items():
-        if para[:60] in text:
+        # apply_terms.py may have normalised ADI Network -> ADI-Network, DIDDoc -> DIDdoc since insertion
+        probe = para[:60].replace("ADI Network", "ADI-Network").replace("DIDDoc", "DIDdoc")
+        if para[:60] in text or probe in text:
             skipped.append("restate already present under %s" % heading[:24]); continue
         m = re.search(r"^%s[^\n]*\n\n(?:<a[^\n]*\n)?([^\n]+)\n" % re.escape(heading), text, re.M)
         if not m:
