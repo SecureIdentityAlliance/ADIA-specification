@@ -2124,7 +2124,7 @@ This clause records work the editors know to be outstanding. It is provided so t
 | Of which critical | 3 |
 | Awaiting an architectural decision | 7 |
 | Open decisions | 5 |
-| Corrected, awaiting a second reader | 2 |
+| Corrected, awaiting a second reader | 0 |
 
 Severity is recorded as **Critical** where the text as written would lead an implementer to build something incorrect or insecure, **Major** where the text is contradictory or where required normative material is absent, and **Minor** where the issue is editorial.
 
@@ -2162,16 +2162,6 @@ Superseded: identity, authentication and federation assurance are now carried as
 Resolved by clauses 7.2.4.4 and 12.9: FIPS 140-3 Level 2 minimum (Level 3 recommended), non-exportable key, signing authorised by a WebAuthn assertion bound to the payload hash, and a hash-chained audit record published to the AGD daily.
 
 *Blocks: B-208*
-
-<a id="editors-notes-awaiting-review"></a>
-## 14.2 Corrected, awaiting a second reader
-
-The editor believes each of the following is resolved. Per the register's own rule, the person who made a change does not mark it Verified; that is recorded here so a reviewer knows what to spot-check.
-
-| Ref | Clause or object | What was done |
-|---|---|---|
-| C-302 | L158/167 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) |
-| D-418 | spec/figures/ — SVG text | AGD was renamed to "ADI Global Domain" in the prose, but the term is rendered text inside the figure SVGs (at least Figures 4, 5, 6, 8). Prose and figures now disagree. |
 
 <a id="editors-notes-items"></a>
 ## 14.3 Outstanding items

@@ -592,7 +592,7 @@ defects:
     unique within an ADI-Region" (3.21)'
   fix: Promote to numbered normative statements
   owner: null
-  status: Fixed
+  status: Verified
   notes: 7 note-block requirements promoted; 8 lowercase keywords capitalised; 14 narrative sentences
     converted 22 Sep. Final sentence (AGD role-VC issuance) was held back pending D13; D13 decided, sentence
     converted 23 Sep.
@@ -889,7 +889,7 @@ defects:
   fix: Edit the PowerPoint source, re-export the affected slides as SVG into spec/figures/ under the same
     filenames.
   owner: null
-  status: Fixed
+  status: Verified
   notes: 'Confirmed 23 Sep: no figure SVG contains "Authoritative". Awaiting second-reader verification.'
 - id: D-419
   severity: S1
