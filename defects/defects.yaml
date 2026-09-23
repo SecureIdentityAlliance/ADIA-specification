@@ -334,7 +334,7 @@ defects:
 - id: B-202
   severity: S1
   workstream: crypto-protocol
-  location: L1527/1691/1816 "USER_AGENT -\> USER_AGENT"
+  location: L1589/1755/1880 "USER_AGENT -\> USER_AGENT"
   defect: '`USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create
     ADI Network User VC`. The subject''s own agent issues the subject''s role credential, breaking §7.6.
     The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"*
@@ -372,7 +372,7 @@ defects:
 - id: B-205
   severity: S1
   workstream: crypto-protocol
-  location: L984 "AAL1, AAL2 & AAL3"
+  location: L? "AAL1, AAL2 & AAL3"
   defect: 'AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4
     proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum.'
   fix: Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention.
@@ -444,7 +444,7 @@ defects:
 - id: B-211
   severity: S2
   workstream: crypto-protocol
-  location: L1841/1857/1859 "get_did_doc"
+  location: L1905/1921/1923 "get_did_doc"
   defect: '`get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed
     using the private key of the issuer" without saying who the issuer of a DIDdoc is'
   fix: Define
@@ -456,7 +456,7 @@ defects:
 - id: B-212
   severity: S2
   workstream: crypto-protocol
-  location: L1833 "ROLE VC / DID"
+  location: L1897 "ROLE VC / DID"
   defect: Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict
     behaviour
   fix: Set precedence
@@ -478,7 +478,7 @@ defects:
 - id: B-214
   severity: S2
   workstream: crypto-protocol
-  location: L953/1962 "mutual TLS"
+  location: L995/2026 "mutual TLS"
   defect: mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy.
     No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on
     mismatch
@@ -514,7 +514,7 @@ defects:
 - id: B-217
   severity: S2
   workstream: crypto-protocol
-  location: L1719 "Tech Note"
+  location: L1783 "Tech Note"
   defect: Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or
     session binding across the redirect — CSRF / session-fixation surface
   fix: Specify correlation
@@ -526,7 +526,7 @@ defects:
 - id: B-218
   severity: S3
   workstream: crypto-protocol
-  location: L1638/1681/2320 "~issuer/issue_vc"
+  location: L1700/1743/2393 "~issuer/issue_vc"
   defect: Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose
     also uses `make_credential_offer` where B.2.1 is `make_vc_offer`
   fix: Align names
@@ -722,7 +722,7 @@ defects:
 - id: D-403
   severity: S1
   workstream: architecture
-  location: L1152/2144/2184 "did:adi:"
+  location: L1194/2217/2257 "did:adi:"
   defect: '**13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also
     a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2,
     3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not
@@ -830,7 +830,7 @@ defects:
 - id: D-411
   severity: S2
   workstream: architecture
-  location: L863 "The assurance level of"
+  location: L879 "The assurance level of"
   defect: 'The role-VC contents list appears twice and diverges: §6.3 says assurance of "the actor holding
     this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time)'
   fix: Delete one; cross-reference
@@ -842,7 +842,7 @@ defects:
 - id: D-412
   severity: S2
   workstream: architecture
-  location: L1400 "AGD Service Provider Directory"
+  location: L1462 "AGD Service Provider Directory"
   defect: L1040 says the SP Agent lists the SP in the AGD directory; the message sequence has the Interchange
     do it. No authorization model for directory writes
   fix: Resolve
@@ -887,8 +887,8 @@ defects:
   fix: Edit the PowerPoint source, re-export the affected slides as SVG into spec/figures/ under the same
     filenames.
   owner: null
-  status: Open
-  notes: null
+  status: Fixed
+  notes: 'Confirmed 23 Sep: no figure SVG contains "Authoritative". Awaiting second-reader verification.'
 - id: D-419
   severity: S1
   workstream: architecture
@@ -965,7 +965,7 @@ defects:
 - id: E-506
   severity: S3
   workstream: editorial
-  location: L? "Appendix C"
+  location: L902 "Appendix C"
   defect: Appendix C has no `# C.` heading; A and B both do
   fix: ''
   owner: ND
@@ -976,7 +976,7 @@ defects:
 - id: E-507
   severity: S3
   workstream: editorial
-  location: L1467 "Issuers may initiate User Digital Address"
+  location: L1529 "Issuers may initiate User Digital Address"
   defect: §9.5 enrollment paths numbered **6.** and **7.** instead of 1. and 2.
   fix: ''
   owner: ND
@@ -1053,7 +1053,7 @@ defects:
 - id: E-514
   severity: S3
   workstream: editorial
-  location: L1434 "vetting of the service provider"
+  location: L1496 "vetting of the service provider"
   defect: §9.3 (Issuer flow) says "vetting of the **service provider**" ×2
   fix: ''
   owner: ND
@@ -1075,7 +1075,7 @@ defects:
 - id: E-516
   severity: S3
   workstream: editorial
-  location: L1307 "used during Issuer enrollment"
+  location: L1369 "used during Issuer enrollment"
   defect: §9.4 (Service Provider) says "used during **Issuer** enrollment" ×2
   fix: ''
   owner: ND
@@ -1130,7 +1130,7 @@ defects:
 - id: E-521
   severity: S3
   workstream: editorial
-  location: L1820 "Respond to SP Agent with VP"
+  location: L1884 "Respond to SP Agent with VP"
   defect: Message text duplicates step 8 ("Respond to SP Agent with VP")
   fix: ''
   owner: ND
@@ -1197,7 +1197,7 @@ defects:
 - id: E-527
   severity: S3
   workstream: editorial
-  location: L1080 "red line"
+  location: L1122 "red line"
   defect: Red-line reference points at Figure 4 in one place, the ADI Network figure in another
   fix: ''
   owner: ND
@@ -1208,7 +1208,7 @@ defects:
 - id: E-528
   severity: S3
   workstream: editorial
-  location: L1169 "Figure 10."
+  location: L1211 "Figure 10."
   defect: 'Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with
     the image, some on their own line'
   fix: ''

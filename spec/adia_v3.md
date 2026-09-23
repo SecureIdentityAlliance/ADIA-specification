@@ -2124,7 +2124,7 @@ This clause records work the editors know to be outstanding. It is provided so t
 | Of which critical | 4 |
 | Awaiting an architectural decision | 7 |
 | Open decisions | 5 |
-| Corrected, awaiting confirmation | 0 |
+| Corrected, awaiting confirmation | 1 |
 
 Severity is recorded as **Critical** where the text as written would lead an implementer to build something incorrect or insecure, **Major** where the text is contradictory or where required normative material is absent, and **Minor** where the issue is editorial.
 
@@ -2183,7 +2183,7 @@ Resolved by clauses 7.2.4.4 and 12.9: FIPS 140-3 Level 2 minimum (Level 3 recomm
 | B-203 | Critical | L? "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |
 | B-208 | Critical | L? "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. *(awaiting D11)* |
 | B-210 | Critical | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |
-| B-212 | Major | L1833 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
+| B-212 | Major | L1897 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
 | B-215 | Major | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim *(awaiting D6)* |
 
 <a id="editors-notes-data-model"></a>
