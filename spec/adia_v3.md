@@ -1516,25 +1516,25 @@ The user uses the INTERCHANGE “wallet” web, mobile or computer DAA *(& assoc
 
 **USER -\> DAA : Request to enroll, complete enrollment forms**
 
-**DAA -\> USER_AGENT:  https POST ~ix/create_user**
-
-**USER_AGENT -\> USER_AGENT :  Select Digital Address ID \nRequest Auth registration**
-
-**USER_AGENT -\> INTERCHANGE : Create Digital Address**
-
-**INTERCHANGE -\> USER_AGENT:  Digital Address created**
-
-**USER_AGENT -\> DAA : Request  accept T&Cs, signing of Auth registration nonce**
-
-The DAA enrolls the user with a FIDO / Strong Auth / OAuth method and records the Public Key for subsequent authentications.
-
 **DAA -\> USER:  Accept T&Cs, enroll in Strong Auth**
 
-**USER -\> DAA:  Accept T&C perform Strong Auth enrollment**
+**USER -\> DAA:  Accept T&C, perform Strong Auth enrollment**
 
-**DAA -\>   USER_AGENT:  Accepted T&Cs, sign Strong Auth response.**
+The DAA enrols the user with a WebAuthn authenticator (clause 7.2.4.3), generating the user's device key pair. The private key never leaves the authenticator.
 
-Generate a PK pair and securely store the private key in the USER_AGENT hardened key store.
+**DAA -\> USER_AGENT:  https POST ~ix/create_user (device public key, enrollment forms, HIDA)**
+
+**USER_AGENT -\> USER_AGENT :  Select Digital Address ID**
+
+**USER_AGENT -\> DAA : Request signing of Auth registration nonce**
+
+**DAA -\> USER_AGENT:  Signed Auth registration nonce**
+
+The USER_AGENT generates the user's vault signing key pair inside the Interchange hardware security module (clause 7.2.4.4). Both keys now exist and have been proven: the device key by the signed nonce, the vault key by generation in the HSM.
+
+**USER_AGENT -\> INTERCHANGE : Create Digital Address, binding the device key and the vault key**
+
+**INTERCHANGE -\> USER_AGENT:  Digital Address created**
 
 The interchange MUST vet the user identity before issuing an ADI-Network User VC to the user.
 

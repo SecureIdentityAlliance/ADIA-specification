@@ -351,6 +351,8 @@ def _dupes(s):
     return ["%s x%d" % (k, len(re.findall(p, txt))) for k, p in ideas.items() if len(re.findall(p, txt)) > 1]
 
 CHECKS.update({
+"B-203": lambda s: (lambda sec: sec.find("vault signing key pair") != -1 and sec.find("Create Digital Address") != -1
+                    and sec.find("vault signing key pair") < sec.find("Create Digital Address"))(_section(s, "8.5")),
 "D-405": lambda s: "HMAC-SHA-256" in s.prose and "NFKC" in s.prose and "HIDA usage is REQUIRED" in s.prose,
 "F-606": lambda s: (os.path.exists(os.path.join(os.path.dirname(os.path.abspath(s.path)), "..", "defects", "baseline.json"))
                     and "adia_checks.py" in open(os.path.join(os.path.dirname(os.path.abspath(s.path)), "..", "defects", "pre-commit")).read()),
@@ -368,6 +370,8 @@ CHECKS.update({
 "E-530": lambda s: not _dupes(s),
 })
 EXPLAIN.update({
+"B-203": lambda s: (lambda sec: [] if (sec.find("vault signing key pair") != -1 and sec.find("vault signing key pair") < sec.find("Create Digital Address"))
+                    else ["in clause 8.5, key generation does not precede Digital Address creation"])(_section(s, "8.5")),
 "D-405": lambda s: [m for ok, m in [("HMAC-SHA-256" in s.prose, "no keyed construction stated"),
                                      ("NFKC" in s.prose, "no canonicalisation rule stated"),
                                      ("HIDA usage is REQUIRED" in s.prose, "HIDA not stated as required")] if not ok],
