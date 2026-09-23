@@ -593,7 +593,9 @@ defects:
   fix: Promote to numbered normative statements
   owner: null
   status: Open
-  notes: null
+  notes: 7 note-block requirements promoted; 8 lowercase keywords capitalised; 14 narrative sentences
+    converted 22 Sep. Final sentence (AGD role-VC issuance) was held back pending D13; D13 decided, sentence
+    converted 23 Sep.
   anchor: NOTE 1 to entry
 - id: C-303
   severity: S1

@@ -1296,7 +1296,7 @@ The AGD posts a signed request to enroll to the AGD. The request includes the pr
 
 **AGD -\> AGD: POST ~agd/create_agd \n (self-signed by the AGD private key)**
 
-The AGD will create, sign, store and return an ADI-AGD role VC.
+The AGD MUST create, sign, store and return an ADI-AGD role VC.
 
 **AGD -\> AGD:  Create and sign the ADI-AGD VC**
 
