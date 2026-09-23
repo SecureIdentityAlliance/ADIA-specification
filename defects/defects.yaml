@@ -753,10 +753,10 @@ defects:
     at different Interchanges and cross-region uniqueness silently fails'
   fix: Decide; specify construction
   owner: null
-  status: Open
+  status: auto
   notes: null
-  blocked_by: D9
   anchor: HIDA usage is optional
+  check: auto
 - id: D-406
   severity: S2
   workstream: architecture

@@ -351,6 +351,7 @@ def _dupes(s):
     return ["%s x%d" % (k, len(re.findall(p, txt))) for k, p in ideas.items() if len(re.findall(p, txt)) > 1]
 
 CHECKS.update({
+"D-405": lambda s: "HMAC-SHA-256" in s.prose and "NFKC" in s.prose and "HIDA usage is REQUIRED" in s.prose,
 "F-606": lambda s: (os.path.exists(os.path.join(os.path.dirname(os.path.abspath(s.path)), "..", "defects", "baseline.json"))
                     and "adia_checks.py" in open(os.path.join(os.path.dirname(os.path.abspath(s.path)), "..", "defects", "pre-commit")).read()),
 "D-404": lambda s: all(re.fullmatch(r"[a-z0-9._-]{1,64}@(agd|ix_\d+|ix\d+)", d)
@@ -367,6 +368,9 @@ CHECKS.update({
 "E-530": lambda s: not _dupes(s),
 })
 EXPLAIN.update({
+"D-405": lambda s: [m for ok, m in [("HMAC-SHA-256" in s.prose, "no keyed construction stated"),
+                                     ("NFKC" in s.prose, "no canonicalisation rule stated"),
+                                     ("HIDA usage is REQUIRED" in s.prose, "HIDA not stated as required")] if not ok],
 "F-606": lambda s: [m for ok, m in [
     (os.path.exists(os.path.join(os.path.dirname(os.path.abspath(s.path)), "..", "defects", "baseline.json")), "no baseline.json -- run: make ci"),
     ("adia_checks.py" in open(os.path.join(os.path.dirname(os.path.abspath(s.path)), "..", "defects", "pre-commit")).read(), "pre-commit hook lacks the regression gate -- run: make setup")] if not ok],

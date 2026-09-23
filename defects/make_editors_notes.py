@@ -43,7 +43,7 @@ DECISIONS = {
  "D8":  ("Assurance levels",
          "Superseded: identity, authentication and federation assurance are now carried as three separate values, and the maximum assertable levels are stated in clause 7.2.4."),
  "D9":  ("HIDA construction",
-         "The hash algorithm, keying and canonicalisation of the Hash of Subject ID Attributes are unspecified. Without canonicalisation the same person yields different values at different enrolments; without keying the value is recoverable by exhaustive search over a small attribute space."),
+         "Decided 23 September 2026: HMAC-SHA-256 under a key held by the enrolling Interchange, over canonicalised attributes (NFKC, case folding, whitespace and punctuation removed, ASCII transliteration). Specified in clause 7.4.2.1 to 7.4.2.3."),
  "D10": ("Credential vault discovery",
          "A credential may be held in the issuer's vault or the user's, but the metadata carries a single endpoint and no mechanism is defined for discovering a user vault."),
  "D11": ("Control of the signing key",
