@@ -870,7 +870,6 @@ Actors on an ADI-Network have an ADI-ROLE VC that defines:
 
 - Metadata for the actor & directory listing
 
-
 - Digital Address
 
 <a id="users"></a>
@@ -2038,7 +2037,7 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 30 |
+| Items outstanding | 29 |
 | Of which critical | 6 |
 | Awaiting an architectural decision | 12 |
 | Open decisions | 7 |
@@ -2113,17 +2112,17 @@ Partially resolved by clause 7.2.4. The remaining question is the certification 
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
-| B-203 | Critical | L1526 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |
-| B-205 | Critical | L1008 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. *(awaiting D8)* |
+| B-203 | Critical | L1515 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |
+| B-205 | Critical | L985 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. *(awaiting D8)* |
 | B-206 | Critical | L? "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. *(awaiting D11)* |
 | B-208 | Critical | L? "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. *(awaiting D11)* |
 | B-210 | Critical | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |
 | B-204 | Major | L564 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |
-| B-211 | Major | L1834/1850/1852 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |
-| B-212 | Major | L1826 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
-| B-214 | Major | L977/1955 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
+| B-211 | Major | L1823/1839/1841 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |
+| B-212 | Major | L1815 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
+| B-214 | Major | L954/1944 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
 | B-215 | Major | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim *(awaiting D6)* |
-| B-217 | Major | L1708 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |
+| B-217 | Major | L1697 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |
 | B-220 | Major | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |
 
 <a id="editors-notes-data-model"></a>
@@ -2146,15 +2145,8 @@ Partially resolved by clause 7.2.4. The remaining question is the certification 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
 | D-405 | Major | L? "HIDA usage is optional" | HIDA is simultaneously mandatory ("Entities … are unique when they do not have matching HIDAs"; "The User HIDA **is** verified for uniqueness") and optional ("HIDA usage is optional"). Separately: no hash algorithm named, no salt/pepper/KDF/keyed-MAC, and **no canonicalization rule** — without normalization of case, diacritics, name order and date format the same person yields different HIDAs at different Interchanges and cross-region uniqueness silently fails | Decide; specify construction *(awaiting D9)* |
-| D-406 | Major | L332/1126/1146 "pairwise" | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol *(awaiting D6)* |
+| D-406 | Major | L? "pairwise" | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol *(awaiting D6)* |
 | D-418 | Major | spec/figures/ — SVG text | AGD was renamed to "ADI Global Domain" in the prose, but the term is rendered text inside the figure SVGs (at least Figures 4, 5, 6, 8). Prose and figures now disagree. | Edit the PowerPoint source, re-export the affected slides as SVG into spec/figures/ under the same filenames. |
-
-<a id="editors-notes-references-tooling"></a>
-### 14.2.5 References, figures and tooling
-
-| Ref | Severity | Clause or object | Issue | Work needed |
-|---|---|---|---|---|
-| F-606 | Major | CI — no location | No automated gate. Every check run for this review is scriptable | JSON parse · fence-aware gremlin check · markdownlint · link checker |
 
 <a id="editors-notes-absent"></a>
 ## 14.3 Normative material not yet drafted

@@ -351,6 +351,8 @@ def _dupes(s):
     return ["%s x%d" % (k, len(re.findall(p, txt))) for k, p in ideas.items() if len(re.findall(p, txt)) > 1]
 
 CHECKS.update({
+"F-606": lambda s: (os.path.exists(os.path.join(os.path.dirname(os.path.abspath(s.path)), "..", "defects", "baseline.json"))
+                    and "adia_checks.py" in open(os.path.join(os.path.dirname(os.path.abspath(s.path)), "..", "defects", "pre-commit")).read()),
 "D-404": lambda s: all(re.fullmatch(r"[a-z0-9._-]{1,64}@(agd|ix_\d+|ix\d+)", d)
                        for d in re.findall(r'"digital_address":\s*"([^"]+)"', s.text)),
 "D-408": lambda s: "Credential Provider" not in "\n".join(_prose_lines(s)) and "Authoritative Domain Controller" not in s.prose,
@@ -365,6 +367,9 @@ CHECKS.update({
 "E-530": lambda s: not _dupes(s),
 })
 EXPLAIN.update({
+"F-606": lambda s: [m for ok, m in [
+    (os.path.exists(os.path.join(os.path.dirname(os.path.abspath(s.path)), "..", "defects", "baseline.json")), "no baseline.json -- run: make ci"),
+    ("adia_checks.py" in open(os.path.join(os.path.dirname(os.path.abspath(s.path)), "..", "defects", "pre-commit")).read(), "pre-commit hook lacks the regression gate -- run: make setup")] if not ok],
 "D-404": lambda s: [d for d in re.findall(r'"digital_address":\s*"([^"]+)"', s.text) if not re.fullmatch(r"[a-z0-9._-]{1,64}@(agd|ix_\d+|ix\d+)", d)],
 "D-408": lambda s: ["L%d %s" % (i+1, l.strip()[:80]) for i, l in enumerate(s.text.split("\n")) if "Credential Provider" in l and not l.startswith("|")],
 "D-411": lambda s: ["L%d %s" % (i+1, l.strip()[:80]) for i, l in enumerate(s.text.split("\n")) if l.startswith("- The assurance level of")],

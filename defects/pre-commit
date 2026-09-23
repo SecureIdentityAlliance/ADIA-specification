@@ -1,10 +1,34 @@
 #!/bin/sh
-# Installed by `make setup`. Stops a broken tracker file being saved,
-# and keeps register.md in step with defects.yaml automatically.
+# Installed by `make setup`. Runs on every save.
+#
+#   1. The tracker file must be well-formed, or nothing is saved.
+#   2. No check that passed on the recorded baseline may now fail.
+#      A regression blocks the save and names the check; fix it, or
+#      if the regression is intended, `make ci` to accept the new baseline
+#      and save again.
+#   3. The register and the Editor's Notes are regenerated and included.
+
 python3 defects/validate.py || {
   echo ""
   echo "  Nothing was saved. Fix the problem above and try again."
   exit 1
 }
-python3 defects/render.py > /dev/null && git add defects/register.md
+
+if [ -f defects/baseline.json ]; then
+  python3 defects/adia_checks.py spec/adia_v3.md --ci >/tmp/adia_ci.$$ 2>&1
+  if grep -q "REGRESSION" /tmp/adia_ci.$$; then
+    echo ""
+    grep -A20 "REGRESSION" /tmp/adia_ci.$$
+    echo ""
+    echo "  Nothing was saved. A check that used to pass now fails."
+    echo "  Fix it, or run 'make ci' to accept the change as the new baseline, then save again."
+    rm -f /tmp/adia_ci.$$
+    exit 1
+  fi
+  rm -f /tmp/adia_ci.$$
+  git add defects/baseline.json 2>/dev/null
+fi
+
+python3 defects/make_editors_notes.py >/dev/null && git add spec/adia_v3.md
+python3 defects/render.py >/dev/null && git add defects/register.md
 exit 0
