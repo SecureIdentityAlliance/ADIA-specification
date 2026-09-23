@@ -110,22 +110,23 @@ def build():
     d = yaml.safe_load(open(YAML, encoding="utf-8"))
     res = live_status()
 
-    rows = []
+    rows, fixed_rows = [], []
     for e in d["defects"]:
         st = resolve(e, res)
         if st in ("Verified", "Rejected") or st.startswith("Superseded"):
             continue
-        rows.append({
+        row = {
             "id": e["id"], "sev": e["severity"], "status": st,
             "ws": e["workstream"], "loc": clean(e.get("location")),
             "what": clean(e.get("defect")), "need": clean(e.get("fix")),
             "blocked": e["blocked_by"] if (st.startswith("Blocked") and e.get("blocked_by")) else None,
-        })
+        }
+        (fixed_rows if st == "Fixed" else rows).append(row)
 
     n_total = len(rows)
+    n_awaiting_review = len(fixed_rows)
     n_crit = sum(1 for r in rows if r["sev"] == "S1")
     n_blocked = sum(1 for r in rows if r["blocked"])
-    n_fixed = sum(1 for r in rows if r["status"] == "Fixed")
     decisions_used = sorted({r["blocked"] for r in rows if r["blocked"]},
                             key=lambda x: int(x[1:]))
 
@@ -148,7 +149,7 @@ def build():
     L.append("| Of which critical | %d |" % n_crit)
     L.append("| Awaiting an architectural decision | %d |" % n_blocked)
     L.append("| Open decisions | %d |" % len(decisions_used))
-    L.append("| Corrected, awaiting confirmation | %d |" % n_fixed)
+    L.append("| Corrected, awaiting a second reader | %d |" % n_awaiting_review)
     L.append("")
     L.append("Severity is recorded as **Critical** where the text as written would lead an "
              "implementer to build something incorrect or insecure, **Major** where the text is "
@@ -161,7 +162,7 @@ def build():
     L.append("## %d.1 Architectural decisions required" % N)
     L.append("")
     L.append("The following questions are unresolved. Each blocks one or more of the items in clause "
-             "%d.2, and they are listed first because the drafting that follows depends on them." % N)
+             "%d.3, and they are listed first because the drafting that follows depends on them." % N)
     L.append("")
     for k in decisions_used:
         title, body = DECISIONS.get(k, ("Decision %s" % k, "Description not recorded."))
@@ -173,9 +174,22 @@ def build():
         L.append("*Blocks: %s*" % ", ".join(dep))
         L.append("")
 
+    if fixed_rows:
+        L.append('<a id="editors-notes-awaiting-review"></a>')
+        L.append("## %d.2 Corrected, awaiting a second reader" % N)
+        L.append("")
+        L.append("The editor believes each of the following is resolved. Per the register's own rule, the person who "
+                 "made a change does not mark it Verified; that is recorded here so a reviewer knows what to spot-check.")
+        L.append("")
+        L.append("| Ref | Clause or object | What was done |")
+        L.append("|---|---|---|")
+        for r in sorted(fixed_rows, key=lambda r: r["id"]):
+            L.append("| %s | %s | %s |" % (r["id"], r["loc"] or "—", r["what"] or "—"))
+        L.append("")
+
     # ---- 12.2 items by grouping ----
     L.append('<a id="editors-notes-items"></a>')
-    L.append("## %d.2 Outstanding items" % N)
+    L.append("## %d.3 Outstanding items" % N)
     L.append("")
     sub = 0
     for ws, heading in GROUPS:
@@ -186,7 +200,7 @@ def build():
         order = {"S1": 0, "S2": 1, "S3": 2}
         group.sort(key=lambda r: (order.get(r["sev"], 3), r["id"]))
         L.append('<a id="editors-notes-%s"></a>' % ws)
-        L.append("### %d.2.%d %s" % (N, sub, heading))
+        L.append("### %d.3.%d %s" % (N, sub, heading))
         L.append("")
         L.append("| Ref | Severity | Clause or object | Issue | Work needed |")
         L.append("|---|---|---|---|---|")
@@ -204,7 +218,7 @@ def build():
               ("C-303", "C-304", "C-305", "C-306", "C-307", "C-308", "B-209", "B-210", "A-127")]
     if absent:
         L.append('<a id="editors-notes-absent"></a>')
-        L.append("## %d.3 Normative material not yet drafted" % N)
+        L.append("## %d.4 Normative material not yet drafted" % N)
         L.append("")
         L.append("The items below are not corrections to existing text but clauses that do not yet "
                  "exist. They are listed separately because they represent the larger part of the "

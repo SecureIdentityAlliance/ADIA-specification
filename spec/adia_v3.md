@@ -2120,18 +2120,18 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 16 |
+| Items outstanding | 15 |
 | Of which critical | 4 |
 | Awaiting an architectural decision | 7 |
 | Open decisions | 5 |
-| Corrected, awaiting confirmation | 1 |
+| Corrected, awaiting a second reader | 1 |
 
 Severity is recorded as **Critical** where the text as written would lead an implementer to build something incorrect or insecure, **Major** where the text is contradictory or where required normative material is absent, and **Minor** where the issue is editorial.
 
 <a id="editors-notes-decisions"></a>
 ## 14.1 Architectural decisions required
 
-The following questions are unresolved. Each blocks one or more of the items in clause 14.2, and they are listed first because the drafting that follows depends on them.
+The following questions are unresolved. Each blocks one or more of the items in clause 14.3, and they are listed first because the drafting that follows depends on them.
 
 **D5 — Relationship to OpenID for Verifiable Credential Issuance**
 
@@ -2163,11 +2163,20 @@ Resolved by clauses 7.2.4.4 and 12.9: FIPS 140-3 Level 2 minimum (Level 3 recomm
 
 *Blocks: B-208*
 
+<a id="editors-notes-awaiting-review"></a>
+## 14.2 Corrected, awaiting a second reader
+
+The editor believes each of the following is resolved. Per the register's own rule, the person who made a change does not mark it Verified; that is recorded here so a reviewer knows what to spot-check.
+
+| Ref | Clause or object | What was done |
+|---|---|---|
+| D-418 | spec/figures/ — SVG text | AGD was renamed to "ADI Global Domain" in the prose, but the term is rendered text inside the figure SVGs (at least Figures 4, 5, 6, 8). Prose and figures now disagree. |
+
 <a id="editors-notes-items"></a>
-## 14.2 Outstanding items
+## 14.3 Outstanding items
 
 <a id="editors-notes-normative"></a>
-### 14.2.1 Normative structure and conformance
+### 14.3.1 Normative structure and conformance
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
@@ -2176,7 +2185,7 @@ Resolved by clauses 7.2.4.4 and 12.9: FIPS 140-3 Level 2 minimum (Level 3 recomm
 | C-311 | Minor | L74 "Copyright" | Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group | Resolve process and boilerplate |
 
 <a id="editors-notes-crypto-protocol"></a>
-### 14.2.2 Cryptography and protocol
+### 14.3.2 Cryptography and protocol
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
@@ -2187,7 +2196,7 @@ Resolved by clauses 7.2.4.4 and 12.9: FIPS 140-3 Level 2 minimum (Level 3 recomm
 | B-215 | Major | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim *(awaiting D6)* |
 
 <a id="editors-notes-data-model"></a>
-### 14.2.3 Data model and schemas
+### 14.3.3 Data model and schemas
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
@@ -2199,15 +2208,14 @@ Resolved by clauses 7.2.4.4 and 12.9: FIPS 140-3 Level 2 minimum (Level 3 recomm
 | A-125 | Major | B.2.4 vs §8.2 | §7.2 states examples use JWT VC formatting; B.2.4 is plain JSON-LD | Reconcile *(awaiting D6)* |
 
 <a id="editors-notes-architecture"></a>
-### 14.2.4 Architecture and terminology
+### 14.3.4 Architecture and terminology
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
 | D-406 | Major | L? "pairwise" | §3.19 says entities *may* have pairwise DIDs; §8.5.3 says all DAs *have* them. Neither matters: **no flow or example uses one**. Every VC carries the primary DID, so every verifier gets the same global correlator | Reconcile with the protocol *(awaiting D6)* |
-| D-418 | Major | spec/figures/ — SVG text | AGD was renamed to "ADI Global Domain" in the prose, but the term is rendered text inside the figure SVGs (at least Figures 4, 5, 6, 8). Prose and figures now disagree. | Edit the PowerPoint source, re-export the affected slides as SVG into spec/figures/ under the same filenames. |
 
 <a id="editors-notes-absent"></a>
-## 14.3 Normative material not yet drafted
+## 14.4 Normative material not yet drafted
 
 The items below are not corrections to existing text but clauses that do not yet exist. They are listed separately because they represent the larger part of the drafting effort remaining.
 
