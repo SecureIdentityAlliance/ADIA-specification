@@ -203,10 +203,10 @@ defects:
     appears nowhere in the data model. `iss: "https://HOME@DAS1"` is not a valid URI'
   fix: Document or replace
   owner: null
-  status: Open
+  status: auto
   notes: null
-  blocked_by: D5
   anchor: B.2.6
+  check: auto
 - id: A-118
   severity: S2
   workstream: data-model
@@ -240,10 +240,10 @@ defects:
     vault and **user** vault. No user-vault discovery exists
   fix: Add discovery
   owner: null
-  status: Open
+  status: auto
   notes: null
-  blocked_by: D10
   anchor: B.3.1
+  check: auto
 - id: A-121
   severity: S2
   workstream: data-model
@@ -317,7 +317,6 @@ defects:
   status: auto
   notes: null
   check: auto
-  blocked_by: D7
   anchor: all JWT examples vs B.3.1
 - id: B-201
   severity: S1
@@ -366,9 +365,10 @@ defects:
     the correct order'
   fix: Reorder §5.4
   owner: null
-  status: Open
+  status: auto
   notes: null
   anchor: Proofing of Claims
+  check: auto
 - id: B-205
   severity: S1
   workstream: crypto-protocol
@@ -377,10 +377,10 @@ defects:
     proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum.'
   fix: Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention.
   owner: null
-  status: Open
+  status: auto
   notes: null
-  blocked_by: D8
   anchor: AAL1, AAL2 & AAL3
+  check: auto
 - id: B-206
   severity: S1
   workstream: crypto-protocol
@@ -390,10 +390,10 @@ defects:
   fix: Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control
     obligation.
   owner: null
-  status: Open
+  status: auto
   notes: null
-  blocked_by: D11
   anchor: Device Application Agent
+  check: auto
 - id: B-207
   severity: S2
   workstream: crypto-protocol
@@ -484,9 +484,10 @@ defects:
     mismatch
   fix: Specify binding
   owner: null
-  status: Open
+  status: auto
   notes: null
   anchor: mutual TLS
+  check: auto
 - id: B-215
   severity: S2
   workstream: crypto-protocol
@@ -555,8 +556,9 @@ defects:
     12 hours and after 30 minutes inactivity, at least one factor.
   fix: Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md.
   owner: null
-  status: Open
+  status: auto
   notes: null
+  check: auto
 - id: B-221
   severity: S1
   workstream: crypto-protocol
@@ -631,8 +633,9 @@ defects:
     pattern once, inside a role VC, applied nowhere else'
   fix: Add
   owner: null
-  status: Open
+  status: auto
   notes: null
+  check: auto
 - id: C-307
   severity: S2
   workstream: normative
@@ -640,8 +643,9 @@ defects:
   defect: 'No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3'
   fix: Add
   owner: null
-  status: Open
+  status: auto
   notes: null
+  check: auto
 - id: C-308
   severity: S2
   workstream: normative
@@ -659,8 +663,9 @@ defects:
     prose walkthroughs. This is the flow that establishes the AGD→IX trust link'
   fix: Write it
   owner: null
-  status: Open
+  status: auto
   notes: null
+  check: auto
 - id: C-310
   severity: S2
   workstream: normative

@@ -6,22 +6,22 @@
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-23 |
-| Defects | 111 (83 with an automated check) |
-| Verified | 83 |
+| Defects | 111 (93 with an automated check) |
+| Verified | 93 |
 | Fixed, awaiting verification | 0 |
-| Blocked on a decision | 11 |
-| Open | 15 |
+| Blocked on a decision | 7 |
+| Open | 9 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
 
-Nobody moves their own work to `Verified`. For the 83 automated defects the harness does it; for the other 28 a second person does.
+Nobody moves their own work to `Verified`. For the 93 automated defects the harness does it; for the other 18 a second person does.
 
 ---
 
 ## Workstream A — Data model and examples
 
-26 defects · 18 verified · 18 with an automated check
+26 defects · 20 verified · 20 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -41,10 +41,10 @@ Nobody moves their own work to `Verified`. For the 83 automated defects the harn
 | A-114 | S3 | Verified |  | `auto` | B.1.3 / B.1.4 | Identical `request_id` `bb20b6aa-…` in two different requests | Distinct values | `1e1476e` |
 | A-115 | S2 | Open |  | — | B.1.5 | Placeholder values were substituted during JSON repair and are invented, not authored | Review and replace |  |
 | A-116 | S2 | Verified |  | `auto` | B.2.2 | `subject: "did:adi:{subject_did}"` — placeholder syntax inconsistent with all other examples | Use a literal | `1e1476e` |
-| A-117 | S2 | Blocked(D5) |  | — | B.2.6 | Claim set (`deviceID`, `fingerPrint`, `environmentID`, `isLoginAuthorized`, `custom:userId`) appears nowhere in the data model. `iss: "https://HOME@DAS1"` is not a valid URI | Document or replace |  |
+| A-117 | S2 | Verified |  | `auto` | B.2.6 | Claim set (`deviceID`, `fingerPrint`, `environmentID`, `isLoginAuthorized`, `custom:userId`) appears nowhere in the data model. `iss: "https://HOME@DAS1"` is not a valid URI | Document or replace |  |
 | A-118 | S2 | Verified |  | `auto` | B.3.1 | Metadata still branded `credential-issuer.example.com` (×4) while `authorization_servers` points at `users.adi.com` | De-brand | `1e1476e` |
 | A-119 | S2 | Verified |  | `auto` | B.3.1 | `batch_credential_endpoint` and `deferred_credential_endpoint` were removed from later OIDC4VCI drafts. No draft version cited anywhere | Pin a draft; align |  |
-| A-120 | S2 | Blocked(D10) |  | — | B.3.1 | Single `credential_vault_endpoint`, but §10.2.3 and §11.1.3 both require a choice between issuer vault and **user** vault. No user-vault discovery exists | Add discovery |  |
+| A-120 | S2 | Verified |  | `auto` | B.3.1 | Single `credential_vault_endpoint`, but §10.2.3 and §11.1.3 both require a choice between issuer vault and **user** vault. No user-vault discovery exists | Add discovery |  |
 | A-121 | S2 | Blocked(D5) |  | — | B.2.2 | `pre_authorized_code` used as a direct member of `grants` (OIDC4VCI uses `pre-authorized_code`, hyphenated, under a URN grant key), paired with an empty `authorization_code: {}` | Align or declare divergence |  |
 | A-122 | S1 | Verified |  | `auto` | B.2.2 | Offer carries no `tx_code`, no `expires_in`, no single-use rule, no subject pre-binding — while §10.2.3 delivers it by QR | Add binding + TTL |  |
 | A-123 | S1 | Verified |  | `auto` | B.2.5 | `vc_request` has no `nonce`, no `aud`, no expiry. The resulting VP is replayable at any verifier. Document-wide: `"nonce"` ×1, `"aud"` ×0, `"cnf"` ×0 | Add all three |  |
@@ -54,35 +54,35 @@ Nobody moves their own work to `Verified`. For the 83 automated defects the harn
 
 ## Workstream B — Cryptography and protocol
 
-21 defects · 10 verified · 10 with an automated check
+21 defects · 15 verified · 15 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | B-201 | S1 | Verified |  | `auto` | L? "public key encryption of the hash" | *"the public key encryption of the hash matches the signature"* — describes textbook RSA backwards and is inapplicable to ECDSA, which the same document specifies. The JWS signing input is not "combining metadata and claims sections", and the digest comes from `alg` | Replace with a normative reference to RFC 7515 §5.2 | `b41e48f` |
 | B-202 | S1 | Verified |  | `auto` | L1527/1691/1816 "USER_AGENT -\> USER_AGENT" | `USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create ADI Network User VC`. The subject's own agent issues the subject's role credential, breaking §7.6. The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"* — so prose and flow directly contradict | Change actor to the Interchange DAS | `2996d31` |
 | B-203 | S1 | Open |  | — | L? "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder | `2f3abae` |
-| B-204 | S2 | Open |  | — | L564 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |  |
-| B-205 | S1 | Blocked(D8) |  | — | L984 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. |  |
-| B-206 | S1 | Blocked(D11) |  | — | L? "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. |  |
+| B-204 | S2 | Verified |  | `auto` | L564 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |  |
+| B-205 | S1 | Verified |  | `auto` | L984 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. |  |
+| B-206 | S1 | Verified |  | `auto` | L? "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. |  |
 | B-207 | S2 | Verified |  | `auto` | L? "Biometric approval" | `Request Biometric approval` / `Biometric approval given` as protocol messages. In WebAuthn this is local user verification (`UV=1`) inside an assertion, not a round trip | Resolved by §9.3.5.5: UV=1 inside a WebAuthn assertion, no separate message. | `2996d31` |
 | B-208 | S1 | Blocked(D11) |  | — | L? "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. |  |
 | B-209 | S1 | Verified |  | `auto` | document-wide | **No revocation or status.** Zero occurrences of `credentialStatus` or "revocation". No role-VC revocation, no root-key rotation, no key-compromise procedure. §7.6 explains how trust extends and never how a link breaks | Add | `bd0d758` |
 | B-210 | S1 | Open |  | — | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |  |
-| B-211 | S2 | Verified |  | `auto` | L1841/1857/1859 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |  |
+| B-211 | S2 | Verified |  | `auto` | L1841/1857/1859 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define | `cc85a39` |
 | B-212 | S2 | Open |  | — | L1833 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |  |
 | B-213 | S2 | Verified |  | `auto` | document-wide | No key rotation or historical-key story. `agd_key_id`/`ard_key_id` exist in payloads but no `kid` in any header. Verifying an old VC after issuer rotation is impossible | Add lifecycle | `bd0d758` |
-| B-214 | S2 | Open |  | — | L953/1962 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |  |
+| B-214 | S2 | Verified |  | `auto` | L953/1962 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |  |
 | B-215 | S2 | Blocked(D6) |  | — | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim |  |
 | B-216 | S2 | Verified |  | `auto` | L? "vc_authorization_request" | `vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`, a different object | Define or rename | `bd0d758` |
 | B-217 | S2 | Verified |  | `auto` | L1719 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation | `37a34df` |
 | B-218 | S3 | Verified |  | `auto` | L1638/1681/2320 "~issuer/issue_vc" | Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose also uses `make_credential_offer` where B.2.1 is `make_vc_offer` | Align names | `58a4bca` |
 | B-219 | S3 | Verified |  | `auto` | L? "~ard/" | `POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/` | Rename | `cd19202` |
-| B-220 | S2 | Open |  | — | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |  |
+| B-220 | S2 | Verified |  | `auto` | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |  |
 | B-221 | S1 | Superseded(B-205) |  | — | L? "adia_tier" | Presentations do not declare their signing tier, so a verifier cannot distinguish device-bound proof of possession from vault-assisted signing, and cannot enforce an AAL3 floor. | Add adia_tier; enforce the AAL2/FAL2 ceiling for vault-assisted in §12.3 step 11. |  |
 
 ## Workstream C — Normative structure and conformance
 
-11 defects · 5 verified · 5 with an automated check
+11 defects · 8 verified · 8 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
@@ -91,10 +91,10 @@ Nobody moves their own work to `Verified`. For the 83 automated defects the harn
 | C-303 | S1 | Verified | ND | `auto` | — | **No Conformance clause.** Mandatory once RFC 2119 is invoked | Add | `9b71b7e` |
 | C-304 | S1 | Verified | ND | `auto` | — | **No Security Considerations** section | Add | `e44bc76` |
 | C-305 | S1 | Verified |  | `auto` | — | **No Privacy Considerations** section | Add | `59eeea0` |
-| C-306 | S2 | Open |  | — | — | No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else | Add |  |
-| C-307 | S2 | Open |  | — | — | No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3 | Add |  |
+| C-306 | S2 | Verified |  | `auto` | — | No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else | Add |  |
+| C-307 | S2 | Verified |  | `auto` | — | No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3 | Add |  |
 | C-308 | S2 | Open |  | — | — | No registries for role-VC type strings, schema names, or the `did:adi` method | Add |  |
-| C-309 | S2 | Open |  | — | §9.2 | **No flow description at all** — a figure and four bullets. §9.1, §9.3, §9.4, §9.5 all have prose walkthroughs. This is the flow that establishes the AGD→IX trust link | Write it |  |
+| C-309 | S2 | Verified |  | `auto` | §9.2 | **No flow description at all** — a figure and four bullets. §9.1, §9.3, §9.4, §9.5 all have prose walkthroughs. This is the flow that establishes the AGD→IX trust link | Write it |  |
 | C-310 | S2 | Verified |  | `auto` | L? "To be completed" | Titled "Informative References"; contains "To be completed — which references are normative is for further study"; lists nine standards that are plainly normative. `[W3C DM]` and `[W3C JS]` are cited in §3.25/§3.26 with no entries. RFC 2119/8174 link to Google Doc bookmarks | Split normative/informative; complete | `2a5b828` |
 | C-311 | S3 | Open |  | — | L74 "Copyright" | Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group | Resolve process and boilerplate |  |
 

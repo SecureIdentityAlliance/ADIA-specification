@@ -565,7 +565,7 @@ The basic steps in the process are:
 
 1.  A Subject (most often an individual) presents evidence for a set of Claims to a Credential Issuer (i.e., a person or organization that is authorized to examine and validate the Claim evidence). The Claims required, which vary by Credential type, are identified in a Credential Schema. See [W3C - Verifiable Credentials JSON Schema Specification](https://www.w3.org/TR/vc-json-schema)for schema specification.
 
-2.  The Credential Issuer’s software assembles the Claims into a Credential and validates completeness against the Credential Schema. The package of Claims and Metadata is then signed using the Credential Issuer’s private key and becomes a VC.
+2.  The Credential Issuer’s software assembles the Claims into a Credential and validates completeness against the Credential Schema. The Credential is not yet signed; signing occurs only after the Holder has approved issuance (step 3 below).
 
 **Issuing a Verifiable Credential**
 
@@ -573,7 +573,7 @@ The basic steps in the process are:
 
 2.  The Holder and Subject are most often the same entity, but this is not mandatory.
 
-3.  Upon receiving approval from the Holder, the Credential Issuer submits the VC to the Interchange where it is stored either in the interchange platform’s vault or, alternately, in the Holder’s Wallet. The Wallet may belong entirely to the Holder, be hosted by the platform, or be a hybrid of both.
+3.  Upon receiving approval from the Holder, the Credential Issuer signs the package of Claims and Metadata with its private key — at which point it becomes a VC — and submits the VC to the Interchange where it is stored either in the interchange platform’s vault or, alternately, in the Holder’s Wallet. The Wallet may belong entirely to the Holder, be hosted by the platform, or be a hybrid of both.
 
 4.  Once stored in the Vault or Wallet, the VC is considered to be issued and is available for use in accordance with applicable rules or policies.
 
@@ -701,6 +701,22 @@ A participant rotates a signing key by having its DIDdoc republished with the ne
 A verifier presented with a signature whose `kid` identifies a retired key MUST verify it only if the signature was made before the key's `revoked` timestamp, as established by the signed object's own `iat` or equivalent. A verifier MUST reject a signature made with a retired key after its `revoked` timestamp.
 
 Rotation of the ADI Global Domain root key follows clause 12.2. Rotation of an Interchange's key MUST be notified to the ADI Global Domain, which MUST update the network directory before the retired key's `revoked` timestamp takes effect.
+
+
+<a id="signature-algorithms"></a>
+### 6.1.3 Signature algorithms
+
+The following JSON Web Signature algorithms [RFC7518] are permitted. Implementations MUST follow the JSON Web Token Best Current Practices [RFC8725].
+
+| Algorithm | Status | Key |
+|---|---|---|
+| `ES256` | REQUIRED — every conforming implementation MUST be able to produce and verify it | EC P-256 |
+| `EdDSA` (Ed25519) | RECOMMENDED | OKP Ed25519 |
+| `RS256`, `PS256` | NOT RECOMMENDED for new signatures; a verifier MAY accept them until 1 January 2028 | RSA, 3072 bits or more |
+| any `HS*` | MUST NOT be used | — |
+| `none` | MUST NOT be used | — |
+
+A verifier MUST reject a signature whose algorithm is not in this table, and MUST apply the key-type check of clause 6.2 so that a token cannot select an algorithm inconsistent with the key it is verified against. The `kid` requirement of clause 6.1.1 applies to every algorithm.
 
 <a id="adi-verifiable-credentials"></a>
 ## 6.2 ADI Verifiable Credentials
@@ -879,6 +895,32 @@ ADI-Network User VCs MUST contain the minimum information required by ADI-Networ
 
 Note: User VCs may be delegated to other users.  For example, a health identity may be delegated  between family members or care providers to pick up prescriptions.
 
+
+<a id="error-responses"></a>
+## 6.8 Error responses
+
+Every ADI-Network endpoint that rejects a request MUST return an error response conforming to [RFC9457], *Problem Details for HTTP APIs*, with media type `application/problem+json`. The `type` member MUST be a URI in the `https://adiassociation.org/problems/` namespace, from the registry in Appendix C.1; `title` and `status` MUST be present; `detail` SHOULD explain the failure without disclosing information a caller is not entitled to; and `instance` SHOULD carry the request identifier so the failure can be correlated with the Interchange audit record (clause 12.9).
+
+```json
+{
+  "type": "https://adiassociation.org/problems/not-entitled",
+  "title": "Issuer not entitled to issue this credential type",
+  "status": 403,
+  "detail": "The Issuer's ADI-ISSUER role credential does not list UniversityDegreeCredential.",
+  "instance": "urn:adi:request:7560e840-0e79-4d21-9f71-974864681044"
+}
+```
+
+A response with `status` 429 or 503 MUST carry a `Retry-After` header. Clients MUST NOT retry a 4xx response other than 429 without changing the request.
+
+
+<a id="protocol-version"></a>
+## 6.9 Protocol version
+
+Every participant's metadata (B.3.1) MUST declare `"adia_versions_supported"`, an array of the protocol versions it implements, and every ADI-Network request MUST carry `"adia_version"` naming the version under which it is made. A participant receiving a request for a version it does not support MUST reject it with the `unsupported-version` problem type (clause 6.8) and MUST list its supported versions in `detail`.
+
+Versions are of the form `MAJOR.MINOR`. A change of MINOR adds optional capability and MUST remain interoperable with earlier MINOR versions of the same MAJOR; a change of MAJOR MAY break interoperability. This document defines version `3.0`.
+
 <a id="adi-network-architecture"></a>
 # 7. ADI-Network Architecture
 
@@ -981,14 +1023,14 @@ This hybrid model enables improved user experience and secure key management.
 
 Users are in control of the VCs they hold.  With an ADI Wallet the user can obtain and present and securely store VCs.
 
-An ADI wallet authenticates the user with a NIST 800-63 Assurance Level AAL1, AAL2 & AAL3, and conveys that level in ADI-Network transactions.
+An ADI wallet authenticates the User at NIST SP 800-63 authentication assurance level 1 or 2 as determined by clause 7.2.4, and conveys the achieved `ial`, `aal` and `fal` values in ADI-Network transactions.
 
 <a id="cloud-user-agent"></a>
 #### 7.2.3.1 Cloud User Agent
 
 The USER_AGENT creates, manages and uses cryptographic keys securely stored at the Interchange.  Using these keys the USER_AGENT will coordinate with the interchange DAS  to sign and perform ADI-Network transactions on behalf of the User.
 
-The USER_AGENT enrolls and authenticates the user with the Digital Address Application using strong authenticators capable of AAL1, AAL2 or AAL3 assurance levels.
+The USER_AGENT enrolls and authenticates the user with the Digital Address Application using authenticators meeting the requirements of clause 7.2.4.3.
 
 <a id="digital-address-application-daa"></a>
 #### 7.2.3.2 Digital Address Application (DAA)
@@ -1272,6 +1314,26 @@ The AGD can now issue ADI-AGD VCs
 ## 8.2 Enrolling an Interchange
 
 The following request and response JSON objects are used during Interchange enrollment.
+
+An Interchange applicant generates its signing key pair in a hardware security module and submits an enrollment request to the ADI Global Domain carrying its public key, key identifier, proposed Digital Address and enrollment form.
+
+**IX_APPLICANT -\> AGD: POST ~agd/enroll_ix**
+
+The ADI Global Domain MUST vet the applicant against network governance policy before proceeding. On approval it assigns the Interchange a network-unique name (clause 7.4.1), creates the Interchange's DID and DIDdoc from the submitted public key, and signs the ADI-IX role VC recording the Interchange's entitlements.
+
+**AGD -\> AGD: Vet applicant; assign Interchange name; create DID and DIDdoc**
+
+**AGD -\> AGD: Sign ADI-IX role VC**
+
+**AGD -\> AGD_VAULT: Store ADI-IX role VC**
+
+The ADI Global Domain adds the Interchange to the network directory, then returns the DID, DIDdoc, role VC and directory endpoints to the applicant, which provisions its Digital Address Service with them.
+
+**AGD -\> AGD: Add Interchange to network directory**
+
+**AGD -\> IX_APPLICANT: Return DID, DIDdoc, ADI-IX role VC, directory endpoints**
+
+**IX_APPLICANT -\> IX_DAS: Provision DAS with credential and AGD endpoints**
 
 - [enroll_ix](#enroll-ix)
 
@@ -1682,6 +1744,8 @@ The USER_AGENT sends the issue_vc token to the issuer agent’s endpoint to vali
 
 The issuer agent validates the user's signature of the issue_vc token and retrieves VC claims based on the pre_authorized_code.   The issuer agent MUST verify that the issue_vc token was signed by the key of the subject bound to the offer when it was created (clause 12.4), and MUST use that subject, not a value taken from the token, as the VC subject. A VC is then generated and signed with the Issuer's DID private key.  The issuer agent  stores the VC in the VC Vault specified by the credential issuer.  (NOTE based on the issuer metadata the VC may be stored at the issuer or user vault.  The issuer_vault endpoint will point to the location the issuer supports.)
 
+A credential is stored either in the Issuer's vault or in the User's. The location of the User's vault is published as a `service` entry of type `ADIVault` in the User's DIDdoc (B.3.5), and a USER_AGENT MUST consult that entry first; the Issuer's vault, published in the Issuer's metadata as `credential_vault_endpoint`, is the fallback where the User has none.
+
 **CI_AGENT -\> VAULT_AGENT: ~issuer\_ or user\_  vault/VC **
 
 **CI_AGENT -\> USER_AGENT:  Return issued VC**
@@ -2056,10 +2120,10 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 26 |
-| Of which critical | 6 |
-| Awaiting an architectural decision | 11 |
-| Open decisions | 6 |
+| Items outstanding | 16 |
+| Of which critical | 4 |
+| Awaiting an architectural decision | 7 |
+| Open decisions | 5 |
 | Corrected, awaiting confirmation | 0 |
 
 Severity is recorded as **Critical** where the text as written would lead an implementer to build something incorrect or insecure, **Major** where the text is contradictory or where required normative material is absent, and **Minor** where the issue is editorial.
@@ -2073,7 +2137,7 @@ The following questions are unresolved. Each blocks one or more of the items in 
 
 The issuance flow borrows the shape of OpenID4VCI without conforming to it. The draft must either profile a named version, with a delta table, or state that it defines an independent protocol.
 
-*Blocks: A-117, A-121*
+*Blocks: A-121*
 
 **D6 — Credential format**
 
@@ -2083,7 +2147,7 @@ Selective disclosure is described in the narrative but cannot be performed with 
 
 **D7 — Signature algorithms**
 
-No mandatory-to-implement algorithm set is stated. The examples and the issuer metadata disagree. A set must be named, with a prohibition on algorithm substitution.
+Decided 23 September 2026 by adopting RFC 8725 (JWT Best Current Practices): ES256 REQUIRED, EdDSA RECOMMENDED, RSA algorithms accepted by verifiers until 1 January 2028, HS* and none forbidden. Clause 6.1.3.
 
 *Blocks: A-107*
 
@@ -2091,19 +2155,13 @@ No mandatory-to-implement algorithm set is stated. The examples and the issuer m
 
 Superseded: identity, authentication and federation assurance are now carried as three separate values, and the maximum assertable levels are stated in clause 7.2.4.
 
-*Blocks: A-108, B-205*
-
-**D10 — Credential vault discovery**
-
-A credential may be held in the issuer's vault or the user's, but the metadata carries a single endpoint and no mechanism is defined for discovering a user vault.
-
-*Blocks: A-120*
+*Blocks: A-108*
 
 **D11 — Control of the signing key**
 
-Partially resolved by clause 7.2.4. The remaining question is the certification regime required of the hardware security module and the audit obligations on the Interchange.
+Resolved by clauses 7.2.4.4 and 12.9: FIPS 140-3 Level 2 minimum (Level 3 recommended), non-exportable key, signing authorised by a WebAuthn assertion bound to the payload hash, and a hash-chained audit record published to the AGD daily.
 
-*Blocks: B-206, B-208*
+*Blocks: B-208*
 
 <a id="editors-notes-items"></a>
 ## 14.2 Outstanding items
@@ -2114,10 +2172,7 @@ Partially resolved by clause 7.2.4. The remaining question is the certification 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
 | C-302 | Critical | L158/167 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements |
-| C-306 | Major | — | No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else | Add |
-| C-307 | Major | — | No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3 | Add |
 | C-308 | Major | — | No registries for role-VC type strings, schema names, or the `did:adi` method | Add |
-| C-309 | Major | §9.2 | **No flow description at all** — a figure and four bullets. §9.1, §9.3, §9.4, §9.5 all have prose walkthroughs. This is the flow that establishes the AGD→IX trust link | Write it |
 | C-311 | Minor | L74 "Copyright" | Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group | Resolve process and boilerplate |
 
 <a id="editors-notes-crypto-protocol"></a>
@@ -2126,15 +2181,10 @@ Partially resolved by clause 7.2.4. The remaining question is the certification 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
 | B-203 | Critical | L? "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |
-| B-205 | Critical | L984 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. *(awaiting D8)* |
-| B-206 | Critical | L? "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. *(awaiting D11)* |
 | B-208 | Critical | L? "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. *(awaiting D11)* |
 | B-210 | Critical | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |
-| B-204 | Major | L564 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |
 | B-212 | Major | L1833 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
-| B-214 | Major | L953/1962 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
 | B-215 | Major | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim *(awaiting D6)* |
-| B-220 | Major | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |
 
 <a id="editors-notes-data-model"></a>
 ### 14.2.3 Data model and schemas
@@ -2145,8 +2195,6 @@ Partially resolved by clause 7.2.4. The remaining question is the certification 
 | A-108 | Major | B.2.10 | SP `authorized_max_assurance_level: []` reads as "may accept nothing". SPs plausibly need an accepted *floor*, not an issuance *ceiling* | Decide semantics; rename or remove *(awaiting D8)* |
 | A-111 | Major | B.2.4 | Issuer of a `UniversityDegreeCredential` is `…/region_1/ix_3` — an Interchange-shaped DID, not an Issuer | Use an Issuer DID |
 | A-115 | Major | B.1.5 | Placeholder values were substituted during JSON repair and are invented, not authored | Review and replace |
-| A-117 | Major | B.2.6 | Claim set (`deviceID`, `fingerPrint`, `environmentID`, `isLoginAuthorized`, `custom:userId`) appears nowhere in the data model. `iss: "https://HOME@DAS1"` is not a valid URI | Document or replace *(awaiting D5)* |
-| A-120 | Major | B.3.1 | Single `credential_vault_endpoint`, but §10.2.3 and §11.1.3 both require a choice between issuer vault and **user** vault. No user-vault discovery exists | Add discovery *(awaiting D10)* |
 | A-121 | Major | B.2.2 | `pre_authorized_code` used as a direct member of `grants` (OIDC4VCI uses `pre-authorized_code`, hyphenated, under a URN grant key), paired with an empty `authorization_code: {}` | Align or declare divergence *(awaiting D5)* |
 | A-125 | Major | B.2.4 vs §8.2 | §7.2 states examples use JWT VC formatting; B.2.4 is plain JSON-LD | Reconcile *(awaiting D6)* |
 
@@ -2164,8 +2212,6 @@ Partially resolved by clause 7.2.4. The remaining question is the certification 
 The items below are not corrections to existing text but clauses that do not yet exist. They are listed separately because they represent the larger part of the drafting effort remaining.
 
 - **B-210** — **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified
-- **C-306** — No error model: no status codes, no taxonomy, no timeouts, no retries. B.2.7 defines a `status`/`error_msg` pattern once, inside a role VC, applied nowhere else
-- **C-307** — No versioning or extensibility: nothing lets an implementation negotiate ADIA v2 vs v3
 - **C-308** — No registries for role-VC type strings, schema names, or the `did:adi` method
 
 *End of Editor's Notes.*
@@ -2202,6 +2248,15 @@ Jones, M., "JSON Web Key (JWK)", RFC 7517, DOI 10.17487/RFC7517, May 2015, <http
 
 **[RFC7519]**
 Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015, <https://www.rfc-editor.org/info/rfc7519>.
+
+**[RFC8725]**
+Sheffer, Y., Hardt, D., and M. Jones, "JSON Web Token Best Current Practices", BCP 225, RFC 8725, DOI 10.17487/RFC8725, February 2020, <https://www.rfc-editor.org/info/rfc8725>.
+
+**[RFC9457]**
+Nottingham, M., Wilde, E., and S. Dalal, "Problem Details for HTTP APIs", RFC 9457, DOI 10.17487/RFC9457, July 2023, <https://www.rfc-editor.org/info/rfc9457>.
+
+**[RFC7518]**
+Jones, M., "JSON Web Algorithms (JWA)", RFC 7518, DOI 10.17487/RFC7518, May 2015, <https://www.rfc-editor.org/info/rfc7518>.
 
 **[RFC9562]**
 Davis, K., Peabody, B., and P. Leach, "Universally Unique IDentifiers (UUIDs)", RFC 9562, DOI 10.17487/RFC9562, May 2024, <https://www.rfc-editor.org/info/rfc9562>.
@@ -2541,7 +2596,23 @@ POST ~issuer/issue_vc_token
 
 ```json
 {
-  "authorization_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL0hPTUVAREFTMSIsInN1YmoiOiJ1c2VyMkBEQVMxIiwiYXVkIjoiaWQuSE9NRUBEQVMxIiwiY0dVSUQiOiJ1c2VyMkBEQVMxIiwiY3VzdG9tOnVzZXJJZCI6InVzZXIyQERBUzEiLCJkZXZpY2VJRCI6ImQxIiwiZW52aXJvbm1lbnRJRCI6IkhPTUVAREFTMSIsImZpbmdlclByaW50IjoiVVJtaUdRMG1uN2wvS0ZFOEJTdE96VXJTYlJ3dEVRZTdJbGpIUUdoa0NxYz0iLCJpc0xvZ2luQXV0aG9yaXplZCI6dHJ1ZSwiaWF0IjoxNzIxNTkwMDE2LCJleHAiOjE3MjE1OTM2MTZ9.euXn53CnX3xq6zYIklvKa3SnUoNrqF1nn80Un9E1lZMhEmifwR__sR9OYDDRdnxgk3nCZrlTnyV_cKLpXivSl-lAY3-wYUxe5uDFb7qxIQnGPC-VIS4fdifTyrOmAILHJNftGICxY0mSsRAZWQSD4gdImb0Yp2UF-ijiLJJdnASLdM7to1gbu4joTdgkSKwCsMTzs87m4pNlJCzzqpdlcIWkndewoY8-cBxatYOzvwYJoE52-o86lFiHj1uRU4EPyxCfynw4mh_zumfjhsUyS1HyRM7Iv77EVllp1hkWhVynzH8w85TthSiYwjBpL-WfN9nEVG-q6e7nzB4okRiMKw"
+  "header": {
+    "alg": "ES256",
+    "typ": "JWT",
+    "kid": "did:adi:7t7IEQ8mRlamzVnV8L8sFg#key-1"
+  },
+  "payload": {
+    "iss": "did:adi:7t7IEQ8mRlamzVnV8L8sFg",
+    "sub": "did:adi:7t7IEQ8mRlamzVnV8L8sFg",
+    "aud": "https://vault.ix1.adi.example",
+    "iat": 1758240100,
+    "exp": 1758240400,
+    "jti": "c9d2f1a4-3b7e-4f60-9a1d-2e5c8b7f6a30",
+    "nonce": "n-0S6_WzA2Mj",
+    "vc_id": "https://university.example/credentials/3732",
+    "purpose": "present"
+  },
+  "signature": "…"
 }
 ```
 
@@ -2830,6 +2901,9 @@ identifier as a persistent account key.
 
 ```json
 {
+  "adia_versions_supported": [
+    "3.0"
+  ],
   "credential_issuer": "https://issuer1.ix1.adi.example",
   "authorization_servers": [
     "https://users.ix1.adi.example"

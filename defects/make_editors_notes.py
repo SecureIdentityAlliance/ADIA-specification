@@ -39,15 +39,15 @@ DECISIONS = {
  "D6":  ("Credential format",
          "Selective disclosure is described in the narrative but cannot be performed with the credential format the examples use. Adopting SD-JWT VC would provide it, together with holder binding and a status mechanism; retaining the present format means withdrawing the selective disclosure claims."),
  "D7":  ("Signature algorithms",
-         "No mandatory-to-implement algorithm set is stated. The examples and the issuer metadata disagree. A set must be named, with a prohibition on algorithm substitution."),
+         "Decided 23 September 2026 by adopting RFC 8725 (JWT Best Current Practices): ES256 REQUIRED, EdDSA RECOMMENDED, RSA algorithms accepted by verifiers until 1 January 2028, HS* and none forbidden. Clause 6.1.3."),
  "D8":  ("Assurance levels",
          "Superseded: identity, authentication and federation assurance are now carried as three separate values, and the maximum assertable levels are stated in clause 7.2.4."),
  "D9":  ("HIDA construction",
          "Decided 23 September 2026: HMAC-SHA-256 under a key held by the enrolling Interchange, over canonicalised attributes (NFKC, case folding, whitespace and punctuation removed, ASCII transliteration). Specified in clause 7.4.2.1 to 7.4.2.3."),
  "D10": ("Credential vault discovery",
-         "A credential may be held in the issuer's vault or the user's, but the metadata carries a single endpoint and no mechanism is defined for discovering a user vault."),
+         "Decided 23 September 2026 by adopting the DID Core mechanism: the User's vault location is a service entry of type ADIVault in the User's DIDdoc; the Issuer's vault is the fallback. Clause 9.2.3."),
  "D11": ("Control of the signing key",
-         "Partially resolved by clause 7.2.4. The remaining question is the certification regime required of the hardware security module and the audit obligations on the Interchange."),
+         "Resolved by clauses 7.2.4.4 and 12.9: FIPS 140-3 Level 2 minimum (Level 3 recommended), non-exportable key, signing authorised by a WebAuthn assertion bound to the payload hash, and a hash-chained audit record published to the AGD daily."),
  "D13": ("Location of authority: role credentials or DID Documents",
          "Decided 22 September 2026. ADI-ROLE Verifiable Credentials are retained. They are issued by the onboarding "
          "Interchange for Credential Issuers, Service Providers and Users; the ADI Global Domain issues only the "

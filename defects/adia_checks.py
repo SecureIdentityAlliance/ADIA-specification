@@ -29,8 +29,12 @@ class Spec:
         a, b = raw.find("<!-- EDITORS-NOTES-START"), raw.find("<!-- EDITORS-NOTES-END")
         self.notes = raw[a:b] if (a != -1 and b != -1) else ""
         self.text = (raw[:a] + raw[b:]) if (a != -1 and b != -1) else raw
-        self.blocks = re.findall(r"```json\n(.*?)\n```", self.text, re.S)
-        self.names  = re.findall(r"^#{2,3} (B\.\d+\.\d+)", self.text, re.M)
+        heads = [(m.group(1), m.end()) for m in re.finditer(r"^#{2,3} (B\.\d+\.\d+)", self.text, re.M)]
+        self.names, self.blocks = [], []
+        for i, (n, pos) in enumerate(heads):
+            lim = heads[i + 1][1] if i + 1 < len(heads) else len(self.text)
+            m = re.search(r"```json\n(.*?)\n```", self.text[pos:lim], re.S)
+            if m: self.names.append(n); self.blocks.append(m.group(1))
         self.J = {}
         self.unparsed = []
         for n, b in zip(self.names, self.blocks):
@@ -351,6 +355,16 @@ def _dupes(s):
     return ["%s x%d" % (k, len(re.findall(p, txt))) for k, p in ideas.items() if len(re.findall(p, txt)) > 1]
 
 CHECKS.update({
+"C-306": lambda s: '<a id="error-responses"></a>' in s.text and "application/problem+json" in s.prose,
+"C-307": lambda s: '<a id="protocol-version"></a>' in s.text and '"adia_versions_supported"' in s.text,
+"A-120": lambda s: "service` entry of type `ADIVault`" in s.prose,
+"A-117": lambda s: '"purpose": "present"' in s.text and "fingerPrint" not in s.text and "isLoginAuthorized" not in s.text,
+"B-204": lambda s: "The Credential is not yet signed; signing occurs only after the Holder has approved" in s.prose,
+"B-205": lambda s: not re.search(r"AAL ?3", re.sub(r"NOTE: AAL3 requires[^\n]*", "", s.prose)),
+"B-206": lambda s: "challenge = SHA-256(P)" in s.prose,
+"B-214": lambda s: "uniformResourceIdentifier" in s.prose,
+"B-220": lambda s: "12 hours" in s.prose and "30 minutes" in s.prose,
+"C-309": lambda s: "IX_APPLICANT -\\> AGD" in s.text,
 "B-211": lambda s: '<a id="did-doc"></a>' in s.text and '"didDocument"' in s.text and "controller" in s.prose
                    and "signed using the private key of the issuer" not in s.prose,
 "B-217": lambda s: "User ID or a null" not in s.prose and '"state"' in s.text
@@ -374,6 +388,7 @@ CHECKS.update({
 "E-530": lambda s: not _dupes(s),
 })
 EXPLAIN.update({
+"B-205": lambda s: ["L%d %s" % (i+1, l.strip()[:80]) for i, l in enumerate(s.text.split("\n")) if re.search(r"AAL ?3", l) and "NOTE: AAL3 requires" not in l and not l.startswith("|")],
 "B-211": lambda s: [m for ok, m in [('<a id="did-doc"></a>' in s.text, "no B.3.5 did_doc response"),
                                      ("signed using the private key of the issuer" not in s.prose, "3.20 still names 'the issuer' as signer"),
                                      ("controller" in s.prose, "DIDdoc controller not defined")] if not ok],
