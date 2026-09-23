@@ -517,9 +517,10 @@ defects:
     session binding across the redirect — CSRF / session-fixation surface
   fix: Specify correlation
   owner: null
-  status: Open
+  status: auto
   notes: null
   anchor: Tech Note
+  check: auto
 - id: B-218
   severity: S3
   workstream: crypto-protocol

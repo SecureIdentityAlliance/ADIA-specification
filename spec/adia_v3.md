@@ -1716,11 +1716,7 @@ The USER_AGENT MUST obtain the User's consent to present the selected VC to the 
 
 The VP is then returned as a response to the service provider request.
 
-*Tech Note:*
-
-*The User may be referenced by a User ID or a null if not known at the time of request.*
-
-*If not known, the USER_AGENT will  supply the ID of the User when processing the request. Because the wallet was redirected there it can supply the user DID or DA during processing, therefore it is not required.*
+*Tech Note:* A `vc_request` carries no identifier for the User, and the Service Provider does not need one. The request is delivered to the User's own USER_AGENT, which already holds an authenticated session with that User and therefore knows the Digital Address the request concerns. Where the presentation is to be unlinkable, the USER_AGENT generates a transaction DID for it at this point (clause 7.4.4). Correlation on the Service Provider's side is by the `state` value it placed in the request and receives back in the presentation (clause 12.4); correlation on the User's side is the authenticated session.
 
 <a id="service-provider-high-level-flow"></a>
 ### 10.1.1 High Level Flow
@@ -2060,7 +2056,7 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 28 |
+| Items outstanding | 27 |
 | Of which critical | 6 |
 | Awaiting an architectural decision | 11 |
 | Open decisions | 6 |
@@ -2139,7 +2135,6 @@ Partially resolved by clause 7.2.4. The remaining question is the certification 
 | B-212 | Major | L1815 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
 | B-214 | Major | L954/1944 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
 | B-215 | Major | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim *(awaiting D6)* |
-| B-217 | Major | L1697 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |
 | B-220 | Major | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |
 
 <a id="editors-notes-data-model"></a>

@@ -6,16 +6,16 @@
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-23 |
-| Defects | 111 (81 with an automated check) |
-| Verified | 81 |
+| Defects | 111 (82 with an automated check) |
+| Verified | 82 |
 | Fixed, awaiting verification | 0 |
 | Blocked on a decision | 11 |
-| Open | 17 |
+| Open | 16 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
 
-Nobody moves their own work to `Verified`. For the 81 automated defects the harness does it; for the other 30 a second person does.
+Nobody moves their own work to `Verified`. For the 82 automated defects the harness does it; for the other 29 a second person does.
 
 ---
 
@@ -54,13 +54,13 @@ Nobody moves their own work to `Verified`. For the 81 automated defects the harn
 
 ## Workstream B — Cryptography and protocol
 
-21 defects · 8 verified · 8 with an automated check
+21 defects · 9 verified · 9 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | B-201 | S1 | Verified |  | `auto` | L? "public key encryption of the hash" | *"the public key encryption of the hash matches the signature"* — describes textbook RSA backwards and is inapplicable to ECDSA, which the same document specifies. The JWS signing input is not "combining metadata and claims sections", and the digest comes from `alg` | Replace with a normative reference to RFC 7515 §5.2 | `b41e48f` |
 | B-202 | S1 | Verified |  | `auto` | L1499/1669/1798 "USER_AGENT -\> USER_AGENT" | `USER_AGENT -\> USER_AGENT : Vet user and issue ADI Network User VC` and `… Sign and create ADI Network User VC`. The subject's own agent issues the subject's role credential, breaking §7.6. The adjacent prose at L1114 now correctly says *"The interchange will vet the user identity and issue…"* — so prose and flow directly contradict | Change actor to the Interchange DAS | `2996d31` |
-| B-203 | S1 | Open |  | — | L1515 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |  |
+| B-203 | S1 | Open |  | — | L1515 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder | `2f3abae` |
 | B-204 | S2 | Open |  | — | L564 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |  |
 | B-205 | S1 | Blocked(D8) |  | — | L985 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. |  |
 | B-206 | S1 | Blocked(D11) |  | — | L? "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. |  |
@@ -74,7 +74,7 @@ Nobody moves their own work to `Verified`. For the 81 automated defects the harn
 | B-214 | S2 | Open |  | — | L954/1944 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |  |
 | B-215 | S2 | Blocked(D6) |  | — | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim |  |
 | B-216 | S2 | Verified |  | `auto` | L? "vc_authorization_request" | `vc_authorization_request` referenced in a normative flow; defined nowhere. B.2.6 defines `vc_authorization_token`, a different object | Define or rename | `bd0d758` |
-| B-217 | S2 | Open |  | — | L1697 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |  |
+| B-217 | S2 | Verified |  | `auto` | L1697 "Tech Note" | Tech note describes a User ID field that `vc_request` does not have. No `state` parameter or session binding across the redirect — CSRF / session-fixation surface | Specify correlation |  |
 | B-218 | S3 | Verified |  | `auto` | L1616/1659/2302 "~issuer/issue_vc" | Narrative posts to `~issuer/issue_vc`; appendix defines `~issuer/issue_vc_token`. §10.2 prose also uses `make_credential_offer` where B.2.1 is `make_vc_offer` | Align names | `58a4bca` |
 | B-219 | S3 | Verified |  | `auto` | L? "~ard/" | `POST ~ard/enroll_ix` — the only `~ard/` endpoint; everything else uses `~agd/` | Rename | `cd19202` |
 | B-220 | S2 | Open |  | — | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |  |
