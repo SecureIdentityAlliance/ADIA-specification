@@ -592,7 +592,7 @@ defects:
     unique within an ADI-Region" (3.21)'
   fix: Promote to numbered normative statements
   owner: null
-  status: Open
+  status: Fixed
   notes: 7 note-block requirements promoted; 8 lowercase keywords capitalised; 14 narrative sentences
     converted 22 Sep. Final sentence (AGD role-VC issuance) was held back pending D13; D13 decided, sentence
     converted 23 Sep.

@@ -8,9 +8,9 @@
 | Rendered | 2026-09-23 |
 | Defects | 111 (93 with an automated check) |
 | Verified | 93 |
-| Fixed, awaiting verification | 1 |
+| Fixed, awaiting verification | 2 |
 | Blocked on a decision | 7 |
-| Open | 8 |
+| Open | 7 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
@@ -87,7 +87,7 @@ Nobody moves their own work to `Verified`. For the 93 automated defects the harn
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | C-301 | S1 | Verified |  | `auto` | L? "All text is normative" | "All text is normative unless otherwise labeled" + BCP 14 invoked, but the body has 8 uppercase keywords against 25 lowercase must/shall/should. Under RFC 8174 lowercase carries no normative force — so no requirement in the document is normative | Capitalise deliberately |  |
-| C-302 | S1 | Open |  | — | L158/167 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements | `5385a22` |
+| C-302 | S1 | Fixed |  | — | L158/167 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements | `9de1274` |
 | C-303 | S1 | Verified | ND | `auto` | — | **No Conformance clause.** Mandatory once RFC 2119 is invoked | Add | `9b71b7e` |
 | C-304 | S1 | Verified | ND | `auto` | — | **No Security Considerations** section | Add | `e44bc76` |
 | C-305 | S1 | Verified |  | `auto` | — | **No Privacy Considerations** section | Add | `59eeea0` |

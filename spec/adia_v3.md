@@ -2120,11 +2120,11 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 15 |
-| Of which critical | 4 |
+| Items outstanding | 14 |
+| Of which critical | 3 |
 | Awaiting an architectural decision | 7 |
 | Open decisions | 5 |
-| Corrected, awaiting a second reader | 1 |
+| Corrected, awaiting a second reader | 2 |
 
 Severity is recorded as **Critical** where the text as written would lead an implementer to build something incorrect or insecure, **Major** where the text is contradictory or where required normative material is absent, and **Minor** where the issue is editorial.
 
@@ -2170,6 +2170,7 @@ The editor believes each of the following is resolved. Per the register's own ru
 
 | Ref | Clause or object | What was done |
 |---|---|---|
+| C-302 | L158/167 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) |
 | D-418 | spec/figures/ — SVG text | AGD was renamed to "ADI Global Domain" in the prose, but the term is rendered text inside the figure SVGs (at least Figures 4, 5, 6, 8). Prose and figures now disagree. |
 
 <a id="editors-notes-items"></a>
@@ -2180,7 +2181,6 @@ The editor believes each of the following is resolved. Per the register's own ru
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
-| C-302 | Critical | L158/167 "NOTE 1 to entry" | Requirements live in ISO "NOTE to entry" blocks, which are conventionally informative: "must include at least one ADI-Region" (3.1), "must be bound to one and only one DIDdoc" (3.20), "must be unique within an ADI-Region" (3.21) | Promote to numbered normative statements |
 | C-308 | Major | — | No registries for role-VC type strings, schema names, or the `did:adi` method | Add |
 | C-311 | Minor | L74 "Copyright" | Cover dated 20 Aug 2026; copyright reads 2024. Document styled as an OASIS artifact ("Committee Specification Draft 3", "OASIS cannot guarantee…") while the body says ADI Technical Working Group | Resolve process and boilerplate |
 
