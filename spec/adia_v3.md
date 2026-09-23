@@ -2061,7 +2061,7 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 42 |
+| Items outstanding | 37 |
 | Of which critical | 7 |
 | Awaiting an architectural decision | 14 |
 | Open decisions | 10 |
@@ -2203,17 +2203,6 @@ Decided 22 September 2026. ADI-ROLE Verifiable Credentials are retained. They ar
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
 | F-606 | Major | CI — no location | No automated gate. Every check run for this review is scriptable | JSON parse · fence-aware gremlin check · markdownlint · link checker |
-
-<a id="editors-notes-editorial"></a>
-### 14.2.6 Editorial
-
-| Ref | Severity | Clause or object | Issue | Work needed |
-|---|---|---|---|---|
-| E-530 | Major | §7 vs §8.3 — duplication | §7 (overview) and §8.3 (Roles and Authorities) tell the same narrative twice; audit-log/legal-retrieval stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication. | Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated". |
-| E-503 | Minor | L? "7.7.1.1" | §7.7.1.1 is an orphan H4 among H3 siblings | — |
-| E-527 | Minor | L1104 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another | — |
-| E-528 | Minor | L1158 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line | — |
-| E-529 | Minor | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs | — |
 
 <a id="editors-notes-absent"></a>
 ## 14.3 Normative material not yet drafted

@@ -6,16 +6,16 @@
 |---|---|
 | Spec under test | `spec/adia_v3.md` |
 | Rendered | 2026-09-23 |
-| Defects | 111 (68 with an automated check) |
-| Verified | 68 |
+| Defects | 111 (73 with an automated check) |
+| Verified | 73 |
 | Fixed, awaiting verification | 1 |
 | Blocked on a decision | 14 |
-| Open | 27 |
+| Open | 22 |
 | Standing invariants | 4 of 4 holding |
 
 **Status values.** `Open` · `Fixed` (author's claim) · `Verified` (harness passes, or a second reviewer confirmed) · `Blocked(Dn)` · `Rejected` · `Superseded(ID)`.
 
-Nobody moves their own work to `Verified`. For the 68 automated defects the harness does it; for the other 43 a second person does.
+Nobody moves their own work to `Verified`. For the 73 automated defects the harness does it; for the other 38 a second person does.
 
 ---
 
@@ -123,13 +123,13 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 
 ## Workstream E — Editorial
 
-30 defects · 25 verified · 25 with an automated check
+30 defects · 30 verified · 30 with an automated check
 
 | ID | Sev | Status | Owner | Check | Location | Defect | Fix | Ref |
 |---|---|---|---|---|---|---|---|---|
 | E-501 | S2 | Verified | ND | `auto` | heading numbering — document-wide | **Document-wide check:** every heading (H1–H4) must carry a section or appendix number. Originally triggered by the unnumbered `# ADI Network interchanges and platforms` at L552, but the check inspects all headings, so any unnumbered heading anywhere fails it. Run `make explain ID=E-501` to see which. | Number every heading. Front-matter headings (Notices, Key words) must be numbered or demoted to bold text. | `090248e` |
 | E-502 | S2 | Verified | ND | `auto` | heading length — document-wide | §7.7.1 heading is two full sentences |  | `bec5999` |
-| E-503 | S3 | Open | ND | — | L? "7.7.1.1" | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
+| E-503 | S3 | Verified | ND | `auto` | L? "7.7.1.1" | §7.7.1.1 is an orphan H4 among H3 siblings |  | `bec5999` |
 | E-504 | S3 | Verified | ND | `auto` | L? "# 6 Accountable" | `# 6 Accountable digital identity reference model` — missing the period every other H1 has |  | `de133fa` |
 | E-505 | S3 | Verified | ND | `auto` | B.1. Schemas | `## B.1. Schemas` duplicates its parent `# B. Schemas`, with a stray period. B.1 holds enrollment *requests*, not schemas; B.2 "Credentials" mixes protocol messages with VCs |  | `ad9351b` |
 | E-506 | S3 | Verified | ND | `auto` | L? "Appendix C" | Appendix C has no `# C.` heading; A and B both do |  | `484a066` |
@@ -153,10 +153,10 @@ Nobody moves their own work to `Verified`. For the 68 automated defects the harn
 | E-524 | S3 | Verified | ND | `auto` | L? "figure 4.4.3" | "See figure 7.3" and "See figure 4.4.3" — two different numbers for a figure that does not exist |  | `08040c2` |
 | E-525 | S3 | Verified | ND | `auto` | L? "2.2.1 Issue Verifiable Credential" | "(§ 2.2.1 Issue Verifiable Credential)" — §2 is "Changes from earlier Versions" |  | `53b2c8e` |
 | E-526 | S3 | Verified | ND | `auto` | L? "3.3 Roles" | "See 3.3 Roles & Authorities" — §3.3 is "ADI-Agent" |  | `8080230` |
-| E-527 | S3 | Open | ND | — | L1104 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  | `4465b57` |
-| E-528 | S3 | Open | ND | — | L1158 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
-| E-529 | S3 | Open | ND | — | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  | `a5377a5` |
-| E-530 | S2 | Open | ND | — | §7 vs §8.3 — duplication | §7 (overview) and §8.3 (Roles and Authorities) tell the same narrative twice; audit-log/legal-retrieval stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication. | Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated". |  |
+| E-527 | S3 | Verified | ND | `auto` | L1104 "red line" | Red-line reference points at Figure 4 in one place, the ADI Network figure in another |  | `4465b57` |
+| E-528 | S3 | Verified | ND | `auto` | L1158 "Figure 10." | Caption delimiter alternates: "Figure 3**:**" vs "Figure 10**.**"; some captions inline with the image, some on their own line |  |  |
+| E-529 | S3 | Verified | ND | `auto` | capitalisation — document-wide | `ADI NETWORK` / `ADI Network` / `ADI network` / `ADI-Network`; `DIDdoc` / `DID_DOC` / `DIDDoc` / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs |  | `a5377a5` |
+| E-530 | S2 | Verified | ND | `auto` | §7 vs §8.3 — duplication | §7 (overview) and §8.3 (Roles and Authorities) tell the same narrative twice; audit-log/legal-retrieval stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication. | Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated". |  |
 
 ## Workstream F — References, diagrams and tooling
 

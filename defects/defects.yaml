@@ -924,9 +924,10 @@ defects:
   defect: §7.7.1.1 is an orphan H4 among H3 siblings
   fix: ''
   owner: ND
-  status: Open
+  status: auto
   notes: null
   anchor: 7.7.1.1
+  check: auto
 - id: E-504
   severity: S3
   workstream: editorial
@@ -1189,9 +1190,10 @@ defects:
   defect: Red-line reference points at Figure 4 in one place, the ADI Network figure in another
   fix: ''
   owner: ND
-  status: Open
+  status: auto
   notes: null
   anchor: red line
+  check: auto
 - id: E-528
   severity: S3
   workstream: editorial
@@ -1200,9 +1202,10 @@ defects:
     the image, some on their own line'
   fix: ''
   owner: ND
-  status: Open
+  status: auto
   notes: null
   anchor: Figure 10.
+  check: auto
 - id: E-529
   severity: S3
   workstream: editorial
@@ -1211,9 +1214,10 @@ defects:
     / `id_doc`; `user agent` / `User Agent` / `USER_AGENT` — inconsistent within single paragraphs'
   fix: ''
   owner: ND
-  status: Open
+  status: auto
   notes: null
   anchor: (capitalisation — document-wide)
+  check: auto
 - id: E-530
   severity: S2
   workstream: editorial
@@ -1222,9 +1226,10 @@ defects:
     stated 3×, issuer-signed stated 4×. Split out of E-501, which conflated numbering with duplication.
   fix: 'Apply redlines_sections_7-8.md. Human-judged: no automatic check can assert "not duplicated".'
   owner: ND
-  status: Open
+  status: auto
   notes: null
   anchor: (§7 vs §8.3 — duplication)
+  check: auto
 - id: F-601
   severity: S1
   workstream: references-tooling

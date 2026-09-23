@@ -312,6 +312,59 @@ for _cid, _ph in ABSENT.items():
     CHECKS[_cid]  = _absent_check(_ph)
     EXPLAIN[_cid] = _absent_explain(_ph)
 
+# ── editorial checks added 23 Sep so E-503/527/528/529/530 can self-verify ──
+def _prose_lines(s):
+    """prose lines only: no fences, no anchors, no Editor's Notes"""
+    out, fence = [], False
+    for l in s.text.split("\n"):
+        if l.startswith("```"): fence = not fence; continue
+        if fence or l.startswith("<a id="): continue
+        out.append(l)
+    return out
+
+def _orphan_h4(s):
+    h3, groups = None, {}
+    for l in s.text.split("\n"):
+        if l.startswith("### ") and not l.startswith("#### "): h3 = l
+        elif l.startswith("#### "): groups.setdefault(h3, []).append(l.strip())
+    return [v[0] for v in groups.values() if len(v) == 1]
+
+def _caption_forms(s):
+    caps = re.findall(r"^\*?Figure \d+([.:])", "\n".join(_prose_lines(s)), re.M)
+    return set(caps)
+
+def _term_variants(s):
+    txt = "\n".join(_prose_lines(s))
+    pats = {"ADI Network": r"\bADI [Nn]etworks?\b|\bADI NETWORK\b",
+            "DIDDoc / DID Document": r"\bDIDDoc|\bDID Documents?\b",
+            "User Agent variants": r"(?<!Cloud )\b[Uu]ser[ -][Aa]gent"}
+    # Appendix A reference titles are exempt
+    a = txt.find("# Appendix A"); b = txt.find("# Appendix B")
+    if a != -1 and b != -1: txt = txt[:a] + txt[b:]
+    return ["%s x%d" % (k, len(re.findall(p, txt))) for k, p in pats.items() if re.search(p, txt)]
+
+def _dupes(s):
+    txt = "\n".join(_prose_lines(s))
+    ideas = {"IX keeps track of all interactions": r"keeps track of all interactions",
+             "issuer example list (DMV/Passport)": r"DMV and Passport Office",
+             "signed by the Issuer": r"[Ss]igned by the [Ii]ssuer\b"}
+    return ["%s x%d" % (k, len(re.findall(p, txt))) for k, p in ideas.items() if len(re.findall(p, txt)) > 1]
+
+CHECKS.update({
+"E-503": lambda s: not _orphan_h4(s),
+"E-527": lambda s: len(re.findall(r"red line", "\n".join(_prose_lines(s)))) <= 1,
+"E-528": lambda s: len(_caption_forms(s)) <= 1,
+"E-529": lambda s: not _term_variants(s),
+"E-530": lambda s: not _dupes(s),
+})
+EXPLAIN.update({
+"E-503": lambda s: _orphan_h4(s),
+"E-527": lambda s: [m.strip()[:100] for m in re.findall(r"[^\n]*red line[^\n]*", "\n".join(_prose_lines(s)))],
+"E-528": lambda s: ["caption delimiters in use: %s" % sorted(_caption_forms(s))],
+"E-529": lambda s: _term_variants(s),
+"E-530": lambda s: _dupes(s),
+})
+
 # ───────────────────────── helpers ─────────────────────────
 
 def _bad_figures(s):

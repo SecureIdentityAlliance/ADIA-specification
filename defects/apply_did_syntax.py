@@ -104,9 +104,12 @@ def main():
 
     # 1. rewrite every DID
     unknown = set()
+    changed = [0]
     def sub(m):
         body = m.group(1)
         frag = m.group(2) or ""
+        if re.fullmatch(r"[A-Za-z0-9_-]{22}", body):      # already opaque -- leave it
+            return m.group(0)
         first = re.split(r"[/:]", body)[0]           # UUID or alias is always the first segment
         # colon form may put the uuid last: did:adi:r1:ix1:<uuid>
         parts = re.split(r"[/:]", body)
@@ -116,9 +119,10 @@ def main():
             if p in ALIASES: cand = ALIASES[p]; break
         if cand is None:
             unknown.add(body); return m.group(0)
+        changed[0] += 1
         return "did:adi:%s%s" % (mapping[cand], frag)
     new, n = re.subn(r"did:adi:([A-Za-z0-9_./:{}-]*?[A-Za-z0-9_}])(#[A-Za-z0-9_-]+)?(?=[\"'\s)\],.]|$)", sub, text)
-    text = new; done.append("DID strings rewritten: %d" % n)
+    text = new; done.append("DID strings rewritten: %d" % changed[0])
     if unknown: print("  WARNING unmapped forms left alone: %s" % sorted(unknown))
 
     # 2. clause 7.4.3
