@@ -334,13 +334,13 @@ Assertion made about a Subject
 <a id="diddoc"></a>
 ## 3.20 DIDdoc
 
-> Document signed using the private key of the issuer.
+> Document, bound to a DID, that carries the DID's verification methods and metadata. It is created and signed by the authority that enrolled the DID's subject — the Interchange for Credential Issuers, Service Providers and Users; the ADI Global Domain for Interchanges and for itself — which is the DIDdoc's `controller`.
 >
-> Note 1 to entry: A DIDdoc contains the associated DID, the public key of the DID, the verification method(s) and optionally other metadata.
+> Note 1 to entry: A DIDdoc contains the associated DID, its controller, the verification method(s) carrying the subject's public keys, service endpoints, and optionally other metadata. The controller holds a copy of every public key it publishes in a DIDdoc..
 >
 > Note 2 to entry: A DID is bound to exactly one DIDdoc; see clause 7.4.3.
 >
-> Note 3 to entry: A DIDdoc may be packaged as a JWT VC.
+> Note 3 to entry: A DIDdoc is served by the controller's Digital Address Service as the payload of a JWS signed by the controller; see clause 10.2 and B.3.5.
 
 <a id="digital-address-da"></a>
 ## 3.21 Digital Address (DA)
@@ -1858,7 +1858,7 @@ The Service Provider asks its SP Agent for the DIDdoc public key of the signer, 
 
 **SERVICE_PROVIDER -\> SP_AGENT: POST ~service_provider/get_did_doc**
 
-The Agent MUST return the DID_DOC
+The Agent MUST return the DIDdoc as the payload of a JWS signed by the DIDdoc's controller ([B.3.5](#did-doc)). The Agent MUST verify that signature against the controller's own DIDdoc before returning the result, and the Service Provider MUST NOT use a key from a DIDdoc whose controller signature has not been verified.
 
 **SP_AGENT -\> SERVICE_PROVIDER:   DIDdoc Public Key**
 
@@ -2056,7 +2056,7 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 27 |
+| Items outstanding | 26 |
 | Of which critical | 6 |
 | Awaiting an architectural decision | 11 |
 | Open decisions | 6 |
@@ -2125,15 +2125,14 @@ Partially resolved by clause 7.2.4. The remaining question is the certification 
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
-| B-203 | Critical | L1515 "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |
-| B-205 | Critical | L985 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. *(awaiting D8)* |
+| B-203 | Critical | L? "Generate a PK pair" | Key-pair generation appears **after** `Create Digital Address` (L1104). The DID must bind to a public key that already exists | Reorder |
+| B-205 | Critical | L984 "AAL1, AAL2 & AAL3" | AAL3 claimed in §9.3.2/§9.3.3/§A.1.1. The claimant does not hold the signing key, so SP 800-63B-4 proof-of-possession cannot be met. Decision: withdraw AAL3; AAL2 maximum, FAL2 maximum. | Apply ASSURANCE_MODEL.md §3 (normative §9.3.5) and §5 (prose). Remove every AAL3 mention. *(awaiting D8)* |
 | B-206 | Critical | L? "Device Application Agent" | No binding between the FIDO/WebAuthn ceremony at the DAA and authorization to use the vault-held key. Nothing carries `clientDataJSON`, `authenticatorData`, UV flag or signature counter to the DAS | Still required in full — ASSURANCE_MODEL.md §9.3.5.4. Withdrawing AAL3 does not remove the sole-control obligation. *(awaiting D11)* |
 | B-208 | Critical | L? "hardened data vault" | "hardened data vault" is undefined. No HSM requirement, no FIPS level, no key attestation, no non-exportability requirement — while the entire accountability claim rests on private-key control | Resolved by §9.3.5.4 item 1: FIPS 140-3 Level 2 minimum, non-exportable. *(awaiting D11)* |
 | B-210 | Critical | document-wide | **No verification algorithm.** §5.4 lists three obligations informatively and never returns to them; §11.1.3 ends at VP delivery. The chain VP sig → VC sig → issuer role VC → AGD root → `authorized_to_issue` → assurance → validity → status is unspecified | Write it |
 | B-204 | Major | L564 "Proofing of Claims" | "Proofing of Claims" step 2 signs the credential, creating a VC. "Issuing a Verifiable Credential" step 1 then *offers* it and step 3 obtains approval. Credential is signed before consent; §10.2 has the correct order | Reorder §5.4 |
-| B-211 | Major | L1823/1839/1841 "get_did_doc" | `get_did_doc` request is defined; **no response schema exists**. §3.20 says a DIDdoc is "signed using the private key of the issuer" without saying who the issuer of a DIDdoc is | Define |
-| B-212 | Major | L1815 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
-| B-214 | Major | L954/1944 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
+| B-212 | Major | L1833 "ROLE VC / DID" | Keys "may be obtained in the ADI-ROLE VC / DIDdoc" — two sources, no precedence rule, no conflict behaviour | Set precedence |
+| B-214 | Major | L953/1962 "mutual TLS" | mTLS is required between DAS endpoints — a second, entirely separate X.509 trust hierarchy. No statement of who issues those certificates, how they bind to DID/DA/role VC, or what happens on mismatch | Specify binding |
 | B-215 | Major | §5.4, §11.1 | Selective disclosure of claims within a VC is promised; the flows transport whole VCs only (§11.1.3 step 7). SD-JWT named in §3.16 but never used | Adopt SD-JWT VC or drop the claim *(awaiting D6)* |
 | B-220 | Major | §9.3 — no session model | No session or reauthentication model. At AAL2, SP 800-63B-4 requires reauthentication every 12 hours and after 30 minutes inactivity, at least one factor. | Add §9.3.5.3 item 4 per ASSURANCE_MODEL.md. |
 
@@ -2927,3 +2926,59 @@ identifier as a persistent account key.
   "did": "did:adi:CfTO4LOoS_6h92nYNHZBWQ"
 }
 ```
+
+<a id="did-doc"></a>
+### B.3.5 did_doc
+
+Response to `get_did_doc` (B.3.4). The Digital Address Service of the DID's controller returns the DIDdoc as the payload of a JWS whose `kid` identifies the controller's signing key. Shown decoded.
+
+```json
+{
+  "header": {
+    "alg": "ES256",
+    "typ": "did+jwt",
+    "kid": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w#key-1"
+  },
+  "payload": {
+    "iss": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w",
+    "iat": 1758585600,
+    "exp": 1758672000,
+    "didDocument": {
+      "@context": ["https://www.w3.org/ns/did/v1"],
+      "id": "did:adi:CfTO4LOoS_6h92nYNHZBWQ",
+      "controller": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w",
+      "verificationMethod": [
+        {
+          "id": "did:adi:CfTO4LOoS_6h92nYNHZBWQ#key-1",
+          "type": "JsonWebKey2020",
+          "controller": "did:adi:CfTO4LOoS_6h92nYNHZBWQ",
+          "publicKeyJwk": {
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "issuer_x_placeholder_public_key_value_00000000",
+            "y": "issuer_y_placeholder_public_key_value_00000000"
+          }
+        }
+      ],
+      "assertionMethod": ["did:adi:CfTO4LOoS_6h92nYNHZBWQ#key-1"],
+      "authentication": ["did:adi:CfTO4LOoS_6h92nYNHZBWQ#key-1"],
+      "service": [
+        {
+          "id": "did:adi:CfTO4LOoS_6h92nYNHZBWQ#agent",
+          "type": "ADIAgent",
+          "serviceEndpoint": "https://issuer1.ix1.adi.example/agent"
+        }
+      ]
+    },
+    "didDocumentMetadata": {
+      "created": "2026-01-15T10:00:00Z",
+      "updated": "2026-01-15T10:00:00Z",
+      "deactivated": false
+    }
+  },
+  "signature": "…"
+}
+```
+
+`exp` bounds how long a resolver MAY cache the document (clause 7.4.3.3). `didDocumentMetadata.deactivated` is `true` for a DID whose authority has been withdrawn (clause 6.6); resolvers MUST honour it.
+

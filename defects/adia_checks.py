@@ -351,6 +351,8 @@ def _dupes(s):
     return ["%s x%d" % (k, len(re.findall(p, txt))) for k, p in ideas.items() if len(re.findall(p, txt)) > 1]
 
 CHECKS.update({
+"B-211": lambda s: '<a id="did-doc"></a>' in s.text and '"didDocument"' in s.text and "controller" in s.prose
+                   and "signed using the private key of the issuer" not in s.prose,
 "B-217": lambda s: "User ID or a null" not in s.prose and '"state"' in s.text
                    and "value it placed in the request" in s.prose and "generates, stores, and compares on return" in s.prose,
 "B-203": lambda s: (lambda sec: sec.find("vault signing key pair") != -1 and sec.find("Create Digital Address") != -1
@@ -372,6 +374,9 @@ CHECKS.update({
 "E-530": lambda s: not _dupes(s),
 })
 EXPLAIN.update({
+"B-211": lambda s: [m for ok, m in [('<a id="did-doc"></a>' in s.text, "no B.3.5 did_doc response"),
+                                     ("signed using the private key of the issuer" not in s.prose, "3.20 still names 'the issuer' as signer"),
+                                     ("controller" in s.prose, "DIDdoc controller not defined")] if not ok],
 "B-217": lambda s: [m for ok, m in [("User ID or a null" not in s.prose, "Tech Note still describes a User ID field"),
                                      ('"state"' in s.text, "no state field in the examples"),
                                      ("generates, stores, and compares on return" in s.prose, "no SP-side state requirement (12.4)"),
