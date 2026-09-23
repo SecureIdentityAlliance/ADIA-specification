@@ -351,6 +351,13 @@ def _dupes(s):
     return ["%s x%d" % (k, len(re.findall(p, txt))) for k, p in ideas.items() if len(re.findall(p, txt)) > 1]
 
 CHECKS.update({
+"D-404": lambda s: all(re.fullmatch(r"[a-z0-9._-]{1,64}@(agd|ix_\d+|ix\d+)", d)
+                       for d in re.findall(r'"digital_address":\s*"([^"]+)"', s.text)),
+"D-408": lambda s: "Credential Provider" not in "\n".join(_prose_lines(s)) and "Authoritative Domain Controller" not in s.prose,
+"D-411": lambda s: len(re.findall(r"^- The assurance level of", "\n".join(_prose_lines(s)), re.M)) == 1,
+"D-412": lambda s: "Interchange MUST list the Service Provider" in s.prose and "SP Agent will list" not in s.prose,
+"D-413": lambda s: "encrypted by issuer" not in "\n".join(_prose_lines(s)) and "- HIDA information" not in s.prose,
+"D-414": lambda s: '<a id="acronyms"></a>' in s.text,
 "E-503": lambda s: not _orphan_h4(s),
 "E-527": lambda s: len(re.findall(r"red line", "\n".join(_prose_lines(s)))) <= 1,
 "E-528": lambda s: len(_caption_forms(s)) <= 1,
@@ -358,6 +365,10 @@ CHECKS.update({
 "E-530": lambda s: not _dupes(s),
 })
 EXPLAIN.update({
+"D-404": lambda s: [d for d in re.findall(r'"digital_address":\s*"([^"]+)"', s.text) if not re.fullmatch(r"[a-z0-9._-]{1,64}@(agd|ix_\d+|ix\d+)", d)],
+"D-408": lambda s: ["L%d %s" % (i+1, l.strip()[:80]) for i, l in enumerate(s.text.split("\n")) if "Credential Provider" in l and not l.startswith("|")],
+"D-411": lambda s: ["L%d %s" % (i+1, l.strip()[:80]) for i, l in enumerate(s.text.split("\n")) if l.startswith("- The assurance level of")],
+"D-413": lambda s: ["L%d %s" % (i+1, l.strip()[:80]) for i, l in enumerate(s.text.split("\n")) if ("encrypted by issuer" in l or l.strip()=="- HIDA information") and not l.startswith("|")],
 "E-503": lambda s: _orphan_h4(s),
 "E-527": lambda s: [m.strip()[:100] for m in re.findall(r"[^\n]*red line[^\n]*", "\n".join(_prose_lines(s)))],
 "E-528": lambda s: ["caption delimiters in use: %s" % sorted(_caption_forms(s))],

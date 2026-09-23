@@ -738,10 +738,10 @@ defects:
     a human-facing identifier'
   fix: Define ABNF; fix all instances
   owner: RK
-  status: Open
+  status: auto
   notes: null
-  blocked_by: D3
   anchor: unique within an ADI-Region
+  check: auto
 - id: D-405
   severity: S2
   workstream: architecture
@@ -768,7 +768,7 @@ defects:
   owner: RK
   status: Open
   notes: null
-  blocked_by: D12
+  blocked_by: D6
   anchor: pairwise
 - id: D-407
   severity: S2
@@ -793,9 +793,10 @@ defects:
     Provider" (L504 ×3) where §3.4 says "Credential Issuer"
   fix: Single taxonomy
   owner: null
-  status: Open
+  status: auto
   notes: null
   anchor: Credential Provider
+  check: auto
 - id: D-409
   severity: S2
   workstream: architecture
@@ -827,9 +828,10 @@ defects:
     this role VC" (current), §7.7.4 says "the VC subject at the time of issuance" (point-in-time)'
   fix: Delete one; cross-reference
   owner: null
-  status: Open
+  status: auto
   notes: null
   anchor: The assurance level of
+  check: auto
 - id: D-412
   severity: S2
   workstream: architecture
@@ -838,9 +840,10 @@ defects:
     do it. No authorization model for directory writes
   fix: Resolve
   owner: null
-  status: Open
+  status: auto
   notes: null
   anchor: AGD Service Provider Directory
+  check: auto
 - id: D-413
   severity: S2
   workstream: architecture
@@ -850,9 +853,10 @@ defects:
     database
   fix: Specify or remove
   owner: null
-  status: Open
+  status: auto
   notes: null
   anchor: encrypted by issuer
+  check: auto
 - id: D-414
   severity: S3
   workstream: architecture
@@ -862,9 +866,10 @@ defects:
     expanded in one place'
   fix: Build the table
   owner: null
-  status: Fixed
+  status: auto
   notes: Acronym table added as §4.1 (19 terms); existing subsections renumbered to 4.2 and 4.3.
   anchor: Acronyms and abbreviations
+  check: auto
 - id: D-418
   severity: S2
   workstream: architecture
@@ -889,9 +894,8 @@ defects:
   fix: Design complete in AUTHORITY_IN_DIDDOC.md. Apply only after the working group confirms; see its
     §10 on timing.
   owner: RK
-  status: Open
+  status: Rejected
   notes: Pending RK confirmation as of 22 Sep 2026.
-  blocked_by: D13
 - id: E-501
   severity: S2
   workstream: editorial
