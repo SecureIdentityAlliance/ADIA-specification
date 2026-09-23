@@ -180,7 +180,7 @@ CHECKS = {
 "D-401": lambda s: len(re.findall(r"\bard_\w+", s.text)) == 0,
 "D-402": lambda s: ("IAL" in s.text and "FAL" in s.text
                     and "800-63-3" not in s.text),
-"D-403": lambda s: _did_forms_consistent(s),
+"D-403": lambda s: all(re.fullmatch(r"did:adi:[A-Za-z0-9_-]{22}", d) for d in re.findall(r"did:adi:[A-Za-z0-9_:/.{}-]+", s.text)),
 "D-407": lambda s: "ADI NETWORK VC" not in s.text,
 "D-409": lambda s: not ("Digital Address Application (DAA)" in s.text
                         and "Device Application Agent (DAA)" in s.text),
@@ -239,7 +239,7 @@ EXPLAIN = {
                    + ['"kid" occurrences: %d (need >= 8)' % s.text.count('"kid"')],
 "A-113": lambda s: ["malformed UUID: %s" % u for u in UUIDISH.findall(s.text) if not UUID.match(u)],
 "D-401": lambda s: ["%s x%d" % (k, v) for k, v in collections.Counter(re.findall(r"\bard_\w+", s.text)).most_common()],
-"D-403": lambda s: sorted(s.dids()),
+"D-403": lambda s: [d for d in sorted(set(re.findall(r"did:adi:[A-Za-z0-9_:/.{}-]+", s.text))) if not re.fullmatch(r"did:adi:[A-Za-z0-9_-]{22}", d)],
 "D-409": lambda s: [m.group(0) for m in re.finditer(r"[^.\n]{0,40}\(DAA\)", s.text)],
 "F-603": lambda s: (["no in-document links yet -- F-601 first"] if not re.search(r"\]\(#", s.text)
                     else ["link to #%s has no <a id=\"%s\"> anchor" % (r, r) for r in sorted(_dangling(s))]),

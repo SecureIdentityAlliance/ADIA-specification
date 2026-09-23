@@ -29,7 +29,7 @@ DECISIONS = {
  "D1":  ("Legacy field prefix",
          "Appendix B field names carry an `ard_` prefix from a role that no longer exists in the architecture. Retain the role, or rename the fields."),
  "D2":  ("DID syntax",
-         "The `did:adi` method is used throughout but not defined, and the prevailing form places routing information after a solidus, which makes it a path rather than part of the identifier. Two entities that differ only in that path are the same DID. A syntax must be adopted and a method specification published."),
+         "Decided 23 September 2026: the identifier is opaque, `did:adi:<id>` with `<id>` the unpadded base64url encoding of at least 128 bits of entropy, carrying no region, Interchange or other structure. Resolution is through the ADI Global Domain's network directory. Clause 7.4.3 states the syntax. Remaining: registration of the `did:adi` method in the W3C DID Specification Registries, and redrawing Figure 10."),
  "D3":  ("Digital Address grammar",
          "The Digital Address form is stated but not given a grammar, and case sensitivity, reserved names and internationalised labels are unaddressed."),
  "D4":  ("Role credential type registry",

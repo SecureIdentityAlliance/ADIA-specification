@@ -1143,15 +1143,27 @@ HIDA usage is REQUIRED. An Interchange cannot satisfy §7.4.1 without it. The ch
 <a id="did-addressing"></a>
 ### 7.4.3 DID Addressing
 
-All Digital Addresses have a primary DID and one or more pairwise DIDs.
-
 Every DID MUST resolve to exactly one DIDdoc, and a DIDdoc MUST be bound to exactly one DID.
 
-DIDs are identifiers of a private key the DID owner securely holds.  The public key is available through the DID’s DIDdoc / VC in the ADI-Network.
+An ADI-Network DID identifies an entity. Its DIDdoc references the keys that entity uses to sign and to authenticate; keys MAY be rotated without changing the DID (clause 6.1.2).
 
-DID addresses include network locations which enable global navigation and communication within the ADI-Network.
+**7.4.3.1 Syntax.** An ADI-Network DID conforms to [DID-CORE] and has the form
 
-An ADI-Network DID bound to the Digital Address and may have the format of -  did:adi:issuer_6/r1/ix6.
+```
+did:adi:<id>
+```
+
+where `<id>` is the base64url encoding, without padding ([RFC4648] §5), of an identifier carrying at least 128 bits of entropy. The identifier carries no region, Interchange, role or other structure; it is opaque. Implementations MUST NOT encode routing or organisational information in the identifier, and verifiers MUST NOT infer any such information from it.
+
+NOTE — Standard Base64 ([RFC4648] §4) is not acceptable: its alphabet includes `/`, which begins a DID URL path, and `+` and `=`, which are not permitted in a method-specific identifier. Only the URL-safe alphabet, unpadded, produces a valid DID.
+
+A conforming construction is the base64url encoding of the 16 octets of a version-4 UUID [RFC9562], which yields a 22-character identifier. Other constructions MAY be used provided the entropy requirement is met.
+
+**7.4.3.2 Assignment.** An Interchange assigns DIDs to the entities it enrols and MUST ensure uniqueness among them. The ADI Global Domain assigns DIDs to Interchanges and its own. Because identifiers carry at least 128 bits of entropy and are generated independently, collision across Interchanges is not a practical concern and no coordination is required.
+
+**7.4.3.3 Resolution.** Because the DID carries no routing information, a resolver locates the Interchange serving a DID through the network directory maintained by the ADI Global Domain, which maps every enrolled DID to its Interchange. The resolver then requests the DIDdoc from that Interchange's Digital Address Service (clause 10.2). Resolvers MAY cache directory entries and DIDdocs for the validity period their signer declares and MUST NOT rely on them beyond it. Availability of the directory and of the serving Interchange is therefore a dependency of every verification; see clause 12.11.
+
+**7.4.3.4 Conformance to DID Core.** ADI-Network identifiers conform to the syntax of [DID-CORE]. ADI resolves a DID to a DIDdoc to obtain verification keys and, through the ADI-ROLE credential, authority. ADI does not use DID document service endpoints for agent messaging. The `did:adi` method is to be registered in the W3C DID Specification Registries.
 
 ![ADI-Network DID Addressing](figures/fig-10-adi-network-did-addressing.svg)
 
@@ -1173,7 +1185,7 @@ An ADI-Network DID bound to the Digital Address and may have the format of -  di
 > On receiving a `vc_request` from a Service Provider Agent, and after the User has authorised the presentation under §9.3.5.4, the Digital Address Service MUST:
 >
 > 1. Generate a fresh key pair inside the Interchange hardware security module. The key MUST be unique to this presentation and MUST NOT be derived from, or linkable to, the primary DID key or any previous transaction key by any party other than the Interchange.
-> 2. Construct a transaction DID in the form specified in §9.5.3, whose method-specific identifier is a UUIDv4 and which is marked as transaction-scoped by the `txn` segment. For example: `did:adi:r1:ix1:txn:3b9c1e2a-...`.
+> 2. Construct a transaction DID in the form specified in clause 7.4.3, from a freshly generated identifier. The DID itself carries no marker of its scope; the DIDdoc published for it under item 4 records that it is transaction-scoped.
 > 3. Record the binding `{transaction DID, primary DID, Service Provider DID, timestamp, request nonce}` in the Interchange audit log required by §8.
 > 4. Publish a DIDdoc for the transaction DID containing the generated public key, signed by the Interchange, with `validUntil` no later than `iat + 24 hours`.
 >
@@ -1947,7 +1959,7 @@ The Hash of Subject ID Attributes (HIDA) is computed over a small, structured at
 
 Digital Addresses are human-readable and therefore subject to confusable-character attacks. This version restricts the local part to ASCII (clause 7.4.1); implementations MUST NOT accept a Digital Address containing characters outside that set, and user interfaces SHOULD display Digital Addresses in a manner that makes substitution of similar-looking characters apparent.
 
-NOTE — The syntax of the `did:adi` identifier is under revision. In the form used by the examples in Appendix B, the segments following the first solidus form a path rather than part of the identifier, so two entities differing only in those segments resolve to the same DID. Verifiers MUST NOT rely on path segments to distinguish entities until the syntax is settled.
+The `did:adi` identifier is opaque and base64url-encoded (clause 7.4.3.1). An implementation that emits standard Base64 produces identifiers containing `/`, which DID Core treats as the start of a path, so two distinct entities can resolve to one DID. Verifiers MUST reject a `did:adi` identifier containing any character outside the base64url alphabet.
 
 <a id="security-transport"></a>
 ## 12.8 Transport security
@@ -2049,10 +2061,10 @@ This clause records work the editors know to be outstanding. It is provided so t
 
 | | |
 |---|---|
-| Items outstanding | 43 |
-| Of which critical | 8 |
-| Awaiting an architectural decision | 15 |
-| Open decisions | 11 |
+| Items outstanding | 42 |
+| Of which critical | 7 |
+| Awaiting an architectural decision | 14 |
+| Open decisions | 10 |
 | Corrected, awaiting confirmation | 1 |
 
 Severity is recorded as **Critical** where the text as written would lead an implementer to build something incorrect or insecure, **Major** where the text is contradictory or where required normative material is absent, and **Minor** where the issue is editorial.
@@ -2061,12 +2073,6 @@ Severity is recorded as **Critical** where the text as written would lead an imp
 ## 14.1 Architectural decisions required
 
 The following questions are unresolved. Each blocks one or more of the items in clause 14.2, and they are listed first because the drafting that follows depends on them.
-
-**D2 — DID syntax**
-
-The `did:adi` method is used throughout but not defined, and the prevailing form places routing information after a solidus, which makes it a path rather than part of the identifier. Two entities that differ only in that path are the same DID. A syntax must be adopted and a method specification published.
-
-*Blocks: D-403*
 
 **D3 — Digital Address grammar**
 
@@ -2180,7 +2186,6 @@ Decided 22 September 2026. ADI-ROLE Verifiable Credentials are retained. They ar
 
 | Ref | Severity | Clause or object | Issue | Work needed |
 |---|---|---|---|---|
-| D-403 | Critical | L1154/1176/2137 "did:adi:" | **13 distinct `did:adi` forms.** Region/IX order reversed in B.3.2 (`issuser1/ix3/r1` — also a typo); variants `region_1`, `region1`, `r1`, `r_1`; `IX_2` vs `ix_1`; trailing empty segment; 2, 3 and 4 segment forms; a `{subject_did}` placeholder. The `/` makes all of these DID **URLs**, not DIDs — so path-only differences collide (see A-110). No method definition exists | Define the method; normalise every instance *(awaiting D2)* |
 | D-419 | Critical | clauses 4.2, 6.3, 6.6, 6.7, 8, 10.3, B.2.7–B.2.11 | The working group architect has proposed removing ADI-ROLE Verifiable Credentials and carrying role, entitlements and assurance ceilings in each entity's DID Document, signed by the enrolling authority as DID controller. Preserves the chain of trust and simplifies enrollment, but makes DID resolution a dependency of every verification and requires a did:adi method that returns controller-signed documents. | Design complete in AUTHORITY_IN_DIDDOC.md. Apply only after the working group confirms; see its §10 on timing. *(awaiting D13)* |
 | D-404 | Major | L? "unique within an ADI-Region" | DA uniqueness scope: "within an ADI-Region" (§3.21) vs "in an ADI Network" (§8.5.1). Format `user@interchange_name` is met by only **one** of five role VCs — B.2.7 `agd_admin@global_1`, B.2.9 `issuer_admin@issuer_1`, B.2.10 `sp_admin@service_provider_1`, B.2.11 `USER_DA@IX_1` all use a non-interchange host. B.3.2 uses a third syntax `issuer1@ix3.r1`. No ABNF, no case rule, no IDN/homograph policy for a human-facing identifier | Define ABNF; fix all instances *(awaiting D3)* |
 | D-405 | Major | L? "HIDA usage is optional" | HIDA is simultaneously mandatory ("Entities … are unique when they do not have matching HIDAs"; "The User HIDA **is** verified for uniqueness") and optional ("HIDA usage is optional"). Separately: no hash algorithm named, no salt/pepper/KDF/keyed-MAC, and **no canonicalization rule** — without normalization of case, diacritics, name order and date format the same person yields different HIDAs at different Interchanges and cross-region uniqueness silently fails | Decide; specify construction *(awaiting D9)* |
@@ -2318,7 +2323,7 @@ POST ~agd/create_agd
   "header": {
     "alg": "ES256",
     "typ": "JWT",
-    "kid": "did:adi:global:agd:8c019421-2920-410c-acfe-77d5c87b187c#key-1"
+    "kid": "did:adi:jAGUISkgQQys_nfVyHsYfA#key-1"
   },
   "payload": {
     "request_id": "45bde61c-7da0-4f85-aed4-39d2d7508e99",
@@ -2358,7 +2363,7 @@ POST ~agd/enroll_ix
   "header": {
     "alg": "ES256",
     "typ": "JWT",
-    "kid": "did:adi:r1:ix1:f6e18f71-4311-4e09-8bfc-9980a90e4be7#key-1"
+    "kid": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w#key-1"
   },
   "payload": {
     "request_id": "a523335a-df3b-41cc-b371-88034beb1e5c",
@@ -2444,7 +2449,7 @@ POST ~agd/enroll_ix
       "email": "jane@example.com",
       "phone": "+1-650-555-1212"
     },
-    "authorized_by": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1",
+    "authorized_by": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w",
     "url": "https://user.ix.com"
   },
   "auth_signature": "hbGciOiJSUzI...1NObTjhad8d8adjadnap1c2VySWQiOiJhMS"
@@ -2476,7 +2481,7 @@ POST ~user/vc_offer
   "expires": "2026-09-22T14:10:00Z",
   "single_use": true,
   "credential_detail": {
-    "subject": "did:adi:user2/r_1/ix_1",
+    "subject": "did:adi:Rb3mHH2gT4Wu1DnS11COmQ",
     "credential_issue_request": {
       "credential_issuer": "https://adi.issuer_domain.com",
       "credential_configuration_ids": [
@@ -2501,13 +2506,13 @@ POST ~issuer/issue_vc_token
   "header": {
     "alg": "ES256",
     "typ": "JWT",
-    "kid": "did:adi:r1:ix1:45bde61c-7da0-4f85-aed4-39d2d7508e99#key-1"
+    "kid": "did:adi:Rb3mHH2gT4Wu1DnS11COmQ#key-1"
   },
   "payload": {
     "vc_offer": {
       "id": "7560e840-0e79-4d21-9f71-974864681044",
       "credential_detail": {
-        "subject": "did:adi:user2/r_1/ix_1",
+        "subject": "did:adi:Rb3mHH2gT4Wu1DnS11COmQ",
         "credential_issue_request": {
           "credential_issuer": "https://credential-issuer.issuer_1.com",
           "credential_configuration_ids": [
@@ -2538,11 +2543,11 @@ POST ~issuer/issue_vc_token
     "VerifiableCredential",
     "UniversityDegreeCredential"
   ],
-  "issuer": "did:adi:eedec811-0f26-4656-a6cd-59d5f0bf2c16/region_1/ix_3/issuer_1",
+  "issuer": "did:adi:7t7IEQ8mRlamzVnV8L8sFg",
   "validFrom": "2026-01-01T19:23:24Z",
   "validUntil": "2027-01-01T19:23:24Z",
   "credentialSubject": {
-    "id": "did:adi:ebfeb1f712ebc6f1c276e12ec21/region_2/ix_1",
+    "id": "did:adi:Rb3mHH2gT4Wu1DnS11COmQ",
     "degree": {
       "type": "BachelorDegree",
       "name": "Bachelor of Science and Arts"
@@ -2559,7 +2564,7 @@ POST ~issuer/issue_vc_token
     "type": "DataIntegrityProof",
     "cryptosuite": "ecdsa-rdfc-2019",
     "created": "2026-01-01T19:23:24Z",
-    "verificationMethod": "did:adi:eedec811-0f26-4656-a6cd-59d5f0bf2c16/region_1/ix_3/issuer_1#key-1",
+    "verificationMethod": "did:adi:7t7IEQ8mRlamzVnV8L8sFg#key-1",
     "proofPurpose": "assertionMethod",
     "proofValue": "z58DAdFfa9SkqZMVPxAQp...placeholder"
   }
@@ -2572,7 +2577,7 @@ POST ~issuer/issue_vc_token
 ```json
 {
   "sp_id": "sp1@interchange1",
-  "aud": "did:adi:r1:ix1:a523335a-df3b-41cc-b371-88034beb1e5c",
+  "aud": "did:adi:pSMzWt87QcyzcYgDS-seXA",
   "nonce": "n-0S6_WzA2Mj",
   "state": "af0ifjsldkj",
   "exp": 1758240600,
@@ -2609,18 +2614,18 @@ POST ~issuer/issue_vc_token
     "header": {
       "alg": "ES256",
       "typ": "JWT",
-      "kid": "did:adi:8c019421-2920-410c-acfe-77d5c87b187c#key-1"
+      "kid": "did:adi:jAGUISkgQQys_nfVyHsYfA#key-1"
     },
     "payload": {
       "type": "ADI-AGD-VC",
-      "issuer": "did:adi:8c019421-2920-410c-acfe-77d5c87b187c",
+      "issuer": "did:adi:jAGUISkgQQys_nfVyHsYfA",
       "credentialSubject": {
-        "subject": "did:adi:8c019421-2920-410c-acfe-77d5c87b187c",
+        "subject": "did:adi:jAGUISkgQQys_nfVyHsYfA",
         "digital_address": "agd_admin@global_1",
         "role": "AGD",
         "agd_da_global_name": "global_1",
         "id_doc": {
-          "id": "did:adi:8c019421-2920-410c-acfe-77d5c87b187c",
+          "id": "did:adi:jAGUISkgQQys_nfVyHsYfA",
           "public_key": {
             "kty": "EC",
             "crv": "P-256",
@@ -2659,18 +2664,18 @@ POST ~issuer/issue_vc_token
   "header": {
     "alg": "ES256",
     "typ": "JWT",
-    "kid": "did:adi:8c019421-2920-410c-acfe-77d5c87b187c#key-1"
+    "kid": "did:adi:jAGUISkgQQys_nfVyHsYfA#key-1"
   },
   "payload": {
     "type": "ADI-IX-VC",
-    "issuer": "did:adi:8c019421-2920-410c-acfe-77d5c87b187c",
+    "issuer": "did:adi:jAGUISkgQQys_nfVyHsYfA",
     "credentialSubject": {
-      "subject": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1",
+      "subject": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w",
       "digital_address": "interchange_admin@ix_1",
       "role": "INTERCHANGE",
       "agd_da_interchange_name": "ix_1",
       "id_doc": {
-        "id": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1",
+        "id": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w",
         "public_key": {
           "kty": "EC",
           "crv": "P-256",
@@ -2710,17 +2715,17 @@ POST ~issuer/issue_vc_token
   "header": {
     "alg": "ES256",
     "typ": "JWT",
-    "kid": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1#key-1"
+    "kid": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w#key-1"
   },
   "payload": {
     "type": "ADI-ISSUER-VC",
-    "issuer": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1",
+    "issuer": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w",
     "credentialSubject": {
-      "subject": "did:adi:3b576f82-3506-4663-8ca4-51d614aea318/region_1/ix_1/issuer_1",
+      "subject": "did:adi:O1dvgjUGRmOMpFHWFK6jGA",
       "digital_address": "issuer_admin@issuer_1",
       "role": "ISSUER",
       "id_doc": {
-        "id": "did:adi:3b576f82-3506-4663-8ca4-51d614aea318/region_1/ix_1/issuer_1",
+        "id": "did:adi:O1dvgjUGRmOMpFHWFK6jGA",
         "public_key": {
           "kty": "EC",
           "crv": "P-256",
@@ -2756,17 +2761,17 @@ POST ~issuer/issue_vc_token
   "header": {
     "alg": "ES256",
     "typ": "JWT",
-    "kid": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1#key-1"
+    "kid": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w#key-1"
   },
   "payload": {
     "type": "ADI-SP-VC",
-    "issuer": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1",
+    "issuer": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w",
     "credentialSubject": {
-      "subject": "did:adi:9d0e5f61-7c2a-4b83-a1f4-2e6b7c8d9e0f/region_1/ix_1/sp_1",
+      "subject": "did:adi:nQ5fYXwqS4Oh9C5rfI2eDw",
       "digital_address": "sp_admin@service_provider_1",
       "role": "SERVICE_PROVIDER",
       "id_doc": {
-        "id": "did:adi:9d0e5f61-7c2a-4b83-a1f4-2e6b7c8d9e0f/region_1/ix_1/sp_1",
+        "id": "did:adi:nQ5fYXwqS4Oh9C5rfI2eDw",
         "public_key": {
           "kty": "EC",
           "crv": "P-256",
@@ -2802,17 +2807,17 @@ POST ~issuer/issue_vc_token
   "header": {
     "alg": "ES256",
     "typ": "JWT",
-    "kid": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1#key-1"
+    "kid": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w#key-1"
   },
   "payload": {
     "type": "ADI-User-VC",
-    "issuer": "did:adi:f6e18f71-4311-4e09-8bfc-9980a90e4be7/region_1/ix_1",
+    "issuer": "did:adi:9uGPcUMRTgmL_JmAqQ5L5w",
     "credentialSubject": {
-      "subject": "did:adi:45bde61c-7da0-4f85-aed4-39d2d7508e99/region_1/ix_1",
+      "subject": "did:adi:Rb3mHH2gT4Wu1DnS11COmQ",
       "digital_address": "USER_DA@IX_1",
       "role": "USER",
       "id_doc": {
-        "id": "did:adi:45bde61c-7da0-4f85-aed4-39d2d7508e99/region_1/ix_1",
+        "id": "did:adi:Rb3mHH2gT4Wu1DnS11COmQ",
         "public_key": {
           "kty": "EC",
           "crv": "P-256",
@@ -2849,8 +2854,8 @@ identifier as a persistent account key.
 
 ```json
 {
-  "iss": "did:adi:r1:ix1:txn:3b9c1e2a-7d41-4f8e-9a02-5c6d18b4e730",
-  "aud": "did:adi:r1:ix1:a523335a-df3b-41cc-b371-88034beb1e5c",
+  "iss": "did:adi:O5weKn1BT46aAlxtGLTnMA",
+  "aud": "did:adi:pSMzWt87QcyzcYgDS-seXA",
   "nonce": "n-0S6_WzA2Mj",
   "state": "af0ifjsldkj",
   "iat": 1758240120,
@@ -2868,7 +2873,7 @@ identifier as a persistent account key.
   "proof": {
     "type": "JsonWebSignature2020",
     "created": "2026-09-19T00:02:00Z",
-    "verificationMethod": "did:adi:r1:ix1:txn:3b9c1e2a-7d41-4f8e-9a02-5c6d18b4e730#key-1",
+    "verificationMethod": "did:adi:O5weKn1BT46aAlxtGLTnMA#key-1",
     "jws": "eyJhbGciOiJFUzI1NiJ9..."
   }
 }
@@ -2957,7 +2962,7 @@ identifier as a persistent account key.
 ```json
 {
   "digital_address": "issuer1@ix3.r1",
-  "did": "did:adi:issuser1/ix3/r1"
+  "did": "did:adi:7t7IEQ8mRlamzVnV8L8sFg"
 }
 ```
 
@@ -2975,6 +2980,6 @@ identifier as a persistent account key.
 
 ```json
 {
-  "did": "did:adi:09f4cee0-b3a8-4bfe-a1f7-69d834764159/region1/IX_2"
+  "did": "did:adi:CfTO4LOoS_6h92nYNHZBWQ"
 }
 ```
