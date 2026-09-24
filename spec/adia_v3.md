@@ -1,3 +1,5 @@
+![ADIA logo](figures/adia-logo.svg)
+
 **ACCOUNTABLE DIGITAL IDENTITY ARCHITECTURE SPECIFICATION **
 
 **Version 3.0**
