@@ -2114,7 +2114,7 @@ Signed artefacts — credentials, presentations, authority records — cannot be
 <a id="editors-notes"></a>
 # 14. Editor's Notes — work still needed
 
-*This clause is generated from the editing register maintained alongside this draft. It was last regenerated on 23 September 2026 and reflects the state of the text at that point.*
+*This clause is generated from the editing register maintained alongside this draft. It was last regenerated on 24 September 2026 and reflects the state of the text at that point.*
 
 This clause records work the editors know to be outstanding. It is provided so that a Study Group taking this draft forward can see what has been identified but not yet resolved, rather than having to rediscover it. Items are numbered for reference; the numbering is that of the editing register and is not sequential within this clause.
 
