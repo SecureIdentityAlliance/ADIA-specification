@@ -1,6 +1,6 @@
 ![ADIA logo](figures/adia-logo.svg)
 
-**ACCOUNTABLE DIGITAL IDENTITY ARCHITECTURE SPECIFICATION **
+**ACCOUNTABLE DIGITAL IDENTITY ARCHITECTURE SPECIFICATION**
 
 **Version 3.0**
 
@@ -408,7 +408,7 @@ Assertion made about a Subject
 >
 > Note 1 to entry: A schema may apply to all of or any portion of a VC. Multiple JSON schemas may describe a single VC, e.g., one schema for the Subject and another for related Claims.
 >
-> Note 2 to entry: A Credential Schema publishes the structure and contents of a Credential or Verifiable Credential.  See \[W3C JS\] W3C Verifiable Credentials JSON Schema Specification for more information.** **
+> Note 2 to entry: A Credential Schema publishes the structure and contents of a Credential or Verifiable Credential.  See \[W3C JS\] W3C Verifiable Credentials JSON Schema Specification for more information.
 
 <a id="vc-vault"></a>
 ## 3.27 VC Vault
@@ -579,7 +579,7 @@ The basic steps in the process are:
 
 4.  Once stored in the Vault or Wallet, the VC is considered to be issued and is available for use in accordance with applicable rules or policies.
 
-**Requesting a Verifiable Presentation **
+**Requesting a Verifiable Presentation**
 
 1.  When a Holder requests a product or service from a Service Provider, it may be necessary to obtain information about the Holder. There can be multiple reasons for this, not the least of which are to (a) ensure the request is legal and (b) minimize the risk of payment default.
 
@@ -587,7 +587,7 @@ The basic steps in the process are:
 
 3.  The Holder assembles a VP by selecting VCs (and Claims within a VC) to be included in the VP. A VP is very similar to a VC except that the payload is one or more VCs, and the Holder signs the VP.
 
-**Delivering a Verifiable Presentation **
+**Delivering a Verifiable Presentation**
 
 Upon receiving the Holder’s consent, the Vault or Wallet delivers the requested VP via the Interchange.
 
@@ -1430,7 +1430,7 @@ The CI_AGENT signs the offer with its private_key and returns an issue_vc_token.
 
 The interchange creates and signs an ADI-ISSUER role VC for the issuer, stores it in the interchange vault, updates the AGD provider directory listing and returns the VC to the CI_Agent.
 
-**INTERCHANGE -\> IX-VAULT:  POST ~ix_vault/ADI-ISSUER role VC **
+**INTERCHANGE -\> IX-VAULT:  POST ~ix_vault/ADI-ISSUER role VC**
 
 **INTERCHANGE -\>  AGD:  List issuer in AGD provider directory**
 
@@ -1501,7 +1501,7 @@ Once vetting of the service provider is completed, the Interchange provisions an
 
 Once the SP_AGENT setup  is completed,  the Interchange sends a vc_offer for an ADI-SP ROLE VC to the SP_AGENT to accept and sign.
 
-**INTERCHANGE -\> SP_AGENT: POST ~sp_agent/vc_offer **
+**INTERCHANGE -\> SP_AGENT: POST ~sp_agent/vc_offer**
 
 The SP_AGENT signs the offer with its private_key returns an issue_vc_token.
 
@@ -1509,7 +1509,7 @@ The SP_AGENT signs the offer with its private_key returns an issue_vc_token.
 
 The interchange creates and signs an ADI-SP role VC for the service provider, stores it in the interchange vault, updates the AGD provider directory listing and returns the ADI-SP role VC to the SP agent.
 
-**INTERCHANGE -\> IX-VAULT:  POST ~ix_vault/ADI-SP role VC **
+**INTERCHANGE -\> IX-VAULT:  POST ~ix_vault/ADI-SP role VC**
 
 **INTERCHANGE -\>  AGD:  List SERVICE_PROVIDER in AGD provider directory**
 
@@ -1618,7 +1618,7 @@ The INTERCHANGE may require an Issuer perform an identity proofing at a certain 
 
 The INTERCHANGE responds with success
 
-**USER_AGENT -\> DAA:   Success **
+**USER_AGENT -\> DAA:   Success**
 
 **DAA -\> USER:   Success**
 
@@ -1726,7 +1726,7 @@ The issuer agent creates a vc_offer containing a pre_authorized_code (OIDC4VCI).
 
 The issuer agent creates a URI referring to this vc_offer.  This is returned as a link and can be used as a redirect, QR or notification action for the USER_AGENT to fulfill.
 
-**CI_AGENT -\> USER_AGENT: return URI: ~user_agent/get_credential_offer/{offer_id} \n via URL Link, QR Code or Notification **
+**CI_AGENT -\> USER_AGENT: return URI: ~user_agent/get_credential_offer/{offer_id} \n via URL Link, QR Code or Notification**
 
 **USER_AGENT -\> CI_AGENT:  POST ~issuer/get_credential_offer/{offer_id}**
 
@@ -1748,7 +1748,7 @@ The issuer agent validates the user's signature of the issue_vc token and retrie
 
 A credential is stored either in the Issuer's vault or in the User's. The location of the User's vault is published as a `service` entry of type `ADIVault` in the User's DIDdoc (B.3.5), and a USER_AGENT MUST consult that entry first; the Issuer's vault, published in the Issuer's metadata as `credential_vault_endpoint`, is the fallback where the User has none.
 
-**CI_AGENT -\> VAULT_AGENT: ~issuer\_ or user\_  vault/VC **
+**CI_AGENT -\> VAULT_AGENT: ~issuer\_ or user\_  vault/VC**
 
 **CI_AGENT -\> USER_AGENT:  Return issued VC**
 
@@ -1871,7 +1871,7 @@ The USER_AGENT obtains user consent & authorization using strong authentication.
 
 This may be from the issuer vault or the user vault depending on issuer endpoint setting rules for this.
 
-**USER_AGENT -\> VAULT_AGENT: 5. POST ~vc_vault/vc_authorization_token **
+**USER_AGENT -\> VAULT_AGENT: 5. POST ~vc_vault/vc_authorization_token**
 
 6. The VAULT_AGENT verifies the authorization_token, retrieves and returns the VC
 
