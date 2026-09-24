@@ -28,7 +28,7 @@ Alan Bachmann (<aabachmann@cvshealth.com>)
 
 **Editor:**
 
-Nathan Dent ([nathan@adiassociation.org](mailto:nathan@adiassociation.org))
+Nathan Dent ([nathan@privateid.com](mailto:nathan@privateid.com))
 
 **Material Changes:**
 
