@@ -1,0 +1,33 @@
+title User Onboarding to 2nd Issuer
+
+Participant User
+Participant DAA
+Participant Issuer
+Participant DAS
+Participant ARD
+
+User -> Issuer: I want a Digital Address\n(Authentication + accept T&C)
+Issuer -> Issuer: Lookup ID-Attribs for that user in Issuer DB
+Issuer -> Issuer: ADIA-FN-001: Compute HIDA = hash (ID-Attribs)
+Issuer ->> DAS: ADIA-DR-001: Securely send HIDA, ISSUER_ID \nand request Digital Address
+DAS ->> ARD: ADIA-DR-001: Lookup TA_USER_ISSUER for HIDA, ISSUER_ID
+ARD -> ARD: Lookup TA for HIDA
+
+alt TA found
+ARD -->> DAS: ADIA-DR-001:Compute and Return\nTA_USER_ISSUER found and HomeDAS_ID
+else TA not found
+note over DAS,ARD
+Enroll a User with new Digital Address
+end note
+end
+
+alt Same DAS
+DAS -> DAS: ADIA-DR-004: Resolve DAS details for HomeDAS_ID
+else Different DAS
+DAS->> ARD: ADIA-DR-004: Search DAS details [HomeDAS_ID]
+ARD->> AGD: ADIA-DR-004: Search DAS Details
+AGD-->>ARD: ADIA-DR-004: HomeDAS Details
+ARD-->>DAS: ADIA-DR-004: HomeDAS Details
+end
+DAS -->> Issuer: ADIA-DR-004: User exists in (HomeDAS_ID, Home DAS Name)
+Issuer --> User: Your DA exists in Home DAS Name.  Use your existing DAA.

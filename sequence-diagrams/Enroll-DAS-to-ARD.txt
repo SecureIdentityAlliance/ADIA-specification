@@ -1,0 +1,54 @@
+title Enroll a DAS to ARD
+actor DAS Admin
+participant DAS
+participant ARD
+actor ARD Admin
+participant AGD
+
+DAS Admin -> +ARD: Entity details (HIDA Attibutes) and Primary contact
+ARD->ARD: Save Request [Status=NEW]. Generate REQUEST_ID
+ARD-> -DAS Admin:Send Request Reference\n[REQUEST_ID, Status=New]
+ARD Admin->ARD: Review Pending Request [REQUEST_ID]
+ARD->ARD: ADIA-FN-001: Compute HIDA = hash (ID-attributes)
+ARD->>+AGD: ADIA-DR-001: Lookup TA_DAS_ARD for [HIDA, ARD_ID]
+AGD->AGD: Lookup TA for HIDA
+
+alt TA not found
+AGD->AGD: Generate TA = random
+AGD-->>-ARD: ADIA-DR-001:No conflict with TA\nReturn TA_DAS_ARD = hash[TA,ARD_ID]
+else TA found
+note over DAS,ARD
+Enroll an DAS with existing Digital Address
+end note
+end
+
+ARD Admin->ARD: Approve [REQUEST_ID]
+ARD->>DAS Admin: Provision DAS Agent with HIDA [CorrelationId=REQUEST_ID]
+DAS Admin->>ARD: Setup DAS Agent and Register with ARD [REQUEST_ID]
+
+
+ARD->>+DAS: ADIA-DA-001: Request to create DAS_ID and DAS_DA for HIDA
+DAS->>DAS: Create DAS_ID & DAS_ID_PK/SK. \nCreate DIDDoc-DAS
+DAS->DAS:  Create DAS_DA
+DAS-->>-ARD: ADIA-DA-001: Send [DAS_DA, DAS_ID, DIDDoc-DAS, REQUEST_ID]
+ARD->ARD: Store [REQUEST_ID, DAS_DA, DAS_ID]
+ARD->ARD: Sign DIDDoc-DAS with ARD_ID_SK
+ARD->>+AGD: ADIA-DA-001: Send [DAS_DA, DAS_ID, ARD_ID, DIDDoc-DAS]
+AGD->AGD: Sign DIDDoc-DAS with AGD_ID_SK & \nstore in Directory
+AGD-->>-ARD: ADIA-DA-001:DIDDoc save success
+ARD-->>DAS: ADIA-DA-001:DIDDoc save success
+
+DAS->>+ARD: ADIA-DR-002: Request to Enroll
+
+alt Approve Request [REQUEST_ID]
+ARD->>AGD: ADIA-DR-002: Forward Request [DAS_ID,DAS_DA, HomeARDId=ARD_ID]
+AGD->AGD: Store [TA,DAS_ID,DAS_DA, HomeARDId=ARD_ID] \nand [TA,DAS_ID]
+ARD->>DAS: Aries-RFC-0036-4:Issue VC
+DAS-->>ARD: Aries-RFC-0036-4:ACK
+AGD-->>ARD: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
+else Reject Request [REQUEST_ID]
+AGD-->>ARD: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=REJECTED]
+
+end
+ARD->ARD: Update Request [REQUEST_ID, Status]
+ARD-->-DAS: Request Complete [REQUEST_ID, Status]

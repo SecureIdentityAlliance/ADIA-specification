@@ -1,0 +1,26 @@
+# ADIA Protocol # {#sctn-adia-protocol}
+[NORMATIVE]
+
+## Complete Protocol Reference ## {#sctn-complete-protocol-ref}
+
+Please see <strong>[ADIA Protocol Reference Documentation](ADIA-protocol.html)</strong> for the detail on protocol commands and sample messages.
+
+<pre class=include>
+path: sections/protocol/digital-address.include
+</pre>
+
+<pre class=include>
+path: sections/protocol/hida-computation.include
+</pre>
+
+<pre class=include>
+path: sections/protocol/protocol-categories.include
+</pre>
+
+<pre class=include>
+path: sections/protocol/agent-types.include
+</pre>
+
+<pre class=include>
+path: sections/protocol/protocol-messages.include
+</pre>

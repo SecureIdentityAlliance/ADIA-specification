@@ -1,0 +1,26 @@
+title User Bootstraps New DAA Instance
+
+Participant User
+Participant DAA
+Participant Issuer
+Participant DAS
+
+User -> +Issuer: Bootstrap a new device [ID-Attributes]
+Issuer->Issuer: ADIA-FN-001: Compute HIDA = hash(ID-Attributes)
+Issuer -> -Issuer: Lookup DAS_USER_ID for HIDA\nCreate QR code (DAS_USER_ID, IssuerConnectionURL)
+
+Issuer ->>User: Present QR (e.g.: Console) or send QR (e.g.: Email)
+opt User scans the QR code
+User -> DAA: Scan and Extract [DAS_USER_ID, IssuerConnectionURL]
+DAA -> DAA: Start ID proofing on the device \nand extract the User info
+DAA-> +DAS: Send Verified User Attributes +\n DAS_USER_ID to IssuerConnectionURL
+DAS->>Issuer: ADIA-DA-002:Verify User [DAS_USER_ID, User Attributes]
+Issuer ->> Issuer: Verify User Attributes against \nIssuer DB [DAS_USER_ID, User Attributes]
+Issuer-->> DAS: ADIA-DA-002: User Verified Status [DAS_USER_ID, Success/Failure]
+DAS --> -DAA: ADIA-DA-002: User Verified Status [DAS_USER_ID, DA, Validation Success/Failure]
+DAA -> DAA: If successful: Remember DAS_USER_ID, DA
+DAA <-> +DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
+DAS-> DAS: Remember (USER_FIDO_PK, DAS_USER_ID)
+DAS --> -DAA: Acknowledge successful FIDO registration
+DAA-->User: Digital Address enrolled and ready for use
+end

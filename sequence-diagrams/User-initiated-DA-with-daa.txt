@@ -1,0 +1,45 @@
+title User initiated DA creation with DAA
+
+Participant User
+Participant DAA
+Participant Cloud Agent
+Participant DAS
+Participant ARD
+
+
+User -> DAA: I want a Digital Address\n(accept T&C)
+DAA -> DAA: Start ID proofing on the device and \nextract the user information
+DAA->User: Provide additional attributes to generate HIDA
+DAA -> DAA: ADIA-FN-001: Compute HIDA = hash (ID-Attribs)
+DAA ->>+DAS: ADIA-DR-001: Securely send HIDA and request Digital Address
+DAS ->> +ARD: ADIA-DR-001: Lookup TA for HIDA
+ARD -> ARD: Lookup TA for HIDA
+
+alt TA not found
+ARD -> ARD: Generate TA = random
+ARD -->>-DAS: ADIA-DR-001:No conflict with TA.\n Return TA_USER_ISSUER = hash (TA, ISSUER_ID), HomeDAS=DAS_ID
+else TA found
+note over DAS,ARD
+Enroll a User with existing Digital Address
+end note
+end
+
+DAS->>DAS: ADIA-DA-005:Provision a Cloud Agent for User with HIDA
+DAS->>Cloud Agent: ADIA-DA-001:Request to Create DAS_USER_ID for HIDA
+Cloud Agent ->Cloud Agent: Create DAS_USER_ID & DAS_USER_ID_PK/SK\n Create DIDDoc
+Cloud Agent-->>DAS: ADIA-DA-001:Send [DAS_USER_ID, DAS_USER_ID_PK] to DAS
+DAS->DAS: Store User DIDDoc
+DAS-->>Cloud Agent: ADIA-DA-001: DID Doc save success
+DAS->>Cloud Agent: ADIA-DA-001:Create DA [DAS_USER_ID]
+Cloud Agent-->>DAS: ADIA-DA-001:DA Created
+DAS -> DAS: Store [DA, TA_USER_ISSUER, DAS_USER_ID, DAS_USER_ID_PK]
+DAS ->> +ARD: ADIA-DR-002: Enroll [DAS_USER_ID, HIDA, HomeDAS_ID] to notify about DA
+ARD -> ARD: Store [HIDA, TA]\n [TA, DAS_USER_ID, HomeDAS_ID=DAS_ID]
+ARD -->> -DAS: ADIA-DR-002:Enroll Success
+DAS-->-DAA: Send DAS_USER_ID, DA
+
+DAA -> DAA: If successful: Remember DAS_USER_ID, DA
+DAA <-> +DAS: Register FIDO Authenticator for new device\n [DAS_USER_ID, USER_FIDO_PK]
+DAS-> DAS: Remember (USER_FIDO_PK, DAS_USER_ID)
+DAS --> -DAA: Acknowledge successful FIDO registration
+DAA-->User: Digital Address enrolled and ready for use

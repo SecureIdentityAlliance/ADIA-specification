@@ -1,0 +1,41 @@
+title Scenario 4 - Verify VC
+
+participant Issuer
+participant DAS2
+participant DAS1
+participant DAS3
+participant SP
+
+DAS3->>SP: Connection status
+SP->+SP: User presents Digital Address
+SP->>+DAS3: Resolve DAS1
+DAS3->>DAS3: Lookup DAS1
+DAS3->>-SP:Send DAS1 profile
+SP->SP: generate symmetric key1 and encrypt the VP request
+
+Note right of DAS3
+REMOTE:DAS/ISSUER
+end note
+
+DAS3->+DAS1: Invite DIDcomm connection
+DAS1-->>DAS3: Connection established
+DAS3->>DAS1: Forward the encrypted VP request \n (2-3) send(VPEXREQ, TYPE=01, eVal, eTempKey)
+DAS1->DAS1: Decrypt the encrypted VP request\n lookup credentials and present user to select\n user selects the credential and gives consent
+DAS1->DAS1: generate symmetric key2 and encrypt VC request
+DAS1->DAS1: check protocol type
+
+note right of DAS1
+REMOTE: ISSUER
+end note
+
+DAS1->>+DAS2: invite DIDcomm connection
+DAS2-->>DAS1: connection established
+DAS2-->>+Issuer: forward the encrypted VC request
+Issuer-> Issuer: decrypt the VC request \n Retrieve VC \n encrypt with symmetric key2
+Issuer->>-DAS2: send the encrypted VC
+DAS2->>-DAS1: forward the encrypted VC
+DAS1->DAS1: Decrypt the VC \n prepare the presentation proof \n encrypt the VP using symmetric key1
+DAS1->>-DAS3: send the encrypted VP
+
+DAS3->>-SP: forward the encrypted VP
+SP->-SP: decrypt the encrypted VP and verify the signatures

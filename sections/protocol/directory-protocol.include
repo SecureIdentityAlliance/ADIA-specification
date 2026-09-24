@@ -1,0 +1,619 @@
+## Directory Protocol ## {#sctn-directory-protocol}
+
+Directory protocol used to interact with global & regional directories of ADIA.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Title</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td nowrap><strong>Protocol Name & Version</strong></td>
+    <td>`directory`, `1.0`</td>
+  </tr>
+  <tr>
+    <td nowrap><strong>Protocol Code</strong></td>
+    <td>ADIA-DR</td>
+  </tr>
+    <tr>
+      <td nowrap><strong>Motivation</strong></td>
+      <td>
+      The Directory Protocol defines protocol commands and messages to interact with the Directories in ADIA ecosystem. These directories
+      differ in their privacy preserving features. ADIA Global Directory is a non-hashed public registry of Issuers, Service Providers, DAS and
+      ADIA Regional Directories whereas a each of the DAS and Regional Directories maintain hashed attributes of Users and do not disclose any
+      User information.
+
+      Agents making entries or searching these directories implement specific messages instead of generic `entity` messages for easier processing of requests.
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+### Implemented By
+* AGD Agent
+* ARD Agent
+* DAS Agent
+* Issuer Agent
+
+### Roles
+* DAS: Enrolls/disenrolls and searches entities 
+* ARD: Enrolls/disenrolls TA for users
+* AGD: Enrolls/disenrolls entities across the ecosystem
+
+### Sub/Co-protocols
+This protocol uses following existing protocols -
+* ```/connection/1.0/request``` - as a subprotocol to establish a DID-based connection
+
+### Protocol Commands
+
+#### lookup-trust-anchor (ADIA-DR-001)
+
+This protocol message enables looking up an entity in a specific directory with its HIDA. Responses differ in the level of
+detail based on the type of entity.
+
+<strong>1. User TA Lookup</strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/lookup-user-ta",
+  "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+  "attributes": {
+    "hida": "{HIDA}",
+    "issuerId": "{ISSUER_ID}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/lookup-user-ta-response",
+  "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "taUserIssuer": "{TA_USER_ISSUER}",
+    "homeDASId": "{HomeDAS_ID}"
+  }
+}
+```
+
+
+<strong>2. ARD TA Lookup</strong>
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/lookup-ard-ta",
+  "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+  "attributes": {
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/lookup-ard-ta-response",
+  "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "taARDAGD": "{TA_ARD_AGD}"
+  }
+}
+```
+
+<strong>3. DAS TA Lookup</strong>
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/lookup-das-ta",
+  "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+  "attributes": {
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/lookup-das-ta-response",
+  "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "taDASARD": "{TA_DAS_ARD}",
+    "homeARDId": "{homeARD_ID}"
+  }
+}
+```
+
+<strong>4. Issuers TA Lookup</strong>
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/lookup-issuer-ta",
+  "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+  "attributes": {
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/lookup-issuer-ta-response",
+  "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "taIssuerDAS": "{TA_ISSUER_DAS}",
+    "homeDASId": "{HomeDAS_ID}"
+  }
+}
+```
+
+<strong>5. Service Provider TA Lookup</strong>
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/lookup-sp-ta",
+  "@id": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+  "attributes": {
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/lookup-sp-ta-response",
+  "@id": "ad60dd33-7a89-4c8e-91e2-e24f27681910",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "30e67f18-25b7-474b-aebf-7ab721a719ee",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "taServiceProviderDAS": "{TA_SP_DAS}",
+    "homeDASId": "{HomeDAS_ID}"
+  }
+}
+```
+
+
+#### enroll-entity (ADIA-DR-002)
+
+This protocol message enables a responsible entity to register/ enroll a sub-entity in the ecosystem. In ADIA,
+* Users, Issuers and Service Providers can be enrolled `only` by a DAS
+* A DAS can be enrolled `only` by an ARD
+* An ARD can be enrolled `only` by an AGD
+
+<strong>1. Enroll a User</strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/enroll-user",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "dasUserId": "{DAS_USER_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "taUserIssuer": "{TA_USER_ISSUER}",
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/enroll-user-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+
+<strong>2. Enroll a Regional Directory </strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "entityType": "ARD",
+    "ardId": "{ ARD_ID }",
+    "taARDAGD": "{TA_ARD_AGD}",
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+
+<strong>3. Enroll a DAS </strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "entityType": "DAS",
+    "dasId": "{DAS_ID}",
+    "homeARDId": "{homeARD_ID}",
+    "taDASARD": "{TA_DAS_ARD}",
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+<strong>4. Enroll an Issuer</strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "entityType": "ISSUER",
+    "issuerId": "{ISSUER_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "taIssuerDAS": "{TA_ISSUER_DAS}",
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+<strong>4. Enroll an Service Provider</strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "entityType": "SERVICEPROVIDER",
+    "serviceProviderId": "{SP_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "taServiceProviderDAS": "{TA_SP_DAS}",
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/enroll-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+
+#### disenroll-entity (ADIA-DR-003)
+
+This protocol message enables a responsible entity to deregister/ disenroll a sub-entity in the ecosystem. In ADIA,
+* Users, Issuers and Service Providers can be disenrolled `only` by a DAS
+* A DAS can be disenrolled `only` by an ARD
+* An ARD can be disenrolled `only` by an AGD
+
+Agents may implement additional actions based on the goal codes.
+
+<strong>1. Disenroll a User</strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-user",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "dasUserId": "{DAS_USER_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-user-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+
+<strong>2. DisEnroll a Regional Directory </strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "entityType": "ARD",
+    "ardId": "{ ARD_ID }",
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+
+<strong>3. DisEnroll a DAS </strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "entityType": "DAS",
+    "dasId": "{DAS_ID}",
+    "homeARDId": "{homeARD_ID}",
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+
+<strong>4. DisEnroll an Issuer</strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "entityType": "ISSUER",
+    "issuerId": "{ISSUER_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+<strong>4. DisEnroll an Service Provider</strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "entityType": "SERVICEPROVIDER",
+    "serviceProviderId": "{SP_ID}",
+    "homeDASId": "{HomeDAS_ID}",
+    "hida": "{HIDA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/disenroll-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+    "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+
+#### search-entity (ADIA-DR-004)
+
+A generic entity search across the system for an entity or User with a known Digital Address or a DID. Searching for entities
+may result in single or multi-match results depending on the query criteria.
+Single matched results are represented in the body of the response. Multi-matched results are returned as a list of objects.
+
+Agents in a DAS, ARD or AGD may implement additional strategies for routing and caching minimum entity information
+to prevent frequent searches across the ecosystem.
+
+
+<strong>1. Search an Entity </strong>
+
+Note: Parameters used for searching result in an "AND" operation. Avoid queries that may result in broad recursive searches.
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/search-entity",
+  "@id": "79054b64-f520-4e10-817d-476085cbe3ac",
+  "attributes": {
+    "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+    "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
+    "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}", // optional
+    "name": "Name of the entity",                             // optional
+    "status": "{ACTIVE | INACTIVE }"                          // optional
+  }
+}
+```
+
+<strong>Response (Exact Match)</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/search-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+      "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+      "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+    "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
+    "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
+    "name": "Name of the entity",
+    "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
+    "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
+    "homeDASName": "Name of DAS",   // For Issuers, SPs and users
+    "homeARDId": "{HomeARD_ID}",    // For DAS
+    "homeARDDA": "{ARD_DA}",        // For DAS
+    "homeARDName": "Name of the ARD", // For DAS
+    "status": "{ACTIVE | INACTIVE }",
+    "createdDate": "ISO 8601 Date format"
+  }
+}
+```
+
+<strong>Response (Multi-Match)</strong>
+```json
+{
+  "@type": "https://adiassociation.org/directory/1.0/search-entity-response",
+  "@id": "9cc1108b-2445-4a48-b66f-2f6a1b414a50",
+  "goal-code": "adia.search-entity.ard",
+  "status": "{OK | FAILED | PENDING}",
+  "~thread": {
+      "thid": "79054b64-f520-4e10-817d-476085cbe3ac",
+      "message": "e.g. comment or reason of failed request"
+  },
+  "results": [
+    {
+      "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+      "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
+      "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
+      "name": "Name of the entity",
+      "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
+      "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
+      "homeDASName": "Name of DAS",   // For Issuers, SPs and users
+      "homeARDId": "{HomeARD_ID}",    // For DAS
+      "homeARDDA": "{ARD_DA}",        // For DAS
+      "homeARDName": "Name of the ARD", // For DAS
+      "status": "{ACTIVE | INACTIVE }",
+      "createdDate": "ISO 8601 Date format"
+    },
+    {
+      "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+      "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }",
+      "digitalAddress": "{ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
+      "name": "Name of the entity",
+      "homeDASId": "{HomeDAS_ID}",    // For Issuers, SPs and users
+      "homeDASDA": "{DAS_DA}",        // For Issuers, SPs and users
+      "homeDASName": "Name of DAS",   // For Issuers, SPs and users
+      "homeARDId": "{HomeARD_ID}",    // For DAS
+      "homeARDDA": "{ARD_DA}",        // For DAS
+      "homeARDName": "Name of the ARD", // For DAS
+      "status": "{ACTIVE | INACTIVE }",
+      "createdDate": "ISO 8601 Date format"
+    }
+  ]
+}
+```

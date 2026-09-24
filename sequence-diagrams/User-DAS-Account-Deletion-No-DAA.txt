@@ -1,0 +1,34 @@
+title User Initiated Account Deletion without DAA
+actor User
+participant User Portal
+participant Kiosk
+Participant DAP
+Participant Cloud Agent
+Participant DAP
+participant Issuer Agent
+participant VC Store
+Participant GADI Regional Directory
+
+alt Kiosk
+User -> Kiosk: Delete Digital Address
+Kiosk-> User: Authenticate using Smart Card
+User Portal->DAP: Delete Digital Address
+end
+DAP -> DAP: Lookup TA_USER_ISSUER in DB lookup by FIDO Key
+DAP -> GADI Regional Directory: Delete user account (TA_USER_ISSUER, HIDA)
+GADI Regional Directory -> GADI Regional Directory: Add Delete entry to DLT\n(TA_USER_ISSUER)
+GADI Regional Directory -> GADI Regional Directory: Erase HIDA from off-Ledger DB
+GADI Regional Directory --> DAP: Digital Address Deleted (DA, DAP_USER_ID)
+DAP-->DAP: Search Credential Metadata \n(DA,DAP_USER_ID)
+opt Issuer Notification
+DAP-->Issuer Agent: Notify DA deletion \n(DA,DAP_USER_ID)
+Issuer Agent-->Issuer Agent: Mark orphan VC status \n(CREDENTIAL_ID)
+Issuer Agent-->VC Store: Mark orphan Status \n(CREDENTIAL_ID)
+end
+DAP -> Cloud Agent: Delete all credential metadata
+Cloud Agent --> DAP: Deletion Success
+DAP -> DAP: Delete USER_FIDO_PK from DB
+alt Kiosk
+DAP-->Kiosk: Deletion Complete
+Kiosk--> User: Deletion Success
+end

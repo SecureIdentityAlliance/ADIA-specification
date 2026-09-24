@@ -1,0 +1,321 @@
+## Digital Address Protocol ## {#sctn-digital-address-protocol}
+
+This protocol is used during the user onboarding process to create a new & unique Digital Address for the user.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Title</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td nowrap><strong>Protocol Name & Version</strong></td>
+    <td>`digital-address`, `1.0`</td>
+  </tr>
+  <tr>
+    <td nowrap><strong>Protocol Code</strong></td>
+    <td>ADIA-DA</td>
+  </tr>
+    <tr>
+      <td nowrap><strong>Motivation</strong></td>
+      <td>
+      The Digital Address is a special ADIA identifier issued to an individual by a certified Digital Address Issuer after Know Your Customer (KYC) processes have been followed.
+      Digital Address creation is requested by User's Agent in the cloud or elsewhere and fulfilled by the Issuer's Agent. Before creating the Digital Address, the Issuer Agents verifies the trust anchor uniqueness with ADIA Global Directory.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+### Implemented By
+* ARD Agent
+* DAS Agent
+* Issuer Agent
+* SP Agent
+* Cloud Agent
+
+
+### Sub/Co-protocols
+This protocol uses following existing protocols -
+* ```/directory/1.0/enroll-entity``` - as a co-protocol to enroll an entity as User
+* ```/connection/1.0/request``` - as a co-protocol to establish a DID-based connection
+
+### Protocol Commands
+
+
+#### create-digital-address (ADIA-DA-001)
+This protocol creates a unique Digital Address for the user and kicks-in the `enroll-entity` co-protocol.
+This protocol supports multiple goal codes based on the entity looked up:
+
+This protocol supports multiple goal codes based on the entity looked up:
+* `adia.digital-address.user` : To create a Digital Address for a User
+* `adia.digital-address.entity` : To create a Digital Address for an Entity
+
+Agents may implement additional actions based on the goal codes.
+
+<strong>1. Digital Address for User</strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address",
+  "@id": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+  "goal-code": "adia.digital-address.user",
+  "attributes": {
+    "dasUserId": "DAS_USER_ID"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address-response",
+  "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
+  "status": "{ OK | FAILED | PENDING }",
+  "goal-code": "adia.digital-address.user",
+  "~thread": {
+    "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "digitalAddress": "{USER_DA}",
+    "dasUserId": "{DAS_USER_ID}",
+    "homeDASId": "{HomeDAS_ID}"
+  }
+}
+```
+
+<strong>2. Digital Address for an Entity</strong>
+
+Note: Use the appropriate `entityType` and `entityId` as defined in the Enum values
+
+<strong>Request</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address",
+  "@id": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+  "goal-code": "adia.digital-address.entity",
+  "attributes": {
+    "entityType": "{ ISSUER | SERVICEPROVIDER | DAS | ARD }",
+    "entityId": "{ ISSUER_ID | SP_ID| DAS_ID | ARD_ID }"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/create-digital-address-response",
+  "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
+  "status": "{ OK | FAILED | PENDING }",
+  "goal-code": "adia.digital-address.entity",
+  "~thread": {
+    "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "digitalAddress": " {ISSUER_DA | SP_DA| DAS_DA | ARD_DA}",
+    "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD}",
+    "entityId": "{ISSUER_ID | SP_ID| DAS_ID | ARD_ID}"
+  }
+}
+```
+
+#### verify-user (ADIA-DA-002)
+
+This protocol sends the User's attributes to the original issuer of the Digital Address to verify the users. A DAS agent
+receives the attributes from the extracted ID document and requests this verification from the Issuer's agent.
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/verify-user",
+  "@id": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+  "attributes": {
+    "firstName":"UTF8 encoded firstname of the User according to the ID document (all uppercase)",
+    "lastName":"UTF8 encoded last name of the User according to the ID document (all uppercase)",
+    "birthDate":"Date of birth of the User according to the ID document. Encoding MUST be full-date as specified by [[!RFC3339]]",
+    "countryOfResidence":"Country of residence of the User according to the ID document. Encoding MUST be ALPHA-2 country code as specified by [[!ISO3166]]",
+    "sourceType":"Type of the ID document. This is specified by ADIA Governance for each country",
+    "identifier":"Government Issued National Identifier - SSN, Resident ID, Aadhaar ID, etc."
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/verify-user",
+  "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
+  "status": "{ OK | FAILED | PENDING }",
+  "~thread": {
+    "thid": "862be87d-2095-4cd3-87e8-23df6ad77f10",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+#### revoke-digital-address (ADIA-DA-003)
+
+This protocol revokes/removes a Digital Address and kicks-in the `remove-entity` co-protocol.
+This protocol supports multiple goal codes based on the entity looked up:
+* `adia.digital-address.user` : To revoke the Digital Address of a User
+* `adia.digital-address.entity` : To revoke the Digital Address of an Entity
+
+Agents may implement additional actions based on the goal codes.
+
+Note: Use the appropriate `goal-code` and `entityType` as defined in the Enum values
+
+<strong>Request</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/revoke-digital-address",
+  "@id": "8a6d40d4-39f5-4a22-9f45-3fcb008e0d62",
+  "goal-code": "adia.digital-address.{ ard | das| issuer| service-provider | user }",
+  "attributes": {
+    "digitalAddress": "{ARD_DA | DAS_DA | ISSUER_DA | SP_DA | USER_DA}"
+  }
+}
+```
+
+<strong>Response</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/revoke-digital-address-response",
+  "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
+  "status": "{ OK | FAILED | PENDING }",
+  "goal-code": "adia.digital-address.{ ard | das | issuer | service-provider | user }",
+  "~thread": {
+    "thid": "8a6d40d4-39f5-4a22-9f45-3fcb008e0d62",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+#### resolve-digital-address (ADIA-DA-004)
+
+This protocol resolves a digital address (DA) to it's corresponding DID.
+The resolution returns a full DIDDoc in Json format so that the requester can request for a DID-based connection or generate an invitation to connect.
+
+<strong>1. Resolve an Entity</strong>
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address",
+  "@id": "6a2571a8-1746-4a0b-bdce-4c59c60fb4f9",
+  "attributes": {
+    "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD | USER}", // Optional - only if looking for specific types
+    "digitalAddress": "digital address of the user or entity"
+  }
+}
+```
+
+Note: Response may be different depending upon the `entityType` provided in the `attributes` of the request.
+
+<strong>a. Response (User)</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address-response",
+  "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
+  "status": "{ OK | FAILED | PENDING }",
+  "~thread": {
+    "thid": "6a2571a8-1746-4a0b-bdce-4c59c60fb4f9",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "entityId": "DID of the entity",
+    "entityType": "{USER}",
+    "homeDASId": "{HomeDAS_ID}",
+    "didDocJson": " {DIDDoc-ARD| DIDDoc-DAS | DIDDoc-ISSUER| DIDDoc-SP| DIDDoc-USER}"
+  }
+}
+```
+
+<strong>b. Response (Entities)</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/resolve-digital-address-response",
+  "@id": "6264d6ce-ca95-4262-9f2c-76e11eabc741",
+  "status": "{ OK | FAILED | PENDING }",
+  "~thread": {
+    "thid": "6a2571a8-1746-4a0b-bdce-4c59c60fb4f9",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "entityId": "DID of the entity",
+    "entityType": "{ISSUER | SERVICEPROVIDER | DAS | ARD}",
+    "homeDASId": "{HomeDAS_ID}",   // Applicable to Issuers and Service Providers
+    "homeARDId": " {homeARD_ID}",
+    "didDocJson": "{DIDDoc-ARD| DIDDoc-DAS | DIDDoc-ISSUER| DIDDoc-SP}"
+  }
+}
+```
+
+#### provision-agent (ADIA-DA-005)
+
+This protocol creates a DID for the user in Cloud Agent and kicks-in the `create-digital-address` co-protocol.
+
+This protocol supports multiple goal codes based on the entity looked up:
+* `adia.trust-anchor.user` : To provision an agent of a User
+* `adia.trust-anchor.entity` : To provision an agent for an Entity
+
+Agents may implement additional actions based on the goal codes.
+
+<strong>Request</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/provision-agent",
+  "@id": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
+  "goal-code": "adia.agent.{ issuer | service-provider | user }",
+  "attributes": {
+    "hida": " {HIDA}",
+    "entityId": "{DAS_USER_ID | ISSUER_ID | SP_ID}",
+    "entityType": "{ USER | ISSUER | SERVICEPROVIDER }"
+  }
+}
+```
+
+Note: Response may be different depending upon the `goal-code`
+
+<strong>a. Response (Issuer or Service Provider)</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/provision-agent-response",
+  "@id": "fab45767-2dd2-4124-b185-24821d5b8f8c",
+  "status": "{ OK | FAILED | PENDING }",
+  "goal-code": "adia.agent.{ ard | das | issuer | service-provider | user }",
+  "~thread": {
+    "thid": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "entityId": "{ISSUER_ID | SP_ID}",
+    "entityType": " {ISSUER | SERVICEPROVIDER }",
+    "homeDASId": " {HomeDAS_ID} ",
+    "didDocJson": " {DIDDoc-ISSUER | DIDDoc-SP}"
+  }
+}
+```
+
+<strong>b. Response (User)</strong>
+```json
+{
+  "@type": "https://adiassociation.org/digital-address/1.0/provision-agent-response",
+  "@id": "fab45767-2dd2-4124-b185-24821d5b8f8c",
+  "status": "{ OK | FAILED | PENDING }",
+  "goal-code": "adia.agent.{ ard | das | issuer | service-provider | user }",
+  "~thread": {
+    "thid": "d4707d7c-c169-42f0-98e3-d0557d5ac746",
+    "message": "e.g. comment or reason of failed request"
+  },
+  "result": {
+    "dasUserId": "{DAS_USER_ID}",
+    "homeDASId": " {HomeDAS_ID} ",
+    "didDocJson": " {DIDDoc-USER}"
+  }
+}
+```

@@ -1,0 +1,460 @@
+## Protocol Messages ## {#sctn-communication-protocol-msgs}
+
+The ADIA Protocol messages are an extension of the DIDComm messages [[!didcomm-messaging-v1]].
+
+Each entity's Agent holds cryptographic keys and digital credentials on behalf of the entity.
+
+Unless mentioned otherwise, each of the protocol messages uses the "Encrypted" envelope level using the "Signed and encrypted" option [[!didcomm-messaging-v1]].
+
+<table class="data">
+  <thead>
+    <th>Entity</th>
+    <th>Signature Key</th>
+    <th>Encryption Key</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td><a>AGD</a></td>
+    <td><a>AGD_ID_SK</a></td>
+    <td><a>AGD_ID_PK</a></td>
+  </tr>
+  <tr>
+    <td><a>ARD</a></td>
+    <td><a>ARD_ID_SK</a></td>
+    <td><a>ARD_ID_PK</a></td>
+  </tr>
+  <tr>
+    <td><a>DAS</a></td>
+    <td><a>DAS_ID_SK</a></td>
+    <td><a>DAS_ID_PK</a></td>
+  </tr>
+  <tr>
+    <td><a>Issuer</a></td>
+    <td><a>ISSUER_ID_SK</a></td>
+    <td><a>ISSUER_ID_PK</a></td>
+  </tr>
+  <tr>
+    <td><a>SP</a></td>
+    <td><a>SP_ID_SK</a></td>
+    <td><a>SP_ID_PK</a></td>
+  </tr>
+  <tr>
+    <td><a>User</a></td>
+    <td><a>DAS_USER_ID_SK</a></td>
+    <td><a>DAS_USER_ID_PK</a></td>
+  </tr>
+  </tbody>
+</table>
+
+
+### ADIA Functions  ### {#sctn-protocol-function}
+The mapping below represents the functions implemented by agents as part of a standard DIDComm protocol [[!didcomm-messaging-v1]]. These functions may be
+used as co-protocols to perform <a>ADIA</a> specific operations.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Code</th>
+    <th>Description</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
+    <th>DAS Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+  <tr valign="top">
+    <td nowrap>[/credential/1.0/user-hida](ADIA-protocol.html#sctn-hida-function-users)</td>
+    <td nowrap>ADIA-FN-001</td>
+    <td nowrap>A computation of a Hash of ID attributes for a User</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td><center>X</center></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/credential/1.0/entity-hida](ADIA-protocol.html#sctn-hida-function-org-entities)</td>
+    <td nowrap>ADIA-FN-002</td>
+    <td nowrap>A computation of a Hash of ID attributes for an Entity</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/credential/1.0/save-metadata](ADIA-protocol.html#save-metadata-adia-fn-003)</td>
+    <td nowrap>ADIA-FN-003</td>
+    <td nowrap>Save the Credential Metadata to a Directory</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/credential/1.0/search-metadata](ADIA-protocol.html#search-metadata-adia-fn-004)</td>
+    <td nowrap>ADIA-FN-005</td>
+    <td nowrap>Search for Credential Metadata based on multiple criteria</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/credential/1.0/remove-metadata](ADIA-protocol.html#remove-metadata-adia-fn-005)</td>
+    <td nowrap>ADIA-FN-006</td>
+    <td nowrap>Remove the Credential Metadata</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+  </table>
+
+
+### Digital Address Protocol ### {#sctn-protocol-digital-address}
+The mapping below represents the protocol messages for the Digital Address Protocol and the agents that implement the handing of these messages.
+An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Endpoint</th>
+    <th>Code</th>
+    <th>Description</th>
+    <th>AGD Agent</th>
+    <th>ARD Agent</th>
+    <th>DAS Agent</th>
+    <th>Issuer Agent</th>
+    <th>SP Agent</th>
+    <th>Cloud Agent</th>
+  </thead>
+  <tbody>
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/create-digital-address](ADIA-protocol.html#create-digital-address-adia-da-001)</td>
+    <td nowrap>ADIA-DA-001</td>
+    <td nowrap>Create a Digital Address for an Entity or a User</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td><center>X</center></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/verify-user](ADIA-protocol.html#verify-user-adia-da-002)</td>
+    <td nowrap>ADIA-DA-002</td>
+    <td nowrap>Create a Digital Address for an Entity or a User</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/revoke-digital-address](ADIA-protocol.html#revoke-digital-address-adia-da-003)</td>
+    <td nowrap>ADIA-DA-003</td>
+    <td nowrap>Revoke a Digital Address for an Entity or User</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td><center>X</center></td>
+  </tr>
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/resolve-digital-address](ADIA-protocol.html#resolve-digital-address-adia-da-004)</td>
+    <td nowrap>ADIA-DA-004</td>
+    <td nowrap>Resolve the DID for an Entity from its Digital Address and vice-versa</td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+  </tr>
+
+  <tr valign="top">
+    <td nowrap>[/digital-address/1.0/provision-agent](ADIA-protocol.html#provision-agent-adia-da-005)</td>
+    <td nowrap>ADIA-DA-005</td>
+    <td nowrap>Provision an agent for an Entity</td>
+    <td></td>
+    <td></td>
+    <td><center>X</center></td>
+    <td><center>X</center></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  </tbody>
+  </table>
+
+
+  ### Directory Protocol ### {#sctn-protocol-directory}
+  The mapping below represents the protocol messages for the Directory Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+  <table class="data longlastcol">
+    <thead>
+      <th>Endpoint</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>AGD Agent</th>
+      <th>ARD Agent</th>
+      <th>DAS Agent</th>
+      <th>Issuer Agent</th>
+      <th>SP Agent</th>
+      <th>Cloud Agent</th>
+    </thead>
+    <tbody>
+    <tr valign="top">
+      <td nowrap>[/directory/1.0/lookup-trust-anchor](ADIA-protocol.html#lookup-trust-anchor-adia-dr-001)</td>
+      <td nowrap>ADIA-DR-001</td>
+      <td nowrap>Lookup an entity with its Hashed attributes</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/directory/1.0/enroll-entity](ADIA-protocol.html#enroll-entity-adia-dr-002)</td>
+      <td nowrap>ADIA-DR-002</td>
+      <td nowrap>Enroll an Entity into the Directory</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/directory/1.0/disenroll-entity](ADIA-protocol.html#disenroll-entity-adia-dr-003)</td>
+      <td nowrap>ADIA-DR-003</td>
+      <td nowrap>Remove an Entity from the Directory</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/directory/1.0/search-entity](ADIA-protocol.html#search-entity-adia-dr-004)</td>
+      <td nowrap>ADIA-DR-004</td>
+      <td nowrap>Search an Entity with multiple criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    </tbody>
+    </table>
+
+
+
+  ### Credential Schema Protocol ### {#sctn-protocol-credential-schema}
+  The mapping below represents the protocol messages for the Credential Schema Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+  <table class="data longlastcol">
+    <thead>
+      <th>Endpoint</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>AGD Agent</th>
+      <th>ARD Agent</th>
+      <th>DAS Agent</th>
+      <th>Issuer Agent</th>
+      <th>SP Agent</th>
+      <th>Cloud Agent</th>
+    </thead>
+    <tbody>
+    <tr valign="top">
+      <td nowrap>[/credential-schema/1.0/publish](ADIA-protocol.html#publish-adia-cs-001)</td>
+      <td nowrap>ADIA-CS-001</td>
+      <td nowrap>Publish a Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential-schema/1.0/update](ADIA-protocol.html#update-adia-cs-002)</td>
+      <td nowrap>ADIA-CS-002</td>
+      <td nowrap>Update a Credential Schema</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential-schema/1.0/search](ADIA-protocol.html#search-adia-cs-003)</td>
+      <td nowrap>ADIA-CS-003</td>
+      <td nowrap>Search for a Credential Schema based on multiple criteria</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential-schema/1.0/archive](ADIA-protocol.html#archive-adia-cs-004)</td>
+      <td nowrap>ADIA-CS-004</td>
+      <td nowrap>Archive a Credential Schema from active issuance of credentials</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </tbody>
+    </table>
+
+  ### Credential Protocol ### {#sctn-protocol-credential}
+  The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+  <table class="data longlastcol">
+    <thead>
+      <th>Endpoint</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>AGD Agent</th>
+      <th>ARD Agent</th>
+      <th>DAS Agent</th>
+      <th>Issuer Agent</th>
+      <th>SP Agent</th>
+      <th>Cloud Agent</th>
+    </thead>
+    <tbody>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/request-signature](ADIA-protocol.html#request-signature-adia-cr-001)</td>
+      <td nowrap>ADIA-CR-001</td>
+      <td nowrap>Send a VC and request signing</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/send-signed-vc](ADIA-protocol.html#send-signed-vc-adia-cr-002)</td>
+      <td nowrap>ADIA-CR-002</td>
+      <td nowrap>Sign and send the VC to issuing agent</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/revoke-vc](ADIA-protocol.html#revoke-vc-adia-cr-003)</td>
+      <td nowrap>ADIA-CR-003</td>
+      <td nowrap>Revoke a VC</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/expire-vc](ADIA-protocol.html#expire-vc-adia-cr-004)</td>
+      <td nowrap>ADIA-CR-004</td>
+      <td nowrap>Expire Credential Metadata and Notify User</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </tbody>
+    </table>
+
+  ### Verification Protocol ### {#sctn-protocol-verification}
+  The mapping below represents the protocol messages for the Credential Protocol and the agents that implement the handing of these messages.
+  An agent may implement the handler or delegate to another agent for handling via a forward or a relay method.
+
+  <table class="data longlastcol">
+    <thead>
+      <th>Endpoint</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>AGD Agent</th>
+      <th>ARD Agent</th>
+      <th>DAS Agent</th>
+      <th>Issuer Agent</th>
+      <th>SP Agent</th>
+      <th>Cloud Agent</th>
+    </thead>
+    <tbody>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/request-consent](ADIA-protocol.html#request-consent-adia-vp-001)</td>
+      <td nowrap>ADIA-VP-001</td>
+      <td nowrap>Request user for consent to verify a credential</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/receive-consent](ADIA-protocol.html#receive-consent-adia-vp-002)</td>
+      <td nowrap>ADIA-VP-002</td>
+      <td nowrap>Receive a consent from the User</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/request-vc](ADIA-protocol.html#request-vc-adia-vp-003)</td>
+      <td nowrap>ADIA-VP-003</td>
+      <td nowrap>Request a VC from an Issuer</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    <tr valign="top">
+      <td nowrap>[/credential/1.0/verify-vc-claims](ADIA-protocol.html#verify-vc-claims-adia-vp-004)</td>
+      <td nowrap>ADIA-VP-004</td>
+      <td nowrap>Verify each claim within a Presentation</td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td><center>X</center></td>
+      <td></td>
+      <td><center>X</center></td>
+      <td></td>
+    </tr>
+    </tbody>
+    </table>

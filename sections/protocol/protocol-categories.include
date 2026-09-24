@@ -1,0 +1,47 @@
+## Protocols Categories ## {#sctn-protocol-categories}
+All interactions between entities is facilitated through agents and services in the entity's domain.
+
+Agents manage the participant’s connections with services by implementing protocols to establish connections, perform DID exchanges, issue credentials and present proofs.
+The ADIA protocols are:
+
+<table class="data longlastcol">
+  <thead>
+    <th>Name</th>
+    <th>Version</th>
+    <th>Protocol Code</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td nowrap>Digital Address Protocol</td>
+      <td>1.0</td>
+      <td nowrap>ADIA-DA</td>
+      <td>Create, revoke and share Digital addresses</td>
+    </tr>
+    <tr>
+      <td nowrap>Directory Protocol</td>
+      <td>1.0</td>
+      <td nowrap>ADIA-DR</td>
+      <td>Request, approve and onboard trusted entities to the ecosystem</td>
+    </tr>
+    <tr>
+      <td nowrap>Credential Schema Protocol</td>
+      <td>1.0</td>
+      <td nowrap>ADIA-CS</td>
+      <td>Create, publish and discover credential schema for VC issuance</td>
+    </tr>
+    <tr>
+      <td nowrap>Credential Protocol</td>
+      <td>1.0</td>
+      <td nowrap>ADIA-CR</td>
+      <td>Extensions to the DIDComm <i>issue-credential</i> protocol to issue, revoke and expire VCs to entities</td>
+    </tr>
+    <tr>
+      <td nowrap>Verification Protocol</td>
+      <td>1.0</td>
+      <td nowrap>ADIA-VP</td>
+      <td>Extensions to the DIDComm <i>Verifiable Presentation</i> protocol to request, forward and present proofs</td>
+    </tr>
+  </tbody>
+  <table>
+

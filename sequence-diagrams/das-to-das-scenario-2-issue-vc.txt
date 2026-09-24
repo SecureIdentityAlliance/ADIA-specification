@@ -1,0 +1,24 @@
+title Scenario 2 - Issue Credential
+participant Issuer
+participant DAS2
+participant DAS1
+
+Issuer ->>DAS2: Connection status
+Issuer ->+Issuer: Create VC and prepare VC metadata
+Issuer ->+DAS2: ADIA-DR-004: Lookup DAS1
+DAS2->DAS2: Resolve DAS1
+DAS2->> -Issuer: ADIA-DR-004:Send DAS1 profile
+Issuer -> Issuer: Generate symmetric encryption key to encrypt the VC metadata to send it to DAS1
+Issuer->>+DAS2: Send encrypted VC metadata to DAS2 to send it to DAS1
+DAS2->>DAS2: Check the protocol type and version
+note right of DAS2
+REMOTE: DAS
+end note
+
+DAS2->>+DAS1: Invite for DIDComm connection
+DAS1-->>DAS2: Connection established
+DAS2->>DAS1: Forward encrypted VC metadata to DAS1
+DAS1->DAS1: Retrieve symmetric key and decrypt the received encrypted VC metadata
+DAS1-->>-DAS2: Send the response
+DAS2-->>-Issuer: Forward the value
+Issuer ->-Issuer: Save the VC in VC Store

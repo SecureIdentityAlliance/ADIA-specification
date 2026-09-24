@@ -1,0 +1,70 @@
+title Enroll an Issuer to DAS
+actor Issuer Admin
+participant Issuer
+participant DAS
+actor DAS Admin
+participant ARD
+participant AGD
+
+Issuer Admin -> +DAS: Entity details (HIDA Attibutes) and Primary contact
+DAS->DAS: Save Request [Status=NEW]. Generate REQUEST_ID
+DAS-> -Issuer Admin: Send Request Reference\n[REQUEST_ID, Status=New]
+
+DAS Admin->DAS: Review Pending Request [REQUEST_ID]
+DAS->DAS: ADIA-FN-001: Compute HIDA = hash (ID-attributes)
+DAS->>+ARD: ADIA-DR-001: Lookup TA_ISSUER_DAS for [HIDA, DAS_ID]
+ARD->>AGD: ADIA-DR-001: Lookup TA_ISSUER_DAS for [HIDA, DAS_ID]
+AGD->AGD: lookup TA for HIDA
+
+
+alt TA not found
+AGD->AGD: Generate TA = random
+AGD-->>ARD: ADIA-DR-001:No conflict with TA\nReturn TA_ISSUER_DAS = hash[TA,DAS_ID]
+ARD-->>-DAS: ADIA-DR-001:No conflict with TA
+else TA found
+note over Issuer,DAS
+Enroll an Issuer with existing Digital Address
+end note
+end
+
+
+DAS Admin->DAS: Approve [REQUEST_ID]
+alt DAS provides Agency Services
+DAS->DAS: Provision Isser Agent with HIDA [CorrelationId=REQUEST_ID]
+else
+DAS->>Issuer Admin: Provision Issuer Agent with HIDA [CorrelationId=REQUEST_ID]
+Issuer Admin->>DAS: Setup Issuer Agent and Register with DAS [REQUEST_ID]
+end
+DAS->>+Issuer: ADIA-DA-001: Request to create ISSUER_ID and ISSUER_DA for HIDA
+Issuer->>Issuer: Create ISSUER_ID & ISSUER_ID_PK/SK. \nCreate DIDDoc-Issuer
+Issuer->Issuer:  Create ISSUER_DA
+Issuer-->>-DAS: ADIA-DA-001: Send [ISSUER_DA, ISSUER_ID, DIDDoc-Issuer, REQUEST_ID]
+DAS->DAS: Store [REQUEST_ID, DAS_DA, DAS_ID]
+DAS->DAS: Sign DIDDoc-Issuer with DAS_ID_SK
+
+DAS-->>+ARD: ADIA-DA-001: Send [ISSUER_DA, ISSUER_ID, DAS_ID, DIDDoc-Issuer]
+ARD->ARD: Sign DIDDoc-DAS with ARD_ID_SK
+ARD->>AGD: ADIA-DA-001: Send [ISSUER_DA, ISSUER_ID, DAS_ID, DIDDoc-Issuer]
+AGD->AGD: Sign DIDDoc-Issuer with AGD_ID_SK & \nstore in Directory
+AGD-->>ARD: ADIA-DA-001:DIDDoc save success
+ARD-->>DAS: ADIA-DA-001:DIDDoc save success
+DAS-->>-Issuer: ADIA-DA-001:DIDDoc save success
+
+DAS->>Issuer: Aries-RFC-0036-4:Issue VC
+Issuer-->>DAS: Aries-RFC-0036-4:ACK
+
+Issuer->>+DAS: ADIA-DR-002: Request to Enroll
+alt Approve Request [REQUEST_ID]
+DAS->>ARD: ADIA-DR-002: Enroll Request [ISSUER_ID,ISSUER_DA, HomeDASId=DAS_ID]
+
+ARD->>AGD: ADIA-DR-002: Enroll Request [DAS_ID,DAS_DA, HomeARDId=ARD_ID]
+AGD->AGD: Store [TA,ISSUER_ID,ISSUER_DA, HomeDASId=DAS_ID] \nand [TA,ISSUER_ID]
+AGD-->>ARD: ADIA-DR-002: Enrollment Complete
+ARD-->>DAS: ADIA-DR-002: Enrollment Complete
+DAS-->>Issuer: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=APPROVED]
+else Reject Request [REQUEST_ID]
+DAS-->>Issuer: ADIA-DR-002: Enrollment Complete [REQUEST_ID, Status=REJECTED]
+
+end
+DAS->DAS: Update Request [REQUEST_ID, Status]
+DAS-->-Issuer: Request Complete [REQUEST_ID, Status]

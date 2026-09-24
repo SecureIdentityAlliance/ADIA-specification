@@ -1,0 +1,164 @@
+## Trust Model ## {#sctn-trust-model}
+
+<figure id="fig-adia-trust-model">
+    <img src="images/adia-trust-model.svg">
+    <figcaption>ADIA Trust Model</figcaption>
+</figure>
+
+When verifying a verifiable presentation of a verifiable credential,
+the following objects need to be verified:
+1. <a>Verifiable Presentation</a>, i.e. an object containing a
+    <a>Verifiable Credential</a> (<a href="https://www.w3.org/TR/vc-data-model/#example-31-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative">example</a>) [[vc-data-model]]
+    or Derived Data (in the case of ZKP) (<a
+    href="(e.g., https://www.w3.org/TR/vc-data-model/#example-25-a-verifiable-presentation-that-supports-cl-signatures)">example</a>)
+    and a signature by the subjects's <a>DAS_USER_ID_PK</a>/<a>DAS_USER_ID_SK</a> key.
+
+2. <a>Verifiable Credential</a>, i.e. an object containing a
+    <dfn export=true>CredentialSubject</dfn>, an issuer and a signature by the
+    <a>Issuer</a>'s <a>ISSUER_ID_PK</a>/<a>ISSUER_ID_SK</a> key.
+
+3. <a>Issuer</a> <a>ISSUER_ID_PK</a>/<a>ISSUER_ID_SK</a> key.  This key is linked to the <a>Issuer</a>
+    via the <a>DIDDoc-ISSUER</a> which is signed by the <a>DAS</a>.
+    1. Verify the trustworthiness of the <a>DAS</a> by retrieving and verifying the <a>DIDDoc-DAS</a> that was issued by the <a>ARD</a>.
+    2. Verify the trustworthiness of the <a>ARD</a> by retrieving and verifying the <a>DIDDoc-ARD</a> that was issued by the <a>AGD</a>.
+    3. Verify the trustworthiness of the <a>AGD</a> by retrieving and verifying the <a>DIDDoc-AGD</a> that was issued by the <a>AGD</a>.
+    4. As a participant of the <a>ADIA</a> system, you implicitly trust the <a>AGD</a>'s public key <a>AGD_ID_PK</a>.
+
+4. Subject <a>DAS_USER_ID_PK</a> <a>DAS_USER_ID_SK</a> key. This key is linked to the <a>User</a> via
+    the <a>DIDDoc-USER</a> which is signed by the <a>DAS</a>.
+    1. Verify the trustworthiness of the <a>DAS</a> by retrieving and verifying the <a>DIDDoc-DAS</a> that was issued by the <a>ARD</a>.
+
+Note: The <a>Assurance Level</a> to which the various entities have been verified is maintained in field ASSURANCE_LEVEL in
+    the respective <a>Digital Address</a> and in the <a href="#sctn-credential-metadata">Credential Metadata</a>.
+
+In the case of <a>Anonymous Verifiable Credential</a>s (e.g., "older than 21"), the
+   <a>DIDDoc-USER</a> is a pair-wise use object and the included
+   <a>DAS_USER_ID_PK</a> is a one-time use key.  Pair-wise use means it is not
+   shared with any other <a>SP</a> and it will typically not even be referenced by
+   another verifiable presentation to the same <a>SP</a> again to
+   maintain the user's privacy.
+
+<dfn>Key Holder</dfn> denotes the entity that technically controls the use of the key. <dfn export="true">Key Owner</dfn> is the entity the key is attributed to.
+
+<figure id="fig-key-material">
+ <table class="data longlastcol">
+   <thead>
+     <th>Key Name</th>
+     <th>Key Owner</th>
+     <th>Key Holder</th>
+     <th>When Generated</th>
+     <th>How is key tied to Key Owner?</th>
+     <th>How is security level of device maintaining the key attested?</th>
+   </thead>
+   <tbody>
+     <tr>
+       <td><dfn>AGD_ID_PK</dfn> / <dfn>AGD_ID_SK</dfn></td>
+       <td><a>ADIA Global Directory</a></td>
+       <td><a>ADIA Global Directory</a></td>
+       <td>ADIA setup.</td>
+       <td>
+         via a <a>DIDDoc</a> kept in the <a>ADIA Global Directory</a>.
+       </td>
+       <td>
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn export=true>ARD_ID_PK</dfn> / <dfn export=true>ARD_ID_SK</dfn></td>
+       <td><a>ADIA Regional Directory</a></td>
+       <td><a>ADIA Regional Directory</a></td>
+       <td>ADIA Regional setup.</td>
+       <td>
+         via a <a>DIDDoc</a> kept in the <a>ADIA Global Directory</a>.
+       </td>
+       <td>
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>DAS_ID_PK</dfn> / <dfn>DAS_ID_SK</dfn></td>
+       <td><a>DAS</a></td>
+       <td>
+         <a>DAS Agent</a>
+       </td>
+       <td><a href="#sctn-enroll-as-das">Onboarding as DAS</a>
+        </td>
+       <td>
+         via a <a>DIDDoc</a> kept in the <a>ADIA Global Directory</a>.
+       </td>
+       <td>
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>ISSUER_ID_PK</dfn> / <dfn>ISSUER_ID_SK</dfn></td>
+       <td><a>Issuer</a></td>
+       <td>
+          <a>Issuer Agent</a>
+       </td>
+       <td><a href="#sctn-enroll-as-issuer">Onboarding as an
+            Issuer</a>
+       </td>
+       <td>
+         via a <a>DIDDoc</a> kept in the <a>ADIA Global Directory</a>.
+       </td>
+       <td>
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>SP_ID_PK</dfn> / <dfn>SP_ID_SK</dfn></td>
+       <td><a>Service Provider</a></td>
+       <td>
+         SP Agent
+       </td>
+       <td><a href="#sctn-enroll-as-serviceprovider">Onboarding as
+            Service Provider</a>
+      </td>
+       <td>
+         via a <a>DIDDoc</a> kept in the <a>ADIA Global Directory</a>.
+       </td>
+       <td>
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>DAS_USER_ID_PK</dfn> / <dfn>DAS_USER_ID_SK</dfn></td>
+       <td><a>User</a></td>
+       <td>Typically the Cloud Agent (potentially the DAA once we specify
+         the device migration)
+       </td>
+       <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
+           First Issuer</a></td>
+       <td>
+         via a <a>DIDDoc</a> kept in the <a>HomeDAS</a>.
+       </td>
+       <td>
+         as described in the respective key protection level field [[#sctn-key-protection-level]].
+       </td>
+     </tr>
+
+     <tr>
+       <td><dfn>USER_FIDO_PK</dfn> / <dfn>USER_FIDO_SK</dfn></td>
+       <td><a>User</a></td>
+       <td>The <a>User</a>'s FIDO Authenticator, e.g., SecurityKey or
+              platform authenticator on smartphone, tablet or PC.
+       </td>
+       <td><a href="#sctn-onboarding-1st-issuer">User Onboarding to
+           First Issuer</a></td>
+       <td>
+         via a DB record stored by the respective <a>HomeDAS</a>.
+       </td>
+       <td>
+         FIDO authenticator attestation according to [[!WebAuthn]] or [[!UAFProtocol]].
+       </td>
+     </tr>
+   </tbody>
+ </table>
+ <figcaption>Cryptographic Key Material</figcaption>
+</figure>

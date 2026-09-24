@@ -1,0 +1,14 @@
+# Data Schema # {#sctn-data-schema}
+[NORMATIVE]
+
+<pre class=include>
+path: sections/schema/data-residency.include
+</pre>
+
+<pre class=include>
+path: sections/schema/entity-model.include
+</pre>
+
+<pre class=include>
+path: sections/schema/vc-model.include
+</pre>

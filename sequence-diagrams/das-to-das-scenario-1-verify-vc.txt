@@ -1,0 +1,38 @@
+title Scenario 1 - DAS1: User, Issuer DAS2: SP
+participant DAA
+participant SP
+participant DAS2
+participant DAS1
+participant Issuer
+
+DAA -> SP: User presents DA (xyz@das1) or DAS_USER_ID
+SP -->>DAS2: Connection Status
+SP ->>+DAS2: ADIA-DR-004: Lookup DAS1 profile
+DAS2->DAS2: Resolve DAS1 profile
+
+note right of DAS2
+ [Profile]
+ version, DAS_ID_PK
+ , algorithm,
+ serviceEndPoint, etc
+end note
+
+DAS2-->>-SP: ADIA-DR-004: Return DAS1 profile
+SP->SP: Generate encryption key (tempKey) to communicate with DAS1
+SP->+DAS2: Aries-RFC-0037-2: Request encrypted verification proof
+DAS2->DAS2: Check the protocol type
+note right of DAS2
+REMOTE :DAS/ISSUER
+end note
+
+DAS2->>DAS1: send connection invitation
+DAS1->>DAS2: connection established
+DAS2->>+DAS1: Aries-RFC-0037-2: Forward encrypted Verification proof request
+DAS1->DAS1: Retrieve encryption key and decrypt the request
+DAS1->>Issuer: ADIA-VP-003: Request VC from Issuer \n
+Issuer->Issuer: Retrieve VC from VC store \n
+Issuer-->>DAS1: ADIA-VP-003: Send VC to DAS1 \n
+DAS1->-DAS1: Build VP proof and encrypt with symmetric key
+DAS1-->>-DAS2: Aries-RFC-0037-3: Send encrypted proof to DAS2
+DAS2-->>-SP: Aries-RFC-0037-3: Forward encrypted verification proof to SP \n
+SP -> SP: ADIA-VP-004: Decrypt verification proof and verify the contents \n

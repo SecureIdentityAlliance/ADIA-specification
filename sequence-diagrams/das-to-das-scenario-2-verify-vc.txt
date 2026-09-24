@@ -1,0 +1,31 @@
+title Scenario 2 - Verify VC
+participant Issuer
+participant DAS2
+participant DAS1
+participant SP
+
+
+Issuer ->DAS2: Connection status
+
+SP ->SP: User presented DAS_USER_ID or DA
+SP <<->> DAS1: Establish DIDComm connection
+SP ->>+DAS1: Send VP request for DAS_USER_ID
+DAS1->DAS1: Identify the credentials and \n get user consent to present to SP
+DAS1 -> DAS1: Lookup Issuer and found to be remote
+DAS1 -> DAS1: generate symmetric encryption key and encrypt the VC request
+DAS1->DAS1: Check the protocol type
+note right of DAS1
+REMOTE: ISSUER
+end note
+
+DAS1->>+DAS2: Estabish DIDcomm connection
+DAS2-->>DAS1: Connection established
+DAS1->>DAS2: Forward the encrypted VC request
+DAS2->>+Issuer: Forward the encrypted VC request
+Issuer->Issuer: Extract the VC request from encrypted payload
+Issuer -> Issuer: Extract the VC from VC Store and encrypt the VC
+Issuer ->>-DAS2: Send encrypted VC
+DAS2->>-DAS1: Forward the encrypted VC
+DAS1->DAS1: Extract the VC from encrypted payload
+DAS1->>-SP : Present the VP
+SP ->SP: Receive the VP and verify the signatures

@@ -1,0 +1,289 @@
+## Verification Protocol ## {#sctn-verification-protocol}
+
+Defines ADIA-specific protocol extensions which are basically a companion to the Aries `1.0/present-proof` protocol RFC.
+It also describes steps for Proof Presentation by a User to the Service Provider.
+
+<table class="data longlastcol">
+  <thead>
+    <th>Title</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+  <tr>
+    <td nowrap><strong>Protocol Name & Version</strong></td>
+    <td>`verification`, `1.0`</td>
+  </tr>
+    <tr>
+      <td nowrap><strong>Motivation</strong></td>
+      <td>
+        In addition to the Aries `present-proof` (v1.0) protocol, there are several ADIA-specific operations
+        that are required to be supported in the ADIA Ecosystem during the Proof Presentation. E.g. Lookup VC metadata,
+        Retrieve VC from Issuer's VC Store. This extention protocol defines those ADIA-specific Verification operations.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+### Implemented By
+* SP Agent
+* Cloud Agent
+* Issuer Agent
+
+### Roles
+* Service Provider - Requests a proof of VC possession
+* User - Responds to the proof presentation requests
+* Issuer - Retrieves VCs from VC Store based on User's requests
+
+### Sub/Co-protocols
+This protocol uses following standard Aries protocol messages defined in Aries-RFC <a href="https://github.com/hyperledger/aries-rfcs/blob/master/features/0037-present-proof">0037-present-proof</a>
+* ```/connection/1.0/request``` - as a subprotocol to establish a DID-based connection
+* ```/didcomm.org/1.0/present-proof``` - as a main protocol to request for & verify a Credential proof.
+
+
+### States
+<strong>States for Service Provider</strong>
+* `request-sent` <em>(standard)</em>
+* `proposal-received` <em>(standard)</em>
+* `request-received` <em>(standard)</em>
+* `presentation-received` <em>(standard)</em>
+* `verification-successful`
+* `verification-failed`
+* `done`
+
+<strong>States for User (Cloud Agent)</strong>
+* `request-received` <em>(standard)</em>
+* `proposal-sent` <em>(standard)</em>
+* `consent-requested`
+* `consent-received`
+* `vc-request-sent`
+* `vc-received`
+* `presentation-sent` <em>(standard)</em>
+* `reject-sent` <em>(standard)</em>
+* `done`
+
+<strong>States for Issuer</strong>
+* `vc-request-received`
+* `vc-sent`
+* `done`
+
+### Protocol Commands
+- Following are the <em>companion protocols</em> to the standard `proof-presentation` (v1.0) protocol.
+- The connection between the `SP Agent` and User's `Cloud Agent` is already established using the standard DIDComm `connection` protocol.
+
+#### request-consent (ADIA-VP-001)
+<strong>Request</strong>
+- User consent is obtained using DAA.
+
+```json
+{
+  "@type": "https://adiassociation.org/verification/1.0/request-consent",
+  "@id": "<uuid-request-consent-12345>",
+  "comment": "some comment",
+  "adia": {
+    "attributes": {
+      "schemaId": "<unique-identifier-of-the-vc-schema>",
+      "credentialId": "<unique-identifier-of-the-vc>",
+      "issuerId": "{ISSUER_ID}",
+      "requestedAttributes": "{ALL | ARRAY_OF_SPECIFIC_ATTRBUTES}"
+    }
+  }
+}
+```
+
+<strong>Response - ACK</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/verification/1.0/request-consent-ack",
+    "@id": "<uuid-request-consent-ack-12345>",
+    "status": "{ OK | FAILED | PENDING }",
+    "~thread": {
+      "thid": "<uuid-request-consent-12345>",
+      "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+#### submit-consent (ADIA-VP-002)
+- The consent is submitted to the previous `request-consent` message.
+
+<strong>Request - From DAA to Cloud Agent</strong>
+- The User's consent is obtained using the `DAA` and submitted to the `Cloud Agent`
+
+```json
+{
+    "@type": "https://adiassociation.org/verification/1.0/submit-consent",
+    "@id": "<uuid-submit-consent-12345>",
+    "adia": {
+      "attributes": {
+        "consent": "{ APPROVE | REJECT }"
+      }
+    },
+    "comment": "some comment",
+    "~thread": {
+      "thid": "<uuid-request-consent-response-12345>",      //Thread of the previous message where consent was requested.
+      "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+#### request-vc (ADIA-VP-003)
+
+<strong>Request</strong>
+
+- After obtaining the user's consent, `Cloud Agent` requests the original VC to the Issuer.
+
+```json
+{
+  "@type": "https://adiassociation.org/verification/1.0/request-vc",
+  "@id": "<uuid-request-vc-12345>",
+  "adia": {
+    "attributes": {
+      "schemaId": "<unique-identifier-of-the-vc-schema>",
+      "credentialId": "<unique-identifier-of-the-vc>",
+      "userId": "{DAS_USER_ID}"
+    }
+  }
+}
+```
+<strong>Response - ACK</strong>
+
+```json
+{
+    "@type": "https://adiassociation.org/verification/1.0/request-vc-ack",
+    "@id": "<uuid-request-vc-ack-12345>",
+    "status": "{ OK | FAILED | PENDING }",
+    "~thread": {
+      "thid": "uuid-request-vc-12345",
+      "message": "e.g. comment or reason of failed request"
+    }
+}
+```
+
+<strong>Response - with the original VC</strong>
+
+```json
+{
+  "@type": "https://adiassociation.org/verification/1.0/request-vc-response",
+  "@id": "<uuid-request-vc-response-12345>",
+  "adia": {
+    "attributes": {
+      "credentialsAttach": [{            // The original VC retrieved from the VC Store
+          "@id": "libindy-cred-0",
+          "mime-type": "application/json",
+          "data": {
+              "base64": "eyJzY2hlbWFfaWQiOiJkaWQ6ZHR4Ono...(clipped)...hIZG85V2JBYUVhcmlFTTI4In0="
+          },
+          "signature": "59nTycBn22T648daQW8U149eP9bKXX3BoXAWV1aj7R2wfqpjWYBymn8WTHfkfDbCaMscSpitjyRAupon19Nxui3V"
+        }]
+    }
+  },
+  "~thread": {
+    "thid": "uuid-request-vc-12345",
+    "message": "e.g. comment or reason of failed request"
+  }
+}
+```
+
+#### verify-vc-claims (ADIA-VP-004)
+- A local function to be implemented by the SP Agent to verify each claim in the presentation along with all the keys & signatures.
+
+
+### Standard Protocol Commands
+
+Following standard messages are used as defined in the [Aries RFC 0037: Present Proof Protocol 1.0](https://github.com/hyperledger/aries-rfcs/blob/527849ec3a/features/0037-present-proof).
+
+#### propose-presentation (Aries-RFC-0037-1)
+- A sample payload of the `propose-presentation` message may look like this.
+
+```json
+{
+  "@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/present-proof/1.0/propose-presentation",
+  "@id": "<uuid-propose-presentation>",
+  "comment": "some comment",
+  "presentation_proposal": "<json-ld object of the proposed presentation>"
+}
+```
+
+#### request-presentation (Aries-RFC-0037-2)
+- A sample payload of the `request-presentation` message may look like this.
+
+```json
+{
+  "@id": "04f37b27-07dd-4bfe-b3d0-8a21777f91ea",
+  "@type": "https://didcomm.org/present-proof/1.0/request-presentation",
+  "comment": "some comment",
+  "request_presentations~attach": [{
+    "@id": "request-presentation-0",
+    "mime-type": "application/json",
+    "data": {
+      "base64": "eyJuYW1lIjoidmVyaWZ5RGlhZ25vc2lzUmVjb3JkI ... (clipped) ... pEaWFnbm9zaXNSZWNvcmRDdnM6MS4wIn1dfX19"
+      }
+  }],
+  "~thread": {
+    "thid": "04f37b27-07dd-4bfe-b3d0-8a21777f91ea",
+    "sender_order": 0,
+    "received_orders": {}
+  }
+}
+```
+
+- From the above `presentation-request` payload, when the `data/base64` value is decoded, it may look something like:
+
+```json
+{
+  "name": "verifyDiagnosisRecord",
+  "version": "3.0",
+  "nonce": "1234",
+  "requested_attributes": {
+    "attribute": {
+      "names": [
+        "firstName",
+        "diagnosisMethods"
+      ],
+      "restrictions": [
+        {
+          "schema_id": "did:dtx:z6MknKF7ddVhLKtpob4g1Qw22wF2cHAyyEtfaXQMnHRBaEms:DiagnosisRecordCvs:1.0"
+        }
+      ]
+    }
+  },
+  "requested_predicates": {
+    "predicate": {
+      "p_type": "<",
+      "p_value": "2000",
+      "name": "yearOfBirth",
+      "restrictions": [
+        {
+          "schema_id": "did:dtx:z6MknKF7ddVhLKtpob4g1Qw22wF2cHAyyEtfaXQMnHRBaEms:DiagnosisRecordCvs:1.0"
+        }
+      ]
+    }
+  }
+}
+```
+
+#### presentation (Aries-RFC-0037-3)
+- A sample payload of the `presentation` message may look like this.
+
+```json
+{
+  "@id": "7158a81a-66ff-493d-9470-3b40d887ffdc",
+  "@type": "https://didcomm.org/present-proof/1.0/presentation",
+  "presentations~attach": [
+    {
+      "@id": "libindy-presentation-0",
+      "mime-type": "application/json",
+      "data": {
+        "base64": "eyJwcm9vZiI6eyJwcm9vZnMiOnsiYXR0cmlidXRlIjp7In ... (clipped) ... ZzOjEuMDpEaWFnbm9zaXNSZWNvcmRDVlMifV19"
+      }
+    }
+  ],
+  "~thread": {
+    "thid": "04f37b27-07dd-4bfe-b3d0-8a21777f91ea",
+    "sender_order": 0,
+    "received_orders": {}
+  }
+}
+```

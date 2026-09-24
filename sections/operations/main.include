@@ -1,0 +1,18 @@
+# Operations # {#sctn-ops}
+[INFORMATIVE]
+
+<pre class=include>
+path: sections/operations/directory-enrollment.include
+</pre>
+
+<pre class=include>
+path: sections/operations/vc-operations.include
+</pre>
+
+<pre class=include>
+path: sections/operations/device-management.include
+</pre>
+
+<pre class=include>
+path: sections/operations/das-to-das-communication.include
+</pre>
